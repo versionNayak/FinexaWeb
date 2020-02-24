@@ -1,0 +1,349 @@
+<script src="clientInfo/js/common.js"></script>
+<script src="clientInfo/js/addRiskprofile.js"></script>
+<div class="cicontainer">
+
+<form class="form-horizontal form_riskprofile_client" action="#">
+<ul id="questions">
+<!-- <li class="question active">
+  <p><strong>Question No : 1 Of 12</strong></p>
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-12">
+					<label> What is your current Age:</label>
+					<div class="answers">
+					<ol>
+					<li><input type="radio" name="q1" class="input_risk_profile" tabindex="270"/> <span>30 or less</span></li>
+
+					<li><input type="radio" name="q1" class="input_risk_profile" tabindex="270"/> <span>31-40</span></li>
+
+					<li><input type="radio" name="q1" class="input_risk_profile" tabindex="270"/> <span>41-50</span></li>
+
+					<li><input type="radio" name="q1" class="input_risk_profile" tabindex="270"/> <span>51-60</span></li>
+
+					<li><input type="radio" name="q1" class="input_risk_profile" tabindex="270"/> <span>above 60</span></li>
+
+					</ol>
+					</div>
+				</div>
+				</div>
+</li>
+
+
+
+	<li class="question">
+	<p><strong>Question No : 2 Of 12</strong></p>
+				<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-12">
+					<label> Your current annual take home income is:</label>
+					<div class="answers">
+					<ol>
+					<li><input type="radio" name="q2" class="input_risk_profile" tabindex="270"/> <span>less than 2 lakh</span></li>
+
+					<li><input type="radio" name="q2" class="input_risk_profile" tabindex="270"/> <span>2 lakh to 5 lakh</span></li>
+
+					<li><input type="radio" name="q2" class="input_risk_profile" tabindex="270"/> <span>5 lakh to 10 lakh</span></li>
+
+					<li><input type="radio" name="q2" class="input_risk_profile" tabindex="270"/> <span>10 lakh to 15 lakh</span></li>
+
+					<li><input type="radio" name="q2" class="input_risk_profile" tabindex="270"/> <span>greater than 15 lakh</span></li>
+
+					</ol>
+					</div>
+				</div>
+				</div>
+</li>
+
+<li class='question'>
+<p><strong>Question No : 3 Of 12</strong></p>
+				<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-12">
+					<label> You are financially responsible for (exclude dependants who can be supported by your spouse's income)</label>
+					<div class="answers">
+					<ol>
+					<li><input type="radio" name="q3" class="input_risk_profile" tabindex="270"/> <span>only yourself</span></li>
+
+					<li><input type="radio" name="q3" class="input_risk_profile" tabindex="270"/> <span>1 other person beside yourself</span></li>
+
+					<li><input type="radio" name="q3" class="input_risk_profile" tabindex="270"/> <span>between 2 and 3 person beside yourself</span></li>
+
+					<li><input type="radio" name="q3" class="input_risk_profile" tabindex="270"/> <span>between 4 and 5 person beside yourself</span></li>
+
+					<li><input type="radio" name="q3" class="input_risk_profile" tabindex="270"/> <span>more than 5 person beside yourself</span></li>
+
+					</ol>
+					</div>
+				</div>
+				</div>
+</li>
+
+<li class='question'>
+<p><strong>Question No : 4 Of 12</strong></p>
+				<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-12">
+					<label> What % of your income goes towards servicing your Emi</label>
+					<div class="answers">
+					<ol>
+					<li><input type="radio" name="q4" class="input_risk_profile" tabindex="270"/> <span>under 25%</span></li>
+
+					<li><input type="radio" name="q4" class="input_risk_profile" tabindex="270"/> <span>25%-40%</span></li>
+
+					<li><input type="radio" name="q4" class="input_risk_profile" tabindex="270"/> <span>41%-60%</span></li>
+
+					<li><input type="radio" name="q4" class="input_risk_profile" tabindex="270"/> <span>61%-75%</span></li>
+
+					<li><input type="radio" name="q4" class="input_risk_profile" tabindex="270"/> <span>over 75%</span></li>
+
+					</ol>
+					</div>
+				</div>
+				</div>
+</li>
+
+<li class='question'>
+<p><strong>Question No : 5 Of 12</strong></p>
+				<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-12">
+					<label> What is your annual Savings in percentage (Savings/total income)</label>
+					<div class="answers">
+					<ol>
+					<li><input type="radio" name="q5" class="input_risk_profile" tabindex="270"/> <span>0</span></li>
+
+					<li><input type="radio" name="q5" class="input_risk_profile" tabindex="270"/> <span>less than 10%</span></li>
+
+					<li><input type="radio" name="q5" class="input_risk_profile" tabindex="270"/> <span>10% - 20%</span></li>
+
+					<li><input type="radio" name="q5" class="input_risk_profile" tabindex="270"/> <span>20% - 30%</span></li>
+
+					<li><input type="radio" name="q5" class="input_risk_profile" tabindex="270"/> <span>more than 30%</span></li>
+
+					</ol>
+					</div>
+				</div>
+				</div>
+</li>
+
+<li class="question">
+<p><strong>Question No : 6 Of 12</strong></p>
+				<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-12">
+					<label> Approximately what % of your existing investments are in Equity and Alternatives (e.g. real estate, gold etc. not for personal use)</label>
+					<div class="answers">
+					<ol>
+					<li><input type="radio" name="q6" class="input_risk_profile" tabindex="270"/> <span>less than 10%</span></li>
+
+					<li><input type="radio" name="q6" class="input_risk_profile" tabindex="270"/> <span>10% to 30%</span></li>
+
+					<li><input type="radio" name="q6" class="input_risk_profile" tabindex="270"/> <span>30% to 50%</span></li>
+
+					<li><input type="radio" name="q6" class="input_risk_profile" tabindex="270"/> <span>50% to 75%</span></li>
+
+					<li><input type="radio" name="q6" class="input_risk_profile" tabindex="270"/> <span>80% to 100%</span></li>
+
+					</ol>
+					</div>
+				</div>
+				</div>
+</li>
+
+<li class='question'>
+<p><strong>Question No : 7 Of 12</strong></p>
+				<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-12">
+					<label> For how long have you been investing, not couting your residential house or savings account deposits</label>
+					<div class="answers">
+					<ol>
+					<li><input type="radio" name="q7" class="input_risk_profile" tabindex="270"/> <span>3 years or more</span></li>
+
+					<li><input type="radio" name="q7" class="input_risk_profile" tabindex="270"/> <span>upto 3 years</span></li>
+
+					<li><input type="radio" name="q7" class="input_risk_profile" tabindex="270"/> <span>this will be my first investment</span></li>
+
+					</ol>
+					</div>
+				</div>
+				</div>
+</li>
+
+<li class='question'>
+<p><strong>Question No : 8 Of 12</strong></p>
+				<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-12">
+					<label>Which one of the following statements describes your feelings towards choosing an investment?</label>
+					<div class="answers">
+					<ol>
+					<li><input type="radio" name="q8" class="input_risk_profile" tabindex="270"/> <span> I would prefer investments with little or no fluctuation in value and have a low degree of risk associated with them. I am willing to accept the lower return associated with these investments.</span></li>
+
+					<li><input type="radio" name="q8" class="input_risk_profile" tabindex="270"/> <span>I prefer to diversify with a mix of investments that have an emphasis on low risk.  I am happy to have a small proportion of the portfolio invested in assets that have a higher degree of risk in order to achieve a slightly higher return.  I am prepared to accept a negative investment return of 1 in 10 years</span></li>
+
+					<li>
+						<input type="radio" name="q8" class="input_risk_profile" tabindex="270"/> <span> I prefer to have a spread of investments in a balanced portfolio.  I am happy to have a negative return of 1 in 7 years.</span>
+					</li>
+
+					<li><input type="radio" name="q8" class="input_risk_profile" tabindex="270"/> <span> I prefer to diversify my investments with an emphasis on more investments that have higher returns, but still having a small amount of low risk investments.  I am happy to accept a negative return of 1 in 5 years.</span></li>
+
+					<li><input type="radio" name="q8" class="input_risk_profile" tabindex="270"/> <span>I would select investments that have a higher degree of investment price fluctuation so that I can earn higher long term returns.  I am happy to accept a negative return of 1 in 3 years in order to achieve this goal.</span></li>
+
+					
+					</ol>
+					</div>
+				</div>
+				</div>
+</li>
+
+<li class='question'>
+<p><strong>Question No : 9 Of 12</strong></p>
+				<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-12">
+					<label>How will you react if there is a stock market decline (negative return)</label>
+					<div class="answers">
+					<ol>
+					<li><input type="radio" name="q9" class="input_risk_profile" tabindex="270"/> <span>I will sell everything</span></li>
+
+					<li><input type="radio" name="q9" class="input_risk_profile" tabindex="270"/> <span>I will sell a portion of it</span></li>
+
+					<li><input type="radio" name="q9" class="input_risk_profile" tabindex="270"/> <span>I will neither buy nor sell</span></li>
+
+					<li><input type="radio" name="q9" class="input_risk_profile" tabindex="270"/> <span>I will buy some more</span></li>
+
+					<li><input type="radio" name="q9" class="input_risk_profile" tabindex="270"/> <span>I will buy as much as I can</span></li>
+
+					</ol>
+					</div>
+				</div>
+				</div>
+</li>
+
+<li class='question'>
+<p><strong>Question No : 10 Of 12</strong></p>
+				<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-12">
+					<label> The table below shows the highest one year gain and highest one year loss on  five different hypothetical investments of Rs100,000. Given the potential gain or  loss in any one year, where would you invest your money?</label>
+					<div class="answers">
+					<ol>
+					<li><input type="radio" name="q10" class="input_risk_profile" tabindex="270"/> <span>Invest in Portfolio A</span></li>
+
+					<li><input type="radio" name="q10" class="input_risk_profile" tabindex="270"/> <span>Invest in Portfolio B</span></li>
+
+					<li><input type="radio" name="q10" class="input_risk_profile" tabindex="270"/> <span>Invest in Portfolio C</span></li>
+
+					<li><input type="radio" name="q10" class="input_risk_profile" tabindex="270"/> <span>Invest in Portfolio D</span></li>
+
+					<li><input type="radio" name="q10" class="input_risk_profile" tabindex="270"/> <span>Invest in Portfolio E</span></li>
+
+					</ol>
+					</div>
+				</div>
+				</div>
+
+				<table width="100%" class="retirementview table table-hover">
+<tr class="nonglidtotal">
+		<th>Portfolio</th>
+		<th>A</th>
+		<th>B</th>
+		<th>C</th>
+		<th>D</th>
+		<th>E</th>
+		
+		</tr>
+		<tr>
+	    <td>Highest Gain</td>
+	    <td>11600</td>
+	    <td>10000</td>
+	    <td>20500</td>
+	    <td>26800</td>
+	    <td>30000</td>
+	    </tr>
+	    <tr>
+	    <td>Lowest Gain</td>
+	    <td>26800</td>
+	    <td>20500</td>
+	    <td>11600</td>
+	    <td>10000</td>
+	    <td>26800</td>
+	    </tr>
+	    
+</table>
+</li>
+
+<li class='question'>
+<p><strong>Question No : 11 Of 12</strong></p>
+				<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-12">
+					<label>Which of the following statements would best describe your level of knowledge as an investor</label>
+					<div class="answers">
+					<ol>
+					<li><input type="radio" name="q11" class="input_risk_profile" tabindex="270"/> <span>I don't understand investment terminology at all.</span></li>
+
+					<li><input type="radio" name="q11" class="input_risk_profile" tabindex="270"/> <span>I am a proficient investor who's able to explain concepts such as EVA, beta and hedging.</span></li>
+
+					<li><input type="radio" name="q11" class="input_risk_profile" tabindex="270"/> <span>I know how to identify and invest in mutual funds and secondary market debentures.</span></li>
+
+					<li><input type="radio" name="q11" class="input_risk_profile" tabindex="270"/> <span>I understand investment principles and trade shares in the secondary market.</span></li>
+
+					<li><input type="radio" name="q11" class="input_risk_profile" tabindex="270"/> <span>I am not very familiar with investment options and financial planning.</span></li>
+
+					</ol>
+					</div>
+				</div>
+				</div>
+</li>
+
+<li class='question'>
+<p><strong>Question No : 12 Of 12</strong></p>
+				<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-12">
+					<label>Have you opted for financial planning before:</label>
+					<div class="answers">
+					<ol>
+					<li><input type="radio" name="q12" class="input_risk_profile" tabindex="270"/> <span>Yes</span></li>
+
+					<li><input type="radio" name="q12" class="input_risk_profile" tabindex="270"/> <span>No</span></li>
+
+					</ol>
+					</div>
+				</div>
+				</div>
+
+				</li> -->
+               </ul>
+
+                <div class="form-group risk_btns search_btns clerafix">
+				<div class="col-sm-6">
+					<button type="button" class="pull-left btn prev_btn" id="previous" tabindex="540" style="display: none;">Previous</button>
+					<button type="button" class="pull-left btn nxtbtn" id="next" tabindex="540" style="display: none;">Next</button>
+					<button type="button" class="pull-left btn finbtn" id="finish" tabindex="540">Finish</button>
+
+				</div>
+				</div>
+		
+</form>
+<!--<table width="100%" class="retirementview">
+	<tr class="nonglidtotal">
+		<th>Sr. No. </th>
+		<th>Risk Profile</th>
+		<th>Last updated date</th>	
+		</tr>
+
+		<tr>
+		<td>1 </td>
+		<td>Name</td>
+		<td>05/08/2017</td>
+			</tr>
+
+		
+		
+</table>-->
+
+	</div>
+

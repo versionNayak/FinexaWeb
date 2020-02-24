@@ -1,0 +1,797 @@
+<script src="invest/js/verificationprocess.js"></script>
+<script src="invest/js/validateccCreation.js"></script>
+<script src="invest/js/validationForAll.js"></script>
+
+<div class="cicontainer" style="height:265%">
+	<style>
+	.tab {
+    overflow: hidden;
+ 
+ 
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: 1px solid #ccc;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 15px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: ;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #6eaee5;
+	color:white;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+
+    border-top: none;
+}
+
+/* Style the close button */
+.topright {
+    float: right;
+    cursor: pointer;
+    font-size: 28px;
+}
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+
+
+
+form {
+  padding: 20px;;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+form input,
+form button {
+  border: 0;
+  margin-bottom: 3px;
+  display: block;
+  width: 100%;
+}
+form input {
+  height: 25px;
+  line-height: 25px;
+  background: #fff;
+  color: #000;
+  padding: 0 6px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+form button {
+  height: 30px;
+  line-height: 30px;
+  background: #e67e22;
+  color: #fff;
+  margin-top: 10px;
+  cursor: pointer;
+}
+form .error {
+  color: #ff0000;
+}
+
+
+	</style>
+<body>
+	<!--<table class="verificationpath">
+	<tr><td><button type="submit" style="width:90%" class="form-control addbtn pn" tabindex="540">CKYC</button></td><td><img src="../Common/assets/images/bluearrow.png" style="width: 80px;height: 21px;"/></td><td><button type="submit" style="width:55%;" class="form-control addbtn" tabindex="540">CC Creation</button></td><td><img src="../Common/assets/images/bluearrow.png" style="width: 80px;height: 21px;"/></td><td><button type="submit" style="width:97%" class="form-control greywhite" tabindex="540" disabled>FATCA</button></td><td><img src="../Common/assets/images/bluearrow.png" style="width: 80px;height: 21px;"/></td><td><button type="submit" style="width:113%" class="form-control greywhite" tabindex="540" disabled>ISIP</button></td></tr>
+	</table>-->
+	<table class="verificationpath" style="margin-left: -17px;">
+	<tr><td style="width: 15%;"><button type="submit" style="width:96%" class="form-control addbtn pn" tabindex="540">CKYC</button></td><td><img src="../Common/assets/images/bluearrow.png" style="width:85%"></td><td style="width: 14%;"><button type="submit" style="width:101%;" class="form-control addbtn" tabindex="540" disabled>CC Creation</button></td><td><img src="../Common/assets/images/bluearrow.png" style="width:93%"></td><td style="width: 13%;"><button type="submit" style="width:101%" class="form-control greywhite" tabindex="540" disabled>FATCA</button></td><td><img src="../Common/assets/images/bluearrow.png" style="width:93%"></td><td style="width: 11%;"><button type="submit" style="width:141%" class="form-control greywhite" tabindex="540" disabled>ISIP</button></td></tr>
+	</table>
+	<br/><br/>
+	<div class="tab" style="padding:0px;margin-left: 30px;">
+	<button type="submit" style="width:15%;font-size:11px" class="form-control tablinks ctl" onclick="openCity(event, 'cd')" tabindex="540" id="defaultOpen">Client Details</button>
+	<button type="submit" style="width:15%;margin-left: 11px;font-size:11px" class="form-control tablinks pandtl greywhite" tabindex="540" id="defaultOpen">Pan Details</button>
+	<button type="submit" style="width:15%;margin-left: 11px;font-size:11px" class="form-control tablinks bnkdtl greywhite" tabindex="540" id="defaultOpen">Bank Details</button>
+	<button type="submit" style="width:15%;margin-left: 11px;font-size:11px" class="form-control tablinks cont greywhite" tabindex="540" id="defaultOpen">Contact Details</button>
+	<button type="submit" style="width:15%;margin-left: 11px;font-size:11px" class="form-control tablinks ckycdtl greywhite" tabindex="540" id="defaultOpen">CKYC Details</button>
+ <button type="submit" style="width:15%;margin-left: 11px;font-size:11px" class="form-control tablinks uploadtl greywhite" tabindex="540" id="defaultOpen">Upload Document</button>
+  
+</div>
+<!-- Form 1 Starts -->
+<form id="form1" name="form1">		
+<div id="cd" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright"></span>
+
+
+	<br/><br/>
+	
+<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">Client Code*: </label><br/>
+					<input type="text" placeholder="Client Code" class="form-control" id="clientCode" name="clientCode" style="width:16em"/> 
+				</div>
+				<br/><br/><br/><br/>
+	
+				
+				
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">Holding*: </label><br/>
+					<select style="padding-top:2px" class="form-control input-width-medium" id="idHolding" name="holding" tabindex="430">
+										<option value="">Select</option>
+										<option value="Annually">a</option>
+										<option value="Monthly">b</option>
+												<option value="Quarterly">c</option>
+									</select> 
+				</div>
+					<br/><br/><br/><br/>
+							
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="clientFirstAppli" style="text-align:left;font-size:14px">Client Name*(First Applicant Name): </label><br/>
+					<input type="text" placeholder="Client Name" class="form-control" id="clientAppli" name ="clientAppli" style="width:16em"/> 
+					<span class="formentry-errmsg" id="alertfname"></span>
+				</div>
+					<br/><br/><br/><br/>
+								
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">DOB*: </label><br/>
+					<span class="form-static-value">
+						<p class="input-group input-width-medium">
+						<input type="text" class="form-control" id="idStartDate" name="StartDate" placeholder="DD/MM/YYYY" tabindex="330">
+						<span class="input-group-btn datepicker-icon">
+							<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Start Date"><em class="glyphicon calendar-icon-theme"></em></button>
+						</span>
+					</p>
+					</span> 
+				</div>
+					<br/><br/><br/><br/>
+								
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">Gender*: </label><br/>
+					<span class="form-static-value">
+						<input type="text" placeholder="Gender" class="form-control" id="currentvalue" style="width:16em"/> 
+					</span> 
+				</div>
+					<br/><br/><br/><br/>
+						
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">Occupation*: </label><br/>
+					<span class="form-static-value">
+						<select style="padding-top:2px" class="form-control input-width-medium" id="idOccupation" name="occupation" tabindex="430">
+										<option value="">select</option>
+										<option value="">b</option>
+										<option value="">c</option>
+												<option value="">d</option>
+									</select>
+					</span> 
+				</div>
+					<br/><br/><br/><br/>
+								
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">Tax Status*: </label><br/>
+					<span class="form-static-value">
+						<select style="padding-top:2px" class="form-control input-width-medium"  tabindex="430">
+                                        <option value="">select</option>
+										<option value="">b</option>
+										<option value="">c</option>
+												<option value="">d</option>
+									</select>
+					</span> 
+				</div>
+					<br/><br/><br/><br/>
+								
+				
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">Second Applicant Name: </label><br/>
+					<input type="text" placeholder="Second Applicant" class="form-control" id="idsecondclientAppli" name="clientsecondAppli" style="width:16em"/> 
+				</div>
+					<br/><br/><br/><br/>
+								
+				
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">Third Applicant Name: </label><br/>
+					<input type="text" placeholder="Third Applicant" class="form-control" id="idThirdclientAppli" name="clientThirdAppli" style="width:16em"/> 
+				</div>
+					<br/><br/><br/><br/>
+								
+				
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">Guardian Name: </label><br/>
+					<input type="text" placeholder="Guardian Name" class="form-control" id="idGuardianName" name="guardianName" style="width:16em"/> 
+				</div>
+					<br/><br/><br/><br/>					
+									
+				<div class="col-sm-9" style="text-align: left;z-index:1;margin-left:-38px;padding-top: 7px;margin-top:-13px"> 
+				<div class="col-sm-3">
+				<button type="submit" style="width:139%" class="form-control greywhite cdprevious" tabindex="540">Previous</button>
+				</div>
+				<div class="col-sm-3">
+				<button type="submit" style="width:145%;margin-left: 24px;" class="form-control addbtn clientdtl" tabindex="540"  tabindex="540" id="saveAndNext1">save & next</button>
+				</div>
+		</div>
+</div>
+</form>
+<!-- Form 1 End -->
+
+
+
+<!-- Form 2 Starts -->
+<form id="form2" name="form2">
+<div id="pan" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright"></span>
+  <br/><br/>
+	<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">First Applicant PAN*: </label><br/>
+					<input type="text" placeholder="First Applicant" class="form-control" id="idfirstAppliPan" name="firstAppliPan" style="width:16em"/> 
+				</div>
+				<br/><br/><br/><br/>
+			
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">Second Applicant PAN: </label><br/>
+						<input type="text" placeholder="Second Applicant" class="form-control" id="idSecondApplicantPAN" name="secondApplicantPAN"style="width:16em"/> 
+				</div>
+					<br/><br/><br/><br/>
+								
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">Third Applicant PAN: </label><br/>
+					<input type="text" placeholder="Third Applicant" class="form-control" id="idThirdApplicantPAN" name="thirdApplicantPAN"style="width:16em"/> 
+				</div>
+					<br/><br/><br/><br/>
+								
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">Guardian Name: </label><br/>
+					<span class="form-static-value">
+						<input type="text" placeholder="Guardian Name" class="form-control" id="idSecondGuardianName" name="secondGuardianName"style="width:16em"/> 
+					</span> 
+				</div>
+		
+		<br/><br/><br/><br/>
+						<div class="col-sm-9" style="text-align: left;z-index:1;margin-left:-38px;padding-top: 7px;margin-top:-13px"> 
+				<div class="col-sm-3">
+				<button type="submit" style="width:139%" class="form-control greywhite panprevious" onclick="openCity(event, 'cd')" tabindex="540">Previous</button>
+				</div>
+				<div class="col-sm-3">
+				<button type="submit" style="width:145%; margin-left: 24px;" class="form-control addbtn panfinish" tabindex="540"  tabindex="540" id="saveAndNext2">Save & Next</button>
+				</div>
+		</div>
+</div>
+</form>
+<!-- Form 2 End -->
+
+
+
+
+
+
+<div id="bank" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright"></span>
+  <br/><br/>
+	<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px"> Account type*: </label><br/>
+					<select style="padding-top:2px" class="form-control input-width-medium" required="required" tabindex="430">
+										<option value="">Current</option>
+										<option value="Annually">Saving</option>
+										
+									</select> 
+				</div>
+				<br/><br/><br/><br/>
+			
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">Bank Account Number*: </label><br/>
+					<input type="text" placeholder="Bank Account Number" class="form-control" id="currentvalue" style="width:16em"/> 
+				</div>
+					<br/><br/><br/><br/>
+								
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">Bank Name*: </label><br/>
+					<input type="text" placeholder="Bank Name" class="form-control" id="currentvalue" style="width:16em"/> 
+				</div>
+					<br/><br/><br/><br/>
+								
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">IFSC code*: </label><br/>
+					<span class="form-static-value">
+						<input type="text" placeholder="IFSC Code" class="form-control" id="currentvalue" style="width:16em"/> 
+					</span> 
+				</div>
+				<br/><br/><br/><br/>
+								
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">MICR code: </label><br/>
+					<span class="form-static-value">
+						<input type="text" placeholder="MICR Code" class="form-control" id="currentvalue" style="width:16em"/> 
+					</span> 
+				</div>
+				<br/><br/><br/><br/>
+								
+					<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">Whether Default Bank Account*: </label><br/>
+					<span class="form-static-value">
+						<select style="padding-top:2px" class="form-control input-width-medium" required="required" tabindex="430">
+										<option value="">Yes</option>
+										<option value="Annually">No</option>
+									
+									</select> 
+					</span> 
+				</div>
+						<br/>
+<br/><br/><br/>
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<button type="submit" style="width:51%" class="form-control addbtn" tabindex="540">Add another Bank Account
+				</button>
+				<br/>
+					<span class="form-static-value">
+					<input type="text" placeholder="" class="form-control" id="currentvalue" style="width:16em"/> 
+					</span> 
+				</div>
+		
+		<br/>
+<br/><br/><br/><br/><br/>
+
+						<div class="col-sm-9" style="text-align: left;z-index:1;margin-left:-38px;padding-top: 7px;margin-top:-13px"> 
+				<div class="col-sm-3">
+				<button type="submit" style="width:139%" class="form-control greywhite bankprevious" onclick="openCity(event,'pan')" tabindex="540">Previous</button>
+				</div>
+				<div class="col-sm-3">
+				<button type="submit" style="width:145%;
+    margin-left: 24px;" class="form-control addbtn contdtl" onclick="openCity(event, 'contact')" tabindex="540">Save & Next3</button>
+				</div>
+		</div>
+</div>
+		<div id="contact" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright"></span>
+  <br/><br/>
+	<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px"> Address*: </label><br/>
+					<input type="text" placeholder="Address" class="form-control" id="currentvalue" style="width:16em"/> 
+				</div>
+				<br/><br/><br/><br/>
+	
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">City*: </label><br/>
+					 <input type="text" placeholder="City" class="form-control" id="currentvalue" style="width:16em"/> 
+				</div>
+					<br/><br/><br/><br/>
+								
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">State*: </label><br/>
+					<input type="text" placeholder="State" class="form-control" id="currentvalue" style="width:16em"/> 
+				</div>
+					<br/><br/><br/><br/>
+								
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">Country*: </label><br/>
+					<span class="form-static-value">
+						<input type="text" placeholder="Country" class="form-control" id="currentvalue" style="width:16em"/> 
+					</span> 
+				</div>
+				<br/><br/><br/><br/>
+							
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">Pincode*: </label><br/>
+					<span class="form-static-value">
+						<input type="text" placeholder="PinCode" class="form-control" id="currentvalue" style="width:16em"/> 
+					</span> 
+				</div>
+				<br/><br/><br/><br/>
+								
+					<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">Mobile*: </label><br/>
+					<span class="form-static-value">
+						<input type="text" placeholder="Mobile" class="form-control" id="currentvalue" style="width:16em"/> 
+					</span> 
+				</div>
+					<br/><br/><br/><br/>
+								
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+	<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">Email Id*: </label><br/>
+					<span class="form-static-value">
+						<input type="text" placeholder="Email Id" class="form-control" id="currentvalue" style="width:16em"/> 
+					</span> 
+				</div>
+		
+		<br/>
+<br/><br/><br/>
+
+
+						<div class="col-sm-9" style="text-align: left;z-index:1;margin-left:-38px;padding-top: 7px;margin-top:-13px"> 
+				<div class="col-sm-3">
+				<button type="submit" style="width:139%" class="form-control greywhite contactprev" onclick="openCity(event,'bank')" tabindex="540">Previous</button>
+				</div>
+				<div class="col-sm-3">
+				<button type="submit" style="width:145%;
+    margin-left: 24px;" class="form-control addbtn ckycdtlbtn" onclick="openCity(event, 'ckycdetails')" tabindex="540">Save & Next4</button>
+				</div>
+		</div>
+</div>
+		<div id="ckycdetails" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright"></span>
+  <br/><br/>
+	<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px"> CKYC
+*: </label><br/>
+					<select style="padding-top:2px" class="form-control input-width-medium" required="required" tabindex="430">
+										<option value="">Yes</option>
+										<option value="">No</option>
+										
+									</select> 
+				</div>
+				<br/><br/><br/><br/>
+	
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">KYC Type  First Applicant*: </label><br/>
+					<select style="padding-top:2px" class="form-control input-width-medium" required="required" tabindex="430">
+										<option value="">Select</option>
+										<option value="">KRA Compliant</option>
+										<option value="">CKYC Compliant</option>
+												
+									</select> 
+				</div>
+					<br/><br/><br/><br/>
+						
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">CKYC No. First Applicant*: </label><br/>
+					<input type="text" placeholder="CKYC No." class="form-control" id="currentvalue" style="width:16em"/> 
+				</div>
+					<br/><br/><br/><br/>
+								
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">KYC Type Second Applicant*: </label><br/>
+					<span class="form-static-value">
+						<select style="padding-top:2px" class="form-control input-width-medium" required="required" tabindex="430">
+										<option value="">Select</option>
+										<option value="">KRA Compliant</option>
+										<option value="">CKYC Compliant</option>
+												
+									</select> 
+					</span> 
+				</div>
+				<br/><br/><br/><br/>
+								
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">CKYC No. Second Applicant*: </label><br/>
+					<span class="form-static-value">
+						<input type="text" placeholder="CKYC No. Second Applicant" class="form-control" id="currentvalue" style="width:16em"/> 
+					</span> 
+				</div>
+				<br/><br/><br/><br/>
+								
+					<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">KYC Type Third Applicant*: </label><br/>
+					<span class="form-static-value">
+								<select style="padding-top:2px" class="form-control input-width-medium" required="required" tabindex="430">
+										<option value="">Select</option>
+										<option value="">KRA Compliant</option>
+										<option value="">CKYC Compliant</option>
+												
+									</select> 
+					</span> 
+				</div>
+				<br/><br/><br/><br/>
+								
+					<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">CKYC No. Third Applicant*: </label><br/>
+					<span class="form-static-value">
+						<input type="text" placeholder="CKYC No. Third Applicant" class="form-control" id="currentvalue" style="width:16em"/> 
+					</span> 
+				</div>
+				<br/><br/><br/><br/>
+								
+					<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">Branch*: </label><br/>
+					<span class="form-static-value">
+						<input type="text" placeholder="Client Name" class="form-control" id="currentvalue" style="width:16em"/> 
+					</span> 
+				</div>
+				<br/><br/><br/><br/>
+								
+					<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">Status*: </label><br/>
+					<span class="form-static-value">
+							<select style="padding-top:2px" class="form-control input-width-medium" required="required" tabindex="430">
+										<option value="">Select</option>
+										<option value="">Active</option>
+										
+												
+									</select> 
+					</span> 
+				</div>
+				<br/><br/><br/><br/>
+								
+					<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">Dividend payment mode*: </label><br/>
+					<span class="form-static-value">
+							<select style="padding-top:2px" class="form-control input-width-medium" required="required" tabindex="430">
+										<option value="">Select</option>
+										<option value="">Active</option>
+										
+												
+									</select> 
+					</span> 
+				</div>
+				<br/><br/><br/><br/>
+								
+					<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px"> Depository Details: Client Type
+*: </label><br/>
+					<span class="form-static-value">
+						<select style="padding-top:2px" class="form-control input-width-medium" required="required" tabindex="430">
+										<option value="">Select</option>
+										<option value="">Physical</option>
+										
+												
+									</select>
+					</span> 
+				</div>
+				<br/><br/><br/><br/>
+								
+					<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px"> Communication Mode*: </label><br/>
+					<span class="form-static-value">
+						<select style="padding-top:2px" class="form-control input-width-medium" required="required" tabindex="430">
+										<option value="">Select</option>
+										<option value="">Email</option>
+										
+												
+									</select>
+					</span> 
+				</div>
+		
+		<br/>
+<br/><br/><br/>
+
+						<div class="col-sm-9" style="text-align: left;z-index:1;margin-left:-38px;padding-top: 7px;margin-top:-13px"> 
+				<div class="col-sm-3">
+				<button type="submit" style="width:139%" class="form-control greywhite ckycprev" onclick="openCity(event, 'contact')" tabindex="540">Previous</button>
+				</div>
+				<div class="col-sm-3">
+				<button type="submit" style="width:145%;
+    margin-left: 24px;" class="form-control addbtn uploaddtl" onclick="openCity(event, 'image')" tabindex="540">Save & Next5</button>
+				</div>
+		</div>
+</div>
+		<div id="image" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright"></span>
+  <br/><br/>
+	<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px"> Type*: </label><br/>
+					<select style="padding-top:2px" class="form-control input-width-medium" required="required" tabindex="430">
+										<option value="">Select</option>
+										<option value="Annually">UCC</option>
+										
+									</select> 
+				</div>
+				<br/><br/><br/><br/>
+			
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left:-25px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px;width:133%"> Document Type*: </label><br/>
+				<select style="padding-top:2px" class="form-control input-width-medium" required="required" tabindex="430">
+										<option value="">Select</option>
+										<option value="Annually">UCC</option>
+										
+									</select> 
+									<br/>
+									<br/>
+				<div style="padding: 63px;margin: auto;padding-left:36%;border: 1px dashed;">
+					<input type="file" id="files" name="files[]" multiple />
+<output id="list"></output>
+
+<div id="drop_zone" hidden>Drop files here</div>
+<output id="list" hidden></output>
+<input type="button" value="cancel" id="cancelupload"/>
+				</div>				
+				</div>			
+						
+		<br/>
+<br/><br/><br/>
+
+						<div class="col-sm-9" style="text-align: left;z-index:1;margin-left:-38px;padding-top: 7px;margin-top:-13px">
+						<br/>
+						<br/>
+						
+				<div class="col-sm-3">
+				<button type="submit" style="width:139%" class="form-control greywhite imgprev" onclick="openCity(event, 'ckycdetails')"  tabindex="540">Previous</button>
+				</div>
+				<div class="col-sm-3">
+				<button type="submit" style="width:145%;
+    margin-left: 24px;" class="form-control addbtn gotofacta" tabindex="540">Save & Finish</button>
+				</div>
+		</div>
+</div>
+</div>
+					
+					
+					<script>
+					
+					$(function () {
+			"use strict";
+			$("[data-toggle=\"tooltip\"]").tooltip();
+			$("#idStartDate,#idMaturityDate,#idExtensionDate").datepicker({
+				format: "dd/mm/yyyy",
+				todayHighlight: true,
+				todayBtn: true
+			});
+			$(".datepicker-icon").on("click", function () {
+				$(this).closest(".input-group").find("input").trigger("focus");
+			});
+		});
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+   document.getElementById(cityName).style.display = "block";
+   evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+
+
+function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    // files is a FileList of File objects. List some properties.
+    var output = [];
+    for (var i = 0, f; f = files[i]; i++) {
+      output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                  f.size, ' bytes, last modified: ',
+                  f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+                  '</li>');
+    }
+    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+  }
+
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+  
+  
+  function handleFileSelect(evt) {
+    evt.stopPropagation();
+    evt.preventDefault();
+
+    var files = evt.dataTransfer.files; // FileList object.
+
+    // files is a FileList of File objects. List some properties.
+    var output = [];
+    for (var i = 0, f; f = files[i]; i++) {
+      output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                  f.size, ' bytes, last modified: ',
+                  f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+                  '</li>');
+    }
+    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+  }
+
+  function handleDragOver(evt) {
+    evt.stopPropagation();
+    evt.preventDefault();
+    evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
+  }
+
+  // Setup the dnd listeners.
+  var dropZone = document.getElementById('drop_zone');
+  dropZone.addEventListener('dragover', handleDragOver, false);
+  dropZone.addEventListener('drop', handleFileSelect, false);
+  
+  $(document).ready(function(){
+	  
+	   $(".panprev").click(function(){
+		$("#dashbord").empty();   
+		   
+	   });
+	  
+	  
+  $(".gotofacta").click(function(){
+$("#dashbord").empty();
+		
+		$(".dashboardheading").html("FATCA Declaration");
+		$("#dashbord").load("invest/fatca.html");
+  });
+  $(".clientdtl").click(function(){
+  
+  $(".ctl").addClass("addbtn");
+    $(".pandtl").addClass("addbtn");
+  });
+  
+    $(".panfinish").click(function(){
+		
+  $(".ctl").addClass("addbtn");
+    $(".pandtl").addClass("addbtn");
+	$(".bnkdtl").addClass("addbtn");
+  });
+  
+   $(".contdtl").click(function(){
+		
+  $(".ctl").addClass("addbtn");
+    $(".pandtl").addClass("addbtn");
+	$(".bnkdtl").addClass("addbtn");
+	$(".cont").addClass("addbtn");
+  });
+  
+  
+   $(".ckycdtlbtn").click(function(){
+		
+  $(".ctl").addClass("addbtn");
+    $(".pandtl").addClass("addbtn");
+	$(".bnkdtl").addClass("addbtn");
+	$(".cont").addClass("addbtn");
+	$(".ckycdtl").addClass("addbtn");
+  });
+  
+  $(".uploaddtl").click(function(){
+		
+  $(".ctl").addClass("addbtn");
+    $(".pandtl").addClass("addbtn");
+	$(".bnkdtl").addClass("addbtn");
+	$(".cont").addClass("addbtn");
+	$(".ckycdtl").addClass("addbtn");
+	$(".uploadtl").addClass("addbtn");
+  });
+  
+  $("#cancelupload").click(function(){
+$("#files").replaceWith($("#files").val('').clone(true));
+  });
+	
+	
+	
+	
+	
+	$(".cdprevious").click(function(){
+	$(".cdprevious").removeClass('greywhite');
+	$(".cdprevious").addClass('addbtn');
+		
+$("#dashbord").empty();
+		
+		$(".dashboardheading").html("CYKC");
+		$("#dashbord").load("invest/ckyc.html");
+		
+	
+		
+	});
+	
+	$(".panprevious").click(function(){
+	
+	$(".pandtl").removeClass("addbtn");
+	
+	});
+	$(".bankprevious").click(function(){
+	
+	$(".bnkdtl").removeClass("addbtn");
+	
+	});
+	
+		$(".contactprev").click(function(){
+	
+	$(".cont").removeClass("addbtn");
+	
+	});
+	
+	$(".ckycprev").click(function(){
+	
+	$(".ckycdtl").removeClass("addbtn");
+	
+	});
+	
+	$(".imgprev").click(function(){
+	
+	$(".uploadtl").removeClass("addbtn");
+	
+	});
+	
+
+	
+		
+	});
+</script>
+

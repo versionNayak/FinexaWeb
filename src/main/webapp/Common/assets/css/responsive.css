@@ -1,0 +1,15 @@
+
+@media only screen and (min-width: 320px) and (max-width: 425px) {
+	
+.padding5textrt {
+	width:367px !important;
+} 
+
+.margin7font18 {
+	font-size: 12px;
+}
+
+#status label {
+	font-size: 10px;
+}
+}

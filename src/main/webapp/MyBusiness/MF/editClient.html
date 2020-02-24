@@ -1,0 +1,107 @@
+<script src="MyBusiness/MF/Mfjs/form1.js"></script>
+<div class="MFforms">
+	<h4 class="formhead">Client Master (Modify)</h4>
+	<form class="form-horizontal marginleft10per" action="#" >
+						<div class="form-group">
+							<div>
+								<label>Pan Number:</label>
+								<span class="form-static-value">
+									<input type="text" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Pan Number" tabindex="270"/>
+								</span>
+							</div>
+								<div>
+								<label>Name:</label>
+								<span class="form-static-value">
+									<input type="text" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Name" tabindex="270"/>
+								</span>
+							</div>
+								<div>
+								<label>Aadhar Card number:</label>
+								<span class="form-static-value">
+									<input type="text" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Aadhar Card number" tabindex="270"/>
+								</span>
+							</div>
+								<div>
+								<label>DOB:</label>
+								<p class="input-group input-width-medium">
+						<input type="text" class="form-control" id="idStartDate" name="StartDate" placeholder="DD/MM/YYYY" tabindex="330">
+						<span class="input-group-btn datepicker-icon">
+							<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Start Date"><em class="glyphicon calendar-icon-theme"></em></button>
+						</span>
+					</p>
+							</div>
+								<div>
+								<label>Address:</label>
+								<span class="form-static-value">
+									<input type="text" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Address" tabindex="270"/>
+								</span>
+							</div>
+								<div>
+								<label>City:</label>
+								<span class="form-static-value">
+									<input type="text" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="City" tabindex="270"/>
+								</span>
+							</div>	<div>
+								<label>Pincode:</label>
+								<span class="form-static-value">
+									<input type="text" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="PinCode" tabindex="270"/>
+								</span>
+							</div>
+								<div>
+								<label>State:</label>
+								<span class="form-static-value">
+									<input type="text" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="State" tabindex="270"/>
+								</span>
+							</div>	<div>
+								<label>Email Id:</label>
+								<span class="form-static-value">
+									<input type="text" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Email-Id" tabindex="270"/>
+								</span>
+							</div>
+								<div>
+								<label>Mobile Number:</label>
+								<span class="form-static-value">
+									<input type="text" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Mobile number" tabindex="270"/>
+								</span>
+							</div>
+								<div>
+								<label>Family Name:</label>
+								<span class="form-static-value">
+									<input type="text" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Family" tabindex="270"/>
+								</span>
+							</div>
+							<br/>
+								<div>
+								<label>Family Head:</label>
+								<select class="form-control input-width-medium" onchange="javascript:aatish(this,'removeloan');" required="required" tabindex="430">
+										<option value="">Select</option>
+										<option value="1">Yes</option>
+										<option value="2">No</option>
+									</select>
+							</div>
+							<br/>
+							<button type="submit" class="form-control addbtn" tabindex="540">Add Bank</button><br/>
+							<button type="submit" class="form-control addbtn" tabindex="540">Save</button>
+							
+							
+							</div>			
+
+						</form>
+						<script>
+						$(function () {
+			"use strict";
+			$("[data-toggle=\"tooltip\"]").tooltip();
+			$("#idStartDate,#idMaturityDate,#idExtensionDate").datepicker({
+				format: "dd/mm/yyyy",
+				todayHighlight: true,
+				todayBtn: true
+			});
+			$(".datepicker-icon").on("click", function () {
+				$(this).closest(".input-group").find("input").trigger("focus");
+			});
+		});
+						</script>
+		
+							
+	
+	</div>

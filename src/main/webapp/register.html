@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="Finlabs">
+	<title>Finexa - Client Info</title>
+	<script src="Common/assets/js-library/bootbox.min.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="Common/assets/css-library/bootstrap.min.maxcdn.css">
+	<link href="Common/assets/css-library/bootstrap.min.css" rel="stylesheet" />
+	<link href="Common/assets/css/dashboard.css" rel="stylesheet" />
+	<link href="Common/assets/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	<link rel='stylesheet' type='text/css' href="Common/assets/css-library/bootstrap-datepicker3.standalone.min.css" />
+	<link rel="stylesheet" href="Common/assets/css-library/validationEngine.jquery.css" type="text/css" />
+
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" src="Common/assets/js-library/jquery.serializeToJSON.js"></script>
+	<script src="Common/assets/js-library/bootstrap.min.js"></script>
+	<script src="Common/assets/js-library/bootstrap-datepicker.min.js"></script>
+
+	<script type="text/javascript" src="Common/assets/js/myclient_global.js"></script>
+	<script type="text/javascript" src="Common/assets/js/serviceclient.js"></script>
+	<script type="text/javascript" src="Common/assets/js-library/jquery.validationEngine.js"></script>
+	<script type="text/javascript" src="Common/assets/js-library/jquery.validationEngine-en.js"></script>
+
+</head>
+
+<body class="bg">
+	<div class="row">
+		<div class="col-lg-6">
+			<div style="margin: 40%; height: 303px; margin-top: 16%; width: 60%;">
+				<div class="login">
+					<img src="Common/assets/images/logo-finexa.png" style="width: 67%" />
+
+					<br />
+					<h1>Put your best foot forward give the very best to your clients with finexa.</h1>
+					<br />
+					<p>Have an account?</p>
+					<br /> <input type="button" value="SIGN-IN" class="form-control" ONCLICK="javascript:window.open('index.html','_self'); "
+					/>
+
+				</div>
+			</div>
+
+		</div>
+		<div class="col-lg-6">
+			<div style="height: 600px; margin-top: 1%; width: 50%; background-color: white; padding-top: 20px">
+				<div style="margin-top: -20px">
+					<div class="submit">
+						<h4>Sign-up Now!</h4>
+						<form id="registerForm" method="POST" action="#">
+<!-- 							<select id="idSalutation" name="salutation" class="form-control validate[required]">
+								<option value="" >Select Salutation</option>
+								<option value="Mr.">Mr.</option>
+								<option value="Ms.">Ms.</option>
+							</select> -->
+							<input type="text" name="firstName" class="form-control validate[required]" placeholder="First Name" />
+							<input type="text" name="lastName" class="form-control validate[required]" placeholder="Last Name" />
+<!-- 							<select id="idGender" name="gender" class="form-control validate[required]">
+								<option value="">Select Gender</option>
+								<option value="M">Male</option>
+								<option value="F">Female</option>
+								<option value="O">Others</option>
+							</select> -->
+<!-- 						<input type="text" class="form-control" id="idBdate"
+							name="birthDate" placeholder="Date of Birth">
+ -->
+							<input type="text" id="idEmailId" name="emailID" class="form-control validate[required,custom[email],ajax[ajaxUniqueEmailCall]]" placeholder="Email ID" />
+							<input type="password" name="loginPassword" class="form-control validate[required]" placeholder="Password" />
+							<input type="password" name="confirmPassword" class="form-control validate[required]" placeholder="Password" />
+							
+							<input type="text" id="idPhone" name="phoneNo" class="form-control validate[required],custom[integer]]" placeholder="Mobile Number" />
+							<select id="idCountry" name="lookupCountryId" class="form-control validate[required]"></select>
+							<input type="text" name="state" class="form-control validate[required]" placeholder="State" />
+							<input type="text" name="city" class="form-control validate[required]" placeholder="City" />
+							<select id="idOrg" name="orgFlag" class="form-control validate[required]">
+								<option value="">Individual/Organization</option>
+								<option value="Y">Organization</option>
+								<option value="N">Individual</option>
+							</select>
+							<input type="text" id="idOrgName" name="orgName" class="form-control" placeholder="Organisation Name" />
+							<input type="text" id="idEmployeeCode" name="employeeCode" class="form-control" placeholder="Employee Code" />
+							<select id="idRole" id="idRoleId" name="roleId" class="form-control">
+								<option value="0">Admin</option>
+							</select>
+							<input id="idDistributionCode" type="text" name="distributorCode" class="form-control validate[required]" placeholder="Distributor Code"
+							/>
+							<div class="checkbox">
+								<label><input id="maxcheck1" type="checkbox" class="form-control validate[required]" name="group1">By Signing-up I
+									accept Finexa. <span style="color: #3897e0">Term and
+										Services</span> and <span style="color: #3897e0"> Privacy
+										Policy.</span></label>
+							</div>
+
+							<input id="registerSubmit" type="Submit" value="SUBMIT" class="form-control greenbg" style="height: 32px; margin-top: -30px"
+							/>
+						</form>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<script type="text/javascript">
+ 		$(document).ready(function () {
+ 			
+ 			/*			$("#idBdate").datepicker({
+				format : "dd/mm/yyyy",
+				todayHighlight : true,
+				todayBtn : true,
+				autoclose : true,
+				endDate : new Date()
+			});	 */	
+		
+			populateCountryDrop($("#idCountry"));
+			// validation
+			//$("#registerForm").validationEngine();
+			
+			$("#idOrg").change(function (event) {
+
+				if ($('#idOrg').val() == 'N') {
+					$("#idOrgName").prop("disabled", true);
+					$("#idEmployeeCode").prop("disabled", true);
+					//$("#idRoleId").attr("disabled", true);
+					$('#idRoleId option:not(:selected)').prop('disabled', true);
+				} else {
+					$("#idOrgName").prop("disabled", false);
+					$("#idEmployeeCode").prop("disabled", false);
+					//$("#idRoleId").attr("disabled", false);
+					$('#idRoleId option:not(:selected)').prop('disabled', false);
+				}
+			});
+			
+			 jQuery("#registerForm").validationEngine('attach', {
+				onValidationComplete: function (form, status) {
+					console.log("Validation status : "+ status);
+					if (status == true) {
+						sessionStorage.setItem("REGISTER_DATA",JSON.stringify($('#registerForm').serializeToJSON()));
+						sessionStorage.setItem("Phone_no",$('#idPhone').val());
+					//	var api_key="9346581b-880d-11e7-94da-0200cd936042";
+					//	var phone_no=$('#idPhone').val()
+					//	var url= "https://2factor.in/API/V1/"+api_key+"/SMS/+91"+phone_no+"/AUTOGEN";
+					//	console.log("url: " + url);
+					 var serviceUrl = "sendOTP/"+$('#idPhone').val();
+						getClientData("GET","",serviceUrl,onSuccess);
+						
+					}
+
+				}
+			 
+			}); 
+		});
+
+		function onSuccess(data){
+			console.log("Factor Status: "+data.status);
+			if(data.status == "success"){
+				sessionStorage.setItem("OTP_SESSION",data.details);
+				window.location = "otp.html";
+			} else {
+				console.log("Factor Status failed");
+			}
+		}
+/*		function onSuccess(data) {
+ 			if (confirm("User registration successfull , Please login") == true) {
+				wFindow.location = "index.html";
+			} else {
+				console.log("Make user Inactive , activeFlag = N");
+				//window.location = "index.html";
+			} 
+		}
+		
+ 		function CheckUniqueEmail(field, rules, i, options){
+			var url = "userCreation/uniqueEmail?email="+field.val();
+			getClientData("GET","", url, onValidate);
+			function onValidate(data,options) {
+				if(data == false){
+					alert("Email is already present, Please Choose another");
+				}
+	 			
+			}	
+
+		} */
+		
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<script type="text/javascript" src="masters/js/viewMastersdata.js"></script>
+<!-- <script src="masters/js/addProduct.js"></script> -->
+<script src="masters/js/common.js"></script>
+<div class="dmcontainer">
+
+<form class="form-horizontal form_search_client" action="#">
+			<div class="form-group">
+				<label for="mastersList" class="col-sm-1 control-label"></label>
+				<div class="col-sm-8 col-md-5 col-lg-5">
+					<label>Please select Master File</label>
+					<select id="selectMaster" class="form-control input-width-medium" name="tableName">
+						<option value="">Select Master</option>
+						<!-- <option value="lookupAssetClass">Lookup Asset Class</option>
+						<option value="masterMutualFundETF">Master Mutual Fund ETF</option> -->
+						<option value="Model Portfolio Allocation">Model Portfolio Allocation</option>
+						<option value="Model Portfolio Master">Model Portfolio Master</option>
+						<option value="Bucketing Logic">Bucketing Logic</option>
+					</select>
+				</div>
+			</div>
+			
+			<!-- <div class="form-group">
+                <label for="templateFormat" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>Download template format*:</label>
+                       <select id="idTemplateFormat" class="form-control input-width-medium" tabindex="430">
+                            <option value="">Select format</option>
+                            <option value="excel">Excel</option>
+                            <option value="csv">CSV</option>
+                        </select>
+                        <span class="formentry-errmsg" id="alertTF"></span>
+                </div>
+            </div>  -->
+
+			<div class="masterfiles">
+				<input id="idDownload" type="button" class="addbtn download_btn pull-right" value="Download Master" />
+				<!-- <button id="idDownload" class="addbtn download_btn pull-right"><i class="fa fa-download"></i> Download Master</button> -->
+			<div class="clearfix"></div>
+				<br/>
+
+			</div>
+</form>
+</div>

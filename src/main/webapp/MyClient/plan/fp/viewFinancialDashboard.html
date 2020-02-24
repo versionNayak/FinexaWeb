@@ -1,0 +1,1122 @@
+<script src="plan/fp/js/viewFinancialDashboard.js"></script>
+<script src="plan/fp/js/common.js"></script>
+ <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ -->
+<div class="head">
+	<span id="idHeading"> </span> 
+	<!-- <span onclick="openNav()" class="humbm">&#9776;</span>  -->
+	<span style="cursor: pointer;" onclick="openPDFPreview();"
+		class=" fa-fw pull-right glyphicon glyphicon-print" id="idFinancialDownloadReport"></span>
+	<!-- <div id="idpmnav" class="pmsidenav" style="display: none; height: 60%">
+
+		<a href="#" class="pfnetsurplus" onclick="closeNav()">Net Surplus</a>
+		<a href="#" class="pfnetworth" onclick="closeNav()">Networth</a> 
+		<a href="#" class="pffinancialratio" onclick="closeNav()">Financial Ratios</a> 
+		<a href="#" class="fpriskprofile" onclick="closeNav()">Risk Profile</a>
+	    <a href="#" class="fpassetallocation" onclick="closeNav()">Asset Allocation Review</a>
+		<a href="#" class="fpcontigencyfund" onclick="closeNav()">Contingency Fund </a>
+		<a href="#" class="fpgoalrecommendations" onclick="closeNav()">Goal Recommendations </a>
+		<a href="#" class="fpgoalexecution" onclick="closeNav()">Goal Execution </a>
+		<a href="#"	class="fpinsuranceplanning" onclick="closeNav()">Insurance Planning </a>
+		<a href="#" id = "idCashflows" class="fpcashflows" onclick="closeNav()">CashFlows</a>	
+		<a href="#" class="fplantofaction" onclick="closeNav()">Plan Of Action</a>    
+	</div> -->
+</div>
+
+<!-- <div id="idpm"></div> -->
+<div id="idBody"></div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Financial Planing Reports</h4>
+			</div>
+			<div class="modal-body">
+				<div class="printPDFButton pull-right"></div>
+				<br clear="all">
+				<div id="printArea">
+
+					<p>
+						<input type="checkbox" name="report[]" checked="checked"
+							value="NetSurplus" id="goalDetails"> Net Surplus
+					</p>
+					<p>
+						<input type="checkbox" name="report[]" checked="checked"
+							value="NetWorth" id="riskProfile"> Networth
+					</p>
+					<p>
+						<input type="checkbox" name="report[]" checked="checked"
+							value="financialRatio" id="financialRatio"> Financial
+						Ratios
+					</p>
+					<p>
+						<input type="checkbox" name="report[]" checked="checked"
+							value="riskProfile" id="riskProfile"> Risk Profile
+					</p>
+					<p>
+						<input type="checkbox" name="report[]" checked="checked"
+							value="AssetAllocationReview" id="AssetAllocationReview">
+						Asset Allocation Review
+					</p>
+					<p>
+						<input type="checkbox" name="report[]" checked="checked"
+							value="contingencyFund" id="contingencyFund"> Contingency
+						Fund
+					</p>
+					<p>
+						<input type="checkbox" name="report[]" checked="checked"
+							value="GoalRecommendation" id="yearlyCashflows"> Goal
+						Recommendations
+					</p>
+					<p>
+						<input type="checkbox" name="report[]" checked="checked"
+							value="insurancePlanning" id="insurancePlanning">
+						Insurance Planning
+					</p>
+					<p>
+						<input type="checkbox" name="report[]" checked="checked"
+							value="Cashflows" id="goalInput"> CashFlows
+					</p>
+					<p>
+						<input type="checkbox" name="report[]" checked="checked"
+							value="PlanOfAction" id="goalInput"> Plan Of Action
+					</p>
+
+					<p>
+						<input type="checkbox" name="report[]" checked="checked"
+							value="productRecommendation" id="productRecommendation">
+						Product Recommendation
+					</p>
+
+				</div>
+				<br clear="all">
+				<div class="printPDFButton pull-right">
+					<input type="button" onclick="generateDocReportTest();"
+						name="downloadDoc" id="downloadDocLongTest"
+						value="Download FP Report">
+					<input type="button" onclick="generateDocReport();"
+						name="downloadDoc" id="downloadDocLong"
+						value="Download Detailed Report"> <input type="button"
+						onclick="generateDocReportShort();" name="downloadDoc"
+						id="downloadDocShort" value="Download Summarized Report">
+				</div>
+			</div>
+			<div class="modal-footer"></div>
+			
+			<div id="wait" style="width: 100%; height: 100%; top: 100px; left: 0px; position: fixed; z-index: 10000; text-align: center;">
+				  <img src="../Common/assets/images/loader_finexa.gif" width="45" height="45" alt="Loading..." style="position: fixed; top: 50%; left: 50%;"/>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+//var call_type = false;
+var selectedReports = new Array(); 
+var loggedUser = JSON.parse(sessionStorage.getItem("LOGGED_IN_USER"));
+var loggedClient;
+	if(loggedUser == null){
+	loggedClient = JSON.parse(sessionStorage.getItem("LOGGED_IN_CLIENT"));
+	}else{
+	loggedClient = sessionStorage.getItem("LOGGED_IN_CLIENT");
+	}
+var clientName;
+var fName;
+var counter;
+var myVar;
+var timestamp;
+var advisorUserId;
+var advisorMasterId;
+if(loggedUser == null && loggedClient != null){
+	 document.getElementById('idCashflows').style.display = 'none';
+	 advisorUserId = loggedClient.userId;
+	 advisorMasterId = loggedClient.advisorMasterID;
+	 $('#idFinancialDownloadReport').hide()
+}else{
+	 $('.fpcashflows').show();
+	 advisorUserId = loggedUser.advisorID;
+	 advisorMasterId = loggedUser.advisorMasterId;
+} 
+
+var responseBack;
+   var reportData = {
+		   "clientId": vClientId,
+			"mode": "yearly",
+			"fpFlag":"0",
+			"financialPlanningFlag":"1",
+			"productRecommendationDTOlist": [],
+			"selectedReports" : [],
+			"clientMasterDTO" : {},
+			"advisorDTO": {},
+			"timestamp":timestamp
+	}; 
+   
+   function loadReportData(){
+	   
+	   $("#wait").hide();
+	   
+		if(sessionStorage.getItem("productRecommendationFinancial") != "" 
+			&&
+			sessionStorage.getItem("productRecommendationFinancial") != null){
+			}
+
+	
+		
+		$.ajax({
+			type : 'GET',
+			url : serviceIP + '/clientservice/clientMaster/'+vClientId,
+			async : false,
+			dataType : 'json',
+			beforeSend: function (xhr){ 
+		    		xhr.setRequestHeader('Authorization', "Bearer "+sessionStorage.getItem("sessionID"));
+			},
+			success : function(data) {
+			//	alert("data "+data);
+				console.log("data "+data.id);
+				clientName=data.salutation+" "+data.firstName + (data.middleName=""?" ":data.middleName + " ") + data.lastName;
+				//alert(data.dateOfBirth + " " + data.maritalStatusDesc);
+				reportData.clientMasterDTO = data;
+			},
+			error : function(jqXHR, data) {
+				bootbox.alert("Client Details Not Found");
+				if(jqXHR.status == 401){
+					var error,error_description;
+		        	error = jqXHR.responseJSON.error_description;
+		        	error_description = "Access token expired: "+sessionStorage.getItem("sessionID");
+		        	if(error === error_description){
+		        		msg = "Your session has expired.Please log in again"
+		        		bootbox.alert({
+				        	 message: msg,
+				        	 callback: function () {
+					         window.location = "../index.html";
+				         }
+				      });
+		        	}
+		        	if(error === "unauthorized"){
+		        		msg = "Full authentication is required to access this resource",
+		        		bootbox.alert({
+				        	 message: msg
+				        });
+		        	}	
+		        } 
+			}
+		});
+		
+		if(loggedUser == null && loggedClient != null){
+			reportData.advisorDTO = JSON.parse(sessionStorage.getItem("LOGGED_IN_CLIENT"));
+		} else {
+			reportData.advisorDTO = JSON.parse(sessionStorage.getItem("LOGGED_IN_USER"));
+		}
+		
+		$.ajax({
+			type: 'GET',
+			url: serviceIP + '/clientservice/getAdvisorProductReco?advisorId='+advisorUserId+'&clientId='+vClientId+'&goalId=0&module=GP',
+			async: true,
+		    dataType: 'json',
+			beforeSend: function (xhr){ 
+				xhr.setRequestHeader('Authorization', "Bearer "+sessionStorage.getItem("sessionID"));
+			},
+		 	success: function (data) {
+		 		console.log("recoSaveDate: " + data.recoSaveDate);
+		 	},
+		 	error: function (jqXHR, data) {
+		 		if(jqXHR.status == 401){
+		 			var error,error_description;
+		        	error = jqXHR.responseJSON.error_description;
+		        	error_description = "Access token expired: "+sessionStorage.getItem("sessionID");
+		        	if(error === error_description){
+		        		msg = "Your session has expired.Please log in again"
+		        		bootbox.alert({
+				        	 message: msg,
+				        	 callback: function () {
+					         window.location = "../index.html";
+				         }
+				      });
+		        	}
+		        	if(error === "unauthorized"){
+		        		msg = "Full authentication is required to access this resource",
+		        		bootbox.alert({
+				        	 message: msg
+				        });
+		        	}	
+		        }
+		 	}
+		});
+	}
+
+function generateDocReportTest() {
+
+	responseBack = true;
+	//$("#wait").show();
+	loadLoader();
+	reportData.timestamp = $.now();
+	console.log("timestamp "+reportData.timestamp);
+	
+	setTimeout(function(){
+		
+		$.ajax({
+			async: true,
+			url: REQUEST_URL_FP + "/generateFinancialPlanningReport",
+			method: "POST",
+			contentType:"application/json; charset=utf-8",
+			data : JSON.stringify(window.reportData),
+			dataType:"json",
+			beforeSend: function (xhr){ 
+				xhr.setRequestHeader('Authorization', "Bearer "+sessionStorage.getItem("sessionID"));
+		    },
+			success: function (data) {
+				
+					//alert("details returned: " + data);
+					//$("#wait").hide();
+
+					var fname = "CrispFPReport_"+ reportData.timestamp +"(" + clientName + ").docx"; 
+					
+					var downloadURL = REQUEST_URL_FP + '/download-Financial-report1?filename='+data.fileName;
+					
+					var a = document.createElement("a");
+					document.body.appendChild(a);
+					a.style = "display: none";
+					var fileName = ""+ data.fileName + "";
+					
+					if(fileName === fname){
+						 console.log("true file");
+					}else{
+						 console.log(fileName+" "+fname);
+					}
+					
+					/* var xhr = new XMLHttpRequest();
+					xhr.open( "GET", REQUEST_URL_FP + '/downloadHandlerForReport', true);
+					xhr.setRequestHeader('Authorization', "Bearer "+sessionStorage.getItem("sessionID"));
+					xhr.responseType = "blob";
+					xhr.onload = function() {
+						if(xhr.status == 401){
+				        	bootbox.alert({
+				        	    message: "You are not authenticated",
+				        	    callback: function () {
+					        	  window.location = "../../index.html";
+				        	    }
+				        	});
+				        }else if(xhr.status == 403){
+				        	 msg = 'you don’t have permission to access ‘/’ on this server.';
+				        	 alert(msg);
+				        }else if(xhr.status === 200){
+				        	if (window.navigator.msSaveOrOpenBlob) {
+								console.log("IE")
+								var blob = new Blob([xhr.response], {type: 'application/vnd.ms-word'});
+			                    window.navigator.msSaveOrOpenBlob(blob, fileName);
+			                    a.click();
+							} else {
+			                	console.log("Chrome or Safari");
+			                	var url = window.URL.createObjectURL(xhr.response);  
+								a.href = url;
+								a.download = fileName;
+								a.click();
+								window.URL.revokeObjectURL(url);
+			                }
+				        }
+					};
+					xhr.send(); */
+					
+				    var xhr = new XMLHttpRequest();
+					xhr.open( "GET", downloadURL, true);
+					xhr.setRequestHeader('Authorization', "Bearer "+sessionStorage.getItem("sessionID"));
+					
+					xhr.responseType = "blob";
+					xhr.onload = function() {
+						console.log("xhr.status "+xhr.status);
+						if(xhr.status === 200){
+							//Download start
+							// IE
+							if (window.navigator.msSaveOrOpenBlob) {
+								console.log("IE")
+								var blob = new Blob([xhr.response], {type: 'application/vnd.ms-word'});
+			                    window.navigator.msSaveOrOpenBlob(blob, fileName);
+			               		a.click();
+			                 } else {
+			                	 //Chrome and safari
+			            	   console.log("Chrome and safari")
+			            	   var url = window.URL.createObjectURL(xhr.response);  
+			   				   a.href = url;
+			   				   a.download = fileName;
+			   				   a.click();
+			   				   window.URL.revokeObjectURL(url);
+			              	}
+							//Download End
+							
+							$.ajax({
+						           type : 'GET',
+						           url : REQUEST_URL_FP + '/reportDelete?filename='+data.fileName,
+						           async : false,
+						           contentType:"application/json; charset=utf-8",
+						           dataType:"json",
+						           beforeSend: function (xhr){ 
+							    		xhr.setRequestHeader('Authorization', "Bearer "+sessionStorage.getItem("sessionID"));
+								   },
+						           success : function(data) {
+						    	   console.log(data.msg);
+						     },
+						       error : function(jqXHR, errorData) {
+
+									if(jqXHR.status == 401){
+										var error,error_description;
+							        	error = jqXHR.responseJSON.error_description;
+							        	error_description = "Access token expired: "+sessionStorage.getItem("sessionID");
+							        	if(error === error_description){
+							        		msg = "Your session has expired.Please log in again"
+							        		bootbox.alert({
+									        	 message: msg,
+									        	 callback: function () {
+										         window.location = "../index.html";
+									         }
+									      });
+							        	}
+							        	if(error === "unauthorized"){
+							        		msg = "Full authentication is required to access this resource",
+							        		bootbox.alert({
+									        	 message: msg
+									        });
+							        	}	
+							        } 
+						        }
+						   });
+							
+						}
+					};
+					
+					xhr.send(); 
+					hideLoader();
+			},
+			error: function (jqXHR, exception) {
+				//$('#wait').hide();
+				console.log("error");
+				var msg = '';
+		        if (jqXHR.status === 0) {
+		            msg = 'Could not connect to the server, please contact System Administrator.';
+		        }else if(jqXHR.status == 400){
+		        	msg = 'There is some problem in the server, please contact System Administrator.\n';
+		        }else if(jqXHR.status == 401){
+		        	var error,error_description;
+		        	error = jqXHR.responseJSON.error_description;
+		        	error_description = "Access token expired: "+sessionStorage.getItem("sessionID");
+		        	if(error === error_description){
+		        		hideLoader();
+		        		msg = "Your session has expired.Please log in again"
+		        		bootbox.alert({
+				        	 message: msg,
+				        	 callback: function () {
+					         window.location = "../index.html";
+				         }
+				      });
+		        	}
+		        	if(error === "unauthorized"){
+		        		msg = "Full authentication is required to access this resource",
+		        		bootbox.alert({
+				        	 message: msg
+				        });
+		        	}	
+		        } else if (jqXHR.status == 404) {
+		            msg = 'Requested service url not found.';
+		        } else if (jqXHR.status == 405) {
+		        	msg = 'Could not connect to the server, please contact System Administrator.\n';
+		        } else if (jqXHR.status == 500) {
+		        	msg = 'There is some problem in the server, please contact System Administrator.\n';
+		        } else if (exception === 'parsererror') {
+		            msg = 'Failed to get result.';
+		        } else if (exception === 'timeout') {
+		            msg = 'Timed Out!';
+		        } else if (exception === 'abort') {
+		            msg = 'Request aborted.';
+		        } else {
+		            msg = 'Something went wrong, could not connect to the server, please contact System Administrator.\n';
+		        }
+
+		        counter=1;
+		        
+		        myVar = setInterval(function(){
+		       	var fileName = "CrispFPReport_"+ reportData.timestamp +"(" + clientName + ").docx";
+		        
+		       	if(responseBack === true){
+		       		var downloadURL = REQUEST_URL_FP + '/download-Financial-report1?filename='+fileName;
+		       		
+		       		var a = document.createElement("a");
+					document.body.appendChild(a);
+					a.style = "display: none";
+					
+					var xhr = new XMLHttpRequest();
+					xhr.open( "GET", downloadURL, true);
+					xhr.setRequestHeader('Authorization', "Bearer "+sessionStorage.getItem("sessionID"));
+					
+					xhr.responseType = "blob";
+					xhr.onload = function() {
+						console.log("xhr.status "+xhr.status);
+						if(xhr.status === 200){
+							//Download start
+							// IE
+							if (window.navigator.msSaveOrOpenBlob) {
+								console.log("IE")
+								var blob = new Blob([xhr.response], {type: 'application/vnd.ms-word'});
+			                    window.navigator.msSaveOrOpenBlob(blob, fileName);
+			               		a.click();
+			                 } else {
+			                	 //Chrome and safari
+			            	   console.log("Chrome and safari")
+			            	   var url = window.URL.createObjectURL(xhr.response);  
+			   				   a.href = url;
+			   				   a.download = fileName;
+			   				   a.click();
+			   				   window.URL.revokeObjectURL(url);
+			              	}
+							//Download End
+							
+							$.ajax({
+						           type : 'GET',
+						           url : REQUEST_URL_FP + '/reportDelete?filename='+data.fileName,
+						           async : false,
+						           contentType:"application/json; charset=utf-8",
+						           dataType:"json",
+						           beforeSend: function (xhr){ 
+							    		xhr.setRequestHeader('Authorization', "Bearer "+sessionStorage.getItem("sessionID"));
+								   },
+						           success : function(data) {
+						    	   console.log(data.msg);
+						     },
+						       error : function(jqXHR, errorData) {
+
+									if(jqXHR.status == 401){
+										var error,error_description;
+							        	error = jqXHR.responseJSON.error_description;
+							        	error_description = "Access token expired: "+sessionStorage.getItem("sessionID");
+							        	if(error === error_description){
+							        		msg = "Your session has expired.Please log in again"
+							        		bootbox.alert({
+									        	 message: msg,
+									        	 callback: function () {
+										         window.location = "../index.html";
+									         }
+									      });
+							        	}
+							        	if(error === "unauthorized"){
+							        		msg = "Full authentication is required to access this resource",
+							        		bootbox.alert({
+									        	 message: msg
+									        });
+							        	}	
+							        } 
+						        }
+						   });
+							
+						clearInterval(myVar);
+					} else {
+						console.log("counter "+counter);
+						counter=counter+1;
+						if(counter>200){
+							 console.log("exit "+counter);
+						     responseBack = false;
+							 clearInterval(myVar);
+							 return;
+						}
+					}
+				 };
+				 xhr.send();
+		       }
+		        	
+		      }, 5000);
+		        
+		        //$("#idBackOffice").load("resources/errorPage.html");
+		     
+			}
+		});
+		
+	},10);
+	
+}
+   
+function generateDocReport(){
+	
+	
+	responseBack = true;
+	loadLoader();
+    reportData.timestamp = $.now();
+	
+   
+    console.log("timestamp "+reportData.timestamp);
+	selectedReports.length=0;
+
+	
+	$("input[name='report[]']:checked").each(function() {
+		
+		
+		
+		selectedReports.push($(this).val());
+		
+		
+		   
+		
+	});
+	
+	window.reportData.selectedReports = selectedReports;
+	
+	console.log(JSON.stringify(window.reportData));
+
+	setTimeout(function(){
+	$.ajax({
+		type : 'POST',
+		url : REQUEST_URL_FP + '/getClientFinancialReportInDOCX',
+		async : true,
+		contentType:"application/json; charset=utf-8",
+		data : JSON.stringify(window.reportData),
+		dataType:"json",
+		beforeSend: function (xhr){ 
+    		xhr.setRequestHeader('Authorization', "Bearer "+sessionStorage.getItem("sessionID"));
+	    },
+		success : function(resp) {
+		
+		    var fname = "Financial-Report"+ reportData.timestamp +"(" + clientName + ").docx"; 
+		    
+			 var downloadURL = REQUEST_URL_FP + '/download-Financial-report1?filename='+resp.fileName;
+		//	var downloadURL = REQUEST_URL_FP + '/download-Financial-report1?filename='+fname;
+	 		 var a = document.createElement("a");
+			document.body.appendChild(a);
+			a.style = "display: none";
+			var fileName = ""+ resp.fileName + "";
+			
+			 if(fileName === fname){
+				 console.log("true file");
+			 }else{
+				 console.log(fileName+" "+fname);
+			 }
+
+			var xhr = new XMLHttpRequest();
+			xhr.open( "GET", downloadURL, true);
+			xhr.setRequestHeader('Authorization', "Bearer "+sessionStorage.getItem("sessionID"));
+			//xhr.open( "GET", 'http://192.168.1.103:8080/FinexaService/download?clientId='+vClientId+'&mode=monthly', true);
+			//console.log("xhr.response "+xhr.response);
+		
+			xhr.responseType = "blob";
+			xhr.onload = function() {
+				console.log("xhr.status "+xhr.status);
+				if(xhr.status === 200){
+				//Download start
+				// IE
+				if (window.navigator.msSaveOrOpenBlob)
+                 {
+					console.log("IE")
+					 var blob = new Blob([xhr.response], {type: 'application/vnd.ms-word'});
+                     window.navigator.msSaveOrOpenBlob(blob, fileName);
+               
+                a.click();
+                 }
+               else //Chrome and safari
+              {
+            	   console.log("Chrome and safari")
+            	   var url = window.URL.createObjectURL(xhr.response);  
+   				   a.href = url;
+   				   a.download = fileName;
+   				    a.click();
+   				    window.URL.revokeObjectURL(url);
+              }
+				
+				
+				//Download End
+			
+				//delete==
+		$.ajax({
+           type : 'GET',
+           url : REQUEST_URL_FP + '/reportDelete?filename='+resp.fileName,
+           async : false,
+           contentType:"application/json; charset=utf-8",
+           dataType:"json",
+           beforeSend: function (xhr){ 
+	    		xhr.setRequestHeader('Authorization', "Bearer "+sessionStorage.getItem("sessionID"));
+		   },
+           success : function(data) {
+    	   console.log(data.msg)
+     },
+       error : function(jqXHR, errorData) {
+
+			if(jqXHR.status == 401){
+				var error,error_description;
+	        	error = jqXHR.responseJSON.error_description;
+	        	error_description = "Access token expired: "+sessionStorage.getItem("sessionID");
+	        	if(error === error_description){
+	        		msg = "Your session has expired.Please log in again"
+	        		bootbox.alert({
+			        	 message: msg,
+			        	 callback: function () {
+				         window.location = "../index.html";
+			         }
+			      })
+	        	}
+	        	if(error === "unauthorized"){
+	        		msg = "Full authentication is required to access this resource",
+	        		bootbox.alert({
+			        	 message: msg
+			        })
+	        	}	
+	        } 
+        }
+   }); 
+		//===
+		}			
+				
+	};
+
+		xhr.send(); 		 
+		hideLoader();
+		selectedReports = []; 
+		
+		
+			  	
+		},
+		error : function(jqXHR, errorData) {
+			 console.log("error");
+				if(jqXHR.status == 401){
+					var error,error_description;
+		        	error = jqXHR.responseJSON.error_description;
+		        	error_description = "Access token expired: "+sessionStorage.getItem("sessionID");
+		        	if(error === error_description){
+		        		msg = "Your session has expired.Please log in again"
+		        		bootbox.alert({
+				        	 message: msg,
+				        	 callback: function () {
+					         window.location = "../index.html";
+				         }
+				      })
+		        	}
+		        	if(error === "unauthorized"){
+		        		msg = "Full authentication is required to access this resource",
+		        		bootbox.alert({
+				        	 message: msg
+				        })
+		        	}	
+		        }
+				
+			     counter=1;
+				
+			     myVar = setInterval(function(){ 
+				 var fileName = "Financial-Report"+ reportData.timestamp +"(" + clientName + ").docx";
+			
+				if(responseBack === true){
+				var downloadURL = REQUEST_URL_FP + '/download-Financial-report1?filename='+fileName;	
+				
+				//var downloadURL = REQUEST_URL_FP + '/download-Financial-report1?filename='+fileName+'&counter='+counter;
+				var a = document.createElement("a");
+				document.body.appendChild(a);
+				a.style = "display: none";
+				
+				
+
+				var xhr = new XMLHttpRequest();
+				xhr.open( "GET", downloadURL, true);
+				xhr.setRequestHeader('Authorization', "Bearer "+sessionStorage.getItem("sessionID"));
+				//xhr.open( "GET", 'http://192.168.1.103:8080/FinexaService/download?clientId='+vClientId+'&mode=monthly', true);
+								
+				xhr.responseType = "blob";
+				xhr.onload = function() {
+					console.log("xhr.status "+xhr.status);
+					if(xhr.status === 200){
+						//Download start
+						// IE
+						if (window.navigator.msSaveOrOpenBlob)
+		                 {
+							console.log("IE")
+							 var blob = new Blob([xhr.response], {type: 'application/vnd.ms-word'});
+		                     window.navigator.msSaveOrOpenBlob(blob, fileName);
+		               
+		                a.click();
+		                 }
+		               else //Chrome and safari
+		              {
+		            	   console.log("Chrome and safari")
+		            	   var url = window.URL.createObjectURL(xhr.response);  
+		   				   a.href = url;
+		   				   a.download = fileName;
+		   				    a.click();
+		   				    window.URL.revokeObjectURL(url);
+		              }
+						
+						
+						//Download End
+					responseBack = false;
+					hideLoader();
+		
+			
+			//delete==
+			$.ajax({
+	           type : 'GET',
+	           url : REQUEST_URL_FP + '/reportDelete?filename='+fileName,
+	           async : false,
+	           contentType:"application/json; charset=utf-8",
+	           dataType:"json",
+	           beforeSend: function (xhr){ 
+		    		xhr.setRequestHeader('Authorization', "Bearer "+sessionStorage.getItem("sessionID"));
+			   },
+	           success : function(data) {
+	    	  
+	    	   //responseBack = false;
+	       },
+	       error : function(jqXHR, errorData) {
+	    	   
+	    	   if(jqXHR.status == 401){
+	    		   var error,error_description;
+		        	error = jqXHR.responseJSON.error_description;
+		        	error_description = "Access token expired: "+sessionStorage.getItem("sessionID");
+		        	if(error === error_description){
+		        		msg = "Your session has expired.Please log in again"
+		        		bootbox.alert({
+				        	 message: msg,
+				        	 callback: function () {
+					         window.location = "../index.html";
+				         }
+				      })
+		        	}
+		        	if(error === "unauthorized"){
+		        		msg = "Full authentication is required to access this resource",
+		        		bootbox.alert({
+				        	 message: msg
+				        })
+		        	}	
+		        }
+	        }
+	    }); 
+			//===
+					clearInterval(myVar);
+					
+					}else{
+					console.log("counter "+counter);
+					counter=counter+1;
+					if(counter>200){
+						 console.log("exit "+counter);
+					     responseBack = false;
+						 clearInterval(myVar);
+						 return;
+					}
+					}
+				
+				};
+				
+				xhr.send();  
+				
+			 
+				}
+			 
+			 }, 5000);
+		
+			selectedReports = []; 
+		}
+	}); 
+	
+	 },10);
+	
+	
+	
+} 
+
+
+function generateDocReportShort(){
+    responseBack = true;
+    loadLoader();
+	reportData.timestamp = $.now();
+  
+	selectedReports.length=0;
+
+	$("input[name='report[]']:checked").each(function() {
+		//console.log("selectedReports.length "+selectedReports.length);
+		
+		
+		selectedReports.push($(this).val());
+		
+		console.log("selectedReports.length "+selectedReports.length);
+		
+		
+		   
+		
+	});
+	
+	window.reportData.selectedReports = selectedReports;
+	
+	console.log(JSON.stringify(window.reportData));
+
+
+	setTimeout(function(){
+	$.ajax({
+		type : 'POST',
+		url : REQUEST_URL_FP + '/getClientFinancialReportInDOCXShort',
+		async : true,
+		contentType:"application/json; charset=utf-8",
+		data : JSON.stringify(window.reportData),
+		dataType:"json",
+		beforeSend: function (xhr){ 
+    		xhr.setRequestHeader('Authorization', "Bearer "+sessionStorage.getItem("sessionID"));
+	    },
+		success : function(resp) {								
+			 console.log("success");
+			 console.log("resp "+resp.fileName);
+			
+			 var fileName1 = "Financial-Report"+ timestamp +"(" + clientName + ").docx";
+			 if(resp.fileName === fileName1){
+				 console.log("true file");
+			 }else{
+				 console.log(fileName==fileName1);
+			 }
+			
+			/// var downloadURL = REQUEST_URL_FP + '/download-Financial-report1?filename='+fileName;
+	 		 var downloadURL = REQUEST_URL_FP + '/download-Financial-report1?filename='+resp.fileName;
+			 var a = document.createElement("a");
+			document.body.appendChild(a);
+			a.style = "display: none";
+			var fileName = ""+ resp.fileName + "";
+
+			var xhr = new XMLHttpRequest();
+			xhr.open( "GET", downloadURL, true);
+			xhr.setRequestHeader('Authorization', "Bearer "+sessionStorage.getItem("sessionID"));
+			//xhr.open( "GET", 'http://192.168.1.103:8080/FinexaService/download?clientId='+vClientId+'&mode=monthly', true);
+			
+			if(xhr.response!==null)
+				{				
+			xhr.responseType = "blob";
+			xhr.onload = function() {
+				console.log("xhr.status "+xhr.status);
+				if(xhr.status === 200){
+					//Download start
+					// IE
+					if (window.navigator.msSaveOrOpenBlob)
+	                 {
+						console.log("IE")
+						 var blob = new Blob([xhr.response], {type: 'application/vnd.ms-word'});
+	                     window.navigator.msSaveOrOpenBlob(blob, fileName);
+	               
+	                a.click();
+	                 }
+	               else //Chrome and safari
+	              {
+	            	   console.log("Chrome and safari")
+	            	   var url = window.URL.createObjectURL(xhr.response);  
+	   				   a.href = url;
+	   				   a.download = fileName;
+	   				    a.click();
+	   				    window.URL.revokeObjectURL(url);
+	              }
+					
+					
+					//Download End
+	
+				
+					//delete==
+			$.ajax({
+	           type : 'GET',
+	           url : REQUEST_URL_FP + '/reportDelete?filename='+resp.fileName,
+	           async : false,
+	           contentType:"application/json; charset=utf-8",
+	           dataType:"json",
+	           beforeSend: function (xhr){ 
+		    		xhr.setRequestHeader('Authorization', "Bearer "+sessionStorage.getItem("sessionID"));
+			   },
+	           success : function(data) {
+	    	   console.log(data.msg)
+	        },
+	       error : function(jqXHR, errorData) {
+
+				if(jqXHR.status == 401){
+					var error,error_description;
+		        	error = jqXHR.responseJSON.error_description;
+		        	error_description = "Access token expired: "+sessionStorage.getItem("sessionID");
+		        	if(error === error_description){
+		        		msg = "Your session has expired.Please log in again"
+		        		bootbox.alert({
+				        	 message: msg,
+				        	 callback: function () {
+					         window.location = "../index.html";
+				         }
+				      })
+		        	}
+		        	if(error === "unauthorized"){
+		        		msg = "Full authentication is required to access this resource",
+		        		bootbox.alert({
+				        	 message: msg
+				        })
+		        	}	
+		        } 
+		  
+	         }
+	      }); 
+			//===
+				}
+			};
+			xhr.send();  
+			 
+				}
+		 
+		 hideLoader();
+		 selectedReports = []; 	 
+		
+		},
+		error : function(jqXHR, errorData) {
+			if(jqXHR.status == 401){
+				var error,error_description;
+	        	error = jqXHR.responseJSON.error_description;
+	        	error_description = "Access token expired: "+sessionStorage.getItem("sessionID");
+	        	if(error === error_description){
+	        		msg = "Your session has expired.Please log in again"
+	        		bootbox.alert({
+			        	 message: msg,
+			        	 callback: function () {
+				         window.location = "../index.html";
+			         }
+			      })
+	        	}
+	        	if(error === "unauthorized"){
+	        		msg = "Full authentication is required to access this resource",
+	        		bootbox.alert({
+			        	 message: msg
+			        })
+	        	}	
+	        } 
+			     counter=1;
+			     myVar = setInterval(function(){ 
+				
+				 var fileName ="Financial-Report"+ reportData.timestamp +"(" + clientName + ").docx";
+				
+				 console.log("fName "+fileName);
+			
+				if(responseBack === true){
+				 var downloadURL = REQUEST_URL_FP + '/download-Financial-report1?filename='+fileName;
+		 		//var downloadURL = REQUEST_URL_FP + '/download-Financial-report1?filename='+fileName+'&counter='+counter;
+				 var a = document.createElement("a");
+				document.body.appendChild(a);
+				a.style = "display: none";
+				//var fileName = ""+ resp.fileName + "";
+				
+
+				var xhr = new XMLHttpRequest();
+				xhr.open( "GET", downloadURL, true);
+				xhr.setRequestHeader('Authorization', "Bearer "+sessionStorage.getItem("sessionID"));
+				//xhr.open( "GET", 'http://192.168.1.103:8080/FinexaService/download?clientId='+vClientId+'&mode=monthly', true);
+							
+				xhr.responseType = "blob";
+				xhr.onload = function() {
+					console.log("xhr.status "+xhr.status);
+					if(xhr.status === 200){
+						//Download start
+						// IE
+						if (window.navigator.msSaveOrOpenBlob)
+		                 {
+							console.log("IE")
+							 var blob = new Blob([xhr.response], {type: 'application/vnd.ms-word'});
+		                     window.navigator.msSaveOrOpenBlob(blob, fileName);
+		               
+		                a.click();
+		                 }
+		               else //Chrome and safari
+		              {
+		            	   console.log("Chrome and safari")
+		            	   var url = window.URL.createObjectURL(xhr.response);  
+		   				   a.href = url;
+		   				   a.download = fileName;
+		   				    a.click();
+		   				    window.URL.revokeObjectURL(url);
+		              }
+						
+						
+						//Download End
+				    responseBack = false;
+				    hideLoader();
+		
+				//delete==
+			$.ajax({
+	           type : 'GET',
+	           url : REQUEST_URL_FP + '/reportDelete?filename='+fileName,
+	           async : false,
+	           contentType:"application/json; charset=utf-8",
+	           dataType:"json",
+	           beforeSend: function (xhr){ 
+		    		xhr.setRequestHeader('Authorization', "Bearer "+sessionStorage.getItem("sessionID"));
+			   },
+	           success : function(data) {
+	    	   console.log(data.msg)
+	        },
+	       error : function(jqXHR, errorData) {
+	    	   
+	    	   if(jqXHR.status == 401){
+	    		   var error,error_description;
+		        	error = jqXHR.responseJSON.error_description;
+		        	error_description = "Access token expired: "+sessionStorage.getItem("sessionID");
+		        	if(error === error_description){
+		        		msg = "Your session has expired.Please log in again"
+		        		bootbox.alert({
+				        	 message: msg,
+				        	 callback: function () {
+					         window.location = "../index.html";
+				         }
+				      })
+		        	}
+		        	if(error === "unauthorized"){
+		        		msg = "Full authentication is required to access this resource",
+		        		bootbox.alert({
+				        	 message: msg
+				        })
+		        	}	
+		        } 
+	         }
+	      }); 
+			//===
+					clearInterval(myVar);
+				
+					}else{
+					console.log("counter "+counter);
+					counter=counter+1;
+					if(counter>200){
+						 console.log("exit "+counter);
+					
+					     responseBack = false;
+				
+						 clearInterval(myVar);
+						 return;
+					}
+					}
+				};
+				xhr.send();  
+				}
+			 }, 5000);
+			
+			selectedReports = []; 
+			
+			
+		}
+	}); 
+	
+	 },10);
+		
+	//	window.open(downloadURL, '_blank');		
+		
+		
+	//},10000);
+	
+	
+
+	
+} 
+function openPDFPreview(){		
+
+	loadReportData();	
+
+	$('#myModal').modal('show');
+    $('.modal-dialog .modal-body .bootbox-body .riskleft,.modal-dialog .modal-body .bootbox-body .riskright').addClass("hidden");    
+}
+function loadLoader(){	
+   // var ineerHtml='<div style="width: 250px;height: 75px; text-align: center; position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; margin: auto; font-size: 16px; z-index: 10; color: rgb(255, 255, 255);"> <div> <h1 id="overlayLoadingText" style=" opacity:0.5; background: rgb(128, 191, 255) none repeat scroll 0% 0%; font-size: 14px; font-weight: bold; width: auto; padding: 10px; color: black;"><span class="fa fa-refresh fa-spin"></span> Processing</h1> </div></div><div id="overlayLoadingBG" style="background: rgb(0, 0, 0) none repeat scroll 0% 0%; opacity: 0; width: 100%; position: absolute; top: 0px; height: 100%;"></div>';		
+    var ineerHtml='<div style="width: 250px;height: 75px; text-align: center; position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; margin: auto; font-size: 16px; z-index: 10; color: rgb(255, 255, 255);"> <div> <h1 id="overlayLoadingText" style=" opacity:0.5; background: rgb(128, 191, 255) none repeat scroll 0% 0%; font-size: 14px; font-weight: bold; width: auto; padding: 10px; color: black;"> <img src="../Common/assets/images/icons/processing-gif-14.gif" alt="Loader" width="42" height="42"> Processing</h1> </div></div><div id="overlayLoadingBG" style="background: rgb(0, 0, 0) none repeat scroll 0% 0%; opacity: 0; width: 100%; position: absolute; top: 0px; height: 100%;"></div>';		
+    // var ineerHtml='<div style="width: 250px;height: 75px; text-align: center; position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; margin: auto; font-size: 16px; z-index: 10; color: rgb(255, 255, 255);"> <div> <h1 id="overlayLoadingText" style=" opacity:0.5; background: rgb(128, 191, 255) none repeat scroll 0% 0%; font-size: 14px; font-weight: bold; width: auto; padding: 10px; color: black;">Processing... </h1> </div></div><div id="overlayLoadingBG" style="background: rgb(0, 0, 0) none repeat scroll 0% 0%; opacity: 0; width: 100%; position: absolute; top: 0px; height: 100%;"></div>';		
+    $("#overlayLoading").html(ineerHtml).css({'display':'block'});	
+}
+
+function hideLoader(){
+	$("#overlayLoading").css({'display':'none'}).html("");
+}
+</script>
+
+		

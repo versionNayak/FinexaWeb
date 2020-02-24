@@ -1,0 +1,207 @@
+<div>
+	<div id="commiteddiv">
+		<div align="center" style="page-break-after: always;">
+			<h1 align="center">Committed Outflows</h1>
+			<h3 align="center">Current Committed Outflows</h3>
+			<table align="center" id="idCOCurrentTablePDF">
+				<thead>
+					<tr>
+						<th>&nbsp;</th>
+						<th>Annual Outflows (Rs.)</th>
+						<th>% of Total</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr></tr>
+					<tr class="classCOLifePremium">
+						<td>Life Insurance Premium</td>
+						<td id="commitedOutflowPremiumPDF"></td>
+						<td id="commitedOutflowPremiumPercPDF"></td>
+					</tr>
+					<tr class="classCOGeneralPremium">
+						<td class="textalignleft" id="iewdth47">General Insurance
+							Premium</td>
+						<td id="commitedOutflowPremiumGeneralPDF"></td>
+						<td id="commitedOutflowPremiumGeneralPercPDF"></td>
+					</tr>
+					<tr class="classCOHealthPremium">
+						<td>Health Insurance Premium</td>
+						<td id="commitedOutflowPremiumHealthPDF"></td>
+						<td id="commitedOutflowPremiumHealthPercPDF"></td>
+					</tr>
+					<tr class="classCOInvestment">
+						<td>Investments</td>
+						<td id="commitedOutflowInvestmentPDF"></td>
+						<td id="commitedOutflowInvestmentPercPDF"></td>
+					</tr>
+					<tr class="nonglidtotal">
+						<td><b>Total Committed Outflows</b></td>
+						<td><b id="totalOutFlowPDF"></b></td>
+						<td><b id="totalOutFlowPercPDF"></b></td>
+					</tr>
+				</tbody>
+			</table>
+			<div id="idCOCurrentTablePDFresultTable"></div>
+		</div>
+		
+		<div align="center" style="page-break-after: always;">
+			<h1 align="center">Committed Outflows</h1>
+			<h3 align="center">Committed Outflow Projections</h3>
+			<table  class="committedtblpdf" id="idCOTablePDF">
+				<thead>
+					<tr>
+						<th>Year</th>
+						<th>Life Insurance Premium</th>
+						<th>General Insurance Premium</th>
+						<th>Health Insurance Premium</th>
+						<th>Investments</th>
+						<th>Total</th>
+					</tr>
+				</thead>
+				<tbody id="idCOProjectionPDF">
+				</tbody>
+			</table>
+			<div id="idCOTablePDFresultTable"></div>
+		</div>
+	</div>
+	
+	<div id="commitedJsdiv">
+		<script type="text/javascript">
+			$(document).ready(function(){	
+	
+				var flagGeneral = 0;
+				var flagHealth = 0;
+				var flagLife = 0;
+				var flagInvestment = 0;
+				var flagTotalCO = 0;
+				
+				$.ajax({
+					type: 'GET',
+					async : false,
+					url: REQUEST_URL_BM + '/getCommitedOutflow?clientId=' +vClientId+ '&mode=yearly&fpFlag=0',
+					dataType: 'json',
+					success: function (data) {	
+						$("#commitedOutflowPremiumPDF").text(parseFloat(data.premiumAMount).toFixed(2));
+	
+						if (parseInt(data.premiumAMount) == 0) {
+							$("#commitedOutflowPremiumPercPDF").text("0.00%");
+							$("#idCOCurrentTablePDF tbody tr.classCOLifePremium").hide().addClass('noprint');	
+						} else {
+							$("#commitedOutflowPremiumPercPDF").text((parseFloat((data.premiumAMount / data.totalOutFlow) * 100).toFixed(2))+"%");
+						}
+	
+						$("#commitedOutflowPremiumGeneralPDF").text(parseFloat(data.premiumAmountGeneral).toFixed(2));
+						
+						if (parseInt(data.premiumAmountGeneral) == 0) {
+							$("#commitedOutflowPremiumGeneralPercPDF").text("0.00%");
+							$("#idCOCurrentTablePDF tbody tr.classCOGeneralPremium").hide().addClass('noprint');	
+						} else {
+							$("#commitedOutflowPremiumGeneralPercPDF").text((parseFloat((data.premiumAmountGeneral / data.totalOutFlow) * 100).toFixed(2))+"%");
+	
+						}
+	
+						$("#commitedOutflowPremiumHealthPDF").text(parseFloat(data.premiumAmountHealth).toFixed(2));
+						if (parseInt(data.premiumAmountHealth) == 0) {
+							$("#commitedOutflowPremiumHealthPercPDF").text("0.00%");
+							$("#idCOCurrentTablePDF tbody tr.classCOHealthPremium").hide().addClass('noprint');
+						} else {
+							$("#commitedOutflowPremiumHealthPercPDF").text((parseFloat((data.premiumAmountHealth / data.totalOutFlow) * 100).toFixed(2))+"%");
+						}
+	
+						$("#commitedOutflowInvestmentPDF").text(parseFloat(data.investmentAmount).toFixed(2));
+						if (parseInt(data.investmentAmount) == 0) {
+							$("#commitedOutflowInvestmentPercPDF").text("0.00%");
+							$("#idCOCurrentTablePDF tbody tr.classCOInvestment").hide().addClass('noprint');	
+						} else {
+							$("#commitedOutflowInvestmentPercPDF").text(parseFloat(((data.investmentAmount / data.totalOutFlow) * 100).toFixed(2))+"%");
+	
+						}
+						$("#totalOutFlowPDF").text(parseFloat(data.totalOutFlow).toFixed(2));
+						if (parseInt(data.totalOutFlow) == 0) {
+							$("#totalOutFlowPercPDF").text("0.00%");
+						} else {
+							$("#totalOutFlowPercPDF").text(parseFloat(((data.totalOutFlow / data.totalOutFlow) * 100).toFixed(2))+".00%");
+						}
+						$.each(data.outFlowList,
+								function(index, value) {
+							$('#idCOProjectionPDF').append(
+									'<tr><td>'+ value.projectionYear+ '</td><td>'+ 
+									parseFloat(value.premiumAMount).toFixed(2)+ '</td><td>'+
+									parseFloat(value.premiumAmountGeneral).toFixed(2)+ '</td><td>'+
+									parseFloat(value.premiumAmountHealth).toFixed(2)+ '</td><td>'+
+									parseFloat(value.investmentAmount).toFixed(2)+ '</td><td>'+ 
+									parseFloat(value.totalOutFlow).toFixed(2)+'</td></tr>');
+							
+							if (parseFloat(value.premiumAMount).toFixed(2) != 0.00) {
+								flagLife = 1;
+							}
+							if (parseFloat(value.premiumAmountGeneral).toFixed(2) != 0.00) {
+								flagGeneral = 1;
+							}
+							if (parseFloat(value.premiumAmountHealth).toFixed(2) != 0.00) {
+								flagHealth = 1;
+							}
+							if (parseFloat(value.investmentAmount).toFixed(2) != 0.00) {
+								flagInvestment = 1;
+							}
+							if (parseFloat(value.totalOutFlow).toFixed(2) != 0.00) {
+								flagTotalCO = 1;
+							}
+	
+						});
+	
+						// hide all zero containing columns of summarized expense table
+						if(flagLife == 0) {
+							$('#idCOTablePDF td:nth-child(2),#idCOTablePDF th:nth-child(2)').hide().addClass('noprint');
+						}
+						if(flagGeneral == 0) {
+							$('#idCOTablePDF td:nth-child(3),#idCOTablePDF th:nth-child(3)').hide().addClass('noprint');
+						}
+						if(flagHealth == 0) {
+							$('#idCOTablePDF td:nth-child(4),#idCOTablePDF th:nth-child(4)').hide().addClass('noprint');
+						}
+						if(flagInvestment == 0) {
+							$('#idCOTablePDF td:nth-child(5),#idCOTablePDF th:nth-child(5)').hide().addClass('noprint');
+						}
+						if(flagTotalCO == 0) {
+							$('#idCOTablePDF td:nth-child(6),#idCOTablePDF th:nth-child(6)').hide().addClass('noprint');
+						}
+						
+						$("#idDivCom1PDF").show();
+						$("#idDivCom2PDF").show();
+	
+					},
+					error: function (data) {
+						$("#COFHeadIdDetailedPDF").text("Committed Outflows");
+						$("#commitedOutflowPremiumPDF").text(0);
+						$("#commitedOutflowPremiumPercPDF").text("0.00%");
+						$("#commitedOutflowPremiumHealthPDF").text(0);
+						$("#commitedOutflowPremiumHealthPercPDF").text("0.00%");
+						$("#commitedOutflowInvestmentPDF").text(0);
+						$("#commitedOutflowInvestmentPercPDF").text("0.00%");
+						$("#totalOutFlowPDF").text(0);
+						$("#totalOutFlowPercPDF").text("0.00%");
+						bootbox.alert(data.responseText);
+					}
+				});
+				
+				var table_html = '';
+				var table_html = $('#idCOCurrentTablePDF').html();					
+				table_html = '<table align="center" id="idCOCurrentTablePDF">'+table_html+'</table>';	
+				$html =  $(table_html);  		
+				$html.find('.noprint').remove();	
+				$('#idCOCurrentTablePDF').remove();
+				$('#idCOCurrentTablePDFresultTable').html('<table align="center" id="idCOCurrentTablePDF">'+$html.html()+'</table>');
+				
+				var table_html = '';
+				var table_html = $('#idCOTablePDF').html();					
+				table_html = '<table  class="committedtblpdf" id="idCOTablePDF">'+table_html+'</table>';	
+				$html =  $(table_html);  		
+				$html.find('.noprint').remove();
+				$('#idCOTablePDF').remove();				
+				$('#idCOTablePDFresultTable').html('<table  class="committedtblpdf" id="idCOTablePDF">'+$html.html()+'</table>'); 
+	
+			});
+		</script>
+	</div>	
+</div>

@@ -1,0 +1,65 @@
+<script type="text/javascript" src="userManagement/js/addUserRoleCreation.js"></script>
+<script src="userManagement/js/validateRoleCreation.js"></script>
+<script src="userManagement/js/validationForAll.js"></script>
+<script src="userManagement/js/common.js"></script>
+<div class="dmcontainer">
+<div class="alert alert-danger" id="alertForm" style="display:none;">
+</div>
+<div>
+<br>
+		<form class="form-horizontal" action="UserRoleCreation" id="idFormUserRoleCreation">
+		<input type="hidden" name="advisorId" id="idAdvisor">
+			<!-- <div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Role*</label>
+					<input type="text" id="idRole" name="userRole" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter Role" tabindex="270"/>
+				    <span class="formentry-errmsg" id="alertRole"></span>
+				</div>
+			</div> -->
+			
+			<!-- new code added for static role -->
+			
+			<div class="form-group">
+				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Role*:</label>
+					<span class="form-static-value">
+						<select class="form-control input-width-medium" id="idRole" name="userRole" required="required" tabindex="430">
+									</select>
+									 <span class="formentry-errmsg" id="alertRole"></span>
+					        </span>
+					    </div>
+				    </div>
+				    
+		   <!-- new code added for static role -->
+		   
+			<!-- <div class="form-group">
+				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Supervisor Role*:</label>
+					<span class="form-static-value">
+						<select class="form-control input-width-medium" id="idSVRole" name="supervisorRoleID" required="required" tabindex="430">
+									</select>
+									<span class="formentry-errmsg" id="alertSupervisorRole"></span>
+					        </span>
+					    </div>
+				    </div> -->
+				    
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Supervisor Role*:</label>
+					<input type="text" style="width:225px;" id="idSVRole" name="supervisor" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Supervisor Role" tabindex="279" readonly/>
+				    <input type="hidden" id="idSVhiddenRole" name="supervisorId"/>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-11">
+					<input type="button" class="form-control addbtn" id="idAddUserRole" tabindex="540" value="Submit" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

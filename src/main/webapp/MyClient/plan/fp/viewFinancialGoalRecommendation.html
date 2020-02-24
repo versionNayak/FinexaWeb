@@ -1,0 +1,353 @@
+<link rel="stylesheet" href="../Common/assets/css-library/rangeslide.css" type="text/css" />
+<script src="../Common/assets/js-library/rangeslide.js"></script>
+<script src="plan/fp/js/common.js"></script>
+<link href="../Common/assets/css/style.css" rel="stylesheet">
+<style>
+	.top30negtive[style]{
+		top: -30px !important;
+	}
+	 @supports (-moz-appearance:none) {
+		.jssort23 div:nth-child(2) div:nth-child(3)[style] {
+		    left: 200px !important;
+		}
+		.jssort23 > div[style] {
+		   
+		}
+	}
+</style>
+<script src="plan/fp/js/viewFinancialGoalRecommendation.js"></script>
+
+<div id="jssor_23" class="height413px">
+	<div data-u="slides" class="slider9" style="height: 400px; top: 30px">
+		<div>
+			<div data-u="image" id="idDivGoal">
+				<div id="idMaxrecommendedaa" class="popup">
+					<img src="../Common/assets/images/maximg.png" class="maxbtn" />
+				</div>
+				<h2 class="dashboardheading"
+					style="margin-left: 48px; margin-top: 30px">The goals
+					mentioned by you and the recommendations are:</h2>
+
+				<table width="72%" class="goalsumrytbl"
+					style="z-index: 10 !important; margin-top: 17px; margin-left: 48px">
+					<thead>
+						<tr>
+							<th style="text-align: left">Goal Name</th>
+							<th>Years to Goal</th>
+							<th>Present Cost of the Goal (P.a)</th>
+							<th>Number of years recurring for</th>
+							<th>Future Value of Goal</th>
+							<th>Inflation Rate</th>
+							<th>Goal Priority</th>
+							<th>Achievement(%)</th>
+							<th>Risk Profile at the start of the goal</th>
+							<th>Monthly Investments required</th>
+						</tr>
+					</thead>
+					<tbody id="idGoalDetailTbody"></tbody>
+				</table>
+				<!-- The Next Two tables will be appended from DataBase	 -->
+				<br />
+				
+			</div>
+			<button data-u="thumb">Goal Summary</button>
+		</div>
+		<div>
+			<div data-u="image">
+
+				<table width="54%" class="leftthead marginlft186 margintop28px">
+					<thead>
+						<tr>
+							<th>Goals List</th>
+						</tr>
+					</thead>
+					<tbody id=idGoalList>
+					</tbody>
+				</table>
+
+				<br />
+				<div class="row">
+					<div class="col-lg-12">
+						<div id="idLinebargoal" style="width: 80%; margin-left: 26px"></div>
+						</td>
+					</div>
+				</div>
+			</div>
+			<button data-u="thumb">Goal Details</button>
+		</div>
+	</div>
+	<!-- Thumbnail Navigator -->
+	<div data-u="thumbnavigator" class="jssort23" data-autocenter="1">
+		<!-- Thumbnail Item Skin Begin -->
+		<div data-u="slides" class="dynamicgoalscroll">
+			<div data-u="prototype" class="p">
+				<div>
+					<div data-u="thumbnailtemplate"></div>
+				</div>
+			</div>
+		</div>
+		<!-- Thumbnail Item Skin End -->
+	</div>
+	<!-- Arrow Navigator -->
+	<span data-u="arrowleft" class="jssora05l Incomeleft"><img
+		src="../Common/assets/images/leftarrow.png" /></span> <span
+		data-u="arrowright" class="jssora05r Incomeright"><img
+		src="../Common/assets/images/rightarrow.png" /></span>
+</div>
+<!-- Recommended aa -->
+<div id="idpoprecommendedaa" class="modal">
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close" style="margin-top: -5px">&times;</span>
+			<h4 style="margin-top: 5px">Goal Summary</h4>
+		</div>
+		<div class="modal-body" id="idDivGoalModal">
+			<h2 class="dashboardheading"
+				style="margin-left: -1px; margin-top: 30px">The goals mentioned
+				by you and the recommendations are:</h2>
+			<table width="100%" class="goalsumrytbl"
+				style="z-index: 10 !important; margin-top: 31px; margin-left: -1px">
+				<thead>
+					<tr>
+						<th style="text-align: left">Goal Name</th>
+						<th>Years to Goal</th>
+						<th>Present Cost of the Goal (P.a)</th>
+						<th>number of years recurring for</th>
+						<th>Future Value of Goal</th>
+						<th>Inflation Rate</th>
+						<th>Goal Priority number of years recurring for</th>
+						<th>Achievement(%)</th>
+						<th>Risk Profile at the start of the goal</th>
+						<th>Monthly Investments required</th>
+					</tr>
+				</thead>
+				<tbody id="idGoalDetailTbodyModal">
+			</table>
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+</div>
+<!-- Recommended AA ends-->
+<!-- Product Recommendation-->
+<div id="idpopEducationPG" class="modal3">
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close3" style="margin-top: -5px">&times;</span>
+			<h4 style="margin-top: 5px" id="goalDetailsHeading"></h4>
+		</div>
+		<div class="modal-body">
+			<table width="54%" class="leftthead marginlft186 margintop28px">
+				<thead>
+					<tr>
+						<th colspan="2">Goals Details</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr></tr>
+					<tr>
+						<td>Goal Type*</td>
+						<td id="idGoalType"></td>
+					</tr>
+					<tr>
+						<td>Goal Description*</td>
+						<td id="idGoalDesc"></td>
+					</tr>
+				</tbody>
+			</table>
+			<br />
+			<table width="54%" class="leftthead marginlft186"
+				style="margin-top: 2px">
+				<thead>
+					<tr>
+						<th colspan="2">Goal Timeline</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr></tr>
+					<tr style="background-color: white">
+						<td><table>
+								<tr style="background-color: white">
+									<td><img src="../Common/assets/images/greendot.png"
+										style="width: 13px" /></td>
+									<td>Goal Start</td>
+									<td><img src="../Common/assets/images/red.png"
+										style="width: 13px; margin-top: -4px" /></td>
+									<td>Goal End</td>
+								</tr>
+							</table></td>
+					</tr>
+					<tr>
+						<td colspan="2"><div class="sliders"
+								style="width: 91%; height: 86px; margin-left: 32px;">
+								<div id="rangeslide15"></div>
+							</div></td>
+					</tr>
+					<tr>
+						<td>Time to Goal Start (months)</td>
+						<td id="idTimeToGoal"></td>
+					</tr>
+					<tr>
+						<td>Estimated Cost of Goal Today</td>
+						<td id="idECOGoal"></td>
+					</tr>
+				</tbody>
+			</table>
+			<br />
+			<table width="57%" class="leftthead marginlft186"
+				style="margin-top: 4px">
+				<thead>
+					<tr>
+						<th colspan="2">Goal Requirement</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr></tr>
+					<tr>
+						<td>Total Goal Corpus Required at Goal Start</td>
+						<td id="idCorpus"></td>
+					</tr>
+					<tr>
+						<td>Goal Corpus Financed through Loan</td>
+						<td id="idCorpusLoan"></td>
+					</tr>
+					<tr>
+						<td>Earmarked Assets - Lumpsum Future Value</td>
+						<td id="idEarMarkedAssets"></td>
+					</tr>
+					<tr>
+						<td>Goal Corpus to be funded</td>
+						<td id="idCorpusFunded"></td>
+					</tr>
+					<tr>
+						<td>SIP investment Required</td>
+						<td id="idSIP"></td>
+					</tr>
+				</tbody>
+			</table>
+			<h4 style="margin-top: 32px; margin-left: 52px;">Recommended
+				Asset Allocation</h4>
+			<table width="60%" class="alignleft"
+				style="z-index: 10 !important; margin-top: 31px; margin-left: 48px" id="glideTable">
+				<thead>
+					<tr>
+						<th style="text-align: left">Asset Class</th>
+						<th>Sub Asset Class</th>
+						<th>Allocation %</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="classCash">
+						<td>Cash</td>
+						<td>Cash/Liquid</td>
+						<td id="idCash"></td>
+					</tr>
+					<tr class="classUSTD">
+						<td>Fixed Income</td>
+						<td>Ultra Short Term Debt</td>
+						<td id="idUltraShortTermDebt"></td>
+					</tr>
+					<tr class="classSTD">
+						<td>Fixed Income</td>
+						<td>Short Term Debt</td>
+						<td id="idShortTermDebt"></td>
+					</tr>
+					<tr class="classLTD">
+						<td>Fixed Income</td>
+						<td>Long Term Debt</td>
+						<td id="idLongTermDebt"></td>
+					</tr>
+					<tr class="classEquityLC">
+						<td>Equity</td>
+						<td>Equity Large Cap</td>
+						<td id="idEquityLarge"></td>
+					</tr>
+					<tr class="classEquityMC">
+						<td>Equity</td>
+						<td>Equity Mid and Small Cap</td>
+						<td id="idEquitySmall"></td>
+					</tr>
+					<tr class="classEquityInt">
+						<td>Equity</td>
+						<td>Equity International</td>
+						<td id="idEquityInternational"></td>
+					</tr>
+					<tr class="classAltPrec">
+						<td>Alternatives</td>
+						<td>Alternatives - Precious Metals</td>
+						<td id="idPreciousMetal"></td>
+					</tr>
+
+					<tr class="classAltReal">
+						<td>Alternatives</td>
+						<td>Alternatives - Real Estate</td>
+						<td id="idRealEstate"></td>
+					</tr>
+					<tr class="classAltOther">
+						<td>Alternatives</td>
+						<td>Alternatives -Others</td>
+						<td id="idOthers"></td>
+					</tr>
+					<tr class="nonglidtotal">
+						<td>Total</td>
+						<td></td>
+						<td id="idTotal"></td>
+					</tr>
+			</table>
+			<br />
+
+
+			<table width="100%" style="margin-top: 78px">
+				<tr style="background-color: white; vertical-align: top">
+					<td><div id="idLineGraph"
+							style="width: auto; margin-top: -96px"></div></td>
+				</tr>
+				<tr style="background-color: white">
+					<td><br />
+					<br />
+					<br /></td>
+				</tr>
+				<tr style="background-color: white; vertical-align: top">
+					<td>
+						<div id="idRecommendedBarGraph"
+							style="width: 80%; margin-top: -83px"></div>
+					</td>
+				</tr>
+			</table>
+
+			<h4 style="margin-left: 48px">Yearly Cashflows</h4>
+			<table width="80%" style="z-index: 10 !important; margin-left: 48px">
+				<thead>
+					<tr>
+						<th style="text-align: left">Year</th>
+						<th>Client Age</th>
+						<th>Opening Balance</th>
+						<th>Investment</th>
+						<th>Returns</th>
+						<th>Funded Corpus</th>
+						<th>Loan Inflow</th>
+						<th>Goal Outflow</th>
+						<th>Closing Balance</th>
+					</tr>
+				</thead>
+				<tbody id="idYearlyCashflow">
+					
+			</table>
+			<br />
+			<div class="row">
+				<div class="col-lg-12">
+					<div id="idYearlyCashflowsGraph" style="width: 80%; margin-left: 26px"></div>
+				
+				</div>
+			</div>
+			<br />
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+</div>
+<!--Goal2pop-->

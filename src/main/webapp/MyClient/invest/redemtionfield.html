@@ -1,0 +1,222 @@
+<script src="invest/js/redeem.js"></script>
+<script src="invest/js/validateRedeem.js"></script>
+<script src="invest/js/validateLumpsum.js"></script>
+<script src="clientInfo/js/common.js"></script>
+<!-- <script src="invest/js/validationForAll.js"></script>
+ --><style>
+
+</style>
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
+		
+
+		<link href="../Common/assets/css/addtocartreset.css" rel="stylesheet"/>
+		<link href="../Common/assets/css/addtocart.css" rel="stylesheet"/>
+<div class="cicontainer" style="height:315%">
+	<form class="form-horizontal" id="idFormRedeem" name="formLumpsum" onsubmit="return false">
+		
+		<!-- <div class="form-group"> -->
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<span class="formentry-errmsg" id="alertform"></span>
+		</div>
+		<br/><br/>
+		
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="ClientCode" style="text-align:left;font-size:14px;font-weight: bold; margin-bottom: 5px;">Client Id(UCC)* </label><br/>
+			<span class="form-static-value" id="idSpamClientCode" >
+				<select style="padding-top: 2px"
+				class="form-control input-width-medium" id="idClientUCCCombo"
+				name="clientCode" tabindex="1">
+				</select>
+				<span class="formentry-errmsg" id="alertClientCode"></span>
+			</span>
+		</div>
+		<br/><br/><br/><br/>
+		
+		
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="schemeType" style="text-align:left;font-size:14px;font-weight: bold; margin-bottom: 5px;">Transaction Mode*: </label><br/>
+		<select style="padding-top: 2px"
+				class="form-control input-width-medium" id="idTransMode"
+				name="dpTxn" tabindex="2">
+				<option value="">Select</option>
+					<option value="P">Physical</option>
+					<option value="N">NSDL Demat</option>
+					<option value="C">CDSL Demat</option>
+		</select>
+		<span class="formentry-errmsg" id="alertTransactionMode"></span>
+		</div>
+		<br/><br/><br/><br/>
+		
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="schemeType" style="text-align:left;font-size:14px;font-weight: bold; margin-bottom: 5px;">Scheme Type*: </label><br/>
+		<select style="padding-top: 2px"
+				class="form-control input-width-medium" id="idSchemeType"
+				name="schemeType" tabindex="3">
+		<option value="">Select</option>
+		</select>
+		<span class="formentry-errmsg" id="alertSchemeType"></span>
+		</div>
+		
+		<br/><br/><br/><br/>
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="schemeName" style="text-align:left;font-size:14px;font-weight: bold; margin-bottom: 5px;">Amc Name* </label><br/>
+			<span class="form-static-value" id="idSpamSchemeName" >
+				<select style="padding-top: 2px"
+				class="form-control input-width-medium" id="idAmcName"
+				name="amcName" tabindex="4">
+				<option value="">Select</option>
+				</select>
+				<span class="formentry-errmsg" id="alertAmcName"></span>
+			</span>
+		</div>
+	
+		
+		<br/><br/><br/><br/>
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="schemeName" style="text-align:left;font-size:14px;font-weight: bold;
+		margin-bottom: 5px;">Scheme Name*: </label><br/>
+			<!-- 
+			<input type="text" placeholder="Enter Scheme Name" class="form-control" id="idSchemeName" name="schemeName" style="width:16em"/> 
+			 -->
+			<span class="form-static-value" id="idSpamSchemeName" >
+				<select class="form-control" id="idSchemeName" name="uniqueSchemeCode" onchange="initAmountAndUnits($(this))" tabindex="5" style="width: 700px;">
+				<option value="">Select</option>
+				</select>
+				<span class="formentry-errmsg" id="alertSchemeName"></span>
+			</span>
+		</div>
+			<br/><br/><br/><br/>
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="IsinNo" style="text-align:left;font-size:14px;font-weight: bold;
+margin-bottom: 5px;">ISIN No*: </label><br/>
+			<input type="text" placeholder="Enter ISIN No." class="form-control" id="idIsinNo" name="IsinNo" style="width:16em" tabindex="6"/> 
+			<span class="formentry-errmsg" id="alertIsinNo"></span>
+		</div>
+			<br/><br/><br/><br/>
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="schemeId" style="text-align:left;font-size:14px;font-weight: bold;
+margin-bottom: 5px;">Scheme Code/ID*: </label><br/>
+			<input type="text" placeholder="Enter Scheme Code/ID" class="form-control" id="idSchemeId" name="schemeId" style="width:16em" tabindex="7"/>
+			<span class="formentry-errmsg" id="alertSchemeId"></span>
+		</div>
+			
+			<br/><br/><br/><br/>
+		<!-- <div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="transactionType" style="text-align:left;font-size:14px;font-weight: bold;
+margin-bottom: 5px;">Transaction Type*: </label><br/>
+			<span class="form-static-value" id="idSpanTransactionType">
+				<select style="padding-top:2px" class="form-control input-width-medium" id="idTransactionType" name="buySellType" tabindex="8">
+					<option value="">Select</option>
+					<option value="Fresh">Fresh</option>
+					<option value="Additional">Additional</option>
+				</select>
+				<span class="formentry-errmsg" id="alertTransactionType"></span>
+			</span> 
+		</div>
+			<br/><br/><br/><br/> -->
+		
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="folioNumber" style="text-align:left;font-size:14px;font-weight: bold;
+margin-bottom: 5px;">Folio Number*: </label><br/>
+			<input type="text" placeholder="Enter Folio Number" class="form-control" id="idFolioNumber" name="folioNo" style="width:16em" tabindex="9"/> 
+			<span class="formentry-errmsg" id="alertFolioNumber"></span>
+		</div>
+			<br/><br/><br/><br/>
+			
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="transactionMode" style="text-align:left;font-size:14px;font-weight: bold;
+margin-bottom: 5px;">All Units*: </label><br/>
+			<span class="form-static-value" id="idSpanTransactionMode">
+				<select style="padding-top:2px" class="form-control input-width-medium" id="idAllRedeem" name="allRedeem" tabindex="10">
+					<option value="">Select</option>
+					<option value="Y">Yes</option>
+					<option value="N">No</option>
+				</select>
+				<span class="formentry-errmsg" id="alertAllRedeem"></span>
+			</span>  
+		</div>
+			<br/><br/><br/><br/>
+			
+		
+		<div class="col-sm-7" style="text-align:left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="amountInvested" style="text-align:left;font-size:14px;font-weight: bold;
+margin-bottom: 5px;">Amount to be Redeemed: </label>
+		<img id = "infoBox" src="../Common/assets/images/info.png" title = "Please select Scheme Name ">
+		<br/>
+			<input type="text" placeholder="Enter Amount Redeemed" class="form-control" id="idAmountInvested" name="amount" style="width:16em" tabindex="11"/> 
+			<span class="formentry-errmsg" id="alertAmountInvested"></span>
+		</div>
+			<br/><br/><br/><br/>
+		
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="unitsPurchased" style="text-align:left;font-size:14px;font-weight: bold;
+margin-bottom: 5px;">Units to be Redeemed: </label><br/>
+			<input type="text" placeholder="Enter Units Redeemed" class="form-control" id="idUnitsPurchased" name="qty" style="width:16em" tabindex="12"/> 
+			<span class="formentry-errmsg" id="alertUnitsPurchased"></span>
+		</div>
+			<br/><br/><br/><br/>
+		
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="transactionMode" style="text-align:left;font-size:14px;font-weight: bold;
+margin-bottom: 5px;">EUIN Declaration*: </label><br/>
+			<span class="form-static-value" id="idSpanTransactionMode">
+				<select style="padding-top:2px" class="form-control input-width-medium" id="idEUINFlag" name="euinFlag" tabindex="13">
+					<option value="">Select</option>
+					<option value="Y">Yes</option>
+					<option value="N">No</option>
+				</select>
+				<span class="formentry-errmsg" id="alertEuinDeclaration"></span>
+			</span>  
+		</div>
+			<br/><br/><br/><br/>
+			
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="transactionMode" style="text-align:left;font-size:14px;font-weight: bold;
+margin-bottom: 5px;">EUIN: </label><br/>
+			<span class="form-static-value" id="idSpanTransactionMode">
+			<input type="text" placeholder="Enter EUIN" class="form-control" id="idEUIN" name="euin" style="width:16em" tabindex="14"/> 
+			<span class="formentry-errmsg" id="alertEuin"></span>
+			</span>  
+		</div>
+		<br/><br/><br/><br/>
+		
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="transactionMode" style="text-align:left;font-size:14px;font-weight: bold;
+margin-bottom: 5px;">Sub Broker Code: </label><br/>
+			<span class="form-static-value" id="idSpanTransactionMode">
+			<input type="text" placeholder="Enter Sub Broker Code" class="form-control" id="idsubBrokerCode" name="subBrCode" style="width:16em" tabindex="15"/> 
+			<span class="formentry-errmsg" id="alertSubBrokerCode"></span>
+			</span>  
+		</div>
+		<br/><br/><br/><br/>
+		
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="transactionMode" style="text-align:left;font-size:14px;font-weight: bold;
+margin-bottom: 5px;">Sub Broker ARN Code: </label><br/>
+			<span class="form-static-value" id="idSpanTransactionMode">
+			<input type="text" placeholder="Enter Sub Broker ARN" class="form-control" id="idSubBrokerName" name="param1" style="width:16em" tabindex="16"/> 
+			<span class="formentry-errmsg" id="alertSubBrokerARNCode"></span>
+			</span>  
+		</div>
+		
+		<br/><br/><br/><br/>	
+				
+				<!-- End of Default Fields -->
+				
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+				<button type="submit" id = "idRedeem" style="width:40%" class="form-control addbtn cd-add-to-cart" data-price="25.99" tabindex="540">Reedem</button>
+				</div>
+			</form>		
+				
+				
+
+<!--<a href="#0" class="cd-add-to-cart" data-price="25.99">Add To Cart</a>-->
+
+
+
+
+		 
+	</div>
+	<script>
+
+		</script>

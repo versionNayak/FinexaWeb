@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="resources/js/viewBankPPF.js"></script>
+</head>
+<body>
+	<div class="container-fluid" style="width: 65em;
+	margin-left: -2em;margin-top:2em;padding-top:1em;background-color:white;z-index:0">
+		<!--<h3 style="color:#0b71c6;margin-bottom:27px;margin-left:58px;width:107%">Loan Calculator
+		</h3>-->
+		<br />
+		<div class="row">
+			<div class="form-group">
+			
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+					<label class="control-label" for="idppfdeposite" style="text-align:left">PPF Deposit Amount (&#8377): </label><br/>
+					<input type="text" placeholder="Enter Deposit Amount" class="form-control" id="currentvalue" style="width:16em;"/> 
+				</div>
+				<div class="col-sm-4" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px"> 
+					<label class="control-label" for="idppfdeposite" style="text-align:left">Amount Deposit Frequency: </label><br/>
+					<div class="col-sm-8" style="padding-left:36px;padding-top:8px" id="cf">  
+						<p style="margin-top: -5px;width: 252%;margin-left: -37px;"> <input type='radio' name="amt"/> <span>Monthly</span>&nbsp; <input type='radio' name="amt"/> <span>Quarterly</span>&nbsp; <input type='radio' name="amt"/> <span>HalfYearly</span>&nbsp; <input type='radio' name="amt"/> <span>Annually</span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="form-group">
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+					<label class="control-label" for="idppfdeposite" style="text-align:left;z-index:1">PPF Deposit Start Date: </label><br/>
+					<p id="datepicker" style="width:16em;z-index:0" class="input-group date" data-date-format="dd-mm-yyyy">
+						<input class="form-control" id="datepkr" value="" style="font-size:14px" type="text" placeholder="DD/MM/YYYY"/>
+                        <span class="input-group-addon calendar-icon-container"><i class="glyphicon calendar-icon-theme"></i></span>
+					</p>
+				</div>
+				<div class="col-sm-4" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px"> 
+					<label class="control-label" for="idppfdeposite" style="text-align:left">Annual Interest Rate (%):  </label><br/>
+					8.10% 
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="form-group">
+				<div class="col-sm-7 lonesection" style="text-align: left;z-index:0;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+					<label class="control-label" for="idppfdeposite" style="text-align:left;z-index:0">Term (Years): </label><br/>
+					15
+				</div>
+				<div class="col-sm-4" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px"> 
+					<label class="control-label" for="idppfdeposite" style="text-align:left">Compounding Frequency:  </label><br/>
+					Annually
+				</div>
+			</div>
+		</div>
+		<hr/>
+		<div class="row">
+			<div class="form-group">
+				<div class="col-sm-7 lonesection" style="text-align: left;z-index:0;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;z-index:0">Extension: </label><br/>
+					<div class="col-sm-8" style="padding-left:36px;padding-top:8px" id="cf">  
+						<p style="margin-top: -5px;width: 252%;margin-left: -37px;"> <input type='radio' value="no" name="ex" checked="checked"/> <span>No</span>&nbsp; <input type='radio' value="yes" name="ex"/> <span>Yes</span>&nbsp;</p>
+					</div>
+				
+				
+				
+				</div>
+				<div class="col-sm-4 displayonyes" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px"> 
+					<label class="control-label displayonyes" for="idppfdeposite" style="text-align:left">Term (Years):</label><br/>
+					5 
+				</div>
+			</div>
+		</div><br/>
+			<div class="row displayonyes">
+			<div class="form-group">
+				<div class="col-sm-7 lonesection" style="text-align: left;z-index:0;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+					<label class="control-label" for="idppfdeposite" style="text-align:left;z-index:0">Compounding Frequency: </label><br/>
+					Annually 
+				</div>
+				<div class="col-sm-4" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px"> 
+					<label class="control-label" for="idppfdeposite" style="text-align:left">Amount Deposit Frequency:  </label><br/>
+					<div class="col-sm-8" style="padding-left:36px;padding-top:8px" id="cf">  
+						<p style="margin-top: -5px;width: 252%;margin-left: -37px;"> <input type='radio' name="amtd"/> <span>Monthly</span>&nbsp; <input type='radio' name="amtd"/> <span>Quarterly</span>&nbsp; <input type='radio' name="amtd"/> <span>HalfYearly</span>&nbsp; <input type='radio' name="amtd"/> <span>Annually</span></p>
+					</div>
+				</div>
+			</div>
+		</div><br/>
+			<div class="row">
+			<div class="form-group">
+				<div class="col-sm-7 lonesection" style="text-align: left;z-index:0;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+					
+						<label class="control-label displayonyes" for="idppfdeposite" style="text-align:left;z-index:0">Amount Interest Rate (%): </label><br/>
+					<p class="displayonyes">8.10%</p> 
+					
+					
+					
+				</div>
+				<div class="col-sm-4" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px"> 
+					<label class="control-label displayonyes" for="idppfdeposite" style="text-align:left">Extension Type:  </label><br/>
+					<div class="col-sm-8 displayonyes" style="padding-left:36px;padding-top:8px" id="cf">  
+						<p style="margin-top: -5px;width: 252%;margin-left: -37px;"> <input type='radio' name="ext1"/> <span>With Deposite</span>&nbsp; <input type='radio' name="ext1"/> <span>Without Deposite</span></p>
+					</div>
+				</div>
+			</div>
+		</div><br/>
+		
+			
+			<div class="row">
+			<div class="form-group">
+				<div class="col-sm-7 lonesection" style="text-align: left;z-index:0;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+									
+					<label class="control-label displayonyes" for="idppfdeposite" style="text-align:left;z-index:0">Deposit Amount (&#8377) - Ext. Period:</label><br/>
+					<input type="text" placeholder="Enter Deposit Amount" class="form-control displayonyes" id="currentvalue" style="width:16em;"/> 
+				</div>
+				<div class="col-sm-4" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px"> 
+				
+				</div>
+			</div>
+		</div>
+		
+		<br/>
+		<div class="row">
+			<div class="form-group">
+				<div class="col-sm-6"> </div>
+				<div class="col-sm-3"> 
+					<button type="submit" class="pull-left btn addbtn" style="width:5em;margin-left:-118px;outline:none !important;margin-bottom: 1em;" onclick="$('.result').show()">Submit</button>
+				</div>
+			</div>
+		</div>
+		<div style="display:none" class="result">
+			<h3 style="color:#0b71c6;margin-left: 4.4em;"> Results : </h3>
+			<br/>
+			<br/>
+			<div class="row">
+				<div class="form-group">
+					<div class="col-sm-7" style="text-align: left;z-index:1;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+						<label class="control-label" for="idppfdeposite" style="text-align:left">Maturity Amount: </label><br/>
+						202,999
+						<br/>
+						<br/>
+						<label class="control-label" for="idppfdeposite" style="text-align:left;z-index:0">Maturity Date: </label><br/>
+						10-June-2023<br/>
+					<br/>
+					<label class="control-label" for="idppfdeposite" style="text-align:left">Overall Interest Received: </label><br/>
+					202,999
+					<br/>
+					<br/>
+				<label class="control-label" for="idppfdeposite" style="text-align:left;z-index:0">Total Amount Invested: </label><br/>
+				 25,0000
+					</div>
+					<div class="col-sm-4" style="text-align: left;z-index:0"> 
+						<div id="idcaa1" style="width:30%;margin-top: -11em;margin-left: -5em;"> </div>
+					</div>
+				</div>
+			</div>
+			<br/>
+			<br/>
+			<br/>
+			<div id="stdgraph" style="height: 300px; width:60%;margin-left:62px">
+			</div>
+			<br/>
+			<div class="container-fluid" style="height: 16em;overflow-y: auto;overflow-x:hidden">
+				<table style="margin-left: 2em;width: 99%;" class="tblfirstrowleft">
+					<thead>
+						<tr>
+							<th>Financial Year</th>
+							<th>Opening Balance</th>
+							<th>Amount Deposited</th>
+							<th>Total Amount Deposited</th>
+							<th>Interest Earned</th>
+							<th>Total Interest Accrued</th>
+							<th>Interest Credited</th>
+							<th>Closing Balance</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr></tr>   
+						<tr>
+							<td>2013-14</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+						</tr> 
+						<tr>
+							<td>2013-14</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+						</tr>
+						<tr>
+							<td>2013-14</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+						</tr>   
+						<tr>
+							<td>2013-14</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+						</tr>
+						<tr>
+							<td>2013-14</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+						</tr> 
+						<tr>
+							<td>2013-14</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+						</tr> 
+						<tr>
+							<td>2013-14</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							</tr> <tr>
+							<td>2013-14</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							</tr> <tr>
+							<td>2013-14</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+						</tr> 
+						<tr>
+							<td>2013-14</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							</tr> <tr>
+							<td>2013-14</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							</tr> <tr>
+							<td>2013-14</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							</tr> <tr>
+							<td>2013-14</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							</tr> <tr>
+							<td>2013-14</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							</tr> <tr>
+							<td>2013-14</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							</tr> <tr>
+							<td>2013-14</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							</tr> <tr>
+							<td>2013-14</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							</tr> <tr>
+							<td>2013-14</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+							<td>453543</td>
+						</tr> 
+					</tbody>
+				</table>
+			</div>
+			<br/>
+			<div class="row">
+				<div class="col-sm-12"> 
+					<table width="50%" style="margin:auto">
+						<tr>
+							<td><b>Download Projections</b></td>
+							<td><input type="radio" name="download" style="position:sticky"></input></td>
+							<td style="text-align: left;vertical-align:bottom;"><label>Monthly</label></td>
+							<td><input type="radio" name="download" style="position:sticky" checked="true"></input></td>
+							<td style="text-align: left;vertical-align:bottom;"><label>Annually</label></td>
+							<td><input type="submit" value="Save" class="form-control"/> </td>
+						</tr>
+					</table>
+					<br/>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

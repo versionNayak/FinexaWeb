@@ -1,0 +1,95 @@
+<script type="text/javascript" src="clientRecords/js/editMappingClient.js"></script>
+<script src="clientRecords/js/validateEditClientRemapping.js"></script>
+<script src="clientRecords/js/validationForAll.js"></script>
+<div class="dmcontainer">
+<div class="alert alert-danger" id="alertForm" style="display:none;">
+</div>
+
+<div class="clearfix"></div>
+<br/>
+<form class="form-horizontal" action="#" id="idEditmappingRoleForm">
+            <div class="form-group">
+                <label for="ownerName" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>User*: </label>
+                       <select class="form-control input-width-medium" id="idUserName" name="userId" required="required" tabindex="430">
+                          </select>
+                  </div>
+              </div>
+            <div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Role*:</label>
+					<input type="text" id="idRoleName" name="userRole" style="width:225px;" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Role" tabindex="270" disabled/>
+				</div>
+			</div>
+
+            <div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Location*:</label>
+					<input type="text" id="idCountry" name="countryId" style="width:225px;" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="city" tabindex="270" disabled/>
+				</div>
+			</div>
+
+        <div class="form-group">
+                <label for="ownerName" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                <label>Client Name*:</label>
+                    <input type="text" id="idClientName" style="width:225px;" name="clientId" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Client Name" tabindex="270" disabled/>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="ownerName" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>Re-mapped User*:</label>
+                       <select class="form-control input-width-medium" id="idRemappedUser" name="remappedUserId" required="required" tabindex="430">
+                           </select>
+                         	<span class="formentry-errmsg" id="alertRemappedUser"></span>  
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="ownerName" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                <label>Re-mapped User Role*:</label>
+                    <input type="text" id="idRemappedRole" style="width:225px;" name="remappedRole" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Remapped Role" tabindex="270" disabled/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="ownerName" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>Re-mapping date*:</label>
+                    <p class="input-group input-width-medium" id="idEffectiveFromDateGroup">
+                        <input type="text" class="form-control" id="idDate" name="remappingDate" placeholder="DD/MM/YYYY" tabindex="330">
+                        <span class="input-group-btn datepicker-icon">
+                            <button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" id="idStartDate" title="" data-original-title="Select Start Date"><em class="glyphicon calendar-icon-theme"></em></button>
+                        </span>
+                    </p>
+                     <span class="formentry-errmsg" id="alertDate"></span>  
+                </div>
+            </div>
+            
+             <div class="form-group">
+                <label for="ownerName" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                <label>Remarks*:</label>
+                    <input type="text" id="idRemarks" name="remarks" class="form-control input-width-medium-min input-width-owner input-width-medium"  placeholder="Enter Remarks" tabindex="270"/>
+                   <span class="formentry-errmsg" id="alertRemarks"></span>  
+                </div>
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <div class="col-sm-offset-1 col-sm-11">
+                    <input type="button" class="form-control addbtn" id="idSaveRemapping" value="Submit"  tabindex="540">
+                </div>
+            </div>
+
+    
+</form>
+	</div>

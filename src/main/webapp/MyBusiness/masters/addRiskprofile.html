@@ -1,0 +1,198 @@
+ <script src="masters/js/common.js"></script>
+ <script src="masters/js/addRiskprofile.js"></script>  
+
+<div class="dmcontainer">
+	 <div class="add_risk_div" id="IdAddRiskDiv">
+		<form class="form-horizontal" action="">
+		<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>No. of Questions:</label>
+					<select class="form-control question_count input-width-medium" id="idQuestionCount">
+						<option value="0">Select</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>No. of Risk Profiles:</label>
+					<select class="form-control risk_profile_count input-width-medium" id="idRiskProfileCount">
+						<option value="0">Select</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group risk_profile_t">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Add Risk Profile Name:</label>
+					<table class="r_table table_text-center">
+						<tr>
+							<th>No.</th>
+							<th>Name</th>
+							</tr>
+					</table>
+				</div>
+			</div>
+
+			
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-11">
+					 <button type="button" class="pull-left form-control show_questions addbtn" tabindex="540">SAVE</button> 
+					</div>
+			</div>
+				</form>
+			</div> 
+		
+
+
+		 <div class="rp_questions_list">
+		<form class="form-horizontal" action="#" id="idRiskprofile">
+		<div class="form-group question_add">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				
+				<div class="col-sm-11">
+				<div class="questions_rp">
+					<div class="q_num"><span>Question <span class="iterating_q">1</span> of <span class="total_q"></span></span></div>
+				    
+					<input type="hidden" value="1" class="hidden_input" name="">
+					<ul class="question_list">
+					<!-- <li><div><h2>asdasd</h2></div></li>
+                    <li class="q_li clearfix">
+                    <div class="rp_question">
+                    <input type="text" class="form-control" placeholder="Enter Question" id="question" name="question"></div>
+                     <div class="ans ans1">
+                     <input type="text" class="form-control rp_answer" placeholder=" Enter Response1" id="response1" name="responseText">
+                     <input type="text" class="form-control score" placeholder="Enter Score" id="score1" name="score">
+                     </div>
+                     <div class="ans ans2">
+                     <input type="text" class="form-control rp_answer" placeholder="Enter Response2" id="response2" name="responseText">
+                     <input type="text" class="form-control score" placeholder="Enter Score" id="score2" name="score">
+                     </div>
+                     <div class="ans ans3">
+                     <input type="text" class="form-control rp_answer" placeholder="Enter Response3" id="response3" name="responseText">
+                     <input type="text" class="form-control score" placeholder="Enter Score" id="score3" name="score">
+                     </div>
+                     <div class="ans an4">
+                     <input type="text" class="form-control rp_answer" placeholder="Enter Response4" id="response4" name="responseText">
+                     <input type="text" class="form-control score" placeholder="Enter Score" id="score4" name="score">
+                     </div>
+                     <div class="ans ans5">
+                     <input type="text" class="form-control rp_answer" placeholder="Enter Response5" id="response5" name="responseText">
+                     <input type="text" class="form-control score" placeholder="Enter Score" id="score5" name="score">
+                     </div>
+                     </li> -->
+                      </ul>
+					</div>
+					 <!-- <div class="buttons">
+						<a href="javascript:;" class="pull-left form-control addbtn prevbtn" id="prevbtn" tabindex="540">Previous</a>	
+						<a href="javascript:;" class="pull-left form-control addbtn nxtbtn" id="nxtbtn" tabindex="541">Save & Next</a>
+						<a href="javascript:;" class="pull-left form-control addbtn svebtn" id="svebtn" tabindex="542">Save</a>	
+						<a href="javascript:;" class="pull-left form-control addbtn finbtn" id="finbtn" tabindex="543">Finalize</a>					
+					</div>  -->
+					   <div class="form-group">
+					   <div class="col-sm-11">
+					    <button type="button" class="pull-left form-control addbtn prevbtn" id="prevbtn"  tabindex="540">Previous</button>
+ 					    <button type="button" class="pull-left form-control addbtn nxtbtn"  id="nxtbtn"   tabindex="540">Next</button>
+					    <button type="button" class="pull-left form-control addbtn finbtn"  id="finbtn"   tabindex="540">Finish</button>
+                      </div>
+				      </div>
+					
+				   <!--  <div>
+					<button type="button" class="pull-left  btn prevbtn" id="prevbtn" tabindex="540">Previous</button>
+					<button type="button" class="pull-left  btn nxtbtn"  id="nxtbtn"  tabindex="541">Save & Next</button>
+					<button type="button" class="pull-left  btn svebtn"  id="svebtn"  tabindex="542">Save</button>
+					<button type="button" class="pull-left  btn finbtn"  id="finbtn"  tabindex="543">Finalize</button>
+
+				   </div>
+				 -->
+								
+				</div>
+				
+			</div>		
+		</form>
+	</div> 
+	<!-- <div class="rp_questions_list">
+		<form class="form-horizontal" action="#" id="idRiskprofile">
+		<div class="form-group question_add">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				
+				<div class="col-sm-11">
+				<div class="questions_rp">
+					<div class="q_num"><span>Question <span class="iterating_q">1</span> of <span class="total_q"></span></span></div>
+				    
+					<input type="hidden" value="1" class="hidden_input" name="">
+					<ul>
+
+                    <li>
+                    <div>
+                    <input type="text" class="form-control" placeholder="Enter Question" id="question" name="question"></div>
+                     <div class="ans ans1">
+                     <input type="text" class="form-control rp_answer" placeholder=" Enter Response1" id="response1" name="responseText">
+                     <input type="text" class="form-control score" placeholder="Enter Score" id="score1" name="score">
+                     </div>
+                     <div class="ans ans2">
+                     <input type="text" class="form-control rp_answer" placeholder="Enter Response2" id="response2" name="responseText">
+                     <input type="text" class="form-control score" placeholder="Enter Score" id="score2" name="score">
+                     </div>
+                     <div class="ans ans3">
+                     <input type="text" class="form-control rp_answer" placeholder="Enter Response3" id="response3" name="responseText">
+                     <input type="text" class="form-control score" placeholder="Enter Score" id="score3" name="score">
+                     </div>
+                     <div class="ans an4">
+                     <input type="text" class="form-control rp_answer" placeholder="Enter Response4" id="response4" name="responseText">
+                     <input type="text" class="form-control score" placeholder="Enter Score" id="score4" name="score">
+                     </div>
+                     <div class="ans ans5">
+                     <input type="text" class="form-control rp_answer" placeholder="Enter Response5" id="response5" name="responseText">
+                     <input type="text" class="form-control score" placeholder="Enter Score" id="score5" name="score">
+                     </div>
+                     </li>
+                      </ul>
+					</div>
+					 <div class="buttons">
+						<a href="javascript:;" class="pull-left form-control addbtn prevbtn" id="prevbtn" tabindex="540">Previous</a>	
+						<a href="javascript:;" class="pull-left form-control addbtn nxtbtn" id="nxtbtn" tabindex="541">Save & Next</a>
+						<a href="javascript:;" class="pull-left form-control addbtn svebtn" id="svebtn" tabindex="542">Save</a>	
+						<a href="javascript:;" class="pull-left form-control addbtn finbtn" id="finbtn" tabindex="543">Finalize</a>					
+					</div> 
+					
+				    <div>
+					<button type="button" class="pull-left  btn prevbtn" id="prevbtn" tabindex="540">Previous</button>
+					<button type="button" class="pull-left  btn nxtbtn" id="nxtbtn" tabindex="541">Save & Next</button>
+					<button type="button" class="pull-left  btn svebtn" id="svebtn" tabindex="542">Save</button>
+					<button type="button" class="pull-left  btn finbtn" id="finbtn" tabindex="543">Finalize</button>
+
+				   </div>
+				
+								
+				</div>
+				
+			</div>		 
+		</form>
+	</div>-->
+	</div>

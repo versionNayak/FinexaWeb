@@ -1,0 +1,84 @@
+<script src="MF/Mfjs/validateAUMReport.js"></script>
+<script src="MF/Mfjs/aumReport.js"></script>
+<div class="MFforms">
+	<h4 class="formhead">Select Parameters						
+	</h4>
+	<form class="form-horizontal marginleft10per" action="#" id="idAumReportForm">
+						<div class="form-group">
+							<span class="formentry-errmsg" id="alertform"></span>
+							<div>
+								<label>Family/Client *:</label>
+								<span class="form-static-value">
+									<select class="form-control input-width-medium" id="idClients" name="clientId" tabindex="1">
+										<option value="">Select</option>
+									</select>
+									<span class="formentry-errmsg" id="alertClients"></span>
+								</span>
+							</div>
+							<br/>
+							<div id="familyCover" class="form-group form-group-lg">
+								<div class="col-sm-8 asset-owner-wrapper">
+									<label>Family Member:</label><br/>
+										<table class="familymembertbl" width="20px">
+											<tr class="mem_icon"  id="familyMemberCheckBox">
+											</tr>
+										</table>
+										<span class="formentry-errmsg" id="alertFamilyMembers"></span>
+								</div>
+							</div>
+							<br/>
+							<div>
+								<label>As on date*:</label>
+									<p id="idAsOnDateGroup" class="input-group input-width-medium">
+										<input type="text" class="form-control" id="idAsOnDate" name="asOnDate" placeholder="DD/MM/YYYY" tabindex="2">
+										<span class="input-group-btn datepicker-icon">
+											<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select As On Date"><em class="glyphicon calendar-icon-theme"></em></button>
+										</span>
+									</p>
+									<span class="formentry-errmsg" id="alertAsOnDate"></span>
+							</div>
+							<br/>
+							<div>
+							<label>Select Mutual Fund:</label>
+								<span class="form-static-value" id="idFundHouse" >
+									<select class="form-control input-width-medium" id="idFHouse" name="fundHouse" tabindex="3" style="width: auto">
+										<option value="">Select Mutual Fund</option>
+									</select>
+									<span class="formentry-errmsg" id="alertFHouse"></span>
+								</span>
+							</div>		
+							<br/>
+							<div>
+							<label>Select Scheme:</label>
+								<span class="form-static-value" id="idSchemeName" >
+									<select class="form-control input-width-medium" id="idSName" name="schemeName" tabindex="4" style="width: auto">
+										<option value="">Select Scheme</option>
+									</select>
+									<span class="formentry-errmsg" id="alertSName"></span>
+								</span>
+							</div>	
+							<br/>
+							<div class="col-sm-6" style="text-align: left;z-index:1;padding-top: 7px;margin-top:-13px;font-style:bold"> 
+								<input type="button" class="pull-left btn addbtn" id="showReport" tabindex="5" value="View Report" style="width:9em;font-style:bold;float:right;margin-left:0em"/> 
+							</div>
+							<br/><br/>
+							<div id="idRadioReportFormat">
+								<label>Selection*:</label>
+								<p id="idReportFormatRadioGroup" style="margin-bottom:0px;width:15%">
+									<input id="idExcel" name="reportFormat" type="radio" value="excel" tabindex="6" /> Excel  &nbsp;&nbsp;&nbsp; 
+									<input id="idPDF" name="reportFormat" type="radio" value="pdf" tabindex="7" /> PDF &nbsp;&nbsp;&nbsp;
+								</p>
+								<span class="formentry-errmsg" id="alertReportFormat"></span>
+	    					</div>
+	    					<br/>
+	    					<div class="col-sm-6" style="text-align: left;z-index:1;padding-top: 7px;margin-top:-13px;font-style:bold"> 
+	    						<input type="button" class="btn addbtn" id="exportReport" value="Export Report" tabindex="8" style="width:9em"/>
+							</div>
+							
+							<div id="wait" style="width: 100%; height: 100%; top: 100px; left: 0px; position: fixed; z-index: 10000; text-align: center;">
+				            	<img src="../Common/assets/images/loader_finexa.gif" width="45" height="45" alt="Loading..." style="position: fixed; top: 50%; left: 50%;"/>
+							</div>
+							
+						</div>
+	</form>
+</div>

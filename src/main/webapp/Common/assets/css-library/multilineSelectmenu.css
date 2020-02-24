@@ -1,0 +1,8 @@
+.ui-selectmenu-menu-item-header {
+    display: block;
+    font-weight: bold;
+}
+
+.ui-selectmenu-menu-item-content {
+    display: block;
+}

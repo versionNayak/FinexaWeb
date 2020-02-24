@@ -1,0 +1,240 @@
+
+
+<div class="cicontainer" width="900px" style="overflow:scroll;">
+<!-- ============================================== -->
+<div>
+	<form class="form-horizontal" id="adminPanel" action="#">
+		
+		<div class="form-group">
+			<label for="userStatus" class="col-sm-1 control-label"></label>
+			<div class="col-sm-11">
+			<label>Search Users By Status:</label>
+			<span class="form-static-value">
+			<select class="form-control input-width-medium" id="idStatus" name="userStatus" onchange="change()" tabindex="">
+			  <!-- <option value="" disabled selected>Select User Type</option> -->	
+			  <option value="" disabled selected>Select</option>				
+			  <option value="active">Active</option>
+			  <option value="inactive">Inactive</option>
+			</select>
+			<span class="formentry-errmsg" id="alertUserStatus"></span>
+			</span>
+		</div>
+		</div>
+		
+		<div>
+			<label for="userStatus" class="col-sm-1 control-label"></label>
+			<div class="col-sm-11">
+			<label style = "margin-left:85px; font-size:14px">Or</label>
+			</div>
+		</div>
+		
+		<div class="form-group" style = "margin-top:45px">
+			<label for="userID" class="col-sm-1 control-label"></label>
+			<div class="col-sm-11">
+			<label>Search Users By ID:</label>
+			<span class="form-static-value">
+			<select class="form-control orgname input-width-medium" id="idUserID" name="userID" onchange="change()" tabindex="">					
+			  <option value="" disabled selected>Select</option>
+			</select>
+			<span class="formentry-errmsg" id="alertUserName"></span>
+			</span>
+		</div>
+		</div>
+		
+		<div class="form-group" style = "margin-top:30px">
+		<div class="col-sm-offset-1 col-sm-11">
+			<input type="button" class="pull-left btn addbtn" id="idsubmit" name="Submit" value= "Submit" onclick="show()">
+			<input type="button" class="pull-left btn addbtn" id="idclear" name="clear" value= "Clear" onclick="">
+		</div>
+		</div>
+		
+		<div>
+			<label for="userStatus" class="col-sm-1 control-label"></label>
+			<div class="col-sm-11">
+			<label id = "idMessage" style = "margin-top:10px;margin-left:-15px; font-size:15px">Please tick the users you want to change status of and submit:</label>
+			</div>
+		</div>
+		
+	</form>
+	
+	<div class="col-sm-11">
+		<table id="idTable" style = "margin-left:28px" width="80%" class="table table-hover" >
+	    	<thead>
+				<tr>
+					<th>Advisor Name</th>
+					<th>Email</th>
+					<th>Status</th>
+					<th>Change</th>
+				</tr>
+			</thead>
+			<tbody id="idClientListPaginate">
+			</tbody>
+		</table>
+	</div>
+	
+	<div class="form-group" style = "margin-top:30px">
+		<div class="col-sm-offset-1 col-sm-11">
+			<input type="button" style = "margin-left:230px" class="pull-left btn addbtn" id="idChange" name="Cahnge" value= "Change" onclick="change()">
+		</div>
+		</div>
+</div>
+</div>
+
+<script>
+
+var loggedUser = JSON.parse(sessionStorage.getItem("LOGGED_IN_USER"));
+var id=loggedUser.id;
+var userName = [];
+var userEmail = []
+var activeFlag = [];
+var idArray = []
+
+
+$(document).ready(function(event) {
+	$("#idMessage").hide();
+	$("#idTable").hide();
+	$("#idChange").hide();
+	
+	getClientData("GET", "" , "getUserList/" + id, onGetDropDownSuccess);
+	//alert("Status "+$("#idStatus").val())
+	//alert("userID "+$("#idUserID").val())
+});
+
+function onGetDropDownSuccess(data) {
+	
+	$.each(data, function (index, fund) {
+		
+		userName[fund.id] = fund.userName;
+		userEmail[fund.id] = fund.emailID;
+		activeFlag[fund.id] = fund.activeFlag;
+		
+		$("#idUserID").append($('<option>', { 
+	        value: fund.id,
+	        text : fund.emailID
+	    }));
+	 });
+}
+
+function change() {
+	if ($("#idStatus").val() != null) {
+		//alert("here")
+		$("#idStatus").attr("disabled", false);
+		$("#idUserID").attr("disabled", true);
+		
+	}
+	if ($("#idUserID").val() != null) {
+		//alert($("#idUserID").val())
+		$("#idUserID").attr("disabled", false);
+		$("#idStatus").attr("disabled", true);
+	}
+}
+
+function show() {
+	if ($("#idStatus").val() != null) {
+		//alert("here")
+		$("#idStatus").attr("disabled", false);
+		$("#idUserID").attr("disabled", true);
+		
+		if ($("#idStatus").val() === "active") {
+			getClientData("GET", "" , "getAllActiveUsersByUnderAdvisorAdmin/" + id, onGetDataSuccess);
+		} else if ($("#idStatus").val() === "inactive") {
+			getClientData("GET", "" , "getAllInactiveUsersByUnderAdvisorAdmin/" + id, onGetDataSuccess);
+		}
+	}
+	if ($("#idUserID").val() != null) {
+		//alert($("#idUserID").val())
+		$("#idUserID").attr("disabled", false);
+		$("#idStatus").attr("disabled", true);
+		
+		if (activeFlag[$("#idUserID").val()] === "N") {
+			var status = "Deactive";
+		} else {
+			var status = "Active";
+		}
+		
+		$("#idClientListPaginate").empty();
+		var i = 0;
+		$("#idClientListPaginate").append('<tr id="'+ $("#idUserID").val() +'">' +
+				'<td>' + userName[$("#idUserID").val()] + '</td>' +
+				'<td>' + userEmail[$("#idUserID").val()] + '</td>' +
+				'<td>' + status + '</td>' +
+				'<td><input type="checkbox" id = "idCheckbox'+ i +'" value ="'+ $("#idUserID").val() +'"/></td>' +
+		'</tr>');
+		$("#idMessage").show();
+		$("#idTable").show();
+		$("#idChange").show();
+	}
+}
+
+$("#idclear").on("click", function(event) {
+	//alert("inside")
+	$("#idStatus").attr("disabled", false);
+	$("#idUserID").attr("disabled", false);
+	
+	document.getElementById('idStatus').value = "";
+	document.getElementById('idUserID').value = "";
+	
+	$("#idMessage").hide();
+	$("#idTable").hide();
+	$("#idChange").hide();
+});
+
+function onGetDataSuccess(data) {
+	if (data.length == 0) {
+		bootbox.alert("No data found")
+		$("#idMessage").hide();
+		$("#idTable").hide();
+		$("#idChange").hide();
+	} else {
+		$("#idClientListPaginate").empty();
+		var i = 0;
+		$.each(data, function (index, users) {
+				
+				//alert(users.advisorAdmin)
+				if(users.activeFlag == "Y") {
+			    		var status = "Active";
+			    		//var buttonName = "Deactivate";
+			    } else {
+			    		var status = "Deactive";
+			    		//var buttonName = "Activate";
+			    }
+				
+				$("#idClientListPaginate").append('<tr id="'+ users.id +'">' +
+						'<td>' + users.firstName + " " + users.lastName + '</td>' +
+						'<td>' + users.emailID + '</td>' +
+						'<td>' + status + '</td>' +
+						'<td><input type="checkbox" id = "idCheckbox'+ i +'" value ="'+ users.id +'"/></td>' +
+				'</tr>');
+				i++;
+		});
+		$("#idMessage").show();
+		$("#idTable").show();
+		$("#idChange").show();
+	}
+}
+
+$("#idChange").on("click", function(event) {
+	idArray = [];
+	var table = document.getElementById("idClientListPaginate");
+	var index = 0;
+	for (var i = 0, row; row = table.rows[i]; i++) {
+	   if($("#idCheckbox"+i).is(":checked")){
+		   idArray[index] = $("#idCheckbox"+i).val();
+		   index++;
+	   }
+	}
+	//alert("checked " + idArray)
+	var data = JSON.stringify(idArray);
+	getClientData("POST", data , "changeUserActiveStatus", onGetChangeSuccess);
+	
+});
+
+function onGetChangeSuccess(data) {
+	bootbox.alert('User Status successfully changed');
+	$("#idBusiness").load("userManagement/activateDeactivateUsers.html");
+	//window.location = "/userManagement/activateDeactivateUsers.html";
+}
+
+</script>
+
+

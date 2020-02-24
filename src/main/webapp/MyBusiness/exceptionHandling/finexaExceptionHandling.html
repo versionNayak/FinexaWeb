@@ -1,0 +1,105 @@
+<script src="exceptionHandling/js/finexaExceptionHandling.js"></script>
+<script src="MF/Mfjs/validationForAll.js"></script>
+<div class="MFforms">
+<form class="form-horizontal marginleft10per" id="idAddExceptionForm" action="#">
+			
+			<div id="MN" class="form-group">
+				<div class="col-sm-12">
+					<label>Module Name*:</label>
+								<span class="form-static-value" id="idModuleName" >
+									<select class="form-control input-width-medium" id="idMName" name="moduleName" required="required" tabindex="1">
+									</select>
+									<span class="formentry-errmsg" id="alertMName"></span>
+								</span>
+				</div>
+			</div>
+			
+			<div id="SMN" class="form-group">
+				<div class="col-sm-12">
+					<label>Sub Module Name*:</label>
+								<span class="form-static-value" id="idSubModuleName" >
+									<select class="form-control input-width-medium" id="idSMName" name="subModuleName" required="required" tabindex="2">
+										<option value="0">Sub Module Name</option>
+									</select>
+									<span class="formentry-errmsg" id="alertSMName"></span>
+								</span>
+				</div>
+			</div>
+			
+			<div id="FISM" class="form-group">
+				<div class="col-sm-12">
+					<label>Function In SubModule*:</label>
+					<span class="form-static-value" id="idFunction" >
+									<select class="form-control input-width-medium" id="idFunctionName" name="functionName" required="required" tabindex="2">
+										<option value="0">Function In SubModule</option>
+									</select>
+									<span class="formentry-errmsg" id="alertFunctionName"></span>
+								</span>
+				</div>
+			</div>
+			
+			<div id="SFISM" class="form-group">
+				<div class="col-sm-12">
+					<label>Sub Function In SubModule*:</label>
+					<span class="form-static-value" id="idSubFunction" >
+									<select class="form-control input-width-medium" id="idSubFunctionName" name="subFunctionName" required="required" tabindex="2">
+										<option value="0">Sub Function In SubModule</option>
+									</select>
+									<span class="formentry-errmsg" id="alertSubFunctionName"></span>
+								</span>
+				</div>
+			</div>
+			
+			<div id="FE" class="form-group">
+				<div class="col-sm-12">
+					<label>Function Event*:</label>
+					<span class="form-static-value" id="idEvent" >
+									<select class="form-control input-width-medium" id="idFunctionEvent" name="functionEvent" required="required" tabindex="2">
+										<option value="0">Function Event In SubModule</option>
+									</select>
+									<span class="formentry-errmsg" id="alertFunctionEvent"></span>
+								</span>
+				</div>
+			</div>
+			
+			<div id="FSE" class="form-group">
+				<div class="col-sm-12">
+					<label>Function Sub Event:</label>
+					<span class="form-static-value" id="idSubEvent" >
+									<select class="form-control input-width-medium" id="idFunctionSubEvent" name="functionSubEvent" required="required" tabindex="2">
+										<option value="0">Function Sub Event In SubModule</option>
+									</select>
+									<span class="formentry-errmsg" id="alertFunctionSubEvent"></span>
+								</span>
+				</div>
+			</div>
+			
+			<div id="EC" class="form-group">
+				<div class="col-sm-12">
+					<label>Error Code*:</label>
+					<p class="input-group input-width-medium">
+						<input type="text" class="form-control valid-state" id="idErrorCode" name="errorCode" placeholder="Enter Error Code" tabindex="3">
+					</p>
+					<span class="formentry-errmsg" id="alertErrorCode"></span>
+				</div>
+			</div>
+			
+			<div id="ED" class="form-group">
+				<div class="col-sm-12">
+					<label>Error Message*:</label>
+					<p class="input-group input-width-medium">
+						<input type="text" class="form-control valid-state" id="idErrorMessage" name="errorMessage" placeholder="Enter Error Message" tabindex="5">
+					</p>
+					<span class="formentry-errmsg" id="alertErrorMessage"></span>
+				</div>
+			</div>
+		
+		<div class="clearfix"></div>
+    	<br>
+    		<div id="idButton" class="form-group">
+				<div class="col-sm-offset-1 col-sm-11">
+					<input id="idAddExceptions" type="button" value="Save" class="form-control addbtn" tabindex="6"/>
+				</div>
+	 	 	</div>
+</form>
+</div>

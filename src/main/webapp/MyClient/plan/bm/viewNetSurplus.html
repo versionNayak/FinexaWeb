@@ -1,0 +1,462 @@
+<script src="plan/bm/js/viewNetSurplus.js"></script>
+<script src="plan/bm/js/common.js"></script>
+<style>
+	.top30negtive[style]{
+		top: -30px !important;
+	}
+</style>
+<div id="jssor_14" class="height413px">
+	<div data-u="slides" class="slider9" style="height: 400px; top: 30px">
+		<div id="idNetDiv">
+			<div data-u="image">
+				<div id="idMaxSurplus" class="popup" style="position: relative; top: 23px; left: 35px">
+					<img src="../Common/assets/images/maximg.png" class="maxbtn" />
+				</div>
+
+				<table class="netsurplurtbls" id="idNetsurplusTable" style="width: 64%">
+					<thead>
+						<tr>
+							<th></th>
+							<th>Amount(Rs)</th>
+							<th>% of Total</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr></tr>
+						<tr class="classSalary">
+							<td>Salary Income</td>
+							<td id="salaryAmountnet"></td>
+							<td id="salaryPercentnet"></td>
+						</tr>
+						<tr class="classBonus">
+							<td>Bonus Income/Variable Pay</td>
+							<td id="bonousAmountnet"></td>
+							<td id="bonousPercentnet"></td>
+						</tr>
+						<tr class="classProf">
+							<td>Professional Fees</td>
+							<td id="profFessnet"></td>
+							<td id="profPercentnet"></td>
+						</tr>
+						<tr class="classBuss">
+							<td>Business Income</td>
+							<td id="bussIncomenet"></td>
+							<td id="bussPercentnet"></td>
+						</tr>
+						<tr class="classRent">
+							<td>Rental Income</td>
+							<td id="rentIncomenet"></td>
+							<td id="rentIncomePercentnet"></td>
+						</tr>
+						<tr class="classPension">
+							<td>Pension</td>
+							<td id="pensionnet"></td>
+							<td id="pensionPercentnet"></td>
+						</tr>
+						<tr class="classOther">
+							<td>Other Income</td>
+							<td id="otherIncomenet"></td>
+							<td id="otherIncomePercentnet"></td>
+						</tr>
+						<tr class="classInterest">
+							<td>Interest Income</td>
+							<td id="interestIncomenet"></td>
+							<td id="interestIncomePercentnet"></td>
+						</tr>
+						<tr class="classIndTotal">
+								<td>Individual Total Income</td>
+								<td id="indTotalIncomenet"></td>
+								<td id="indTotalIncomePercentnet"></td>
+						</tr>
+						
+						<tr class="nonglidtotal">
+							<td><b>Total Income</b></td>
+							<td><b id="totalIncomenet"></b></td>
+							<td><b id="totalIncomePercentnet"></b></td>
+						</tr>
+					</tbody>
+				</table>
+
+				<table width="64%" class="netsurplurtbls" id="idNetSurplusExpenseTable">
+					<thead>
+						<tr>
+							<th colspan="3" class="textalignlft">Less:</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr></tr>
+						<tr class="classLivingExp">
+							<td>Living Expenses</td>
+							<td id="id_LivingExpenses_amt_ns"></td>
+							<td id="id_LivingExpenses_tp_ns"></td>
+						</tr>
+						<tr class="classDiscreExp">
+							<td>Discretionary Expenses</td>
+							<td id="id_DiscretionaryExpenses_amt_ns"></td>
+							<td id="id_DiscretionaryExpenses_tp_ns"></td>
+						</tr>
+						<tr class="nonglidtotal">
+							<td><b>Total Expenses</b></td>
+							<td><b id="id_TotalExpenses_summ_amt_ns"></b></td>
+							<td><b id="id_TotalExpenses_summ_tp_ns"></b></td>
+						</tr>
+					</tbody>
+				</table>
+
+				<table width="64%" class="netsurplurtbls" id="idNetSurplusCOTable">
+					<thead>
+
+						<tr>
+							<th colspan="3" class="textalignlft">Less:</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr></tr>
+						<tr class="classCO">
+							<td>Committed Outflows</td>
+							<td id="id_committed_outflows_net"></td>
+							<td id="id_committed_outflows_net_perc"></td>
+						</tr>
+						<tr class="nonglidtotal">
+							<td><b>Total </b></td>
+							<td><b id="id_total_co_net"></b></td>
+							<td><b id="id_total_co_net_perc"></b></td>
+						</tr>
+					</tbody>
+				</table>
+
+				<table width="64%" class="netsurplurtbls" id="idNetSurplusLoanTable">
+					<thead>
+
+						<tr>
+							<th colspan="3" class="textalignlft">Less:</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr></tr>
+						<tr class="classEMI">
+							<td>EMI</td>
+							<td id="idEmiAmount"></td>
+							<td id="idEmiPercentage"></td>
+						</tr>
+						<tr class="classInterestPayment">
+							<td>Other Interest Payments</td>
+							<td id="idInterestPayment"></td>
+							<td id="idInterestPercentage"></td>
+						</tr>
+						<tr class="classPrincipalPayment">
+							<td>Other Principal Payments</td>
+							<td id="idPrincipalPayment"></td>
+							<td id="idPrincipalPercentage"></td>
+						</tr>
+						<tr class="nonglidtotal">
+							<td><b>Total</b></td>
+							<td><b id="idTotalLoans"></b></td>
+							<td><b id="idTotalLoansPerc"></b></td>
+						</tr>
+						<tr>
+							<td></td>
+						</tr>
+						<tr class="classNetSurplus">
+							<td><b>Net Surplus</b></td>
+							<td><b id="idTotalNetSulplus"></b></td>
+							<td><b id="idTotalNetSulplusPerc"></b></td>
+						</tr>
+					</tbody>
+				</table>
+				<br /> <br />
+				<div style="height: 60px" hidden></div>
+
+			</div>
+			<button data-u="thumb" name="but1">Current NetSurplus</button>
+		</div>
+
+		<div id="idNetDivProj">
+			<div data-u="image">
+				<div id="idMaxSurplusProj" class="popup" style="position: relative; top: 21px; left: 35px">
+					<img src="../Common/assets/images/maximg.png" class="maxbtn"/>
+				</div>
+
+				<table width="85%" id="idNetSurplusProjectionTable" class="netsurplusproj">
+					<thead>
+						<tr>
+							<th>Year</th>
+							<th>Income</th>
+							<th>Expenses</th>
+							<th>Committed Outflows</th>
+							<th>Loan Outflow</th>
+							<th>Net Surplus</th>
+						</tr>
+					</thead>
+					<tbody id="idNetProjection">
+
+					</tbody>
+				</table>
+				<br />
+				<table width="46%" style="margin-left: 150px">
+					<tr>
+						<td><b>Download Projections</b></td>
+						<!-- <td><input type="radio" id="idMonthlyRadio" name="download"
+							style="position: sticky"></input></td>
+						<td style="text-align: left; vertical-align: bottom;"><label>Monthly</label></td> -->
+						<td><input type="radio" id="idYearlyRadio" name="download"
+							style="position: sticky" checked="true"></input></td>
+						<td style="text-align: left; vertical-align: bottom;"><label>Annually</label></td>
+						<td><input type="submit" value="Save" id="idDownload"
+							class="form-control"></td>
+					</tr>
+				</table>
+                <div style="height: 60px" hidden></div>
+			</div>
+			<button data-u="thumb" name="but2">NetSurplus Projections</button>
+		</div>
+		<div id="idNetDivGraph">
+			<div data-u="image">
+				<div id="idnet"></div>
+			</div>
+			<button data-u="thumb" name="but3">NetSurplus Projections Graph</button>
+		</div>
+
+	</div>
+	<!-- Thumbnail Navigator -->
+	<div data-u="thumbnavigator" class="jssort14" data-autocenter="1">
+		<!-- Thumbnail Item Skin Begin -->
+		<div data-u="slides">
+			<div data-u="prototype" class="p">
+				<div>
+					<div data-u="thumbnailtemplate"></div>
+				</div>
+				<div></div>
+			</div>
+		</div>
+		<!-- Thumbnail Item Skin End -->
+	</div>
+	<!-- Arrow Navigator -->
+	<span data-u="arrowleft" class="jssora05l netleft"><img
+		src="../Common/assets/images/leftarrow.png" /></span> <span
+		data-u="arrowright" class="jssora05r netright"><img
+		src="../Common/assets/images/rightarrow.png" /></span>
+</div>
+
+
+<!--income projection max table-->
+<div id="idPopSurplus" class="modal">
+
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close">&times;</span>
+			<h2></h2>
+		</div>
+		<div class="modal-body">
+			<table width="50%" id="idNetsurplusTableModal" class="netsurplurtbls" style="margin-left: 311px">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Amount(Rs)</th>
+						<th>% of Total Income</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr></tr>
+					<tr class="classSalaryModal">
+						<td>Salary Income</td>
+						<td id="idSalModal">1,200,000</td>
+						<td id="idSalModalPerc">75.00%</td>
+					</tr>
+					<tr class="classBonusModal">
+						<td>Bonus Income/Variable Pay</td>
+						<td id="idBonusModal">100,000</td>
+						<td id="idBonusModalPerc">6.25%</td>
+					</tr>
+					<tr class="classProfModal">
+						<td>Professional Fees</td>
+						<td id="idProfModal">120,000</td>
+						<td id="idProfModalPerc">7.50%</td>
+					</tr>
+					<tr class="classBussModal">
+						<td>Business Income</td>
+						<td id="idBussModal">60,000</td>
+						<td id="idBussModalPerc">3.75%</td>
+					</tr>
+					<tr class="classRentModal">
+						<td>Rental Income</td>
+						<td id="idRentModal">120,000</td>
+						<td id="idRentModalPerc">7.50%</td>
+					</tr>
+					<tr class="classPensionModal">
+						<td>Pension</td>
+						<td id="idPensionModal">-</td>
+						<td id="idPensionModalPerc">0.00% </label></td>
+					</tr>
+					<tr class="classOtherModal">
+						<td>Other Income</td>
+						<td id="idOtherModal">-</td>
+						<td id="idOtherModalPerc">0.00%</td>
+					</tr>
+					<tr class="classInterestModal">
+						<td>Interest Income</td>
+						<td id="idInterestIncomeModal">-</td>
+						<td id="idInterestIncomeModalPerc">0.00%</td>
+					</tr>
+					<tr class="classIndTotalModal">
+								<td>Individual Total Income</td>
+								<td id="indTotalIncomenetModal">-</td>
+								<td id="indTotalIncomePercentnetModal">0.00%</td>
+						</tr>
+					<tr class="nonglidtotal">
+						<td><b>Total Income</b></td>
+						<td><b id="idTotalModal">1,600,000</b></td>
+						<td><b id="idTotalModalPerc">100.00%</b></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<table width="50%" class="netsurplurtbls" id="idNetSurplusExpenseTableModal" style="margin-left: 311px">
+				<thead>
+					<tr>
+						<th colspan="3" class="textalignlft">Less:</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr></tr>
+					<tr class="classLivingExpModal">
+						<td>Living Expenses</td>
+						<td id="idLivingModal">1,200,000</td>
+						<td id="idLivingModalPerc">75.00%</td>
+					</tr>
+					<tr class="classDiscreExpModal">
+						<td>Discretionary Expenses</td>
+						<td id="idDiscreModal">100,000</td>
+						<td id="idDiscreModalPerc">6.25%</td>
+					</tr>
+					<tr class="nonglidtotal">
+						<td><b>Total Expenses</b></td>
+						<td><b id="idExpTotalModal"> 120,000 </b></td>
+						<td><b id="idExpTotalModalPerc"> 7.50%</b></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<table width="50%" class="netsurplurtbls" id="idNetSurplusCOTableModal" style="margin-left: 311px">
+				<thead>
+
+					<tr>
+						<th colspan="3" class="textalignlft">Less:</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr></tr>
+					<tr class="classCOModal">
+						<td>Committed Outflows</td>
+						<td id="idCommitedModal">1,200,000</td>
+						<td id="idCommitedModalPerc">75.00%</td>
+					</tr>
+					<tr class="nonglidtotal">
+						<td><b>Total </b></td>
+						<td><b id="idCommitedTotalModal">120,000 </b></td>
+						<td><b id="idCommitedTotalModalPerc">7.50%</b></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<table width="50%" class="netsurplurtbls" id="idNetSurplusLoanTableModal" style="margin-left: 311px">
+				<thead>
+
+					<tr>
+						<th colspan="3" class="textalignlft">Less:</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr></tr>
+					<tr class="classEMIModal">
+						<td>EMI</td>
+						<td id="idEmiModal">1,200,000</td>
+						<td id="idEmiModalPerc">75.00%</td>
+					</tr>
+					<tr class="classInterestModal">
+						<td>Other Interest Payments</td>
+						<td id="idOtherInterestModal">100,000</td>
+						<td id="idOtherInterestModalPerc">6.25%</td>
+					</tr>
+					<tr class="classPrincipalModal">
+						<td>Other Principal Payments</td>
+						<td id="idOtherPrincipalModal">100,000</td>
+						<td id="idOtherPrincipalModalPerc">6.25%</td>
+					</tr>
+					<tr class="nonglidtotal">
+						<td><b>Total</b></td>
+						<td><b id="idLoanTotalModal"> 120,000 </b></td>
+						<td><b id="idLoanTotalModalPerc"> 7.50%</b></td>
+					</tr>
+					<tr>
+						<td></td>
+					</tr>
+					<tr class="classNetSurplusModal">
+						<td><b>Net Surplus</b></td>
+						<td><b id="idNetSurModal"> 339,323 </b></td>
+						<td><b id="idNetSurModalPerc"> 7.50%</b></td>
+					</tr>
+				</tbody>
+			</table>
+			<br />
+            <div style="height: 60px" hidden></div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<h3></h3>
+	</div>
+</div>
+
+
+<!--total Loan popup max-->
+<!--income projection max table-->
+<div id="idPopSurplusProj" class="modal1">
+
+	<!-- Modal content -->
+	<div class="modal-content1">
+		<div class="modal-header">
+			<span class="close1">&times;</span>
+			<h2></h2>
+		</div>
+		<div class="modal-body">
+			<table width="65%" id="idNetSurplusProjectionTableModal" class="netsurplusproj" style="margin-left: 285px">
+				<thead>
+					<tr>
+						<th>Year</th>
+						<th>Income</th>
+						<th>Expenses</th>
+						<th>Committed Outflows</th>
+						<th>Loan Outflow</th>
+						<th>Net Surplus</th>
+					</tr>
+				</thead>
+				<tbody id="idNetProjectionModal">
+				</tbody>
+			</table>
+			<br />
+			<table width="46%" style="margin-left: 355px">
+				<tr>
+					<td><b>Download Projections</b></td>
+					<!-- <td><input type="radio" id="idMonthlyRadioModal"
+						name="download" style="position: sticky"></input></td>
+					<td style="text-align: left; vertical-align: bottom;"><label>Monthly</label></td> -->
+					<td><input type="radio" id="idYearlyRadioModal"
+						name="download" style="position: sticky" checked="true"></input></td>
+					<td style="text-align: left; vertical-align: bottom;"><label>Annually</label></td>
+					<td><input type="submit" value="Save" id="idDownloadModal"
+						class="form-control"></td>
+				</tr>
+			</table>
+            <div style="height: 60px" hidden></div>
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+
+</div>

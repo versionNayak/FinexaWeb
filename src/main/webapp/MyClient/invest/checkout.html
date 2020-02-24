@@ -1,0 +1,431 @@
+<script src="MyClient/invest/js/verificationprocess.js"></script>
+<script src="invest/js/cart.js"></script>
+<script src="clientInfo/js/common.js"></script>
+
+<div class="cicontainer" style="height:265%">
+    <style>
+        .tab {
+            overflow: hidden;
+        }
+        /* Style the buttons inside the tab */
+        
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: 1px solid #ccc;
+            outline: none;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 15px;
+        }
+        /* Change background color of buttons on hover */
+        /* .tab button:hover {
+    background-color: ;
+} */
+        /* Create an active/current tablink class */
+        
+        .tab button.active {
+            background-color: #6eaee5;
+            color: white;
+        }
+        /* Style the tab content */
+        
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border-top: none;
+        }
+        /* Style the close button */
+        
+        .topright {
+            float: right;
+            cursor: pointer;
+            font-size: 28px;
+        }
+    </style>
+
+    <body>
+        <!--<table class="verificationpath">
+	<tr><td><button type="submit" style="width:90%" class="form-control addbtn pn" tabindex="540">CKYC</button></td><td><img src="../Common/assets/images/bluearrow.png" style="width: 80px;height: 21px;"/></td><td><button type="submit" style="width:55%;" class="form-control addbtn" tabindex="540">CC Creation</button></td><td><img src="../Common/assets/images/bluearrow.png" style="width: 80px;height: 21px;"/></td><td><button type="submit" style="width:97%" class="form-control greywhite" tabindex="540" disabled>FATCA</button></td><td><img src="../Common/assets/images/bluearrow.png" style="width: 80px;height: 21px;"/></td><td><button type="submit" style="width:113%" class="form-control greywhite" tabindex="540" disabled>ISIP</button></td></tr>
+	</table>-->
+        <label style="margin-left: 11px;">Select Mode of Investment </label>
+        <br/><br/>
+        <div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px">
+            <label class="control-label" for="schemeName" style="text-align:left;font-size:14px;font-weight: bold; margin-bottom: 5px;">Client Id(UCC)* </label><br/>
+            <span class="form-static-value" id="idSpamSchemeName">
+				<select style="padding-top: 2px"
+				class="form-control input-width-medium" id="idClientUCCCombo"
+				name="clientCode" tabindex="430">
+				</select>
+				<span class="formentry-errmsg" id="alertSchemeName"></span>
+            </span>
+        </div>
+        <br/><br/><br/><br/>
+        <div class="tab" style="padding:0px;margin-left: 11px;">
+            <button type="submit" style="width:15%;font-size:14px" class="form-control tablinks" onclick="openCity(event, 'lump')" tabindex="540" id="defaultOpen">Lumpsum</button>
+            <button type="submit" style="width:15%;margin-left: 11px;font-size:14px" onclick="openCity(event, 'sip')" class="form-control tablinks pandtl" tabindex="540" id="defaultOpen">SIP</button>
+            <button type="submit" style="width:15%;margin-left: 11px;font-size:14px" onclick="openCity(event, 'swt')" class="form-control tablinks bnkdtl" tabindex="540" id="defaultOpen">Switch</button>
+            <button type="submit" style="width:15%;margin-left: 11px;font-size:14px" onclick="openCity(event, 'stp')" class="form-control tablinks cont" tabindex="540" id="defaultOpen">STP</button>
+            <button type="submit" style="width:15%;margin-left: 11px;font-size:14px" onclick="openCity(event, 'swp')" class="form-control tablinks" tabindex="540" id="defaultOpen">SWP</button>
+            <!--   <button type="submit" style="width:15%;margin-left: 11px;font-size:14px" onclick="openCity(event, 'isip')" class="form-control tablinks" tabindex="540" id="defaultOpen">ISIP</button>
+ -->
+        </div>
+
+
+        <div id="lump" class="tabcontent">
+            <span onclick="this.parentElement.style.display='none'" class="topright"></span>
+
+
+            <table width="101%" class="">
+                <thead>
+                    <tr>
+                        <th>SR NO.</th>
+                        <th>AMC Name</th>
+                        <th>Scheme Name</th>
+                        <th>Scheme Type</th>
+                        <th>Amount Invested</th>
+                        <th>Units Purchased</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody id="idLumpsumCartOrderTBody">
+                </tbody>
+            </table>
+            <br/>
+            <button type="submit" style="width:40%" class="popup form-control addbtn" id="idLumpsum" tabindex="540">Proceed To Payment</button>
+        </div>
+
+
+        <div id="sip" class="tabcontent">
+            <span onclick="this.parentElement.style.display='none'" class="topright"></span>
+
+            <table width="101%" class="">
+                <thead>
+                    <tr>
+                        <th>SR NO.</th>
+                        <th>AMC Name</th>
+                        <th>Scheme name</th>
+                        <th>Scheme Type</th>
+                        <th>Registration Type</th>
+                        <th>Installment Amount</th>
+                        <th>No Of Installments</th>
+                        <th>Frequency</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody id="idSipCartOrderTBody">
+                </tbody>
+            </table>
+            <br/>
+            <button type="submit" style="width:40%" class="popup form-control addbtn " id="idSip" tabindex="540">Proceed To Payment</button></div>
+
+        <div id="swt" class="tabcontent">
+            <span onclick="this.parentElement.style.display='none'" class="topright"></span>
+
+            <table width="101%" class="">
+                <thead>
+                    <tr>
+                        <th>SR NO.</th>
+                        <th>AMC Name</th>
+                        <th>From Scheme Name</th>
+                        <th>To Scheme Name</th>
+                        <th>Switch Units</th>
+                        <th>Switch Amount</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody id="idSwitchCartOrderTBody">
+                </tbody>
+            </table>
+            <br/>
+            <!-- <button type="submit" style="width:23%;margin:auto;font-size:14px" class="form-control addbtn" tabindex="540">Proceed to Payment</button> -->
+            <button type="submit" style="width:40%" class="popup form-control addbtn" id="idSwitch" tabindex="540">Proceed To Payment</button>
+        </div>
+        <div id="stp" class="tabcontent">
+            <span onclick="this.parentElement.style.display='none'" class="topright"></span>
+
+            <table width="101%" class="">
+                <thead>
+                    <tr>
+                        <th>SR NO.</th>
+                        <th>AMC Name</th>
+                        <th>From Scheme Name</th>
+                        <th>To Scheme Type</th>
+                        <th>Transfer Amount</th>
+                        <th>Frequency Type</th>
+                        <th>Number Of Installments</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody id="idSTPCartOrderTBody">
+                </tbody>
+            </table>
+            <br/>
+            <!-- <button type="submit" style="width:23%;margin:auto;font-size:14px" class="form-control addbtn" tabindex="540">Proceed to Payment</button> -->
+            <button type="submit" style="width:40%" class="popup form-control addbtn" id="idStp" tabindex="540">View Investment</button>
+
+        </div>
+        <div id="swp" class="tabcontent">
+            <span onclick="this.parentElement.style.display='none'" class="topright"></span>
+
+            <table width="101%" class="">
+                <thead>
+                    <tr>
+                        <th>SR NO.</th>
+                        <th>AMC Name</th>
+                        <th>Scheme Name</th>
+                        <th>Scheme Type</th>
+                        <th>Withdrawal ATM</th>
+                        <th>Withdrawal Units</th>
+                        <th>Frequency Type</th>
+                        <th>Number Of Installments</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody id="idSWPCartOrderTBody">
+                </tbody>
+            </table>
+            <br/>
+            <!--  <button type="submit" style="width:23%;margin:auto;font-size:14px" class="form-control addbtn" tabindex="540">Proceed to Payment</button> -->
+            <button type="submit" style="width:40%" class="popup form-control addbtn" id="idSwp" tabindex="540">View Investment</button>
+
+        </div>
+
+        <div id="isip" class="tabcontent">
+            <span onclick="this.parentElement.style.display='none'" class="topright"></span>
+
+            <table width="101%" class="">
+                <thead>
+                    <tr>
+                        <th>SR NO.</th>
+                        <th>AMC Name</th>
+                        <th>Scheme Name</th>
+                        <th>Scheme Type</th>
+                        <th>Installment Amount</th>
+                        <th>Frequency Type</th>
+                        <th>Number Of Installments</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr></tr>
+                    <tr>
+                        <td>1
+                        </td>
+                        <td> Name
+                        </td>
+                        <td>Name
+                        </td>
+                        <td>Type
+                        </td>
+                        <td>2000
+                        </td>
+
+                        <td>Freq
+                        </td>
+                        <td>4
+                        </td>
+                        <td><input type="checkbox" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1
+                        </td>
+                        <td> Name
+                        </td>
+                        <td>Name
+                        </td>
+                        <td>Type
+                        </td>
+                        <td>2000
+                        </td>
+
+                        <td>Freq
+                        </td>
+                        <td>4
+                        </td>
+                        <td><input type="checkbox" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1
+                        </td>
+                        <td> Name
+                        </td>
+                        <td>Name
+                        </td>
+                        <td>Type
+                        </td>
+                        <td>2000
+                        </td>
+
+                        <td>Freq
+                        </td>
+                        <td>4
+                        </td>
+                        <td><input type="checkbox" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1
+                        </td>
+                        <td> Name
+                        </td>
+                        <td>Name
+                        </td>
+                        <td>Type
+                        </td>
+                        <td>2000
+                        </td>
+
+                        <td>Freq
+                        </td>
+                        <td>4
+                        </td>
+                        <td><input type="checkbox" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br/>
+            <button type="submit" style="width:40%" class="popup form-control addbtn" id="idInvest" tabindex="540">View Investment</button>
+        </div>
+
+
+</div>
+<div id="idPopUpProduct" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2></h2>
+        </div>
+        <div class="modal-body">
+            <table width="102%" class="marginleft8px productbl" id="idInvestTable">
+                <thead>
+                    <tr>
+                        <th class="textaligncenter">Scheme Name
+                        </th>
+                        <th class="textaligncenter">Order Status
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="idTBodyCart" style="overflow-y:scroll; overflow-x:scroll">
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <h3></h3>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+
+
+
+    function handleFileSelect(evt) {
+        var files = evt.target.files; // FileList object
+
+        // files is a FileList of File objects. List some properties.
+        var output = [];
+        for (var i = 0, f; f = files[i]; i++) {
+            output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                f.size, ' bytes, last modified: ',
+                f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+                '</li>');
+        }
+        document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+    }
+
+    document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+
+    function handleFileSelect(evt) {
+        evt.stopPropagation();
+        evt.preventDefault();
+
+        var files = evt.dataTransfer.files; // FileList object.
+
+        // files is a FileList of File objects. List some properties.
+        var output = [];
+        for (var i = 0, f; f = files[i]; i++) {
+            output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                f.size, ' bytes, last modified: ',
+                f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+                '</li>');
+        }
+        document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+    }
+
+    function handleDragOver(evt) {
+        evt.stopPropagation();
+        evt.preventDefault();
+        evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
+    }
+
+    // Setup the dnd listeners.
+    var dropZone = document.getElementById('drop_zone');
+    dropZone.addEventListener('dragover', handleDragOver, false);
+    dropZone.addEventListener('drop', handleFileSelect, false);
+
+    $(document).ready(function() {
+
+        $(".gotofacta").click(function() {
+            $("#idInvest").empty();
+
+            $(".dashboardheading").html("FATCA Declaration");
+            $("#idInvest").load("invest/fatca.html");
+        });
+        /*  $(".clientdtl").click(function(){
+          
+          $(".ctl").addClass("addbtn");
+            $(".pandtl").addClass("addbtn");
+          });
+          
+            $(".panfinish").click(function(){
+        		
+          $(".ctl").addClass("addbtn");
+            $(".pandtl").addClass("addbtn");
+        	$(".bnkdtl").addClass("addbtn");
+          });
+          
+           $(".contdtl").click(function(){
+        		
+          $(".ctl").addClass("addbtn");
+            $(".pandtl").addClass("addbtn");
+        	$(".bnkdtl").addClass("addbtn");
+        	$(".cont").addClass("addbtn");
+          });
+          
+          
+           $(".ckycdtlbtn").click(function(){
+        		
+          $(".ctl").addClass("addbtn");
+            $(".pandtl").addClass("addbtn");
+        	$(".bnkdtl").addClass("addbtn");
+        	$(".cont").addClass("addbtn");
+        	$(".ckycdtl").addClass("addbtn");
+          });
+          
+          $(".uploaddtl").click(function(){
+        		
+          $(".ctl").addClass("addbtn");
+            $(".pandtl").addClass("addbtn");
+        	$(".bnkdtl").addClass("addbtn");
+        	$(".cont").addClass("addbtn");
+        	$(".ckycdtl").addClass("addbtn");
+        	$(".uploadtl").addClass("addbtn");
+          });
+          
+        */
+
+    });
+</script>
+
+</body>

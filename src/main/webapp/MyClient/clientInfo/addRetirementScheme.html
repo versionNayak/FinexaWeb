@@ -1,0 +1,691 @@
+<script src="clientInfo/js/validatePPF.js"></script>
+<script src="clientInfo/js/validateEPF.js"></script>
+<script src="clientInfo/js/validateAnnuity.js"></script>
+<script src="clientInfo/js/validateAPY.js"></script>
+<script src="clientInfo/js/validateNPS.js"></script>
+<script src="clientInfo/js/validationForAll.js"></script>
+<script src="clientInfo/js/addRetirementScheme.js"></script> 
+<script src="clientInfo/js/common.js"></script>
+<div class="cicontainer">
+	<div>
+		<form class="form-horizontal" action="#" id="idAddRetirementForm">
+			<label class="col-sm-1 control-label"></label>
+			<div class="col-md-10 no_padding">
+				<input type ="hidden" id="idFinancialAssetType" name="financialAssetType" />
+				<input type ="hidden" id="idRetirementAge" name="retirementAge" />
+				<input type ="hidden" id="idLifeEx" name="retirementAge" />
+				<div class="form-group">
+					<div class="col-sm-12">
+						<span class="formentry-errmsg" id="alertform"></span>
+					</div>
+				</div>
+<!--
+****************************************************************************************************************************************************************************** 
+	 			EPF Sub-section                                                                                                                                                     
+****************************************************************************************************************************************************************************** 
+-->
+		        <div id='divEPF'> 
+		        <label>Click on the following link to access the EPF Passbook using UAN:</label><br/>
+	             <a href="https://passbook.epfindia.gov.in/MemberPassBook/Logout">https://passbook.epfindia.gov.in/MemberPassBook/Logout</a><br> 
+		        	<br>
+		        	<div class="form-group form-group-lg">
+						<div class="col-sm-8 asset-owner-wrapper">
+							<label>Financial Asset Owner:</label><br/>
+							<table class="familymembertbl" width="20px">
+								<tr class="mem_icon" id="familyMemberImageEPF">
+								</tr>
+							</table>
+						</div>
+					</div>
+					<hr class="full-width-divider">
+		 			<div class="form-group">
+						<div class="col-sm-12">
+						    <label>Current EPF Balance*:</label>
+							<input type="text" class="form-control input-width-medium"  id="idEpfCurrentBalance" name="epfCurrentBalance" onfocusout="maskAmount('#idEpfCurrentBalance')" placeholder="Current EPF Balance"  tabindex="1">
+							<span class="formentry-errmsg" id="alertepfCurrentBalance"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+						    <label>Current EPS Balance*:</label>
+							<input type="text" class="form-control input-width-medium" id="idEpsCurrentBalance" name="epsCurrentBalance" onfocusout="maskAmount('#idEpsCurrentBalance')" placeholder="Current EPS Balance"  tabindex="2">
+							<span class="formentry-errmsg" id="alertepsCurrentBalance"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+						    <label>Monthly Basic/Basic+DA*:</label>
+							<input type="text" class="form-control input-width-medium" id="idMonthlyBasicDA" name="monthlyBasicDA" onfocusout="maskAmount('#idMonthlyBasicDA')" placeholder="Monthly Basic/Basic+DA"  tabindex="3">
+							<span class="formentry-errmsg" id="alertmonthlyBasicDA"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+						    <label>Expected Increase in Contribution Annually(%)*:</label>
+							<input type="text" class="form-control input-width-medium" id="idAnnualContributionIncrease" name="annualContributionIncrease" placeholder=""  tabindex="4">
+							<span class="formentry-errmsg" id="alertannualcontributionincrease"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+						    <label>Expected EPFO Interest Rate(%)*:</label>
+							<input type="text" class="form-control input-width-medium" id="idEpfoInterestRate" name="epfoInterestRate" placeholder=""  tabindex="5" readonly>
+							<span class="formentry-errmsg" id="alertepfointerestrate"></span>
+						</div>
+					</div>
+					
+					<!-- Contribution Upto Age will be hidden , from Back it will pass retirement age -->
+					<!-- <div class="form-group">
+						<div class="col-sm-12">
+						    <label>Contributions Upto Age(years)*:</label>
+							<input type="text" class="form-control input-width-medium" id="idContributionUptoAge" name="contributionUptoAge" placeholder="Contribution upto Age"  tabindex="6">
+							<span class="formentry-errmsg" id="alertcontributionsuptoage"></span>
+						</div>
+					</div> -->
+					<input type="hidden" class="form-control input-width-medium" id="idContributionUptoAge" name="contributionUptoAge" placeholder="Contribution upto Age"  tabindex="6">
+					
+				<!-- EPF Withdrawal Age will be hidden , from Back it will pass retirement age -->
+					
+					<!-- <div class="form-group">
+						<div class="col-sm-12">
+						    <label>EPF Withdrawal Age(years)*:</label>
+							<input type="text" class="form-control input-width-medium" id="idEpfWithdrawalAge" name="epfWithdrawalAge" placeholder="EPF Withdrawal Age" tabindex="7">
+							<span class="formentry-errmsg" id="alertepfwithdrawalage"></span>
+						</div>
+					</div> -->
+					<input type="hidden" class="form-control input-width-medium" id="idEpfWithdrawalAge" name="epfWithdrawalAge" placeholder="EPF Withdrawal Age" tabindex="7">
+					
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>Salary Increase Reference Month*:</label>
+							<p id="idSalaryIncreaseRefMonthGroup" class="input-group input-width-medium">
+								<input type="text" class="form-control" id="idSalaryIncreaseRefMonth" name="salaryIncreaseRefMonth" placeholder="Month-YYYY" readonly tabindex="8">
+								<!-- <span class="input-group-btn datepicker-icon">
+									<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Reference Month"><em class="glyphicon calendar-icon-theme"></em></button>
+								</span> -->
+							</p>
+							<span class="formentry-errmsg" id="alertSIRM"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+						    <label>Number of Years of Service*:</label>
+							<input type="text" class="form-control input-width-medium" id="idServiceYears" name="serviceYears" placeholder="Years of service"  tabindex="9">
+							<span class="formentry-errmsg" id="alertserviceyears"></span>
+						</div>
+					</div>
+				</div>
+<!--
+****************************************************************************************************************************************************************************** 
+	 			PPF Sub-section                                                                                                                                                     
+****************************************************************************************************************************************************************************** 
+-->
+		        <div id='divPPF'>
+ 			        <div class="form-group form-group-lg">
+						<div class="col-sm-8 asset-owner-wrapper">
+								<label>Financial Asset Owner:</label><br/>
+								<table class="familymembertbl" width="20px">
+									<tr class="mem_icon" id="familyMemberImagePPF">
+									</tr>
+								</table>
+							</div>
+					</div>
+					<hr class="full-width-divider"> 
+					<div class="form-group">
+						<div class="col-sm-12">
+						    <label>PPF Current Balance*:</label>
+							<input type="text" class="form-control input-width-medium" id="idCurrentBalance" name="currentBalance" onfocusout="maskAmount('#idCurrentBalance')" placeholder="PPF Current Balance"  tabindex="11">
+							<span class="formentry-errmsg" id="alertppfcb"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>PPF Start Date*:</label>
+							<p id="idPPFStartDateGroup" class="input-group input-width-medium">
+								<input type="text" class="form-control" id="idStartDate" name="startDate" placeholder="DD/MM/YYYY" tabindex="12">
+								<span class="input-group-btn datepicker-icon">
+									<button type="button" id="idPPFStartDateCalendar" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Start Date"><em class="glyphicon calendar-icon-theme"></em></button>
+								</span>
+							</p>
+							<span class="formentry-errmsg" id="alertppfsd"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+						    <label>Planned Deposit Amount*:</label>
+							<input type="text" class="form-control input-width-medium"  id="idPlannedDepositAmount" name="plannedDepositAmount" onfocusout="maskAmount('#idPlannedDepositAmount')" placeholder="Deposit Amount"  tabindex="13">
+							<span class="formentry-errmsg" id="alertpda"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>Amount Deposit Frequency*:</label>
+							<span class="form-static-value" id="hide320" >
+								<select class="form-control input-width-medium" required="required" 
+								name="amountDepositFrequency" id="idAmountDepositFrequency" tabindex="14">
+					 			</select>
+							</span>
+							<span class="formentry-errmsg" id="alertppfdf"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+						    <label>PPF Tenure (Years):</label>
+							<input type="text" class="form-control input-width-medium"  id="idPPFTenure" name="ppfTenure" value="15"  tabindex="-1" readonly>
+							 <span class="formentry-errmsg" id="alertppftenure"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-6">
+						    <label>Interest Rate(%):</label>
+							<input type="text" class="form-control input-width-medium" readOnly id="idInterestRate" name="interestRate" placeholder="Interest Rate"  tabindex="-1">
+							<span class="formentry-errmsg" id="alertppfinterestrate"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>Compounding Frequency:</label>
+							<span class="form-static-value" id="hide320" >
+								<select class="form-control input-width-medium" name="compoundingFrequency" id="idCompoundingFrequency" required="required" tabindex="16">
+					 			</select>
+							</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>PPF Maturity Date:</label>
+							<input type="text" class="form-control input-width-medium" id="idMaturityDate" name="maturityDate" placeholder="DD/MM/YYYY" tabindex="-1" readonly>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+						   <label>PPF Extension:</label>
+							<div class="displayflex" id="idPPFExtensionRadioGroup">
+								<label class="radio-inline custom-radio-theme">
+									<input type="radio" id="idPPFExtensionY" name="extensionFlag" onchange="ExtClickAction();" value="Y" tabindex="18"/><i></i>Yes
+								</label>
+								<label class="radio-inline custom-radio-theme">
+										<input type="radio" id="idPPFExtension" name="extensionFlag" onchange="ExtClickAction();" value="N" tabindex="19"/><i></i>No
+								</label>
+							</div>
+							<span class="formentry-errmsg" id="alertppfext"></span>
+						</div>
+					</div>
+					<div id="idPPFYesExtensionDiv">
+						<div class="form-group">
+							<div class="col-sm-12">
+								<label>Extension Type :</label>
+								<span class="form-static-value" id="hide320" >
+									<select class="form-control input-width-medium" required="required" name="extTypeFlag" id="idExtTypeFlag" tabindex="20" >
+									<option value="Y" id="idppfExtension1">With Deposit</option>
+									<option value="N" id="idppfExtension2">Without Deposit</option>
+						 			</select>
+								</span>
+								<span class="formentry-errmsg" id="alertppfet"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+						    	<label>PPF Extension Current Balance*:</label>
+								<input type="text" class="form-control input-width-medium" id="idExtensionCurrentBalance" name="extensionCurrentBalance" onfocusout="maskAmount('#idExtensionCurrentBalance')" placeholder="PPF Current Balance"  tabindex="21">
+								<span class="formentry-errmsg" id="alertextcurbalance"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+						   		<label>Deposit Amount Ext Period:</label>
+								<input type="text" class="form-control input-width-medium"  id="idDepositAmountExt" name="depositAmountExt" placeholder="Deposit Amount"  tabindex="22">
+								<span class="formentry-errmsg" id="alertdaep"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+								<label>Amount Deposit Frequency:</label>
+								<span class="form-static-value" id="hide320" >
+									<select class="form-control input-width-medium" required="required" name="amountDepositFrequencyExt" id="idAmountDepositFrequencyExt" tabindex="23">
+						 			</select>
+						 			<span class="formentry-errmsg" id="alertAdfExt"></span>
+								</span>
+							</div>
+						</div>
+						
+						<div class="form-group">
+						<div class="col-sm-12">
+							<label>PPF Extension Start Date*:</label>
+							<p id="idExtPPFStartDateGroup" class="input-group input-width-medium">
+								<input type="text" class="form-control" id="idExtensionStartDate" name="extensionStartDate" placeholder="DD/MM/YYYY" tabindex="24">
+								<span class="input-group-btn datepicker-icon">
+									<button type="button" id="idPPFExtStartDateCalendar" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Extension Start Date"><em class="glyphicon calendar-icon-theme"></em></button>
+								</span>
+							</p>
+							<span class="formentry-errmsg" id="alertppfesd"></span>
+						</div>
+						</div>							
+						<!-- <div class="form-group">
+							<div class="col-sm-12">
+								<label>PPF Extension Start Date*:</label>
+								<p id="idExtPPFStartDateGroup" class="input-group input-width-medium">
+								<input type="text" class="form-control" id="idExtensionStartDate" name="extensionStartDate" placeholder="DD/MM/YYYY" tabindex="24">
+								<span class="input-group-btn datepicker-icon">
+								<button type="button" id="idPPFExtStartDateCalendar" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Start Date"><em class="glyphicon calendar-icon-theme"></em></button>
+								</span>
+								</p>
+								<span class="formentry-errmsg" id="alertppfesd"></span>
+							</div>
+						</div> -->
+						<div class="form-group">
+							<div class="col-sm-12">
+						   	 	<label>Interest Rate(%):</label>
+								<input type="text" class="form-control input-width-medium" id="idExtensionInterestRate" name="extensionInterestRate" placeholder="Interest Rate"  tabindex="-1"  readOnly>
+								<span class="formentry-errmsg" id="alertppfextinterestrate"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+								<label>Compounding Frequency:</label>
+								<span class="form-static-value" id="hide320" >
+									<select class="form-control input-width-medium" id="idExtensionCompoundingFrequency" name="extensionCompoundingFrequency" required="required" tabindex="26">
+						 			</select>
+								</span>
+							</div>
+						</div>
+						<!-- as per new Requirement given by Mihir sir, new dropdown added with specific values-->
+						<div class="form-group">
+							<div class="col-sm-12">
+								<label>Extension Tenure (Years):</label>
+								<span class="form-static-value" id="hide320" >
+									<select class="form-control input-width-medium" id="idExtensionTenure" name="extensionTenure" required="required" tabindex="-1">
+									<option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                    <option value="20">20</option>
+						 			</select>
+								</span>
+							</div>							
+						</div>
+						<!-- <div class="form-group">
+							<div class="col-sm-12">
+						   		<label>Extension Tenure (Years):</label>
+								<input type="text" class="form-control input-width-medium"  id="idExtensionTenure" name="extensionTenure" value="5"  tabindex="-1" readonly>
+								<span class="formentry-errmsg" id="alertppfexttenure"></span>
+							</div>
+						</div> -->
+					</div>
+		        </div>
+<!--
+****************************************************************************************************************************************************************************** 
+	 				NPS Sub-section                                                                                                                                                     
+****************************************************************************************************************************************************************************** 
+-->
+			        <div id='divNPS'>
+ 	 		        	<div class="form-group form-group-lg">
+							<div class="col-sm-12">
+								<label>Financial Asset Owner:</label><br/>
+								<table class="familymembertbl" width="20px">
+									<tr class="mem_icon" id="familyMemberImageNPS">
+									</tr>
+								</table>
+							</div>
+						</div> 
+						<hr class="full-width-divider">
+						<div class="form-group">
+							<div class="col-sm-12">
+							    <label>Current NPS Balance*:</label>
+								<input type="text" class="form-control input-width-medium"  
+								name="npsCurrentBalance" id="idNpsCurrentBalance" placeholder="Current NPS"  onfocusout="maskAmount('#idNpsCurrentBalance')" tabindex="28">
+								<span class="formentry-errmsg" id="alertcnpsb"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+							    <label>Employee Contribution(Rs)*:</label>
+								<input type="text" class="form-control input-width-medium" id="idEmployeeContribution" name="employeeContribution" onfocusout="maskAmount('#idEmployeeContribution')" placeholder="Employee Contribution"  tabindex="29">
+								<span class="formentry-errmsg" id="alertemployeec"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+								<label>Employee Contribution Frequency:</label>
+								<span class="form-static-value" id="hide320" >
+									<select class="form-control input-width-medium" id="idEmployeeContributionFrequency" name="employeeContributionFrequency" required="required" tabindex="30">
+						 			</select>
+								</span>
+							</div>							
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+							    <label>Employer Contribution(Rs)*:</label>
+								<input type="text" class="form-control input-width-medium" id="idEmployerContribution" name="employerContribution" onfocusout="maskAmount('#idEmployerContribution')" placeholder="Employer Contribution"  tabindex="31">
+								<span class="formentry-errmsg" id="alertemployerc"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+								<label>Employer Contribution Frequency:</label>
+								<span class="form-static-value" id="hide320" >
+									<select class="form-control input-width-medium" id="idEmployerContributionFrequency" name="employerContributionFrequency" required="required" tabindex="32">									
+						 			</select>
+								</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+							    <label>Expected Annual Increase in Contribution(%):</label>
+								<input type="text" class="form-control input-width-medium" id="idExpectedAnnualIncrease" name="expectedAnnualIncrease" placeholder="Expected Annual Increase" tabindex="34">
+								<span class="formentry-errmsg" id="alerteaiic"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+								<label>Plan Type:*</label>
+								<span class="form-static-value" id="hide320" >
+									<select class="form-control input-width-medium" id="idPlanType" name="planType" required="required" tabindex="34" onchange="NPSModeClickAction();">
+									 </select>
+								</span>
+								<span class="formentry-errmsg" id="alertnpspt"></span>
+							</div>
+						</div>
+						<div id="idAutoMode">
+						<div class="form-group">
+							<div class="col-sm-12">
+							    <label>Auto Plan Expected Returns(%)*</label>
+								<input type="text" class="form-control input-width-medium" id="idAutoPlanReturns" name="autoPlanReturns" placeholder="Auto Plan Expected Returns(%)"  tabindex="35">
+								<span class="formentry-errmsg" id="alertaper"></span>
+							</div>
+						</div>
+						</div>
+						<div id="idActiveMode">
+							<div class="form-group">
+								<div class="col-sm-12">
+								    <label>Asset Class E Allocation(%)*</label>
+									<input type="text" class="form-control input-width-medium" id="idAssetClassEAllocation" name="assetClassEAllocation" placeholder="Asset Class E Allocation(%)"  tabindex="36">
+									<span class="formentry-errmsg" id="alertacea"></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+								    <label>Asset Class C Allocation(%)*</label>
+									<input type="text" class="form-control input-width-medium" id="idAssetClassCAllocation" name="assetClassCAllocation" placeholder="Asset Class C Allocation(%)*"  tabindex="37">
+									<span class="formentry-errmsg" id="alertacga"></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+								    <label>Asset Class G Allocation(%)*</label>
+									<input type="text" class="form-control input-width-medium" id="idAssetClassGAllocation" name="assetClassGAllocation" placeholder="Asset Class G Allocation(%)*"  tabindex="38">
+									<span class="formentry-errmsg" id="alertacca"></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+								    <label>Asset Class E Expected Returns(%)*</label>
+									<input type="text" class="form-control input-width-medium" id="idAssetClassEReturns" name="assetClassEReturns" placeholder="Asset Class E Expected Returns(%)"  tabindex="39">
+									<span class="formentry-errmsg" id="alertaceer"></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+								    <label>Asset Class C Expected Returns(%)*</label>
+									<input type="text" class="form-control input-width-medium" id="idAssetClassCReturns" name="assetClassCReturns" placeholder="Asset Class C Expected Returns(%)"  tabindex="40">
+									<span class="formentry-errmsg" id="alertaccer"></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+								     <label>Asset Class G Expected Returns(%)*</label>
+									<input type="text" class="form-control input-width-medium" id="idAssetClassGReturns" name="assetClassGReturns" placeholder="Asset Class G Expected Returns(%)"  tabindex="41">
+									<span class="formentry-errmsg" id="alertacger"></span>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+							    <label>Employee Contribution upto Age*:</label>
+								<input type="text" class="form-control input-width-medium" id="idEmployeeContributionUptoAge" name="employeeContributionUptoAge" placeholder="Employee Contribution upto Age"  tabindex="42">
+								<span class="formentry-errmsg" id="alertemployeecua"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+							    <label>Employer Contribution upto Age*</label>
+								<input type="text" class="form-control input-width-medium" id="idEmployerContributionUptoAge" name="employerContributionUptoAge" placeholder="Employer Contribution upto Age"  tabindex="43">
+								<span class="formentry-errmsg" id="alertemployercua"></span>
+							</div>
+						</div>			
+         			</div>
+<!--
+****************************************************************************************************************************************************************************** 
+	 				Annuity Sub-section                                                                                                                                                     
+****************************************************************************************************************************************************************************** 
+-->
+				
+				<input type="hidden" class="form-control input-width-medium" id="idEpfId" name="clientEPFID">
+						
+				
+		         <div id='divAnnuity'>
+		         	<div id="idAnnFM" class="form-group form-group-lg">
+						<div class="col-sm-8 asset-owner-wrapper">
+							<label>Financial Asset Owner:</label><br/>
+							<table class="familymembertbl" width="20px">
+							<tr class="mem_icon" id="familyMemberImageAnnuity">
+								</tr>
+							</table>
+						</div>
+					</div>
+					<hr class="full-width-divider">
+					<div id="idAnnType" class="form-group">
+						<div class="col-sm-12">
+							<label>Annuity Type*:</label>
+							<span class="form-static-value" id="hide320" >
+								<select class="form-control input-width-medium" required="required" 
+								tabindex="44" id="idAnnuityType" name="annuityType"> 
+								 
+								</select>
+							</span>
+							<span class="formentry-errmsg" id="alertat"></span>
+						</div>
+					</div>
+					
+					<div id="idPenCor" class="form-group">
+						<div class="col-sm-12">
+						    <label>Pensionable Corpus (Rs.)*:</label>
+							<input type="text" class="form-control input-width-medium" id="idPensionableCorpus" name="pensionableCorpus" onfocusout="maskAmount('#idPensionableCorpus')" placeholder="Enter Amount"  tabindex="45">
+							<span class="formentry-errmsg" id="alertpensionablecorpus"></span>
+						</div>
+					</div>
+					<div id="idAnnRate" class="form-group">
+						<div class="col-sm-12">
+						    <label>Annuity rate(%)*:</label>
+							<input type="text" class="form-control input-width-medium" id="idAnnuityRate" name="annuityRate" placeholder="Enter Interest Rate"  tabindex="46">
+							<span class="formentry-errmsg" id="alertannuityrate"></span>
+						</div>
+					</div>
+					<div id="idSELF"class="form-group">
+						<div class="col-sm-12">
+						    <label>Life Expectancy-Self (Age-Years)*:</label>
+							<input type="text" class="form-control input-width-medium" id="idLESelf" name="LESelf" placeholder="Life Expectancy-Self (Age-Years)*"  readonly tabindex="-1">
+						<span class="formentry-errmsg" id="alertself"></span>
+						</div>
+					</div>
+					<div id="idSPOUSE" class="form-group">
+						<div class="col-sm-12">
+						    <label>Life Expectancy-Spouse (Age-Years)*:</label>
+							<input type="text" class="form-control input-width-medium" id="idLESpouse" name="LESpouse" placeholder="Life Expectancy-Spouse (Age-Years)*"  readonly tabindex="-1">
+						<span class="formentry-errmsg" id="alertspouse"></span>
+						</div>
+					</div>
+					<div id="idLEDIV" class="form-group">
+						<div class="col-sm-12">
+						    <label>Life Expectancy(Age-Years)*:</label>
+							<input type="text" class="form-control input-width-medium" id="idLE" name="LE" placeholder="Life Expectancy(Age-Years)*"  readonly tabindex="-1">
+						<span class="formentry-errmsg" id="alertothers"></span>
+						</div>
+					</div>
+					<div id="idPayOutFreq" class="form-group">
+						<div class="col-sm-12">
+							<label>Annuity Payout Frequency:*</label>
+							<span class="form-static-value" id="hide320" >
+								<select class="form-control input-width-medium" required="required" 
+								tabindex="47" id="idPayoutFrequency" name="payoutFrequency">
+					 			</select>
+							</span>
+							<span class="formentry-errmsg" id="alertapf"></span>
+						</div>
+					</div>
+					<div id="idAnnStartDate" class="form-group">
+						<div class="col-sm-12">
+							<label>Annuity Start Date*:</label>
+							<p id="idAnnuityStartDateGroup" class="input-group input-width-medium">
+								<input type="text" class="form-control" id="idAnnuityStartDate" name="annuityStartDate" placeholder="DD/MM/YYYY" tabindex="48">
+								<span class="input-group-btn datepicker-icon">
+									<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Start Date"><em class="glyphicon calendar-icon-theme"></em></button>
+								</span>
+							</p>
+							<span class="formentry-errmsg" id="alertannuitystartdate"></span>
+						</div>
+					</div>
+					<div id="idAnnGroRate" class="form-group">
+						<div class="col-sm-12">
+						    <label>Annuity Growth Rate (%):</label>
+							<input type="text" class="form-control input-width-medium" id="idGrowthRate" name="growthRate" placeholder="Enter Rate"  tabindex="49">
+							 <span class="formentry-errmsg" id="alertannuitygrowthrate"></span>
+						</div>
+					</div>	
+				</div>
+				<div id="EPSannuity">
+					<div class="form-group">
+						<div class="col-sm-12">
+						    <label>Last FY Monthly basic Salary*:</label>
+							<input type="text" class="form-control input-width-medium inputDisabled" id="idAnnuityMonthlyBasicDA" name="annuityMonthlyBasicDA" onfocusout="maskAmount('#idAnnuityMonthlyBasicDA')" placeholder="Monthly Basic/Basic+DA"  readonly="readonly" tabindex="50">
+							<span class="formentry-errmsg" id="alertannuityMonthlyBasicDA"></span>
+						</div>
+					</div>	
+					<div class="form-group">
+						<div class="col-sm-12">
+						    <label>Number of Years of Service*:</label>
+							<input type="text" class="form-control input-width-medium inputDisabled" id="idAnnuityServiceYears" name="annuityServiceYears" placeholder="Number of Years of Service"  readonly="readonly" tabindex="51">
+							<span class="formentry-errmsg" id="alertannuityServiceYears"></span>
+						</div>
+					</div>
+					<div id="idEPSAnn"class="form-group">
+						<div class="col-sm-12">
+						    <label>Expected Increase in Contribution Annually(%)*:</label>
+							<input type="text" class="form-control input-width-medium inputDisabledAnnualContibutionIncrease" id="idAnnuityAnnualContributionIncrease" name="annuityAnnualContributionIncrease" placeholder="Enter Rate"  readonly="readonly" tabindex="52">
+							<span class="formentry-errmsg" id="alertannuityAnnualContributionIncrease"></span>
+						</div>
+					</div>	
+				</div>		
+<!--
+****************************************************************************************************************************************************************************** 
+	 				Atal Pension Yojana Sub-section                                                                                                                                                     
+****************************************************************************************************************************************************************************** 
+-->
+		         <div id='divAPY' style='display:none;'>
+			     	<div class="form-group form-group-lg">
+						<div class="col-sm-8 asset-owner-wrapper">
+							<label>Financial Asset Owner:</label><br/>
+							<table class="familymembertbl" width="20px">
+								<tr class="mem_icon" id="familyMemberImageAPY"></tr>
+							</table>
+						</div>
+					</div>
+					<hr class="full-width-divider">
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>Investment Frequency*:</label>
+							<span class="form-static-value" id="hide320" >
+								<select class="form-control input-width-medium" required="required" 
+								tabindex="50" id="idInvestmentFrequency" name="investmentFrequency">
+					 			</select>
+							</span>
+							<span class="formentry-errmsg" id="alertif"></span>
+						</div>
+					</div>
+					<!-- <div class="form-group">
+						<div class="col-sm-12">
+						    <label>Monthly Pension Required(Rs.)*:</label>
+							<input type="text" class="form-control input-width-medium" id="idMonthlyPensionRequired" name="monthlyPensionRequired" onfocusout="maskAmount('#idMonthlyPensionRequired')" placeholder="Monthly Pension Required"  tabindex="51">
+							 <span class="formentry-errmsg" id="alertmonthlypension"></span>
+						</div>
+					</div> -->		
+					<div class="form-group">
+						<div class="col-sm-12">
+						    <label>Monthly Pension Required(Rs.)*:</label>
+							<span class="form-static-value" id="hide320" >
+								<select class="form-control input-width-medium" required="required" 
+								tabindex="50" id="idMonthlyPensionRequired" name="monthlyPensionRequired">
+					 			</select>
+							</span>
+							 <span class="formentry-errmsg" id="alertmonthlypension"></span>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="col-sm-12">
+						    <label>Retirement Age(Years)*:</label>
+							<input type="text" class="form-control input-width-medium" id="idRetirementAgeDIV" name="retirementAge" value="60" tabindex="52" readonly>
+							 <span class="formentry-errmsg" id="alertRetirementAge"></span>
+						</div>
+					</div>					
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>Contribution Start Date*:</label>
+							<p id="idApyStartDateGroup" class="input-group input-width-medium">
+								<input type="text" class="form-control" id="idApyStartDate" name="apyStartDate" placeholder="DD/MM/YYYY" tabindex="53">
+								<span class="input-group-btn datepicker-icon">
+									<button type="button" id="idStartDateCalendar" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Start Date"><em class="glyphicon calendar-icon-theme"></em></button>
+								</span>
+							</p>
+							<span class="formentry-errmsg" id="alertapystartdate"></span>
+						</div>
+					</div>	
+					<div id="idLDIV" class="form-group">
+						<div class="col-sm-12">
+						    <label>Life Expectancy(Years)*:</label>
+							<input type="text" class="form-control input-width-medium" id="idLifeExp" name="lifeExpectancy" placeholder="Life Expectancy(Years)*"  readonly tabindex="-1">
+						   
+						</div>
+					</div>				
+					<div id="idLexpDiv" class="form-group">
+						<div class="col-sm-12">
+						    <label>Life Expectancy(Years)*:</label>
+							<input type="text" class="form-control input-width-medium" id="idLifeExpectancyDIV" name="lifeExpectancy" tabindex="54" readonly>
+						    <span class="formentry-errmsg" id="alertLifeExpectancy"></span> 
+						</div>
+					</div>					
+		         </div>
+<!--
+****************************************************************************************************************************************************************************** 
+	 				End of Atal Pension Yojana Sub-section                                                                                                                                                     
+****************************************************************************************************************************************************************************** 
+-->
+			</div>
+	        <div class="clearfix"></div>
+	        <br><br>
+		  	<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-11">
+					<button type="button" id="idSaveROS" class="pull-left btn addbtn" tabindex="55">SAVE</button>
+					<button type="button" id="idUndoROS" class="pull-left btn addbtn" tabindex="56" onclick="undoChange()">UNDO</button>
+				</div>
+			</div>
+			<div id="focusguard-2" tabindex="60"></</div>						
+		</form>
+	</div>
+</div>
+<!--
+****************************************************************************************************************************************************************************** 
+	 				JS written here to avoid unnecessary show of other divs                                                                                                                                                   
+****************************************************************************************************************************************************************************** 
+-->
+<script>
+$("#divEPF").hide();
+$("#divPPF").hide();
+$("#divNPS").hide();
+$("#divAnnuity").hide();
+$("#divAPY").hide();
+$("#EPSannuity").hide();
+$("#idSaveROS").hide();
+$("#idUndoROS").hide();
+</script>
+
+

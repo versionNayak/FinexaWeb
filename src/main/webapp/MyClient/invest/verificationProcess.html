@@ -1,0 +1,154 @@
+<script src="invest/js/verificationprocess.js"></script>
+<script src="clientInfo/js/common.js"></script>
+<div class="cicontainer">
+	<table class="vp" style="margin:auto">
+	<tr><td colspan="4" style="text-align:center !important">Please complete the following steps to start transacting</td></tr>
+	<tr><td><img src="../Common/assets/images/ckyc.png"></td><td><img src="../Common/assets/images/ccc.png"></td><td><img src="../Common/assets/images/facta.png"></td><td><img src="../Common/assets/images/isip.png"></td>
+		</tr>
+	<tr><td></td></tr>
+		<tr>
+		<td colspan="2">
+<button type="submit" class="form-control trn" style="float: right;
+width: 50%;" tabindex="540">Transact</button></td>
+			<td colspan="2" style="text-align:left"><button type="submit" style="width: 50%;" class="form-control pn" tabindex="540">Plan & Invest</button></td>
+			</tr>
+	
+	</table>
+
+	<div class="displayflex" id="transtbl" style="display:none;margin-left:26%;">
+						<label class="radio-inline custom-radio-theme">
+							<input type="radio" class="lum" name="FinancialAsset" value="" required="required" tabindex="280"><i></i> Lumpsum
+						</label>
+						<label class="radio-inline custom-radio-theme">
+							<input type="radio" name="FinancialAsset" class="sip" value="" tabindex="290"><i></i>SIP
+						</label>
+						<label class="radio-inline custom-radio-theme">
+							<input type="radio" name="FinancialAsset" class="red" value="" tabindex="300"><i></i>Redeem
+						</label>
+						<label class="radio-inline custom-radio-theme">
+							<input type="radio" name="FinancialAsset" class="switch" value=""tabindex="310"><i></i> Switch
+						</label>
+						<label class="radio-inline custom-radio-theme">
+							<input type="radio" name="FinancialAsset" class="stp" value=""tabindex="310"><i></i> STP
+						</label>
+						<label class="radio-inline custom-radio-theme">
+							<input type="radio" name="FinancialAsset" class="swp" value=""tabindex="310"><i></i> SWP
+						</label>
+					</div>
+	<!--<table id="transtbl" style="display:none;margin:auto;width:54%">
+	<tr><td><input type="radio" name="tras"/>&nbsp;<label>Lumpsum</label></td><td><input type="radio" name="tras"/>&nbsp;<label>SIP</label></td><td><input type="radio" name="tras"/>&nbsp;<label>Redeem</label></td><td><input type="radio" name="tras"/>&nbsp;<label>Switch</label></td><td><input type="radio" name="tras"/>&nbsp;<label>STP</label></td><td><input type="radio" name="tras"/>&nbsp;<label>SWP</label></td></tr>
+	</table>-->
+	
+	
+	
+	<div class="displayflex" id="pnitbl" style="display:none;margin-left:26%;">
+						<label class="radio-inline custom-radio-theme">
+							<input type="radio" name="" value="" required="required" tabindex="280"><i></i> Goal Planning
+						</label>
+						<label class="radio-inline custom-radio-theme">
+							<input type="radio" name="" value="" tabindex="290" checked="checked"><i></i>Financial Planning
+						</label>
+						<label class="radio-inline custom-radio-theme">
+							<input type="radio" name="" value="" tabindex="300"><i></i>Portfolio Management
+						</label>
+									</div>
+	
+	
+	
+	
+	
+	<!--<table id="pnitbl"  style="display:none;margin:auto">
+		<tr><td><input type="radio" name="pni"/>Goal Planning</td><td><input type="radio" name="pni"/>Financial Planning</td><td><input type="radio" name="pni"/>Portfolio Management</td></tr>
+	</table>-->
+	</div>
+	<script>
+		$(document).ready(function(){
+	
+	$(".trn").click(function(){
+	
+	$("#transtbl").show();
+	$("#pnitbl").hide();
+	$(".trn").addClass("addbtn");
+	$(".pn").removeClass("addbtn").addClass("greywhite");
+	
+		
+	});
+	
+	$(".pn").click(function(){
+	$("#transtbl").hide();
+	$("#pnitbl").show();
+	$(".pn").addClass("addbtn");
+	$(".trn").removeClass("addbtn").addClass("greywhite");
+	
+	
+	
+		
+	});
+	
+        $("input[type='radio'].lum").click(function() {
+			
+			
+	$("#idInvest").empty();
+		
+		$(".dashboardheading").html("Lumpsum");
+		$("#idInvest").load("invest/lumpsum.html"); 
+			
+			
+			});
+			
+			
+			$("input[type='radio'].sip").click(function() {
+			
+			
+	$("#idInvest").empty();
+		
+		$(".dashboardheading").html("Systematic Investment Plan (SIP)");
+		$("#idInvest").load("invest/sip.html"); 
+			
+			
+			});
+			
+			$("input[type='radio'].red").click(function() {
+			
+			
+	$("#idInvest").empty();
+		
+		$(".dashboardheading").html("Redeem");
+		$("#idInvest").load("invest/redemption.html"); 
+			
+			
+			});
+			$("input[type='radio'].switch").click(function() {
+			
+			
+	$("#idInvest").empty();
+		
+		$(".dashboardheading").html("Switch");
+		$("#idInvest").load("invest/Switch.html"); 
+			
+			
+			});
+			$("input[type='radio'].stp").click(function() {
+			
+			
+	$("#idInvest").empty();
+		
+		$(".dashboardheading").html("Systematic Transfer Plan (STP)");
+		$("#idInvest").load("invest/stp.html"); 
+			
+			
+			});
+			$("input[type='radio'].swp").click(function() {
+			
+			
+	$("#idInvest").empty();
+		
+		$(".dashboardheading").html("Systematic Withdrawal Plan (SWP)");
+		$("#idInvest").load("invest/swp.html"); 
+			
+			
+			});
+       
+});
+		
+		</script>

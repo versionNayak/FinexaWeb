@@ -1,0 +1,2035 @@
+<script src="resources/js/FundAnalyzer.js"></script>
+
+
+<script type="text/javascript" src="../Common/assets/js-library/moment.js"></script>
+<script type="text/javascript" src="../Common/assets/js-library/daterangepicker.js"></script>
+<script type="text/javascript" src="../Common/assets/js-library/pagination.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<link rel="stylesheet" type="text/css" href="../../Common/assets/css-library/daterangepicker.css" />
+
+<style>
+    #jssor_22>div>div>div:nth-child(2)>div:nth-child(2) {
+        overflow-y: scroll !important;
+        width: 895px !important;
+        height: 414px !important;
+        overflow-x: hidden !important;
+    }
+    
+    .multiselect {
+        width: 200px;
+    }
+    
+    .selectBox {
+        position: relative;
+    }
+    
+    .selectBox select {
+        width: 100%;
+        font-weight: bold;
+    }
+    
+    .overSelect {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+    
+    #checkboxes {
+        display: none;
+        border: 1px #dadada solid;
+    }
+    
+    #checkboxes label {
+        display: block;
+    }
+    
+    #checkboxes label:hover {
+        background-color: #1e90ff;
+    }
+</style>
+<script>
+    var expanded = false;
+
+    function showCheckboxes() {
+        var checkboxes = document.getElementById("checkboxes");
+        if (!expanded) {
+            checkboxes.style.display = "block";
+            expanded = true;
+        } else {
+            checkboxes.style.display = "none";
+            expanded = false;
+        }
+    }
+
+    function cb(start, end) {
+        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+
+    }
+    cb(moment().subtract(29, 'days'), moment());
+    $('#reportrange').daterangepicker({
+        ranges: {
+            '': [moment(), moment()],
+            '1 Month': [moment().subtract(1, 'month'), moment()],
+            '3 Months': [moment().subtract(3, 'months'), moment()],
+            '6 Months': [moment().subtract(6, 'months'), moment()],
+            '1 Year': [moment().subtract(1, 'year'), moment()],
+            '3 Years': [moment().subtract(3, 'years'), moment()],
+            '5 Years': [moment().subtract(5, 'years'), moment()],
+        }
+
+
+
+    }, cb);
+
+    $(".ranges").children("ul").delegate("li", "click", function() {
+        alert($(this).text())
+    });
+
+
+    $('#pagination-demo').twbsPagination({
+        totalPages: 5,
+        // the current page that show on start
+        startPage: 1,
+
+        // maximum visible pages
+        visiblePages: 5,
+
+        initiateStartPageClick: true,
+
+        // template for pagination links
+        href: false,
+
+        // variable name in href template for page number
+        hrefVariable: '{{number}}',
+
+        // Text labels
+        first: 'First',
+        prev: 'Previous',
+        next: 'Next',
+        last: 'Last',
+
+        // carousel-style pagination
+        loop: false,
+
+        // callback function
+        onPageClick: function(event, page) {
+            $('.page-active').removeClass('page-active');
+            $('#page' + page).addClass('page-active');
+        },
+
+        // pagination Classes
+        paginationClass: 'pagination',
+        nextClass: 'next',
+        prevClass: 'prev',
+        lastClass: 'last',
+        firstClass: 'first',
+        pageClass: 'page',
+        activeClass: 'active',
+        disabledClass: 'disabled'
+
+    });
+
+    $('#paginationaxis').twbsPagination({
+        totalPages: 5,
+        // the current page that show on start
+        startPage: 1,
+
+        // maximum visible pages
+        visiblePages: 5,
+
+        initiateStartPageClick: true,
+
+        // template for pagination links
+        href: false,
+
+        // variable name in href template for page number
+        hrefVariable: '{{number}}',
+
+        // Text labels
+        first: 'First',
+        prev: 'Previous',
+        next: 'Next',
+        last: 'Last',
+
+        // carousel-style pagination
+        loop: false,
+
+        // callback function
+        onPageClick: function(event, page) {
+            $('.page-active').removeClass('page-active');
+            $('#page-' + page).addClass('page-active');
+        },
+
+        // pagination Classes
+        paginationClass: 'pagination',
+        nextClass: 'next',
+        prevClass: 'prev',
+        lastClass: 'last',
+        firstClass: 'first',
+        pageClass: 'page',
+        activeClass: 'active',
+        disabledClass: 'disabled'
+
+    });
+</script>
+
+<div id="jssor_22" class="height413px">
+    <div data-u="slides" class="slider9" style="height:416px">
+        <div>
+            <div data-u="image">
+                <div class="row" style="margin-top: 23px;margin-left: 34px;">
+
+                    <div class="col-sm-6" style="text-align: left;z-index:1;padding-top: 7px;margin-top:-13px">
+                        <label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px;font-weight: bold;
+margin-bottom: 5px;">Select Fund Category*: </label><br />
+                        <span class="form-static-value">
+							<select style="padding-top:2px;width: 281px;" class="form-control input-width-medium"
+								required="required" tabindex="430">
+								<option value="">Select</option>
+								<option value="">Equity Large cap</option>
+								<option value="">Equity Mid & Small cap</option>
+								<option value="">Debt Long term</option>
+								<option value="">Debt Ultra short term</option>
+								<option value="">Debt Short term</option>
+								<option value="">Cash</option>
+
+							</select>
+						</span>
+                    </div>
+                    <div class="col-sm-6" style="text-align: left;z-index:1;padding-top: 7px;margin-top:-13px">
+                        <!-- <label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px;font-weight: bold; -->
+                        <!-- margin-bottom: 5px;">Compare with Indices*: </label><br/> -->
+                        <!-- <span class="form-static-value"> -->
+                        <!-- <select style="padding-top:2px;width: 281px;" class="form-control input-width-medium" required="required" tabindex="430" multiple> -->
+                        <!-- <option value="">Nifty</option> -->
+                        <!-- <option value="">CNX MCAP</option> -->
+                        <!-- <option value="">CRISIL Balanced Fund Index</option> -->
+                        <!-- <option value="">CRISIL Composite Bond Fund Index</option> -->
+                        <!-- <option value="">CRISIL Gilt Index</option> -->
+                        <!-- <option value="">CRISIL Short Term Bond Fund Index</option> -->
+                        <!-- <option value="">CRISIL 1 Year T-Bill Index</option> -->
+                        <!-- <option value="">CRISIL Liquid Fund Index</option> -->
+
+
+
+
+
+                        <!-- </select> -->
+                        <!-- </span>  -->
+
+                        <form>
+                            <div class="multiselect">
+                                <div class="selectBox" onclick="showCheckboxes()">
+                                    <select class="form-control input-width-medium" style="margin-top: 22px;width:139%;">
+										<option>Compare with Indices*:</option>
+									</select>
+                                    <div class="overSelect"></div>
+                                </div>
+                                <div id="checkboxes" style="height:78px;overflow-y: scroll;width:277px;">
+                                    <label for="one"> <input type="checkbox" id="one" />Nifty</label>
+                                    <label for="two"> <input type="checkbox" id="two" />CNX MCAP</label>
+                                    <label for="three"><input type="checkbox" id="three" />CRISIL Balanced Fund
+										Index</label>
+                                    <label for="four">
+										<input type="checkbox" id="four" />CRISIL Composite Bond Fund Index</label>
+                                    <label for="four">
+										<input type="checkbox" id="five" />CRISIL Gilt Index</label>
+                                    <label for="five">
+										<input type="checkbox" id="six" />CRISIL Short Term Bond Fund Index</label>
+                                    <label for="six">
+										<input type="checkbox" id="seven" />CRISIL 1 Year T-Bill Index</label>
+                                    <label for="seven">
+										<input type="checkbox" id="eight" />CRISIL Liquid Fund Index</label>
+                                    <label for="eight">
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- <div id="idMaxcurrentaa" class="popup"><img src="../Common/assets/images/maximg.png" class="maxbtn"/></div> -->
+				<table width="97%" class="whitebg fundanalyzer"
+					style="z-index:10 !important;margin-top:31px;margin-left:13px;font-size:12px">
+
+					<thead>
+
+
+						<tr>
+							<th class="nonglidtotal" style="text-align:left">Scheme Name</th>
+							<th class="nonglidtotal" style="text-align:left">AUM(Cr)</th>
+							<th class="nonglidtotal">1M</th>
+							<th class="nonglidtotal">3M</th>
+							<th class="nonglidtotal">6M</th>
+
+							<th class="nonglidtotal">1Y</th>
+							<th class="nonglidtotal">3Y</th>
+							<th class="nonglidtotal">5Y</th>
+							<th class="nonglidtotal">Std Dev-1</th>
+							<th class="nonglidtotal">Sharpe Ratio</th>
+							<th class="nonglidtotal">Beta</th>
+
+						</tr>
+					</thead>
+					<tbody>
+
+						<tr>
+							<td id="idMaxAxis"><a class="popup" onclick='loadaxis();'> Axis Short Term Fund (G)
+								</a>
+
+
+							</td>
+							<td>3600.00
+							</td>
+							<td>-0.1
+							</td>
+							<td>23.4
+							</td>
+							<td>24.3
+							</td>
+							<td>94.3
+							</td>
+							<td>34.4
+							</td>
+							<td>74.2
+							</td>
+							<td>11.1
+							</td>
+
+							<td>5.354%
+							</td>
+							<td>3.4
+							</td>
+						</tr>
+						<tr>
+							<td id="idMaxkotak"><a class="popup" onclick='loadKotak();'> Kotak Select Focus Fund -
+									Regular (G)</a>
+
+
+							</td>
+							<td>3600.00
+							</td>
+							<td>-0.1
+							</td>
+							<td>23.4
+							</td>
+							<td>24.3
+							</td>
+							<td>94.3
+							</td>
+							<td>34.4
+							</td>
+							<td>74.2
+							</td>
+							<td>11.1
+							</td>
+
+							<td>5.354%
+							</td>
+							<td>3.4
+							</td>
+						</tr>
+
+				</table>
+				<br />
+
+			</div>
+
+		</div>
+
+
+	</div>
+
+
+</div>
+<!--Current AA max pop-->
+<div id="idpopcurrentaa" class="modal modal1">
+	<!-- Modal content -->
+	<div class="modal-content" style="margin-left:24px;background-color:#ededee">
+		<div class="modal-header">
+			<span class="close">&times;</span>
+			<h4 style="margin-top:5px"> Portfolio Equity</h4>
+		</div>
+		<div class="modal-body">
+			<div class="row" style="margin-top: 19px">
+				<div class="col-lg-12" style="width:101em">
+					<div class="col-lg-11 bgwhite" style="margin-right:.5em">
+						<h4 class="fontblue"><b>Portfolio Overview Equity</b></h4>
+						<table width="97%"
+							style="z-index:10 !important;margin-left:1px;margin-bottom:24px;margin-top: 27px;"
+							class="currentaatab protfoiliequity">
+							<thead>
+
+
+								<tr>
+									<th style="text-align:left">Product</th>
+									<th style="text-align:left">Product Type</th>
+									<th>Current Value</th>
+									<th>Investment Value</th>
+									<th>Gain/Loss</th>
+
+									<th>CAGR/XIRR</th>
+									<th>PTP Returns</th>
+									<th>Locked-In Upto Date</th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td> ITC
+
+									</td>
+									<td> Direct Equity
+									</td>
+									<td> 20,400
+
+									</td>
+									<td> 10,000
+
+									</td>
+									<td> 10,400
+
+									</td>
+									<td>21.02%
+
+									</td>
+									<td>104.00%
+
+									</td>
+									<td>Available
+
+									</td>
+
+
+								</tr>
+								<tr>
+									<td> Tata Motors
+
+
+
+									</td>
+									<td> Direct Equity
+									</td>
+									<td> 19,400
+
+									</td>
+									<td> 9,000
+
+									</td>
+									<td> 10,400
+
+									</td>
+									<td>12.02%
+
+									</td>
+									<td>124.00%
+
+									</td>
+									<td>Available
+
+									</td>
+								</tr>
+								<tr>
+									<td><a id="infosysonmax"> Infosys</a>
+
+
+									</td>
+									<td> Mutual Funds
+
+									</td>
+									<td> 10,400
+
+									</td>
+									<td> 20,000
+
+									</td>
+									<td> 10,400
+
+									</td>
+									<td>21.02%
+
+									</td>
+									<td>104.00%
+
+									</td>
+									<td>Available
+
+									</td>
+								</tr>
+								<tr>
+									<td> Birla SL Tax Relief 96 - Regular (G)
+
+
+									</td>
+									<td> Mutual Funds
+
+									</td>
+									<td> 10,400
+
+									</td>
+									<td> 20,000
+
+									</td>
+									<td> 10,400
+
+									</td>
+									<td>21.02%
+
+									</td>
+									<td>104.00%
+
+									</td>
+									<td>Available
+
+									</td>
+								</tr>
+								<tr>
+									<td><a id="kotakmaxpop"> Kotak Select Focus Fund - Regular (G)</a>
+
+
+									</td>
+									<td> Mutual Funds
+
+									</td>
+									<td> 30,400
+
+									</td>
+									<td> 20,000
+
+									</td>
+									<td> 5,400
+
+									</td>
+									<td>20.02%
+
+									</td>
+									<td>104.00%
+
+									</td>
+									<td>Available
+
+									</td>
+								</tr>
+								<tr>
+									<td> Mirae Emerging Bluechip Fund - Regular (G)
+
+
+									</td>
+									<td> Mutual Funds
+
+									</td>
+									<td> 10,400
+
+									</td>
+									<td> 10,900
+
+									</td>
+									<td> 10,200
+
+									</td>
+									<td>21.02%
+
+									</td>
+									<td>104.00%
+
+									</td>
+									<td>Available
+
+									</td>
+								</tr>
+								<tr>
+									<td> PFG
+
+
+									</td>
+									<td> International Equity
+
+									</td>
+									<td> 20,400
+
+									</td>
+									<td> 10,000
+
+									</td>
+									<td> 10,400
+
+									</td>
+									<td>21.02%
+
+									</td>
+									<td>104.00%
+
+									</td>
+									<td>Available
+
+									</td>
+								<tr>
+
+								<tr>
+									<td><b> Total</b>
+
+
+									</td>
+									<td>
+
+									</td>
+									<td> <b> 142,200</b>
+
+									</td>
+									<td> <b> 90,900 </b>
+
+									</td>
+									<td> <b>30,2900 </b>
+
+									</td>
+									<td>
+
+									</td>
+									<td>
+
+									</td>
+									<td>
+
+									</td>
+								<tr>
+						</table>
+					</div>
+
+				</div>
+			</div>
+			<div class="col-lg-12" style="margin-top: 18px;margin-bottom: 19px;margin-left:-15px;width:100em">
+
+				<div class="col-lg-5 bgwhite" style="margin-right:0.8em;height: 32em;width:41em">
+					<h4 class="fontblue"><b>Equity Overview By Product Type</b></h4>
+					<div id="idcaa" style="width:40%;margin-left:-80px;margin-top:5em;width:35em"></div>
+				</div>
+				<div class="col-lg-6 bgwhite" style="height:32em">
+					<h4 class="fontblue"><b>Equity Overview By Marketcap</b></h4>
+					<div id="idassetquality" style="width:40%;margin-left:80px;margin-top:-1em;width:31em"></div>
+				</div>
+
+
+			</div>
+
+			<div class="row">
+				<div class="col-lg-5 bgwhite" style="width:41em;margin-left:15px;margin-bottom:1em;margin-top: -.5em;">
+					<h4 class="fontblue"><b>Overview By Sectors</b></h4>
+					<div id="idsectors" style="width:40%;margin-bottom:7px"></div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+</div>
+
+<!--Infosys -->
+<div id="idpopaxis" class="modal3 modal5">
+	<!-- Modal content -->
+	<div class="modal-content" style="margin-left:24px;background-color:#ededee">
+		<div class="modal-header">
+			<span class="close3 close5" style="margin-top:-5px">&times;</span>
+			<h4 style="margin-top:5px"> Axis Short Term Fund (G) </h4>
+			<h2></h2>
+		</div>
+
+		<div class="modal-body">
+			<div class="row" style="margin-top: 19px">
+				<div class="col-lg-12">
+
+					<div class="col-lg-12 bgwhite">
+						<h4 class="fontblue"><b>Fund Snapshot</b></h4>
+						<table width="100%" style="margin-bottom: 19px" class="PMkotakpop">
+							<tr>
+								<td><span class="font1p2em"><b>0</b></span><br /><span> Aum(in-CR.)</span></td>
+								<td><span class="font1p2em"><b>
+											CRISIL Composite Bond Fund Index
+
+										</b></span> <br />Benchmark Index</td>
+								<td><span class="font1p2em"><b>XYZ</b></span><br />Fund Managers</td>
+								<td><span class="font1p2em"><b>2%</b></span><br /> Expense Ratio</td>
+							</tr>
+							<tr>
+								<td><span class="font1p2em"><b>15-Mar-06</b></span><br />Inception</td>
+								<td><span class="font1p2em"><b>Debt - Short Term</b></span><br /> Sub Asset Class</td>
+								<td><span class="font1p2em"><b>45000</b></span><br />52 Week High</td>
+								<td><span class="font1p2em"><b>53000</b></span><br />52 Week Low</td>
+							</tr>
+							<tr>
+								<td><span class="font1p2em"><b>50000</b></span><br />Min.Investment</td>
+								<td><span class="font1p2em"><b>1% for 180 days</b></span><br />Exit and Load Period</td>
+								<td><span class="font1p2em"><b>20.21</b></span><br />YTM</td>
+								<td><span class="font1p2em"><b>3.47</b></span><br />Duration</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-12 bgwhite" style="margin-top: 18px;margin-bottom: 19px;">
+				<h4 class="fontblue"><b>Performance vs. Index</b></h4>
+
+
+				<div id="reportrange" class="pull-right"
+					style="background: #ededee; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width:28%;margin-top:-24px;border-radius: 8px;"
+					onchange="alert('hi')">
+					<i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+					<span></span> <b class="caret"></b>
+
+				</div>
+
+
+				<br />
+
+
+				<div id="idgrowth" style="width:90%"></div>
+				<h4 class="fontblue"><b>Performance</b></h4>
+
+
+
+
+
+
+				<table width="63%" style="z-index:10 !important;margin-left:30px;margin-bottom:24px;margin-top: 27px;"
+					class="kotakperfomancetbl">
+					<thead>
+						<tr>
+							<th style="text-align:left"></th>
+							<th>1M</th>
+							<th>3M</th>
+							<th>6M</th>
+							<th>1Y</th>
+							<th>3Y</th>
+							<th>5Y</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td> Fund
+							</td>
+							<td>-13.19%
+							</td>
+							<td>-20.93%
+							</td>
+							<td>-8.11%
+							</td>
+							<td>0.00%
+							</td>
+							<td>-17.74%
+							</td>
+							<td>-32.23%
+							</td>
+						</tr>
+						<tr style="border-bottom:1px solid #767677">
+							<td> Benchmark
+							</td>
+							<td>-13.19%
+							</td>
+							<td>-20.93%
+							</td>
+							<td>-8.11%
+							</td>
+							<td>0.00%
+							</td>
+							<td>-17.74%
+							</td>
+							<td>-32.23%
+							</td>
+						</tr>
+				</table>
+			</div>
+			<div class="row" style="margin-top:34px">
+				<div class="col-lg-12" style="width:114%">
+					<div class="col-lg-3 bgwhite" style="margin-right:24px;width:29em">
+						<h4 class="fontblue"><b>Risk Measures</b></h4>
+						<table style="width: 100%;margin-bottom: 20px;margin-top: 14px;" class="riskmeasure">
+							<tr>
+								<td>Standard Deviation</td>
+								<td>8.03%</td>
+							</tr>
+							<tr>
+								<td>Sharpe Ratio</td>
+								<td>0.00%</td>
+							</tr>
+							<tr>
+								<td>Information Ratio</td>
+								<td>0.00%</td>
+							</tr>
+							<tr>
+								<td>Treynor Ratio</td>
+								<td>8.85%</td>
+							</tr>
+							<tr>
+								<td>Beta</td>
+								<td>8.39%</td>
+							</tr>
+
+						</table>
+
+
+					</div>
+					<div class="col-lg-3 bgwhite" style="margin-right:24px;overflow:hidden;width:29em;height:219px">
+						<h4 class="fontblue"><b>Market Capitalization</b></h4>
+						<div id="idassetaxis" style="width:26%"></div>
+					</div>
+					<div class="col-lg-3 bgwhite" style="margin-right:24px;width:29em;height: 218px;">
+						<h4 class="fontblue"><b>Raiting-Wise Breakup</b></h4>
+
+						<div id="assetallocationaxis" style="height:30%;width:30%;margin-left:-14px"></div>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 19px;margin-bottom: 20px;">
+				<div class="col-lg-12">
+					<!--<div class="col-lg-5 bgwhite" style="margin-right:24px;width:46.7em"> -->
+					<!--<h4 class="fontblue"><b>Top 10 Sector Holdings</b></h4> -->
+
+					<!-- <div id="idsectorholding" style="width:47%;margin-bottom:7px"></div>
+														 </div> -->
+					<div class="col-lg-5 bgwhite" style="width:41em">
+						<h4 class="fontblue"><b>Portfolio Details</b></h4>
+
+						<!--pagination-->
+						<div class="container" style="width:100%;margin-top:-19px">
+							<div class="jumbotron page" id="page-1">
+
+
+								<table width="136%"
+									style="z-index:10 !important;margin-left:-75px;margin-top: 28px;margin-bottom: 20px;"
+									class="kotakportfolio">
+									<thead>
+										<tr>
+											<th style="text-align:left">Holdings
+											</th>
+											<th>% of Total
+											</th>
+											<th>Sector
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td> Infosys
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Banks
+											</td>
+										</tr>
+										<tr>
+											<td> HDFC
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Finance
+											</td>
+										</tr>
+										<tr>
+											<td>Infosys
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> TCS
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Consumer Non Durables
+											</td>
+										</tr>
+										<tr>
+											<td> SBI
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Banks
+											</td>
+										</tr>
+										<tr>
+											<td> HP
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Petroleum Products
+											</td>
+										</tr>
+										<tr>
+											<td> TCS
+
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> HP
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Petroleum Products
+											</td>
+										</tr>
+										<tr>
+											<td> TCS
+
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> HP
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Petroleum Products
+											</td>
+										</tr>
+
+
+
+								</table>
+
+							</div>
+							<div class="jumbotron page" id="page-2">
+								<table width="136%"
+									style="z-index:10 !important;margin-left:-75px;margin-top: 28px;margin-bottom: 20px;"
+									class="kotakportfolio">
+									<thead>
+										<tr>
+											<th style="text-align:left">Holdings
+											</th>
+											<th>% of Total
+											</th>
+											<th>Sector
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td> TCS
+											</td>
+											<td>-40.9%
+											</td>
+											<td>Banks
+											</td>
+										</tr>
+										<tr>
+											<td> Axis
+											</td>
+											<td>-90%
+											</td>
+											<td>Finance
+											</td>
+										</tr>
+										<tr>
+											<td>Techmahindra
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> TCS
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Consumer Non Durables
+											</td>
+										</tr>
+										<tr>
+											<td> SBI
+											</td>
+											<td>-20.9%
+											</td>
+											<td>Banks
+											</td>
+										</tr>
+										<tr>
+											<td>Cybage
+											</td>
+											<td>-10.9%
+											</td>
+											<td>Petroleum Products
+											</td>
+										</tr>
+										<tr>
+											<td> CTS
+
+											</td>
+											<td>-18.9%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> HP
+											</td>
+											<td>-11.19%
+											</td>
+											<td>Petroleum Products
+											</td>
+										</tr>
+										<tr>
+											<td> TCS
+
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> HP
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Petroleum Products
+											</td>
+										</tr>
+
+
+
+								</table>
+							</div>
+							<div class="jumbotron page" id="page-3">
+								<table width="136%"
+									style="z-index:10 !important;margin-left:-75px;margin-top: 28px;margin-bottom: 20px;"
+									class="kotakportfolio">
+									<thead>
+										<tr>
+											<th style="text-align:left">Holdings
+											</th>
+											<th>% of Total
+											</th>
+											<th>Sector
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td> Wipro
+											</td>
+											<td>-80.9%
+											</td>
+											<td>Banks
+											</td>
+										</tr>
+										<tr>
+											<td>SBI
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Finance
+											</td>
+										</tr>
+										<tr>
+											<td>Infosys
+											</td>
+											<td>11.9%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> TCS
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Consumer Non Durables
+											</td>
+										</tr>
+										<tr>
+											<td> SBI
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Banks
+											</td>
+										</tr>
+										<tr>
+											<td> HP
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Petroleum Products
+											</td>
+										</tr>
+										<tr>
+											<td> TCS
+
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> HP
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Petroleum Products
+											</td>
+										</tr>
+										<tr>
+											<td> TCS
+
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> HP
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Petroleum Products
+											</td>
+										</tr>
+
+
+
+								</table>
+							</div>
+							<div class="jumbotron page" id="page-4">
+								<table width="136%"
+									style="z-index:10 !important;margin-left:-75px;margin-top: 28px;margin-bottom: 20px;"
+									class="kotakportfolio">
+									<thead>
+										<tr>
+											<th style="text-align:left">Holdings
+											</th>
+											<th>% of Total
+											</th>
+											<th>Sector
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td> Hsbc
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Banks
+											</td>
+										</tr>
+										<tr>
+											<td> HDFC
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Finance
+											</td>
+										</tr>
+										<tr>
+											<td>Infosys
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> TCS
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Consumer Non Durables
+											</td>
+										</tr>
+										<tr>
+											<td> SBI
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Banks
+											</td>
+										</tr>
+										<tr>
+											<td> HP
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Petroleum Products
+											</td>
+										</tr>
+										<tr>
+											<td> TCS
+
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> HP
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Petroleum Products
+											</td>
+										</tr>
+										<tr>
+											<td> TCS
+
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> HP
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Petroleum Products
+											</td>
+										</tr>
+
+
+
+								</table>
+							</div>
+							<div class="jumbotron page" id="page-5">
+								<table width="136%"
+									style="z-index:10 !important;margin-left:-75px;margin-top: 28px;margin-bottom: 20px;"
+									class="kotakportfolio">
+									<thead>
+										<tr>
+											<th style="text-align:left">Holdings
+											</th>
+											<th>% of Total
+											</th>
+											<th>Sector
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td> Finexa
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Banks
+											</td>
+										</tr>
+										<tr>
+											<td> HDFC
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Finance
+											</td>
+										</tr>
+										<tr>
+											<td>Infosys
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> TCS
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Consumer Non Durables
+											</td>
+										</tr>
+										<tr>
+											<td> SBI
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Banks
+											</td>
+										</tr>
+										<tr>
+											<td>Wallmart
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Petroleum Products
+											</td>
+										</tr>
+										<tr>
+											<td> Costco
+
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td>Synerzip
+											</td>
+											<td>-8.19%
+											</td>
+											<td>Products
+											</td>
+										</tr>
+										<tr>
+											<td> Persistent
+
+											</td>
+											<td>10.9%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> HDFC
+											</td>
+											<td>-8.19%
+											</td>
+											<td>PP
+											</td>
+										</tr>
+
+
+
+								</table>
+							</div>
+							<ul id="paginationaxis" class="pagination-sm pull-right"></ul>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="modal-footer">
+		<h3></h3>
+	</div>
+</div>
+</div>
+
+<!--Kotak-->
+<div id="idpopkotak" class="modal4 modal2">
+	<!-- Modal content -->
+	<div class="modal-content" style="margin-left:24px;background-color:#ededee">
+		<div class="modal-header">
+			<span class="close4 close2" style="margin-top:-5px">&times;</span>
+			<h4 style="margin-top:5px"> Kotak Select Focus Fund One Pager </h4>
+		</div>
+		<div class="modal-body">
+			<div class="row" style="margin-top: 19px">
+				<div class="col-lg-12">
+					<div class="col-lg-3 bgwhite" style="margin-right:24px">
+						<h4 class="fontblue"><b>Style Box</b></h4>
+						<table class="whitebg" style="width:70%;margin:auto;margin-bottom:17px;margin-top: 25px">
+							<tr>
+								<td style="background-color:#ededee;width:35%"><br /><br /></td>
+								<td style="background-color:#1A5276;width:35%">
+								</td>
+								<td style="width:1px">Growth</td>
+							</tr>
+
+
+							<tr>
+								<td style="background-color:#1A5276"></td>
+								<td style="background-color:#ededee"><br /><br /></td>
+								<td style="width:1px">Blend</td>
+							</tr>
+							<tr>
+								<td>LargeCap</td>
+								<td>MidCap</td>
+								<td></td>
+							</tr>
+						</table>
+					</div>
+					<div class="col-lg-6 bgwhite" style="width:57.7em">
+						<h4 class="fontblue"><b>Fund Snapshot</b></h4>
+						<table width="100%" style="margin-bottom: 19px" class="PMkotakpop">
+							<tr>
+								<td><span class="font1p2em"><b>1012</b></span><br /><span> Aum(in-CR.)</span></td>
+								<td><span class="font1p2em"><b>Nifty Midcap</b></span> <br />Benchmark Index</td>
+								<td><span class="font1p2em"><b>XYZ</b></span><br />Fund Managers</td>
+								<td><span class="font1p2em"><b>2%</b></span><br /> Expense Ratio</td>
+							</tr>
+							<tr>
+								<td><span class="font1p2em"><b>27-08-2003</b></span><br />Inception</td>
+								<td><span class="font1p2em"><b>Mid & Small Cap</b></span><br /> Sub Asset Class</td>
+								<td><span class="font1p2em"><b>45000</b></span><br />52 Week High</td>
+								<td><span class="font1p2em"><b>53000</b></span><br />52 Week Low</td>
+							</tr>
+							<tr>
+								<td><span class="font1p2em"><b>50000</b></span><br />Min.Investment</td>
+								<td><span class="font1p2em"><b>1% for 1 Yr.</b></span><br />Exit and Load Period</td>
+								<td><span class="font1p2em"><b>20.21</b></span><br />PE</td>
+								<td><span class="font1p2em"><b>3.47</b></span><br />PB</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-12 bgwhite" style="margin-top: 18px;margin-bottom: 19px;">
+				<h4 class="fontblue"><b>Performance vs. Index</b></h4>
+
+
+				<div id="reportrange" class="pull-right"
+					style="background: #ededee; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width:28%;margin-top:-24px;border-radius: 8px;">
+					<i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+					<span></span> <b class="caret"></b>
+
+				</div>
+
+
+				<br />
+
+
+				<div id="idgrowthkotak" style="width:90%"></div>
+				<h4 class="fontblue"><b>Performance</b></h4>
+
+
+
+
+
+
+				<table width="63%" style="z-index:10 !important;margin-left:30px;margin-bottom:24px;margin-top: 27px;"
+					class="kotakperfomancetbl">
+					<thead>
+						<tr>
+							<th style="text-align:left"></th>
+							<th>1M</th>
+							<th>3M</th>
+							<th>6M</th>
+							<th>1Y</th>
+							<th>3Y</th>
+							<th>5Y</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td> Fund
+							</td>
+							<td>-13.19%
+							</td>
+							<td>-20.93%
+							</td>
+							<td>-8.11%
+							</td>
+							<td>0.00%
+							</td>
+							<td>-17.74%
+							</td>
+							<td>-32.23%
+							</td>
+						</tr>
+						<tr style="border-bottom:1px solid #767677">
+							<td> Benchmank
+							</td>
+							<td>-13.19%
+							</td>
+							<td>-20.93%
+							</td>
+							<td>-8.11%
+							</td>
+							<td>0.00%
+							</td>
+							<td>-17.74%
+							</td>
+							<td>-32.23%
+							</td>
+						</tr>
+				</table>
+			</div>
+			<div class="row" style="margin-top:34px">
+				<div class="col-lg-12" style="width:114%">
+					<div class="col-lg-3 bgwhite" style="margin-right:24px;width:29em">
+						<h4 class="fontblue"><b>Risk Measures</b></h4>
+						<table style="width: 100%;margin-bottom: 20px;margin-top: 14px;" class="riskmeasure">
+							<tr>
+								<td>Standard Deviation</td>
+								<td>8.03%</td>
+							</tr>
+							<tr>
+								<td>Sharpe Ratio</td>
+								<td>0.00%</td>
+							</tr>
+							<tr>
+								<td>Information Ratio</td>
+								<td>0.00%</td>
+							</tr>
+							<tr>
+								<td>Treynor Ratio</td>
+								<td>8.85%</td>
+							</tr>
+							<tr>
+								<td>Beta</td>
+								<td>8.39%</td>
+							</tr>
+
+						</table>
+
+
+					</div>
+					<div class="col-lg-3 bgwhite" style="margin-right:24px;width:29em;height:219px">
+						<h4 class="fontblue"><b>Market Capitalization</b></h4>
+						<div id="idassetkotak" style="width:26%"></div>
+					</div>
+					<div class="col-lg-3 bgwhite" style="margin-right:24px;width:29em;height: 218px;">
+						<h4 class="fontblue"><b>Asset Allocation</b></h4>
+
+						<div id="assetallocation" style="height:30%;width:30%;margin-left:-14px"></div>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 19px;margin-bottom: 20px;">
+				<div class="col-lg-12">
+					<!-- <div class="col-lg-5 bgwhite" style="margin-right:24px;width:46.7em"> -->
+					<!-- <h4 class="fontblue"><b>Top 10 Sector Holdings</b></h4> -->
+
+					<!-- <div id="idsectorholding" style="width:47%;margin-bottom:7px"></div> -->
+					<!-- </div> -->
+					<div class="col-lg-5 bgwhite" style="width:41em">
+						<h4 class="fontblue"><b>Portfolio Details</b></h4>
+
+						<!--pagination-->
+						<div class="container" style="width:100%;margin-top:-19px">
+							<div class="jumbotron page" id="page1">
+
+
+								<table width="136%"
+									style="z-index:10 !important;margin-left:-75px;margin-top: 28px;margin-bottom: 20px;"
+									class="kotakportfolio">
+									<thead>
+										<tr>
+											<th style="text-align:left">Holdings
+											</th>
+											<th>% of Total
+											</th>
+											<th>Sector
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td> Infosys
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Banks
+											</td>
+										</tr>
+										<tr>
+											<td> HDFC
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Finance
+											</td>
+										</tr>
+										<tr>
+											<td>Infosys
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> TCS
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Consumer Non Durables
+											</td>
+										</tr>
+										<tr>
+											<td> SBI
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Banks
+											</td>
+										</tr>
+										<tr>
+											<td> HP
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Petroleum Products
+											</td>
+										</tr>
+										<tr>
+											<td> TCS
+
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> HP
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Petroleum Products
+											</td>
+										</tr>
+										<tr>
+											<td> TCS
+
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> HP
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Petroleum Products
+											</td>
+										</tr>
+
+
+
+								</table>
+
+							</div>
+							<div class="jumbotron page" id="page2">
+								<table width="136%"
+									style="z-index:10 !important;margin-left:-75px;margin-top: 28px;margin-bottom: 20px;"
+									class="kotakportfolio">
+									<thead>
+										<tr>
+											<th style="text-align:left">Holdings
+											</th>
+											<th>% of Total
+											</th>
+											<th>Sector
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td> TCS
+											</td>
+											<td>-40.9%
+											</td>
+											<td>Banks
+											</td>
+										</tr>
+										<tr>
+											<td> Axis
+											</td>
+											<td>-90%
+											</td>
+											<td>Finance
+											</td>
+										</tr>
+										<tr>
+											<td>Techmahindra
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> TCS
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Consumer Non Durables
+											</td>
+										</tr>
+										<tr>
+											<td> SBI
+											</td>
+											<td>-20.9%
+											</td>
+											<td>Banks
+											</td>
+										</tr>
+										<tr>
+											<td>Cybage
+											</td>
+											<td>-10.9%
+											</td>
+											<td>Petroleum Products
+											</td>
+										</tr>
+										<tr>
+											<td> CTS
+
+											</td>
+											<td>-18.9%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> HP
+											</td>
+											<td>-11.19%
+											</td>
+											<td>Petroleum Products
+											</td>
+										</tr>
+										<tr>
+											<td> TCS
+
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> HP
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Petroleum Products
+											</td>
+										</tr>
+
+
+
+								</table>
+							</div>
+							<div class="jumbotron page" id="page3">
+								<table width="136%"
+									style="z-index:10 !important;margin-left:-75px;margin-top: 28px;margin-bottom: 20px;"
+									class="kotakportfolio">
+									<thead>
+										<tr>
+											<th style="text-align:left">Holdings
+											</th>
+											<th>% of Total
+											</th>
+											<th>Sector
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td> Wipro
+											</td>
+											<td>-80.9%
+											</td>
+											<td>Banks
+											</td>
+										</tr>
+										<tr>
+											<td>SBI
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Finance
+											</td>
+										</tr>
+										<tr>
+											<td>Infosys
+											</td>
+											<td>11.9%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> TCS
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Consumer Non Durables
+											</td>
+										</tr>
+										<tr>
+											<td> SBI
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Banks
+											</td>
+										</tr>
+										<tr>
+											<td> HP
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Petroleum Products
+											</td>
+										</tr>
+										<tr>
+											<td> TCS
+
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> HP
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Petroleum Products
+											</td>
+										</tr>
+										<tr>
+											<td> TCS
+
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> HP
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Petroleum Products
+											</td>
+										</tr>
+
+
+
+								</table>
+							</div>
+							<div class="jumbotron page" id="page4">
+								<table width="136%"
+									style="z-index:10 !important;margin-left:-75px;margin-top: 28px;margin-bottom: 20px;"
+									class="kotakportfolio">
+									<thead>
+										<tr>
+											<th style="text-align:left">Holdings
+											</th>
+											<th>% of Total
+											</th>
+											<th>Sector
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td> Hsbc
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Banks
+											</td>
+										</tr>
+										<tr>
+											<td> HDFC
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Finance
+											</td>
+										</tr>
+										<tr>
+											<td>Infosys
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> TCS
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Consumer Non Durables
+											</td>
+										</tr>
+										<tr>
+											<td> SBI
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Banks
+											</td>
+										</tr>
+										<tr>
+											<td> HP
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Petroleum Products
+											</td>
+										</tr>
+										<tr>
+											<td> TCS
+
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> HP
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Petroleum Products
+											</td>
+										</tr>
+										<tr>
+											<td> TCS
+
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> HP
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Petroleum Products
+											</td>
+										</tr>
+
+
+
+								</table>
+							</div>
+							<div class="jumbotron page" id="page5">
+								<table width="136%"
+									style="z-index:10 !important;margin-left:-75px;margin-top: 28px;margin-bottom: 20px;"
+									class="kotakportfolio">
+									<thead>
+										<tr>
+											<th style="text-align:left">Holdings
+											</th>
+											<th>% of Total
+											</th>
+											<th>Sector
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td> Finexa
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Banks
+											</td>
+										</tr>
+										<tr>
+											<td> HDFC
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Finance
+											</td>
+										</tr>
+										<tr>
+											<td>Infosys
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> TCS
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Consumer Non Durables
+											</td>
+										</tr>
+										<tr>
+											<td> SBI
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Banks
+											</td>
+										</tr>
+										<tr>
+											<td>Wallmart
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Petroleum Products
+											</td>
+										</tr>
+										<tr>
+											<td> Costco
+
+											</td>
+											<td>-13.19%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td>Synerzip
+											</td>
+											<td>-8.19%
+											</td>
+											<td>Products
+											</td>
+										</tr>
+										<tr>
+											<td> Persistent
+
+											</td>
+											<td>10.9%
+											</td>
+											<td>Auto
+											</td>
+										</tr>
+										<tr>
+											<td> HDFC
+											</td>
+											<td>-8.19%
+											</td>
+											<td>PP
+											</td>
+										</tr>
+
+
+
+								</table>
+							</div>
+							<ul id="pagination-demo" class="pagination-sm pull-right"></ul>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+</div>

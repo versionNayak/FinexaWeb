@@ -1,0 +1,156 @@
+﻿<script type="text/javascript" src="reportsCustomization/js/reportCustomize.js"></script>
+<div class="dmcontainer">
+<form class="form-horizontal" action="#">
+
+		<div class="form-group">
+				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Report Name*:</label>
+					<span class="form-static-value" id="hide320" >
+						<select class="form-control input-width-medium" required="required" tabindex="430">
+										<option selected value="">Select Report</option>
+										<option value="bm">Budget Management</option>
+										<option value="gp">Goal Planning</option>
+										<option value="pa">Portfolio Analysis</option>
+										<option value="fp">Financial Planning</option>
+										<option value="ia">Insurance Analysis</option>
+										<option value="ar">All Reports</option>
+									</select>
+					        </span>
+					    </div>
+				    </div>
+
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Customized Logo*:</label>
+					<div class="clearfix"></div>
+					<div class="btn-group logo_toggle" id="status" data-toggle="buttons">
+              <label class="btn btn-default btn-on btn-sm active" style="height:22px;padding-top:2px;">
+              <input type="radio" value="1" name="tgl" checked="checked">No</label>
+              <label class="btn btn-default btn-off btn-sm" style="height:22px;padding-top:2px;">
+              <input type="radio"  value="0" name="tgl">Yes</label>
+            </div>
+            <input type="file" class="hidden_file_input" name="">
+            <span class="filename"></span>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Customized Header*:</label>
+					<div class="clearfix"></div>
+					<div class="btn-group header_toggle" id="status" data-toggle="buttons">
+              <label class="btn btn-default btn-on btn-sm active" style="height:22px;padding-top:2px;">
+              <input type="radio" value="1" name="tgl" checked="checked">No</label>
+              <label class="btn btn-default btn-off btn-sm" style="height:22px;padding-top:2px;">
+              <input type="radio"  value="0" name="tgl">Yes</label>
+            </div>
+            
+            <div class="cust_headers">
+            <div class="header1 header clearfix">
+	            <span class="header_title">Blank</span>
+	            <div class="header_format">
+	            	<span>Sample Text</span>
+	            	<input type="text" placeholder="Sample text" class="header_input" name="">
+	            </div>
+            </div>
+            <div class="header2 header clearfix">
+            	<span class="header_title">Blank - Three Columns</span>
+	            <div class="header_format clearfix">
+	            	<span class="col-sm-4">Sample Text</span>
+	            	<span class="col-sm-4">Sample Text</span>
+	            	<span class="col-sm-4">Sample Text</span>
+	            	<input type="text" placeholder="Sample text" class="col-sm-4 header_input header_input1" name="">
+	            	<input type="text" placeholder="Sample text" class="col-sm-4 header_input" name="">
+	            	<input type="text" placeholder="Sample text" class="col-sm-4 header_input" name="">
+	            </div>
+            </div>
+            <div class="header3 header clearfix">
+            	<span class="header_title">Title Center</span>
+	            <div class="header_format text-center">
+	            	<span>Document Title Comes Here</span>
+	            	<input type="text" placeholder="Document Title Comes Here" class="header_input" name="">
+	            </div>
+            </div>
+            </div>
+				</div>
+			</div>
+			
+			
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Customized Footer*:</label>
+					<div class="clearfix"></div>
+					<div class="btn-group footer_toggle" id="status" data-toggle="buttons">
+              <label class="btn btn-default btn-on btn-sm active" style="height:22px;padding-top:2px;">
+              <input type="radio" value="1" name="tgl" checked="checked">No</label>
+              <label class="btn btn-default btn-off btn-sm" style="height:22px;padding-top:2px;">
+              <input type="radio"  value="0" name="tgl">Yes</label>
+            </div>
+            
+            <div class="cust_footers">
+            <div class="header1 header clearfix">
+	            <span class="header_title">Blank</span>
+	            <div class="header_format">
+	            	<span>Sample Text</span>
+	            	<input type="text" placeholder="Sample text" class="header_input" name="">
+	            </div>
+            </div>
+            <div class="header2 header clearfix">
+            	<span class="header_title">Blank - Three Columns</span>
+	            <div class="header_format clearfix">
+	            	<span class="col-sm-4">Sample Text</span>
+	            	<span class="col-sm-4">Sample Text</span>
+	            	<span class="col-sm-4">Sample Text</span>
+	            	<input type="text" placeholder="Sample text" class="col-sm-4 header_input header_input1" name="">
+	            	<input type="text" placeholder="Sample text" class="col-sm-4 header_input" name="">
+	            	<input type="text" placeholder="Sample text" class="col-sm-4 header_input" name="">
+	            </div>
+            </div>
+            <div class="header3 header clearfix">
+            	<span class="header_title">Text Page Number</span>
+	            <div class="header_format">
+	            	<span>Sample Text</span>
+	            	<span class="pull-right">Page 1</span>
+	            	<input type="text" placeholder="Sample Text" class="header_input h_input1" name="">
+	            	<input type="text" class="pull-right header_input"  placeholder="Page 1" name="">
+	            </div>
+            </div>
+            </div>
+				</div>
+			</div>
+			
+
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Disclaimer*:</label>
+					<div class="clearfix"></div>
+					<div class="btn-group dis_toggle" id="status" data-toggle="buttons">
+              <label class="btn btn-default btn-on btn-sm active" style="height:22px;padding-top:2px;">
+              <input type="radio" value="1" name="tgl" checked="checked">No</label>
+              <label class="btn btn-default btn-off btn-sm" style="height:22px;padding-top:2px;">
+              <input type="radio"  value="0" name="tgl">Yes</label>
+            </div>
+            	<div class="disclaimer_inputs">
+            		<input type="text" id="d1" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Disclaimer Label Name" tabindex="270"/>
+
+            		<textarea id="d2" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Old Disclaimer" tabindex="270"/></textarea>
+
+            		<textarea id="d3" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="New Disclaimer" tabindex="270"/></textarea>
+            	</div>
+				</div>
+			</div>
+
+          <div class="form-group">
+				<div class="col-sm-offset-1 col-sm-11">
+					<button type="submit" class="pull-left form-control addbtn" tabindex="540">Save</button>
+					<button type="submit" class="pull-left form-control addbtn" tabindex="540">Cancel</button>
+				</div>
+			</div>
+		</form>
+
+</div>

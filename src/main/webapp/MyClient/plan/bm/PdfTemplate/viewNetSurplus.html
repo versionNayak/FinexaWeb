@@ -1,0 +1,854 @@
+<div>
+	<div id="netSurplusPrintdiv">
+		<div style="page-break-after: always;">			
+			<h1 align="center">Net Surplus</h1>
+			<h3 align="center">Current NetSurplus</h3>
+			
+			<table align="center" class="netsurplurtblspdf" id="idNetsurplusTablePDF">
+				<thead>
+					<tr>
+						<th>&nbsp;</th>
+						<th>Amount(Rs)</th>
+						<th>% of Total</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr></tr>
+					<tr class="classSalary">
+						<td>Salary Income</td>
+						<td id="salaryAmountnetPDF"></td>
+						<td id="salaryPercentnetPDF"></td>
+					</tr>
+					<tr class="classBonus">
+						<td>Bonus Income/Variable Pay</td>
+						<td id="bonousAmountnetPDF"></td>
+						<td id="bonousPercentnetPDF"></td>
+					</tr>
+					<tr class="classProf">
+						<td>Professional Fees</td>
+						<td id="profFessnetPDF"></td>
+						<td id="profPercentnetPDF"></td>
+					</tr>
+					<tr class="classBuss">
+						<td>Business Income</td>
+						<td id="bussIncomenetPDF"></td>
+						<td id="bussPercentnetPDF"></td>
+					</tr>
+					<tr class="classRent">
+						<td>Rental Income</td>
+						<td id="rentIncomenetPDF"></td>
+						<td id="rentIncomePercentnetPDF"></td>
+					</tr>
+					<tr class="classPension">
+						<td>Pension</td>
+						<td id="pensionnetPDF"></td>
+						<td id="pensionPercentnetPDF"></td>
+					</tr>
+					<tr class="classOther">
+						<td>Other Income</td>
+						<td id="otherIncomenetPDF"></td>
+						<td id="otherIncomePercentnetPDF"></td>
+					</tr>
+					<tr class="classInterest">
+						<td>Interest Income</td>
+						<td id="interestIncomenetPDF"></td>
+						<td id="interestIncomePercentnetPDF"></td>
+					</tr>
+					<tr class="classIndTotal">
+						<td>Individual Total Income</td>
+						<td id="indTotalIncomenetPDF"></td>
+						<td id="indTotalIncomePercentnetPDF"></td>
+					</tr>						
+					<tr class="nonglidtotal">
+						<td><b>Total Income</b></td>
+						<td><b id="totalIncomenetPDF"></b></td>
+						<td><b id="totalIncomePercentnetPDF"></b></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div id="idNetsurplusTablePDFresultTable"></div>
+
+			<table  align="center"  class="netsurplurtblspdf" id="idNetSurplusExpenseTablePDF">
+				<thead>
+					<tr>
+						<th class="textalignlft">Less:</th>
+						<th>&nbsp;</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr></tr>
+					<tr class="classLivingExp">
+						<td>Living Expenses</td>
+						<td id="id_LivingExpenses_amt_nsPDF"></td>
+						<td id="id_LivingExpenses_tp_nsPDF"></td>
+					</tr>
+					<tr class="classDiscreExp">
+						<td>Discretionary Expenses</td>
+						<td id="id_DiscretionaryExpenses_amt_nsPDF"></td>
+						<td id="id_DiscretionaryExpenses_tp_nsPDF"></td>
+					</tr>
+					<tr class="nonglidtotal">
+						<td><b>Total Expenses</b></td>
+						<td><b id="id_TotalExpenses_summ_amt_nsPDF"></b></td>
+						<td><b id="id_TotalExpenses_summ_tp_nsPDF"></b></td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<div id="idNetSurplusExpenseTablePDFTable"></div>
+			
+			<table align="center" class="netsurplurtblspdf" id="idNetSurplusCOTablePDF">
+				<thead>
+					<tr>
+						<th class="textalignlft">Less:</th>
+						<th>&nbsp;</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr></tr>
+					<tr class="classCO">
+						<td>Committed Outflows</td>
+						<td id="id_committed_outflows_netPDF"></td>
+						<td id="id_committed_outflows_net_percPDF"></td>
+					</tr>
+					<tr class="nonglidtotal">
+						<td><b>Total </b></td>
+						<td><b id="id_total_co_netPDF"></b></td>
+						<td><b id="id_total_co_net_percPDF"></b></td>
+					</tr>
+				</tbody>
+			</table>
+		
+			<div id="idNetSurplusCOTablePDFTable"></div>
+		
+			<table align="center" class="netsurplurtblspdf" id="idNetSurplusLoanTablePDF">
+				<thead>
+					<tr>
+						<th class="textalignlft">Less:</th>
+						<th>&nbsp;</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr></tr>
+					<tr class="classEMI">
+						<td>EMI</td>
+						<td id="idEmiAmountPDF"></td>
+						<td id="idEmiPercentagePDF"></td>
+					</tr>
+					<tr class="classInterestPayment">
+						<td>Other Interest Payments</td>
+						<td id="idInterestPaymentPDF"></td>
+						<td id="idInterestPercentagePDF"></td>
+					</tr>
+					<tr class="classPrincipalPayment">
+						<td>Other Principal Payments</td>
+						<td id="idPrincipalPaymentPDF"></td>
+						<td id="idPrincipalPercentagePDF"></td>
+					</tr>
+					<tr class="nonglidtotal">
+						<td><b>Total</b></td>
+						<td><b id="idTotalLoansPDF"></b></td>
+						<td><b id="idTotalLoansPercPDF"></b></td>
+					</tr>
+					<tr>
+						<td></td>
+					</tr>
+					<tr class="classNetSurplus">
+						<td><b>Net Surplus</b></td>
+						<td><b id="idTotalNetSulplusPDF"></b></td>
+						<td><b id="idTotalNetSulplusPercPDF"></b></td>
+					</tr>
+				</tbody>
+			</table>				
+	
+			<div id="idNetSurplusLoanTablePDFTable"></div>
+	
+		</div>
+		
+		<div style="page-break-after: always;">
+			<h1 align="center">Net Surplus</h1>
+			<h3 align="center">NetSurplus Projections</h3>		
+				
+			<table align="center" id="idNetSurplusProjectionTablePDF" class="netsurplusprojpdf">
+				<thead>
+					<tr>
+						<th>Year</th>
+						<th>Income</th>
+						<th>Expenses</th>
+						<th>Committed Outflows</th>
+						<th>Loan Outflow</th>
+						<th>Net Surplus</th>
+					</tr>
+				</thead>
+				<tbody id="idNetProjectionPDF">
+				</tbody>
+			</table>
+		
+			<div id="idNetSurplusProjectionTablePDFTable"></div>
+		</div>
+		
+		<div align="center" style="page-break-after: always;">	
+			<h1 align="center">Net Surplus</h1>
+			<h3 align="center">NetSurplus Projections Graph</h3>
+			
+			<table align="center" width="700px" style="background-color:#FFFFFF;" >
+				<tr>
+					<td width="100%">
+						<div id="idnetPDF" style="min-width:300px;height:350px;margin:0 auto"></div>
+					</td>
+				</tr>
+			</table>
+			
+			
+		</div>
+		
+	</div>
+	
+	<div id="netSurplusJsdiv">	
+	
+		<script type="text/javascript">
+			$("#idNetDiv").hide();
+			$("#idNetDivProj").hide();
+			$("#idNetDivGraph").hide();
+		
+			$(document).ready(function(){
+				var salaryIncome;
+				var salaryIncomePercent;
+				var bonousPercent;
+				var profPercent;
+				var bussPercent;
+				var rentIncomePercent;
+				var otherIncomePercent;
+				var interestIncomePercent;
+				var pensionPercent;
+				var totalIncome;
+				var totalExpense;
+
+				$.ajax({
+					type: 'GET',
+					url: REQUEST_URL_BM+'/getClientIncomeInfo?clientId='+vClientId+'&mode=yearly&fpFlag=0',
+					async: true,
+					dataType: 'json',
+					success: function (data) {
+						salaryIncome = data.salaryIncome;
+						totalIncome = data.totalIncome;
+	
+						$("#salaryAmountnetPDF").text(parseFloat((salaryIncome/100) * 100).toFixed(2));
+						$("#idSalModalPDF").text(parseFloat((salaryIncome/100) * 100).toFixed(2));
+						
+						if(salaryIncome == 0) {
+							$("#idNetsurplusTablePDF tbody tr.classSalary").hide().addClass('noprint');							
+						}
+	
+						$("#bonousAmountnetPDF").text(parseFloat((data.bonousIncome/100) * 100).toFixed(2));
+						$("#idBonusModalPDF").text(parseFloat((data.bonousIncome/100) * 100).toFixed(2));
+						
+						if(data.bonousIncome == 0) {
+							$("#idNetsurplusTablePDF tbody tr.classBonus").hide().addClass('noprint');
+						}
+	
+						$("#profFessnetPDF").text(parseFloat((data.professionalFee/100) * 100).toFixed(2));
+						$("#idProfModalPDF").text(parseFloat((data.professionalFee/100) * 100).toFixed(2));
+						
+						if(data.professionalFee == 0) {
+							$("#idNetsurplusTablePDF tbody tr.classProf").hide().addClass('noprint');
+						}
+	
+						$("#bussIncomenetPDF").text(parseFloat((data.bussinessIncome/100) * 100).toFixed(2));
+						$("#idBussModalPDF").text(parseFloat((data.bussinessIncome/100) * 100).toFixed(2));
+						
+						if(data.bussinessIncome == 0) {
+							$("#idNetsurplusTablePDF tbody tr.classBuss").hide().addClass('noprint');
+						}
+	
+						$("#rentIncomenetPDF").text(parseFloat((data.rentalIncome/100) * 100).toFixed(2));
+						$("#idRentModalPDF").text(parseFloat((data.rentalIncome/100) * 100).toFixed(2));
+						
+						if(data.rentalIncome == 0) {
+							$("#idNetsurplusTablePDF tbody tr.classRent").hide().addClass('noprint');
+						}
+	
+						$("#pensionnetPDF").text(parseFloat((data.pension/100) * 100).toFixed(2));
+						$("#idPensionModalPDF").text(parseFloat((data.pension/100) * 100).toFixed(2));
+						
+						if(data.pension == 0) {
+							$("#idNetsurplusTablePDF tbody tr.classPension").hide().addClass('noprint');
+						}
+	
+						$("#otherIncomenetPDF").text(parseFloat((data.otherIncome/100) * 100).toFixed(2));
+						$("#idOtherModalPDF").text(parseFloat((data.otherIncome/100) * 100).toFixed(2));
+						
+						if(data.otherIncome == 0) {
+							$("#idNetsurplusTablePDF tbody tr.classOther").hide().addClass('noprint');
+						}
+	
+						$("#interestIncomenetPDF").text(parseFloat((data.interestIncome/100) * 100).toFixed(2));
+						$("#idInterestIncomeModalPDF").text(parseFloat((data.interestIncome/100) * 100).toFixed(2));
+						
+						if(parseInt(data.interestIncome ) == 0) {
+							$("#idNetsurplusTablePDF tbody tr.classInterest").hide().addClass('noprint');
+						}
+	
+						$("#indTotalIncomenetPDF").text(parseFloat((data.individualTotalIncome * 100)/100).toFixed(2));
+						
+						if(parseInt(data.individualTotalIncome ) == 0) {
+							$("#idNetsurplusTablePDF tbody tr.classIndTotal").hide().addClass('noprint');
+						}
+	
+						$("#totalIncomenetPDF").text(parseFloat((data.totalIncome/100) * 100).toFixed(2));
+						$("#idTotalModalPDF").text(parseFloat((data.totalIncome/100) * 100).toFixed(2));
+		
+						$("#salaryPercentnetPDF").text(parseFloat((data.salaryIncome / data.totalIncome) * 100).toFixed(2) + "%");
+						$("#idSalModalPercPDF").text(parseFloat((data.salaryIncome / data.totalIncome) * 100).toFixed(2) + "%");
+						
+						salaryIncomePercent = (data.salaryIncome / data.totalIncome) * 100;
+	
+						$("#bonousPercentnetPDF").text(parseFloat((data.bonousIncome / data.totalIncome) * 100).toFixed(2) + "%");
+						$("#idBonusModalPercPDF").text(parseFloat((data.bonousIncome / data.totalIncome) * 100).toFixed(2) + "%");
+						bonousPercent = (data.bonousIncome / data.totalIncome) * 100;
+	
+						$("#profPercentnetPDF").text(parseFloat((data.professionalFee / data.totalIncome) * 100).toFixed(2) + "%");
+						$("#idProfModalPercPDF").text(parseFloat((data.professionalFee / data.totalIncome) * 100).toFixed(2) + "%");
+						profPercent = (data.professionalFee / data.totalIncome) * 100;
+	
+						$("#bussPercentnetPDF").text(parseFloat((data.bussinessIncome / data.totalIncome) * 100).toFixed(2) + "%");
+						$("#idBussModalPercPDF").text(parseFloat((data.bussinessIncome / data.totalIncome) * 100).toFixed(2) + "%");
+						bussPercent = (data.bussinessIncome / data.totalIncome) * 100;
+	
+						$("#rentIncomePercentnetPDF").text(parseFloat((data.rentalIncome / data.totalIncome) * 100).toFixed(2)+ "%");
+						$("#idRentModalPercPDF").text(parseFloat((data.rentalIncome / data.totalIncome) * 100).toFixed(2)+ "%");
+						rentIncomePercent = (data.rentalIncome / data.totalIncome) * 100;
+	
+						$("#pensionPercentnetPDF").text(parseFloat((data.pension / data.totalIncome) * 100).toFixed(2) + "%");
+						$("#idPensionModalPercPDF").text(parseFloat((data.pension / data.totalIncome) * 100).toFixed(2) + "%");
+						pensionPercent = (data.pension / data.totalIncome) * 100;
+	
+						$("#interestIncomePercentnetPDF").text(parseFloat((data.interestIncome / data.totalIncome) * 100).toFixed(2) + "%");
+						$("#idInterestIncomeModalPercPDF").text(parseFloat((data.interestIncome / data.totalIncome) * 100).toFixed(2) + "%");
+						interestIncomePercent = (data.interestIncome / data.totalIncome) * 100;
+	
+						$("#otherIncomePercentnetPDF").text(parseFloat((data.otherIncome / data.totalIncome) * 100).toFixed(2) + "%");
+						$("#idOtherModalPercPDF").text(parseFloat((data.otherIncome / data.totalIncome) * 100).toFixed(2) + "%");
+						otherIncomePercent = (data.otherIncome / data.totalIncome) * 100;
+	
+						$("#indTotalIncomePercentnetPDF").text(parseFloat((data.individualTotalIncome / data.totalIncome) * 100).toFixed(2) + "%");
+						$("#indTotalIncomePercentnetModalPDF").text(parseFloat((data.individualTotalIncome / data.totalIncome) * 100).toFixed(2) + "%");
+	
+						$("#totalIncomePercentnetPDF").text(parseFloat((data.totalIncome / data.totalIncome) * 100).toFixed(2) + "%");
+						$("#idTotalModalPercPDF").text(parseFloat((data.totalIncome / data.totalIncome) * 100).toFixed(2) + "%");
+	
+						$.ajax({
+							type: 'GET',
+							url: REQUEST_URL_BM + '/getClientExpenseInfo?clientId=' + vClientId+'&mode=yearly&fpFlag=0',
+							async: false,
+							dataType: 'json',
+							success: function (data) {
+	
+								$("#id_LivingExpenses_amt_nsPDF").text(parseFloat((data.livingExpense/100)*100).toFixed(2));
+								$("#idLivingModalPDF").text(parseFloat((data.livingExpense/100)*100).toFixed(2));
+								
+								if(data.livingExpense == 0) {
+									$("#idNetSurplusExpenseTablePDF tbody tr.classLivingExp").hide().addClass('noprint');
+								}
+								
+								$("#id_LivingExpenses_tp_nsPDF").text((parseFloat((data.livingExpense / data.totalExpense) * 100).toFixed(2)) + "%");
+								$("#idLivingModalPercPDF").text((parseFloat((data.livingExpense / data.totalExpense) * 100).toFixed(2)) + "%");
+	
+								$("#id_DiscretionaryExpenses_amt_nsPDF").text(parseFloat((data.discretionaryExpense/100)*100).toFixed(2));
+								$("#idDiscreModalPDF").text(parseFloat((data.discretionaryExpense/100)*100).toFixed(2));
+								
+								if(data.discretionaryExpense == 0) {
+									$("#idNetSurplusExpenseTablePDF tbody tr.classDiscreExp").hide().addClass('noprint');
+								}
+	
+								$("#id_DiscretionaryExpenses_tp_nsPDF").text((parseFloat((data.discretionaryExpense / data.totalExpense) * 100).toFixed(2)) + "%");
+								$("#idDiscreModalPercPDF").text((parseFloat((data.discretionaryExpense / data.totalExpense) * 100).toFixed(2)) + "%");
+	
+								$("#idExpTotalModalPDF").text(parseFloat((data.totalExpense/100)*100).toFixed(2));
+								$("#id_TotalExpenses_summ_amt_nsPDF").text(parseFloat((data.totalExpense/100)*100).toFixed(2));
+	
+								$("#id_TotalExpenses_summ_tp_nsPDF").text((parseFloat((data.totalExpense / data.totalExpense) * 100).toFixed(2)) + "%");
+	
+								$("#idExpTotalModalPercPDF").text((parseFloat((data.totalExpense / data.totalExpense) * 100).toFixed(2)) + "%");
+								
+								totalExpense = data.totalExpense;
+								
+								if(data.livingExpense == 0 && data.discretionaryExpense == 0) {
+									$('#idNetSurplusExpenseTableModalPDF').hide().addClass('noprint');
+								}
+								//alert(data);
+								//var wholeData = jQuery.parseJSON(data);
+							}, 
+							error: function (data) {
+								totalExpense = 0;
+					//			alert("error from Expense : getAnnualExpensesDetailed");
+								$('#idNetSurplusExpenseTablePDF').hide().addClass('noprint');
+								$("#id_LivingExpenses_amt_nsPDF").text("0.00");
+								$("#idLivingModalPDF").text("0.00");
+	
+								$("#id_LivingExpenses_tp_nsPDF").text("0.00%");
+								$("#idLivingModalPercPDF").text("0.00%");
+	
+								$("#id_DiscretionaryExpenses_amt_nsPDF").text("0.00");
+								$("#idDiscreModalPDF").text("0.00");
+	
+								$("#id_DiscretionaryExpenses_tp_nsPDF").text("0.00%");
+								$("#idDiscreModalPercPDF").text("0.00%");
+	
+								$("#id_TotalExpenses_summ_amt_nsPDF").text("0.00");
+								$("#idExpTotalModalPDF").text("0.00");
+	
+								$("#id_TotalExpenses_summ_tp_nsPDF").text("0.00%");
+								$("#idExpTotalModalPercPDF").text("0.00%");
+							}
+	
+						});
+
+						var emiAmount =0;
+						var emiPercentage;
+						var interestPayment=0;
+						var interestPaymentPerc;
+						var otherPayment=0;
+						var otherPaymentPerc;
+						var totalLoans=0;
+						var totalLoansPerc;
+
+						$.ajax({
+							type: 'GET',
+							url: REQUEST_URL_BM+'/getClientAllBankLoanDetails?clientId='+vClientId+'&mode=yearly',
+							async: false,
+							dataType: 'json',
+							success: function (data) {
+					//			alert(data.length);
+								$.each(data,
+										function(index, value) {
+	
+									emiAmount = emiAmount + value.emiAmount;
+									// alert("EMI Amount" + emiAmount);
+									//alert("totalIncome" + totalIncome);
+									//emiPercentage = (emiAmount/totalIncome) * 100;
+									//emiPercentage = Math.round(emiPercentage * 100) / 100;
+									//alert("EMI Perc" + emiPercentage);
+	
+									$("#idEmiAmountPDF").text(parseFloat(emiAmount).toFixed(2));
+									$("#idEmiModalPDF").text(parseFloat(emiAmount).toFixed(2));
+	
+					//				$("#idEmiPercentage").text(emiPercentage + "%"); 
+					//				$("#idEmiModalPerc").text(emiPercentage + "%");  
+	
+									return false;
+								});
+								if (data.length == 0) {
+									emiAmount = 0;
+									$("#idEmiAmountPDF").text("0.00");
+									$("#idEmiModalPDF").text("0.00");
+	
+									$("#idEmiPercentagePDF").text("0.00%");  
+									$("#idEmiModalPercPDF").text("0.00%");  
+								}
+	
+							},
+							error: function (data) {
+								emiAmount = 0;
+								$("#idEmiAmountPDF").text("0.00");
+								$("#idEmiModalPDF").text("0.00");
+	
+								$("#idEmiPercentagePDF").text("0.00%"); 
+								$("#idEmiModalPercPDF").text("0.00%");  
+					//			alert("error from loan module1");
+							}
+	
+						});
+
+						var coTotal;
+						$.ajax({
+							type: 'GET',
+							async : false,
+							url: REQUEST_URL_BM+'/getCommitedOutflow?clientId='+vClientId+'&mode=yearly&fpFlag=0',
+							dataType: 'json',
+							success: function (data) {
+								$("#id_committed_outflows_netPDF").text(parseFloat(data.totalOutFlow).toFixed(2));
+								$("#idCommitedModalPDF").text(parseFloat(data.totalOutFlow).toFixed(2));
+								if (parseInt(data.totalOutFlow) == 0) {
+									
+									$("#id_committed_outflows_net_percPDF").text("0.00%");
+									$("#idCommitedModalPercPDF").text("0.00%");
+									$("#idNetSurplusCOTablePDF tbody tr.classCO").hide().addClass('noprint');
+									$("#idNetSurplusCOTableModalPDF tbody tr.classCOModal").hide().addClass('noprint');
+									$("#idNetSurplusCOTablePDF").hide().addClass('noprint');
+									$("#idNetSurplusCOTableModalPDF").hide().addClass('noprint');
+	
+								} else {
+									$("#id_committed_outflows_net_percPDF").text((parseFloat((data.totalOutFlow / data.totalOutFlow) * 100).toFixed(2))+"%");
+									$("#idCommitedModalPercPDF").text((parseFloat((data.totalOutFlow / data.totalOutFlow) * 100).toFixed(2))+"%");
+								}
+	
+								$("#id_total_co_netPDF").text(parseFloat((data.totalOutFlow*100)/100).toFixed(2));
+								$("#idCommitedTotalModalPDF").text(parseFloat(data.totalOutFlow).toFixed(2));
+	
+								if (parseInt(data.totalOutFlow) == 0) {
+									$("#id_total_co_net_percPDF").text("0.00%");
+									$("#idCommitedTotalModalPercPDF").text("0.00%");
+								} else {
+									$("#id_total_co_net_percPDF").text((parseFloat((data.totalOutFlow / data.totalOutFlow) * 100).toFixed(2))+"%");
+									$("#idCommitedTotalModalPercPDF").text((parseFloat((data.totalOutFlow / data.totalOutFlow) * 100).toFixed(2))+"%");
+								}
+								coTotal = parseInt(data.totalOutFlow);
+							},
+							error: function (data) {
+								$("#id_committed_outflows_netPDF").text("0.00");
+								$("#idCommitedModalPDF").text("0.00");
+								$("#id_committed_outflows_net_percPDF").text("0.00%");
+								$("#idCommitedModalPercPDF").text("0.00%");
+								$("#id_total_co_netPDF").text("0.00");
+								$("#idCommitedTotalModalPDF").text("0.00");
+								$("#id_total_co_net_percPDF").text("0.00%");
+								$("#idCommitedTotalModalPercPDF").text("0.00%");
+					//			alert(data.responseText);
+								coTotal = 0.0;
+							}
+						});
+
+						$.ajax({
+							type: 'GET',
+							// url: 'http://192.168.1.103:8080/FinexaService/getClientIncomeInfo?clientId='+vClientId+'&mode=yearly',
+							url: REQUEST_URL_BM+'/getClientLoanInfo?clientId='+vClientId+'',
+							async: false,
+							dataType: 'json',
+							success: function (data) {
+								$.each(data,
+										function(index, value) {
+									var loanType = value.loanEmiNonEmi;
+									if(loanType == 2) {
+										interestPayment = interestPayment + value.interestPay;
+										otherPayment = otherPayment + value.principalPay;
+								
+	
+									}
+								});
+	
+								$("#idInterestPaymentPDF").text(parseFloat((interestPayment * 100)/100).toFixed(2));
+								$("#idOtherInterestModalPDF").text(parseFloat((interestPayment * 100)/100).toFixed(2));
+	
+								if (interestPayment == 0.00) {
+									$("#idNetSurplusLoanTablePDF tbody tr.classInterestPayment").hide().addClass('noprint');
+								}
+	
+								$("#idPrincipalPaymentPDF").text(parseFloat((otherPayment * 100)/100).toFixed(2));
+								$("#idOtherPrincipalModalPDF").text(parseFloat((otherPayment * 100)/100).toFixed(2));
+
+								if (otherPayment == 0.00) {
+									$("#idNetSurplusLoanTablePDF tbody tr.classPrincipalPayment").hide().addClass('noprint');
+								}
+
+								totalLoans = emiAmount + interestPayment + otherPayment;
+								emiPercentage = (emiAmount/totalLoans) * 100;
+						
+								interestPaymentPerc = (interestPayment/totalLoans) * 100;
+								interestPaymentPerc = Math.round(interestPaymentPerc * 100) / 100;
+						
+								otherPaymentPerc = (otherPayment/totalLoans) * 100;
+								otherPaymentPerc = Math.round(otherPaymentPerc * 100) / 100;
+						
+								totalLoansPerc = emiPercentage + interestPaymentPerc + otherPaymentPerc;
+						
+	
+								$("#idEmiPercentagePDF").text(parseFloat((emiAmount/totalLoans)*100).toFixed(2)+"%"); 
+								$("#idEmiModalPercPDF").text(parseFloat((emiAmount/totalLoans)*100).toFixed(2) + "%");  
+						
+								$("#idInterestPercentagePDF").text(interestPaymentPerc+"%");  
+								$("#idOtherInterestModalPercPDF").text(interestPaymentPerc+"%");
+						
+								$("#idPrincipalPercentagePDF").text(otherPaymentPerc+"%");  
+								$("#idOtherPrincipalModalPercPDF").text(otherPaymentPerc+"%");  
+	
+						
+								$("#idTotalLoansPDF").text(parseFloat((totalLoans * 100)/100).toFixed(2));
+								$("#idLoanTotalModalPDF").text(parseFloat((totalLoans * 100)/100).toFixed(2));
+	
+								$("#idTotalLoansPercPDF").text(totalLoansPerc.toFixed(2) + "%"); 
+								$("#idLoanTotalModalPercPDF").text(totalLoansPerc.toFixed(2) + "%"); 
+	
+								if (totalLoans == 0.00) {
+									$("#idNetSurplusLoanTablePDF").hide().addClass('noprint');
+								}
+								var netSulplusAmt = totalIncome - totalExpense - totalLoans - coTotal;
+								//	alert(netSulplusAmt);
+								$("#idTotalNetSulplusPDF").text(parseFloat((netSulplusAmt * 100)/100).toFixed(2));
+								$("#idNetSurModalPDF").text(parseFloat((netSulplusAmt * 100)/100).toFixed(2));
+	
+								$("#idTotalNetSulplusPercPDF").text(parseFloat((netSulplusAmt / netSulplusAmt) * 100).toFixed(2) + "%");
+								$("#idNetSurModalPercPDF").text(parseFloat((netSulplusAmt / netSulplusAmt) * 100).toFixed(2) + "%");
+	
+							},
+							error: function (data) {
+								interestPayment = 0;
+								otherPayment = 0;
+								totalLoans = emiAmount + interestPayment + otherPayment;
+								var netSulplusAmt = totalIncome - totalExpense - totalLoans - coTotal;
+								$("#idTotalLoansPDF").text(parseFloat((totalLoans * 100)/100).toFixed(2));
+								$("#idLoanTotalModalPDF").text(parseFloat((totalLoans * 100)/100).toFixed(2));
+	
+								$("#idTotalLoansPercPDF").text("0.00%");
+								$("#idLoanTotalModalPercPDF").text("0.00%");
+	
+								$("#idInterestPaymentPDF").text(parseFloat((interestPayment * 100)/100).toFixed(2));
+								$("#idOtherInterestModalPDF").text(parseFloat((interestPayment * 100)/100).toFixed(2));
+	
+								$("#idInterestPercentagePDF").text("0.00%");  
+								$("#idOtherInterestModalPercPDF").text("0.00%");  
+	
+								$("#idPrincipalPaymentPDF").text(parseFloat((otherPayment * 100)/100).toFixed(2));
+								$("#idOtherPrincipalModalPDF").text(parseFloat((otherPayment * 100)/100).toFixed(2));
+	
+								$("#idPrincipalPercentagePDF").text("0.00%");  
+								$("#idOtherPrincipalModalPercPDF").text("0.00%");  
+	
+								$("#idTotalNetSulplusPDF").text(parseFloat((netSulplusAmt * 100)/100).toFixed(2));
+								$("#idNetSurModalPDF").text(Math.round(parseFloat((netSulplusAmt * 100)/100).toFixed(2)));
+	
+								if (netSulplusAmt > 0) {
+									$("#idTotalNetSulplusPercPDF").text(parseFloat((netSulplusAmt / netSulplusAmt) * 100).toFixed(2) + "%");
+									$("#idNetSurModalPercPDF").text(parseFloat((netSulplusAmt / netSulplusAmt) * 100).toFixed(2) + "%");
+								} else {
+									$("#idTotalNetSulplusPercPDF").text("0.00%");
+									$("#idNetSurModalPercPDF").text("0.00%");
+								}
+	
+					//			alert("error from loan module2");
+							}
+	
+						});
+
+						var year = [];
+						var income = [];
+						var expense = [];
+						var commmitted_outflow = [];
+						var loan_outflow = [];
+						var net_surplus = [];
+	
+						var flagIncome = 0;
+						var flagExpense = 0;
+						var flagCO = 0;
+						var flagloan = 0;
+						var flagNet = 0;
+	
+						$.ajax({
+							type: 'GET',
+							url: REQUEST_URL_BM+'/getClientNetSurplusInfo?clientId='+vClientId+'&mode=yearly&fpFlag=0',
+							async: false,  
+							dataType: 'json',
+							success: function (data) {
+	
+								$.each(data,
+										function(index, value) {
+									year.push(value.finYear);
+									income.push(parseInt(value.income));
+									expense.push(parseInt(value.expense));
+									commmitted_outflow.push(parseInt(value.committed_outflows));
+									loan_outflow.push(parseInt(value.loan_outflows));
+									net_surplus.push(parseInt(value.net_surplus));
+									$('#idNetProjectionPDF').append(	
+											'<tr><td>'+ value.finYear+ '</td><td>'+ 
+											parseFloat((value.income * 100)/100).toFixed(2)+ '</td><td>'+
+											parseFloat((value.expense * 100)/100).toFixed(2)+ '</td><td>'+ 
+											parseFloat((value.committed_outflows * 100)/100).toFixed(2)+ '</td><td>'+ 
+											parseFloat((value.loan_outflows * 100)/100).toFixed(2)+ '</td><td>'+                                              	
+											parseFloat((value.net_surplus * 100)/100).toFixed(2)+'</td></tr>');
+									
+							
+									if (parseFloat((value.income * 100)/100).toFixed(2) != 0.00) {
+										flagIncome = 1;
+									}
+									if (parseFloat((value.expense * 100)/100).toFixed(2) != 0.00) {
+										flagExpense = 1;
+									}
+									if (parseFloat((value.committed_outflows * 100)/100).toFixed(2) != 0.00) {
+										flagCO = 1;
+									}
+									if (parseFloat((value.loan_outflows * 100)/100).toFixed(2) != 0.00) {
+										flagloan = 1;
+									}
+									if (parseFloat((value.net_surplus * 100)/100).toFixed(2) != 0.00) {
+										flagNet = 1;
+									}
+	
+								});
+								// hide all zero containing columns
+						
+								if(flagIncome == 0) {
+									$('#idNetSurplusProjectionTablePDF td:nth-child(2),#idNetSurplusProjectionTable th:nth-child(2)').hide().addClass('noprint');
+								}
+								if(flagExpense == 0) {
+									$('#idNetSurplusProjectionTablePDF td:nth-child(3),#idNetSurplusProjectionTable th:nth-child(3)').hide().addClass('noprint');
+								}
+								if(flagCO == 0) {
+									$('#idNetSurplusProjectionTablePDF td:nth-child(4),#idNetSurplusProjectionTable th:nth-child(4)').hide().addClass('noprint');
+								}
+								if(flagloan == 0) {
+									$('#idNetSurplusProjectionTablePDF td:nth-child(5),#idNetSurplusProjectionTable th:nth-child(5)').hide().addClass('noprint');
+								}
+								if(flagNet == 0) {
+									$('#idNetSurplusProjectionTablePDF td:nth-child(6),#idNetSurplusProjectionTable th:nth-child(6)').hide().addClass('noprint');
+								}
+	
+	
+								data = [];
+								$.each(net_surplus, function(index, value){
+									var color
+									if (value < 0) color = 'tomato';
+									else if (value > 0) color = '#337ab7';
+									else color = '';
+									data.push({y:value, color: color});
+								});
+	
+								$('#idnetPDF').highcharts({
+									chart: {
+										type: 'column',
+									},
+									title: {
+										text: ''
+									},
+									xAxis: {
+										categories: year
+									},
+									legend: {
+										enabled: true,
+									},
+									series: [{
+										name: 'Net Surplus',
+										data: data,
+	
+									}]
+								});
+							
+								$("#idNetDivPDF").show();
+								$("#idNetDivProjPDF").show();
+								$("#idNetDivGraphPDF").show();
+								$("#idNetsurplusTablePDF").show();
+								$("#idNetSurplusExpenseTablePDF").show();
+								$("#idNetSurplusCOTablePDF").show();
+								$("#idNetSurplusLoanTablePDF").show();
+							},
+							error: function (data) {
+					//			alert("error from projection module");
+							}
+					
+						});
+					},
+					error: function (data) {
+						$("#heading_netPDF").text("Net Surplus FY");
+						totalIncome = 0;
+	
+						$("#salaryAmountnetPDF").text("0.00");
+						$("#idSalModalPDF").text("0.00");
+	
+						$("#bonousAmountnetPDF").text("0.00");
+						$("#idBonusModalPDF").text("0.00");
+	
+						$("#profFessnetPDF").text("0.00");
+						$("#idProfModalPDF").text("0.00");
+	
+						$("#bussIncomenetPDF").text("0.00");
+						$("#idBussModalPDF").text("0.00");
+	
+						$("#rentIncomenetPDF").text("0.00");
+						$("#idRentModalPDF").text("0.00");
+	
+						$("#pensionnetPDF").text("0.00");
+						$("#idPensionModalPDF").text("0.00");
+	
+						$("#otherIncomenetPDF").text("0.00");
+						$("#idOtherModalPDF").text("0.00");
+	
+						$("#interestIncomenetPDF").text("0.00");
+						$("#idInterestIncomeModalPDF").text("0.00");
+	
+						$("#indTotalIncomenetPDF").text("0.00");
+						$("#indTotalIncomenetModalPDF").text("0.00");
+	
+						$("#totalIncomenetPDF").text("0.00");
+						$("#idTotalModalPDF").text("0.00");
+	
+						$("#salaryPercentnetPDF").text("0.00%");
+						$("#idSalModalPercPDF").text("0.00%");
+	
+						$("#bonousPercentnetPDF").text("0.00%");
+						$("#idBonusModalPercPDF").text("0.00%");
+	
+						$("#profPercentnetPDF").text("0.00%");
+						$("#idProfModalPercPDF").text("0.00%");
+	
+						$("#bussPercentnetPDF").text("0.00%");
+						$("#idBussModalPercPDF").text("0.00%");
+	
+						$("#rentIncomePercentnetPDF").text("0.00%");
+						$("#idRentModalPercPDF").text("0.00%");
+	
+						$("#otherIncomePercentnetPDF").text("0.00%");
+						$("#idOtherModalPercPDF").text("0.00%");
+	
+						$("#interestIncomePercentnetPDF").text("0.00%");
+						$("#idInterestIncomeModalPercPDF").text("0.00%");
+	
+						$("#pensionPercentnetPDF").text("0.00%");
+						$("#idPensionModalPercPDF").text("0.00%");
+	
+						$("#indTotalIncomePercentnetPDF").text("0.00%");
+						$("#indTotalIncomePercentnetModalPDF").text("0.00%");
+	
+						$("#totalIncomePercentnetPDF").text("0.00%");
+						$("#idTotalModalPercPDF").text("0.00%");
+					}
+				});
+				
+				var table_html = '';
+				var table_html = $('#idNetsurplusTablePDF').html();					
+				table_html = '<table align="center" class="netsurplurtblspdf" id="idNetsurplusTablePDF">'+table_html+'</table>';	
+				$html =  $(table_html);  		
+				$html.find('.noprint').remove();
+				$('#idNetsurplusTablePDF').remove();
+				$('#idNetsurplusTablePDFresultTable').html('<table align="center" class="netsurplurtblspdf" id="idNetsurplusTablePDF">'+$html.html()+'</table>');
+				
+				var table_html = '';
+				var table_html = $('#idNetSurplusExpenseTablePDF').html();					
+				table_html = '<table  align="center"  class="netsurplurtblspdf" id="idNetSurplusExpenseTablePDF">'+table_html+'</table>';	
+				$html =  $(table_html);  		
+				$html.find('.noprint').remove();
+				$('#idNetSurplusExpenseTablePDF').remove();
+				$('#idNetSurplusExpenseTablePDFTable').html('<table  align="center"  class="netsurplurtblspdf" id="idNetSurplusExpenseTablePDF">'+$html.html()+'</table>');
+				
+				var table_html = '';
+				var table_html = $('#idNetSurplusCOTablePDF').html();					
+				table_html = '<table align="center" class="netsurplurtblspdf" id="idNetSurplusCOTablePDF">'+table_html+'</table>';	
+				$html =  $(table_html);  		
+				$html.find('.noprint').remove();
+				$('#idNetSurplusCOTablePDF').remove();
+				$('#idNetSurplusCOTablePDFTable').html('<table align="center" class="netsurplurtblspdf" id="idNetSurplusCOTablePDF">'+$html.html()+'</table>');
+				
+				var table_html = '';
+				var table_html = $('#idNetSurplusLoanTablePDF').html();					
+				table_html = '<table align="center" class="netsurplurtblspdf" id="idNetSurplusLoanTablePDF">'+table_html+'</table>';	
+				$html =  $(table_html);  		
+				$html.find('.noprint').remove();
+				$('#idNetSurplusLoanTablePDF').remove();
+				$('#idNetSurplusLoanTablePDFTable').html('<table align="center" class="netsurplurtblspdf" id="idNetSurplusLoanTablePDF">'+$html.html()+'</table>');
+				
+				var table_html = '';
+				var table_html = $('#idNetSurplusProjectionTablePDF').html();					
+				table_html = '<table align="center" id="idNetSurplusProjectionTablePDF" class="netsurplusprojpdf">'+table_html+'</table>';	
+				$html =  $(table_html);  		
+				$html.find('.noprint').remove();
+				$('#idNetSurplusProjectionTablePDF').remove();
+				$('#idNetSurplusProjectionTablePDFTable').html('<table align="center" id="idNetSurplusProjectionTablePDF" class="netsurplusprojpdf">'+$html.html()+'</table>');
+				
+				
+		});
+		</script>	
+	</div>	
+</div>
+

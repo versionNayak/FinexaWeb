@@ -1,0 +1,952 @@
+<div>
+	<div id="expensediv">
+		<div align="center" style="page-break-after: always;">
+			<h1 align="center">Expenses</h1>
+			<h3 align="center">Current Expense</h3>
+			<br />		
+			<table align="center" border="0" class="tableGlideWrapper" style="background:none !important;">
+				<tr align="center" style="background: none !important;">
+					<td width="70%" align="center">
+							<div id="idCurrentExpenseTablePDFresultTable"></div>
+							<table align="center" class="recommendedtblpdf" id="idCurrentExpenseTablePDF" >
+								<thead>
+									<tr>
+										<th>&nbsp;</th>
+										<th>Expenses</th>
+										<th>Annual Expense</th>
+										<th>% of Total</th>
+										<th style="width: 26%">Industry Standard % of Total</th>
+									</tr>
+								</thead>	
+								<tbody>
+									<tr></tr>
+									<tr class="classGroceries">
+										<td><img id="classGroceries" src="../Common/assets/images/circle2.png" /></td>
+										<td>&nbsp; Groceries</td>
+										<td id="id_Groceries_amtPDF"></td>
+										<td id="id_Groceries_tpPDF"></td>
+										<td id="idInGroceriesPDF"></td>
+									</tr>
+									<tr class="classUtilities">
+										<td><img id="classUtilities" src="../Common/assets/images/circle3.png" /></td>
+										<td>&nbsp;Utilities</td>
+										<td id="id_Utilities_amtPDF"></td>
+										<td id="id_Utilities_tpPDF"></td>
+										<td id="idInUtilitiesPDF"></td>
+									</tr>
+									<tr class="classTransport">
+										<td><img id="classTransport" src="../Common/assets/images/circle4.png" /></td>
+										<td>&nbsp; Transport</td>
+										<td id="id_Transport_amtPDF"></td>
+										<td id="id_Transport_tpPDF"></td>
+										<td id="idInTransportPDF"></td>
+									</tr>
+									<tr class="classHPC">
+										<td><img id="classHPC" src="../Common/assets/images/circle5.png" /></td>
+										<td>&nbsp;Household & Personal Care</td>
+										<td id="id_HouseholdAndPersonalCare_amtPDF"></td>
+										<td id="id_HouseholdAndPersonalCare_tpPDF"></td>
+										<td id="idInHPCPDF"></td>
+									</tr>
+									<tr class="classHM">
+										<td><img id="classHM" classHM src="../Common/assets/images/circle6.png" /></td>
+										<td>&nbsp; Housing & Maintenance</td>
+										<td id="id_HousingAndMaintenance_amtPDF"></td>
+										<td id="id_HousingAndMaintenance_tpPDF"></td>
+										<td id="idInHMPDF"></td>
+									</tr>
+									<tr class="classCommunication">
+										<td><img id="classCommunication" src="../Common/assets/images/circle7.png" /></td>
+										<td>&nbsp; Communication</td>
+										<td id="id_Communication_amtPDF"></td>
+										<td id="id_Communication_tpPDF"></td>
+										<td id="idInCommunicationPDF"></td>
+									</tr>
+									<tr class="classChildrenFee">
+										<td><img id="classChildrenFee" src="../Common/assets/images/circle8.png" /></td>
+										<td>&nbsp; Children Fees</td>
+										<td id="id_ChildrenFees_amtPDF"></td>
+										<td id="id_ChildrenFees_tpPDF"></td>
+										<td id="idInChildrenPDF"></td>
+									</tr>
+									<tr class="classHCE">
+										<td><img id="classHCE" src="../Common/assets/images/circle9.png" /></td>
+										<td>&nbsp; Healthcare Expenses</td>
+										<td id="id_HealthcareExpenses_amtPDF"></td>
+										<td id="id_HealthcareExpenses_tpPDF"></td>
+										<td id="idInHCEPDF"></td>
+									</tr>
+									<tr class="classLE">
+										<td><img id="classLE" src="../Common/assets/images/circle10.png" /></td>
+										<td>&nbsp; Lifestyle & Entertainment</td>
+										<td id="id_LifestyleAndEntertainment_amtPDF"></td>
+										<td id="id_LifestyleAndEntertainment_tpPDF"></td>
+										<td id="idInLEPDF"></td>
+									</tr>
+									<tr class="classAA">
+										<td><img id="classAA" src="../Common/assets/images/circle11.png" /></td>
+										<td>&nbsp;Apparels & Accessories</td>
+										<td id="id_ApparelsAndAccessories_amtPDF"></td>
+										<td id="id_ApparelsAndAccessories_tpPDF"></td>
+										<td id="idInAAPDF"></td>
+									</tr>
+									<tr class="classOthers">
+										<td><img id="classOthers" src="../Common/assets/images/circle12.png" /></td>
+										<td>&nbsp;Others (Charity, etc)</td>
+										<td id="id_OthersCharityEtc_amtPDF"></td>
+										<td id="id_OthersCharityEtc_tpPDF"></td>
+										<td id="idInOthersPDF">0.0%</td>
+									</tr>
+									<tr class="classLiving">
+										<td><img id="classLiving" src="../Common/assets/images/circle2.png" /></td>
+										<td>&nbsp;Living Expenses</td>
+										<td id="idIndTotalPDF"></td>
+										<td id="id_IndTotal_tpPDF"></td>
+										<td id="idInIndTotalPDF"></td>
+									</tr>
+		
+									<tr class="nonglidtotal">
+										<td>&nbsp;</td>
+										<td><b>Total Expenses </b></td>
+										<td><b id="id_TotalExpenses_amtPDF"></b></td>
+										<td><b id="id_TotalExpenses_tpPDF"></b></td>
+										<td id="idInTotalPDF"></td>
+									</tr>
+								</tbody>
+						</table>
+					</td>
+					<td width="40%" align="right">
+						<div id="idCurrentExpensesPDF" style="min-width: 200px;height: 200px; margin: 0 auto"></div>
+					</td>
+				</tr>
+			</table>		
+		</div>
+		
+		<div align="center" style="page-break-after: always;">
+			<h1 align="center">Expenses</h1>
+			<h3 align="center">Expense Summary</h3>
+			<br />
+			<table align="center" border="0" class="tableGlideWrapper" style="background:none !important;">
+				<tr align="center" style="background: none !important;">
+					<td width="70%" align="center">
+							<div id="idExpenseSummPDFresultTable"></div>							
+							<table class="recommendedtbl" id="idExpenseSummPDF">
+							<thead>
+								<tr>
+									<th>&nbsp;</th>
+									<th>Expenses</th>
+									<th>Annual Expense</th>
+									<th>% of Total</th>
+									<th style="width: 26%">Industry Standard % of Total</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr></tr>
+								<tr class="trClassLiving">
+									<td><img id="trClassLiving" src="../Common/assets/images/circle2.png" /></td>
+									<td>&nbsp; Living Expenses</td>
+									<td id="idExpenseLivingPDF"></td>
+									<td id="idExpenseLivingPercPDF"></td>
+									<td id="idExpenseLivingStandardPercPDF"></td>
+								</tr>
+								<tr class="trClassDiscre">
+									<td><img id="trClassDiscre" src="../Common/assets/images/circle3.png" /></td>
+									<td>&nbsp;Discretionary Expenses</td>
+									<td id="idExpenseDiscretionaryPDF"></td>
+									<td id="idExpenseDiscretionaryPercPDF"></td>
+									<td id="idExpenseDiscretionaryStandardPercPDF"></td>
+								</tr>
+			
+								<tr class="nonglidtotal">
+									<td>&nbsp;</td>
+									<td><b>Total Expenses </b></td>
+									<td id="idExpenseTotalPDF"><b></b></td>
+									<td id="idExpenseTotalPercPDF"><b></b></td>
+									<td id="idExpenseTotalStandardPercPDF"></td>
+								</tr>
+							</tbody>
+						</table>
+							
+					</td>
+					<td width="40%" align="right">
+						<div id="idexpensesummaryPDF" style="min-width: 200px;height: 200px; margin: 0 auto"></div>
+					</td>
+				</tr>
+			</table>	
+		</div>
+		
+		<div align="center" style="page-break-after: always;">
+			<h1 align="center">Expenses</h1>
+			<h3 align="center">Expense Projections</h3>
+			<br />
+			<div id="idExpenseTablePDFresultTable"></div>
+			<table align="center" class="expensetblpdf" id="idExpenseTablePDF">
+				<thead>
+					<tr>
+						<th>Year</th>
+						<th>Living Expenses</th>
+						<th>Discretionary Expenses</th>
+						<th>Total</th>
+					</tr>
+				</thead>
+				<tbody id="idExpenseProjectionPDF">
+				</tbody>
+			</table>
+			<br/>
+			<h1 align="center">Expenses</h1>
+			<h3 align="center">Expense Projection Graph</h3>
+			<div id="idBarGraphPDF" ></div>
+		</div>
+		
+		<div align="center" style="page-break-after: always;">
+			<h1 align="center">Expenses</h1>
+			<h3 align="center">Expense Projections Details</h3>
+			<div id="idExpenseDetailTablePDFresultTable"></div>
+			<table align="center" class="expenseDetpdf" id="idExpenseDetailTablePDF">
+				<thead>
+					<tr>
+						<th>Year</th>
+						<th>Groceries</th>
+						<th>Utilities</th>
+						<th>Transport</th>
+						<th>Personal Care</th>
+						<th>Housing Maintenance</th>
+						<th>Communication</th>
+						<th>Lifestyle</th>
+						<th>Apparels & Accessories</th>
+						<th>Children Fees</th>
+						<th>Healthcare</th>
+						<th>Others</th>
+						<th>Living Expenses</th>
+						<th>Total</th>
+					</tr>
+				</thead>
+				<tbody id="idExpenseProjectionDetailPDF">
+				</tbody>
+			</table>			
+		</div>
+		
+		<div align="center" style="page-break-after: always;">
+			<h1 align="center">Expenses</h1>
+			<h3 align="center">Key Assumptions</h3>
+			<div id="idKeyAssumption1TablePDFresultTable"></div>			
+			<table align="center" class="keyassumptions" id="idKeyAssumption1TablePDF">
+				<thead>
+					<tr>
+						<th>Expense Source</th>
+						<th>Amount</th>
+						<th>Frequency</th>
+						<th>Reference Month</th>
+						<th>Year till Expense will continue</th>
+						<th>Annual Expense Growth rate(%)</th>
+					</tr>
+				</thead>
+				<tbody id="idKeyAssumption1PDF">
+				</tbody>
+			</table>
+		</div>
+	</div>
+		
+	<div id="expenseJsdiv">
+		<script type="text/javascript">
+		
+				getDataUri(
+				'../Common/assets/images/circle2.png',
+				function(dataUri) {
+					$('#trClassLiving')
+							.attr("src", dataUri);
+				});
+				
+				getDataUri(
+				'../Common/assets/images/circle3.png',
+				function(dataUri) {
+					$('#trClassDiscre')
+							.attr("src", dataUri);
+				});
+		
+				getDataUri(
+				'../Common/assets/images/circle2.png',
+				function(dataUri) {
+					$('#classLiving')
+							.attr("src", dataUri);
+				});
+				
+				getDataUri(
+				'../Common/assets/images/circle12.png',
+				function(dataUri) {
+					$('#classOthers')
+							.attr("src", dataUri);
+				});
+				
+				getDataUri(
+				'../Common/assets/images/circle11.png',
+				function(dataUri) {
+					$('#classAA')
+							.attr("src", dataUri);
+				});
+				
+				getDataUri(
+				'../Common/assets/images/circle10.png',
+				function(dataUri) {
+					$('#classLE')
+							.attr("src", dataUri);
+				});
+				
+				getDataUri(
+				'../Common/assets/images/circle9.png',
+				function(dataUri) {
+					$('#classHCE')
+							.attr("src", dataUri);
+				});
+				
+				getDataUri(
+				'../Common/assets/images/circle8.png',
+				function(dataUri) {
+					$('#classChildrenFee')
+							.attr("src", dataUri);
+				});
+				
+				getDataUri(
+				'../Common/assets/images/circle7.png',
+				function(dataUri) {
+					$('#classCommunication')
+							.attr("src", dataUri);
+				});
+				
+				getDataUri(
+				'../Common/assets/images/circle6.png',
+				function(dataUri) {
+					$('#classHM')
+							.attr("src", dataUri);
+				});
+				
+				getDataUri(
+				'../Common/assets/images/circle5.png',
+				function(dataUri) {
+					$('#classHPC')
+							.attr("src", dataUri);
+				});
+				
+				getDataUri(
+				'../Common/assets/images/circle4.png',
+				function(dataUri) {
+					$('#classTransport')
+							.attr("src", dataUri);
+				});
+				
+				getDataUri(
+				'../Common/assets/images/circle3.png',
+				function(dataUri) {
+					$('#classUtilities')
+							.attr("src", dataUri);
+				});
+				
+				getDataUri(
+				'../Common/assets/images/circle2.png',
+				function(dataUri) {
+					$('#classGroceries')
+							.attr("src", dataUri);
+				});
+					
+				var Groceries_per_val_perc;
+				var Utilities_per_val_perc;
+				var Transport_per_val_perc;
+				var HouseholdAndPersonalCare_per_val_perc;
+				var HousingAndMaintenance_per_val_perc;
+				var Communication_per_val_perc;
+				var ChildrenFees_per_val_perc;
+				var HealthcareExpenses_per_val_perc;
+				var LifestyleAndEntertainment_per_val_perc;
+				var ApparelsAndAccessories_per_val_perc;
+				var OthersCharityEtc_per_val_perc;
+				var livingExpensesTotalPerc;
+		
+				var LivingExpenses_per_val;
+				var DiscretionaryExpenses_per_val;
+				var TotalExpenses_per_val;
+		
+				var finYear;
+				var categories_expenses= [];
+				var living_expenses=[];
+				var discretionary_expenses=[];
+				var errorFlag = 0;
+		
+		
+				function loadCharts() {
+					Highcharts.chart('idCurrentExpensesPDF', {
+						chart: {
+							plotBackgroundColor: null,
+							plotBorderWidth: null,
+							plotShadow: false,
+							type: 'pie'
+						},
+						title: {
+							text: ''
+						},
+						tooltip: {
+							pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+						},
+						legend: {
+							align: 'right',
+							verticalAlign: 'middle',
+							layout: 'vertical'
+						},
+						plotOptions: {
+							pie: {
+								allowPointSelect: true,
+								cursor: 'pointer',
+								dataLabels: {
+									enabled: false
+								},
+								showInLegend: false
+							}
+						},
+						series: [{
+							name: 'Allocation',
+							colorByPoint: true,
+							data: [{
+								name: 'Groceries',
+								y: Groceries_per_val_perc,
+								color:'#95ceff'
+							},
+		
+		
+							{
+								name: 'Utilities',
+								y: Utilities_per_val_perc,
+								color:'#f7a35c'
+							}, {
+								name: 'Transport',
+								y: Transport_per_val_perc,
+								color:'#90ed7d',
+								sliced: true,
+								selected: true
+							}, {
+								name: 'Household & Personal Care',
+								y: HouseholdAndPersonalCare_per_val_perc,
+								color:'#8085d9'
+							}, {
+								name: 'Housing & Maintenance',
+								y:HousingAndMaintenance_per_val_perc,
+								color:'#f15c80'
+							}, {
+								name: 'Communication',
+								y: Communication_per_val_perc,
+								color:'#727276'
+		
+							},
+							{
+								name: 'Children Fees',
+								y: ChildrenFees_per_val_perc,
+								color:'#5adedc'
+		
+							},
+		
+							{
+								name: 'Healthcare Expenses',
+								y:HealthcareExpenses_per_val_perc,
+								color:'#9164aa'
+		
+							},
+							{
+								name: 'Lifestyle & Entertainment',
+								y: LifestyleAndEntertainment_per_val_perc,
+								color:'#cdaa5f'
+		
+							},
+							{
+								name: 'Apparels & Accessories',
+								y: ApparelsAndAccessories_per_val_perc,
+								color:'#558769'
+		
+							},
+		
+							{
+								name: 'Others (Charity, etc)',
+								y: OthersCharityEtc_per_val_perc,
+								color:'#a56e69'
+							},
+							{
+								name: 'Living Expenses',
+								y: livingExpensesTotalPerc,
+								color:'#95ceff'
+							}
+		
+							]
+						}]
+					});
+		
+					Highcharts.chart('idBarGraphPDF', {
+						chart: {
+							type: 'column'
+						},
+						title: {
+							text: '<p style="color:white;font-weight: bold;">Expected Income Projections</p>'
+						},
+						xAxis: {
+							categories: categories_expenses
+						},
+						yAxis: {
+							min: 0,
+							title: {
+								text: ''
+							},
+							stackLabels: {
+		
+								style: {
+									fontWeight: 'bold',
+									color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+								}
+							}
+						},
+						legend: {
+							align: 'right',
+							x: 0,
+							verticalAlign: 'top',
+							y: 0,
+							floating: true,
+							backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+							borderColor: '#CCC',
+							borderWidth: 1,
+							shadow: false
+		
+						},
+						tooltip: {
+							headerFormat: '<b>{point.x}</b><br/>',
+							pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+						},
+						plotOptions: {
+							column: {
+								stacking: 'normal',
+								dataLabels: {
+		
+									color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+								}
+							},
+						},
+						series: [{
+							name: 'Living Expenses',
+							data: living_expenses,
+							color:"#6ba0ce"
+						},  {
+							name: 'Discretionary Expenses',
+							data: discretionary_expenses,
+							color:"#337ab7"
+						}]
+					}); 
+		
+					 Highcharts.chart('idexpensesummaryPDF', {
+		
+						chart: {
+							plotBackgroundColor: null,
+							plotBorderWidth: null,
+							plotShadow: false,
+							type: 'pie'
+						},
+						title: {
+							text: ''
+						},
+						tooltip: {
+							pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+						},
+						legend: {
+							align: 'right',
+							verticalAlign: 'middle',
+							layout: 'vertical'
+						},
+						plotOptions: {
+							pie: {
+								allowPointSelect: true,
+								cursor: 'pointer',
+								dataLabels: {
+									enabled: false
+								},
+								showInLegend: false
+							}
+						},
+						series: [{
+							name: 'Annual Expense',
+							colorByPoint: true,
+							innerSize: '30%',
+							data: [{
+								name: 'Living Expenses',
+								y: livingPer,
+								color:'#95ceff'
+							},
+		
+		
+							{
+								name: 'Discretionary Expenses',
+								y: discrePer,
+								color:'#f7a35c'
+							}
+		
+		
+							]
+						}]
+					}); 
+				}
+		
+				var livingPer = 0;
+				var discrePer = 0;
+		
+				$.ajax({
+					type: 'GET',
+					url: REQUEST_URL_BM + '/getClientExpenseInfo?clientId=' + vClientId+'&mode=yearly&fpFlag=0',
+					dataType: 'json',
+					async : false,
+					success: function (data) {		
+						if (data.length == 0) {
+							errorFlag = 1; 
+						}
+						$("#id_Groceries_amtPDF").text(parseFloat((data.groceries_amt * 100)/100).toFixed(2));
+						if(parseFloat((data.groceries_amt * 100)/100).toFixed(2) == 0.00) {
+							$("#idCurrentExpenseTablePDF tbody tr.classGroceries").hide().addClass('noprint');
+						}		
+						$("#id_Groceries_tpPDF").text((parseFloat((data.groceries_amt / data.totalExpense) * 100).toFixed(2)) + "%");
+						Groceries_per_val_perc = (data.groceries_amt / data.totalExpense) * 100;
+		
+						$("#id_Utilities_amtPDF").text(parseFloat((data.utilities_amt * 100)/100).toFixed(2));
+						if(data.utilities_amt == 0) {
+							$("#idCurrentExpenseTablePDF tbody tr.classUtilities").hide().addClass('noprint');
+						}
+		
+						$("#id_Utilities_tpPDF").text((parseFloat((data.utilities_amt / data.totalExpense) * 100).toFixed(2)) + "%");
+						Utilities_per_val_perc = (data.utilities_amt / data.totalExpense) * 100;
+		
+						$("#id_Transport_amtPDF").text(parseFloat((data.transport_amt * 100)/100).toFixed(2));
+						if(data.transport_amt == 0) {
+							$("#idCurrentExpenseTable tbody tr.classTransport").hide().addClass('noprint');
+						}
+						$("#id_Transport_tpPDF").text((parseFloat((data.transport_amt / data.totalExpense) * 100).toFixed(2)) + "%");
+						Transport_per_val_perc = (data.transport_amt / data.totalExpense) * 100;
+		
+		
+						$("#id_HouseholdAndPersonalCare_amtPDF").text(parseFloat((data.houseHoldPersonal_amt * 100)/100).toFixed(2));
+						if(data.houseHoldPersonal_amt == 0) {
+							$("#idCurrentExpenseTablePDF tbody tr.classHPC").hide().addClass('noprint');
+						}
+						$("#id_HouseholdAndPersonalCare_tpPDF").text((parseFloat((data.houseHoldPersonal_amt / data.totalExpense) * 100).toFixed(2)) + "%");
+						HouseholdAndPersonalCare_per_val_perc = (data.houseHoldPersonal_amt / data.totalExpense) * 100;
+		
+		
+						$("#id_HousingAndMaintenance_amtPDF").text(parseFloat((data.housing_amt * 100)/100).toFixed(2));
+						if(data.housing_amt == 0) {
+							$("#idCurrentExpenseTablePDF tbody tr.classHM").hide().addClass('noprint');
+						}
+						$("#id_HousingAndMaintenance_tpPDF").text((parseFloat((data.housing_amt / data.totalExpense) * 100).toFixed(2)) + "%");
+						HousingAndMaintenance_per_val_perc = (data.housing_amt / data.totalExpense) * 100;
+		
+						$("#id_Communication_amtPDF").text(parseFloat((data.communication_amt * 100)/100).toFixed(2));
+						if(data.communication_amt == 0) {
+							$("#idCurrentExpenseTablePDF tbody tr.classCommunication").hide().addClass('noprint');
+						}
+						$("#id_Communication_tpPDF").text((parseFloat((data.communication_amt / data.totalExpense) * 100).toFixed(2)) + "%");
+						Communication_per_val_perc = (data.communication_amt / data.totalExpense) * 100;
+		
+						$("#id_ChildrenFees_amtPDF").text(parseFloat((data.childrenFees_amt * 100)/100).toFixed(2));
+						if(data.childrenFees_amt == 0) {
+							$("#idCurrentExpenseTablePDF tbody tr.classChildrenFee").hide().addClass('noprint');
+						}
+						$("#id_ChildrenFees_tpPDF").text((parseFloat((data.childrenFees_amt / data.totalExpense) * 100).toFixed(2)) + "%");
+						ChildrenFees_per_val_perc = (data.childrenFees_amt / data.totalExpense) * 100;
+		
+						$("#id_HealthcareExpenses_amtPDF").text(parseFloat((data.healthCare_amt * 100)/100).toFixed(2));
+						if(data.healthCare_amt == 0) {
+							$("#idCurrentExpenseTablePDF tbody tr.classHCE").hide().addClass('noprint');
+						}
+						$("#id_HealthcareExpenses_tpPDF").text((parseFloat((data.healthCare_amt / data.totalExpense) * 100).toFixed(2)) + "%");
+						HealthcareExpenses_per_val_perc = (data.healthCare_amt / data.totalExpense) * 100;
+		
+						$("#id_LifestyleAndEntertainment_amtPDF").text(parseFloat((data.lifeStyle_amt * 100)/100).toFixed(2));
+						if(data.lifeStyle_amt == 0) {
+							$("#idCurrentExpenseTablePDF tbody tr.classLE").hide().addClass('noprint');
+						}
+						$("#id_LifestyleAndEntertainment_tpPDF").text((parseFloat((data.lifeStyle_amt / data.totalExpense) * 100).toFixed(2)) + "%");
+						LifestyleAndEntertainment_per_val_perc = (data.lifeStyle_amt / data.totalExpense) * 100;
+		
+						$("#id_ApparelsAndAccessories_amtPDF").text(parseFloat((data.apparels_amt * 100)/100).toFixed(2));
+						if(data.apparels_amt == 0) {
+							$("#idCurrentExpenseTablePDF tbody tr.classAA").hide().addClass('noprint');
+						}
+						$("#id_ApparelsAndAccessories_tpPDF").text((parseFloat((data.apparels_amt / data.totalExpense) * 100).toFixed(2)) + "%");
+						ApparelsAndAccessories_per_val_perc = (data.apparels_amt / data.totalExpense) * 100;
+		
+						$("#id_OthersCharityEtc_amtPDF").text(parseFloat((data.others_amt * 100)/100).toFixed(2));
+						if(data.others_amt == 0) {
+							$("#idCurrentExpenseTablePDF tbody tr.classOthers").hide().addClass('noprint');
+						}
+						$("#id_OthersCharityEtc_tpPDF").text((parseFloat((data.others_amt / data.totalExpense) * 100).toFixed(2)) + "%");
+						OthersCharityEtc_per_val_perc = (data.others_amt / data.totalExpense) * 100;
+		
+						$("#idIndTotalPDF").text(parseFloat((data.totalFamilyExpense * 100)/100).toFixed(2));
+						if(data.totalFamilyExpense  == 0) {
+							$("#idCurrentExpenseTablePDF tbody tr.classLiving").hide().addClass('noprint');
+						}
+						$("#id_IndTotal_tpPDF").text((parseFloat((data.totalFamilyExpense / data.totalExpense) * 100).toFixed(2)) + "%");
+						livingExpensesTotalPerc = (data.totalFamilyExpense / data.totalExpense) * 100;
+		
+		
+						$("#id_TotalExpenses_amtPDF").text(parseFloat((data.totalExpense * 100)/100).toFixed(2));
+						$("#id_TotalExpenses_tpPDF").text((parseFloat((data.totalExpense / data.totalExpense) * 100).toFixed(2)) + "%");
+						
+						$("#idExpenseTotalPDF").text(parseFloat((data.totalExpense * 100)/100).toFixed(2));
+						$("#idExpenseTotalPercPDF").text((parseFloat((data.totalExpense / data.totalExpense) * 100).toFixed(2)) + "%");
+						
+						
+						$("#idExpenseLivingPDF").text(parseFloat((data.livingExpense * 100)/100).toFixed(2));
+						if(data.livingExpense  == 0) {
+							$("#idExpenseSummPDF tbody tr.trClassLiving").hide().addClass('noprint');
+						}
+						$("#idExpenseDiscretionaryPDF").text(parseFloat((data.discretionaryExpense * 100)/100).toFixed(2));
+						
+						if(data.discretionaryExpense  == 0) {
+							$("#idExpenseSummPDF tbody tr.trClassDiscre").hide();
+						}
+						$("#idExpenseLivingPercPDF").text((parseFloat((data.livingExpense / data.totalExpense) * 100).toFixed(2)) + "%");
+						livingPer = (data.livingExpense / data.totalExpense) * 100;
+						$("#idExpenseDiscretionaryPercPDF").text((parseFloat((data.discretionaryExpense / data.totalExpense) * 100).toFixed(2)) + "%");
+						discrePer = (data.discretionaryExpense / data.totalExpense) * 100;
+		
+						$.each(data.expenseProjectionList, function(key, item) 
+								{
+							categories_expenses.push(item.finYear);
+							living_expenses.push(item.livingExpense);
+							discretionary_expenses.push(item.discretionaryExpense);
+							$('#idExpenseProjectionPDF').append(
+									'<tr><td>'+ item.finYear + '</td><td>'+ 
+									parseFloat((item.livingExpense * 100/100)).toFixed(2)+ '</td><td>'+
+									parseFloat((item.discretionaryExpense * 100/100)).toFixed(2)+ '</td><td>'+ 
+									parseFloat((item.totalExpense * 100)/100).toFixed(2)+'</td></tr>');
+									
+							$('#idExpenseProjectionDetailPDF').append(
+									'<tr><td>'+ item.finYear + '</td><td>'+ 
+									parseFloat((item.groceries_amt * 100)/100).toFixed(2)+ '</td><td>'+
+									parseFloat((item.utilities_amt * 100)/100).toFixed(2)+ '</td><td>'+
+									parseFloat((item.transport_amt * 100)/100).toFixed(2)+ '</td><td>'+
+									parseFloat((item.houseHoldPersonal_amt*100)/100).toFixed(2)+ '</td><td>'+
+									parseFloat((item.housing_amt * 100)/100).toFixed(2)+ '</td><td>'+
+									parseFloat((item.communication_amt*100)/100).toFixed(2)+ '</td><td>'+
+									parseFloat((item.lifeStyle_amt * 100)/100).toFixed(2)+ '</td><td>'+
+									parseFloat((item.apparels_amt * 100)/100).toFixed(2)+ '</td><td>'+
+									parseFloat((item.childrenFees_amt * 100)/100).toFixed(2)+ '</td><td>'+
+									parseFloat((item.healthCare_amt * 100)/100).toFixed(2)+ '</td><td>'+
+									parseFloat((item.others_amt * 100)/100).toFixed(2)+ '</td><td>'+
+									parseFloat((item.totalFamilyExpense * 100)/100).toFixed(2)+ '</td><td>'+
+									parseFloat((item.totalExpense * 100)/100).toFixed(2)+ '</td></tr>');
+							});	
+				
+						// hide all zero containing columns of summarized expense table
+						if(parseFloat(data.expenseProjectionList[0].livingExpense).toFixed(2) == 0.00) {
+							$('#idExpenseTablePDF td:nth-child(2),#idExpenseTablePDF th:nth-child(2)').hide().addClass('noprint');
+						}
+						if(parseFloat(data.expenseProjectionList[0].discretionaryExpense).toFixed(2) == 0.00) {
+							$('#idExpenseTablePDF td:nth-child(3),#idExpenseTablePDF th:nth-child(3)').hide().addClass('noprint');
+						}
+						if(parseFloat(data.expenseProjectionList[0].totalExpense).toFixed(2) == 0.00) {
+							$('#idExpenseTablePDF td:nth-child(4),#idExpenseTablePDF th:nth-child(4)').hide().addClass('noprint');
+						}
+		
+						// hide all zero containing columns of detailed expense table
+						if(parseFloat(data.expenseProjectionList[0].groceries_amt).toFixed(2) == 0.00) {
+							$('#idExpenseDetailTablePDF td:nth-child(2),#idExpenseDetailTablePDF th:nth-child(2)').hide().addClass('noprint');
+						}
+						if(parseFloat(data.expenseProjectionList[0].utilities_amt).toFixed(2) == 0.00) {
+							$('#idExpenseDetailTablePDF td:nth-child(3),#idExpenseDetailTablePDF th:nth-child(3)').hide().addClass('noprint');
+						}
+						if(parseFloat(data.expenseProjectionList[0].transport_amt).toFixed(2) == 0.00) {
+							$('#idExpenseDetailTablePDF td:nth-child(4),#idExpenseDetailTablePDF th:nth-child(4)').hide().addClass('noprint');
+						}
+						if(parseFloat(data.expenseProjectionList[0].houseHoldPersonal_amt).toFixed(2) == 0.00) {
+							$('#idExpenseDetailTablePDF td:nth-child(5),#idExpenseDetailTablePDF th:nth-child(5)').hide().addClass('noprint');
+						}
+						if(parseFloat(data.expenseProjectionList[0].housing_amt).toFixed(2) == 0.00) {
+							$('#idExpenseDetailTablePDF td:nth-child(6),#idExpenseDetailTablePDF th:nth-child(6)').hide().addClass('noprint');
+						}
+						if(parseFloat(data.expenseProjectionList[0].communication_amt).toFixed(2) == 0.00) {
+							$('#idExpenseDetailTablePDF td:nth-child(7),#idExpenseDetailTablePDF th:nth-child(7)').hide().addClass('noprint');
+						}
+						if(parseFloat(data.expenseProjectionList[0].lifeStyle_amt).toFixed(2) == 0.00) {
+							$('#idExpenseDetailTablePDF td:nth-child(8),#idExpenseDetailTablePDF th:nth-child(8)').hide().addClass('noprint');
+						}
+						if(parseFloat(data.expenseProjectionList[0].apparels_amt).toFixed(2) == 0.00) {
+							$('#idExpenseDetailTablePDF td:nth-child(9),#idExpenseDetailTablePDF th:nth-child(9)').hide().addClass('noprint');
+						}
+						if(parseFloat(data.expenseProjectionList[0].childrenFees_amt).toFixed(2) == 0.00) {
+							$('#idExpenseDetailTablePDF td:nth-child(10),#idExpenseDetailTablePDF th:nth-child(10)').hide().addClass('noprint');
+						}
+						if(parseFloat(data.expenseProjectionList[0].healthCare_amt).toFixed(2) == 0.00) {
+							$('#idExpenseDetailTablePDF td:nth-child(11),#idExpenseDetailTablePDF th:nth-child(11)').hide().addClass('noprint');
+						}
+						if(parseFloat(data.expenseProjectionList[0].others_amt).toFixed(2) == 0.00) {
+							$('#idExpenseDetailTablePDF td:nth-child(12),#idExpenseDetailTablePDF th:nth-child(12)').hide().addClass('noprint');
+						}
+						if(parseFloat(data.expenseProjectionList[0].totalFamilyExpense).toFixed(2) == 0.00) {
+							$('#idExpenseDetailTablePDF td:nth-child(13),#idExpenseDetailTablePDF th:nth-child(13)').hide().addClass('noprint');
+						}
+						if(parseFloat(data.expenseProjectionList[0].totalExpense).toFixed(2) == 0.00) {
+							$('#idExpenseDetailTablePDF td:nth-child(14),#idExpenseDetailTablePDF th:nth-child(14)').hide().addClass('noprint');
+						}
+						loadCharts();
+					}, 
+					error: function (data) {
+						errorFlag = 1;
+						bootbox.alert("Error in Loading Expense");
+					}
+				});
+							
+				
+				if (errorFlag == 1) {
+					$("#id_Groceries_amtPDF").text("0.00");
+					$("#id_Groceries_tpPDF").text("0.00%");
+					$("#id_Utilities_amtPDF").text("0.00");
+					$("#id_Utilities_tpPDF").text("0.00%");
+					$("#id_Transport_amtPDF").text("0.00");
+					$("#id_Transport_tpPDF").text("0.00%");
+					$("#id_HouseholdAndPersonalCare_amtPDF").text("0.00");
+					$("#id_HouseholdAndPersonalCare_tpPDF").text("0.00%");
+					$("#id_HousingAndMaintenance_amtPDF").text("0.00");
+					$("#id_HousingAndMaintenance_tpPDF").text("0.00%");
+					$("#id_Communication_amtPDF").text("0.00");
+					$("#id_Communication_tpPDF").text("0.00%");
+					$("#id_ChildrenFees_amtPDF").text("0.00");
+					$("#id_ChildrenFees_tpPDF").text("0.00%");
+					$("#id_HealthcareExpenses_amtPDF").text("0.00");
+					$("#id_HealthcareExpenses_tpPDF").text("0.00%");
+					$("#id_LifestyleAndEntertainment_amtPDF").text("0.00");
+					$("#id_LifestyleAndEntertainment_tpPDF").text("0.00%");
+					$("#id_ApparelsAndAccessories_amtPDF").text("0.00");
+					$("#id_ApparelsAndAccessories_tpPDF").text("0.00%");
+					$("#id_OthersCharityEtc_amtPDF").text("0.00");
+					$("#id_OthersCharityEtc_tpPDF").text("0.00%");
+					$("#id_LivingExpenses_amtPDF").text("0.00");
+					$("#id_LivingExpenses_tpPDF").text("0.00%");
+					$("#id_DiscretionaryExpenses_amtPDF").text("0.00");
+					$("#id_DiscretionaryExpenses_tpPDF").text("0.00%");
+					$("#id_TotalExpenses_amtPDF").text("0.00");
+					$("#id_TotalExpenses_tpPDF").text("0.00%");
+					$("#id_TotalExpenses_amtPDF").text("0.00");
+					$("#id_TotalExpenses_tpPDF").text("0.00%");
+					$("#id_TotalExpenses_summ_amtPDF").text("0.00");
+					$("#id_TotalExpenses_summ_tpPDF").text("0.00%");
+				}
+						
+				$.ajax({
+					type: 'GET',
+					async:false,
+					url: REQUEST_URL_BM+'/getExpenseDetailOfFamilyMember?memberId='+vClientId,
+					dataType: 'json',
+					success: function (data) {		
+						$('#idKeyAssumption1PDF').empty();
+						$.each(data,function(index, value) {
+							$("#idKeyAssumption1PDF").append('<tr>' +
+									'<td>'+ value.incomeCategory+'</td>' +
+									'<td>'+value.income+'</td>'+
+									'<td>'+value.frequency+'</td>'+
+									'<td>'+value.referenceMonth+'</td>'+
+									'<td>'+value.continueUpto+'</td>'+
+									'<td>'+(value.annualIncomeGrowthRate * 100)+'</td>'+
+							'</tr>');
+						});	
+					},
+					error: function (data) {  }
+				}); 
+				
+				$.ajax({
+					type: 'GET',
+					async:false,
+					url: REQUEST_URL_BM+'/getMasterExpenseIndustryStandard',
+					dataType: 'json',
+					success: function (data) {		
+						$.each(data,function(index, value) {		
+							if (value.id == 1) {
+								$("#idInGroceriesPDF").text(parseFloat((value.perc * 100)/100).toFixed(2) + "%");
+							}		
+							if (value.id == 2) {
+								$("#idInUtilitiesPDF").text(parseFloat((value.perc * 100)/100).toFixed(2) + "%");
+							}		
+							if (value.id == 3) {
+								$("#idInTransportPDF").text(parseFloat((value.perc * 100)/100).toFixed(2) + "%");
+							}		
+							if (value.id == 4) {
+								$("#idInHPCPDF").text(parseFloat((value.perc * 100)/100).toFixed(2) + "%");
+							}		
+							if (value.id == 5) {
+								$("#idInHMPDF").text(parseFloat((value.perc * 100)/100).toFixed(2) + "%");
+							}		
+							if (value.id == 6) {
+								$("#idInCommunicationPDF").text(parseFloat((value.perc * 100)/100).toFixed(2) + "%");
+							}		
+							if (value.id == 7) {
+								$("#idInChildrenPDF").text(parseFloat((value.perc * 100)/100).toFixed(2) + "%");
+							}		
+							if (value.id == 8) {
+								$("#idInHCEPDF").text(parseFloat((value.perc * 100)/100).toFixed(2) + "%");
+							}		
+							if (value.id == 9) {
+								$("#idInLEPDF").text(parseFloat((value.perc * 100)/100).toFixed(2) + "%");
+							}		
+							if (value.id == 10) {
+								$("#idInAAPDF").text(parseFloat((value.perc * 100)/100).toFixed(2) + "%");
+							}		
+							if (value.id == 11) {
+								$("#idInOthersPDF").text(parseFloat((value.perc * 100)/100).toFixed(2) + "%");
+							}		
+							if (value.id == 12) {
+								$("#idInIndTotalPDF").text(parseFloat((value.perc * 100)/100).toFixed(2) + "%");
+							}							
+							if (value.id == 13) {
+								$("#idExpenseLivingStandardPercPDF").text(parseFloat((value.perc * 100)/100).toFixed(2) + "%");
+							}
+							if (value.id == 14) {
+								$("#idExpenseDiscretionaryStandardPercPDF").text(parseFloat((value.perc * 100)/100).toFixed(2) + "%");
+							}
+						});
+		
+					},
+					error: function (data) {  }
+				}); 
+				
+				var table_html = $('#idCurrentExpenseTablePDF').html();					
+				table_html = '<table align="center" class="recommendedtblpdf" id="idCurrentExpenseTablePDF">'+table_html+'</table>';	
+				$html =  $(table_html);  		
+				$html.find('.noprint').remove();
+				$('#idCurrentExpenseTablePDF').remove();
+				$('#idCurrentExpenseTablePDFresultTable').html('<table align="center" class="recommendedtblpdf" id="idCurrentExpenseTablePDF">'+$html.html()+'</table>');
+
+				var table_html = $('#idCurrentExpenseTablePDF').html();					
+				table_html = '<table class="recommendedtbl" id="idExpenseSummPDF">'+table_html+'</table>';	
+				$html =  $(table_html);  		
+				$html.find('.noprint').remove();
+				$('#idCurrentExpenseTablePDF').remove();
+				$('#idCurrentExpenseTablePDFresultTable').html('<table class="recommendedtbl" id="idExpenseSummPDF">'+$html.html()+'</table>');
+
+				var table_html = $('#idExpenseTablePDF').html();					
+				table_html = '<table align="center" class="expensetblpdf" id="idExpenseTablePDF">'+table_html+'</table>';	
+				$html =  $(table_html);  		
+				$html.find('.noprint').remove();
+				$('#idExpenseTablePDF').remove();
+				$('#idExpenseTablePDFresultTable').html('<table align="center" class="expensetblpdf" id="idExpenseTablePDF">'+$html.html()+'</table>');
+				
+				var table_html = $('#idExpenseDetailTablePDF').html();					
+				table_html = '<table align="center" class="expensetblpdf" id="idExpenseTablePDF">'+table_html+'</table>';	
+				$html =  $(table_html);  		
+				$html.find('.noprint').remove();
+				$('#idExpenseDetailTablePDF').remove();
+				$('#idExpenseDetailTablePDFresultTable').html('<table align="center" class="expensetblpdf" id="idExpenseTablePDF">'+$html.html()+'</table>');
+				
+				var table_html = $('#idKeyAssumption1TablePDF').html();					
+				table_html = '<table align="center" class="keyassumptions" table="idKeyAssumption1TablePDF">'+table_html+'</table>';	
+				$html =  $(table_html);  		
+				$html.find('.noprint').remove();				
+				$('#idKeyAssumption1TablePDF').remove();
+				$('#idKeyAssumption1TablePDFresultTable').html('<table align="center" class="keyassumptions" table="idKeyAssumption1TablePDF">'+$html.html()+'</table>');
+				
+				
+		</script>	
+	</div>	
+
+	
+
+
+</div>

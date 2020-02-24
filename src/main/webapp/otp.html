@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="Finlabs">
+	<title>Finexa - Client Info</title>
+	<script src="Common/assets/js-library/bootbox.min.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="Common/assets/css-library/bootstrap.min.maxcdn.css">
+	<link href="Common/assets/css-library/bootstrap.min.css" rel="stylesheet" />
+	<link href="Common/assets/css/dashboard.css" rel="stylesheet" />
+	<link href="Common/assets/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	<link rel='stylesheet' type='text/css' href="Common/assets/css-library/bootstrap-datepicker3.standalone.min.css" />
+	<link rel="stylesheet" href="Common/assets/css-library/validationEngine.jquery.css" type="text/css" />
+
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" src="Common/assets/js-library/jquery.serializeToJSON.js"></script>
+	<script src="Common/assets/js-library/bootstrap.min.js"></script>
+	<script src="Common/assets/js-library/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript" src="Common/assets/js-library/bootbox.js"></script>
+
+	<script type="text/javascript" src="Common/assets/js/myclient_global.js"></script>
+	<script type="text/javascript" src="Common/assets/js/serviceclient.js"></script>
+	<script type="text/javascript" src="Common/assets/js-library/jquery.validationEngine.js"></script>
+	<script type="text/javascript" src="Common/assets/js-library/jquery.validationEngine-en.js"></script>
+	<script type="text/javascript" src="Common/assets/js/validateOTP.js"></script>
+	<script type="text/javascript" src="Common/assets/js/validationForAll.js"></script>
+	</head>
+	<body class="bg">
+		<div class="row" >
+		<div class="col-lg-6">
+		<div style="margin:40%;height:303px;margin-top:16%;width:60%;">
+  <div class="login">
+  <img src="Common/assets/images/logo-finexa.png" style="width:67%"/>
+  
+  <br/>
+  <h1>No matter if you are a Startup or a Large Enterprise. We have you covered!</h1>
+  <br/>
+ 
+  
+  <p>Have an account?</p><br/>
+  <input type="button" value="SIGN-IN" class="form-control" ONCLICK="javascript:window.open('index.html','_self')"/>
+  
+  </div>
+		</div>
+
+		</div>
+		
+		<div class="alert alert-danger" id="alertForm" style="display:none;">
+		</div>
+		<form id="idOTPForm" action="#">
+		<div class="col-lg-6">
+		<div style="height:343px;margin-top:16%;width:50%;background-color:white;padding-top:40px">
+		<div>
+		<table width="100%" style="background-color:white" class="register">
+		<tr>
+		<td style="text-align:center"><h3><b>Enter OTP</b></h3></td>
+		</tr>
+		<tr>
+		<td>Did you get the SMS/OTP?</td>
+		</tr>
+		<tr>
+		<td>Enter it below and get Register.</td>
+		</tr>
+		<tr>
+		<td style="color:#3897e0"><a href="" id="idResendOtp">Resend OTP if not yet Received</a><br/></td>
+		</tr>
+		<tr>
+		<td></td>
+		</tr>
+		<tr>
+		<td></td>
+		</tr>
+		<tr>
+		<td style="padding:10px"><input id="idOtp" type="text" class="form-control"/>
+		<span class="formentry-errmsg" id="alertOtp"></span></td>
+		</tr>
+		<tr>
+		<td></td>
+		</tr>
+		<tr>
+		<td style="padding:5px"><span id="timer"></span></td>
+		</tr>
+		<tr><td></td>
+		</tr>
+		<tr>
+		<td style="padding:10px"> <input type="button" id="idOtpSubmit" value="REGISTER NOW" class="form-control greenbg"/></td>
+		</tr>
+		
+		</table>
+		</div>
+		</div>
+		
+		</div>
+		</form>
+		</div>
+		
+<script type="text/javascript">
+ 		$(document).ready(function () {
+ 			
+ 			$("#idResendOtp").hide();
+ 			/* function timer(time,update,complete) {
+ 			    var start = new Date().getTime();
+ 			    var interval = setInterval(function() {
+ 			        var now = time-(new Date().getTime()-start);
+ 			        if( now <= 0) {
+ 			            clearInterval(interval);
+ 			            complete();
+ 			        }
+ 			        else update(Math.floor(now/1000));
+ 			    },100); // the smaller this number, the more accurate the timer will be
+ 			}
+ 			
+ 			 timer(
+ 				    31000, // milliseconds
+ 				    function(timeleft) { // called every step to update the visible countdown
+ 				        document.getElementById('timer').innerHTML = timeleft+" second(s)";
+ 				    },
+ 				    function() { // what to do after
+ 				    	sessionStorage.removeItem("OTP_SESSION");
+ 				       // bootbox.alert("Your time is up, please click on Resend OTP if not yet Received link.");
+ 				                 bootbox.dialog({
+   										 message: 'Your time is up, please click on Resend OTP if not yet Received link.',
+    									 closeButton: false
+    									});
+
+ 				                setTimeout(function() {
+ 		 				    	    // that's enough of that
+ 		 				    	    bootbox.hideAll();
+ 		 				    	}, 2000);
+ 				       
+ 				       	$("#idResendOtp").show();
+ 				    }
+ 				); */
+ 			
+ 			$("#idResendOtp").on("click", function(event) {
+ 				
+ 				var phone_no = sessionStorage.getItem("Phone_no");
+ 				
+ 				var serviceResendUrl = "sendOTP/"+phone_no;
+				getClientData("GET","",serviceResendUrl,onResendSuccess);
+ 				
+ 			});
+ 			
+ 			function onResendSuccess(data){
+ 				console.log("Factor Status: "+data.status);
+ 				if(data.status == "success"){
+ 					sessionStorage.setItem("OTP_SESSION",data.details);
+ 					window.location = "otp.html";
+ 				} else {
+ 					console.log("Factor Status failed");
+ 				}
+ 			}
+ 			
+ 			$("#idOtpSubmit").on("click", function (e) {
+ 				//var api_key = "9346581b-880d-11e7-94da-0200cd936042";
+ 				var session_id = sessionStorage.getItem("OTP_SESSION");
+ 			//	var otp_entered = $('#idOtp').val();
+ 			//	var url = "https://2factor.in/API/V1/"+api_key+"/SMS/VERIFY/"+session_id+"/"+{otp_entered};
+ 				var serviceUrl = "verifyOTP/"+session_id+"/"+$('#idOtp').val();
+ 				var validate;
+ 				validate = validateOTP($('#idOTPForm'));
+ 				if(validate) {
+ 					getClientData("GET"," ",serviceUrl,onSuccess);
+ 				}
+ 				
+ 			});
+ 			
+ 			function onSuccess(data){
+ 				console.log("Verify OTP status: " + data.status);
+ 				
+ 				registerData = sessionStorage.getItem("REGISTER_DATA");
+ 				
+ 				console.log("registerData: " + registerData);
+ 				
+ 				getClientData("POST", registerData, "register", onRegisterSuccess);
+
+ 			}
+ 			
+ 			function onRegisterSuccess(successData) {
+ 	 			if (confirm("User registration successfull , Please login") == true) {
+ 	 			//	alert("ID of registered user: " + successData.id);
+ 	 			//	sessionStorage.removeItem("ID_OF_REGISTERED_USER");
+ 	 			//	sessionStorage.setItem("ID_OF_REGISTERED_USER", successData.id);
+ 					window.location = "index.html";
+ 				} else {
+ 					console.log("Make user Inactive , activeFlag = N");
+ 					window.location = "register.html";
+ 				} 
+ 	 			
+ 	 			sessionStorage.removeItem("REGISTER_DATA");
+ 			}
+ 			
+ 		});
+ </script>		
+	</body>
+</html>

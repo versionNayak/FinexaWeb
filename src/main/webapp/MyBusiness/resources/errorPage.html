@@ -1,0 +1,25 @@
+<h5 style="color:#FF0000">Something went wrong. Sorry for your Inconvenience. Please try again later or contact Customer Support.</h5>
+<br>
+<br>
+<p style="color:#FF0000">Error Message:</p>
+<div style="color:#FF0000" id="idErrorMessage"></div>
+
+<script type="text/javascript">
+	hideLoader();
+	
+	var actualMsg;
+	var msg = sessionStorage.getItem("MSG");
+	//alert("msg: " + msg);
+	if (msg=="undefined"){
+		//alert("msg is undefined");
+		actualMsg=="Something went wrong, could not connect to the server, please contact System Administrator.";
+	} else {
+		actualMsg=msg;
+	}
+	
+	var div = document.getElementById("idErrorMessage");  
+    div.textContent = actualMsg;  
+    var text = div.textContent;  
+    sessionStorage.removeItem("MSG");
+
+</script>

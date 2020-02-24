@@ -1,0 +1,98 @@
+<script src="plan/pm/js/viewPortfolioTracker.js"></script>
+<script src="plan/pm/js/common.js"></script>
+<style>
+	.table-striped>tbody>tr:nth-of-type(odd){background-color:#d4d4d5}
+</style>
+<div id="jssor_18" class="height456px">
+
+	<div data-u="slides" class="slider9" style="top: 20px">
+	
+		<div>
+		<div id="idMaxtrack" class="popup" style="position: relative;margin-top:0px;margin-bottom:27px">
+					<img src="../Common/assets/images/maximg.png" class="maxbtn">
+				</div>
+			<div data-u="image">
+			
+                <div style="height: 420px; overflow: auto; margin-left: 35px; width: 94%">
+                    <table width="94%" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Product Type</th>
+                                <th>Current Value(Rs.)</th>
+                                <th>% of Total</th>
+                                <th>Investment Value(Rs.)</th>
+                                <th>Gain/Loss</th>
+                                <th>CAGR/XIRR</th>
+
+                            </tr>
+                        </thead>
+                        <tbody id="oprtFolioTrackerList">
+                        </tbody>
+                    </table>
+                    <br />
+                </div>
+				<!-- The Modal -->
+
+			</div>
+			
+		</div>
+	
+	</div>
+
+	<!-- Thumbnail Navigator -->
+	<div data-u="thumbnavigator" class="jssort18" data-autocenter="1">
+		<!-- Thumbnail Item Skin Begin -->
+		<div data-u="slides">
+			<div data-u="prototype" class="p">
+				<div>
+					<div data-u="thumbnailtemplate"></div>
+				</div>
+				<div></div>
+			</div>
+		</div>
+		<!-- Thumbnail Item Skin End -->
+	</div>
+	<!-- Arrow Navigator -->
+	<span class="jssora05l productleft"><img
+		src="../Common/assets/images/leftarrow.png" /></span> <span
+		class="jssora05r productright"><img
+		src="../Common/assets/images/rightarrow.png" /></span>
+</div>
+
+
+<div id="idPoptrackdetails" class="modal">
+
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close">&times;</span>
+			<h4 style="margin-top: 5px">Networth Details</h4>
+			<h2></h2>
+		</div>
+		<div class="modal-body">
+
+
+			 <table width="94%" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Product Type</th>
+                                <th>Current Value(Rs.)</th>
+                                <th>% of Total</th>
+                                <th>Investment Value(Rs.)</th>
+                                <th>Gain/Loss</th>
+                                <th>CAGR/XIRR</th>
+
+                            </tr>
+                        </thead>
+                        <tbody id="oprtFolioTrackerListMax">
+                        </tbody>
+                    </table>
+
+			<br /> <br />
+		</div>
+
+	</div>
+
+</div>

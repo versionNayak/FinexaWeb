@@ -1,0 +1,188 @@
+<script src="../Common/assets/js/mybusiness_header.js"></script>
+<script src="../Common/assets/js/logout.js"></script>
+<!--load common all styles -->
+<link href="../Common/assets/css/commonall.css" rel="stylesheet" type="text/css">
+<style>
+    .marginwidth {
+        width: 113px;
+        margin-left: -55px;
+        padding: 5px;
+        height: 36px;
+        object-fit: contain;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 width104per">
+            <div class="col-lg-6">
+                <a href="#"><img src="" alt="" id="idBussinessHeaderAdvisorLogo" class="marginwidth" /></a>
+                <span class="small" id="idVersion">Ver- 0.1</span>
+            </div>
+
+            <div class="col-lg-6 padding5textrt"> <span class="margin7font18" id="idUser"></span>
+                <a href="#" class="marginright7px">
+                    <span class="glyphicon glyphicon-bell"></span>
+                </a>
+                <div class="btn-group" id="status" data-toggle="buttons">
+                    <label class="btn btn-default btn-off btn-sm" style="height:22px;padding-top:2px">
+                        <input type="radio" value="1" name="tgl">My Client</label>
+                    <label class="btn btn-default btn-on btn-sm active" style="height:22px;padding-top:2px">
+                        <input type="radio" value="0" name="tgl" checked="checked" disabled="disabled">My
+                        Business</label>
+                </div>
+
+                <span id="hum" class="cursorptr"> &nbsp; &#9776;</span>
+                <div id="mySidenav" class="sidenav">
+                    <!-- <a href="#" class="help">Help</a>
+					<hr/>
+					<a href="#" class="search">Search</a>
+					<hr/> -->
+                    <a href="#" class="changePassword" id="idChangPassword">Change Password</a>
+                    <hr />
+                    <a href="#" class="logout" onclick="logout()">Logout</a>
+                    <hr />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+<div class="row top-menu-container clearfix">
+    <div class="col-lg-12 width104per mybusinesstop" id="top-nav-bar">
+        <!-- <div class="col-lg-2">
+				<p id="profile"><span class="existingclient"><b>&#8592 Existing Clients</b><br/></span><span class="font18px white" id="idSelectedClientName">Neha Mohnot</span><br/>
+		</p>
+			</div> -->
+        <div class="col-lg-12">
+            <ul class="top-nav-items mybusinessmenu" id="menu">
+                <li class="nav-client-info" id="menuUM">
+                    <a href="#" id="idusermanagement">
+                        <i class="fas fa-user"></i>
+                        <span> User Management </span>
+                    </a>
+                </li>
+                <!-- <li><a href="#"><span> <img alt="Plan"
+                                src="../Common/assets/images/icons/i_User-Management.png" /></span><a
+                            class="marginleft5px"></a></a>
+                </li> -->
+                <li class="separator large-width"></li>
+
+                <li class="nav-plan" id="menuCR">
+                    <a href="#" id="idclientRecords">
+                        <i class="fas fa-book-reader"></i>
+                        <span>
+                            Client Records
+                        </span>
+                    </a>
+                    <!-- <a href="# "><span> <img
+                                src="../Common/assets/images/icons/i_Client-Records.png " alt="Plan "
+                                 /></span><a class="marginleft9px ">Client Records</a></a> -->
+                </li>
+                <li class="separator large-width "><span></span></li>
+
+                <li class="nav-invest " id="menuMAS">
+                    <a href="#" id="idmasters">
+                        <i class="fas fa-user-graduate"></i>
+                        <span>  Masters  </span>
+                    </a>
+                    <!-- <a href="# "><span> <img alt="Invest " id="idmasters"
+                                src="../Common/assets/images/icons/i_masters.png " /></span><a
+                            class="marginleft5px ">Masters</a></a> -->
+                </li>
+                <li class="separator large-width "><span></span></li>
+
+                <!-- <li class="nav-report" id="menuREPORT" style="pointer-events:none;opacity:0.6; "><a href="# "><span> <img src="../Common/assets/images/icons/i_Report-Customization.png " alt="Invest " id="idreportscmz "/></span><a class="marginleft5px">Reports Customization</a></a></li>
+				<li class="separator large-width "><span></span></li> -->
+
+                <!-- <li class="nav-report" id="menuBusinessReports" style="pointer-events:none;opacity:0.6; "><a href="# "><span> <img src="../Common/assets/images/icons/i_Report-Customization.png " alt="Invest " id="idreportscmz "/></span><a class="marginleft5px">Business Reports</a></a></li>
+				<li class="separator large-width "><span></span></li> -->
+
+                <!-- <li class="nav-review " id="menuAS " style="pointer-events:none;opacity:0.6; "><a href="# "><span><img src="../Common/assets/images/icons/i_Advisor-Support.png " alt="Review " id="idadvisorSupport " class="Reviewimg "/></span><a class="marginleft5px ">Advisor Support</a></a></li>
+			<li class="separator large-width "><span></span></li>
+			 -->
+                <!-- <li class="nav-reports " id="menuMIS " style="pointer-events:none;opacity:0.6; "><a href="# "><span> <img src="../Common/assets/images/icons/i_mis.png " alt="Reports " id="idmis " data-alt-src="../Common/assets/images/icons/4-A.png
+                    "/></span><a class="marginleft8px ">MIS</a></a></li>
+			<li class="separator large-width "><span></span></li>
+			 -->
+                <!-- <li class="nav-resources " id="menuOR " style="pointer-events:none;opacity:0.6; "><a href="# "><span> <img alt="Resourceimg " id="idotheresources " src="../Common/assets/images/icons/5-B.png "/></span><a>Other Resources</a></a></li>
+			<li class="separator large-width "><span></span></li>
+ -->
+                <li class="nav-MIS" id="menuMF">
+                    <a href="#" id="idmf">
+                        <i class="fas fa-building"></i>
+                        <span> MF </span>
+                    </a>
+                    <!-- <a href="# "><span><img src="../Common/assets/images/icons/i_mis.png "
+                                alt="Reports"  style="width: 38px;margin-top: 23px; " /></span><a
+                            class="marginleft8px"></a></a> -->
+                </li>
+                <li class="separator large-width "><span></span></li>
+
+                <!-- NOTE : Accord could only be view by finlabs Admins 
+                <li class="nav-Acc" id="menuAccord"> <a href="# "><span><i class="fa fa-database" aria-hidden="true" id="idAccord" style="width: 38px;margin-top: 23px; font-size: 3rem; color: #0A4C82;"></i></span><a class="marginleft8px ">Accord</a></a>
+                </li> 
+                <li class="separator large-width "><span></span></li> -->
+
+                <!-- <li class="nav-resources " id="menuFS " style="pointer-events:none;opacity:0.6; "><a href="# "><span> <img src="../Common/assets/images/icons/i_Finexa_Subscription.png " alt="Resourceimg " id="idfinexaSubscription " data-alt-src="../Common/assets/images/icons/i_Finexa_Subscription.png "/></span><a>Finexa Subscription</a></a></li> -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<link rel="stylesheet " href="../Common/assets/css-library/toggle.css ">
+<script src="../Common/assets/js-library/mobilejs.js "></script>
+
+<script type="text/javascript ">
+    loggedUser = JSON.parse(sessionStorage.getItem("LOGGED_IN_USER "));
+    $(document).ready(function(event) {
+        $("#idVersion ").text(version);
+        if (loggedUser === null) {
+            window.location = "../login.html ";
+        } else {
+            $("#idUser ").html("<b>Welcome </b>" + loggedUser.firstName + " " + loggedUser.lastName);
+        }
+    });
+</script>
+
+<script>
+    var loggedUser = JSON.parse(sessionStorage.getItem("LOGGED_IN_USER"));
+    var loggedClient;
+    if (loggedUser == null) {
+        loggedClient = JSON.parse(sessionStorage.getItem("LOGGED_IN_CLIENT"));
+    } else {
+        //loggedClient = sessionStorage.getItem("LOGGED_IN_CLIENT");
+    }
+
+    if (loggedClient == null && loggedUser != null) {
+        //alert("AdvisorAdmin " + loggedUser.advisorAdmin)
+        //alert("userManagementView " + loggedUser.userManagementView)
+        if (loggedUser.advisorAdmin == null || loggedUser.advisorAdmin === "N" ||
+            loggedUser.userManagementView == null || loggedUser.userManagementView === "N") {
+            $("#menuUM").hide();
+        }
+
+        /* if (loggedUser.userManagementView == null || loggedUser.userManagementView === "N") {
+        	$("#menuUM").hide();
+        } */
+
+        //alert("invest " + loggedUser.investView)
+        //alert("masters " + loggedUser.mastersView)
+        if ((loggedUser.investView == null || loggedUser.investView === "N") &&
+            (loggedUser.mastersView == null || loggedUser.mastersView === "N")) {
+            //$("#menu #menuBSEMF").hide();
+            //$("#menuMAS").hide();
+            document.getElementById("menuMAS").style.display = "none";
+            //alert("hidden")
+        }
+
+        if (loggedUser.clientRecordsView == null || loggedUser.clientRecordsView === "N") {
+            document.getElementById("menuCR").style.display = "none";
+        }
+
+        if (loggedUser.mfBackOfficeView == null || loggedUser.mfBackOfficeView === "N") {
+            document.getElementById("menuMF").style.display = "none";
+        }
+    }
+</script>

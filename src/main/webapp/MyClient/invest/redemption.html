@@ -1,0 +1,89 @@
+<script src="MyClient/invest/js/verificationprocess.js"></script>
+<script src="clientInfo/js/common.js"></script>
+<div class="cicontainer" style="height:265%">
+
+					<table width="101%" class="">
+														<thead>
+															<tr>
+															
+																<th>AMC Name</th>
+																<th>Scheme Name</th>
+																<th>ISIN No.</th>
+																<th>Scheme Code/ID</th>
+																<th>Scheme Type</th>
+																<th>Folio no.</th>
+																<th>Units</th>
+																<th>Redemption Flag</th>
+																<th></th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr></tr>   
+															<tr>
+																<td>Kotak Mutual Fund
+																</td>
+																<td>Kotak Mutual Fund
+																</td>
+																<td>
+																</td>
+																<td>
+																</td>
+																<td>
+																</td>
+																<td>
+																</td>
+																<td>
+																</td>
+																															<td>Y
+																</td>
+																<td><a href="#" class="kotakredeem">Redeem<a/>
+																</td>
+															</tr> 
+																<tr>
+																<td>Axis Mutual Fund
+																</td>
+																<td>Axis Long term Equity Fund
+																</td>
+																<td>
+																</td>
+																<td>
+																</td>
+																<td>
+																</td>
+																<td>
+																</td>
+																<td>
+																</td>
+																															<td>N
+																</td>
+																<td><a href="#" class="axisredeem">Redeem<a/>
+																</td>
+															</tr> 
+																
+													
+														</tbody>
+					</table>
+
+			
+</div>
+
+
+					
+					<script>
+					$(document).ready(function(){
+				$(".kotakredeem").click(function(){
+$("#idInvest").empty();
+
+		$(".dashboardheading").html("Redemption");
+		$("#idInvest").load("invest/redemtionfield.html");
+				
+				});
+					});
+
+		
+
+	
+	
+</script>
+
+</body>

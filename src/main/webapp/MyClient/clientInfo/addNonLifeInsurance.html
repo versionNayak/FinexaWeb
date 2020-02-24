@@ -1,0 +1,172 @@
+<script src="clientInfo/js/addNonLifeInsurance.js"></script>
+<script src="clientInfo/js/validateNonLifeInsurance.js"></script>
+<script src="clientInfo/js/validationForAll.js"></script>
+<script src="clientInfo/js/common.js"></script>
+<div class="cicontainer">
+	<form class="form-horizontal" id="nonLifeInsuranceForm">
+	    <label class="col-sm-1 control-label"></label>
+		<div class="col-md-10 no_padding">
+			<div id="insuranceTypeRadioGroup">
+				<label>Insurance Type*:</label>
+            	<input id='insuranceTypeGeneral' name='insuranceTypeID' type='radio' value="2"  /> General  &nbsp;&nbsp;&nbsp;
+            	<input id='insuranceTypeHealth' name='insuranceTypeID' type='radio' value="3" /> Health &nbsp;&nbsp;&nbsp;
+            </div>
+			<br/><br/>
+        	<div id="MainDiv" style="display:none;">
+        		<div id='formDiv'>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<span class="formentry-errmsg" id="alertform"></span>
+						</div>
+					</div>
+			       	<div class="form-group form-group-lg">
+						<div class="col-sm-8 asset-owner-wrapper">
+								<label>Insured Family Member:</label><br/>
+								<table class="familymembertbl" width="20px">
+									<tr class="mem_icon"  id="familyMemberImage">
+									</tr>
+								</table>
+							</div>
+					</div>
+					<hr class="full-width-divider">
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>Insurance Policy Type*:</label>
+							<span class="form-static-value">
+								<select class="form-control input-width-medium" name="insurancePolicyTypeID" id="insurancePolicyType" required="required" tabindex="1">
+									<option value="">Select Policy Type</option>
+						    	</select>
+							</span>
+		                    <span class="formentry-errmsg" id="alertsipt"></span>
+						</div>
+					</div>
+				
+				<div id="idCOVER" class="form-group">
+						<div class="col-sm-11">
+							<label>Insurance Cover*:</label>
+							<div class="displayflex" id="idCoverFlag">
+								<label class="radio-inline custom-radio-theme">
+									<input type="radio" name="coverFlag" id="idIndividualCover" value="I" checked="checked" tabindex="4" /><i></i>Individual
+								</label>
+								<label class="radio-inline custom-radio-theme">
+									<input type="radio" name="coverFlag" id="idFamilyCover" value="F" tabindex="5"/><i></i>Family
+								</label>
+							</div>
+						</div>
+					</div>
+				<!-- <div id="idCOVER" class="form-group">
+				<label for="idCoverRadioGroup" class="col-sm-1 control-label"></label>
+				<div class="col-sm-12">
+					<label>Insurance Cover*:</label>
+					<div class="displayflex" id="idCoverFlag">
+                   		<p id="idCoverRadioGroup" class="input-group input-width-small" tabindex="4">
+							<label class="radio-inline custom-radio-theme"> 
+							<input type="radio" name="coverFlag" id="idIndividualCover" value="I" checked="checked"
+								tabindex="5"><i></i>Individual  
+							</label> <label class="radio-inline custom-radio-theme"> <input 
+								type="radio" name="coverFlag" id="idFamilyCover" value="F" 
+								tabindex="6"><i></i>Family  
+							</label>
+						 </p>
+					    </div>
+				    </div>
+				</div> -->
+				     
+				     <div id="familyCover" class="form-group form-group-lg">
+						<div class="col-sm-8 asset-owner-wrapper">
+								<label>Covered Family Member:</label><br/>
+								<table class="familymembertbl" width="20px">
+									<tr class="mem_icon"  id="familyMemberCheckBox">
+									</tr>
+								</table>
+							</div>
+					</div>
+				      
+				      
+				     <div class="form-group">
+						<div class="col-sm-12">
+							<label>Insurance Company*:</label>
+							<span class="form-static-value">
+								<select class="form-control input-width-medium" id="nonLifeInsuranceCompany" name="companyNameID" required="required" tabindex="2">
+									<option value="">Select Company Name</option>
+							    </select>
+							</span>
+		                    <span class="formentry-errmsg" id="alertsic"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>Insurance Policy Name*:</label>
+							<span class="form-static-value">                      
+<!--  		                    <input type="text" id="nonlifeInsurancePolicyName"  name="policyNameID" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Insurance Policy Name" tabindex="3"> -->
+		                        <input type="text" id="nonlifeInsurancePolicyName"  name="policyName" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Insurance Policy Name" tabindex="3">
+							</span>
+		                    <span class="formentry-errmsg" id="alertipn"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>Insurance Policy Number*:</label>
+							<span class="form-static-value">                      
+								<input type="text" id="policyNumber"  name="policyNumber" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Insurance Policy Number" tabindex="4">
+							</span>
+			                <span class="formentry-errmsg" id="alertipnum"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>Sum Insured(Rs)*:</label>
+							<span class="form-static-value">                      
+								<input type="text" id="sumInsured" name="sumInsured" class="form-control input-width-medium-min input-width-owner input-width-medium" onfocusout="maskAmount('#sumInsured')" placeholder="Sum Insured" tabindex="5">
+		                    </span>
+							<span class="formentry-errmsg" id="alertsi"></span>
+						</div>
+					</div>
+					<div class="form-group">
+		                <div class="col-sm-12">
+							<label>Policy Start Date*:</label>
+							<span class="input-group input-width-medium" id="idPolicyStartDateGroup">
+								<input type="text" class="form-control" id="policyStartDate"  name="policyStartDate" placeholder="DD/MM/YYYY" tabindex="6">
+								<span class="input-group-btn datepicker-icon">
+									<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="" data-original-title="Select Start Date"><em class="glyphicon calendar-icon-theme"></em></button>
+								</span>
+							 </span>
+							<span class="formentry-errmsg" id="alertpsd"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>Premium(Rs)*:</label>
+							<span class="form-static-value">                      
+								<input type="text" id="premiumAmount" name="premiumAmount" class="form-control input-width-medium-min input-width-owner input-width-medium" onfocusout="maskAmount('#premiumAmount')" placeholder="Premium" tabindex="7">
+		                    </span>
+							<span class="formentry-errmsg" id="alertp"></span>
+						</div>
+					</div>
+					<div class="form-group">
+		                <div class="col-sm-12">
+							<label>Policy End Date*:</label>
+			  				<span class="input-group input-width-medium" id="idPolicyEndDateGroup">
+								<input type="text" class="form-control" id="policyEndDate"  name="policyEndDate" placeholder="DD/MM/YYYY" tabindex="8">
+								<span class="input-group-btn datepicker-icon">
+									<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="" data-original-title="Select Start Date"><em class="glyphicon calendar-icon-theme"></em></button>
+								</span>
+							</span>
+							<span class="formentry-errmsg" id="alertped"></span>
+						</div>
+					</div>
+				</div>
+        	</div>
+        </div>
+        <div class="clearfix"></div>
+		<div class="form-group" id='formDivButton' style="display:none;">
+				<div class="col-sm-offset-1 col-sm-11">
+					<button type="button" id="saveNonLifeInsurance" class="pull-left btn addbtn" tabindex="9">SAVE</button>
+					<button type="button" class="pull-left btn addbtn" id="undo" tabindex="10" onclick="undoChange()">UNDO</button>
+				</div>
+		</div>
+		<div id="focusguard-2" tabindex="11"></</div>	
+	</form>
+</div>
+
+

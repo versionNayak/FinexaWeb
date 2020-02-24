@@ -1,0 +1,80 @@
+<script src="plan/gp/js/viewAmountNeeded.js"></script>
+<script src="plan/gp/js/common.js"></script>
+<style>
+	.top30negtive[style]{
+		top: -30px !important;
+	}
+</style>
+<div id="jssor_4" class="height456px">
+	<div data-u="slides" class="slider9">
+		<div class="top30negtive">
+			<div data-u="image">
+				<table class="leftthead amtbl" style="width: 80%">
+					<thead>
+						<tr>
+							<th colspan="3">Amount to be Invested</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr></tr>
+						<tr>
+							<td></td>
+							<td><b>Recommended</b></td>
+							<td><b>Options</b></td>
+						</tr>
+						<tr>
+							<td>Lumpsum Investment Required Today</td>
+							<td id="idLumpsumInvestmentToday"></td>
+							<td><input type="radio" name="options" id="idLumpRadio" /></td>
+						</tr>
+						<tr>
+							<td>SIP Investment Required Today</td>
+							<td id="idSipInvestmentToday"></td>
+							<td><input type="radio" name="options" id="idSIPRadio" /></td>
+						</tr>
+					
+						<tr>
+							<td>Lumpsum Investment today <br />
+							<br /> SIP Investment Required Today
+							</td>
+							<td style="text-align: right">
+							<input type="text"  id="idLumpsumInput" onfocusout="maskAmount('#idLumpsumInput')" class="form-control" style="width: 50%; float: left" /><br /> 
+							<input type="text"  id="idSIPForLumpsum" onfocusout="maskAmount('#idSIPForLumpsum')" class="form-control" style="width: 50%; float: left; margin-top: 19px;margin-left:-144px" readonly/>
+							</td>
+							<td class="amtrdo">
+								<input type="radio" name="options" id="idLumpSIPRadio"/> 
+							</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+			<button data-u="thumb" class="amtoinvest">Amount to be
+				Invested</button>
+		</div>
+		<div>
+			<div data-u="image">
+				<div id="idAmountneedGraph"></div>
+			</div>
+			<button data-u="thumb" onclick="loadChart()">Goal Corpus Accumulation</button>
+		</div>
+	</div>
+	<!-- Thumbnail Navigator -->
+	<div data-u="thumbnavigator" class="jssort04" data-autocenter="1">
+		<!-- Thumbnail Item Skin Begin -->
+		<div data-u="slides">
+			<div data-u="prototype" class="p">
+				<div>
+					<div data-u="thumbnailtemplate"></div>
+				</div>
+				<div></div>
+			</div>
+		</div>
+		<!-- Thumbnail Item Skin End -->
+	</div>
+	<!-- Arrow Navigator -->
+	<span data-u="arrowleft" class="jssora05l amountneedleft"><img
+		src="../Common/assets/images/leftarrow.png" /></span> <span
+		data-u="arrowright" class="jssora05r amountneedright"><img
+		src="../Common/assets/images/rightarrow.png" /></span>
+</div>

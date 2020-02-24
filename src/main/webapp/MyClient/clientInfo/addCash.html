@@ -1,0 +1,70 @@
+<script src="clientInfo/js/addCash.js"></script>
+<script src="clientInfo/js/validateCash.js"></script>
+<script src="clientInfo/js/validationForAll.js"></script>
+<script src="clientInfo/js/common.js"></script>
+<div class="cicontainer">
+	<div>
+		<form class="form-horizontal" id="clientCash" action="#">
+			<div class="form-group">
+				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-offset-1 col-sm-11">
+					<span class="formentry-errmsg" id="alertform"></span>
+				</div>
+			</div>
+			<div class="form-group form-group-lg">
+				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-8 asset-owner-wrapper">
+					<label>Financial Asset Owner:</label><br/>
+					<table class="familymembertbl" width="20px">
+						<tr class="mem_icon" id="familyMemberImage">									
+						</tr>
+					</table>
+				</div>
+			</div>
+				<hr class="full-width-divider">
+			<div class="form-group">
+				<label for="cashBalanceTypeId" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Cash Balance Type*:</label>
+					<span class="form-static-value" id="idCBT">
+						<select class="form-control input-width-medium" id="idCashBalanceTypeId" name="cashBalanceTypeId" required="required" tabindex="1">
+							<option value="" >Select</option>
+							<option value="35">Savings Account</option>
+							<option value="36">Current Account</option>
+							<option value="37">Cash</option>
+						</select>
+						<span class="formentry-errmsg" id="alertBalanceType"></span>
+					</span>
+					
+				</div>
+				</div>
+				<div class="form-group">
+				<label for="plannedDepositAmount" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Bank Name:</label>
+					<span class="form-static-value" id="idBN">
+						<select class="form-control input-width-medium" id="idBankName" name="bankID" required="required" tabindex="2">
+						</select>
+						<span class="formentry-errmsg" id="alertBankName"></span>
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Current Balance(Rs.)*:</label>
+					<input type="text" id="idCurrentBalance" name="currentBalance" class="form-control input-width-medium-min input-width-owner input-width-medium" onfocusout="maskAmount('#idCurrentBalance')" placeholder="Current Balance"  tabindex="2"/>
+						<span class="formentry-errmsg" id="alertCurrentBalance"></span>
+				</div>
+				
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-11">
+					<button type="button" class="pull-left btn addbtn" id="idAddCash" tabindex="4">SAVE</button>
+					<button type="button" class="pull-left btn addbtn" id="undo" tabindex="5" onclick="undoChange()">UNDO</button>
+				</div>
+			</div>
+			<div id="focusguard-2" tabindex="6"></</div>	
+		</form>
+	</div>
+</div>

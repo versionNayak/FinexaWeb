@@ -1,0 +1,52 @@
+<script src="invest/js/downloadDoc.js"></script>
+<script src="clientInfo/js/common.js"></script>
+<div class="cicontainer" style="height: 315%">
+<form style="display: inline" action="#" id="idFormDownload" onsubmit="return false">
+	<div class="col-sm-7" id="idDivUCCCombo"
+		style="text-align: left; z-index: 0.5; margin-left: -4px; padding-top: 7px; margin-top: -13px">
+		<label class="control-label" for="idppfdeposite"
+			style="text-align: left; font-size: 14px">Client Id(UCC)* </label><br />
+		<select style="padding-top: 2px"
+			class="form-control input-width-medium" id="idClientUCCCombo"
+			name="clientCode" tabindex="430">
+		</select>
+	</div>
+	<div class="col-sm-7" id="idDivUCCText"
+		style="text-align: left; z-index: 0.5; margin-left: -4px; padding-top: 7px; margin-top: -13px">
+		<label class="control-label" for="idppfdeposite"
+			style="text-align: left; font-size: 14px">Client Id(UCC)* </label><br />
+		<input type="text" placeholder="Client Id(UCC)" class="form-control"
+			id="idClientUCCText" name="clientCode" style="width: 16em" />
+	</div>
+	<br /> <br /> <br /> <br />
+
+	<div class="col-sm-7" id="idDivDocType"
+		style="text-align: left; z-index: 0.5; margin-left: -4px; padding-top: 7px; margin-top: -13px">
+		<label class="control-label" for="idppfdeposite"
+			style="text-align: left; font-size: 14px">Document Type* </label><br />
+		<select style="padding-top: 2px"
+			class="form-control input-width-medium" id="idDocType"
+			name="docType" tabindex="430">
+			<option value="">Select</option>
+			<option value="1">AOF</option>
+			<option value="2">NACH</option>
+		</select>
+	</div>
+<br /> <br /> <br /> <br />
+	<div class="col-sm-7" id="idDivMandate"
+		style="text-align: left; z-index: 0.5; margin-left: -4px; padding-top: 7px; margin-top: -13px">
+		<label class="control-label" for="idppfdeposite"
+			style="text-align: left; font-size: 14px">Mandate* </label><br />
+		<select style="padding-top: 2px"
+			class="form-control input-width-medium" id="idMandateType"
+			name="mandateType" tabindex="430">
+		</select>
+	</div>
+<br /> <br /> <br /> <br />
+	<div class="col-sm-7"
+		style="text-align: left; z-index: 1; margin-left: -25px; padding-top: 7px; margin-top: -9px;margin-left: 20px;">
+		<button type="submit" style="width: 52%" class="form-control addbtn"
+			tabindex="540" id="idAOF">Download</button>
+	</div>
+</form>
+</div>

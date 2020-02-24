@@ -1,0 +1,81 @@
+<!-- <style>
+#idProg {
+  margin: 10px;
+  width: 700px;
+}
+
+#progressBarCanvas {
+  margin: 10px;	
+  width: 700px;
+  height: 30px;
+  border: 5px solid #ffffff;
+  border-radius: 5px;
+}
+</style>
+ -->
+ <body>
+<div class="MFforms">
+	<h4 class="formhead">SIP STP Upload</h4>
+	<form class="form-horizontal marginleft10per" action="#" id="idSipStpFeedForm" name="nameSipStpFeedForm">
+						<div class="form-group">
+							<span class="formentry-errmsg" id="alertform"></span>
+							<div>
+								<label>RTA:</label>
+								<span class="form-static-value">
+									<select class="form-control input-width-medium" id="idRTA" name="nameRTA" tabindex="1">
+										<option value="">Select</option>
+									</select>
+									<span class="formentry-errmsg" id="alertRTA"></span>
+								</span>
+							</div>
+							<br/>
+							<div>
+								<label>File Name:</label>
+								<span class="form-static-value">
+									<select class="form-control input-width-medium" id="idFileName" name="nameFileType" tabindex="2">
+										<option value="">Select RTA File</option>
+									</select>
+									<span class="formentry-errmsg" id="alertFileName"></span>
+								</span>
+							</div>
+							<br/>
+							<div>
+								<label>File Type:</label>
+								<span class="form-static-value">
+									<select class="form-control input-width-medium" id="idFileType" name="nameFile" tabindex="3">
+										<option value="">Select</option>
+										<option value=".xlsx">Excel</option>
+										<option value=".dbf">DBF</option>
+									</select>
+									<span class="formentry-errmsg" id="alertFileType"></span>
+								</span>
+							</div>
+							<br/>
+							<div>
+								<label>Select File:</label>
+								<input type="file" multiple size="50" id="idSelectFile" name="nameSelectFile" tabindex="4">
+								<span class="formentry-errmsg" id="alertSelectFile"></span>
+							</div>
+							<br/>
+							<button type="button" id="idImport" name="nameImport" class="form-control addbtn" tabindex="5">Import</button>
+							</div>
+						
+						</form>
+						<!-- 
+						  <div id="idProg" class="progress">
+						     <div id="progressBar" class="progress-bar progress-bar-success" role="progressbar"
+						       aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0%</div>
+						   </div>
+						   
+						   <div id="alertMsg" style="color: blue;font-size: 16px;text-align: center"></div>
+						
+						   <canvas id="progressBarCanvas"></canvas>
+						
+							 -->
+	
+	</div>
+	</body>
+<script src="MF/Mfjs/sipstpFeed.js"></script>
+<script src="MF/Mfjs/validateSipStpFeed.js"></script>
+<script src="MF/Mfjs/validationForAll.js"></script>
+	

@@ -1,0 +1,59 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+    border-radius: 6px 6px 0 0;
+    padding: 10px;
+    background-color: gray;
+}
+
+.fa-chevron-left {
+    margin-right: 10px;
+    color: black;
+}
+
+.fa-chevron-right {
+    margin-left: 10px;
+    color: black;
+}
+
+.gap {
+    margin: 10px;
+}
+
+.Calendar table {
+    margin-bottom: 1px;
+}
+
+.Calendar td {
+    text-align: center !important;
+    font-size: 1.5em;
+    border: 1px solid;
+}
+
+.nav_value1 {
+    margin-top: 10%;
+}
+
+.nav_value h4 {
+    text-align: center;
+    padding: 10px;
+}
+
+.nav_value p {
+    text-align: center;
+    margin-top: 25%;
+    padding-bottom: 23%
+}
+
+#container {
+    min-width: 310px;
+    max-width: 800px;
+    margin: 0 auto
+}

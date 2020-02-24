@@ -1,0 +1,56 @@
+<script src="clientInfo/js/addLumpsum.js"></script>
+<script src="clientInfo/js/validateLumpsumInflow.js"></script>
+<script src="clientInfo/js/validationForAll.js"></script>
+<script src="clientInfo/js/common.js"></script>
+<div class="cicontainer">
+<!-- <div class="alert alert-danger" id="alertForm" style="display:none;">
+</div> -->
+	<div>
+			<form class="form-horizontal" id="clientLumpsumForm">
+			<div class="form-group">
+				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<span class="formentry-errmsg" id="alertform"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Inflow Description*:</label>
+					<input type="text" id="idInflowDesc" name="inflowDesc" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter Description"  tabindex="1"/>
+				       <span class="formentry-errmsg" id="alertinflowdesc"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Expected Value of Inflow(Rs.)*:</label>
+					<input type="text" id="idExpectedInflow"  name="expectedInflow" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Expected Value"  onfocusout="maskAmount('#idExpectedInflow')" tabindex="2"/>
+					<span class="formentry-errmsg" id="alertexi"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Expected Date of Inflow*:</label>
+					<p id="idExpectedInflowDateGroup" class="input-group input-width-medium">
+						<input type="text" class="form-control" id="idExpectedInflowDate" name="expectedInflowDate" placeholder="DD/MM/YYYY" tabindex="3">
+						<span class="input-group-btn datepicker-icon">
+							<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Start Date"><em class="glyphicon calendar-icon-theme"></em></button>
+						</span>
+					</p>
+					<span class="formentry-errmsg" id="alertExDate"></span>
+				</div>
+				
+			</div>
+			
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-11">
+					<button type="button" id="idAddFormLumpsumSubmit" class="pull-left btn addbtn" tabindex="4">SAVE</button>
+				    <button type="button" id="undo" class="pull-left btn addbtn" tabindex="5" onclick="undoChange()">UNDO</button>  
+				</div>
+			</div>
+			<div id="focusguard-2" tabindex="20"></</div>	
+		</form>
+	</div>
+</div>

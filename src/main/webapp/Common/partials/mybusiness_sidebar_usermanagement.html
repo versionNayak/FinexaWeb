@@ -1,0 +1,126 @@
+<!-- sidebar wrappers css for sidebar style -->
+<link href="../Common/assets/css/sidebar-wrappers.css" rel="stylesheet" type="text/css">
+<!--load common all styles -->
+<link href="../Common/assets/css/commonall.css" rel="stylesheet" type="text/css" />
+<!-- sidebar wrappers css for sidebar -->
+<script src="../Common/assets/js/sidebar-wrappers.js"></script>
+<script src="../Common/assets/js/mybusiness_sidebar_plan.js"></script>
+
+<div class="page-wrappers chiller-theme toggled">
+    <nav class="sidebar-wrappers">
+        <div class="sidebar-content">
+            <div class="sidebar-menu">
+                <ul id="menu">
+                    <!-- user_role_creation nav -->
+                    <li class="sidebar-dropdown ">
+                        <a href="# " class="user_role_creation">
+                            <i class="fas fa-user-tag"></i>
+                            <span>User Role Creation</span></a>
+                        <!--<ul class="nav-pills nav-stacked cincome ">
+                     <li><a href="# " class="fai ">Family Income <span class="fai_arrow ">&#8594;</span></a></li>
+                     <li><a href="# " class="he ">Household Expense<span class="he_arrow ">&#8594;</span></a></li>
+                     <li><a href="# " class="gpr ">Goal Planning Report <span class="gpr_arrow ">&#8594;</span></a></li>
+                     </ul>-->
+                    </li>
+                    <!-- user_creation nav -->
+                    <li class="sidebar-dropdown ">
+                        <a href="# ">
+                            <i class="fas fa-user-plus"></i>
+                            <span class=" ">User Creation</span></a>
+                        <div class="sidebar-submenu">
+                            <ul class="cipersonal ">
+                                <li><a href="# " class="user_creation">Create User </a> </li>
+                                <li><a href="# " class="user_upload ">Bulk Upload</a> </li>
+                                <li><a href="# " class="process_status">Bulk Upload Log</a> </li>
+                            </ul>
+                        </div>
+                    </li>
+                     <!-- user_creation nav -->
+                    <!-- <li class="sidebar-dropdown ">
+                        <a href="# ">
+                            <i class="fas fa-clipboard-list"></i>
+                            <span class=" ">Bulk Upload Log</span></a>
+                        <div class="sidebar-submenu">
+                            <ul class="bulk_log_ul">
+                                <li><a href="# " class="running_process">Running</a> </li>
+                                <li><a href="# " class="completed_process">Completed</a> </li>
+                            </ul>
+                        </div>
+                    </li> -->
+                    <!-- product_recom nav -->
+                    <li class="sidebar-dropdown " id="idMngPass ">
+                        <a href="# " class="user_password_management">
+                            <i class="fas fa-key"></i>
+                            <sapn>
+                                Manage Password</span>
+                        </a>
+                        <!--<ul class="nav-pills nav-stacked cincome ">
+                     <li><a href="# " class="fai ">Family Income <span class="fai_arrow ">&#8594;</span></a></li>
+                     <li><a href="# " class="he ">Household Expense<span class="he_arrow ">&#8594;</span></a></li>
+                     <li><a href="# " class="gpr ">Goal Planning Report <span class="gpr_arrow ">&#8594;</span></a></li>
+                     </ul>-->
+                    </li>
+                    <!-- user_role_remapping nav -->
+                    <li class="sidebar-dropdown user_role_remapping ">
+                        <a href="# ">
+                            <i class="fas fa-sitemap"></i>
+                            <sapn>
+                                User Role Remapping</span>
+                        </a>
+                        <!--<ul class="nav-pills nav-stacked portfolio ">
+                     <li><a href="# " class="mfpms ">MF/PMS/ETF<span class="mfpms_arrow " >&#8594;</span></a></li>
+                     <li><a href="# " class="eqt ">Equity<span class="eqt_arrow " >&#8594;</span></a></li>
+                     <li><a href="# " class="fixedi ">Fixed Income <span class="fixedi_arrow " >&#8594;</span></a></li>
+                     <li><a href="# " class="retirement ">Retirement Schemes <span class="retirement_arrow ">&#8594;</span></a></li>
+                     <li><a href="# " class="smallsvng ">Small Saving Schemes <span class="smallsvng_arrow ">&#8594;</span></a></li>
+                     <li><a href="# " class="altinvest ">Alternate Investment<span class="altinvest_arrow ">&#8594;</span></a></li>
+                     <li><a href="# " class="cash ">Cash<span class="cash_arrow " >&#8594;</span></a></li>
+                     <li><a href="# " class="lumpflow ">Lumpsum Inflows <span class="lumpflow_arrow ">&#8594;</span></a></li>
+                     </ul>-->
+                    </li>
+                    <!-- hierarchy_mapping nav -->
+                    <li class="sidebar-dropdown hierarchy_mapping ">
+                        <a href="# ">
+                            <i class="fas fa-sitemap"></i>
+                            <span>Hierarchy Mapping</span></a>
+                        <!--<ul class="nav-pills nav-stacked insurance ">
+                     <li><a href="# " class="lifeins ">Life Insurance<span class="lifeins_arrow " >&#8594;</span></a></li>
+                     <li><a href="# " class="nonlifeins ">Non-Life Insurance<span class="nonlifeins_arrow " >&#8594;</span></a></li>
+                     </ul>-->
+                    </li>
+                    <!-- access_rights nav -->
+                    <li class="sidebar-dropdown cigoals access_rights ">
+                        <a href="# ">
+                            <i class="fas fa-balance-scale-right"></i>
+                            <span> Access Rights</span></a>
+                    </li>
+                    <!-- loggedin-history nav -->
+                    <li class="sidebar-dropdown cigoals actvate_users ">
+                        <a href="# ">
+                            <i class="fas fa-clipboard-list"></i>
+                            <span>Activate/Deactivate Users</span></a>
+                    </li>
+                    <!-- loggedin-history nav -->
+                    <li class="sidebar-dropdown loggedin-history ">
+                        <a href="# ">
+                            <i class="fas fa-history"></i>
+                            <span>Logged-in History</span></a>
+                    </li>
+                </ul>
+                <div style="margin: 100px; "></div>
+            </div>
+            <!-- sidebar-menu  -->
+        </div>
+    </nav>
+</div>
+<script>
+    var loggedUser = JSON.parse(sessionStorage.getItem("LOGGED_IN_USER "));
+    getClientDataAsyncFalse("GET ", " ", "user/ " + loggedUser.id, onUserRoleSuccess);
+
+    function onUserRoleSuccess(data) {
+        if (data.admin != "Y ") {
+
+            //$('#idMngPass').hide();
+        }
+    }
+</script>

@@ -1,0 +1,70 @@
+<script src="masters/js/form1.js"></script>
+<script src="masters/js/bse.js"></script>
+<!-- <script src="masters/js/addProduct.js"></script> -->
+<script src="masters/js/common.js"></script>
+<div class="MFforms">
+	<h4 class="formhead">Please enter your BSE Star MF credentials</h4>
+	<form class="form-horizontal marginleft10per" action="#" >
+						<div class="form-group">
+							<div>
+								<label>User Name:</label>
+					<input type="text" id = "idUserName" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="User Name" tabindex="270"/>
+							</div>
+							<br/>
+								<div>
+								<label>Member ID:</label>
+					<input type="text" id = "idMemberId" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Member ID" tabindex="270"/>
+							</div>
+							<br/>
+								<div>
+								<label>Password:</label>
+					<input type="password" id = "idPassword" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Password" tabindex="270"/>
+							</div>
+							<br/>
+							<div>
+								<label>Access Mode:</label>
+								<select style="padding-top:2px" class="form-control input-width-medium" id="idAccessMode" tabindex="4" name="holding">					
+								<option value = "2">Demo</option>
+								<option value = "1">Live</option>
+							</select> 
+							</div>
+							<br/>
+							<button type="button" onclick = "goToViewBse()" class="form-control addbtn showCredentials" tabindex="540">Submit</button>
+							</div>
+						
+						</form>
+						<!-- <div style="display:none" class="tblfirstrowleft">
+						<h4 class="formhead">View BSE Star MF credentials</h4>
+							<table style="margin-left:5em">
+							<thead>
+								<tr>
+									<th style="vertical-align:super;">User Name</th>
+									<th>Member ID</th>
+									<th>Password</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr></tr>   
+								<tr>
+									<td>xx</td>
+									<td>xx</td>
+									<td>xx</td>
+								</tr> 
+									<tr>
+									<td>xx</td>
+									<td>xx</td>
+									<td>xx</td>
+								</tr> 
+							</tbody>
+						</table>
+						</div> -->
+							
+	
+	</div>
+	<script>
+	$(".showCredentials").click(function(){
+	$(".tblfirstrowleft").show();
+	
+	});
+	
+		</script>

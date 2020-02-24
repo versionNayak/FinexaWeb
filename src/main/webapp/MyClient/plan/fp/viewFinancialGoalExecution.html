@@ -1,0 +1,212 @@
+<script src="plan/fp/js/viewFinancialGoalExecution.js"></script>
+<script src="plan/fp/js/common.js"></script>
+<div id="jssor_2" class="height456px" style = "overflow-y:auto !important">
+	<div data-u="slides" class="slider9">
+		<div>
+			<div data-u="image">
+				<div id="">
+				<table width="60%" class="executiongoaltbl" style="margin-top: 41px;margin-left: 65px;">
+					<thead>
+						<tr>
+						<th>Serial No</th>				
+						<th>Goals</th>
+						<th>Description</th>
+						<th>Action</th>
+						</tr>
+					</thead>
+					<tbody id = "idGoalList">
+					</tbody>
+				</table>
+				<br/><br/>
+				<h4 style="margin-left: 64px;">Saved Recommendations</h4>
+				<br>
+				<label style="margin-left: 64px;">Goal Name : </label> 
+				<select style="width:130px;margin-top:-34px !important;margin-left:151px !important;" class="form-control input-width-medium" id="idGoalCombo" tabindex="2" name="goalCombo"></select> 
+				
+				<br>
+				<table width="70%" class="executiongoaltbl" style="margin-left: 65px;">
+					<thead>
+						<tr>
+						<th>Serial No</th>				
+						<!-- <th>Goal Description</th> -->
+						<th>Date</th>
+						<th>Action</th>
+						</tr>
+					</thead>
+					<tbody id = "idProductRecoDetailsTable">
+					</tbody>
+				</table>
+				
+				</div>
+			</div>
+			<button data-u="thumb" class="amtoinvest">Amount to be
+				Invested</button>
+		</div>
+		<div>
+			<div data-u="image">
+				<div></div>
+			</div>
+			<button data-u="thumb">Goal Corpus Accumulation</button>
+		</div>
+	</div>
+	<!-- Thumbnail Navigator -->
+	<div data-u="thumbnavigator" class="jssort02" data-autocenter="1">
+		<!-- Thumbnail Item Skin Begin -->
+		<div data-u="slides">
+			<div data-u="prototype" class="p">
+				<div>
+					<div data-u="thumbnailtemplate"></div>
+				</div>
+				<div></div>
+			</div>
+		</div>
+		<!-- Thumbnail Item Skin End -->
+	</div>
+	<!-- Arrow Navigator -->
+	<span class="jssora05l riskleft"><img
+		src="../Common/assets/images/leftarrow.png" /></span> <span
+		class="jssora05r riskright"><img
+		src="../Common/assets/images/rightarrow.png" /></span>
+</div>
+
+<div id="idpopEducationPG" class="modal3">
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close3" style="margin-top: -5px">&times;</span>
+			<h4 style="margin-top: 5px" id="goalExecutionHeading"></h4>
+		</div>
+		<div class="modal-body">
+			<h4>Investment to be made for the Goals</h4>
+			<h4 class="subheadingcolor" style="background: white" id="idLumpHeading">Lumpsum</h4>
+			<table width="100%" class="leftthead" id="idLumpTableHeader">
+				<thead>
+					<tr>
+						<th>Year</th>
+						<th>Cash/Liquid</th>
+						<th>Ultra Short Term Debt</th>
+						<th>Short Term Debt</th>
+						<th>Long Term Debt</th>
+						<th>Equity Large Cap</th>
+						<!-- <th>Equity Mid and Small Cap</th> -->
+						<th>Equity International</th>
+						<th>Alternative Others</th>
+						<th>Alternative Real Estate</th>
+						<th>Alternative Precious</th>
+					</tr>
+				</thead>
+				<tbody id="idLumpTable">
+					
+				</tbody>
+			</table>
+			<h4 id="idSipHeading" class="subheadingcolor" style="background: white">SIP</h4>
+			<table width="100%" class="leftthead" id="idSipTableHeader">
+				<thead>
+					<tr>
+						<th>Year</th>
+						<th>Cash/Liquid</th>
+						<th>Ultra Short Term Debt</th>
+						<th>Short Term Debt</th>
+						<th>Long Term Debt</th>
+						<th>Equity Large Cap</th>
+						<!-- <th>Equity Mid and Small Cap</th> -->
+						<th>Equity International</th>
+						<th>Alternative Others</th>
+						<th>Alternative Real Estate</th>
+						<th>Alternative Precious</th>
+					</tr>
+				</thead>
+				<tbody id="idSIPTable">
+				</tbody>
+			</table>
+
+			<br />
+			<h4 id="idProductRecoHeading">The Product Recommendation For The Goal Is For The Current Financial Year</h4>
+
+			<table width="102%" class="marginleft8px" id="idTableProdReco">
+				<thead>
+					<tr>
+						<th class="textaligncenter">Sub Asset Class</th>
+						<th class="textaligncenter">Sub Asset Allocation (%)</th>
+						<th class="width17per textaligncenter">Recommended Product</th>
+						<th class="width17per textaligncenter">Product Allocation (%)</th>
+						<th class="textaligncenter">Select All</th>
+						<th class="textaligncenter width12per">Lumpsum Amount</th>
+						<th class="textaligncenter">SIP Amount</th>
+						<th class="textaligncenter">SIP Tenure</th>
+					</tr>
+				</thead>
+				<tbody id="idProductTable">
+
+				</tbody>
+			</table>
+			 <!--  <div class=" col-md-1" style="height: 750px; overflow-y: hidden; overflow-x: hidden" id = "idFPGEProdutRecoListDiv">
+                <ul class="nav nav-pills nav-stacked" id = "idFPGEProductRecoList">
+                    <li class="active"><a href="#tab_a" data-toggle="pill">Pill A</a></li>
+                    <li><a href="#tab_b" data-toggle="pill">Pill B</a></li>
+                    <li><a href="#tab_c" data-toggle="pill">Pill C</a></li>
+                    <li><a href="#tab_d" data-toggle="pill">Pill D</a></li>
+                </ul>
+            </div> -->
+			
+			   		<br>
+					<button type="submit" id="idProductReco" class="form-control addbtn">Save</button>
+		    
+		
+           
+            <div class="col-sm-offset-3 col-sm-8">
+		    </div> 
+         <!--    <div class="row" style="position: relative; top: -10px;">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <button type="button" id="idProductReco" class="btn btn-info" style="width: 50%">Save</button>
+            </div>
+            <div class="col-md-4">
+            </div>
+            </div> -->
+		
+	</div>
+</div>
+</div>
+<div id="idPopUpProduct" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+	<span class="close">&times;</span>
+      <h2></h2>
+    </div>
+    <div class="modal-body">
+	<table width="102%"  class="marginleft8px productbl">
+	<thead>
+		<tr>
+			<th class="textaligncenter">Sub Asset Class
+			</th>
+			<th class="textaligncenter">Sub Asset Allocation (%)
+			</th>
+			<th class="width17per textaligncenter">Recommended Product
+			</th>
+			<th class="width17per textaligncenter">Product Allocation (%)
+			</th>
+			<th class="textaligncenter width12per">Lumpsum Amount
+			</th>
+			<th class="textaligncenter">SIP Amount
+			</th>
+			<th class="textaligncenter">SIP Tenure
+			</th>
+		</tr>
+	</thead>
+		<tbody id = "idSavedProductTable">
+	</tbody>
+</table>
+</div>
+	
+    <div class="modal-footer">
+      <h3></h3>
+	</div>
+
+  </div>
+
+</div>
+
+

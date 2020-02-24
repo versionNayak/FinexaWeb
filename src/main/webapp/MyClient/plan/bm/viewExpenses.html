@@ -1,0 +1,442 @@
+<script src="plan/bm/js/viewExpenses.js"></script>
+<script src="plan/bm/js/common.js"></script>
+<style>
+	@supports (-moz-appearance:none) {
+		.jssort11 div:nth-child(2) div:nth-child(4)[style] {
+			left: 393px !important
+		}
+		.jssort11 div:nth-child(2) div:nth-child(6)[style] {
+			left: 680px !important;
+		}
+	}
+	.scrollExpense[style] {
+		overflow-y: scroll !important;
+		overflow-x: hidden !important;
+	}
+	.keyassumptionscroll[style] {
+		overflow-y:scroll !important;
+	}
+	#idBarGraph > div {
+       padding-top: 25px !important;
+       height: 430px !important;
+	}
+	.expenseDetails[style] {
+		overflow: scroll !important;
+	}
+	
+</style>
+<div id="jssor_11" class="height413px">
+	<div data-u="slides" class="slider9" style="height: 400px; top: 30px;">
+		<div class="scrollExpense">
+			<div data-u="image" class="row">
+				<div class="col-sm-6">
+					<table width="100%" id="idCurrentExpenseTable"
+						class="recommendedtbl margintop24px table-borderless"
+						style="z-index: 10 !important; margin-top: 9px;">
+						<thead>
+							<tr>
+								<th>Expenses</th>
+								<th>Annual Expense</th>
+								<th>% of Total</th>
+								<th style="width: 26%">Industry Standard % of Total</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr></tr>
+							<tr class="classGroceries">
+								<td><img src="../Common/assets/images/circle2.png" />
+									&nbsp; Groceries</td>
+								<td id="id_Groceries_amt"></td>
+								<td id="id_Groceries_tp"></td>
+								<td id="idInGroceries" style="float: right"></td>
+							</tr>
+							<tr class="classUtilities">
+								<td><img src="../Common/assets/images/circle3.png" />
+									&nbsp;Utilities</td>
+								<td id="id_Utilities_amt"></td>
+								<td id="id_Utilities_tp"></td>
+								<td id="idInUtilities" style="float: right"></td>
+							</tr>
+							<tr class="classTransport">
+								<td><img src="../Common/assets/images/circle4.png" />
+									&nbsp; Transport</td>
+								<td id="id_Transport_amt"></td>
+								<td id="id_Transport_tp"></td>
+								<td id="idInTransport" style="float: right"></td>
+							</tr>
+							<tr class="classHPC">
+								<td><img src="../Common/assets/images/circle5.png" />
+									&nbsp;Household & Personal Care</td>
+								<td id="id_HouseholdAndPersonalCare_amt"></td>
+								<td id="id_HouseholdAndPersonalCare_tp"></td>
+								<td id="idInHPC" style="float: right"></td>
+							</tr>
+							<tr class="classHM">
+								<td><img src="../Common/assets/images/circle6.png" />
+									&nbsp; Housing & Maintenance</td>
+								<td id="id_HousingAndMaintenance_amt"></td>
+								<td id="id_HousingAndMaintenance_tp"></td>
+								<td id="idInHM" style="float: right"></td>
+							</tr>
+							<tr class="classCommunication">
+								<td><img src="../Common/assets/images/circle7.png" />
+									&nbsp; Communication</td>
+								<td id="id_Communication_amt"></td>
+								<td id="id_Communication_tp"></td>
+								<td id="idInCommunication" style="float: right"></td>
+							</tr>
+							<tr class="classChildrenFee">
+								<td><img src="../Common/assets/images/circle8.png" />
+									&nbsp; Children Fees</td>
+								<td id="id_ChildrenFees_amt"></td>
+								<td id="id_ChildrenFees_tp"></td>
+								<td id="idInChildren" style="float: right"></td>
+							</tr>
+							<tr class="classHCE">
+								<td><img src="../Common/assets/images/circle9.png" />
+									&nbsp; Healthcare Expenses</td>
+								<td id="id_HealthcareExpenses_amt"></td>
+								<td id="id_HealthcareExpenses_tp"></td>
+								<td id="idInHCE" style="float: right"></td>
+							</tr>
+							<tr class="classLE">
+								<td><img src="../Common/assets/images/circle10.png" />
+									&nbsp; Lifestyle & Entertainment</td>
+								<td id="id_LifestyleAndEntertainment_amt"></td>
+								<td id="id_LifestyleAndEntertainment_tp"></td>
+								<td id="idInLE" style="float: right"></td>
+							</tr>
+							<tr class="classAA">
+								<td><img src="../Common/assets/images/circle11.png" />
+									&nbsp;Apparels & Accessories</td>
+								<td id="id_ApparelsAndAccessories_amt"></td>
+								<td id="id_ApparelsAndAccessories_tp"></td>
+								<td id="idInAA" style="float: right"></td>
+							</tr>
+							<tr class="classOthers">
+								<td><img src="../Common/assets/images/circle12.png" />
+									&nbsp;Others (Charity, etc)</td>
+								<td id="id_OthersCharityEtc_amt"></td>
+								<td id="id_OthersCharityEtc_tp"></td>
+								<td id="idInOthers" style="float: right">0.0%</td>
+							</tr>
+							<tr class="classLiving">
+								<td><img src="../Common/assets/images/circle2.png" />
+									&nbsp;Living Expenses</td>
+								<td id="idIndTotal"></td>
+								<td id="id_IndTotal_tp"></td>
+								<td id="idInIndTotal" style="float: right"></td>
+							</tr>
+
+							<tr class="nonglidtotal">
+								<td><b>Total Expenses </b></td>
+								<td><b id="id_TotalExpenses_amt"></b></td>
+								<td><b id="id_TotalExpenses_tp"></b></td>
+								<td id="idInTotal" style="float: right"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+
+				<div class="col-sm-6">
+					<div id="idCurrentExpenses" style="margin-top: -70px"></div>
+				</div>
+			</div>
+			<button data-u="thumb" name="but1" tabindex="1">Current Expense</button>
+		</div>
+
+		<div>
+			<div data-u="image">
+				<div class="col-lg-6">
+					<table width="119%" class="recommendedtbl margintop24px table" style="z-index: 10 !important; margin-top: 31px;" id="idExpenseSumm">
+						<thead>
+							<tr>
+								<th>Expenses</th>
+								<th>Annual Expense</th>
+								<th>% of Total</th>
+								<th style="width: 26%">Industry Standard % of Total</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr></tr>
+							<tr class="trClassLiving">
+								<td><img src="../Common/assets/images/circle2.png" />
+									&nbsp; Living Expenses</td>
+								<td id="idExpenseLiving"></td>
+								<td id="idExpenseLivingPerc"></td>
+								<td id="idExpenseLivingStandardPerc" style="float: right"></td>
+							</tr>
+							<tr class="trClassDiscre">
+								<td><img src="../Common/assets/images/circle3.png" />
+									&nbsp;Discretionary Expenses</td>
+								<td id="idExpenseDiscretionary"></td>
+								<td id="idExpenseDiscretionaryPerc"></td>
+								<td id="idExpenseDiscretionaryStandardPerc" style="float: right"></td>
+							</tr>
+
+							<tr class="nonglidtotal">
+								<td><b>Total Expenses </b></td>
+								<td id="idExpenseTotal"><b></b></td>
+								<td id="idExpenseTotalPerc"><b></b></td>
+								<td id="idExpenseTotalStandardPerc" style="float: right"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-lg-6">
+
+					<div id="idexpensesummary"></div>
+				</div>
+			</div>
+			<button data-u="thumb" name="but2" tabindex="2">Expense Summary</button>
+		</div>
+
+
+
+		<div>
+			<div data-u="image">
+
+				<div id="idMaxExpenses" class="popup" style="position: relative; right: 180px; top: 20px;">
+					<img src="../Common/assets/images/maximg.png" class="maxbtn" />
+				</div>
+				<table width="51%" class="expensetbl" id="idExpenseTable">
+					<thead>
+						<tr>
+							<th>Year</th>
+							<th>Living Expenses</th>
+							<th>Discretionary Expenses</th>
+							<th>Total Expenses</th>
+						</tr>
+					</thead>
+					<tbody id="idExpenseProjection">
+					</tbody>
+				</table>
+				<br />
+
+				<table width="46%" style="margin-left: 235px">
+					<tr>
+						<td><b>Download Projections</b></td>
+						<td><input type="radio" id="idMonthlyRadio" name="download"
+							style="position: sticky"></input></td>
+						<td style="text-align: left; vertical-align: bottom;"><label>Monthly</label></td>
+						<td><input type="radio" id="idYearlyRadio" name="download"
+							style="position: sticky" checked="true"></input></td>
+						<td style="text-align: left; vertical-align: bottom;"><label>Annually</label></td>
+						<td><input type="submit" value="Save" id="idDownload"
+							class="form-control"></td>
+					</tr>
+				</table>
+				<br />
+                <div class="container" >
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="idBarGraph"></div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+			<button data-u="thumb" name="but3" tabindex="3">Expense Projections</button>
+		</div>
+		<div class="expenseDetails">
+			<div data-u="image" style="margin-top: 30px; margin-left: 40px;">
+                <div id="idMaxExpensesdetails" class="popup" style="position: relative;right: 20px">
+                    <img src="../Common/assets/images/maximg.png" class="maxbtn" />
+                </div>
+			<div>
+			                <table class="expenseDet" id="idExpenseDetailTable" style="margin-left: 2px; width: 94%">
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Groceries</th>
+                            <th>Utilities</th>
+                            <th>Transport</th>
+                            <th>Personal Care</th>
+                            <th>Housing Maintenance</th>
+                            <th>Communication</th>
+                            <th>Lifestyle</th>
+                            <th>Apparels & Accessories</th>
+                            <th>Children Fees</th>
+                            <th>Healthcare</th>
+                            <th>Others</th>
+                            <th>Living Expenses</th>
+                            <th>Total Expense</th>
+                        </tr>
+                    </thead>
+                    <tbody id="idExpenseProjectionDetail">
+                    </tbody>
+                </table>
+			
+			</div>
+                <br />
+                <table width="50%" style="margin-left: 222px">
+                    <tr>
+                        <td><b>Download Projections</b></td>
+                        <td><input type="radio" id="idMonthlyRadioDetail"
+                            name="download" style="position: sticky"></input></td>
+                        <td style="text-align: left; vertical-align: bottom;"><label>Monthly</label></td>
+                        <td><input type="radio" id="idYearlyRadioDetail"
+                            name="download" style="position: sticky" checked="true"></input></td>
+                        <td style="text-align: left; vertical-align: bottom;"><label>Annually</label></td>
+                        <td><input type="submit" value="Save" id="idDownloadDetail"
+                            class="form-control"></td>
+                    </tr>
+
+                </table>
+                <div style="height: 100px" hidden></div>
+
+			</div>
+			<button data-u="thumb" name="but4" tabindex="4">Expense
+				Projections Details</button>
+		</div>
+		<div class="keyassumptionscroll">
+			<div data-u="image">
+				<div>
+
+					<div>
+						<table width="89%" class="keyassumptions" style="margin-top: 36px">
+							<thead>
+								<tr>
+									<th>Expense Source</th>
+									<th>Amount</th>
+									<th>Frequency</th>
+									<th>Reference Month</th>
+									<th>Year till Expense will continue</th>
+									<th>Annual Expense Growth rate(%)</th>
+								</tr>
+							</thead>
+							<tbody id="idKeyAssumption">
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<button data-u="thumb" name="but5" tabindex="5">Key Assumptions</button>
+		</div>
+		</div>
+	
+	<!-- Thumbnail Navigator -->
+	<div data-u="thumbnavigator" class="jssort11" data-autocenter="1">
+		<!-- Thumbnail Item Skin Begin -->
+		<div data-u="slides">
+			<div data-u="prototype" class="p">
+				<div>
+					<div data-u="thumbnailtemplate"></div>
+				</div>
+				<div></div>
+			</div>
+		</div>
+		<!-- Thumbnail Item Skin End -->
+	</div>
+	<!-- Arrow Navigator -->
+	<span data-u="arrowleft" class="jssora05l Expensesleft"><img
+		src="../Common/assets/images/leftarrow.png" /></span> <span
+		data-u="arrowright" class="jssora05r Expensesright"><img
+		src="../Common/assets/images/rightarrow.png" /></span>
+</div>
+
+
+
+<!--expenses projection-->
+<div id="idPopExpense" class="modal">
+
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close">&times;</span>
+			<h2></h2>
+		</div>
+		<div class="modal-body">
+			<table width="51%" class="expensetbl" id="idExpenseTableModal">
+				<thead>
+					<tr>
+						<th>Year</th>
+						<th>Living Expenses</th>
+						<th>Discretionary Expenses</th>
+						<th>Total</th>
+					</tr>
+				</thead>
+				<tbody id="idExpenseProjectionModal">
+				</tbody>
+			</table>
+			<br />
+			<table width="46%" style="margin-left: 245px">
+				<tr>
+					<td><b>Download Projections</b></td>
+					<td><input type="radio" id="idMonthlyRadioModal"
+						name="download" style="position: sticky"></input></td>
+					<td style="text-align: left; vertical-align: bottom;"><label>Monthly</label></td>
+					<td><input type="radio" id="idYearlyRadioModal"
+						name="download" style="position: sticky" checked="true"></input></td>
+					<td style="text-align: left; vertical-align: bottom;"><label>Annually</label></td>
+					<td><input type="submit" value="Save" id="idDownloadModal"
+						class="form-control"></td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+
+</div>
+
+<!-- projection details popup-->
+<div id="idPopExpensedetails" class="modal">
+
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close1">&times;</span>
+			<h2></h2>
+		</div>
+		<div class="modal-body">
+			<table width="100%" class="expenseDet" id="idExpenseDetailTableModal"
+				style="margin: auto">
+				<thead>
+					<tr>
+						<th>Year</th>
+						<th>Groceries</th>
+						<th>Utilities</th>
+						<th>Transport</th>
+						<th>Personal Care</th>
+						<th>Housing Maintenance</th>
+						<th>Communication</th>
+						<th>Lifestyle</th>
+						<th>Apparels & Accessories</th>
+						<th>Children Fees</th>
+						<th>Healthcare</th>
+						<th>Others</th>
+						<th>Living Expenses</th>
+						<th>Total Expense</th>
+
+
+					</tr>
+				</thead>
+				<tbody id="idExpenseProjectionDetailModal">
+				</tbody>
+			</table>
+			<br />
+			<table width="46%" style="margin: auto">
+				<tr>
+					<td><b>Download Projections</b></td>
+					<td><input type="radio" id="idMonthlyRadioDetailModal"
+						name="download" style="position: sticky"></input></td>
+					<td style="text-align: left; vertical-align: bottom;"><label>Monthly</label></td>
+					<td><input type="radio" id="idYearlyRadioDetailModal"
+						name="download" style="position: sticky" checked="true"></input></td>
+					<td style="text-align: left; vertical-align: bottom;"><label>Annually</label></td>
+					<td><input type="submit" value="Save"
+						id="idDownloadDetailModal" class="form-control"></td>
+				</tr>
+
+			</table>
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+
+</div>

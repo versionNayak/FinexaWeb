@@ -1,0 +1,138 @@
+<script src="invest/js/addCreateUCC.js"></script>
+<script src="invest/js/validateCreateUCC.js"></script>
+<script src="clientInfo/js/validationForAll.js"></script>
+<script src="clientInfo/js/common.js"></script>
+<div class="cicontainer">
+	<div>
+		<form class="form-horizontal" id="clientUCC" onsubmit="return false">
+			<div class="form-group">
+				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-offset-1 col-sm-11">
+					<span class="formentry-errmsg" id="alertform"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="firstAppli" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>First Applicant Name</label>
+					<span class="form-static-value" id="idCBT">
+						<select class="form-control input-width-medium" id="idFirstApplicantName" name="firstApplicantName" tabindex="1">
+						</select>
+						<span class="formentry-errmsg" id="alertFirstApplicantName"></span>
+					</span>
+					
+				</div>
+			</div>
+			
+			
+			<div class="form-group">
+				<label for="firstAppliPan" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>First Applicant Pan</label>
+					<span class="form-static-value" id="idCBT">
+						<input type="text" class="form-control input-width-medium" id="idFirstApplicantPan" name="firstApplicantPan" readOnly required="required" tabindex="2">
+						<span class="formentry-errmsg" id="alertFirstApplicantPan"></span>
+					</span>
+					
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="secondAppli" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Second Applicant Name:</label>
+					<span class="form-static-value" id="idCBT">
+						<input type="text" class="form-control input-width-medium" id="idSecondApplicantName" name="secondApplicantName" required="required" tabindex="2">
+						<span class="formentry-errmsg" id="alertSecondApplicantName"></span>
+					</span>
+					
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="secondAppliPan" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Second Applicant Pan</label>
+					<span class="form-static-value" id="idCBT">
+					<input type="text" class="form-control input-width-medium" id="idSecondApplicantPan" name="secondApplicantPan" required="required" tabindex="2">
+					<span class="formentry-errmsg" id="alertSecondPan"></span>
+					</span>
+					
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="thirdAppli" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Third Applicant Name:</label>
+					<span class="form-static-value" id="idCBT">
+					<input type="text" class="form-control input-width-medium" id="idThirdApplicantName" name="thirdApplicantName" required="required" tabindex="2">
+						<span class="formentry-errmsg" id="alertThirdApplicantName"></span>
+					</span>
+					
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="thirdAppli" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Third Applicant Pan*:</label>
+					<span class="form-static-value" id="idCBT">
+					<input type="text" class="form-control input-width-medium" id="idThirdApplicantPan" name="thirdApplicantPan" required="required" tabindex="2">
+						<span class="formentry-errmsg" id="alertThirdApplicantPan"></span>
+					</span>
+					
+				</div>
+			</div>
+			
+			<div class="form-group" id = "idDivGuardian">
+				<label for="thirdAppli" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Guardian Name*:</label>
+					<span class="form-static-value" id="idCBT">
+						<!-- <select class="form-control input-width-medium" id="idGuardianName" name="guardianName" required="required" tabindex="1">
+						</select> -->
+						<input type="text" class="form-control input-width-medium" id="idGuardianName" name="guardianName" tabindex="2">
+						<span class="formentry-errmsg" id="alertGuardianName"></span>
+					</span>
+					
+				</div>
+			</div>
+			
+			
+			<div class="form-group" id = "idDivGuardianPan">
+				<label for="thirdAppli" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Guardian Pan*:</label>
+					<span class="form-static-value" id="idCBT">
+						<!-- <select class="form-control input-width-medium" id="idGuardianPan" name="guardianPan" required="required" tabindex="1">
+						</select> -->
+						<input type="text" class="form-control input-width-medium" id="idGuardianPan" name="guardianPan" tabindex="2">
+						<span class="formentry-errmsg" id="alertGuardianPan"></span>
+					</span>
+					
+				</div>
+			</div>
+			
+			
+				<div class="form-group">
+				<label for="uccName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Enter UCC <font color = 'red' size="2">(The UCC has to be alphanumeric and maximum length is 10 characters)</font></label>
+					<span class="form-static-value" id="idUCCNumberSpan">
+						<input type="text" class="form-control input-width-medium" id="idUCCNumber" name="clientCode" required="required" tabindex="2" maxlength = "10">
+						<span class="formentry-errmsg" id="alertUCCNumber"></span>
+					</span>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-11">
+					<button type="button" class="pull-left btn addbtn" id="idAddUCC" tabindex="4">SAVE</button>
+					<button type="button" class="pull-left btn addbtn" id="undo" tabindex="5" onclick="undoChange()">UNDO</button>
+				</div>
+			</div>
+			<div id="focusguard-2" tabindex="6"></</div>	
+		</form>
+	</div>
+</div>

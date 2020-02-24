@@ -1,0 +1,210 @@
+<div>
+	<div id="viewGoalsPrintDiv" style="page-break-after:always;">	
+		<div data-special="multi-print-section" id="page5">		
+			<header style="display:none;">
+				<br/>
+				<table width="100%" style="background-color:#FFFFFF !important;">
+					<tr style="background-color: #FFFFFF !important;">
+						<td width="50%" align="left"><div style="color:#696969;"> Advisor logo </div></td>
+						<td width="50%" align="right"><img class="headerLogo" width="100px" src="../Common/assets/images/finexa-logo.jpg"></td>
+					</tr>
+				</table>
+				<div class="separatorPDF">&nbsp;&nbsp;</div>
+			</header>
+			<footer style="margin-top:-70px;display:none;">
+				<table width="100%" style="background-color:#FFFFFF !important;">
+					<tr style="background-color: #FFFFFF !important;">
+						<td width="100%" align="right" style="color:#004080">
+							Advisor:<span class="advisorName">Finlabs Administrator</span>
+							&nbsp;&nbsp;|&nbsp;&nbsp;Client ID:<span class="clientID">123456789</span>
+							
+							<div style="" class="separatorPDF">&nbsp;&nbsp;</div>
+							<span style="margin-top:-45px;background-color:#004080;color:white;padding:7px;width:5%;">
+								<pagenum/>
+							</span>
+						</td>
+					</tr>
+					<tr style="background-color: #FFFFFF !important;">
+						<td width="50%" align="left" style="color:#004080">
+							<span class="footerCaption">Finlabs India&copy; <span class="year">2017</span> All Rights Reserved</span>
+						</td>
+					</tr>
+				</table>
+			</footer>
+			<br/>	
+			
+			<div class="pageMainWrapperPDF">				
+				<h3 class="reportTypeHeadingPDF">Goal Planning Report</h3>
+				<div class="contentWrapperPDF">
+					<div class="contentHeadingPDF">Goals Details</div>
+					<div class="mainContentPDF">
+						<br/>
+						<table width="54%" class="leftthead  ">
+							<thead>
+								<tr>
+									<th colspan="2">Goals Details</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr></tr>
+								<tr>
+									<td>Goal Type*</td>
+									<td id="goalTypePDF"></td>
+								</tr>
+								<tr>
+									<td>Goal Desciption*</td>
+									<td id="goalDescPDF"></td>
+								</tr>
+							</tbody>
+						</table>
+						<br />	
+						<table width="84%" class="leftthead "
+							style="margin-top: -11px">
+							<thead>
+								<tr>
+									<th colspan="2">Goal Timeline</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Date Of Birth </td>
+									<td><span id="dobGoalDetailsPDF"></span></td>
+								</tr>
+								<tr>
+									<td>Goal Start Date </td>
+									<td><span id="startGoalDetailsPDF"></span></td>
+								</tr>
+								<tr>
+									<td>Goal End Date </td>
+									<td><span id="endGoalDetailsPDF"></span></td>
+								</tr>
+								<tr>
+									<td>Life Expectancy </td>
+									<td><span id="lexpGoalDetailsPDF"></span></td>
+								</tr>
+								<tr>
+									<td>Time to Goal Start (months)</td>
+									<td id="goalMonthsPDF"></td>
+								</tr>
+							</tbody>
+						</table>
+						<br />
+						<table width="57%" class="leftthead "
+							style="margin-top: -13px">
+							<thead>
+								<tr>
+									<th colspan="2">Goal Requirement</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr></tr>
+								<tr>
+									<td>Total Goal Corpus Required at Goal Start</td>
+									<td id="totalCorpGoalStartPDF"></td>
+								</tr>
+								<tr>
+									<td>Goal Corpus Financed through Loan</td>
+									<td id="CorpFinThroughGoalPDF"></td>
+								</tr>
+								<tr>
+									<td>Goal Corpus to be funded</td>
+									<td id="CorpFundedPDF"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>				
+			</div>	
+		</div>
+	</div>
+
+	<div id="viewGoalDetailsJsdiv">
+		<script type="text/javascript">
+		
+			getDataUri(
+					'../Common/assets/images/finexa-logo.jpg',
+					function(dataUri) {
+						$('.headerLogo').attr("src", dataUri);
+					});
+		
+			getDataUri(
+				'../Common/assets/images/finexa-logo.jpg',
+				function(dataUri) {
+					$('#page5Logo')
+							.attr("src", dataUri);
+				});
+		
+			getDataUri('../Common/assets/images/greendot.png',
+					function(dataUri) {
+						$('#grn').attr("src", dataUri);
+					});
+
+			getDataUri('../Common/assets/images/red.png', function(dataUri) {
+				$('#red').attr("src", dataUri);
+			});
+
+			var currentDate = [];
+			var endDate = [];
+			var goalStartDate = [];
+			var goalEndDate = [];
+
+			$.ajax({
+				type : 'GET',
+				url : REQUEST_URL_GP + '/getClientGPInfo?clientId=' + vClientId
+						+ '&goalId=' + goalId,
+				async : false,
+				dataType : 'json',
+				success : function(data) {
+					$("#goalTypePDF").text(data.goalType);
+					$("#goalDescPDF").text(data.goalDesc);
+					$("#idClientAgeGoalStartPDF").text(data.ageAtGoalStart);
+					$("#goalMonthsPDF").text(data.monthsToGoal);
+					$("#totalCorpGoalStartPDF").text(maskAmountValue(data.totalCorpusReqdAtGoalStart));
+					$("#CorpFinThroughGoalPDF").text(maskAmountValue(data.corpusFinancedByLoan));
+					$("#CorpFundedPDF").text(maskAmountValue(data.corpusToBeFunded));
+					currentDate.push(data.currentDateDTO.year);
+					currentDate.push(data.currentDateDTO.month);
+					currentDate.push(data.currentDateDTO.day);
+
+					endDate.push(data.endDateDTO.year);
+					endDate.push(data.endDateDTO.month);
+					endDate.push(data.endDateDTO.day);
+
+					goalStartDate.push(data.goalStartDateDTO.year);
+					goalStartDate.push(data.goalStartDateDTO.month);
+					goalStartDate.push(data.goalStartDateDTO.day);
+
+					goalEndDate.push(data.goalEndDateDTO.year);
+					goalEndDate.push(data.goalEndDateDTO.month);
+					goalEndDate.push(data.goalEndDateDTO.day);
+
+				},
+				error : function(data) {
+					//	alert("Goal Details Not Found");
+					//	bootbox.alert("error");
+					$("#goalTypePDF").text("");
+					$("#goalDescPDF").text("");
+					$("#goalMonthsPDF").text(0);
+					$("#totalCorpGoalStartPDF").text(0);
+					$("#CorpFinThroughGoalPDF").text(0);
+					$("#CorpFundedPDF").text(0);
+				}
+			});
+			
+			$('#dobGoalDetailsPDF').html(moment(new Date(currentDate[0], currentDate[1] - 1,currentDate[2], 12, 0)).format('MMM/YYYY').toUpperCase());
+			$('#startGoalDetailsPDF').html(moment(new Date(goalStartDate[0],goalStartDate[1] - 1, goalStartDate[2], 13, 12)).format('MMM/YYYY').toUpperCase());
+			$('#endGoalDetailsPDF').html(moment(new Date(goalEndDate[0], goalEndDate[1] - 1,goalEndDate[2], 4, 5)).format('MMM/YYYY').toUpperCase());
+			$('#lexpGoalDetailsPDF').html(moment(new Date(endDate[0], endDate[1] - 1,endDate[2], 16, 55)).format('MMM/YYYY').toUpperCase());
+			
+			function pad(n) {
+				return n < 10 ? "0" + n : n;
+			}
+
+			function onChange(arg) {
+				var presenter = document.getElementById("presenter");
+				presenter.innerHTML = "<b>#" + arg.key + ":</b> " + arg.value;
+
+			}
+		</script>
+	</div>
+</div>

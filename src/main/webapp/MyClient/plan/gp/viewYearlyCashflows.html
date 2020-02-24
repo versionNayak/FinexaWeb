@@ -1,0 +1,104 @@
+<script src="plan/gp/js/viewYearlyCashflow.js"></script>
+<script src="plan/gp/js/common.js"></script>
+<style>
+	.top30negtive[style]{
+		top: -30px !important;
+	}
+	.scrollYearlyCashflows[style] {
+		overflow-y: scroll !important;
+		height: 350px !important;
+	}
+</style>
+<div id="jssor_6" class="height456px">
+	<div data-u="loading"></div>
+	<div data-u="slides" class="slider9" style="top: 30px">
+		<div class="scrollYearlyCashflows">
+			<div  data-u="image">
+
+				<div id="idMaxYear" class="popup" style="position: relative; top: -11px; left: 5px">
+					<img src="../Common/assets/images/maximg.png" />
+				</div>
+
+				<table class="table yearlytbl" style="margin-left: 38px; width: 92%">
+					<thead>
+						<tr>
+							<th>Financial Year</th>
+							<th>Client Age</th>
+							<th>Opening Balance</th>
+							<th>Investment</th>
+							<th>Returns</th>
+							<th>Funded Corpus</th>
+							<th>Loan Inflow</th>
+							<th>Goal Outflow</th>
+							<th>Closing Balance</th>
+						</tr>
+					</thead>
+					<tbody id="idMinimizeTable">
+					</tbody>
+				</table>
+			</div>
+			<button data-u="thumb">Yearly Cashflow</button>
+		</div>
+		<div>
+			<div data-u="image">
+				<div id="idLinebarGraph"></div>
+			</div>
+			<button data-u="thumb">Goals Cashflows</button>
+		</div>
+	</div>
+	<!-- Thumbnail Navigator -->
+	<div data-u="thumbnavigator" class="jssort06" data-autocenter="1">
+		<!-- Thumbnail Item Skin Begin -->
+		<div data-u="slides">
+			<div data-u="prototype" class="p">
+				<div>
+					<div data-u="thumbnailtemplate"></div>
+				</div>
+				<div></div>
+			</div>
+		</div>
+		<!-- Thumbnail Item Skin End -->
+	</div>
+	<!-- Arrow Navigator -->
+	<span data-u="arrowleft" class="jssora05l yearlyleft"><img
+		src="../Common/assets/images/leftarrow.png" /></span> <span
+		data-u="arrowright" class="jssora05r yearlyright"><img
+		src="../Common/assets/images/rightarrow.png" /></span>
+</div>
+
+<div id="idPopYear" class="modal">
+
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close">&times;</span>
+			<h2></h2>
+		</div>
+		<div class="modal-body">
+			<table width="95%" class="yearlytbl marginleft30px">
+				<thead>
+					<tr>
+						<th>Financial Year</th>
+						<th>Client Age</th>
+						<th>Opening Balance</th>
+						<th>Investment</th>
+						<th>Returns</th>
+						<th>Funded Corpus</th>
+						<th>Loan Inflow</th>
+						<th>Goal Outflow</th>
+						<th>Closing Balance</th>
+					</tr>
+				</thead>
+				<tbody id="idMaximizeTable">
+				</tbody>
+			</table>
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+
+</div>
+
+
+

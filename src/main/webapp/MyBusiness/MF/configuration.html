@@ -1,0 +1,42 @@
+<script src="MF/Mfjs/configuration.js"></script>
+<script src="MF/Mfjs/validationForAll.js"></script>
+
+
+<div class="cicontainer">
+	<div>
+		<form class="form-horizontal" id="idconfiguration" action="#" onsubmit = "return false">
+			<div class="form-group">
+				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-offset-1 col-sm-11">
+					<span class="formentry-errmsg" id="alertform"></span>
+				</div>
+			</div>
+			
+			
+			<div id="idRadioAutoCreateClient" style="margin-top: 10px">
+			
+								<label> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; AutoClientCreate:</label>
+								<p id="idRadioAutoCreateClientRadioGroup" style="margin-bottom:0px;width:15%">
+								&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;	
+								<input id="yes" name="autoClientCreate" type="radio" value="Yes" tabindex="1" /> Yes &nbsp;&nbsp;&nbsp;
+									<input id="no" name="autoClientCreate" type="radio" value="No" tabindex="2" /> No
+								</p>
+								<span class="formentry-errmsg" id="alertReportFormat"></span>
+	    					</div>
+				
+				<br/><br/>		
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-11">
+					<button type="button" class="pull-left btn addbtn" id="idAutoCreateClientSave" tabindex="3">Save</button>
+					<!-- <button type="button" class="pull-left btn addbtn" id="undo" tabindex="6" onclick="undoChange()">UNDO</button> -->
+				</div>
+			</div>
+			
+		</form>
+	</div>
+</div>
+
+<!-- <script src="masters/js/configuration.js"></script>
+<script src="masters/js/validateconfiguration.js"></script>
+<script src="masters/js/validationForAll.js"></script>
+<script src="masters/js/common.js"></script>	 -->

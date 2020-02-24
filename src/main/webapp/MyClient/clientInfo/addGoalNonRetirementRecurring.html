@@ -1,0 +1,209 @@
+<script src="clientInfo/js/common.js"></script>
+<script  src="clientInfo/js/addGoalNonRetirementRecurring.js"></script>
+<script  src="clientInfo/js/validateNonRetirementGoal.js"></script>
+<script  src="clientInfo/js/validationForAll.js"></script>
+
+<div class="cicontainer">
+	<div>
+		<form class="form-horizontal" action="#" id="GoalRecurringForm">
+			<input type="hidden" id="IdlookupGoalType" name="lookupGoalTypeId"/>
+			<input type="hidden" id="Idgoal" name="id" value="0"/>	
+			<input type="hidden" id="idClientLifeExpectancy" name="ClientLifeExpectancy"  />
+			<input type="hidden" id="idBirthDatePlusLE" name="birthDatePlusLE" />
+			<input type="hidden" id="idBirthDate" name="birthDate" />
+			<input type="hidden" id="idAge"  name="age" />
+			<div class="form-group form-group-lg">
+ 				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-8 asset-owner-wrapper">
+					<span class="formentry-errmsg" id="alertform"></span>
+				</div>
+			</div>
+			<div class="form-group form-group-lg">
+				<label for="idBDate" class="col-sm-1 control-label"></label>
+				<div class="col-sm-8 asset-owner-wrapper">
+					<label>Family Member:</label><br />
+					<table class="familymembertbl" width="20px">
+						<tr class="mem_icon" id="familyMemberImage">
+						</tr>
+					</table>
+				</div>
+			</div>
+			<hr class="full-width-divider">
+			<div class="form-group">
+				<label for="idgoalDescription" class="col-sm-1 control-label"></label>
+				<div class="col-sm-6">
+					<label>Goal Description*:</label> <input type="text"
+						id="idgoalDescription" name="description"
+						class="form-control input-width-medium-min input-width-owner input-width-medium"
+						placeholder="Enter Description" tabindex="10" />
+						<span class="formentry-errmsg" id="alertgoaldescription"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="idgoalPriority" class="col-sm-1 control-label"></label>
+				<div class="col-sm-6">
+					<label>Goal Priority*:</label> <input type="text"
+						id="idgoalPriority" name="priority" readonly="readonly"
+						class="form-control input-width-medium-min input-width-owner input-width-medium"
+						 placeholder="Goal Priority" tabindex="20" />
+						 <span class="formentry-errmsg" id="alertgoalpriority"></span>
+				</div>
+			</div>
+			<!-- <div class="form-group">
+				<label for="idStartDate" class="col-sm-1 control-label"></label>
+				<div class="col-sm-4">
+					<label>Goal start month and year*</label>
+					<p class="input-group input-width-medium">
+						<input type="text" class="form-control" id="idStartDate"
+							name="StartDate" placeholder="DD/MM/YYYY" tabindex="330">
+						<span class="input-group-btn datepicker-icon">
+							<button type="button"
+								class="btn btn-default calendar-icon-container"
+								data-toggle="tooltip" data-placement="top"
+								title="Select Start Date">
+								<em class="glyphicon calendar-icon-theme"></em>
+							</button>
+						</span>
+					</p>
+				</div>
+			</div> -->
+			<div class="form-group">
+				<label for="idStartDate" class="col-sm-1 control-label"></label>
+				<div class="col-sm-6">
+					<label>Goal start month and year*:</label>
+					<p class="input-group input-width-medium" id="idGoalStartDateGroup">
+						<input type="text" class="form-control" id="idgoalStartMonthYear"
+							name="startMonthYear" placeholder="MMM-YYYY" tabindex="30">
+						<span class="input-group-btn datepicker-icon">
+							<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="" data-original-title="Select Start Date"><em class="glyphicon calendar-icon-theme"></em></button>
+						</span>
+					
+						</p>
+							<span class="formentry-errmsg" id="alertgoalstartdate"></span>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="goalRecurring" class="col-sm-1 control-label"></label>
+				<div class="col-sm-6">
+					<label>Goal Recurring*:</label>
+					<div id="idRecurringFlagGroup">
+						<label class="radio-inline custom-radio-theme"> <input
+							type="radio" name="recurringFlag" id="idgoalRecurring" value="Y"
+							tabindex="360" checked/><i></i>YES
+						</label> <label class="radio-inline custom-radio-theme"> <input
+							type="radio" name="recurringFlag" id="idgoalRecurring1" value="N"
+							tabindex="40" /><i></i>NO
+						</label>
+						<span class="formentry-errmsg" id="alertgoalrecurring"></span>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="idcorpusFrequency" class="col-sm-1 control-label"></label>
+				<div class="col-sm-6">
+					<label>Corpus Utilization Frequency*:</label> 
+					<span class="form-static-value"> 
+						<select
+							class="form-control input-width-medium" id="idcorpusFrequency"
+							name="lookupGoalCorpusUtilizationFrequencyId" required="required"
+							tabindex="50">	                     
+						</select>
+					<span class="formentry-errmsg" id="alertcorpusfrequency"></span>
+					</span>
+				</div>
+			</div>
+			 <div id="idGoalNo" class="form-group">
+				<label for="idgoalNumber" class="col-sm-1 control-label"></label>
+				<div class="col-sm-6">
+					<label>Number of years of Goal (If Recurring):*</label>
+					<input type="text" id="idgoalNumber" name="yearsToGoal" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter the years of goal" tabindex="60">
+					<span class="formentry-errmsg" id="alertgoalnumber"></span>					
+				</div>
+			</div> 
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-6">
+					<label>Estimated Cost of Goal as of today (Rs)*</label> <input
+						type="text" id="idestimatedCost" name="estimatedCostOfGoal"
+						class="form-control input-width-medium-min input-width-owner input-width-medium"
+						onfocusout="maskAmount('#idestimatedCost')"
+						placeholder="Enter Estimated Cost of Goal" tabindex="70" />
+						<span class="formentry-errmsg" id="alertestimatedcost"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-6">
+					<label>Expected Inflation Rate (%):</label> <input type="text"
+						id="idinflationRate" name="expectedInflationRate"
+						class="form-control input-width-medium-min input-width-owner input-width-medium"
+						placeholder="Enter the Rate" tabindex="80" />
+						<span class="Enter Expected Inflation Rate" id="alertinflationrate"></span>
+				</div>
+			</div>
+			<!-- <div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-6">
+					<label>Expected Returns on Corpus Post Goal Start (%):</label> <input
+						type="text" id="idreturnRate" name="expectedReturnOnCorpus"
+						class="form-control input-width-medium-min input-width-owner input-width-medium"
+						placeholder="Enter Expected Return on Corpus" tabindex="90" />
+						<span class="formentry-errmsg" id="alertreturnrate"></span>
+				</div>
+			</div> -->
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-6">
+					<label>Is loan required to fulfill the goal?*:</label> <span
+						class="form-static-value"> <select
+						class="form-control input-width-medium" id="idloanRequired"
+						name="loanRequiredFlag" required="required" onchange="displayLoanFields()" tabindex="100">
+							<option selected="" value="">Select</option>
+							<option value="Y">Yes</option>
+							<option value="N">No</option>
+					</select>
+					</span><span class="formentry-errmsg" id="alertloanrequired"></span>
+				</div>
+			</div>
+			<div id="divLoanPercent" class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-6">
+					<label>Specify % Loan required*:</label> <input type="text"
+						id="idloanPercent" name="loanPercent"
+						class="form-control input-width-medium-min input-width-owner input-width-medium"
+						placeholder="Enter Loan Required in percentage" tabindex="110" />
+						<span class="formentry-errmsg" id="alertloanpercent"></span>
+				</div>
+			</div>
+			<div id="divLoanInterestRate" class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-6">
+					<label>Loan Interest Rate (%)*:</label> <input type="text"
+						id="idloanInterestRate" name="loanInterestRate"
+						class="form-control input-width-medium-min input-width-owner input-width-medium"
+						placeholder="Enter Loan Interest Rate" tabindex="120" />
+						<span class="formentry-errmsg" id="alertloaninterestrate"></span>
+				</div>
+			</div>
+			<div id="divLoanTenure" class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-6">
+					<label>Loan Tenure (in Years)*:</label> <input type="text"
+						 id="idloanTenure" name="loanTenure"
+						class="form-control input-width-medium-min input-width-owner input-width-medium"
+						placeholder="Enter Loan Tenure" tabindex="130" />
+						
+						<span class="formentry-errmsg" id="alertloantenure"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-11">
+					<button type="button" id="idSaveGoal" class="pull-left btn addbtn" tabindex="140">SAVE</button>
+					<button type="button" id="undo" class="pull-left btn addbtn" tabindex="150" onclick="undoChange()">UNDO</button> 
+				</div>
+			</div>
+			<div id="focusguard-2" tabindex="151"></</div>						
+		</form>
+	</div>
+</div>

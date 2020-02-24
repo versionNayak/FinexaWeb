@@ -1,0 +1,457 @@
+  <script src="clientInfo/js/addContactDetails.js"></script>  
+ <script type="text/javascript" src="clientInfo/js/common.js" ></script> 
+<script type="text/javascript" src="clientInfo/js/validationForAll.js"></script>
+<script type="text/javascript" src="clientInfo/js/validateClientAddress2.js"></script>
+<!-- <script src="ci/js/validateClientContact.js"></script> -->
+<div class="cicontainer">
+	<div>
+		<form class="form-horizontal" action="#" id="clientContact">
+			<input type="hidden" name="noOfClicks" id="idNoOfClicks"
+					value="1" readonly="readonly" />						
+			<input type="hidden" name="officeChecked" id="idOfficeChecked"
+					value="N" readonly="readonly" />						
+			<input type="hidden" name="permanentChecked" id="idPermanentChecked"
+					value="N" readonly="readonly" />						
+			<input type="hidden" name="correspondenceChecked" id="idCorrespondenceChecked"
+					value="N" readonly="readonly" />						
+		
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<span class="formentry-errmsg" id="alertform"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="idEmailId" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Email Address*:</label>
+					<input type="text" id="idEmailId"  name="emailID" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Email"  tabindex="1" maxlength="50"/>
+				     <span class="formentry-errmsg" id="alertemail"></span>
+				</div>
+			 </div>
+			<div class="form-group">
+				<label for="idAlternateEmail" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Alternate Email Address:</label>
+					<input type="text" id="idAlternateEmail" name="alternateEmail" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Alternate Email"  tabindex="2" maxlength="50"/>
+				    <span class="formentry-errmsg" id="alertalternateemail"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label >Mobile No*:</label>
+					<div class="clearfix"></div>
+					<div class="col-md-1 no_padding">
+                    	<input type="text" id="idCountryCode" name="countryCode" class="form-control input-width-small-min input-width-owner input-width-small" placeholder="Code" tabindex="3" maxlength="10">
+						<span class="formentry-errmsg" id="alertcountrycode"></span>
+                    </div>
+                     <div class="col-md-8">
+                    	<input type="text" id="idMobile" name="mobile" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Mobile No." tabindex="4" maxlength="10">
+			            <span class="formentry-errmsg" id="alertmobile"></span>
+                  	</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label  class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Phone No:</label>
+					<div class="clearfix"></div>
+					<div class="col-md-1 no_padding">
+                    <input type="text" id="idCountryCodePhone" name="countryCodePhone" class="form-control input-width-small-min input-width-owner input-width-small" placeholder="Code" tabindex="5" maxlength="10">
+                     <span class="formentry-errmsg" id="alertcountrycodePhone"></span>
+                    </div>
+                     <div class="col-md-8">
+                    <input type="text" id="idPhone" name="phone" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Phone No." tabindex="6" maxlength="10">
+                    <span class="formentry-errmsg" id="alertphone"></span>
+                  </div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label  class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Emergency No*:</label>
+					<div class="clearfix"></div>
+					<div class="col-md-1 no_padding">
+	                    <input type="text" id="idCountryCodeEmergencyContact" name="countryCodeEmergencyContact" class="form-control input-width-small-min input-width-owner input-width-small" placeholder="Code" tabindex="7" maxlength="10">
+    	                <span class="formentry-errmsg" id="alertcountrycodeemergencycontact"></span>
+                    </div>
+                     <div class="col-md-8">
+        	            <input type="text" id="idEmergencyContact" name="emergencyContact" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Emergency Contact" tabindex="8" maxlength="10">
+            		    <span class="formentry-errmsg" id="alertemergencycontact"></span>
+                  	</div>
+				</div>
+			</div> 
+		 	<div  id="idDivAddress1" name="divAddress1">
+				<hr class="full-width-divider">
+				<br/>
+				<div class="form-group">
+					<label  class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<label>Country*:</label>
+						<span class="form-static-value" id="hide320">
+							<select class="form-control input-width-medium" id="idAddress1Country" name="address1Country"  tabindex="9">
+								<option value="">Select</option>
+						    </select>
+						 </span>
+						 <span class="formentry-errmsg" id="alertaddress1country"></span>
+					</div>
+					</div>
+				
+				<div class="form-group">
+					<label for="idAddress1Line" class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<label>Address Line1*:</label>
+						<input type="text" id="idAddress1Line1" name="address1Line1" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter Address1" tabindex="10" maxlength="255"/>
+					    <span class="formentry-errmsg" id="alertaddress1line1"></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="idAddress1Line2" class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<label>Address Line2:</label>
+						<input type="text" id="idAddress1Line2" name="address1Line2" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter Address" tabindex="11" maxlength="255"/>
+				    	<span class="formentry-errmsg" id="alertaddress1line2"></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="idAddress1Line3" class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<label>Address Line3:</label>
+						<input type="text" id="idAddress1Line3" name="address1Line3" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter Address" tabindex="12" maxlength="255"/>
+					    <span class="formentry-errmsg" id="alertaddress1line3"></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="idAddress1City" class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<label>City*:</label>
+						<input type="text" id="idAddress1City" name="address1City" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter City" tabindex="13" maxlength="50"/>
+				    	<span class="formentry-errmsg" id="alertaddress1city"></span>
+					</div>
+				</div>
+				<div id="idFM1StateText" class="form-group">
+					<label for="idAddress1State" class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<label>State*:</label>
+						<input type="text" id="idAddress1State" name="address1State" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter State" tabindex="14" maxlength="50"/>
+						<span class="formentry-errmsg" id="alertaddress1state"></span>
+					</div>
+				</div>
+				
+				<div id="idFM1StateDrp" class="form-group">
+					<label  class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<label>State*:</label>
+						<span class="form-static-value" id="hide320">
+							<select class="form-control input-width-medium" id="idAddress1StateDrp" name="address1StateDrp"  tabindex="15">
+								<option value="">Select</option>
+						    </select>
+						 </span>
+						 <span class="formentry-errmsg" id="alertaddress1stateDrp"></span>
+					</div>
+					</div>
+				
+				<div class="form-group">
+					<label for="idAddress1Pincode" class="col-sm-1 control-label"></label>
+						<div class="col-sm-11">
+						<label>Pincode*:</label>
+						<input type="text" id="idAddress1Pincode" name="address1Pincode" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter Pincode" tabindex="16" maxlength="10"/>
+						<span class="formentry-errmsg" id="alertaddress1pincode"></span>
+					</div>
+				</div>
+				
+				<br>
+
+<!-- 				<div class="form-group">
+					<label class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<label>Address Type*:</label>
+						<div id="idAddress1Type" name="address1Type" class="displayflex">
+							<label class="radio-inline custom-radio-theme">
+								<input type="radio" checked="checked" id="idChkAddress1TypePermanent" name="chkAddress1Type"
+											value="Permanent" tabindex="370"/><i></i>Permanent
+							</label>
+							<label class="radio-inline custom-radio-theme">
+								<input type="radio" id="idChkAddress1TypeCorrespondence" name="chkAddress1Type"
+											value="Correspondence" tabindex="370"/><i></i>Correspondence
+							</label>
+							<label class="radio-inline custom-radio-theme">
+								<input type="radio" id="idChkAddress1TypeOffice" name="chkAddress1Type" 
+											value="Office" tabindex="360"/><i></i>Office
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+ -->			
+			<div class="form-group">
+				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Address Type*:</label>
+					<div id="idAddress1Type" name="address1Type" class="displayflex">							
+						<label class="checkbox-inline"> <input type="checkbox"
+								id="idChkAddress1TypeOffice" name="chkAddress1Type"
+								value="Office" tabindex="17">Office
+						</label> 
+						<label class="checkbox-inline"> <input type="checkbox"
+							id="idChkAddress1TypePermanent" name="chkAddress1Type"
+							value="Permanent" tabindex="18">Permanent
+						</label> 
+						<label class="checkbox-inline"> <input type="checkbox"
+							id="idChkAddress1TypeCorrespondence" name="chkAddress1Type"
+							value="Correspondence" tabindex="19">Correspondence
+						</label>			
+					</div>
+					<span class="formentry-errmsg" id="alertaddress1type"></span>
+				</div>
+			</div>
+			<div class="form-group">
+					<label  class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<button type="button" id="idBtnMinus1" name="btnMinus" class="top_btn btn addbtn"  tabindex="20">Remove</button>
+					</div>
+					</div>
+         </div>
+		 	<div  id="idDivAddress2" name="divAddress2">
+				<hr class="full-width-divider">
+				<br/>
+				<div  class="form-group">
+					<label  class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<label>Country*:</label>
+						<span class="form-static-value" id="hide320">
+							<select class="form-control input-width-medium" id="idAddress2Country" name="address2Country"  tabindex="21">
+								<option value="">Select</option>
+						    </select>
+						 </span>
+						 <span class="formentry-errmsg" id="alertaddress2country"></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="idAddress2Line1" class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<label>Address Line1*:</label>
+						<input type="text" id="idAddress2Line1" name="address2Line1" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter Address" tabindex="22" maxlength="255"/>
+					    <span class="formentry-errmsg" id="alertaddress2line1"></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="idAddress2Line2" class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<label>Address Line2:</label>
+						<input type="text" id="idAddress2Line2" name="address2Line2" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter Address" tabindex="23" maxlength="255"/>
+				    	<span class="formentry-errmsg" id="alertaddress2line2"></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="idAddress2Line3" class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<label>Address Line3:</label>
+						<input type="text" id="idAddress2Line3" name="address2Line3" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter Address" tabindex="24" maxlength="255"/>
+					    <span class="formentry-errmsg" id="alertaddress2line3"></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="idAddress2City" class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<label>City*:</label>
+						<input type="text" id="idAddress2City" name="address2City" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter City" tabindex="25" maxlength="50"/>
+				    	<span class="formentry-errmsg" id="alertaddress2city"></span>
+					</div>
+				</div>
+				<div id="idFM2StateText"class="form-group">
+					<label for="idAddress2State" class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<label>State*:</label>
+						<input type="text" id="idAddress2State" name="address2State" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter State" tabindex="26" maxlength="50"/>
+						<span class="formentry-errmsg" id="alertaddress2state"></span>
+					</div>
+				</div>
+				
+					<div id="idFM2StateDrp" class="form-group">
+					<label  class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<label>State*:</label>
+						<span class="form-static-value" id="hide320">
+							<select class="form-control input-width-medium" id="idAddress2StateDrp" name="address2StateDrp"  tabindex="27">
+								<option value="">Select</option>
+						    </select>
+						 </span>
+						 <span class="formentry-errmsg" id="alertaddress2stateDrp"></span>
+					</div>
+					</div>
+				
+				
+				<div class="form-group">
+					<label for="idAddress2Pincode" class="col-sm-1 control-label"></label>
+						<div class="col-sm-11">
+						<label>Pincode*:</label>
+						<input type="text" id="idAddress2Pincode" name="address2Pincode" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter Pincode" tabindex="28" maxlength="10"/>
+						<span class="formentry-errmsg" id="alertaddress2pincode"></span>
+					</div>
+				</div>
+				
+
+				<br>
+				
+<!-- 			
+ -->				
+				<div class="form-group">
+					<label class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<label>Address Type*:</label>
+						<div id="idAddress2Type" name="address2Type" class="displayflex">							
+							<label class="checkbox-inline"> <input type="checkbox"
+								id="idChkAddress2TypeOffice" name="chkAddress2Type"
+								value="Office" tabindex="29">Office
+							</label> 
+							<label class="checkbox-inline"> <input type="checkbox"
+								id="idChkAddress2TypePermanent" name="chkAddress2Type"
+								value="Permanent" tabindex="30">Permanent
+							</label> 
+							<label class="checkbox-inline"> <input type="checkbox"
+								id="idChkAddress2TypeCorrespondence" name="chkAddress2Type"
+								value="Correspondence" tabindex="31">Correspondence
+							</label>			
+						</div>
+						<span class="formentry-errmsg" id="alertaddress2type"></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label  class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<button type="button" id="idBtnMinus2" name="btnMinus" class="top_btn btn addbtn" tabindex="32">Remove</button>
+					</div>
+					</div>
+					
+			</div>
+			
+		 	<div  id="idDivAddress3" name="divAddress3">
+				<hr class="full-width-divider">
+				<br/>
+					<div class="form-group">
+					<label  class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<label>Country*:</label>
+						<span class="form-static-value" id="hide320">
+							<select class="form-control input-width-medium" id="idAddress3Country" name="address3Country"  tabindex="33">
+								<option value="">Select</option>
+						    </select>
+						 </span>
+						 <span class="formentry-errmsg" id="alertaddress3country"></span>
+					</div>
+					</div>
+				<div class="form-group">
+					<label for="idAddress3Line1" class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<label>Address Line1*:</label>
+						<input type="text" id="idAddress3Line1" name="address3Line1" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter Address1" tabindex="34" maxlength="255"/>
+					    <span class="formentry-errmsg" id="alertaddress3line1"></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="idAddress3Line2" class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<label>Address Line2:</label>
+						<input type="text" id="idAddress3Line2" name="address3Line2" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter Address" tabindex="35" maxlength="255"/>
+				    	<span class="formentry-errmsg" id="alertaddress3line2"></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="idAddress3Line3" class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<label>Address Line3:</label>
+						<input type="text" id="idAddress3Line3" name="address3Line3" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter Address" tabindex="36" maxlength="255"/>
+					    <span class="formentry-errmsg" id="alertaddress3line3"></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="idAddress3City" class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<label>City*:</label>
+						<input type="text" id="idAddress3City" name="address3City" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter City" tabindex="37" maxlength="50"/>
+				    	<span class="formentry-errmsg" id="alertaddress3city"></span>
+					</div>
+				</div>
+				<div id="idFM3StateText" class="form-group">
+					<label for="idAddress2State" class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<label>State*:</label>
+						<input type="text" id="idAddress3State" name="address3State" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter State" tabindex="38" maxlength="50"/>
+						<span class="formentry-errmsg" id="alertaddress3state"></span>
+					</div>
+				</div>
+				   <div id="idFM3StateDrp" class="form-group">
+					<label  class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<label>State*:</label>
+						<span class="form-static-value" id="hide320">
+							<select class="form-control input-width-medium" id="idAddress3StateDrp" name="address3StateDrp"  tabindex="39">
+								<option value="">Select</option>
+						    </select>
+						 </span>
+						 <span class="formentry-errmsg" id="alertaddress3stateDrp"></span>
+					</div>
+					</div>
+					
+				<div class="form-group">
+					<label for="idAddress3Pincode" class="col-sm-1 control-label"></label>
+						<div class="col-sm-11">
+						<label>Pincode*:</label>
+						<input type="text" id="idAddress3Pincode" name="address3Pincode" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter Pincode" tabindex="40" maxlength="10"/>
+						<span class="formentry-errmsg" id="alertaddress3pincode"></span>
+					</div>
+				</div>
+			
+                 
+				<br>
+
+				
+
+				<div class="form-group">
+					<label class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<label>Address Type*:</label>
+						<div id="idAddress3Type" name="address3Type" class="displayflex">							
+							<label class="checkbox-inline"> <input type="checkbox"
+								id="idChkAddress3TypeOffice" name="chkAddress3Type"
+								value="Office" tabindex="41">Office
+							</label> 
+							<label class="checkbox-inline"> <input type="checkbox"
+								id="idChkAddress3TypePermanent" name="chkAddress3Type"
+								value="Permanent" tabindex="42">Permanent
+							</label> 
+							<label class="checkbox-inline"> <input type="checkbox"
+								id="idChkAddress3TypeCorrespondence" name="chkAddress3Type"
+								value="Correspondence" tabindex="43">Correspondence
+							</label>			
+						</div>
+						<span class="formentry-errmsg" id="alertaddress3type"></span>
+					</div>
+				</div>
+					<div class="form-group">
+					<label  class="col-sm-1 control-label"></label>
+					<div class="col-sm-11">
+						<button type="button" id="idBtnMinus3" name="btnMinus" class="top_btn btn addbtn" tabindex="44">Remove</button>
+					</div>
+					</div>
+			</div>
+		    <br>   
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-8 s text-center">
+					<!-- <button type="button" id="idBtnAdd" name="btnAdd" class="btn top_btn addbtn" tabindex="540">Add</button> -->
+					
+				</div>
+				<div class="col-sm-offset-1 col-sm-11">
+					<!-- <button type="button" id="idBtnPrev" name="btnPrev" class="pull-left btn addbtn" tabindex="540">Back</button> -->
+					<button type="button" id="idBtnAdd" name="btnAdd" class="btn top_btn addbtn" tabindex="47">Add</button>
+					<button type="button" id="idSave" class="pull-left btn addbtn" tabindex="45">Save</button>
+					<button type="reset" id="idBtnReset" class="pull-left btn addbtn" tabindex="46" onclick="undoChange()">Undo</button>
+				</div>
+				<div id="focusguard-2" tabindex="48"></div>	
+			</div>
+		</form>
+	</div>
+</div>
+
+

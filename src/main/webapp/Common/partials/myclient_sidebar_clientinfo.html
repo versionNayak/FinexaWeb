@@ -1,0 +1,204 @@
+<!-- sidebar wrappers css for sidebar style -->
+<link href="../Common/assets/css/sidebar-wrappers.css" rel="stylesheet" type="text/css">
+<!--load common all styles -->
+<link href="../Common/assets/css/commonall.css" rel="stylesheet" type="text/css" />
+
+
+<div class="page-wrappers chiller-theme toggled">
+    <nav class="sidebar-wrappers">
+        <div class="sidebar-content">
+            <div class="sidebar-menu">
+                <ul id="menu">
+
+                    <!-- Personal Profile nav -->
+                    <li class="sidebar-dropdown  nonload">
+                        <a href="#">
+                            <i class="fas fa-address-card"></i>
+                            <span class="personalp">Personal Profile</span>
+                        </a>
+                        <div class="sidebar-submenu">
+                            <ul>
+                                <li><a href="#" class="pi">Personal Information </a> </li>
+                                <li id="idGuardian"><a href="#" class="gi">Guardian Information</a></li>
+                                <li id="idGuardianContact"><a href="#" class="gc">Guardian Contact Details</a></li>
+                                <li><a href="#" class="fi">Family Information </a></li>
+                                <li><a href="#" class="cd">Contact Details </a></li>
+                                <li><a href="#" class="le">Life Expectancy </a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Income & Expenses nav ghjghjgkj -->
+                    <li class="sidebar-dropdown  nonload">
+                        <a href="#" class="incomeex">
+                            <i class="fas fa-hand-holding-usd"></i>
+                            <span>Income & Expenses</span>
+                        </a>
+                        <div class="sidebar-submenu">
+                            <ul>
+                                <li><a href="#" class="fai">Family Income </a></li>
+                                <li><a href="#" class="he">Household Expense</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- Loans & Liabilities nav -->
+                    <li class="sidebar-dropdown activeloans nonload">
+                        <a href="#" class="loan">
+                            <i class="fas fa-chart-area"></i>
+                            <span>Loans & Liabilities</span></a>
+                    </li>
+                    <!-- Portfolio & Other Assets nav -->
+                    <li class="sidebar-dropdown nonload">
+                        <a href="#">
+                            <i class="fas fa-briefcase"></i>
+                            <span class="activeportfolio">Portfolio & Other Assets</span></a>
+                        <div class="sidebar-submenu">
+                            <ul>
+                                <li><a href="#" class="mfpms">MF/PMS/ETF</a></li>
+                                <li><a href="#" class="eqt">Direct Equity</a></li>
+                                <li><a href="#" class="fixedi"> Deposit/Bonds </a></li>
+                                <li><a href="#" class="retirement">Retirement Schemes </a></li>
+                                <li><a href="#" class="smallsvng">Small Saving Schemes </a></li>
+                                <li><a href="#" class="altinvest">Alternate Investment</a></li>
+                                <li><a href="#" class="cash">Cash</a></li>
+                                <li><a href="#" class="lumpflow">Lumpsum Inflows </a></li>
+                            </ul>
+                        </div>
+
+                    </li>
+
+                    <!-- Insurance nav -->
+                    <li class="sidebar-dropdown nonload">
+                        <a href="#">
+                            <i class="fas fa-file-contract"></i>
+                            <span class="activeinsurance">Insurance</span></a>
+                        <div class="sidebar-submenu">
+                            <ul class=" insurance">
+                                <li><a href="#" class="lifeins">Life Insurance</a></li>
+                                <li><a href="#" class="nonlifeins">Non-Life Insurance</a></li>
+                            </ul>
+                        </div>
+
+                    </li>
+                    <!-- Goals nav -->
+                    <li class="sidebar-dropdown nonload">
+                        <a href="#">
+                            <i class="fas fa-bullseye"></i>
+                            <span class="activegoal">Goals</span>
+                        </a>
+                        <div class="sidebar-submenu">
+                            <ul class="goal">
+                                <li><a href="#" class="goaladd">Life Goals</a></li>
+                                <li><a href="#" class="goalpriority">Set Goal Priority</a></li>
+                            </ul>
+                        </div>
+
+                    </li>
+                    <!-- Existing Client nav -->
+                    <li class="sidebar-dropdown  nonload">
+                        <a href="#" class="ciriskprofile">
+                            <i class="fas fa-users"></i>
+                            <span>Risk Profile</span></a>
+                    </li>
+                    <!-- Existing Client nav -->
+                    <li class="sidebar-dropdown  displayonload">
+                        <a href="#" class="existingclientlhs">
+                            <i class="fas fa-address-book"></i>
+                            <span>Existing Client</span>
+                        </a>
+
+                    </li>
+                    <!-- Add Client  nav -->
+                    <li class="sidebar-dropdown  displayonload" id="addClient">
+                        <a href="#" class="addclientdata">
+                            <i class="fas fa-user-plus"></i>
+                            <span>Add Client</span>
+                        </a>
+                    </li>
+                </ul>
+                <div style="margin: 100px;"></div>
+            </div>
+            <!-- sidebar-menu  -->
+        </div>
+    </nav>
+</div>
+
+<script src="../Common/assets/js/myclient_sidebar_clientinfo.js"></script>
+<script src="../Common/assets/js-library/jquery.mask.min.js"></script>
+
+<!-- sidebar wrappers css for sidebar -->
+<script src="../Common/assets/js/sidebar-wrappers.js"></script>
+
+
+<!-- <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+    <li class="has-submenu nonload">
+        <a href="#" class="margintopmin3px"><span class="fa fa-stack fa-lg pull-left" ></span><span class="personalp">Personal Profile</span></a>
+        <ul class="nav-pills nav-stacked cipersonal">
+            <li><a href="#" class="pi">Personal Information <span class="pi_arrow">&#8594;</span></a> </li>
+            <li id="idGuardian"><a href="#" class="gi">Guardian Information<span class="fi_arrow">&#8594;</span> </a></li>
+            <li id="idGuardianContact"><a href="#" class="gc">Guardian Contact Details<span class="fi_arrow">&#8594;</span> </a></li>
+            <li><a href="#" class="fi">Family Information<span class="fi_arrow">&#8594;</span> </a></li>
+            <li><a href="#" class="cd">Contact Details <span class="cd_arrow">&#8594;</span></a></li>
+            <li><a href="#" class="le">Life Expectancy <span class="le_arrow">&#8594;</span></a></li>
+        </ul>
+    </li> -->
+
+<!-- <li class="has-submenu nonload">
+        <a href="#"><span class="fa-stack fa-lg pull-left"></span><span class="incomeex">Income & Expenses</span></a>
+        <ul class="nav-pills nav-stacked cincome">
+            <li><a href="#" class="fai">Family Income <span class="fai_arrow">&#8594;</span></a></li>
+            <li><a href="#" class="he">Household Expense<span class="he_arrow">&#8594;</span></a></li>
+        </ul>
+    </li> -->
+
+<!-- <li class="has-submenu activeloans nonload">
+        <a href="#" class="loan"><span class="fa-stack fa-lg pull-left"></span><span>Loans & Liabilities</span></a>
+    </li> -->
+
+<!-- <li class="has-submenu nonload">
+        <a href="#"><span class="fa-stack fa-lg pull-left"></span><span class="activeportfolio">Portfolio & Other Assets</span></a>
+        <ul class="nav-pills nav-stacked portfolio">
+            <li><a href="#" class="mfpms">MF/PMS/ETF<span class="mfpms_arrow" >&#8594;</span></a></li>
+            <li><a href="#" class="eqt">Direct Equity<span class="eqt_arrow" >&#8594;</span></a></li>
+            <li><a href="#" class="fixedi"> Deposit/Bonds <span class="fixedi_arrow" >&#8594;</span></a></li>
+            <li><a href="#" class="retirement">Retirement Schemes <span class="retirement_arrow">&#8594;</span></a></li>
+            <li><a href="#" class="smallsvng">Small Saving Schemes <span class="smallsvng_arrow">&#8594;</span></a></li>
+            <li><a href="#" class="altinvest">Alternate Investment<span class="altinvest_arrow">&#8594;</span></a></li>
+            <li><a href="#" class="cash">Cash<span class="cash_arrow" >&#8594;</span></a></li>
+            <li><a href="#" class="lumpflow">Lumpsum Inflows <span class="lumpflow_arrow">&#8594;</span></a></li>
+        </ul>
+    </li> -->
+
+<!-- <li class="has-submenu nonload">
+        <a href="#"><span class="fa-stack fa-lg pull-left"></span><span class="activeinsurance">Insurance</span></a>
+        <ul class="nav-pills nav-stacked insurance">
+            <li><a href="#" class="lifeins">Life Insurance<span class="lifeins_arrow" >&#8594;</span></a></li>
+            <li><a href="#" class="nonlifeins">Non-Life Insurance<span class="nonlifeins_arrow" >&#8594;</span></a></li>
+        </ul>
+    </li> -->
+
+<!-- <li class="has-submenu nonload">
+        <a href="#"><span class="fa-stack fa-lg pull-left"></span><span  class="activegoal">Goals</span></a>
+        <ul class="nav-pills nav-stacked goal">
+            <li><a href="#" class="goaladd">Life Goals<span class="goaladd_arrow">&#8594;</span></a></li>
+            <li><a href="#" class="goalpriority">Set Goal Priority<span class="goalpriority_arrow">&#8594;</span></a></li>
+        </ul>
+    </li> -->
+
+<!-- <li class="has-submenu ciriskprofile nonload">
+        <a href="#"><span class="fa-stack fa-lg pull-left"></span><span>Risk Profile</span></a>
+    </li> -->
+
+<!-- old	<li class="has-submenu cisummary nonload">
+		<a href="#"><span class="fa-stack fa-lg pull-left"></span><span>Summary</span></a>	
+	</li>
+ -->
+
+<!-- <li class="has-submenu existingclientlhs displayonload">
+        <a href="#"><span class="fa-stack fa-lg pull-left"></span><span>Existing Client</span></a>
+    </li>
+
+    <li class="has-submenu addclientdata displayonload" id="addClient">
+        <a href="#"><span class="fa-stack fa-lg pull-left"></span><span>Add Client</span></a>
+    </li> -->
+<!-- </ul> -->

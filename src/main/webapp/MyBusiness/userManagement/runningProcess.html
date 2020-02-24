@@ -1,0 +1,136 @@
+<div class="dmcontainer user_table" width="1100px" style="overflow:scroll;">
+
+	<table id="idTable" width="100%" class="table table-hover">
+        <thead>
+            <tr>
+                <th>File Name</th>
+                <th>Status</th>
+                <th>Rejected Records</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Download Report</th>
+            </tr>
+        </thead>
+        <tbody id="idRunningProcesses">
+        </tbody>
+    </table>
+	<p id = "idPageCount"></p>
+	<table id="idTableRejection" width="100%" class="table table-hover">
+        <thead>
+            <tr>
+                <th>File Name</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Rejected Records</th>
+                <th>Reason of Rejection</th>
+            </tr>
+        </thead>
+        <tbody id="idTableRejectionBody">
+        </tbody>
+    </table>
+</div>
+
+<script>
+
+var loggedUser = JSON.parse(sessionStorage.getItem("LOGGED_IN_USER"));
+var nextFetch;
+var startDate;
+var endDate;
+var logCount;
+var pages;
+var rem;
+var s;
+	
+$("#idTableRejection").hide();
+$('#idContactSearchDownload').hide();
+$("#headIcon").empty();
+	
+$(document).ready(function(){
+	getLogCount();
+	nextFetch = 0;
+	getClientData("GET", "", "bulkUploadLog/"+loggedUser.id+'/'+nextFetch, onBulkUploadLogSuccess);
+	
+});
+
+/**count the Logs**/
+function getLogCount() {
+	
+	//on default load
+	getClientData("GET", "" , "getLogCount/" + loggedUser.id, onGetLogCountSuccess);
+	
+		function onGetLogCountSuccess(data) {
+			logCount = parseInt(data);
+			
+	    	pages = Math.floor(logCount / 10);
+			rem = logCount % 10;
+			if (rem > 0) {
+				pages = pages + 1;
+			}
+			
+			s = '<select  id="idPage" name="page" onchange="pageChange()">';
+	
+			for(i = 1; i <= pages; i++) {
+				
+				s += "<option value = "+(i-1)+">"+ i +"</option>";
+				
+			}
+			s += "</select>";
+			$("#idPageCount").html("showing page " + s + " of " + pages);
+		}
+}
+
+function onBulkUploadLogSuccess(data) {
+	
+	$("#idRunningProcesses").empty();
+	if (data.length == 0){
+		bootbox.alert("No Logs to show!")
+	} else {
+		$.each(data, function (index, logDetails) {
+			startDate = new Date(logDetails.startTime);
+			endDate = new Date(logDetails.endTime);
+			$("#idRunningProcesses").append('<tr>' +
+					'<td>' + logDetails.fileName + '</td>' +
+					'<td>' + logDetails.status + '</td>' +
+					'<td>' + logDetails.rejectedRecords + '</td>' +
+					'<td>' + startDate.toDateString() + ", " + startDate.toLocaleTimeString() + '</td>' +
+					'<td>' + endDate.toDateString() + ", " + endDate.toLocaleTimeString() + '</td>' +
+					'<td><input type="button" class="pull-left btn addbtn" style="width:79px" id="idDownloadLog'+ logDetails.id +'" name="downloadLog" value= "Generate" onclick="generateLog('+ logDetails.id +')"></td>' +
+			'</tr>');
+		});
+	}
+}
+
+function pageChange() {
+	nextFetch = $("#idPage option:selected").val();
+	getClientData("GET", "" , 'bulkUploadLog/'+loggedUser.id+'/'+nextFetch, onBulkUploadLogSuccess);
+}
+
+function generateLog(logDetailsId) {
+	$("#idTableRejectionBody tr").remove();
+	getClientDataAsyncFalse("GET", "" , 'getLogDetails/'+logDetailsId, onGetLogDetailsSuccess);
+	function onGetLogDetailsSuccess(data) {
+		$("#idTableRejectionBody").empty();
+		startDate = new Date(data.startTime);
+		endDate = new Date(data.endTime);
+		$("#idTableRejectionBody").append('<tr>' +
+				'<td>' + data.fileName + '</td>' +
+				'<td>' + startDate.toDateString() + ", " + startDate.toLocaleTimeString() + '</td>' +
+				'<td>' + endDate.toDateString() + ", " + endDate.toLocaleTimeString() + '</td>' +
+				'<td>' + data.rejectedRecords + '</td>' +
+				'<td>' + data.reasonOfRejection + '</td>' +
+		'</tr>');
+		
+	}
+	var tbody = $("#idTableRejectionBody");
+
+	if (tbody.children().length != 0) {
+		$('#idTableRejection').show();
+		$('#idTableRejection').tableExport({type:'excel',escape:'false',tableName:'LogRejectionDetails'});
+		$('#idTableRejection').hide();
+	} else {
+		//$('#idContactSearchDownload').hide();
+	}
+}
+
+
+</script>

@@ -1,0 +1,54 @@
+<div class="cicontainer">
+	<div>
+		<form class="form-horizontal" action="#" id="idAlternateForm">
+			<label class="col-sm-1 control-label"></label>
+			<div class="col-md-10 no_padding">
+				<div id="idRadioStart">
+ 	               	<label>Product*:</label>
+					<input id="idRealEstate" name="financialAssetType" type="radio" value="5" onchange="AIClickAction();"/> Real Estate
+					<input id="idPreciousMetals" name="financialAssetType" type="radio" value="1" onchange="AIClickAction();"/> Precious Metals/Commodities
+					<input id="idVehicle" name="financialAssetType" type="radio" value="2" onchange="AIClickAction();"/> Vehicles
+					<input id="idOthers" name="financialAssetType" type="radio" value="3" onchange="AIClickAction();"/> RE/PE/VCF/AIF Funds
+					<input id="idStructuredProducts" name="financialAssetType" type="radio" value="4" onchange="AIClickAction();"/> Structured Products                        	
+				</div>
+	       		<br><br>          		            
+            </div>
+            <div class="clearfix"></div>
+       		<br><br>          		            
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+$(document).ready(
+		function() {
+			/* var rad = document.idAlternateForm.financialAssetType;
+			var prev = null;
+		    for(var i = 0; i < rad.length; i++) {
+		        rad[i].onclick = AIClickAction();
+		    } */
+			
+		});
+		
+function AIClickAction() {
+	var financialAssetTypeId = $("input[name='financialAssetType']:checked").val();
+	var description;
+	if (financialAssetTypeId == 5){
+		description = "Real Estate";
+	} else if(financialAssetTypeId == 1) {
+		description = "Precious Metal/Commodity";
+	} else if(financialAssetTypeId == 2) {
+		description = "Vehicle";
+	} else if(financialAssetTypeId == 3) {
+		description = "RE/PE/VCF/AIF Fund";
+	} else if(financialAssetTypeId == 4) {
+		description = "Structured Product";
+	}
+	sessionStorage.removeItem("SELECTED_AI_ASSET_TYPE_ID");
+	sessionStorage.setItem("SELECTED_AI_ASSET_TYPE_ID", financialAssetTypeId);
+	var pageUrl = "clientInfo/addAlternateInvestment.html";
+	addPage(pageUrl,"Add "+description);
+	
+}
+
+
+</script>

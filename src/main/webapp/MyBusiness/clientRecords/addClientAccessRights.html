@@ -1,0 +1,183 @@
+<script src="clientRecords/js/addClientAccessRights.js"></script>
+<script type="text/javascript" src="clientRecords/js/validateAccessRights.js"></script>
+<script src="clientRecords/js/validationForAll.js"></script>
+
+<style>
+ .subtask-li {
+    border: 1px solid #C0C0C0;
+    cursor: pointer;
+    position: relative;
+    background: rgba(0, 0, 0, 0);
+    border-radius: 3px;
+    float: left;
+   
+    left: 0px;
+    padding: 5px;
+    top: 25px;
+    margin-bottom: -200px;
+}
+
+
+.subtask-pick{
+ 	margin-left: -6px;
+    margin-top: 6px;
+    background-clip: padding-box;
+    background-color: #fff;
+    border: 1px solid #dfe8f1;
+    border-radius: 0px;
+    box-shadow: 0px 1px 7px 2px rgba(135, 158, 171, 0.2);
+    display: none;
+    list-style: outside none none;
+    padding: 0 0 10px;
+    position: absolute;
+    z-index: 9; 
+    float: left;
+    width: 300px;
+    list-style: outside none none; height:180px; overflow:auto;
+}
+.icon-taskListing {
+    display: inline-block;
+    vertical-align: middle;
+}
+.subselectedList {
+    overflow: hidden;
+    padding: 0 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 116px;
+    color:#808080;
+}
+ul.subtask-pick li {
+  float: none;
+  display: block;
+  clear: both;
+  
+  position: relative;
+}
+ul.subtask-pick li a {
+  padding: .9em 1em .9em .8em;
+  position: relative;
+    clear: both;
+  cursor: pointer;
+  display: block;
+ 
+  white-space: nowrap;
+   text-overflow: ellipsis;
+  overflow: hidden;
+}
+ul.subtask-pick li a:hover {
+  background: none repeat scroll 0 0 #eff4f6;
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+  outline: 0;
+  color: #4c4c4c;
+}
+.subtask-li:before {
+    content:"▼";
+    position:absolute;
+    margin-left:275px;
+    pointer-events:none;
+}
+#idSchemeDrop:before {
+    content:"▼";
+    position:absolute;
+    margin-left:420px;
+    pointer-events:none;
+}
+.abc{
+	min-height:270px; 
+}
+
+</style>
+
+<div class="dmcontainer abc">
+<div class="add_risk_div">
+	<form class="form-horizontal" action="" id="idFormAccessRight" onsubmit="return false">
+	<div class="form-group">
+			<label for="orgType" class="col-sm-1 control-label"></label>
+			<div class="col-sm-11">
+				<span class="formentry-errmsg" id="alertform"></span>
+			</div>
+		</div>
+<!-- <table id="idTable" width="100%" class="table table-hover" >
+	    	<thead>
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Mobile</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody id="idClientListPaginate">
+			</tbody>
+		</table> -->
+				
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Client ID*</label>
+					<!-- <select class="form-control input-width-medium select_modules" id="idAdvisor" tabindex="4">
+					</select> -->
+					<!-- Dynamic pagination dropdown -->
+					<div id="idClientsDrop" class="subtask-li" style="width:300px">
+						<span class="main-tlist">
+							<span class="icon-taskListing"></span>
+							<span id="idClients" class="subselectedList">Select Client Name<!-- <i class="down"></i> --></span>
+							<span class="icon-subcaret"></span>
+						</span>
+						<input id="myInput" type="text" placeholder="Search.." style="width:290px; display:none">
+						<ul id = "idSelect" class="subtask-pick" style = "display:none"></ul>
+					</div>
+					<!-- ============================== -->				
+					<span class="formentry-errmsg" id="alertUserName"></span>
+				</div>
+			</div>
+			
+			<div class="form-group" style="margin-top: 55px; margin-bottom: -30px">
+			   <label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Client Name*:</label>
+					<input type="text" id="idName" name="name" class="form-control input-width-medium-min input-width-owner input-width-medium" 
+					placeholder="User Name" tabindex="5" style="width:300px" readonly/>
+				   
+				</div>
+			</div>
+			
+			<div class="form-group" style="margin-top: 55px; margin-bottom: -30px">
+				<div class="col-sm-offset-1 col-sm-11">
+					<input type="submit" id="idViewAccessRights" class="form-control addbtn" tabindex="6" value="View Modules">
+				</div>
+			</div>
+			
+	<div id = "idModuleDiv" style="margin-top: 55px; margin-bottom: -30px">
+			<div class="form-group sub_modules">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<table width="100%" class="retirementview" id = "idModuleTable">
+		<thead>
+		<tr class="nonglidtotal">
+		<span class="formentry-errmsg" id="alertCheckBoxform"></span>
+		<!-- <th class="text-left" id="idModuleTH"></th> -->
+		<th>Modules</th>
+		<th>View</th>	
+		<th style = "display:none">Add/Edit</th>	
+		<th style = "display:none">Delete</th>	
+		</tr>
+		</thead>
+		<tbody id="idSubmoduleTable"></tbody>
+			</table>
+		</div>
+	</div>
+	<br>		
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-11">
+					<input type="submit" id="idAccessRightSubmit" class="form-control addbtn" tabindex="540" value="Submit">
+				</div>
+			</div>
+			
+			</div>
+				</form>
+			</div>
+	</div>

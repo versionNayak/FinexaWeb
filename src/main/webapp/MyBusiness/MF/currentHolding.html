@@ -1,0 +1,160 @@
+<script src="MF/Mfjs/validateCurrentHoldingReport.js"></script>
+<script src="MF/Mfjs/currentHoldingReport.js"></script>
+<div class="MFforms">
+	<form class="form-horizontal marginleft10per" action="#" id="idCurrentHoldingReportForm">
+						<div class="form-group">
+							<div id="idRadioStart">
+								<label>Selection*:</label>
+								<input id="idRealizedGain" name="reportType" type="radio" value="realized" /> Realized Gain  &nbsp;&nbsp;&nbsp; 
+								<input id="idUnRealizedGain" name="reportType" type="radio" value="unrealized" /> Unrealized Gain &nbsp;&nbsp;&nbsp;
+	    					</div>
+    						<span class="formentry-errmsg" id="alertform"></span>
+    						<br/>
+							
+							<div id="idRealizedGainContents">
+								<div>
+									<label>Family/Client *:</label>
+									<span class="form-static-value">
+										<select class="form-control input-width-medium" id="idClients" name="nameClient" tabindex="1">
+											<option value="">Select</option>
+										</select>
+										<span class="formentry-errmsg" id="alertClients"></span>
+									</span>
+								</div>
+								<br/>
+								<div>
+									<label>From *:</label>
+										<p id="idFromDateGroup" class="input-group input-width-medium">
+										<input type="text" class="form-control" id="idFromDate" name="fromDate" placeholder="DD/MM/YYYY" tabindex="2">
+										<span class="input-group-btn datepicker-icon">
+											<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Start Date"><em class="glyphicon calendar-icon-theme"></em></button>
+										</span>
+										</p>
+									<span class="formentry-errmsg" id="alertFromDate"></span>
+								</div>
+								<br/>
+								<div>
+									<label>To *:</label>
+										<p id="idToDateGroup" class="input-group input-width-medium">
+										<input type="text" class="form-control" id="idToDate" name="toDate" placeholder="DD/MM/YYYY" tabindex="3">
+										<span class="input-group-btn datepicker-icon">
+											<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select End Date"><em class="glyphicon calendar-icon-theme"></em></button>
+										</span>
+										</p>
+									<span class="formentry-errmsg" id="alertToDate"></span>
+								</div>
+								<br/>
+								<div>
+								<label>Select Mutual Fund:</label>
+									<span class="form-static-value" id="idFundHouse">
+										<select class="form-control input-width-medium" id="idFHouse" name="fundHouse" tabindex="4" style="width: auto">
+											<option value="">Select Mutual Fund</option>
+										</select>
+										<span class="formentry-errmsg" id="alertFHouse"></span>
+									</span>
+								</div>		
+								<br/>
+								<div>
+								<label>Select Scheme:</label>
+									<span class="form-static-value" id="idSchemeName" >
+										<select class="form-control input-width-medium" id="idSName" name="schemeName" tabindex="5" style="width: auto">
+											<option value="">Select Scheme</option>
+										</select>
+										<span class="formentry-errmsg" id="alertSName"></span>
+									</span>
+								</div>	
+								<br/>
+								<div class="col-sm-6" style="text-align: left;z-index:1;padding-top: 7px;margin-top:-13px;font-style:bold"> 
+									<input type="button" class="pull-left btn addbtn" id="showRealizedReport" tabindex="6" value="View Report" style="width:9em;font-style:bold;float:right;margin-left:0em"/> 
+								</div>
+								<br/><br/>
+								<div id="idRadioReportFormat">
+									<label>Selection*:</label>
+										<p id="idReportFormatRadioGroup" style="margin-bottom:0px;width:15%">
+											<input id="idExcel" name="reportFormat" type="radio" value="excel" tabindex="7" /> Excel  &nbsp;&nbsp;&nbsp; 
+											<input id="idPDF" name="reportFormat" type="radio" value="pdf" tabindex="8" /> PDF &nbsp;&nbsp;&nbsp;
+										</p>
+									<span class="formentry-errmsg" id="alertReportFormat"></span>
+	    						</div>
+	    						<br/>
+								<div class="col-sm-6" style="text-align: left;z-index:1;padding-top: 7px;margin-top:-13px;font-style:bold"> 
+	    							<input type="button" class="btn addbtn" id="exportRealizedGainReport" value="Export Report" tabindex="9" style="width:9em"/>
+								</div>
+								
+							</div>
+							
+							<div id="idUnrealizedGainContents">
+								<div>
+									<label>Family/Client *:</label>
+									<span class="form-static-value">
+										<select class="form-control input-width-medium" id="idClientsUR" name="nameClientUR" tabindex="1">
+											<option value="">Select</option>
+										</select>
+										<span class="formentry-errmsg" id="alertClientsUR"></span>
+									</span>
+								</div>
+								<br/>
+								<div>
+									<label>As On Date *:</label>
+										<p id="idAsOnDateGroup" class="input-group input-width-medium">
+										<input type="text" class="form-control" id="idAsOnDate" name="asOnDate" placeholder="DD/MM/YYYY" tabindex="2">
+										<span class="input-group-btn datepicker-icon">
+											<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select As on Date"><em class="glyphicon calendar-icon-theme"></em></button>
+										</span>
+										</p>
+									<span class="formentry-errmsg" id="alertAsOnDate"></span>
+								</div>
+								<br/>
+								<div>
+								<label>Select Mutual Fund:</label>
+									<span class="form-static-value" id="idFundHouse">
+										<select class="form-control input-width-medium" id="idFHouseUR" name="fundHouseUR" tabindex="4" style="width: auto">
+											<option value="">Select Mutual Fund</option>
+										</select>
+										<span class="formentry-errmsg" id="alertFHouseUR"></span>
+									</span>
+								</div>		
+								<br/>
+								<div>
+								<label>Select Scheme:</label>
+									<span class="form-static-value" id="idSchemeName" >
+										<select class="form-control input-width-medium" id="idSNameUR" name="schemeNameUR" tabindex="5" style="width: auto">
+											<option value="">Select Scheme</option>
+										</select>
+										<span class="formentry-errmsg" id="alertSNameUR"></span>
+									</span>
+								</div>	
+								<br/>
+								<div class="col-sm-6" style="text-align: left;z-index:1;padding-top: 7px;margin-top:-13px;font-style:bold"> 
+									<input type="button" class="pull-left btn addbtn" id="showUnrealizedReport" tabindex="6" value="View Report" style="width:9em;font-style:bold;float:right;margin-left:0em"/> 
+								</div>
+								<br/><br/>
+								<div id="idRadioReportFormat">
+									<label>Selection*:</label>
+										<p id="idReportFormatRadioGroupUR" style="margin-bottom:0px;width:15%">
+											<input id="idExcel" name="reportFormatUR" type="radio" value="excel" tabindex="7" /> Excel  &nbsp;&nbsp;&nbsp; 
+											<input id="idPDF" name="reportFormatUR" type="radio" value="pdf" tabindex="8" /> PDF &nbsp;&nbsp;&nbsp;
+										</p>
+									<span class="formentry-errmsg" id="alertReportFormatUR"></span>
+	    						</div>
+	    						<br/>
+	    						<div class="col-sm-6" style="text-align: left;z-index:1;padding-top: 7px;margin-top:-13px;font-style:bold"> 
+	    							<input type="button" class="btn addbtn" id="exportUnrealizedGainReport" value="Export Report" tabindex="9" style="width:9em"/>
+								</div>
+								
+							</div>	
+								
+								<div id="wait" style="width: 100%; height: 100%; top: 100px; left: 0px; position: fixed; z-index: 10000; text-align: center;">
+				            		<img src="../Common/assets/images/loader_finexa.gif" width="45" height="45" alt="Loading..." style="position: fixed; top: 50%; left: 50%;"/>
+								</div>
+								
+								
+							</div>
+						
+						
+						</form>
+						
+						
+						
+	
+	</div>

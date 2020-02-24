@@ -1,0 +1,438 @@
+<!-- <script src="clientInfo/js/editHouseholdExpense.js"></script> -->
+<div class="cicontainer">
+	<div>
+		<form class="form-horizontal" action="#">
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-11">
+					<span class="formentry-errmsg" id="alertform"></span>
+				</div>
+			</div>
+			<hr class="full-width-divider">
+			<label class="col-sm-1 control-label"></label>
+			<div class="col-md-10 no_padding">
+				<div>
+					<input name="option" id="idOptionI" value="I" type='radio' checked />
+					Individual Expense Head <input name="option" id="idOptionT"
+						value="T" type='radio' /> Total Expense
+						<input
+						type="hidden" id="idOptionHidden" name="optionHidden">
+				</div>
+				<br> <br>
+				<div id='show-me'>
+					<table width="100%" class="retirementview" id="idExpenseTable">
+						<tr class="nonglidtotal">
+							<th></th>
+							<th>Amount (in Rs.)</th>
+							<th>Frequency</th>
+							<th>Reference Month</th>
+							<th>Year till Expense will continue</th>
+						</tr>
+						<tbody>
+						<tr>
+							<td>Groceries:</td>
+							<td><input type="hidden" id="idExpenseIdGrocery"
+								name="ExpenseIdGrocery" value="0" /> <input type="hidden"
+								id="idExpenseTypeGrocery" name="ExpenseTypeGrocery" value="1" />
+								<input type="text" id="idGroceryAmount" name="groceryAmount" 
+								class="form-control input-width-income-expense-add-amount"
+								placeholder="Amount" tabindex="270" /></td>
+							<td><span class="form-static-value"> <select
+									class="form-control input-width-income-expense-add-frequency" id="idGroceryFrequency"
+									name="groceryFrequency" required="required" tabindex="271"
+									onchange="setRefMonth(this)">
+
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small"
+									id="idGroceryReferenceMonth" name="groceryReferenceMonth"
+									onchange="setRefMonth(this)" required="required" tabindex="272"
+									disabled="disabled">
+
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small" id="idGroceryYearTill"
+									name="groceryYearTill" required="required" tabindex="273">
+
+								</select>
+							</span></td>
+						</tr>
+						<tr>
+							<td>Utilities:</td>
+							<td><input type="hidden" id="idExpenseIdUtilities"
+								name="ExpenseIdUtilities" value="0" /> <input type="hidden"
+								id="idExpenseTypeUtilities" name="ExpenseTypeUtilities" 
+								value="2" /> <input type="text" id="idUtilitiesAmount"
+								name="utilitiesAmount"
+								class="form-control input-width-income-expense-add-amount"
+								placeholder="Amount"  tabindex="274" /></td>
+							<td><span class="form-static-value"> <select
+									class="form-control input-width-income-expense-add-frequency"
+									id="idUtilitiesFrequency" name="utilitiesFrequency"
+									required="required" tabindex="275" onchange="setRefMonth(this)">
+
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small" disabled=""
+									id="idUtilitiesReferenceMonth" name="utilitiesReferenceMonth"
+									required="required" tabindex="276" disabled="disabled">
+
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small" id="idUtilitiesYearTill"
+									name="utilitiesYearTill" required="required" tabindex="277">
+
+								</select>
+							</span></td>
+						</tr>
+
+						<tr>
+							<td>Transport:</td>
+							<td><input type="hidden" id="idExpenseIdTransport"
+								name="ExpenseIdTransport" value="0" /> <input type="hidden"
+								id="idExpenseTypeTransport" name="ExpenseTypeTransport"
+								value="3" /> <input type="text" id="idTransportAmount"
+								name="transportAmount"
+								class="form-control input-width-income-expense-add-amount"
+								placeholder="Amount"  tabindex="278" /></td>
+							<td><span class="form-static-value"> <select
+									class="form-control input-width-income-expense-add-frequency"
+									id="idTransportFrequency" name="transportFrequency"
+									required="required" tabindex="279" onchange="setRefMonth(this)">
+
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small"
+									id="idTransportReferenceMonth" name="transportReferenceMonth" disabled=""
+									onchange="setRefMonth(this)" required="required" disabled="disabled" tabindex="280">
+
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small" id="idTransportYearTill"
+									name="transportYearTill" required="required" tabindex="281">
+
+								</select>
+							</span></td>
+						</tr>
+
+						<tr>
+							<td>Household and Personal Care:</td>
+							<td><input type="hidden" id="idExpenseIdHousehold"
+								name="ExpenseIdHousehold" value="0" /> <input type="hidden"
+								id="idExpenseTypeHousehold" name="ExpenseTypeHousehold"
+								value="4" /> <input type="text" id="idHouseholdAmount"
+								name="householdAmount"
+								class="form-control input-width-income-expense-add-amount"
+								placeholder="Amount"  tabindex="282" /></td>
+							<td><span class="form-static-value"> <select
+									class="form-control input-width-income-expense-add-frequency"
+									id="idHouseholdFrequency" name="householdFrequency"
+									required="required" tabindex="283" onchange="setRefMonth(this)">
+
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small"
+									id="idHouseholdReferenceMonth" name="householdReferenceMonth"
+									onchange="setRefMonth(this)" required="required" tabindex="284"
+									disabled="disabled">
+
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small" id="idHouseholdYearTill"
+									name="householdYearTill" required="required" tabindex="285">
+
+								</select>
+							</span></td>
+						</tr>
+						<tr>
+							<td>Housing & Maintenance:</td>
+							<td><input type="hidden" id="idExpenseIdHousing"
+								name="ExpenseIdHouseing" value="0" /> <input type="hidden"
+								id="idExpenseTypeHousing" name="ExpenseTypeHouseing" value="5" />
+								<input type="text" id="idHousingAmount" name="housingAmount" 
+								class="form-control input-width-income-expense-add-amount"
+								placeholder="Amount" tabindex="286" /></td>
+							<td><span class="form-static-value"> <select
+									class="form-control input-width-small" id="idHousingFrequency"
+									name="housingFrequency" onchange="setRefMonth(this)"
+									required="required" tabindex="287">
+
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-income-expense-add-frequency"
+									id="idHousingReferenceMonth" name="housingReferenceMonth"
+									onchange="setRefMonth(this)" required="required" tabindex="288"
+									disabled="disabled">
+
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small" id="idHousingYearTill"
+									name="housingYearTill" required="required" tabindex="289">
+
+								</select>
+							</span></td>
+						</tr>
+
+						<tr>
+							<td>Communication:</td>
+							<td><input type="hidden" id="idExpenseIdCommunication"
+								name="ExpenseIdCommunication" value="0" /> <input type="hidden"
+								id="idExpenseTypeCommunication" name="ExpenseTypeCommunication"
+								value="6" /> <input type="text" id="idCommunicationAmount"
+								name="communicationAmount"
+								class="form-control input-width-income-expense-add-amount"
+								placeholder="Amount"  tabindex="290" /></td>
+							<td><span class="form-static-value"> <select
+									class="form-control input-width-income-expense-add-frequency"
+									id="idCommunicationFrequency" name="communicationFrequency"
+									onchange="setRefMonth(this)" required="required" tabindex="291">
+
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small"
+									id="idCommunicationReferenceMonth"
+									name="communicationReferenceMonth" disabled=""
+									required="required" tabindex="292" disabled="disabled">
+
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small"
+									id="idCommunicationYearTill" name="communicationYearTill"
+									required="required" tabindex="293">
+
+								</select>
+							</span></td>
+						</tr>
+
+						<tr>
+							<td>Lifestyle & Entertainment:</td>
+							<td><input type="hidden" id="idExpenseIdEntertainment"
+								name="ExpenseIdEntertainmentAmount" value="0" /> <input
+								type="hidden" id="idExpenseTypeEntertainment"
+								name="ExpenseTypeEntertainmentAmount" value="7" /> <input
+								type="text" id="idEntertainmentAmount"
+								name="entertainmentAmount" 
+								class="form-control input-width-income-expense-add-amount"
+								placeholder="Amount" tabindex="294" /></td>
+							<td><span class="form-static-value"> <select
+									class="form-control input-width-income-expense-add-frequency"
+									id="idEntertainmentFrequency" name="entertainmentFrequency"
+									onchange="setRefMonth(this)" required="required" tabindex="295"
+									onchange="setRefMonth(this)">
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small"
+									id="idEntertainmentReferenceMonth"
+									name="entertainmentReferenceMonth" disabled=""
+									required="required" tabindex="296" disabled="disabled">
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small"
+									id="idEntertainmentYearTill" name="entertainmentYearTill"
+									required="required" tabindex="297">
+								</select>
+							</span></td>
+						</tr>
+
+						
+						<tr>
+							<td>Apparels & Accessories:</td>
+							<td><input type="hidden" id="idExpenseIdApparel"
+								name="ExpenseIdApparel" value="0" /> <input type="hidden"
+								id="idExpenseTypeApparel" name="ExpenseTypeApparel" value="8" />
+								<input type="text" id="idApparelAmount" name="apparelAmount"
+								class="form-control input-width-income-expense-add-amount"
+								placeholder="Amount"  tabindex="298" /></td>
+							<td><span class="form-static-value"> <select
+									class="form-control input-width-income-expense-add-frequency" id="idApparelFrequency"
+									name="apparelFrequency" onchange="setRefMonth(this)"
+									required="required" tabindex="299" onchange="setRefMonth(this)">
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small"
+									id="idApparelReferenceMonth" name="apparelReferenceMonth"
+									disabled="" required="required" tabindex="300"
+									disabled="disabled">
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small" id="idApparelYearTill"
+									name="apparelYearTill" required="required" tabindex="301">
+								</select>
+							</span></td>
+						</tr>
+
+						<tr>
+
+							<td>Children Fees:</td>
+							<td><input type="hidden" id="idExpenseIdtutionAmount"
+								name="ExpenseIdtution" value="0" /> <input type="hidden"
+								id="idExpenseTypetution" name="ExpenseTypetution"
+								value="9" /> <input type="text" id="idTutionAmount"
+								name="tutionAmount" 
+								class="form-control input-width-income-expense-add-amount"
+								placeholder="Amount" tabindex="302" /></td>
+							<td><span class="form-static-value"> <select
+									class="form-control input-width-income-expense-add-frequency" id="idTutionFrequency"
+									name="tutionFrequency" onchange="setRefMonth(this)"
+									required="required" tabindex="303" onchange="setRefMonth(this)">
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small"
+									id="idTutionReferenceMonth" name="tutionReferenceMonth"
+									disabled="" required="required" tabindex="304"
+									>
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small" id="idTutionYearTill"
+									name="tutionYearTill" required="required" tabindex="305">
+								</select>
+							</span></td>
+						</tr>
+
+
+						<tr>
+
+							<td>Healthcare Expenses:</td>
+							<td><input type="hidden" id="idExpenseIdHealthcare"
+								name="ExpenseIdHealthcare" value="0" /> <input
+								type="hidden" id="idExpenseTypeHealthcare"
+								name="ExpenseTypeHealthcare" value="10" /> <input
+								type="text" id="idHealthcareAmount" name="healthcareAmount"
+								class="form-control input-width-income-expense-add-amount"
+								placeholder="Amount"  tabindex="306" /></td>
+							<td><span class="form-static-value"> <select
+									class="form-control input-width-income-expense-add-frequency"
+									id="idHealthcareFrequency" name="healthcareFrequency"
+									onchange="setRefMonth(this)" required="required" tabindex="307"
+									onchange="setRefMonth(this)">
+								</select>
+							</span></td>
+							<td><span class="form-static-value"> <select
+									class="form-control input-width-small"
+									id="idHealthcareReferenceMonth" name="healthcareReferenceMonth"
+									 required="required" tabindex="308"
+									onchange="setRefMonth(this)" disabled="disabled">
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small"
+									id="idHealthcareYearTill" name="healthcareYearTill" 
+									required="required" tabindex="309">
+								</select>
+							</span></td>
+
+						</tr>
+						<tr>
+
+							<td>Others:</td>
+							<td><input type="hidden" id="idExpenseIdOthers"
+								name="ExpenseIdOthers" value="0" /> <input type="hidden"
+								id="idExpenseTypeOthers" name="ExpenseTypeOthers" value="11" />
+								<input type="text" id="idOtherExpenseAmount"
+								name="otherExpenseAmount" 
+								class="form-control input-width-income-expense-add-amount"
+								placeholder="Amount" tabindex="310" /></td>
+							<td><span class="form-static-value"> <select
+									class="form-control input-width-income-expense-add-frequency"
+									id="idOtherExpenseFrequency" name="otherExpenseFrequency"
+									onchange="setRefMonth(this)" required="required" tabindex="311"
+									onchange="setRefMonth(this)">
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small"
+									id="idOtherExpenseReferenceMonth"
+									name="otherExpenseReferenceMonth" disabled=""
+									required="required" tabindex="312" disabled="disabled">
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small"
+									id="idOtherExpenseYearTill" name="otherExpenseYearTill"
+									required="required" tabindex="313">
+								</select>
+							</span></td>
+						</tr>
+
+						<tr>
+							<td>Total Annual Expense(Rs):</td>
+							<td><input type="text" id="idRunningTotal"
+								name="runningTotal" 
+								class="form-control input-width-medium-min input-width-owner input-width-medium"
+								disabled="" placeholder="" tabindex="314" /></td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+
+
+				<div id='show-me-two' style='display: none;'>
+					<table width="100%" class="retirementview" id="idExpenseTable1">
+						<tr>
+							<td>Total Monthly Expense(Rs):</td>
+							<input type="hidden" id="idExpenseIdTotal" name="ExpenseIdOthers"
+								value="0" />
+							<input type="hidden" id="idExpenseTypeTotal"
+								name="ExpenseTypeOthers" value="12" />
+							<!-- <input type="hidden" id="idTotalExpenseReferenceMonth"
+								name="TotalExpenseReferenceMonth" value="8" /> -->
+							<input type="hidden" id="idTotalExpenseFrequency"
+								name="TotalExpenseFrequency" value="12" />
+
+							<td><input type="text" id="idTotalExpenseAmount"
+								name="totalExpenseAmount"
+								class="form-control input-width-income-expense-add-amount1"
+								placeholder="Amount"  tabindex="315" /></td>
+							<td>Year till Expense will continue:</td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small"
+									id="idTotalExpenseYearTill" name="totalExpenseYearTill"
+									required="required" tabindex="316">
+										<option value="">Select</option>
+								</select>
+							</span></td>
+						</tr>
+							<!-- <tr><td><span class="formentry-errmsg" id="alertTotalExpense"></span></td></tr> -->
+							
+					</table>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<br> <br>
+		    <div class="form-group">
+				<div class="col-sm-offset-1 col-sm-11">
+					<!-- <button type="button" id="save" class="pull-left btn addbtn" tabindex="540">SAVE</button> -->
+					<button type="button" class="pull-left btn addbtn" id="save"
+						tabindex="540">Save</button>
+					<button type="button" id="idUndo" class="pull-left btn addbtn" tabindex="540">UNDO</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+<link href="../Common/assets/css/finexa.css" rel="stylesheet">
+<script src="clientInfo/js/common.js"></script>
+<script src="clientInfo/js/validateExpense.js"></script>
+<script src="clientInfo/js/validationForAll.js"></script>
+<script src="clientInfo/js/editHouseholdExpense.js"></script>
+
+<!-- $('select[name^="salesrep"] option[value="Bruce Jones"]').attr("selected","selected"); -->

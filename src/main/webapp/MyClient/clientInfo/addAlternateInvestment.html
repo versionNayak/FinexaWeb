@@ -1,0 +1,296 @@
+<script src="clientInfo/js/addAlternateInvestment.js"></script>
+<script src="clientInfo/js/validateRealEstate.js"></script>
+<script src="clientInfo/js/validatePreciousMetal.js"></script>
+<script src="clientInfo/js/validateVehicle.js"></script>
+<script src="clientInfo/js/validateREPE.js"></script>
+<script src="clientInfo/js/validateStructuredProduct.js"></script>
+<script src="clientInfo/js/validationForAll.js"></script> 
+<script src="clientInfo/js/common.js"></script> 
+<div class="cicontainer">
+	<div>
+		<form class="form-horizontal" id="idAlternateInvestmentsForm">
+			<label class="col-sm-1 control-label"></label>
+			<div class="col-md-10 no_padding">
+				<input type ="hidden" id="idFinancialAssetType" name="financialAssetType" />
+				<div class="form-group">
+					<div class="col-sm-12">
+						<span class="formentry-errmsg" id="alertform"></span>
+					</div>
+				</div>
+	        	<div class="form-group form-group-lg">
+					<div class="col-sm-8 asset-owner-wrapper">
+							<label>Financial Asset Owner:</label><br/>
+							<table class="familymembertbl" width="20px">
+								<tr class="mem_icon" id="familyMemberImage">
+								</tr>
+							</table>
+					</div>
+				</div>
+				<hr class="full-width-divider">
+				<!-- REAL ESTATE -->
+				<div id="divRE">
+					<div id="AT" class="form-group">
+						<label class="col-sm-1 control-label"></label>
+						<div class="col-sm-12">
+							<label>Asset Type*:</label>
+							<span class="form-static-value" id="hide320" >
+								<select class="form-control input-width-medium" id="idAssetType" name="assetTypeId" required="required" tabindex="1" onchange="displayAuto()">
+								</select>
+								<span class="formentry-errmsg" id="alertAssetType"></span>
+							</span>
+						</div>
+					</div>
+					<div id="RIncome" class="form-group">
+						<div class="col-sm-12">
+							<label>Rental Income(Rs):</label>
+							<input type="text" class="form-control input-width-medium" id="idRentalIncome" name="rentalIncome" onfocusout="maskAmount('#idRentalIncome')" placeholder="Enter Rental Income" tabindex="2">
+							<span class="formentry-errmsg" id="alertRentalIncome"></span>
+						</div>
+				   	</div>
+		        	<div id="RIF" class="form-group">
+						<div class="col-sm-12">
+							<label>Rental Income Frequency:</label>
+							<span class="form-static-value" id="idRentalIncomeFrequency" >
+								<select class="form-control input-width-medium" id="idRIF" name="rentalFrequency" required="required" tabindex="3">
+								</select>
+								<span class="formentry-errmsg" id="alertRif"></span>
+							</span>
+						</div>
+				   	</div>
+		        	<div id="IAmount" class="form-group">
+						<div class="col-sm-12">
+							<label>Investment Amount(Rs)*:</label>
+							<input type="text" class="form-control input-width-owner input-width-medium" id="idInvestmentAmount" name="investmentValue" onfocusout="maskAmount('#idInvestmentAmount')" placeholder="Enter Investment Amount" tabindex="4">
+							<span class="formentry-errmsg" id="alertAmount"></span>
+						</div>
+				    </div>
+					<div id="IDate" class="form-group">
+						<div class="col-sm-11">
+							<label>Date of Investment*:</label>
+							<p id="idDateOfInvestmentGroup" class="input-group input-width-medium">
+								<input type="text" class="form-control" id="idDateOfInvestment" name="investmentDate" placeholder="DD/MM/YYYY" tabindex="5">
+								<span class="input-group-btn datepicker-icon">
+									<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Investment Date"><em class="glyphicon calendar-icon-theme"></em></button>
+								</span>
+							</p>
+							<span class="formentry-errmsg" id="alertIDate"></span>
+						</div>
+					</div> 
+				  	<div id="CMV" class="form-group">
+						<div class="col-sm-12">
+							<label>Current Value(Rs)*:</label>
+							<input type="text" class="form-control input-width-medium" id="idCurrentValue" name="currentValue" onfocusout="maskAmount('#idCurrentValue')" placeholder="Enter Current Market Value" tabindex="6">
+							<span class="formentry-errmsg" id="alertCurrentValue"></span>
+						</div>
+				  	</div>
+					<div id="RED" class="form-group">
+						<div class="col-sm-12">
+							<label>Real Estate Description*:</label>
+							<span class="form-static-value" id="hide320" >
+								<select class="form-control input-width-owner input-width-medium" id="idRealEstateDescription" name="description" required="required" tabindex="7">
+								</select>
+							</span>
+							<span class="formentry-errmsg" id="alertDescription"></span>
+						</div>
+					</div>		
+				 	<div id="LM" class="form-group">
+						<div class="col-sm-12">
+							<label>Lien Marked*:</label>
+							<span class="form-static-value" id="hide320" >
+								<select class="form-control input-width-medium" id="idLienMarked" name="lienMarked" required="required" tabindex="8">
+								 <option value="">Select</option>
+								 <option value="1">Yes</option>
+								 <option value="2">No</option>
+					 			</select>
+					 			<span class="formentry-errmsg" id="alertLienMarked"></span>
+							</span>
+						</div>
+					</div>
+		  			<div id="LRDate" class="form-group">
+						<div class="col-sm-11">
+							<label>Expected Lien Release Date:</label>
+							<p id ="idExpectedLienReleaseDateGroup" class="input-group input-width-medium">
+								<input type="text" class="form-control" id="idExpectedLienReleaseDate" name="lienReleaseDate" placeholder="DD/MM/YYYY" tabindex="9">
+								<span class="input-group-btn datepicker-icon">
+									<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Lien Release Date"><em class="glyphicon calendar-icon-theme"></em></button>
+								</span>
+							</p>
+							<span class="formentry-errmsg" id="alertExpectedLienReleaseDate"></span>
+						</div>
+				 	</div> 
+	 			</div>	 
+	       	<!------------------------------ PRECIOUS METALS----------------------------------------------------- -->
+		 	<div id="divPM">		
+				<div id="AD" class="form-group">
+					<div class="col-sm-12">
+						<label>Asset Description*:</label>
+						<input type="text" class="form-control input-width-owner input-width-medium" id="idAssetDescription" name="pmDescription" placeholder="Enter Asset Description" tabindex="10">
+						<span class="formentry-errmsg" id="alertAssetDescription"></span>
+					</div>
+				</div>
+			</div>
+						
+			<!--------------------------------------------------- VEHICLES ------------------------------------>
+			<div id="divV">
+				<div id="AD-V" class="form-group">
+					<div class="col-sm-12">
+						<label>Asset Description:</label>
+						<input type="text" class="form-control input-width-owner input-width-medium" id="idAssetDescriptionV" name="vDescription" placeholder="Enter Asset Description" tabindex="11">
+					</div>
+				</div>
+			</div>	
+			
+			
+			<!--------------------------------------------- OTHERS------------------------------------- -->
+			<div id="divOthers">
+			 	<div class="form-group">
+						<div class="col-sm-12">
+							<label>Fund Description:</label>
+							<input type="text" class="form-control input-width-owner input-width-medium" id="idFundDescription" name="fundDescription" placeholder="Enter the Description" tabindex="12">
+						</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<label>Scheme Name*:</label>
+						<input type="text" class="form-control input-width-owner input-width-medium" id="idSchemeName" name="schemeName" placeholder="Enter the Scheme Name" tabindex="13">
+						<span class="formentry-errmsg" id="alertSchemeName"></span>
+					</div>
+				</div>				
+				<div class="form-group">
+					<div class="col-sm-12">
+						<label>Total Investment Amount(Rs)*:</label>
+						<p class="input-group input-width-medium">
+							<input type="text" class="form-control valid-state" id="idTotalInvestmentAmount" name="totalInvestmentAmount" onfocusout="maskAmount('#idTotalInvestmentAmount')" placeholder="Enter Amount" tabindex="14">
+						</p>
+						<span class="formentry-errmsg" id="alertTotalInvestmentAmount"></span>
+					</div>
+				</div>				
+				<div class="form-group">
+					<div class="col-sm-12">
+						<label>Total Drawdown Amount(Rs)*:</label>
+						<input type="text" class="form-control input-width-owner input-width-medium" id="idTotalDrawdownAmount" name="totalDrawdownAmount" onfocusout="maskAmount('#idTotalDrawdownAmount')" placeholder="Enter Amount" tabindex="15">
+						<span class="formentry-errmsg" id="alertTotalDrawdownAmount"></span>
+					</div>
+				</div>		 
+		 		<div class="form-group">
+					<div class="col-sm-12">
+						<label>Outstanding Amount(Rs)*:</label>
+						<input type="text" class="form-control input-width-owner input-width-medium" id="idOutstandingAmount" name="outstandingAmount" onfocusout="maskAmount('#idOutstandingAmount')" placeholder="Enter Amount" tabindex="16">
+						<span class="formentry-errmsg" id="alertOutstandingAmount"></span>
+					</div>
+				</div>
+				<div id="IDateOthers" class="form-group">
+					<div class="col-sm-11">
+						<label>Date of Investment*:</label>
+						<p id="idDateOfInvestmentOthersGroup" class="input-group input-width-medium">
+							<input type="text" class="form-control" id="idDateOfInvestmentOthers" name="investmentDate" placeholder="DD/MM/YYYY" tabindex="17">
+							<span class="input-group-btn datepicker-icon">
+								<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Investment Date"><em class="glyphicon calendar-icon-theme"></em></button>
+							</span>
+						</p>
+						<span class="formentry-errmsg" id="alertIDateOfInvestmentOthers"></span>
+					</div>
+				</div> 								
+				<div class="form-group">
+					<div class="col-sm-12">
+						<label>Total Principal Amount Received(Rs):</label>
+						<p class="input-group input-width-medium">
+							<input type="text" class="form-control input-width-owner input-width-medium" id="idTotalPAR" name="totalPrincipalReceived" onfocusout="maskAmount('#idTotalPAR')" placeholder="Enter Amount" tabindex="18">
+						</p>
+						<span class="formentry-errmsg" id="alertTotalPrincipalReceived"></span>
+					</div>
+				</div>				
+				<div class="form-group">
+					<div class="col-sm-12">
+						<label>Total Interest Amount Received(Rs):</label>
+						<p class="input-group input-width-medium">
+						    <input type="text" class="form-control input-width-owner input-width-medium" id="idTotalIAR" name="totalInterestReceived" onfocusout="maskAmount('#idTotalIAR')" placeholder="Total Amount" tabindex="19">
+					    </p>
+					    <span class="formentry-errmsg" id="alertTotalInterestReceived"></span>
+					</div>
+				</div>				
+				<div class="form-group">
+					<div class="col-sm-12">
+						<label>Open Ended/Close Ended*:</label>
+						<span class="form-static-value" id="hide320" >
+							<select class="form-control input-width-medium" id="idCloseEndedFlag" name="closeEndedFlag" required="required" tabindex="20">
+								 <option value="">Select </option>
+								 <option value="N">Open Ended </option>
+								 <option value="Y">Close Ended </option>
+				 			</select>
+				 			<span class="formentry-errmsg" id="alertFlag"></span>
+						</span>
+					</div>
+				</div>				
+				<div class="form-group">
+					<div class="col-sm-12">
+						<label>Current Market Value(Rs)*:</label>
+						<input type="text" class="form-control input-width-owner input-width-medium" id="idCurrentMarketValue" name="currentMarketValue" onfocusout="maskAmount('#idCurrentMarketValue')" placeholder="Enter Current Market Value" tabindex="21">
+						<span class="formentry-errmsg" id="alertCurrentMarketValue"></span>
+					</div>
+				</div>		 
+		 	</div>	 	 
+		 	
+			<!--............................... STRUCTURED PRODUCTS ..........................-->
+			<div id="AD-SP" class="form-group">
+			<div class="col-sm-12">
+				<label>Asset Description*:</label>
+				<input type="text" class="form-control input-width-owner input-width-medium" id="idAssetDescriptionSP" name="spDescription" placeholder="Enter Asset Description" tabindex="22">
+				<span class="formentry-errmsg" id="alertAssetDescriptionSP"></span>
+			</div>
+			</div> 			 
+			<div id="EMV" class="form-group">
+				<div class="col-sm-12">
+					<label>Expected Maturity Value:</label>
+					<input type="text" class="form-control input-width-owner input-width-medium" id="idExpectedMaturityValue" name="maturityValue" onfocusout="maskAmount('#idExpectedMaturityValue')" placeholder="Expected Maturity Value" tabindex="23">
+					<span class="formentry-errmsg" id="alertExpectedMaturityValue"></span>
+				</div>
+			</div>			
+			<div id="SPStartDate" class="form-group">
+				<div class="col-sm-11">
+					<label>Investment Start Date*:</label>
+					<p id="idInvestmentStartDateGroup" class="input-group input-width-medium">
+						<input type="text" class="form-control" id="idInvestmentStartDate" name="investmentStartDate" placeholder="DD/MM/YYYY" tabindex="24">
+						<span class="input-group-btn datepicker-icon">
+							<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Investment Start Date"><em class="glyphicon calendar-icon-theme"></em></button>
+						</span>
+					</p>
+					<span class="formentry-errmsg" id="alertIinvestmentStartDate"></span>
+				</div>
+			</div> 			 
+			<div id="IMD" class="form-group">
+				<div class="col-sm-11">
+					<div id="firstLabelMD">
+					<label>Maturity Date if any?*:</label>
+					</div>
+					<div id="secondLabelMD">
+					<label>Investment Maturity Date:</label>
+					</div>
+					<p id="idMaturityDateGroup" class="input-group input-width-medium">
+						<input type="text" class="form-control" id="idMaturityDate" name="maturityDate" placeholder="DD/MM/YYYY" tabindex="25">
+						<span class="input-group-btn datepicker-icon">
+							<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Maturity Date"><em class="glyphicon calendar-icon-theme"></em></button>
+						</span>
+					</p>
+					<span class="formentry-errmsg" id="alertMaturityDate"></span>
+				</div>
+			</div>				   
+			</div>
+			<div class="clearfix"></div>
+		    <br><br> 
+		 	<div id="idButton" class="form-group" style="display:none;">
+				<div class="col-sm-offset-1 col-sm-11">
+					<button type="button" id="idSaveAlternateInvestment" class="pull-left btn addbtn" tabindex="26">SAVE</button>
+					<button type="button" id="undo" class="pull-left btn addbtn" tabindex="27" onclick="undoChange()">UNDO</button> 
+				</div>
+			</div>
+			<div id="focusguard-2" tabindex="28"></div>			
+		</form>
+	</div>
+</div>
+
+		
+	
+
+
+

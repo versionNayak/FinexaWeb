@@ -1,0 +1,255 @@
+<script src="clientInfo/js/editFixedIncome.js"></script>
+<script type="text/javascript"
+	src="clientInfo/js/validateFixedIncome.js"></script>
+<script type="text/javascript" src="clientInfo/js/validationForAll.js"></script>
+<script src="clientInfo/js/common.js"></script>
+
+<div class="cicontainer">
+	<div class="alert alert-danger" id="alertform" style="display: none;"></div>
+	<form class="form-horizontal" action="#" id="idAddFixedIncomeForm">
+
+		<label class="col-sm-1 control-label"></label>
+		<div class="col-md-10 no_padding">
+
+			<div id="idRadioStart" style="visibility: hidden;">
+				<label>Product*:</label> <input id='idFixedDeposit'
+					name='financialAssetType' type='radio' value="22" /> Fixed Deposit
+				&nbsp;&nbsp;&nbsp; <input id='idRecurringDeposit'
+					name='financialAssetType' type='radio' value="23" /> Recurring
+				Deposit &nbsp;&nbsp;&nbsp; <input id='idBondsDebentures'
+					name='financialAssetType' type='radio' value="24" /> Bonds
+				Debentures &nbsp;&nbsp;&nbsp; <input id='idCPCD'
+					name='financialAssetType' type='radio' value="27" /> CPCD
+				&nbsp;&nbsp;&nbsp;
+			</div>
+
+			<br> <br>
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-11">
+					<span class="formentry-errmsg" id="alertform"></span>
+				</div>
+			</div>
+			<div id="memberDiv" class="form-group form-group-lg">
+				<div class="col-sm-8 asset-owner-wrapper">
+					<label>Financial Asset Owner:</label><br />
+					<table class="familymembertbl" width="20px">
+						<tr class="mem_icon" id="familyMemberImage">
+						</tr>
+					</table>
+				</div>
+			</div>
+			<hr class="full-width-divider">
+			<div id="bankNameDiv" class="form-group">
+				<div class="col-sm-4">
+					<label id="BankLabel">Bank/ Institution Name:</label> <label
+						id="IssuerLabel">Issuer Name:</label> <span
+						class="form-static-value" id="hide320"> <select
+						class="form-control input-width-medium" id="idName"
+						name="bankIssuerId" required="required" tabindex="1">
+					</select>
+					</span> <span class="formentry-errmsg" id="alertAMCCode"></span>
+				</div>
+			</div>
+
+			<div id="depositTypeDiv" class="form-group">
+				<div class="col-sm-12">
+					<label>Deposit Type*:</label> <span class="form-static-value">
+						<select class="form-control input-width-medium" id="idDepositType"
+						name="fixedDepositType" required="required" tabindex="2">
+					</select>
+					</span> <span class="formentry-errmsg" id="alertDepositType"></span>
+				</div>
+			</div>
+			<div id="investmentDepositDateDiv" class="form-group">
+				<div class="col-sm-12">
+					<label id="DepositDate">Deposit Date:</label> <label
+						id="InvestmentDate">Investment Date:</label>
+					<p class="input-group input-width-medium"
+						id="idDepositStartDateGroup">
+						<input type="text" class="form-control" id="idDepositStartDate"
+							name="investmentDepositDate" placeholder="DD/MM/YYYY"
+							tabindex="3"> <span
+							class="input-group-btn datepicker-icon">
+							<button type="button"
+								class="btn btn-default calendar-icon-container"
+								data-toggle="tooltip" data-placement="top" title=""
+								data-original-title="Select Start Date">
+								<em class="glyphicon calendar-icon-theme"></em>
+							</button>
+						</span>
+
+					</p>
+					<span class="formentry-errmsg" id="alertStartDate"></span>
+				</div>
+			</div>
+			<div id=amountDiv class="form-group">
+				<div class="col-sm-12">
+					<label id="DepositAmountlabel">Deposit Amount(Rs)*:</label> <label
+						id="RecurringAmountlabel">Recurring Deposit Amount(Rs)*:</label> <label
+						id="InvestmentAmountlabel">Investment Amount(Rs)*:</label> <input
+						type="text" id="idDepositAmount" name="amount"
+						class="form-control input-width-medium-min input-width-owner input-width-medium" 
+						onfocusout="maskAmount('#idDepositAmount')"
+						placeholder="Enter Amount" tabindex="4"> <span
+						class="formentry-errmsg" id="alertDepositAmount"></span>
+				</div>
+			</div>
+
+			<div id="compoundingFrequencyDiv" class="form-group">
+				<div class="col-sm-12">
+					<label>Compounding Frequency*:</label> <span
+						class="form-static-value"> <select
+						class="form-control input-width-medium"
+						id="idCompoundingFrequency" name="compoundingFrequency"
+						required="required" tabindex="5">
+					</select>
+					</span> <span class="formentry-errmsg" id="alertcf"></span>
+				</div>
+			</div>
+			<div id="bondPurchasedDiv" class="form-group">
+				<div class="col-sm-11">
+					<label>Number Of Bonds Purchased*:</label> <input type="text"
+						id="idBondPurchased" name="bondPurchased"
+						class="form-control input-width-medium-min input-width-owner input-width-medium"
+						placeholder="Enter Bonds Purchased" tabindex="6"> <span
+						class="formentry-errmsg" id="alertBondPurchased"></span>
+
+				</div>
+			</div>
+
+			<div id="bondFaceValuediv" class="form-group">
+				<div class="col-sm-12">
+					<label>Face Value of Bond*:</label> <input type="text"
+						id="idBondValue" name="bondFaceValue"
+						class="form-control input-width-medium-min input-width-owner input-width-medium"
+						placeholder="Enter Bond Face Value" tabindex="7"> <span
+						class="formentry-errmsg" id="alertBondValue"></span>
+				</div>
+			</div>
+
+			<div id="bondTypeDiv" class="form-group">
+				<div class="col-sm-12">
+					<label>Bond Type*:</label> <span class="form-static-value">
+						<select class="form-control input-width-medium" id="idBondType"
+						name="bondType" required="required" tabindex="8">
+					</select>
+					</span> <span class="formentry-errmsg" id="alertBondType"></span>
+				</div>
+			</div>
+
+
+			<div id="InterestRateDiv" class="form-group">
+				<div class="col-sm-12">
+					<label id="InterestRatelabel"> Interest Rate(%)*:</label> <label
+						id="CouponRatelabel">Annual Coupon Rate(%)*:</label> <input
+						type="text" id="idInterestRate" name="interestCouponRate"
+						class="form-control input-width-medium-min input-width-owner input-width-medium"
+						placeholder="Enter Interest Rate" tabindex="9"> <span
+						class="formentry-errmsg" id="alertInterestRate"></span>
+				</div>
+			</div>
+
+
+			<div id="DepositFrequencyDiv" class="form-group">
+				<div class="col-sm-12">
+					<label>Deposit Frequency*:</label> <span class="form-static-value">
+						<select class="form-control input-width-medium"
+						required="required" id="idDepositFrequency"
+						name="recurringDepositFrequency" tabindex="10">
+					</select>
+					</span> <span class="formentry-errmsg" id="alertdepositfrequency"></span>
+				</div>
+			</div>
+			<div id="bondCurrentYieldDiv" class="form-group">
+				<div class="col-sm-12">
+					<label>Current Yield(%)*</label> <input type="text"
+						id="idCurrentYield" name="bondCurrentYield"
+						class="form-control input-width-medium"
+						class="form-control input-width-medium-min input-width-owner input-width-medium"
+						placeholder="Enter Bond Face Value" tabindex="11"> <span
+						class="formentry-errmsg" id="alertCurrentYield"></span>
+				</div>
+			</div>
+			<div id="tenureYearsDaysDiv" class="form-group">
+				<div class="col-sm-12">
+					<label>Tenure- Years or Days*:</label>
+					<div class="displayflex">
+						<label class="radio-inline custom-radio-theme"> <input
+							type="radio" name="tenureYearsDays" id="idTenureTypeYears"
+							value="Y" checked="checked" tabindex="12"><i></i>Years
+						</label> <label class="radio-inline custom-radio-theme" id="idD">
+							<input type="radio" name="tenureYearsDays" id="idTenureTypeDays"
+							value="D" tabindex="13" required="required"><i></i>Days
+						</label> <label class="radio-inline custom-radio-theme" id="idM">
+							<input type="radio" name="tenureYearsDays"
+							id="idTenureTypeMonths" value="M" tabindex="14"
+							required="required"><i></i>Months
+						</label> <span class="formentry-errmsg" id="alerttenuretype"></span>
+					</div>
+				</div>
+			</div>
+			<div id="tenureDiv" class="form-group">
+				<div class="col-sm-12">
+					<label id="tenure">Tenure*:</label> <label id="tenureDayslabel">Tenure(Days)*:</label>
+					<input type="text" id="idDepositTenure" name="tenure"
+						class="form-control input-width-medium-min input-width-owner input-width-medium"
+						placeholder="Enter Tenure" tabindex="15"> <input
+						type="text" onblur="calculateNextDate();" id="idDepositTenureyr"
+						onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
+						on name="tenureyr"
+						class="numericOnly form-control input-width-medium-min input-width-owner input-width-medium hidden"
+						placeholder="Enter Year" tabindex="15"> <input type="text"
+						onblur="calculateNextDate();" id="idDepositTenuremn"
+						onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"
+						name="tenuremn"
+						class="numericOnly form-control input-width-medium-min input-width-owner input-width-medium hidden"
+						placeholder="Enter Month" tabindex="16"> <span
+						class="formentry-errmsg" id="alertDepositTenure"></span>
+				</div>
+			</div>
+			<div id="payoutFrequencyDiv" class="form-group">
+				<div class="col-sm-12">
+					<label id="PayoutFrequencylabel">Interest Payout
+						Frequency*:</label> <label id="CouponPayoutFrequencylabel">Coupon
+						Payout Frequency*:</label> <span class="form-static-value"> <select
+						class="form-control input-width-medium" required="required"
+						id="idInterestPayoutFrequency" name="payoutFrequency"
+						tabindex="16">
+					</select>
+					</span> <span class="formentry-errmsg" id="alertipf"></span>
+				</div>
+			</div>
+
+			<div id="maturityDateDiv" class="form-group">
+				<div class="col-sm-12">
+					<label>Deposit Maturity Date:</label> <input type="text"
+						id="idDepositMaturityDate" name="maturityDate"
+						class="form-control input-width-medium-min input-width-owner input-width-medium"
+						placeholder="dd/mm/yyyy" value="" readonly="readonly"
+						tabindex="-1"> <span class="formentry-errmsg"
+						id="alertnscdmd"></span>
+				</div>
+			</div>
+
+
+
+
+		</div>
+		<div class="clearfix"></div>
+		<br> <br>
+		<div id="idButton" class="form-group">
+			<div class="col-sm-offset-1 col-sm-11">
+				<button type="button" class="pull-left btn addbtn" tabindex="17"
+					id="idAddFixedIncome">SAVE</button>
+				<button type="reset" id="undo" class="pull-left btn addbtn"
+					tabindex="18" onclick="undoChange()">UNDO</button>
+			</div>
+		</div>
+		<div id="focusguard-2" tabindex="20"></</div>
+	</form>
+</div>
+
+
+
+
+

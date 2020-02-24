@@ -1,0 +1,46 @@
+<script type="text/javascript" src="../../Common/assets/js-library/jquery.1.11.1.js"></script>
+<script src="invest/js/ckyc.js"></script>
+<script src="clientInfo/js/common.js"></script>
+<div class="cicontainer">
+
+    <table class="verificationpath" style="margin-left: -17px;">
+        <tr>
+            <td style="width: 15%;"><button type="submit" style="width:96%" class="form-control addbtn pn" tabindex="540">CKYC</button></td>
+            <td><img src="../Common/assets/images/bluearrow.png" style="width:85%"></td>
+            <td style="width: 14%;"><button type="submit" style="width:101%;" class="form-control greywhite" tabindex="540" disabled>CC Creation</button></td>
+            <td><img src="../Common/assets/images/bluearrow.png" style="width:93%"></td>
+            <td style="width: 13%;"><button type="submit" style="width:101%" class="form-control greywhite" tabindex="540" disabled>FATCA</button></td>
+            <td><img src="../Common/assets/images/bluearrow.png" style="width:93%"></td>
+            <td style="width: 11%;"><button type="submit" style="width:141%" class="form-control greywhite" tabindex="540" disabled>ISIP</button></td>
+        </tr>
+    </table>
+    <br/><br/>
+
+    <div class="col-sm-7" style="text-align: left;z-index:1;margin-left: -4px;padding-top: 7px;margin-top:-13px">
+        <label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px;">Pan Number*: </label><br/>
+        <input type="text" style="pointer-events:none;opacity:0.6;width:16em" placeholder="Pan Number" class="form-control" id="pan" required/>
+    </div>
+
+    <br/>
+    <div class="col-sm-7" style="text-align: left;z-index:1;margin-left: -4px;padding-top: 7px;margin-top:-13px"> <br/><br/>
+        <button type="button" style="width:40%" class="form-control addbtn gotocc" tabindex="540">Submit & Next</button>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        $(".gotocc").click(function() {
+            /*if(("#pan").value ==""){
+            alert("hi");
+            }*/
+            $("#idInvest").empty();
+            $(".dashboardheading").html("Client Code");
+            $("#idInvest").load("invest/cccreation.html");
+
+            /* $("#dashbord").empty();
+            $(".dashboardheading").html("FATCA Declaration");
+            $("#dashbord").load("invest/fatca.html"); */
+
+        });
+
+    });
+</script>

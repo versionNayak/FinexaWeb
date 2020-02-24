@@ -1,0 +1,305 @@
+<script src="plan/fp/js/viewContingencyFund.js"></script>
+<script src="plan/fp/js/common.js"></script>
+<style>
+	.top30negtive[style]{
+		top: -30px !important;
+	}
+    .top50negtive[style]{
+        top: -50px !important;
+    }
+</style>
+<link href="../Common/assets/css/style.css" rel="stylesheet">
+<div id="jssor_20" class="height413px networth1">
+	<div data-u="slides" class="slider9" style="height: 400px; top: 30px">
+		<div>
+			<div data-u="image">
+
+				<!-- <div id="idMaxnetdetails" class="popup" style="position: relative; top: 56px; left: -10px">
+				</div> -->
+				<br>
+				<div id="contingencytblwrapper">
+					<table width="70%" class="contingencytbl"
+						style="z-index: 10 !important; margin-top: 14px">
+						<thead>
+							<tr class="nonglidtotal">
+								<th>Age</th>
+								<th>Contingency Fund</th>
+							</tr>
+						</thead>
+						<tbody id="idContingencyFund">
+							<tr>
+								<td>The contingency fund required for the year <span
+									id="currentYear"> </span> is <span id="expenseDetail"></span>
+									which is Rs
+								</td>
+								<td id="idContingencyFundRequired"></td>
+							</tr>
+							<tr>
+								<td>The contingency fund allocated for the year <span
+									id="currentYearAllo"></span> is Rs
+								</td>
+								<td id="idContingencyFundAllocated"></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr class="nonglidtotal">
+								<td><b>Year</b></td>
+								<td><b>Contingency Fund corpus allocated</b></td>
+							</tr>
+						<tbody id="idTableContingency">
+						</tbody>
+					</table>
+				</div>
+
+				<br />
+
+				<table width="49%" style="margin-left: 223px">
+					<tr>
+						<td><input type="submit" id="download_contingency_fund"
+							value="Download Projections" class="form-control" /></td>
+					</tr>
+				</table>
+
+				<br />
+
+				<div class="row">
+					<div class="col-lg-12">
+						<div id="netsurplusfp" style="margin-left: 47px; width: 70%"></div>
+					</div>
+				</div>
+			</div>
+			<button data-u="thumb">Contingency fund</button>
+		</div>
+
+		<div>
+			<div data-u="image">
+
+				<!-- <div id="idMaxtnproduct" class="popup" style="position: relative; top: 40px; left: 170px">
+					<img src="../Common/assets/images/maximg.png" class="maxbtn"/>
+				</div>
+
+				<h4 style="margin-left: 47px; margin-top: 36px"></h4>
+				<br>
+				<table class="marginleft8px" id="idTableProdReco" style="width: 91%; margin-left: 33px">
+					<thead>
+						<tr>
+							<th class="textaligncenter">Sub Asset Class</th>
+							<th class="textaligncenter">Sub Asset Allocation (%)</th>
+							<th class="width17per textaligncenter">Recommended Product</th>
+							<th class="width17per textaligncenter">Product Allocation
+								(%)</th>
+							<th class="textaligncenter">Select All</th>
+							<th class="textaligncenter width12per">Lumpsum Amount</th>
+						</tr>
+					</thead>
+					<tbody id="idProductTable">
+
+					</tbody>
+				</table> -->
+				<table style="margin-left: 66px;margin-top: 32px;width: 54em;" class="keyassumptions">
+				<thead>
+					<tr><th>S.No.</th><th>Saved Date</th><th style="text-align:center !important">Action</th>
+				</tr></thead>
+				<tbody id = "idProductRecoDetailsTable">
+<!-- <tr><td>1</td><td>2/4/2019</td><td style="text-align:center !important"><a id="idMaxtnproduct" class="popup">View</a> <a>Download</a> <a>Invest</a></td>
+	</tr> --></tbody>
+
+
+</table>
+
+<input type="submit" class="pull-left btn addbtn" value="Generate" id = "idGenerate" style="margin-left:321px;margin-top: 19px;"/> 
+				
+				
+			</div>
+			<button data-u="thumb">Product Recommendation</button>
+		</div>
+
+
+	</div>
+	<!-- Thumbnail Navigator -->
+	<div data-u="thumbnavigator" class="jssort20" data-autocenter="1">
+		<!-- Thumbnail Item Skin Begin -->
+		<div data-u="slides">
+			<div data-u="prototype" class="p">
+				<div>
+					<div data-u="thumbnailtemplate"></div>
+				</div>
+				<div></div>
+			</div>
+		</div>
+		<!-- Thumbnail Item Skin End -->
+	</div>
+	<!-- Arrow Navigator -->
+	<span data-u="arrowleft" class="jssora05l Expensesleft"><img
+		src="../Common/assets/images/leftarrow.png" /></span> <span
+		data-u="arrowright" class="jssora05r Expensesright"><img
+		src="../Common/assets/images/rightarrow.png" /></span>
+</div>
+
+<!--expenses projection-->
+<div id="idPopnetworth" class="modal">
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close" id="close_modal1" style="margin-top: -5px">&times;</span>
+			<h4 style="margin-top: 5px">Contingency Fund</h4>
+			<h2></h2>
+		</div>
+		<div class="modal-body">
+			<h4 style="margin-left: 47px; margin-top: 36px">Contingency Fund</h4>
+
+			<div id="contingencytblwrappermodal">
+				<table width="58%" class="libilitiestbl networthsmry"
+					style="z-index: 10 !important; margin-top: 14px">
+					<thead>
+						<tr class="nonglidtotal">
+							<th>Age</th>
+							<th>Contingency Fund</th>
+						</tr>
+					</thead>
+					<tbody id="idContingencyModal">
+						<tr>
+							<td>The contingency fund required for the year <span
+								id="currentYearModal"> </span> is <span id="expenseDetailModal">
+							</span></td>
+							<td id="idContingencyFundRequiredModal"></td>
+						</tr>
+						<tr>
+							<td>The contingency fund allocated for the year <span
+								id="currentYearAlloModal"> </span> is Rs
+							</td>
+							<td id="idContingencyFundAllocatedModal"></td>
+						</tr>
+
+						<tr class="nonglidtotal">
+							<td><b>Year</b></td>
+							<td><b>Contingency Fund corpus allocated</b></td>
+						</tr>
+					<tbody id="idTableContingencyModal">
+					</tbody>
+				</table>
+			</div>
+
+			<br />
+
+			<table width="49%" style="margin-left: 223px">
+				<tr>
+					<td><input type="submit" id="download_contingency_fund_modal"
+						value="Download Projections" class="form-control" /></td>
+				</tr>
+			</table>
+
+			<br /> <br />
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="col-lg-6">
+						<div id="netsurpluspopfp"
+							style="margin-left: 120px; margin-left: 47px;"></div>
+					</div>
+					<br />
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="idPopUpProduct" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+	<span class = "close" id="closePopup">&times;</span>
+      <h2></h2>
+    </div>
+    <div class="modal-body">
+	<table width="102%"  class="marginleft8px productbl">
+	<thead>
+		<tr>
+			<th class="textaligncenter">Sub Asset Class
+			</th>
+			<th class="textaligncenter">Sub Asset Allocation (%)
+			</th>
+			<th class="width17per textaligncenter">Recommended Product
+			</th>
+			<th class="width17per textaligncenter">Product Allocation (%)
+			</th>
+			<!-- <th class="textaligncenter">Select All
+			</th> -->
+			<th class="textaligncenter width12per">Lumpsum Amount
+			</th>
+			<!-- <th class="textaligncenter">SIP Amount
+			</th>
+			<th class="textaligncenter">SIP Tenure
+			</th> -->
+		</tr>
+	</thead>
+		<tbody id = "idSavedProductTable">
+	</tbody>
+</table>
+</div>
+	
+    <div class="modal-footer">
+      <h3></h3>
+	</div>
+
+  </div>
+
+</div>
+
+<div id="idPopUpProductGenerate" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+	<span class = "close" id = "idCloseGenerate">&times;</span>
+      <h2></h2>
+    </div>
+    <div class="modal-body">
+	<table width="102%"  class="marginleft8px productbl">
+	<thead>
+		<tr>
+			<th class="textaligncenter">Sub Asset Class
+			</th>
+			<th class="textaligncenter">Sub Asset Allocation (%)
+			</th>
+			<th class="width17per textaligncenter">Recommended Product
+			</th>
+			<th class="width17per textaligncenter">Product Allocation (%)
+			</th>
+			<th class="textaligncenter">Select All
+			</th>
+			<th class="textaligncenter width12per">Lumpsum Amount
+			</th>
+			<!-- <th class="textaligncenter">SIP Amount
+			</th>
+			<th class="textaligncenter">SIP Tenure
+			</th> -->
+		</tr>
+	</thead>
+		<tbody id = "idSavedProductTableGenerate">
+	</tbody>
+</table>
+<div style="margin-left: 11em;">
+<input type="submit" class="pull-left btn addbtn" value="Save" id = "idProductRecoSave" style="margin-top: 28px;width:9em;font-style:bold;float:right;margin-left:20em"/> 
+</div>
+<br/><br/><br/><br/><br/><br/>
+</div>
+	
+    <div class="modal-footer">
+      <h3></h3>
+	</div>
+
+  </div>
+
+</div>	
+

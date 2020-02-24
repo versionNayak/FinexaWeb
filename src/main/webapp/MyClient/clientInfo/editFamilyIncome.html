@@ -1,0 +1,323 @@
+<link href="../Common/assets/css/finexa.css" rel="stylesheet">
+<script src="clientInfo/js/common.js"></script>
+<script src="clientInfo/js/validateFamilyIncome.js"></script>
+<script src="clientInfo/js/validationForAll.js"></script>
+<script src="clientInfo/js/editFamilyIncome.js"></script>
+<div class="cicontainer">
+	<div>
+		<form class="form-horizontal" action="#">
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-11">
+					<span class="formentry-errmsg" id="alertform"></span>
+				</div>
+			</div>
+			<div class="form-group form-group-lg">
+				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-8 asset-owner-wrapper">
+					<label>Family Member:</label><br />
+					<table class="familymembertbl" width="20px">
+						<tr class="mem_icon" id="familyMemberImage">
+							<!-- <td style="padding-top: 9px"><img
+								src="../common/assets/images/icons/Girl-A.png"
+								class="assetOwner4_img" alt="Daughter" tabindex="230" />
+								Daughter Anvi</td> -->
+						</tr>
+					</table>
+				</div>
+			</div>
+			<hr class="full-width-divider">
+			<label class="col-sm-1 control-label"></label>
+			<div class="col-md-10 no_padding">
+				<div>
+					<input name="option" id="idOptionI" value="I" type='radio' />
+					<span id="idOptionISpan">Individual Income Head</span>
+					<input name="option" id="idOptionT" value="T" type='radio' />
+					<span id="idOptionTSpan">Total Income</span>
+					<input type="hidden" id="idOptionHidden" name="optionHidden">
+				</div>
+				<br> <br>
+				<div id='show-me' style='display:none'>
+					<table width="100%" class="retirementview" id="idIncomeTable">
+						<tr class="nonglidtotal">
+							<th></th>
+							<th>Amount (in Rs.)</th>
+							<th>Frequency</th>
+							<th>Reference Month</th>
+							<th>Year till income will continue</th>
+						</tr>
+						<tbody>
+						<tr>
+							<td>Salary:</td>
+							<td><input type="hidden" id="idIncomeIdSalary"
+								name="incomeIdSalary" value="0" /> <input type="hidden"
+								id="idIncomeTypeSalary" name="IncomeTypeSalary" value="1" /> <input
+								type="text" id="idSalaryAmount" name="salaryAmount"
+								class="form-control input-width-income-expense-add-amount"
+								placeholder="Salary Amount" tabindex="270" /></td>
+							<td><span class="form-static-value"> <select
+									class="form-control input-width-income-expense-add-frequency" id="idSalaryFrequency"
+									name="salaryFrequency" required="required" tabindex="271"
+									onchange="setRefMonth(this)">
+
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small"
+									id="idSalaryReferenceMonth" name="salaryReferenceMonth"
+									disabled="" required="required" tabindex="272"
+									disabled="disabled">
+
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small" id="idSalaryYearTill"
+									name="salaryYearTill" required="required" tabindex="273">
+
+								</select>
+							</span></td>
+						</tr>
+						<tr>
+							<td>Bonus/Variable Pay:</td>
+							<td><input type="hidden" id="idIncomeIdBonus"
+								name="incomeIdBonus" value="0" /> <input type="hidden"
+								id="idIncomeTypeBonus" name="IncomeTypeBonus" value="2" /> <input
+								type="text" id="idBonusAmount" name="bonusAmount"
+								class="form-control input-width-income-expense-add-amount"
+								placeholder="Bonus Amount" tabindex="274" /></td>
+							<td><span class="form-static-value"> <select
+									class="form-control input-width-income-expense-add-frequency" id="idBonusFrequency"
+									name="bonusFrequency" required="required" tabindex="275"
+									onchange="setRefMonth(this)">
+
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small" disabled=""
+									id="idBonusReferenceMonth" name="bonusReferenceMonth"
+									required="required" tabindex="276" disabled="disabled">
+
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small" id="idBonusYearTill"
+									name="bonusYearTill" required="required" tabindex="277">
+
+								</select>
+							</span></td>
+						</tr>
+
+						<tr>
+							<td>Business Income:</td>
+							<td><input type="hidden" id="idIncomeIdBusiness"
+								name="incomeIdBusiness" value="0" /> <input type="hidden"
+								id="idIncomeTypeBusiness" name="IncomeTypeBusiness" value="3" />
+								<input type="text" id="idBusinessIncomeAmount"
+								name="businessIncomeAmount"
+								class="form-control input-width-income-expense-add-amount"
+								placeholder="Business Income" tabindex="278" /></td>
+							<td><span class="form-static-value"> <select
+									class="form-control input-width-income-expense-add-frequency"
+									id="idBusinessIncomeFrequency" name="businessIncomeFrequency"
+									required="required" tabindex="279" onchange="setRefMonth(this)">
+
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small"
+									id="idBusinessIncomeReferenceMonth"
+									name="businessIncomeReferenceMonth" disabled=""
+									required="required" tabindex="280" disabled="disabled">
+
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small"
+									id="idBusinessIncomeYearTill" name="businessIncomeYearTill"
+									required="required" tabindex="281">
+
+								</select>
+							</span></td>
+						</tr>
+
+						<tr>
+							<td>Professional Fees:</td>
+							<td><input type="hidden" id="idIncomeIdProfessional"
+								name="incomeIdProfessional" value="0" /> <input type="hidden"
+								id="idIncomeTypeProfessional" name="IncomeTypeProfessional"
+								value="4" /> <input type="text" id="idProfessionalFeesAmount"
+								name="professionalFeesAmount"
+								class="form-control input-width-income-expense-add-amount"
+								placeholder="Professional Fees" tabindex="282" /></td>
+							<td><span class="form-static-value"> <select
+									class="form-control input-width-income-expense-add-frequency"
+									id="idProfessionalFeesFrequency"
+									name="professionalFeesFrequency" required="required"
+									tabindex="283" onchange="setRefMonth(this)">
+
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small"
+									id="idProfessionalFeesReferenceMonth"
+									name="professionalFeesReferenceMonth" disabled=""
+									required="required" tabindex="284" disabled="disabled">
+
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small"
+									id="idProfessionalFeesYearTill" name="professionalFeesYearTill"
+									required="required" tabindex="285">
+
+								</select>
+							</span></td>
+						</tr>
+						<tr>
+							<td>Rental Income:</td>
+							<td><input type="hidden" id="idIncomeIdRental"
+								name="incomeIdProfessional" value="0" /> <input type="hidden"
+								id="idIncomeTypeRental" name="IncomeTypeProfessional" value="5" />
+								<input type="text" id="idRentalIncomeAmount"
+								name="rentalIncomeAmount"
+								class="form-control input-width-income-expense-add-amount"
+								placeholder="Rental Income Amount" tabindex="286" /></td>
+							<td><span class="form-static-value"> <select
+									class="form-control input-width-income-expense-add-frequency"
+									id="idRentalIncomeFrequency" name="rentalIncomeFrequency"
+									onchange="setRefMonth(this)" required="required" tabindex="287">
+
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small"
+									id="idRentalIncomeReferenceMonth"
+									name="rentalIncomeReferenceMonth" disabled=""
+									required="required" tabindex="288" disabled="disabled">
+
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small"
+									id="idRentalIncomeYearTill" name="rentalIncomeYearTill"
+									required="required" tabindex="289">
+
+								</select>
+							</span></td>
+						</tr>
+
+						<tr>
+							<td>Pension:</td>
+							<td><input type="hidden" id="idIncomeIdPension"
+								name="incomeIdPension" value="0" /> <input type="hidden"
+								id="idIncomeTypePension" name="IncomeTypePension" value="6" />
+								<input type="text" id="idPensionAmount" name="pensionAmount"
+								class="form-control input-width-income-expense-add-amount"
+								placeholder="Pension Amount" tabindex="290" /></td>
+							<td><span class="form-static-value"> <select
+									class="form-control input-width-income-expense-add-frequency" id="idPensionFrequency"
+									name="pensionFrequency" onchange="setRefMonth(this)"
+									required="required" tabindex="291">
+
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small"
+									id="idPensionReferenceMonth" name="pensionReferenceMonth"
+									disabled="" required="required" tabindex="292"
+									disabled="disabled">
+
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small" id="idPensionYearTill"
+									name="pensionYearTill" required="required" tabindex="293">
+
+								</select>
+							</span></td>
+						</tr>
+
+						<tr>
+							<td>Others:</td>
+							<td><input type="hidden" id="idIncomeIdOthers"
+								name="incomeIdOthers" value="0" /> <input type="hidden"
+								id="idIncomeTypeOthers" name="IncomeTypeOthers" value="7" /> <input
+								type="text" id="idOtherIncomeAmount" name="otherIncomeAmount"
+								class="form-control input-width-income-expense-add-amount"
+								placeholder="Other Income Amount" tabindex="294" /></td>
+							<td><span class="form-static-value"> <select
+									class="form-control input-width-income-expense-add-frequency"
+									id="idOtherIncomeFrequency" name="otherIncomeFrequency"
+									onchange="setRefMonth(this)" required="required" tabindex="295"
+									onchange="setRefMonth(this)">
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small"
+									id="idOtherIncomeReferenceMonth"
+									name="otherIncomeReferenceMonth" disabled=""
+									required="required" tabindex="296" disabled="disabled">
+								</select>
+							</span></td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small"
+									id="idOtherIncomeYearTill" name="otherIncomeYearTill"
+									required="required" tabindex="297">
+								</select>
+							</span></td>
+						</tr>
+
+						<tr>
+							<td>Total Annual Income(Rs):</td>
+							<td><input type="text" id="idRunningTotal"
+								name="runningTotal"
+								class="form-control input-width-medium-min input-width-owner input-width-medium"
+								disabled="" placeholder="" tabindex="298" /></td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+
+
+				<div id='show-me-two' style='display: none;'>
+					<table width="100%" class="retirementview" id="idIncomeTable1">
+						<tr>
+							<td>Total Monthly Income(Rs.):</td>
+							<td><input type="hidden" id="idIncomeIdTotal"
+								name="incomeIdTotal" value="0" /> <input type="hidden"
+								id="idIncomeTypeTotal" name="IncomeTypeTotal" value="8" /> <input
+								type="hidden" id="idTotalIncomeReferenceMonth"
+								name="TotalIncomeReferenceMonth" value="13" /> <input
+								type="hidden" id="idTotalIncomeFrequency"
+								name="TotalIncomeFrequency" value="12" /> <input type="text"
+								id="idTotalIncomeAmount" name="totalIncomeAmount"
+								class="form-control input-width-income-expense-add-amount1"
+								placeholder="" tabindex="299" /></td>
+							<td>Year till income will continue:</td>
+							<td><span class="form-static-value" id="hide320"> <select
+									class="form-control input-width-small"
+									id="idTotalIncomeYearTill" name="totalIncomeYearTill"
+									required="required" tabindex="300">
+								</select>
+							</span></td>
+						</tr>
+					
+						 
+					</table>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<br> <br>
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-11">
+					<!-- <button type="submit" id="save" class="pull-left btn addbtn" tabindex="540">SAVE</button> -->
+					<button type="button" class="pull-left btn addbtn" id="save"
+						tabindex="540">Save</button>
+					<button type="button" id="idUndo" class="pull-left btn addbtn" tabindex="540">UNDO</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+

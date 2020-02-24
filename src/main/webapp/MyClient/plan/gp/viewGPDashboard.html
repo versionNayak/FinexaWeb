@@ -1,0 +1,557 @@
+<script src="plan/gp/js/viewGPDashboard.js"></script>
+<script src="plan/gp/js/common.js"></script>
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+
+
+<div class="head">
+    <span id="idHeading" class="idHeading">Goals Details </span>
+    <!-- <span onclick="openNav1()" class="fa-fw pull-right glyphicon glyphicon-align-justify"></span> -->
+    <span style="cursor: pointer;" onclick="openPDFPreview();" class=" fa-fw pull-right glyphicon glyphicon-print" id="idGoalDownloadReport"></span>
+    <!-- <div id="idGPSidenav" class="sidenav1" style="display: none">
+		<a href="#" class="goalsdetails" onclick="closeNav1()">Goals Details</a>
+		<a href="#" class="riskprofile" onclick="closeNav1()">Risk Profile</a>
+		<a href="#" class="recommended" onclick="closeNav1()">Recommended Asset Allocation</a>
+		<a href="#" class="amount" onclick="closeNav1()">Amount Needed</a>
+		<a href="#" class="product" onclick="closeNav1()">Product Recommendation</a>
+		<a href="#" id = "idYEarly" class="yearly" onclick="closeNav1()">Yearly Cashflows</a>
+		<a href="#" class="goalinput" onclick="closeNav1()">Goal Input</a>
+	</div> -->
+</div>
+
+<!-- <div class="Goals"></div> -->
+<div id="idBody" class="idBody"></div>
+
+<div class="glidnonglid" style="display: inline-flex;">
+    <table class="glidnonglidselection" width="100%">
+        <tr>
+            <td><input type="radio" name="selectglid" value="glidpthrdo" style="position: sticky" checked="true"></input>
+            </td>
+            <td style="text-align: left; vertical-align: bottom;"><label>Glide
+					Path</label></td>
+            <td><input type="radio" name="selectglid" value="nonglidrdo" style="position: relative"></input>
+            </td>
+            <td style="text-align: left; vertical-align: bottom;"><label>Non
+					Glide Path</label></td>
+        </tr>
+    </table>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Goal Planing Reports</h4>
+            </div>
+            <div class="modal-body">
+                <div class="printPDFButton pull-right"></div>
+                <br clear="all">
+                <div id="printArea">
+
+                    <p>
+                        <input type="checkbox" name="report[]" checked="checked" value="goalDetails" id="goalDetails"> Goal Details
+                    </p>
+                    <p>
+                        <input type="checkbox" name="report[]" checked="checked" value="riskProfile" id="riskProfile"> Risk Profile
+                    </p>
+                    <p>
+                        <input type="checkbox" name="report[]" checked="checked" value="recommendedAssetAllocation" id="recommendedAssetAllocation"> Recommended Asset Allocation
+                    </p>
+                    <p>
+                        <input type="checkbox" name="report[]" checked="checked" value="amountNeeded" id="amountNeeded"> Amount Needed
+                    </p>
+                    <p>
+                        <input type="checkbox" name="report[]" checked="checked" value="productRecommendation" id="productRecommendation"> Product Recommendation
+                    </p>
+                    <p>
+                        <input type="checkbox" name="report[]" checked="checked" value="yearlyCashflows" id="yearlyCashflows"> Yearly Cashflows
+                    </p>
+                    <p>
+                        <input type="checkbox" name="report[]" checked="checked" value="goalInput" id="goalInput"> Goal Input
+                    </p>
+
+                </div>
+                <br clear="all">
+                <div class="printPDFButton pull-right">
+                    <input type="button" onclick="generateDocReport();" name="downloadDoc" id="downloadDoc" value="Download Report">
+                </div>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var call_type = false;
+    var loggedUser = JSON.parse(sessionStorage.getItem("LOGGED_IN_USER"));
+    var loggedClient;
+    if (loggedUser == null) {
+        loggedClient = JSON.parse(sessionStorage.getItem("LOGGED_IN_CLIENT"));
+    } else {
+        loggedClient = sessionStorage.getItem("LOGGED_IN_CLIENT");
+    }
+
+    var selectedReports = new Array();
+    var counter;
+    var timestamp;
+    var responseBack;
+
+    if (loggedUser == null && loggedClient != null) {
+        //$('.yearly').hide();
+        //$("#idYEarly").hide();
+        document.getElementById('idYEarly').style.display = 'none';
+        $('#idGoalDownloadReport').hide()
+    } else {
+        $('.yearly').show();
+    }
+    var reportData = {
+        "clientId": vClientId,
+        "goalId": goalId,
+        "clientDOB": sessionStorage.getItem("SELECTED_CLIENT_DOB"),
+        "mode": selectedMode,
+        "lumpsumValue": lumpsumForSIP,
+        "glideNonglideMode": vglideNonglideMode,
+        "amountNeededReportDTO": {
+            "lumpsumInvestmentToday": 0,
+            "sipInvestmentRequiredToday": 0,
+            "selectedOption": "idSIPRadio",
+            "lumpsumVal": 0.00,
+            "sipVal": 0.00,
+            "amountMode": 2
+        },
+        "productRecommendationDTOlist": [],
+        "selectedReports": [],
+        "clientMasterDTO": {},
+        "advisorDTO": {},
+        "timestamp": timestamp
+    };
+
+    function generateDocReport() {
+        responseBack = true;
+        loadLoader();
+        reportData.timestamp = $.now();
+
+
+        console.log("timestamp " + reportData.timestamp);
+
+        selectedReports.length = 0;
+
+        $("input[name='report[]']:checked").each(function() {
+            console.log("selectedReports.length " + selectedReports.length);
+
+
+            selectedReports.push($(this).val());
+
+            console.log("selectedReports.length " + selectedReports.length);
+
+
+
+
+        });
+
+        window.reportData.selectedReports = selectedReports;
+
+        console.log(JSON.stringify(window.reportData));
+
+        setTimeout(function() {
+            $.ajax({
+                type: 'POST',
+                url: REQUEST_URL_GP + '/getClientGoalReportInDOCX',
+                async: true,
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(window.reportData),
+                dataType: "json",
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', "Bearer " + sessionStorage.getItem("sessionID"));
+                },
+                success: function(resp) {
+
+                    var fname = "Goal-Report" + reportData.timestamp + "(" + clientName + ").docx";
+                    var downloadURL = REQUEST_URL_GP + '/download-Goal-report?filename=' + resp.fileName;
+
+                    var a = document.createElement("a");
+                    document.body.appendChild(a);
+                    a.style = "display: none";
+                    var fileName = "" + resp.fileName + "";
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", downloadURL, true);
+                    xhr.setRequestHeader('Authorization', "Bearer " + sessionStorage.getItem("sessionID"));
+                    xhr.responseType = "blob";
+                    xhr.onload = function() {
+                        console.log("xhr.status " + xhr.status);
+                        if (xhr.status == 401) {
+                            //bootbox.alert({
+                            //    message: "You are not authenticated",
+                            //    callback: function () {
+                            //	  window.location = "../index.html";
+                            //    }
+                            //})
+                        } else if (xhr.status == 403) {
+                            msg = 'you dont have permission to access on this server.';
+                            alert(msg);
+                        } else if (xhr.status === 200) {
+                            //Download start
+                            // IE
+                            if (window.navigator.msSaveOrOpenBlob) {
+                                console.log("IE")
+                                var blob = new Blob([xhr.response], {
+                                    type: 'application/vnd.ms-word'
+                                });
+                                window.navigator.msSaveOrOpenBlob(blob, fileName);
+
+                                a.click();
+                            } else //Chrome and safari
+                            {
+                                console.log("Chrome and safari")
+                                var url = window.URL.createObjectURL(xhr.response);
+                                a.href = url;
+                                a.download = fileName;
+                                a.click();
+                                window.URL.revokeObjectURL(url);
+                            }
+
+
+                            //Download End
+
+                            //delete file from temp start
+                            $.ajax({
+                                type: 'GET',
+                                url: REQUEST_URL_GP + '/reportGoalDelete?filename=' + resp.fileName,
+                                async: false,
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                beforeSend: function(xhr) {
+                                    xhr.setRequestHeader('Authorization', "Bearer " + sessionStorage.getItem("sessionID"));
+                                },
+                                success: function(data) {
+                                    console.log(data.msg)
+                                },
+                                error: function(jqXHR, errorData) {
+                                    if (jqXHR.status == 401) {
+                                        var error, error_description;
+                                        error = jqXHR.responseJSON.error_description;
+                                        error_description = "Access token expired: " + sessionStorage.getItem("sessionID");
+                                        if (error === error_description) {
+                                            msg = "Your session has expired.Please log in again"
+                                            bootbox.alert({
+                                                message: msg,
+                                                callback: function() {
+                                                    window.location = "../index.html";
+                                                }
+                                            })
+                                        }
+                                        if (error === "unauthorized") {
+                                            msg = "Full authentication is required to access this resource",
+                                                bootbox.alert({
+                                                    message: msg
+                                                })
+                                        }
+
+                                    } else if (xhr.status == 403) {
+                                        msg = 'you don�t have permission to access �/� on this server.';
+                                        alert(msg);
+                                    }
+                                }
+                            });
+                            //delete file from temp End
+                        }
+
+                    };
+
+                    xhr.send();
+                    hideLoader();
+                    selectedReports = [];
+
+
+
+                },
+                error: function(jqXHR, errorData) {
+                    if (jqXHR.status == 401) {
+                        var error, error_description;
+                        error = jqXHR.responseJSON.error_description;
+                        error_description = "Access token expired: " + sessionStorage.getItem("sessionID");
+                        if (error === error_description) {
+                            msg = "Your session has expired.Please log in again"
+                            bootbox.alert({
+                                message: msg,
+                                callback: function() {
+                                    window.location = "../index.html";
+                                }
+                            })
+                        }
+                        if (error === "unauthorized") {
+                            msg = "Full authentication is required to access this resource",
+                                bootbox.alert({
+                                    message: msg
+                                })
+                        }
+                    } else if (xhr.status == 403) {
+                        msg = 'you don�t have permission to access �/� on this server.';
+                        alert(msg);
+                    } else {
+                        counter = 1;
+                        myVar = setInterval(function() {
+
+                            var fileName = "Goal-Report" + reportData.timestamp + "(" + clientName + ").docx";
+
+                            console.log("fName " + fileName);
+
+                            if (responseBack === true) {
+                                var downloadURL = REQUEST_URL_GP + '/download-Goal-report?filename=' + fileName;
+                                //var downloadURL = REQUEST_URL_GP + '/download-Goal-report?filename='+fileName+'&counter='+counter;
+                                var a = document.createElement("a");
+                                document.body.appendChild(a);
+                                a.style = "display: none";
+                                //var fileName = ""+ resp.fileName + "";
+
+
+                                var xhr = new XMLHttpRequest();
+                                xhr.open("GET", downloadURL, true);
+                                xhr.setRequestHeader('Authorization', "Bearer " + sessionStorage.getItem("sessionID"));
+                                //xhr.open( "GET", 'http://192.168.1.103:8080/FinexaService/download?clientId='+vClientId+'&mode=monthly', true);
+
+                                xhr.responseType = "blob";
+                                xhr.onload = function() {
+                                    console.log("xhr.status " + xhr.status);
+                                    if (xhr.status == 401) {
+                                        //bootbox.alert({
+                                        //    message: "You are not authenticated",
+                                        //    callback: function () {
+                                        //	  window.location = "../index.html";
+                                        //    }
+                                        //})
+                                    }
+                                    if (xhr.status === 200) {
+                                        //Download start
+                                        // IE
+                                        if (window.navigator.msSaveOrOpenBlob) {
+                                            console.log("IE")
+                                            var blob = new Blob([xhr.response], {
+                                                type: 'application/vnd.ms-word'
+                                            });
+                                            window.navigator.msSaveOrOpenBlob(blob, fileName);
+
+                                            a.click();
+                                        } else //Chrome and safari
+                                        {
+                                            console.log("Chrome and safari")
+                                            var url = window.URL.createObjectURL(xhr.response);
+                                            a.href = url;
+                                            a.download = fileName;
+                                            a.click();
+                                            window.URL.revokeObjectURL(url);
+                                        }
+
+
+                                        //Download End
+                                        responseBack = false;
+                                        hideLoader();
+
+                                        //delete file from temp start==
+                                        $.ajax({
+                                            type: 'GET',
+                                            url: REQUEST_URL_GP + '/reportGoalDelete?filename=' + fileName,
+                                            async: false,
+                                            contentType: "application/json; charset=utf-8",
+                                            dataType: "json",
+                                            beforeSend: function(xhr) {
+                                                xhr.setRequestHeader('Authorization', "Bearer " + sessionStorage.getItem("sessionID"));
+                                            },
+                                            success: function(data) {
+                                                console.log(data.msg)
+                                            },
+                                            error: function(jqXHR, errorData) {
+                                                if (jqXHR.status == 401) {
+                                                    var error, error_description;
+                                                    error = jqXHR.responseJSON.error_description;
+                                                    error_description = "Access token expired: " + sessionStorage.getItem("sessionID");
+                                                    if (error === error_description) {
+                                                        msg = "Your session has expired.Please log in again"
+                                                        bootbox.alert({
+                                                            message: msg,
+                                                            callback: function() {
+                                                                window.location = "../index.html";
+                                                            }
+                                                        })
+                                                    }
+                                                    if (error === "unauthorized") {
+                                                        msg = "Full authentication is required to access this resource",
+                                                            bootbox.alert({
+                                                                message: msg
+                                                            })
+                                                    }
+                                                }
+                                            }
+                                        });
+                                        //delete file from temp end
+                                        clearInterval(myVar);
+
+                                    } else {
+                                        console.log("counter " + counter);
+                                        counter = counter + 1;
+                                        if (counter > 100) {
+                                            console.log("exit " + counter);
+
+                                            responseBack = false;
+
+                                            clearInterval(myVar);
+                                            return;
+                                        }
+                                    }
+                                };
+                                xhr.send();
+                            }
+                        }, 5000);
+
+                        selectedReports = [];
+                    }
+                }
+            });
+
+        }, 10);
+
+    }
+
+    function loadReportData() {
+
+        var local_data = {
+            "lumpsumInvestmentToday": 0,
+            "sipInvestmentRequiredToday": 0,
+            "selectedOption": "idSIPRadio",
+            "lumpsumVal": 0.00,
+            "sipVal": 0.00,
+            "amountMode": 2
+        };
+        var amountMode = 2;
+
+        if (sessionStorage.getItem("RecommendedAssetAllocation") != "" &&
+            sessionStorage.getItem("RecommendedAssetAllocation") != null) {
+            window.vglideNonglideMode = sessionStorage.getItem("RecommendedAssetAllocation");
+        }
+
+        if (sessionStorage.getItem("AmmounNeededInpData") != "" &&
+            sessionStorage.getItem("AmmounNeededInpData") != null
+        ) {
+            local_data = JSON.parse(sessionStorage.getItem("AmmounNeededInpData"));
+
+            //console.log(local_data);
+
+            if (local_data.selectedOption == "idLumpRadio") {
+                amountMode = 1;
+            } else if (local_data.selectedOption == "idSIPRadio") {
+                amountMode = 2;
+            } else if (local_data.selectedOption == "idLumpSIPRadio") {
+                amountMode = 3;
+            }
+            local_data.amountMode = amountMode;
+        } else {
+            local_data.amountMode = amountMode;
+        }
+
+        window.reportData.glideNonglideMode = window.vglideNonglideMode;
+        window.reportData.amountNeededReportDTO = local_data;
+        window.reportData.mode = amountMode;
+
+        if (sessionStorage.getItem("productRecommendation") != "" &&
+            sessionStorage.getItem("productRecommendation") != null) {
+            window.reportData.productRecommendationDTOlist = JSON.parse(sessionStorage.getItem("productRecommendation"));
+
+            for (var i = 0; i < window.reportData.productRecommendationDTOlist.length; i++) {
+                var productValue = window.reportData.productRecommendationDTOlist[i].productValue;
+                var sipAmount = window.reportData.productRecommendationDTOlist[i].sipAmount;
+                var sipTennure = window.reportData.productRecommendationDTOlist[i].sipTennure;
+
+                console.log(window.reportData.productRecommendationDTOlist[i]);
+                //	alert(window.reportData.productRecommendationDTOlist[i]);
+
+                for (var j = 0; j < productValue.length; j++) {
+                    productValue[j] = parseFloat(productValue[j]);
+                }
+
+                for (var j = 0; j < sipAmount.length; j++) {
+                    sipAmount[j] = parseFloat(sipAmount[j]);
+                }
+
+                for (var j = 0; j < sipTennure.length; j++) {
+                    sipTennure[j] = parseFloat(sipTennure[j]);
+                }
+
+                window.reportData.productRecommendationDTOlist[i].productValue = productValue;
+                window.reportData.productRecommendationDTOlist[i].sipAmount = sipAmount;
+                window.reportData.productRecommendationDTOlist[i].sipTennure = sipTennure;
+            }
+
+        }
+
+        $.ajax({
+            type: 'GET',
+            url: serviceIP + '/clientservice/clientMaster/' + vClientId,
+            async: true,
+            dataType: 'json',
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader('Authorization', "Bearer " + sessionStorage.getItem("sessionID"));
+            },
+            success: function(data) {
+                //	alert("data "+data);
+                console.log("data " + data.id);
+                clientName = data.salutation + " " + data.firstName + (data.middleName = "" ? " " : data.middleName + " ") + data.lastName;
+                sessionStorage.setItem("SELECTED_CLIENT_NAME", clientName),
+                    reportData.clientMasterDTO = data;
+            },
+            error: function(jqXHR, data) {
+                if (jqXHR.status == 401) {
+                    var error, error_description;
+                    error = jqXHR.responseJSON.error_description;
+                    error_description = "Access token expired: " + sessionStorage.getItem("sessionID");
+                    if (error === error_description) {
+                        msg = "Your session has expired.Please log in again"
+                        bootbox.alert({
+                            message: msg,
+                            callback: function() {
+                                window.location = "../index.html";
+                            }
+                        })
+                    }
+                    if (error === "unauthorized") {
+                        msg = "Full authentication is required to access this resource",
+                            bootbox.alert({
+                                message: msg
+                            })
+                    }
+                } else if (xhr.status == 403) {
+                    msg = 'you don�t have permission to access �/� on this server.';
+                    alert(msg);
+                }
+                bootbox.alert("Client Details Not Found");
+            }
+        });
+
+
+        window.reportData.advisorDTO = JSON.parse(sessionStorage.getItem("LOGGED_IN_USER"));
+    }
+
+    function openPDFPreview() {
+        loadReportData();
+        $('#myModal').modal('show');
+        $('.modal-dialog .modal-body .bootbox-body .riskleft,.modal-dialog .modal-body .bootbox-body .riskright').addClass("hidden");
+    }
+
+    function loadLoader() {
+        // var ineerHtml='<div style="width: 250px;height: 75px; text-align: center; position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; margin: auto; font-size: 16px; z-index: 10; color: rgb(255, 255, 255);"> <div> <h1 id="overlayLoadingText" style=" opacity:0.5; background: rgb(128, 191, 255) none repeat scroll 0% 0%; font-size: 14px; font-weight: bold; width: auto; padding: 10px; color: black;"><span class="fa fa-refresh fa-spin"></span> Processing</h1> </div></div><div id="overlayLoadingBG" style="background: rgb(0, 0, 0) none repeat scroll 0% 0%; opacity: 0; width: 100%; position: absolute; top: 0px; height: 100%;"></div>';
+        var ineerHtml = '<div style="width: 250px;height: 75px; text-align: center; position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; margin: auto; font-size: 16px; z-index: 10; color: rgb(255, 255, 255);"> <div> <h1 id="overlayLoadingText" style=" opacity:0.5; background: rgb(128, 191, 255) none repeat scroll 0% 0%; font-size: 14px; font-weight: bold; width: auto; padding: 10px; color: black;"> <img src="../Common/assets/images/icons/processing-gif-14.gif" alt="Loader" width="42" height="42"> Processing</h1> </div></div><div id="overlayLoadingBG" style="background: rgb(0, 0, 0) none repeat scroll 0% 0%; opacity: 0; width: 100%; position: absolute; top: 0px; height: 100%;"></div>';
+        // var ineerHtml='<div style="width: 250px;height: 75px; text-align: center; position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; margin: auto; font-size: 16px; z-index: 10; color: rgb(255, 255, 255);"> <div> <h1 id="overlayLoadingText" style=" opacity:0.5; background: rgb(128, 191, 255) none repeat scroll 0% 0%; font-size: 14px; font-weight: bold; width: auto; padding: 10px; color: black;">Processing... </h1> </div></div><div id="overlayLoadingBG" style="background: rgb(0, 0, 0) none repeat scroll 0% 0%; opacity: 0; width: 100%; position: absolute; top: 0px; height: 100%;"></div>';		
+
+        $("#overlayLoading").html(ineerHtml).css({
+            'display': 'block'
+        });
+    }
+
+    function hideLoader() {
+        $("#overlayLoading").css({
+            'display': 'none'
+        }).html("");
+    }
+</script>

@@ -1,0 +1,716 @@
+<script src="plan/pm/js/viewPortfolioFixedIncome.js"></script>
+<script src="plan/pm/js/common.js"></script>
+<script type="text/javascript" src="../Common/assets/js-library/moment.js"></script>
+<script type="text/javascript" src="../Common/assets/js-library/pagination.js"></script>
+<link rel="stylesheet" href="../Common/assets/css-library/bootstrap.min.css">
+<script type="text/javascript" src="../Common/assets/js-library/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../Common/assets/css-library/daterangepicker.css" />
+
+<style>
+    #jssor_22>div>div>div:nth-child(2)>div:nth-child(2) {
+        overflow: scroll !important;
+        width: 895px !important;
+        height: 414px !important;
+    }
+    
+    .top30negtive[style] {
+        top: -30px !important;
+    }
+</style>
+<script>
+    function cb(start, end) {
+        //alert("cb ");
+        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+    }
+    //cb(moment().subtract(29, 'days'), moment());
+    $('#reportrange').daterangepicker({
+        ranges: {
+            '': [moment(), moment()],
+            '1 Month': [moment().subtract(1, 'month'), moment()],
+            '3 Months': [moment().subtract(3, 'months'), moment()],
+            '6 Months': [moment().subtract(6, 'months'), moment()],
+            '1 Year': [moment().subtract(1, 'year'), moment()],
+            '3 Years': [moment().subtract(3, 'years'), moment()],
+            '5 Years': [moment().subtract(5, 'years'), moment()],
+        }
+    }, cb);
+    $('#reportrange span').on('DOMSubtreeModified', function() {
+        var text = $('#reportrange span').text();
+        mfCustomClickFI(text);
+    });
+
+    $(".applyBtn").click(function() {
+
+        var text = $('#reportrange span').text();
+        //alert("mfCustomClickFI "+text);
+        mfCustomClickFI(text);
+    });
+</script>
+
+
+
+<div id="jssor_22" class="height413px">
+    <div data-u="slides" class="slider9" style="height: 416px; top: 30px;">
+        <div>
+            <div data-u="image">
+                <div id="idMaxcurrentaa" class="popup" style="position: relative; top: 7px; left: 103px;">
+                    <img src="../Common/assets/images/maximg.png" class="maxbtn" />
+                </div>
+                <table class="table overviewbyproduct" style="z-index: 10 !important; margin-top: 31px; margin-left: 15px" border="1">
+
+                    <thead>
+                        <tr class="nonglidtotal">
+
+                            <th style="text-align: left"></th>
+                            <th></th>
+                            <th colspan="3">Investment Portfolio</th>
+                            <th colspan="3">Returns</th>
+                            <th colspan="3">Maturity</th>
+
+                        </tr>
+
+                        <tr>
+                            <th style="text-align: left">Product</th>
+                            <th>Product Type</th>
+                            <th>Current Value</th>
+                            <th>Investment Value</th>
+                            <th>Gain/Loss</th>
+                            <th>Return Type</th>
+                            <th>CAGR/XIRR</th>
+                            <th>PTP Return</th>
+                            <th>Locked-In Upto Date</th>
+                            <th>Maturity Date</th>
+                            <th>Maturity Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody id="idDebtTBody">
+                        <tr>
+                            <td colspan="11" style="text-align: right; background-color: white"><a id="equitymoredebt"> Know More...</a></td>
+
+                        </tr>
+                </table>
+                <br />
+            </div>
+        </div>
+        <div>
+            <div data-u="image">
+                <div id="idmaxrecommendedaa" class="popup">
+                    <img src="../Common/assets/images/maximg.png" style="margin-right: 10px; margin-top: 22px" />
+                </div>
+                <table width="96%" class="recommendedtbl benchmarktblmarketcap" style="z-index: 10 !important; margin-top: 31px; margin-left: 27px" border="1">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th colspan="8" class="aligncenter">Benchmarks</th>
+                        </tr>
+                        <tr>
+                            <th>Average Maturity</th>
+                            <th>% Exposure in Portfolio</th>
+                            <th>Benchmarks</th>
+                            <th>1M</th>
+                            <th>3M</th>
+                            <th>6M</th>
+                            <th>1Y</th>
+                            <th>3Y</th>
+                            <th>5Y</th>
+                            <th>Risk (Std Dev.)*</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr></tr>
+                        <tr>
+                            <td><img src="../Common/assets/images/circle2.png" /> &nbsp;
+                                < 1 year</td>
+                                    <td>0.01%</td>
+                                    <td>CRISIL STBeX</td>
+                                    <td>0.0%</td>
+                                    <td>0.0%</td>
+                                    <td>0.0%</td>
+                                    <td>0.0%</td>
+                                    <td>0.0%</td>
+                                    <td>0.0%</td>
+                                    <td>0.0%</td>
+                        </tr>
+                        <tr>
+                            <td><img src="../Common/assets/images/circle3.png" /> &nbsp; > 1 year</td>
+                            <td>93.10%</td>
+                            <td>CRISIL Composite bond Index</td>
+                            <td>0.0%</td>
+                            <td>0.0%</td>
+                            <td>0.0%</td>
+                            <td>0.0%</td>
+                            <td>0.0%</td>
+                            <td>0.0%</td>
+                            <td>0.0%</td>
+                        </tr>
+                        <tr>
+                            <td><img src="../Common/assets/images/circle4.png" /> &nbsp; Others
+                            </td>
+                            <td>6.89%</td>
+                            <td>0.0%</td>
+                            <td>0.0%</td>
+                            <td>0.0%</td>
+                            <td>0.0%</td>
+                            <td>0.0%</td>
+                            <td>0.0%</td>
+                            <td>0.0%</td>
+                            <td>0.0%</td>
+                        </tr>
+                        <tr class="nonglidtotal">
+                            <td><b>Total</b></td>
+                            <td class="nonglidtotal"><b>NA </b></td>
+                            <td class="nonglidtotal"><b>0.0%</b></td>
+                            <td class="nonglidtotal"><b>0.0%</b></td>
+                            <td class="nonglidtotal"><b> 0.0%</b></td>
+                            <td class="nonglidtotal"><b> 0.0%</b></td>
+                            <td class="nonglidtotal"><b> 0.0%</b></td>
+                            <td class="nonglidtotal">0.0%</td>
+                            <td class="nonglidtotal">0.0%</td>
+                            <td class="nonglidtotal">0.0%</td>
+                        </tr>
+                </table>
+                <br />
+                <!--<table width="49%" style="margin-left:215px">
+                                    <tr>
+                                    <td><b>Download Projections</b></td>
+                                    <td><input type="radio" name="download" style="position:sticky"></input></td>
+                                    <td style="text-align: left;vertical-align:bottom;"><label>Monthly</label></td>
+                                    <td><input type="radio" name="download" style="position:sticky" checked="true"></input></td>
+                                    <td style="text-align: left;vertical-align:bottom;"><label>Annually</label></td>
+                                    <td><input type="submit" value="Submit" class="form-control"/> </td>
+                                    </tr>
+                                </table>-->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table width="100%" style="margin-left: 30px; margin-top: 12px">
+                            <tr style="background-color: white">
+                                <td><b>Fixed Income Overview By Average Maturity:</b></td>
+                            </tr>
+                            <tr style="background-color: white; vertical-align: top">
+                                <td>
+                                    <div id="idmarketcap" style="width: 60%; margin-top: -6px; margin-left: 159px;">
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--	<button data-u="thumb"> Overview (By Average Maturity) </button>-->
+        </div>
+        <div>
+            <div data-u="image">
+                <div id="idMaxcurrentsubaa" class="popup">
+                    <img src="../Common/assets/images/maximg.png" style="margin-right: 99px" />
+                </div>
+                <table width="79%" class="recommendedtbl benchmarktblmarketcap" style="z-index: 10 !important; margin-top: 31px; margin-left: 89px" border="1">
+                    <thead>
+                        <tr>
+                            <th style="text-align: left !important">Fixed Income Security
+                            </th>
+                            <th>% Exposure in Portfolio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr></tr>
+                        <tr>
+                            <td>Govt Securities</td>
+                            <td>0.0%</td>
+                        </tr>
+                        <tr>
+                            <td>AAA & Equivalent</td>
+                            <td>0.0%</td>
+                        </tr>
+                        <tr>
+                            <td>AA & Equivalent</td>
+                            <td>0.0%</td>
+                        </tr>
+                        <tr>
+                            <td>Below AA</td>
+                            <td>0.0%</td>
+                        </tr>
+                        <tr>
+                            <td>Unrated</td>
+                            <td>0.0%</td>
+                        </tr>
+                        <tr>
+                            <td>Cash and Others</td>
+                            <td>0.0%</td>
+                        </tr>
+                        <tr class="nonglidtotal">
+                            <td><b>Total</b></td>
+                            <td class="nonglidtotal"><b>100 </b></td>
+                        </tr>
+                </table>
+                <br />
+                <!--<table width="49%" style="margin-left:215px">
+                                        <tr>
+                                        <td><b>Download Projections</b></td>
+                                        <td><input type="radio" name="download" style="position:sticky"></input></td>
+                                        <td style="text-align: left;vertical-align:bottom;"><label>Monthly</label></td>
+                                        <td><input type="radio" name="download" style="position:sticky" checked="true"></input></td>
+                                        <td style="text-align: left;vertical-align:bottom;"><label>Annually</label></td>
+                                        <td><input type="submit" value="Submit" class="form-control"/> </td>
+                                        </tr>
+                                    </table>-->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table width="100%" style="margin-left: 91px; margin-top: 12px">
+                            <tr style="background-color: white">
+                                <td><b>Fixed Income Overview By Asset Quality:</b></td>
+                            </tr>
+                            <tr style="background-color: white; vertical-align: top">
+                                <td>
+                                    <div id="idsectors" style="width: 60%; margin-top: -13px; margin-left: 78px">
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--	<button data-u="thumb">Overview by Asset Quality
+                            </button>-->
+        </div>
+    </div>
+    <!-- Thumbnail Navigator -->
+    <div data-u="thumbnavigator" class="jssort22" data-autocenter="1">
+        <!-- Thumbnail Item Skin Begin -->
+        <div data-u="slides">
+            <div data-u="prototype" class="p">
+                <div>
+                    <div data-u="thumbnailtemplate"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Thumbnail Item Skin End -->
+    </div>
+    <!-- Arrow Navigator -->
+    <span data-u="arrowleft" class="jssora05l Incomeleft"><img
+            src="../Common/assets/images/leftarrow.png" /></span> <span data-u="arrowright" class="jssora05r Incomeright"><img
+        src="../Common/assets/images/rightarrow.png" /></span>
+</div>
+<!--Current AA max pop-->
+<div id="idpopcurrentaa" class="modal modal2">
+    <!-- Modal content -->
+    <div class="modal-content" style="margin-left: 24px; background-color: #ededee">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h4 style="margin-top: 5px">Portfolio Overview - Debt</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row" style="margin-top: 19px">
+                <div class="col-lg-12" style="width: 101em">
+                    <div class="col-lg-11 bgwhite" style="margin-right: .5em">
+                        <h4 class="fontblue">
+                            <b>Portfolio Overview - Debt</b>
+                        </h4>
+                        <table width="94%" style="z-index: 10 !important; margin-left: 1px; margin-bottom: 24px; margin-top: 27px;" class="currentaatab protfoiliequity">
+                            <thead>
+                                <tr>
+
+                                    <th style="text-align: left"></th>
+                                    <th></th>
+                                    <th colspan="3" style="background-color: #FDEBD0">Investment Portfolio
+                                    </th>
+                                    <th colspan="3" style="background-color: #D6EAF8">Returns</th>
+                                    <th colspan="3" style="background-color: #FDEBD0">Maturity</th>
+
+                                </tr>
+
+                                <tr>
+                                    <th>Product</th>
+                                    <th style="text-align: left">Product Type</th>
+                                    <th>Current Value</th>
+                                    <th>Investment Value</th>
+                                    <th>Gain/Loss</th>
+                                    <th>Return Type</th>
+                                    <th>CAGR/XIRR</th>
+                                    <th>PTP Return</th>
+                                    <th>Locked-In Upto Date</th>
+                                    <th>Maturity Date</th>
+                                    <th>Maturity Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody id="idDebtTBodyModal">
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-12" style="margin-top: 18px; margin-bottom: 19px; margin-left: -15px; width: 100em">
+
+                <div class="col-lg-5 bgwhite" style="margin-right: 0.8em; height: 32em;overflow:hidden">
+                    <h4 class="fontblue">
+                        <b id="idOverviewProductTypeHeader">Overview By Product Type</b>
+                    </h4>
+                    <div id="idcaa" style="width: 35%; margin-left: 50px; margin-top: 7em"></div>
+                </div>
+                <div class="col-lg-6 bgwhite">
+                    <h4 class="fontblue">
+                        <b id="idOverviewAssetQualityHeader">Overview By Asset Quality</b>
+                    </h4>
+                    <div id="idassetquality" style="width: 47%; margin-bottom: 7px"></div>
+                </div>
+
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-5 bgwhite" style="width: 40.8em; margin-left: 15px; margin-top: -6px; margin-bottom: 9px;">
+                    <h4 class="fontblue">
+                        <b id="idOverviewAgeMaturityHeader">Overview By Asset Maturity</b>
+                    </h4>
+                    <div id="idsectorholding1" style="width: 40%; margin-bottom: 7px"></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <h3></h3>
+        </div>
+    </div>
+</div>
+<!-- Recommended aa pop -->
+<div id="idpoprecommendedaa" class="modal1">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close1">&times;</span>
+            <h2></h2>
+        </div>
+        <div class="modal-body">
+            <table width="75%" class="recommendedtbl benchmarktblmarketcap" style="z-index: 10 !important; margin-top: 31px; margin-left: 108px" border="1">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th colspan="8" class="aligncenter">Benchmarks</th>
+                    </tr>
+                    <tr>
+                        <th>Average Maturity</th>
+                        <th>% Exposure in Portfolio</th>
+                        <th>Benchmarks</th>
+                        <th>1M</th>
+                        <th>3M</th>
+                        <th>6M</th>
+                        <th>1Y</th>
+                        <th>3Y</th>
+                        <th>5Y</th>
+                        <th>Risk (Std Dev.)*</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr></tr>
+                    <tr>
+                        <td><img src="../Common/assets/images/circle2.png" /> &nbsp;
+                            < 1 year</td>
+                                <td>0.01%</td>
+                                <td>CRISIL STBeX</td>
+                                <td>0.0%</td>
+                                <td>0.0%</td>
+                                <td>0.0%</td>
+                                <td>0.0%</td>
+                                <td>0.0%</td>
+                                <td>0.0%</td>
+                                <td>0.0%</td>
+                    </tr>
+                    <tr>
+                        <td><img src="../Common/assets/images/circle3.png" /> &nbsp; > 1 year</td>
+                        <td>93.10%</td>
+                        <td>CRISIL Composite bond Index</td>
+                        <td>0.0%</td>
+                        <td>0.0%</td>
+                        <td>0.0%</td>
+                        <td>0.0%</td>
+                        <td>0.0%</td>
+                        <td>0.0%</td>
+                        <td>0.0%</td>
+                    </tr>
+                    <tr>
+                        <td><img src="../Common/assets/images/circle4.png" /> &nbsp; Others
+                        </td>
+                        <td>6.89%</td>
+                        <td>0.0%</td>
+                        <td>0.0%</td>
+                        <td>0.0%</td>
+                        <td>0.0%</td>
+                        <td>0.0%</td>
+                        <td>0.0%</td>
+                        <td>0.0%</td>
+                        <td>0.0%</td>
+                    </tr>
+                    <tr class="nonglidtotal">
+                        <td><b>Total</b></td>
+                        <td class="nonglidtotal"><b>NA </b></td>
+                        <td class="nonglidtotal"><b>0.0%</b></td>
+                        <td class="nonglidtotal"><b>0.0%</b></td>
+                        <td class="nonglidtotal"><b> 0.0%</b></td>
+                        <td class="nonglidtotal"><b> 0.0%</b></td>
+                        <td class="nonglidtotal"><b> 0.0%</b></td>
+                        <td class="nonglidtotal">0.0%</td>
+                        <td class="nonglidtotal">0.0%</td>
+                        <td class="nonglidtotal">0.0%</td>
+                    </tr>
+            </table>
+            <br />
+            <!--<table width="49%" style="margin-left:215px">
+                                                    <tr>
+                                                    <td><b>Download Projections</b></td>
+                                                    <td><input type="radio" name="download" style="position:sticky"></input></td>
+                                                    <td style="text-align: left;vertical-align:bottom;"><label>Monthly</label></td>
+                                                    <td><input type="radio" name="download" style="position:sticky" checked="true"></input></td>
+                                                    <td style="text-align: left;vertical-align:bottom;"><label>Annually</label></td>
+                                                    <td><input type="submit" value="Submit" class="form-control"/> </td>
+                                                    </tr>
+                                                </table>-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <table width="100%" style="margin: 121px; margin-top: 12px">
+                        <tr style="background-color: white">
+                            <td><b>Fixed Income Overview By Average Maturity:</b></td>
+                        </tr>
+                        <tr style="background-color: white; vertical-align: top">
+                            <td>
+                                <div id="idmarketcappop" style="width: 80%; margin-top: 18px; margin-left: 10px">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <h3></h3>
+        </div>
+    </div>
+</div>
+<!-- Current sub AA -->
+<div id="idpopcurrentsubaa" class="modal2">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close2">&times;</span>
+            <h2></h2>
+        </div>
+        <div class="modal-body">
+            <table width="64%" class="recommendedtbl benchmarktblmarketcap" style="z-index: 10 !important; margin-top: 31px; margin-left: 190px" border="1">
+                <thead>
+                    <tr>
+                        <th style="text-align: left !important">Fixed Income Security
+                        </th>
+                        <th>% Exposure in Portfolio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr></tr>
+                    <tr>
+                        <td>Govt Securities</td>
+                        <td>0.0%</td>
+                    </tr>
+                    <tr>
+                        <td>AAA & Equivalent</td>
+                        <td>0.0%</td>
+                    </tr>
+                    <tr>
+                        <td>AA & Equivalent</td>
+                        <td>0.0%</td>
+                    </tr>
+                    <tr>
+                        <td>Below AA</td>
+                        <td>0.0%</td>
+                    </tr>
+                    <tr>
+                        <td>Unrated</td>
+                        <td>0.0%</td>
+                    </tr>
+                    <tr>
+                        <td>Cash and Others</td>
+                        <td>0.0%</td>
+                    </tr>
+                    <tr class="nonglidtotal">
+                        <td><b>Total</b></td>
+                        <td class="nonglidtotal"><b>100 </b></td>
+                    </tr>
+            </table>
+            <br />
+            <!--<table width="49%" style="margin-left:215px">
+                                                        <tr>
+                                                        <td><b>Download Projections</b></td>
+                                                        <td><input type="radio" name="download" style="position:sticky"></input></td>
+                                                        <td style="text-align: left;vertical-align:bottom;"><label>Monthly</label></td>
+                                                        <td><input type="radio" name="download" style="position:sticky" checked="true"></input></td>
+                                                        <td style="text-align: left;vertical-align:bottom;"><label>Annually</label></td>
+                                                        <td><input type="submit" value="Submit" class="form-control"/> </td>
+                                                        </tr>
+                                                    </table>-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <table width="100%" style="margin-left: 190px; margin-top: 12px">
+                        <tr style="background-color: white">
+                            <td><b>Fixed Income Overview By Asset Quality:</b></td>
+                        </tr>
+                        <tr style="background-color: white; vertical-align: top">
+                            <td>
+                                <div id="idsectorspop" style="width: 50%; margin-top: -13px; margin-left: 78px">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <h3></h3>
+        </div>
+    </div>
+</div>
+<!--Benchmark -->
+<!--axis-->
+
+<!-- Modal content -->
+<div id="idpopaxispop" class="modal6">
+    <!-- Modal content -->
+    <div class="modal-content" style="margin-left: 24px; background-color: #ededee">
+        <div class="modal-header">
+            <span class="close6" style="margin-top: -5px">&times;</span>
+            <h4 style="margin-top: 5px" id="idMFPagerHeader"></h4>
+        </div>
+        <div class="modal-body">
+            <div class="row" style="margin-top: 19px">
+                <div class="col-lg-12">
+
+                    <div class="col-lg-12 bgwhite">
+                        <h4 class="fontblue">
+                            <b>Fund Snapshot</b>
+                        </h4>
+                        <table width="100%" style="margin-bottom: 19px" class="PMkotakpop">
+                            <tr>
+                                <td><span class="font1p2em"><b id="idAumMF"></b></span><br />
+                                    <span> Aum(in-CR.)</span></td>
+                                <td><span class="font1p2em"><b id="idBenchmarkMF"></b></span>
+                                    <br />Benchmark Index</td>
+                                <td><span class="font1p2em"><b id="idFundManagerMF"></b></span><br />Fund Managers
+                                </td>
+                                <td><span class="font1p2em"><b id="idExpenseRatioMF"></b></span><br /> Expense Ratio</td>
+                                <td><span class="font1p2em"><b
+                                        id="idInceptionDateMF"></b></span><br />Inception</td>
+                                <td><span class="font1p2em"><b
+                                        id="idSubAssetClassMF"></b></span><br /> Sub Asset Class</td>
+                            </tr>
+                            <tr>
+                                <td><span class="font1p2em"><b id="id52WeekHighMF"></b></span><br />52 Week High</td>
+                                <td><span class="font1p2em"><b id="id52WeekLowMF"></b></span><br />52 Week Low</td>
+                                <td><span class="font1p2em"><b
+                                        id="idMinInvestmentMF"></b></span><br />Min.Investment</td>
+                                <td><span class="font1p2em"><b
+                                        id="idExitAndLoadPeriodMF"></b></span><br />Exit Load and Period</td>
+                                <td><span class="font1p2em"><b id="idYTMMF"></b></span><br />YTM</td>
+                                <td><span class="font1p2em"><b id="idDurationMF"></b></span><br />Duration</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 bgwhite" style="margin-top: 18px; margin-bottom: 19px;">
+                <h4 class="fontblue" id="idPerformMF">
+                    <b>Performance vs. Index</b>
+                </h4>
+
+
+                <div id="reportrange" class="pull-right" style="background: #ededee; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 28%; margin-top: -24px; border-radius: 8px;">
+                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp; <span></span>
+                    <b class="caret"></b>
+
+                </div>
+
+
+                <br />
+
+
+                <div id="idgrowth" style="width: 90%"></div>
+                <h4 class="fontblue">
+                    <b>Performance</b>
+                </h4>
+
+
+
+
+
+
+                <table width="63%" style="z-index: 10 !important; margin-left: 30px; margin-bottom: 24px; margin-top: 27px;" class="kotakperfomancetbl">
+                    <thead>
+                        <tr>
+                            <th style="text-align: left"></th>
+                            <th>1M</th>
+                            <th>3M</th>
+                            <th>6M</th>
+                            <th>1Y</th>
+                            <th>3Y</th>
+                            <th>5Y</th>
+                        </tr>
+                    </thead>
+                    <tbody id="idTBodyMFPager"></tbody>
+                </table>
+            </div>
+            <div class="row" style="margin-top: 34px">
+                <div class="col-lg-12" style="width: 114%">
+                    <div class="col-lg-3 bgwhite" style="margin-right: 24px; width: 29em">
+                        <h4 class="fontblue">
+                            <b>Risk Measures</b>
+                        </h4>
+                        <table style="width: 100%; margin-bottom: 20px; margin-top: 14px;" class="riskmeasure">
+                            <tbody id="idRiskMeasureMFFixedIncomePagerTBody"></tbody>
+
+                        </table>
+
+
+                    </div>
+
+                    <div class="col-lg-3 bgwhite" style="margin-right: 24px; width: 29em; height: 218px;">
+                        <h4 class="fontblue">
+                            <b id="idAssetAllocationHeader">Asset Allocation</b>
+                        </h4>
+
+                        <div id="assetallocation" style="height: 30%; width: 30%; margin-left: -14px"></div>
+                    </div>
+
+                    <div class="col-lg-3 bgwhite" style="margin-right: 24px; width: 29em; height: 219px; overflow: hidden">
+                        <h4 class="fontblue">
+                            <b id="idPagetAssetQualityHeader">Asset Quality</b>
+                        </h4>
+                        <div id="idaxisassmarket" style="width: 25%; margin-left: -27px"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 19px; margin-bottom: 20px;">
+                <div class="col-lg-12">
+                    <div class="col-lg-5 bgwhite" style="margin-right: 24px; width: 46.6em">
+                        <h4 class="fontblue">
+                            <b id="idPagerSectorHoldingHeader">Asset Maturity</b>
+                        </h4>
+
+                        <div id="idsectorholding" style="width: 47%; margin-bottom: 7px"></div>
+                    </div>
+                    <div class="col-lg-5 bgwhite">
+                        <h4 class="fontblue">
+                            <b id="idPagerPortfolioDetailsHeader">Portfolio Details</b>
+                        </h4>
+
+                        <!--pagination-->
+                        <div class="container" id="idPaginationDiv" style="width: 100%; margin-top: -19px">
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+            <h3></h3>
+        </div>
+    </div>
+</div>

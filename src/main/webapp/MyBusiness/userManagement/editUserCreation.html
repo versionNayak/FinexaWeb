@@ -1,0 +1,193 @@
+<script type="text/javascript" src="userManagement/js/editUserCreation.js"></script>
+<script src="userManagement/js/validateUserCreation.js"></script>
+<script src="userManagement/js/validationForAll.js"></script>
+<script src="userManagement/js/common.js"></script>
+<div class="dmcontainer">
+<div class="alert alert-danger" id="alertForm" style="display:none;">
+</div>
+<div>
+		<form class="form-horizontal" action="#" id="userCreation">
+			<!--  <input type="hidden" name="advisorID" id="idAdvisor"> -->
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>First Name*:</label>
+					<input type="text" id="idFname" name="firstName" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="First Name" tabindex="270"/>
+				     <span class="formentry-errmsg" id="alertFirstName"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Last Name*:</label>
+					<input type="text" id="idLname" name="lastName" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Last Name" tabindex="271"/>
+				    <span class="formentry-errmsg" id="alertLastName"></span>
+				</div>
+			</div>
+			<!--  <div class="form-group">
+				<label for="idGenderRadioGroup" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Gender*:</label>
+					<div class="displayflex" id="idGender">
+                   		<p id="idGenderRadioGroup" class="input-group input-width-small" tabindex="272">
+							<label class="radio-inline custom-radio-theme"> <input
+								type="radio" name="gender" id="idGenderM" value="M" checked="checked"
+								tabindex="280"><i></i>Male
+							</label> <label class="radio-inline custom-radio-theme"> <input
+								type="radio" name="gender" id="idGenderF" value="F"
+								tabindex="290"><i></i>Female
+							</label>
+						</p>
+					</div>
+				</div>
+             </div> -->
+			
+			<!--  <div class="form-group">
+				    <label class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Birth Date*:</label>
+					<p id="idBirthDateGroup" class="input-group input-width-medium">
+						<input type="text" class="form-control" id="idBirthDate"  name="birthDate" placeholder="DD/MM/YYYY" tabindex="273">
+						<span class="input-group-btn datepicker-icon">
+							<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top"  data-original-title="Select Start Date"><em class="glyphicon calendar-icon-theme"></em></button>
+						</span>
+					</p>
+					
+				</div>
+			</div>
+			 -->
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Email Id*:</label>
+					<input type="text" id="idEid" name="emailID" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Email Id" tabindex="274"/>
+				     <span class="formentry-errmsg" id="alertEmail"></span>
+				</div>
+			</div>
+
+          <div class="form-group">
+				<label for="idGenderRadioGroup" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Gender*:</label>
+					<div class="displayflex" id="idGender">
+                   		<p id="idGenderRadioGroup" class="input-group input-width-small" tabindex="4">
+							<label class="radio-inline custom-radio-theme"> <input
+								type="radio" name="gender" id="idGenderM" value="M" checked="checked"
+								tabindex="5"><i></i>Male
+							</label> <label class="radio-inline custom-radio-theme"> <input
+								type="radio" name="gender" id="idGenderF" value="F"
+								tabindex="6"><i></i>Female
+							</label>
+						</p>
+					</div>
+					<span class="formentry-errmsg" id="alertgender"></span>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Mobile Number*:</label>
+					<input type="text" id="idPhoneNo" name="phoneNo" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="+91" tabindex="275"/>
+				    <span class="formentry-errmsg" id="alertMobile"></span>
+				</div>
+			</div>
+			
+			
+			<div class="form-group">
+				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Country*:</label>
+							<select class="form-control input-width-medium" required="required" name="countryId" id="idCountry" tabindex="276">
+			                   </select>
+			                      <span class="formentry-errmsg" id="alertCountry"></span>
+					       </div>
+				        </div>
+				        
+				  <div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>State*:</label>
+					<input type="text" id="idState" name="state" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="State Name" tabindex="277"/>
+				    <span class="formentry-errmsg" id="alertState"></span>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>City*:</label>
+					<input type="text" id="idCity" name="city" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="City Name" tabindex="278"/>
+				    <span class="formentry-errmsg" id="alertCity"></span>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="orgType" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11" id="idType">
+					<label>Individual/Organization*</label>
+					<select class="form-control input-width-medium" id="idOrg" tabindex="283" name="organizationFlag">
+					<option value="">Individual/Organization</option>
+				    <option value="Y">Organization</option>
+				    <option value="N">Individual</option>
+					</select>
+					<span class="formentry-errmsg" id="alertOrg"></span>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Organization Name*:</label>
+					<input type="text" style="width:225px;" id="idOrganisationName" name="organizationName" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Organisation Name" tabindex="279" readonly/>
+					<span class="formentry-errmsg" id="alertOrgName"></span>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Distributor Code*:</label>
+					<input type="text" style="width:225px;" id="idDisributorCode" name="disributorCode" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Code Number" tabindex="280" readonly/>
+				    <span class="formentry-errmsg" id="alertDistCode"></span>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11" id="idEmployeeCodeDiv">
+					<label>Employee Code*:</label>
+					<input type="text" id="idEmployeeCode" name="employeeCode" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Code Number" tabindex="281" readonly/>
+				    <span class="formentry-errmsg" id="alertEmployeeCode"></span>
+				</div>
+			</div>
+
+            <div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Role*</label>
+					<select class="form-control input-width-medium" id="idRole" name="roleId" tabindex="282" disabled>
+					</select>
+					<span class="formentry-errmsg" id="alertRole"></span>
+				</div>
+			</div>
+			<!-- <div class="form-group">
+				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Role*:</label>
+					<span class="form-static-value" id="idRole" >
+						<select class="form-control input-width-medium" required="required" id="idUserRole" name="roleId" tabindex="430">
+										
+									</select>
+					        </span>
+					    </div>
+				    </div> -->
+		
+		    <div class="form-group">
+				<div class="col-sm-offset-1 col-sm-11">
+					<button type="button" class="form-control addbtn" id="idEditUser" tabindex="283">Submit</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src=" masters/js/assetAllocationMaster.js"></script>
+		<script src=" masters/js/bucketingMaster.js"></script>
+	<!-- <script src="masters/js/addProduct.js"></script> -->
+		<script src="masters/js/common.js"></script>
+		<style>
+			body {font-family: Arial;}
+			/* Style the tab */
+			.tab {
+			overflow: hidden;
+			border: 1px solid #ccc;
+			background-color: #f1f1f1;
+			margin-top: -23px;
+			}
+			/* Style the buttons inside the tab */
+			.tab button {
+			background-color: inherit;
+			float: left;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			padding: 14px 16px;
+			transition: 0.3s;
+			font-size: 14px;
+			}
+			/* Change background color of buttons on hover */
+			.tab button:hover {
+			background-color: #ddd;
+			}
+			/* Create an active/current tablink class */
+			.tab button.active {
+			background-color: #6eaee5 ;
+			}
+			/* Style the tab content */
+			.tabcontent {
+			display: none;
+			padding: 6px 12px;
+			border: 1px solid #ccc;
+			border-top: none;
+			background-color:white;
+			}
+			
+			
+			#inputd > tr > td, #inputh > tr > th{
+			
+			width:8% !important;
+			
+			
+			}
+		</style>
+	</head>
+	<body>
+		<div class="tab" style="margin-top: 16px;">
+			<button class="tablinks" onclick="openCity(event, 'aam')" id="defaultOpen">Asset Allocation Master
+			</button>
+			<button class="tablinks" onclick="openCity(event, 'ihm')" id="investhorizon">Bucketing masters
+			</button>
+		</div>
+		<div id="aam" class="tabcontent">
+			<h5 style="margin-left: 15px;font-size: 14px;font-weight: 700;">Select Period</h5>
+			<div class="container-fluid" style="width:58em;margin-top:2em;padding-top:1em;background-color:white;z-index:0">
+				<div class="row">
+					<div class="col-sm-4" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px"> 
+						<label class="control-label" for="idppfdeposite" style="text-align:left">From Date: </label><br/>
+						<p id="datepicker" style="width:16em;z-index:1" class="input-group date" data-date-format="dd-mm-yyyy">
+							<input class="form-control" id="fromDate" value="" style="font-size:14px" type="text" placeholder="DD/MM/YYYY"/>
+							<span class="input-group-addon calendar-icon-container"><i class="glyphicon calendar-icon-theme"></i></span>
+						</p>
+					</div>
+					<div class="col-sm-4" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px"> 
+						<label class="control-label" for="idppfdeposite" style="text-align:left">TO Date: </label><br/>
+						<p id="datepicker1" style="width:16em;z-index:1" class="input-group date" data-date-format="dd-mm-yyyy">
+							<input class="form-control" id="toDate" value="" style="font-size:14px" type="text" placeholder="DD/MM/YYYY"/>
+							<span class="input-group-addon calendar-icon-container"><i class="glyphicon calendar-icon-theme"></i></span>
+						</p>
+					</div>
+					<div class="col-sm-4" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px"> 
+						<label class="control-label" for="idppfdeposite" style="text-align:left">No. of Model Portfolios: </label><br/>
+						<input type="text" placeholder="" class="form-control" id="noOfPortfolio" style="width:16em;"/>
+					</div>
+					<br/>
+				</div>
+				<div class="row">
+					<button type="submit" class="pull-left btn addbtn selectprd" style="margin-left: 15px;">Submit</button>
+				</div>
+				<div class="row" style="display:none" id="modelportfolio">
+					<table width="33%" style="margin-left: 1em;margin-top: 23px;" id="">
+						<thead>
+							<tr>
+								<th style="width:60%;vertical-align:super" id="actionwth">Model Portfolio Names
+								</th>
+							</tr>
+						</thead>
+						<tbody class="customFields" id="portfolioNamesText">
+							
+						</tbody>
+					</table>
+					<br/>
+					<button type="submit" class="pull-left btn addbtn modesub" style="margin-left: 18px;" onclick="$('.result').show()">Submit</button>
+				</div>
+				<br/>
+				<div style="display:none" id="mpa">
+				<div class="container-fluid" style="overflow-x: scroll">
+					<table style="width:162%;" id="tblinput">
+					
+			
+						<thead id="inputh">
+							<tr id="dynamicHeading">
+								
+								
+							</tr>
+						</thead>
+						<tbody id="inputd" class="customFields">
+						
+						</tbody>
+					</table>	
+					
+				</div>
+					<br/>
+					<button type="submit" class="pull-left btn addbtn assetAllocationMaster"  style="margin-left: 18px;" onclick="$('.result').show()">Submit</button>
+				</div>
+			</div>
+		</div>
+		
+		<!--   Bucketing Masters *************************** -->
+		
+		
+		<div id="ihm" class="tabcontent">
+			<h5 style="margin-left: 15px;font-size: 14px;font-weight: 700;">Select Period</h5>
+			<div class="container-fluid" style="width:58em;margin-top:2em;padding-top:1em;background-color:white;z-index:0">
+				<div class="row">
+					<!-- <div class="col-sm-4" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px"> 
+						<label class="control-label" for="idppfdeposite" style="text-align:left">From Date: </label><br/>
+						<p id="datepicker2" style="width:16em;z-index:1" class="input-group date" data-date-format="dd-mm-yyyy">
+							<input class="form-control" id="" value="" style="font-size:14px" type="text" placeholder="DD/MM/YYYY"/>
+							<span class="input-group-addon calendar-icon-container"><i class="glyphicon calendar-icon-theme"></i></span>
+						</p>
+					</div> -->
+					<!-- <div class="col-sm-4" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px"> 
+						<label class="control-label" for="idppfdeposite" style="text-align:left">TO Date: </label><br/>
+						<p id="datepicker3" style="width:16em;z-index:1" class="input-group date" data-date-format="dd-mm-yyyy">
+							<input class="form-control" id="" value="" style="font-size:14px" type="text" placeholder="DD/MM/YYYY"/>
+							<span class="input-group-addon calendar-icon-container"><i class="glyphicon calendar-icon-theme"></i></span>
+						</p>
+					</div> -->
+					<div class="col-sm-4" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px"> 
+						<label class="control-label" for="idppfdeposite" style="text-align:left">No. of Model Portfolios: </label><br/>
+						<input type="text" placeholder="" class="form-control" id="noOfPortfolioBucket" style="width:16em;"/>
+					</div>
+					
+				</div>
+				<br/>
+				<div class="row">
+					<button type="submit" class="pull-left btn addbtn ihmsb1" style="margin-left: 15px;">Submit</button>
+				</div>
+				<div class="row" style="display:none" id="modelportfolioihm">
+					<table width="70%" style="margin-left: 1em;margin-top: 23px;">
+						<thead>
+							<tr>
+								<th style="vertical-align:super;width: 24%;" id="actionwth">Bucket No.
+								</th>
+								<th style="vertical-align:super" id="actionwth">From (months)
+								</th>
+								<th style="vertical-align:super" id="actionwth">To (months)
+								</th>
+							</tr>
+						</thead>
+						<tbody class="customFields" id="bucketingMasterTable">
+						
+						</tbody>
+					</table>
+					<br/>
+					<button type="submit" class="pull-left btn addbtn modesubihm" style="margin-left: 18px;" onclick="$('.result').show()">Submit</button>
+				</div>
+				<br/>
+				<div class="row" style="display:none" id="mpaihm">
+							<div class="container-fluid" style="overflow-x: scroll">
+					<table style="width:162%;" id="">
+					
+			
+						<thead id="">
+						<tr id="dynamicBucketHeading">
+								
+								
+							</tr>
+							<!-- <tr>
+								<th id="actionwth">Bucket No.</th>
+								<th>From (months)</th>
+								<th>To (months)</th>
+								<th>1</th>
+								<th>2</th>
+								<th>3</th>
+								<th>4</th>
+							 <th>5</th> 
+								<th>6</th> 
+							<th>7</th>
+							 <th>8</th> 
+							 <th>9</th> 
+							 <th>10</th> 
+							</tr> -->
+						</thead>
+						<tbody  class="customFields" id="bucketTable">
+							
+						</tbody>
+					</table>	
+					
+				</div>
+				<br/>
+					<button type="submit" class="pull-left btn addbtn bucketMasterSubmit" style="margin-left: 18px;" onclick="$('.result').show()">Submit</button>
+				</div>
+			</div>
+		</div>
+	<input type="hidden" id="hiddenportFolioNames" name="" value="">
+	</body>
+</html> 

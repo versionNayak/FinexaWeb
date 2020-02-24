@@ -1,0 +1,39 @@
+<script type="text/javascript" src="loggedinHistory/js/viewLoggingHistory.js"></script>
+<div class="dmcontainer">
+
+<form class="form-horizontal" name="loggingHistoryForm" id="idLoggingHistoryForm" action="#">
+	 <div class="form-group">
+                <label for="ownerName" class="col-sm-1 control-label"></label>
+                <div class="col-sm-8 col-md-5 col-lg-5">
+                    <label>User ID:</label>
+                    <span class="form-static-value">
+                        <select id="idUserList" name="userId" class="form-control input-width-medium" tabindex="430">
+                        </select>
+                            </span>
+                </div>
+      </div>
+      
+      <div class="form-group">
+	  			<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>User Name:</label>
+					<input type="text" id="idUserName" name="userName" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="User Name" tabindex="4" readonly/>
+				</div>
+	  </div>
+	  
+  </form>
+<div class="clearfix"></div>
+ 
+ <br>
+<table id="idLoggingHistoryTable" width="80%" style="margin-left:70px">
+  <tr class="nonglidtotal">
+    <th>Logged-in User</th>
+    <th>Login Time</th>
+    <th>Logout Time</th> 
+   
+<tbody id="viewLoggingHistory">    
+</table>
+<br>
+<p id = "idPageCount" style="margin-left:70px"></p>
+</div>
+

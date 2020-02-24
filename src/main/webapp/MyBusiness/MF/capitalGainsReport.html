@@ -1,0 +1,221 @@
+<!-- <script src="MF/Mfjs/validateGainLossReport.js"></script> -->
+<script src="MF/Mfjs/validateCapitalGainsReport.js"></script>
+<script src="MF/Mfjs/capitalGainsReport.js"></script>
+<style>
+ .subtask-li {
+    border: 1px solid #C0C0C0;
+    cursor: pointer;
+    position: relative;
+    background: rgba(0, 0, 0, 0);
+    border-radius: 3px;
+    float: left;
+   
+    left: 0px;
+    padding: 5px;
+    top: 25px;
+    margin-bottom: -200px;
+}
+
+
+.subtask-pick{
+ 	margin-left: -6px;
+    margin-top: 6px;
+    background-clip: padding-box;
+    background-color: #fff;
+    border: 1px solid #dfe8f1;
+    border-radius: 0px;
+    box-shadow: 0px 1px 7px 2px rgba(135, 158, 171, 0.2);
+    display: none;
+    list-style: outside none none;
+    padding: 0 0 10px;
+    position: absolute;
+    z-index: 9; 
+    float: left;
+    width: 270px;
+    list-style: outside none none; height:180px; overflow:auto;
+}
+.icon-taskListing {
+    display: inline-block;
+    vertical-align: middle;
+}
+.subselectedList {
+    overflow: hidden;
+    padding: 0 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 116px;
+    color:#808080;
+}
+ul.subtask-pick li {
+  float: none;
+  display: block;
+  clear: both;
+  
+  position: relative;
+}
+ul.subtask-pick li a {
+  padding: .9em 1em .9em .8em;
+  position: relative;
+    clear: both;
+  cursor: pointer;
+  display: block;
+ 
+  white-space: nowrap;
+   text-overflow: ellipsis;
+  overflow: hidden;
+}
+ul.subtask-pick li a:hover {
+  background: none repeat scroll 0 0 #eff4f6;
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+  outline: 0;
+  color: #4c4c4c;
+}
+.subtask-li:before {
+    content:"▼";
+    position:absolute;
+    margin-left:240px;
+    pointer-events:none;
+}
+#idSchemeDrop:before {
+    content:"▼";
+    position:absolute;
+    margin-left:420px;
+    pointer-events:none;
+}
+.notClickable {
+	pointer-events: none;
+} 
+</style>
+<div class="MFforms" style="overflow:auto">
+	<h4 class="formhead">Select Parameters						
+	</h4>
+	<form class="form-horizontal marginleft10per" action="#" id="idCapitalGainsReportForm">
+						<div class="form-group">
+							<span class="formentry-errmsg" id="alertform"></span>
+								<div>
+									<label>Family/Client *:</label>
+									<span class="form-static-value">
+										<!-- <select class="form-control input-width-medium" id="idClients" name="nameClient" tabindex="1">
+											<option value="">Select</option>
+										</select> -->
+										<div id="idClientsDrop" class="subtask-li" style="width:270px">
+										<span class="main-tlist">
+											<span class="icon-taskListing"></span>
+											<span id="idClients" class="subselectedList">Select Client Name<!-- <i class="down"></i> --></span>
+											<span class="icon-subcaret"></span>
+										</span>
+										<input id="myInput" type="text" placeholder="Search.." style="width:260px; display:none">
+										<ul id = "idSelect" class="subtask-pick" style = "display:none"></ul>
+										</div>
+										<!-- <span class="formentry-errmsg" id="alertClients"></span> -->
+									</span>
+									<p class="formentry-errmsg" id="alertClients" style="padding-top:40px;"></p>
+								</div>
+								<br/>
+								<div id="familyCover" class="form-group form-group-lg" style="margin-top: 35px; margin-bottom: -30px">
+									<div class="col-sm-8 asset-owner-wrapper">
+										<label>Family Member:</label><br/>
+											<table class="familymembertbl" width="20px">
+												<tr class="mem_icon"  id="familyMemberCheckBox">
+												</tr>
+											</table>
+											<span class="formentry-errmsg" id="alertFamilyMember"></span>
+									</div>
+								</div>
+								<br/>
+								<div style="margin-top: 15px">
+									<label>From *:</label>
+										<p id="idFromDateGroup" class="input-group input-width-medium">
+										<input type="text" class="form-control" id="idFromDate" name="fromDate" placeholder="DD/MM/YYYY" tabindex="2">
+										<span class="input-group-btn datepicker-icon">
+											<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Start Date"><em class="glyphicon calendar-icon-theme"></em></button>
+										</span>
+										</p>
+									<span class="formentry-errmsg" id="alertFromDate"></span>
+								</div>
+								<br/>
+								<div>
+									<label>To *:</label>
+										<p id="idToDateGroup" class="input-group input-width-medium">
+										<input type="text" class="form-control" id="idToDate" name="toDate" placeholder="DD/MM/YYYY" tabindex="3">
+										<span class="input-group-btn datepicker-icon">
+											<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select End Date"><em class="glyphicon calendar-icon-theme"></em></button>
+										</span>
+										</p>
+									<span class="formentry-errmsg" id="alertToDate"></span>
+								</div>
+								<br/>
+								<div>
+								<label>Select Mutual Fund:</label>
+									<span class="form-static-value" id="idFundHouse">
+										<!-- <select class="form-control input-width-medium" id="idFHouse" name="fundHouse" tabindex="4" style="width: auto">
+											<option value="">Select Mutual Fund</option>
+										</select> -->
+										<div id="idFHouseDrop" class="subtask-li" style="width:270px">
+											<span class="main-tlist">
+												<span class="icon-taskListing"></span>
+												<span id="idFHouse" class="subselectedList">Select Mutual Fund<!-- <i class="down"></i> --></span>
+												<span class="icon-subcaret"></span>
+											</span>
+											<input id="idSearchMF" type="text" placeholder="Search.." style="width:260px; display:none">
+											<ul id = "idSelectMF" class="subtask-pick" style = "display:none"></ul>
+										</div>
+										<!-- ============================== -->
+										<!-- <span class="formentry-errmsg" id="alertFHouse"></span> -->
+									</span>
+									<p class="formentry-errmsg" id="alertFHouse" style="padding-top:40px;"></p>
+								</div>		
+								<br/>
+								<br>
+								<br>
+								<div>
+								<label>Select Scheme:</label>
+									<span class="form-static-value" id="idSchemeName" >
+										<!-- <select class="form-control input-width-medium" id="idSName" name="schemeName" tabindex="5" style="width: auto">
+											<option value="">Select Scheme</option>
+										</select> -->
+										<div id="idSchemeDrop" class="subtask-li notClickable" style="width:450px">
+										<span class="main-tlist">
+											<span class="icon-taskListing"></span>
+											<span id="idSName" class="subselectedList">Select Scheme<!-- <i class="down"></i> --></span>
+											<span class="icon-subcaret"></span>
+										</span>
+										<input id="idSearchScheme" type="text" placeholder="Search.." style="width:440px; display:none">
+										<ul id = "idSelectScheme" class="subtask-pick" style = "width:450px; display:none"></ul>
+									</div>
+									<!-- ============================== -->
+										<!-- <span class="formentry-errmsg" id="alertSName"></span> -->
+									</span>
+									<p class="formentry-errmsg" id="alertSName" style="padding-top:40px;"></p>
+								</div>	
+								<br/>
+								<br>
+								<br>
+								<div class="col-sm-6" style="text-align: left;z-index:1;padding-top: 7px;margin-top:-13px;font-style:bold"> 
+									<input type="button" class="pull-left btn addbtn" id="showReport" tabindex="6" value="View Report" style="width:9em;font-style:bold;float:right;margin-left:0em"/> 
+								</div>
+								<br/><br/>
+								<div id="idRadioReportFormat">
+									<label>Selection*:</label>
+										<p id="idReportFormatRadioGroup" style="margin-bottom:0px;width:15%">
+											<input id="idExcel" name="reportFormat" type="radio" value="excel" tabindex="6" /> Excel  &nbsp;&nbsp;&nbsp; 
+											<input id="idPDF" name="reportFormat" type="radio" value="pdf" tabindex="7" /> PDF &nbsp;&nbsp;&nbsp;
+										</p>
+									<span class="formentry-errmsg" id="alertReportFormat"></span>
+	    						</div>
+	    						<br/>
+	    						<div class="col-sm-6" style="text-align: left;z-index:1;padding-top: 7px;margin-top:-13px;font-style:bold"> 
+	    							<input type="button" class="btn addbtn" id="exportGainLossReport" value="Export Report" tabindex="8" style="width:9em"/>
+								</div>
+							
+								<div id="wait" style="width: 100%; height: 100%; top: 100px; left: 0px; position: fixed; z-index: 10000; text-align: center;">
+					            	<img src="../Common/assets/images/loader_finexa.gif" width="45" height="45" alt="Loading..." style="position: fixed; top: 50%; left: 50%;"/>
+								</div>
+								
+							</div>
+						
+						</form>
+	</div>

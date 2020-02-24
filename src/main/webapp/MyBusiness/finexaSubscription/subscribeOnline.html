@@ -1,0 +1,166 @@
+<script type="text/javascript" src="finexaSubscription/js/addSubscription.js"></script>
+<script type="text/javascript" src="finexaSubscription/js/validateFinexaSubscription.js"></script>
+<script type="text/javascript" src="finexaSubscription/js/validationForAll.js"></script>
+<div class="dmcontainer">
+<div class="alert alert-danger" id="alertForm" style="display:none;">
+</div>
+<form class="form-horizontal" action="#" id="subscriptionOnline">
+<!-- <form class="planning_m_form" action="#" > -->
+
+<div class="form-group clearfix">
+             <div class="col-sm-11">
+                   <h3>Select your Planning Module:</h3>
+                   <div id="idRadios" class="displayflex">
+                   <label class="checkbox-inline"><input type="checkbox"
+								id="idGoalPlanning" name="moduleId"
+								value="GOALPLANNING">Goal Planning
+						</label>
+                        
+                        <label class="checkbox-inline"> <input type="checkbox"
+								id="idPortfolioManagement" name="moduleId"
+								value="PORTFOLIOANALYSIS">Portfolio Management
+						</label>
+                        
+                         <label class="checkbox-inline"> <input type="checkbox"
+								id="idFinancialPlanning" name="moduleId"
+								value="FINANCIALPLANNING">Financial Planning
+						</label> 
+                        
+                </div>
+                <span class="formentry-errmsg" id="alertPlanningModule"></span>
+            </div>
+</div>
+
+<!-- </form> -->
+<div class="clearfix"></div>
+
+
+   <!-- <div class="module_second_phase"> -->
+         <!--      <form class="form-horizontal clearfix"> -->
+  <div class="form-group clearfix">
+            <div class="col-sm-5">
+            <label>Select User / Client Package</label>
+
+                <table class="price_table_select table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>No. of Users</th>
+                            <th>No. of Client families</th>
+                            <th>Select</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td align="center">3</td>
+                            <td>300</td>
+                            <td><label>
+                                 <input type="radio" name="planRadio" id="idPlan3" value="3#300" tabindex="360"/><i></i>
+                                 </label>   </td>
+                        </tr>
+
+                        <tr>
+                            <td  align="center">5</td>
+                            <td>500</td>
+                            <td><label>
+                                 <input type="radio" name="planRadio" id="idPlan5" value="5#500" tabindex="360"/><i></i>
+                                 </label>   </td>
+                        </tr>
+
+                        <tr>
+                            <td  align="center">10</td>
+                            <td>1000</td>
+                            <td><label>
+                                 <input type="radio" name="planRadio" id="idPlan10" value="10#1000" tabindex="360"/><i></i>
+                                 </label>   </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+
+            <p><strong>OR</strong></p>
+            <br>
+            <div class="form-group clearfix">
+            <div class="col-sm-11">
+            <label>Enter Users / Clients</label>
+
+            <div class="col-md-12 padl0">
+             <div class="col-md-3 padl0">
+             <p>No. of Users</p>    
+             </div>   
+             <div class="col-md-3 pad0">
+             <p>No. of Client families</p>    
+             </div> 
+             </div>  
+
+            <div class="col-md-12 padl0">
+             <div class="col-md-3 padl0">
+             <input type="text" id="idUserNumber" name="userNumber" value="" class="form-control input-width-small-min input-width-owner input-width-small" placeholder="Enter User No"  tabindex="270"/>  
+             <span class="formentry-errmsg" id="alertUserNumber"></span>
+             </div>   
+             <div class="col-md-3 padl0">
+             <input type="text" id="idClientNumber" name="clientNumber" value="" class="form-control input-width-small-min input-width-owner input-width-small" placeholder="Enter Family No"  tabindex="270"/>   
+             <span class="formentry-errmsg" id="alertClientNumber"></span>
+             </div> 
+             </div> 
+
+              </div>
+            </div>
+
+           <div class="form-group">
+             <div class="col-sm-11">
+                    <label>Select Subscription Period (Years)</label>
+                    <span class="form-static-value" id="hide320" >
+                        <select class="form-control input-width-medium" id="idSubscriptionPeriod" name="subscriptionPeriod" tabindex="430">
+                                        <option value="0">Select</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                     <span class="formentry-errmsg" id="alertPeriod"></span>
+                            </span>
+                        </div>
+                    </div>
+
+               <div class="form-group">
+               <div class="col-sm-11">
+                    <label>Apply Promo code (optional)</label>
+                    <input type="text" id="idPromoCode" name="promoCode" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter Promo Code" tabindex="270"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+             <div class="col-sm-11">
+                    <label>Subscription Amount</label> <a href="#" id="idGetPrice">Get Price</a>
+                    <input type="text" id="idSubscriptionAmount" name="subscriptionAmount" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter Amount" tabindex="270"/>
+                    <span class="formentry-errmsg" id="alertAmount"></span>
+                   
+                </div>
+            </div>
+ 
+
+            
+
+         
+            <div class="form-group">
+            <div class="col-sm-11">
+            
+            <input type="button" id="idSubscriptionSubmit" value="Subscribe Now" class="pull-left form-control addbtn" tabindex="540"/>
+            </div>
+            </div>
+        </form>
+       
+   </div>      
+
+
+
+
+
+

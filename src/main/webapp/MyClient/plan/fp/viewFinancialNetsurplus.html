@@ -1,0 +1,660 @@
+<script src="plan/fp/js/viewFinancialNetsurplus.js"></script>
+<script src="plan/fp/js/common.js"></script>
+<style>
+    .top30negtive[style] {
+        top: -30px !important;
+    }
+</style>
+<div id="jssor_20" class="height413px networth1">
+    <div data-u="slides" class="slider9" style="height: 400px; top: 30px">
+        <div>
+            <div data-u="image">
+                <div id="idMaxnetworthsum" class="popup" style="position: relative; top: 23px; left: -70px">
+                    <img src="../Common/assets/images/maximg.png" class="maxbtn" />
+                </div>
+                <h4 class="tblheading"></h4>
+                <table width="58%" class="libilitiestbl networthsmry" style="z-index: 10 !important; margin-top: 14px" id="idFPNetSurplusTable">
+                    <thead>
+                        <tr class="nonglidtotal">
+                            <th><b></b></th>
+                            <th>Amount (Rs)</th>
+                            <th>% of Total</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+
+                        <tr class="classSalary">
+                            <td><img src="../Common/assets/images/circle2.png" /> &nbsp; Salary Income</td>
+                            <td id="salaryAmount"></td>
+                            <td id="salaryPercent"></td>
+                        </tr>
+                        <tr class="classBonus">
+                            <td><img src="../Common/assets/images/circle3.png" /> &nbsp;Bonus Income/Variable Pay</td>
+                            <td id="bonousAmount"></td>
+                            <td id="bonousPercent"></td>
+                        </tr>
+                        <tr class="classProf">
+                            <td><img src="../Common/assets/images/circle4.png" /> &nbsp; Professional Fees</td>
+                            <td id="profFess"></td>
+                            <td id="profPercent"></td>
+                        </tr>
+                        <tr class="classBuss">
+                            <td><img src="../Common/assets/images/circle5.png" /> &nbsp; Business Income</td>
+                            <td id="bussIncome"></td>
+                            <td id="bussPercent"></td>
+                        </tr>
+                        <tr class="classRent">
+                            <td><img src="../Common/assets/images/circle6.png" /> &nbsp; Rental Income</td>
+                            <td id="rentIncome"></td>
+                            <td id="rentIncomePercent"></td>
+                        </tr>
+                        <tr class="classPension">
+                            <td><img src="../Common/assets/images/circle7.png" /> &nbsp; Pension</td>
+                            <td id="pension"></td>
+                            <td id="pensionPercent"></td>
+                        </tr>
+                        <tr class="classOther">
+                            <td><img src="../Common/assets/images/circle8.png" /> &nbsp; Other Income</td>
+                            <td id="otherIncome"></td>
+                            <td id="otherIncomePercent"></td>
+                        </tr>
+                        <tr class="classInterest">
+                            <td><img src="../Common/assets/images/circle9.png" /> &nbsp; Interest Income</td>
+                            <td id="interestIncome"></td>
+                            <td id="interestIncomePercent"></td>
+                        </tr>
+                        <tr class="classIndTotal">
+                            <td><img src="../Common/assets/images/circle10.png" /> &nbsp; Individual Total Income</td>
+                            <td id="indTotalIncome"></td>
+                            <td id="indTotalIncomePercent"></td>
+                        </tr>
+
+                        <tr class="nonglidtotal">
+                            <td><b>Total Income</b></td>
+                            <td id="totalIncome"></td>
+                            <td id="totalIncomePercent"><b></b>
+                        </tr>
+                        <tr style="background-color: white">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+
+                        <tr class="nonglidtotal">
+                            <td><b>Less</b></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="classGroceries">
+                            <td><img src="../Common/assets/images/circle2.png" /> &nbsp; Groceries</td>
+                            <td id="id_Groceries_amt"></td>
+                            <td id="id_Groceries_tp"></td>
+                        </tr>
+                        <tr class="classUtilities">
+                            <td><img src="../Common/assets/images/circle3.png" /> &nbsp;Utilities
+                            </td>
+                            <td id="id_Utilities_amt"></td>
+                            <td id="id_Utilities_tp"></td>
+                        </tr>
+                        <tr class="classTransport">
+                            <td><img src="../Common/assets/images/circle4.png" /> &nbsp; Transport</td>
+                            <td id="id_Transport_amt"></td>
+                            <td id="id_Transport_tp"></td>
+                        </tr>
+                        <tr class="classHPC">
+                            <td><img src="../Common/assets/images/circle5.png" /> &nbsp;Household & Personal Care</td>
+                            <td id="id_HouseholdAndPersonalCare_amt"></td>
+                            <td id="id_HouseholdAndPersonalCare_tp"></td>
+                        </tr>
+                        <tr class="classHM">
+                            <td><img src="../Common/assets/images/circle6.png" /> &nbsp;Housing & Maintenance</td>
+                            <td id="id_HousingAndMaintenance_amt"></td>
+                            <td id="id_HousingAndMaintenance_tp"></td>
+                        </tr>
+                        <tr class="classCommunication">
+                            <td><img src="../Common/assets/images/circle7.png" /> &nbsp; Communication</td>
+                            <td id="id_Communication_amt"></td>
+                            <td id="id_Communication_tp"></td>
+                        </tr>
+                        <tr class="classChildrenFee">
+                            <td><img src="../Common/assets/images/circle8.png" /> &nbsp; Children Fees</td>
+                            <td id="id_ChildrenFees_amt"></td>
+                            <td id="id_ChildrenFees_tp"></td>
+                        </tr>
+                        <tr class="classHCE">
+                            <td><img src="../Common/assets/images/circle9.png" /> &nbsp; Healthcare Expenses</td>
+                            <td id="id_HealthcareExpenses_amt"></td>
+                            <td id="id_HealthcareExpenses_tp"></td>
+                        </tr>
+                        <tr class="classLE">
+                            <td><img src="../Common/assets/images/circle10.png" /> &nbsp; Lifestyle & Entertainment</td>
+                            <td id="id_LifestyleAndEntertainment_amt"></td>
+                            <td id="id_LifestyleAndEntertainment_tp"></td>
+                        </tr>
+                        <tr class="classAA">
+                            <td><img src="../Common/assets/images/circle11.png" /> &nbsp;Apparels & Accessories</td>
+                            <td id="id_ApparelsAndAccessories_amt"></td>
+                            <td id="id_ApparelsAndAccessories_tp"></td>
+                        </tr>
+                        <tr class="classOthers">
+                            <td><img src="../Common/assets/images/circle12.png" /> &nbsp;Others (Charity, etc)</td>
+                            <td id="id_OthersCharityEtc_amt"></td>
+                            <td id="id_OthersCharityEtc_tp"></td>
+                        </tr>
+                        <tr class="classLivingModal">
+                            <td><img src="../Common/assets/images/circle2.png" /> &nbsp;Living Expenses</td>
+                            <td id="idIndTotal"></td>
+                            <td id="id_IndTotal_tp"></td>
+                        </tr>
+
+                        <tr class="nonglidtotal">
+                            <td><b>Total Expenses </b></td>
+                            <td><b id="id_TotalExpenses_amt"></b></td>
+                            <td><b id="id_TotalExpenses_tp"></b></td>
+                        </tr>
+                        <tr style="background-color: white">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr class="nonglidtotal">
+                            <td><b>Less</b></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="classCO">
+                            <td>Committed Outflows</td>
+                            <td id="id_committed_outflows_net"></td>
+                            <td id="id_committed_outflows_net_perc"></td>
+                        </tr>
+                        <tr class="nonglidtotal">
+                            <td><b>Total Committed Outflows</b></td>
+                            <td><b id="id_total_co_net"> </b></td>
+                            <td><b id="id_total_co_net_perc"></b></td>
+                        </tr>
+
+                        <tr style="background-color: white">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr class="nonglidtotal">
+                            <td><b>Less</b></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="classEMI">
+                            <td>EMI</td>
+                            <td id="idEmiAmount"></td>
+                            <td id="idEmiPercentage"></td>
+                        </tr>
+                        <tr class="classInterestPayment">
+                            <td>Other Interest Payments</td>
+                            <td id="idInterestPayment"></td>
+                            <td id="idInterestPercentage"></td>
+                        </tr>
+                        <tr class="classPrincipalPayment">
+                            <td>Other Principal Payments</td>
+                            <td id="idPrincipalPayment"></td>
+                            <td id="idPrincipalPercentage"></td>
+                        </tr>
+                        <tr class="nonglidtotal">
+                            <td><b>Total Loan Payment</b></td>
+                            <td><b id="idTotalLoans"></b></td>
+                            <td><b id="idTotalLoansPerc"></b></td>
+                        </tr>
+                        <tr style="background-color: white">
+                            <td></td>
+
+                        </tr>
+                        <tr class="nonglidtotal">
+                            <td><b>Net Surplus</b></td>
+                            <td><b id="idTotalNetSulplus"> </b></td>
+                            <td><b id="idTotalNetSulplusPerc"> </b></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table class="pictbls" style="margin-left : -35px;width:100%;">
+
+                            <tr style="background-color: white; vertical-align: top">
+                                <td>
+                                    <div id="idFPIncome" style="width:70%;margin-left: 40px;"></div>
+                                </td>
+                            </tr>
+
+                            <tr style="background-color: white; vertical-align: top">
+                                <td>
+                                    <div id="idFPExpense" style="width: 70%;margin-left:40px;"></div>
+                                </td>
+                            </tr>
+
+                            <tr style="background-color: white; vertical-align: top">
+                                <td></td>
+                            </tr>
+
+
+                        </table>
+
+                        <div class="col-lg-6">
+
+                            <div id="idFPNetSurplus" style="width: 75%"></div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+            <button data-u="thumb">Current Year</button>
+        </div>
+
+        <div>
+            <div data-u="image">
+                <div id="idMaxnetdetails" class="popup" style="position: relative; top: 21px;">
+                    <img src="../Common/assets/images/maximg.png" class="maxbtn" />
+                </div>
+
+                <table width="69%" class="netsurplusproj">
+                    <thead>
+                        <tr>
+                            <th class="textalignlft">Year</th>
+                            <th>Income</th>
+                            <th>Expenses</th>
+                            <th>Committed Outflows</th>
+                            <th>Loan Outflow</th>
+                            <th>Net Surplus</th>
+                        </tr>
+                    </thead>
+                    <tbody id="idNetProjection">
+                    </tbody>
+                </table>
+                <br />
+                <table width="69%" style="margin-left: 47px">
+                    <tr>
+                        <td><b>Download Projections</b></td>
+                        <td><input type="radio" id="idMonthlyRadio" name="download" style="position: sticky"></input>
+                        </td>
+                        <td style="text-align: left; vertical-align: bottom;"><label>Monthly</label></td>
+                        <td><input type="radio" id="idYearlyRadio" name="download" style="position: sticky" checked="true"></input>
+                        </td>
+                        <td style="text-align: left; vertical-align: bottom;"><label>Annually</label></td>
+                        <td><input type="submit" value="Save" id="idDownload" class="form-control"></td>
+                    </tr>
+                </table>
+
+            </div>
+            <br>
+            <div data-u="image">
+                <div id="idnet"></div>
+            </div>
+            <button data-u="thumb">Net Surplus Projections</button>
+        </div>
+
+
+    </div>
+    <!-- Thumbnail Navigator -->
+    <div data-u="thumbnavigator" class="jssort20" data-autocenter="1">
+        <!-- Thumbnail Item Skin Begin -->
+        <div data-u="slides">
+            <div data-u="prototype" class="p">
+                <div>
+                    <div data-u="thumbnailtemplate"></div>
+                </div>
+                <div></div>
+            </div>
+        </div>
+        <!-- Thumbnail Item Skin End -->
+    </div>
+    <!-- Arrow Navigator -->
+    <span data-u="arrowleft" class="jssora05l Expensesleft"><img
+		src="../Common/assets/images/leftarrow.png" /></span> <span data-u="arrowright" class="jssora05r Expensesright"><img
+		src="../Common/assets/images/rightarrow.png" /></span>
+</div>
+
+
+
+<!--expenses projection-->
+<div id="idPopnetworth" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" style="margin-top: -5px">&times;</span>
+            <h4 style="margin-top: 5px">Current Year</h4>
+            <h2></h2>
+        </div>
+        <div class="modal-body">
+
+            <table width="58%" class="libilitiestbl networthsmry" style="z-index: 10 !important; margin-top: 14px;" id="idFPIncomeModal">
+                <thead>
+                    <tr class="nonglidtotal">
+                        <th><b></b></th>
+                        <th>Amount (Rs)</th>
+                        <th>% of Total Income</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr class="classSalaryModal">
+                        <td><img src="../Common/assets/images/circle2.png" /> &nbsp; Salary Income</td>
+                        <td id="idSalModal">1,200,000</td>
+                        <td id="idSalModalPerc">75.00%</td>
+                    </tr>
+                    <tr class="classBonusModal">
+                        <td><img src="../Common/assets/images/circle3.png" /> &nbsp;Bonus Income/Variable Pay</td>
+                        <td id="idBonusModal">100,000</td>
+                        <td id="idBonusModalPerc">6.25%</td>
+                    </tr>
+                    <tr class="classProfModal">
+                        <td><img src="../Common/assets/images/circle4.png" /> &nbsp; Professional Fees</td>
+                        <td id="idProfModal">120,000</td>
+                        <td id="idProfModalPerc">7.50%</td>
+                    </tr>
+                    <tr class="classBussModal">
+                        <td><img src="../Common/assets/images/circle5.png" /> &nbsp; Business Income</td>
+                        <td id="idBussModal">60,000</td>
+                        <td id="idBussModalPerc">3.75%</td>
+                    </tr>
+                    <tr class="classRentModal">
+                        <td><img src="../Common/assets/images/circle6.png" /> &nbsp; Rental Income</td>
+                        <td id="idRentModal">120,000</td>
+                        <td id="idRentModalPerc">7.50%</td>
+                    </tr>
+                    <tr class="classPensionModal">
+                        <td><img src="../Common/assets/images/circle7.png" /> &nbsp; Pension</td>
+                        <td id="idPensionModal">-</td>
+                        <td id="idPensionModalPerc">0.00% </label>
+                        </td>
+                    </tr>
+                    <tr class="classOtherModal">
+                        <td><img src="../Common/assets/images/circle8.png" /> &nbsp; Other Income</td>
+                        <td id="idOtherModal">-</td>
+                        <td id="idOtherModalPerc">0.00%</td>
+                    </tr>
+                    <tr class="classInterestModal">
+                        <td><img src="../Common/assets/images/circle9.png" /> &nbsp; Interest Income</td>
+                        <td id="idInterestIncomeModal">-</td>
+                        <td id="idInterestIncomeModalPerc">0.00%</td>
+                    </tr>
+                    <tr class="classIndTotalModal">
+                        <td><img src="../Common/assets/images/circle10.png" /> &nbsp; Individual Total Income</td>
+                        <td id="indTotalIncomenetModal">-</td>
+                        <td id="indTotalIncomePercentnetModal">0.00%</td>
+                    </tr>
+                    <tr class="nonglidtotal">
+                        <td><b>Total Income</b></td>
+                        <td><b id="idTotalModal">1,600,000</b></td>
+                        <td><b id="idTotalModalPerc">100.00%</b></td>
+                    </tr>
+                    <tr class="subheadingcolor">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+
+                    <tr class="nonglidtotal">
+                        <td><b>Less</b></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="classGroceries">
+                        <td><img src="../Common/assets/images/circle2.png" /> &nbsp; Groceries
+                        </td>
+                        <td id="idGrocModal"></td>
+                        <td id="idGrocPercModal"></td>
+
+                    </tr>
+                    <tr class="classUtilities">
+                        <td><img src="../Common/assets/images/circle3.png" /> &nbsp; Utilities
+                        </td>
+                        <td id="idUtilitiesModal"></td>
+                        <td id="idUtilitiesPercModal"></td>
+
+                    </tr>
+                    <tr class="classTransport">
+                        <td><img src="../Common/assets/images/circle4.png" /> &nbsp; Transport
+                        </td>
+                        <td id="idTransport"></td>
+                        <td id="idTransportPercModal"></td>
+
+                    </tr>
+                    <tr class="classHPC">
+                        <td><img src="../Common/assets/images/circle5.png" /> &nbsp; Household & Personal Care</td>
+                        <td id="idHPModal"></td>
+                        <td id="idHPPercModal"></td>
+
+                    </tr>
+                    <tr class="classHM">
+                        <td><img src="../Common/assets/images/circle6.png" /> &nbsp; Housing & Maintenance</td>
+                        <td id="idHMModal"></td>
+                        <td id="idHMPercModal"></td>
+
+                    </tr>
+                    <tr class="classCommunication">
+                        <td><img src="../Common/assets/images/circle7.png" /> &nbsp; Communication
+                        </td>
+                        <td id="idCommModal"></td>
+                        <td id="idCommPercModal"></td>
+
+                    </tr>
+                    <tr class="classChildrenFee">
+                        <td><img src="../Common/assets/images/circle8.png" /> &nbsp; Children Fees</td>
+                        <td id="idChildModal"></td>
+                        <td id="idChildPercModal"></td>
+
+                    </tr>
+                    <tr class="classHCE">
+                        <td><img src="../Common/assets/images/circle9.png" /> &nbsp; Healthcare Expenses</td>
+                        <td id="idHEModal"></td>
+                        <td id="idHEPercModal"></td>
+
+                    </tr>
+                    <tr class="classLE">
+                        <td><img src="../Common/assets/images/circle10.png" /> &nbsp; Lifestyle & Entertainment</td>
+                        <td id="idLEModal"></td>
+                        <td id="idLEPercModal"></td>
+
+                    </tr>
+                    <tr class="classAA">
+                        <td><img src="../Common/assets/images/circle11.png" /> &nbsp; Apparels & Accessories</td>
+                        <td id="idAAModal"></td>
+                        <td id="idAAPercModal"></td>
+
+                    </tr>
+                    <tr class="classOthers">
+                        <td><img src="../Common/assets/images/circle12.png" /> &nbsp; Others (Charity, etc)</td>
+                        <td id="idOthersModal"></td>
+                        <td id="idOthersPercModal"></td>
+
+                    </tr>
+                    <tr class="classLivingModal">
+                        <td><img src="../Common/assets/images/circle2.png" /> &nbsp;Living Expenses</td>
+                        <td id="idIndModal"></td>
+                        <td id="idIndPercModal"></td>
+                    </tr>
+                    <tr class="nonglidtotal">
+                        <td><b>Total Expenses </b></td>
+                        <td><b id="idTotalExpModal"></b></td>
+                        <td><b id="idTotalExpModalPerc"></b></td>
+
+                    </tr>
+                    <tr style="background-color: white">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr class="nonglidtotal">
+                        <td><b>Less</b></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="classCOModal">
+                        <td><img src="../Common/assets/images/circle2.png" /> &nbsp; Committed Outflows</td>
+                        <td id="idCommitedModal"></td>
+                        <td id="idCommModalPerc"></td>
+
+                    </tr>
+
+                    <tr class="nonglidtotal">
+                        <td><b>Total Committed Outflows </b></td>
+                        <td><b id="idCommTotalModal"></b></td>
+                        <td><b id="idCommitedPercModal"></b></td>
+
+                    </tr>
+                    <tr style="background-color: white">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr class="nonglidtotal">
+                        <td><b>Less</b></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><img src="../Common/assets/images/circle2.png" /> &nbsp; EMI
+                        </td>
+                        <td id="idEmiModal">1,600,000</td>
+                        <td id="idEmiModalPerc">100.00%</td>
+
+                    </tr>
+                    <tr>
+                        <td><img src="../Common/assets/images/circle3.png" /> &nbsp; Other Interest Payments</td>
+                        <td id="idOtherInterestModal">1,600,000</td>
+                        <td id="idOtherInterestModalPerc">100.00%</td>
+
+                    </tr>
+                    <tr>
+                        <td><img src="../Common/assets/images/circle4.png" /> &nbsp; Other Principal Payments</td>
+                        <td id="idOtherPrincipalModal">1,600,000</td>
+                        <td id="idOtherPrincipalModalPerc">100.00%</td>
+
+                    </tr>
+
+                    <tr class="nonglidtotal">
+                        <td><b>Total Loan Payments </b></td>
+                        <td id="idLoanTotalModal"><b> 1,600,000 </b></td>
+                        <td id="idLoanTotalModalPerc"><b>100.00%</b></td>
+
+                    </tr>
+
+                    <tr style="background-color: white">
+                        <td></td>
+
+                    </tr>
+                    <tr class="nonglidtotal">
+                        <td><b>Net Surplus </b></td>
+                        <td id="idNetSurModal"><b> 1,600,000 </b></td>
+                        <td id="idNetSurModalPerc"><b> 11.00%</b></td>
+
+                    </tr>
+                </tbody>
+            </table>
+            <br />
+
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <table width="100%" style="margin-top: 78px; margin-left: 122px">
+
+                        <tr style="background-color: white; vertical-align: top">
+                            <td>
+                                <div id="idFPIncomePop" style="width: 45%; margin-top: -13px; margin-left: -106px;">
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr style="background-color: white; vertical-align: top">
+                            <td>
+                                <div id="idFPExpensePop" style="width: 50%; margin-top: -13px; margin-left: -106px;"></div>
+                            </td>
+                        </tr>
+
+                        <tr style="background-color: white; vertical-align: top">
+                            <td></td>
+                        </tr>
+
+                    </table>
+                    <div class="col-lg-6">
+
+                        <div id="idFPNetSurplusPop" style=" margin-left: 122px;"></div>
+                    </div>
+                    <br />
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- networth details -->
+
+<div id="idPopnetdetails" class="modal1">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close1" style="margin-top: -5px">&times;</span>
+            <h4 style="margin-top: 5px">Net Surplus Projections</h4>
+            <h2></h2>
+        </div>
+        <div class="modal-body">
+
+
+            <table width="69%" class="netsurplusproj">
+                <thead>
+                    <tr>
+                        <th class="textalignlft">Year</th>
+                        <th>Income</th>
+                        <th>Expenses</th>
+                        <th>Committed Outflows</th>
+                        <th>Loan Outflow</th>
+                        <th>Net Surplus</th>
+                    </tr>
+                </thead>
+                <tbody id="idNetProjectionModal">
+                </tbody>
+            </table>
+            <br />
+            <table width="40%" style="margin-left: 47px;">
+
+                <tr>
+                    <td><b>Download Projections</b></td>
+                    <td><input type="radio" id="idMonthlyRadioModal" name="download" style="position: sticky"></input>
+                    </td>
+                    <td style="text-align: left; vertical-align: bottom;"><label>Monthly</label></td>
+                    <td><input type="radio" id="idYearlyRadioModal" name="download" style="position: sticky" checked="true"></input>
+                    </td>
+                    <td style="text-align: left; vertical-align: bottom;"><label>Annually</label></td>
+                    <td><input type="submit" value="Save" id="idDownloadModal" class="form-control"></td>
+                </tr>
+
+            </table>
+            <br />
+        </div>
+
+    </div>
+
+</div>

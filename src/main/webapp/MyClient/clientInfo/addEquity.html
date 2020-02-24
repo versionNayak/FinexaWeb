@@ -1,0 +1,126 @@
+<script src="clientInfo/js/addEquity.js"></script>
+<script src="clientInfo/js/validateEquity.js"></script>
+<script src="clientInfo/js/validationForAll.js"></script>
+<script src="clientInfo/js/common.js"></script>
+<div class="cicontainer">
+	<div>
+		<form class="form-horizontal" id="formClientEquity" action="#">			
+		    <label class="col-sm-1 control-label"></label>
+			<div class="col-md-10 no_padding">
+				<div id="idRadioStart" style="display:none">
+					<label>Product*:</label>
+		            <input id='idFinancialAssetTypeDE' name=financialAssetType type='radio' value="15" /> Stocks  &nbsp;&nbsp;&nbsp;
+		            <input id='idFinancialAssetTypeIE' name='financialAssetType' type='radio'value="16" /> International Equity &nbsp;&nbsp;&nbsp;
+		            <input id='idFinancialAssetTypeESOP' name='financialAssetType' type='radio' value="17"/> ESOP &nbsp;&nbsp;&nbsp;
+	            </div>
+        		<br><br>
+   	   			<div id="MainDiv" style="display:none;">
+					<div class="form-group">
+						<div class="col-sm-12">
+							<span class="formentry-errmsg" id="alertform"></span>
+						</div>
+					</div>
+			       	<div id="FA" class="form-group form-group-lg">
+						<div class="col-sm-8 asset-owner-wrapper">
+							<label>Financial Asset Owner:</label><br/>
+							<table class="familymembertbl" width="20px">
+								<tr class="mem_icon" id="familyMemberImage">
+								</tr>
+							</table>
+						</div>
+					</div>
+					<hr class="full-width-divider">
+					<div id="WHL" class="form-group">
+						<div class="col-sm-12">
+							<label>Whether Security Listed:</label>
+							<span class="form-static-value">
+								<select class="form-control input-width-medium" id="idListedFlag" name="listedFlag" required="required" tabindex="1" onChange="displayListedUnlistedDiv()">
+									<!-- <option value="">Select Listed Flag</option> -->
+									<option  value="N">No</option>
+									<option selected value="Y">Yes</option>
+							    </select>
+							</span>
+						</div>
+					</div>				
+					<div id="SN" class="form-group">
+						<div class="col-sm-12">
+							<label>Security Name*:</label>
+							<input type="text" id="idUnlistedStockName" name="unlistedStockNameText" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Unlisted Security Name" tabindex="2">
+						    <span class="formentry-errmsg" id="alertsecurityName"></span>
+						</div>
+					</div>
+					<div id="SND" class="form-group">
+						<div class="col-sm-12">
+						    <label>Security Name*:</label>
+							<select class="form-control input-width-medium" id="idSecurityNameList" name="listedStockNameList" required="required" tabindex="3">
+						    </select>
+						     <span class="formentry-errmsg" id="alertsecurityNameDropdown"></span>
+						</div>
+					</div>
+					<div id="SI" class="form-group">
+						<div class="col-sm-11">
+							<label>Security ISIN:</label>
+							<input type="text" id="idISIN" name="isin" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Security ISIN" tabindex="-1" readonly>
+						</div>
+					</div>
+					<div id="NOS" class="form-group">
+						<div class="col-sm-12">
+						<label>No. of Shares*:</label>
+							<input type="text" id="idQuantity" name="quantity" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Shares" tabindex="4">
+						    <span class="formentry-errmsg" id="alertshares"></span>
+						</div>
+					</div>
+					<div id="AI" class="form-group">
+						<div class="col-sm-12">
+							<label>Amount Invested*:</label>
+							<input type="text" id="idInvestmentAmount" name="investmentAmount" class="form-control input-width-medium-min input-width-owner input-width-medium" onfocusout="maskAmount('#idInvestmentAmount')" placeholder="Enter Amount Invested" tabindex="5">
+						    <span class="formentry-errmsg" id="alertinvestmentAmount"></span>
+						</div>
+					</div>
+					<div id="DOP" class="form-group">
+		                <div class="col-sm-12">
+							<label>Date of Purchase*:</label>
+							<p id="idPurchaseDateGroup" class="input-group input-width-medium">
+								<input type="text" class="form-control" id="idPurchaseDate" name="purchaseDate" placeholder="DD/MM/YYYY" tabindex="6">
+								<span class="input-group-btn datepicker-icon">
+									<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="" data-original-title="Select Purchase Date"><em class="glyphicon calendar-icon-theme"></em></button>
+								</span>
+								
+							</p>
+							<span class="formentry-errmsg" id="alertpurchaseDate"></span>
+						</div>
+					</div>
+					<div id="CMV" class="form-group">
+						<div class="col-sm-12">
+							<label>Current Market Value*:</label>
+							<input type="text" id="idCurrentMarketValue" name="currentMarketValue" class="form-control input-width-medium-min input-width-owner input-width-medium" onfocusout="maskAmount('#idCurrentMarketValue')" placeholder="Enter Current Market Value" tabindex="7">
+						    <span class="formentry-errmsg" id="alertcurrentMarketValue"></span>
+						</div>
+					</div>
+					
+					<div id="VD" class="form-group">
+						<div class="col-sm-12">
+							<label>Vesting Date*:</label>
+							<p id="idEsopVestingDateGroup" class="input-group input-width-medium">
+								<input type="text" class="form-control" id="idEsopVestingDate" name="esopVestingDate" placeholder="DD/MM/YYYY" tabindex="8">
+								<span class="input-group-btn datepicker-icon">
+									<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="" data-original-title="Select Vesting Date"><em class="glyphicon calendar-icon-theme"></em></button>
+								</span>								
+							</p>
+							<span class="formentry-errmsg" id="alertvestingDate"></span>
+						</div>
+					</div>
+	        	</div>
+	        </div>
+	     	<div class="clearfix"></div>
+         	<br><br>
+		 	<div id="idButton" class="form-group" style="display:none;">
+				<div class="col-sm-offset-1 col-sm-11">
+					<button type="button" class="pull-left btn addbtn has-spinner" id="idSaveEquity" onclick="saveEquity()" tabindex="9">SAVE</button>
+					<button type="button" id="undo" class="pull-left btn addbtn" tabindex="10" onclick="undoChange()" >UNDO</button> 
+				</div>
+			</div>
+			<div id="focusguard-2" tabindex="11"></</div>			
+		</form>
+	</div>
+</div>

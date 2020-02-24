@@ -1,0 +1,76 @@
+<script src="MyBusiness/MF/Mfjs/form1.js"></script>
+<script>
+		$(function () {
+			"use strict";
+			$("[data-toggle=\"tooltip\"]").tooltip();
+			$("#idStartDate").datepicker({
+				format: "dd/mm/yyyy",
+				todayHighlight: true,
+				todayBtn: true
+			});
+			$(".datepicker-icon").on("click", function () {
+				$(this).closest(".input-group").find("input").trigger("focus");
+			});
+		});
+</script>
+<div class="MFforms">
+	<h4 class="formhead">NAV feed Upload			
+</h4>
+	<form class="form-horizontal marginleft10per" action="#" >
+						<div class="form-group">
+						<div>
+							<label>Start Date:</label>
+					<p class="input-group input-width-medium">
+						<input type="text" class="form-control" id="idStartDate" name="StartDate" placeholder="DD/MM/YYYY" tabindex="330">
+						<span class="input-group-btn datepicker-icon">
+							<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Start Date"><em class="glyphicon calendar-icon-theme"></em></button>
+						</span>
+					</p>
+						</div>
+						<br/><div>
+								<label>RTA:</label>
+								<span class="form-static-value">
+									<select class="form-control input-width-medium" onchange="javascript:aatish(this,'removeloan');" required="required" tabindex="430">
+										<option value="">Select</option>
+										<option value="1">CAMS</option>
+										<option value="2">Karvy</option>
+									</select>
+								</span>
+							</div>
+							<br/>
+							<div>
+								<label>File Name:</label>
+								<span class="form-static-value">
+									<select class="form-control input-width-medium" onchange="javascript:aatish(this,'removeloan');" required="required" tabindex="430">
+										<option value="">Select</option>
+										<option value="1">WBR2</option>
+										<option value="2">WBR2A</option>
+										<option value="2">MFSD 201</option>
+									</select>
+								</span>
+							</div>
+							<br/>
+							<div>
+								<label>File Type:</label>
+								<span class="form-static-value">
+									<select class="form-control input-width-medium" onchange="javascript:aatish(this,'removeloan');" required="required" tabindex="430">
+										<option value="">Select</option>
+										<option value="1">DBF</option>
+										<option value="2">CSV</option>
+									</select>
+								</span>
+							</div>
+							<br/>
+							<div>
+								<label>Select File:</label>
+								<input type="file" id="myFile" multiple size="50" onchange="selectfile()">
+
+							</div>
+							<br/>
+							<button type="submit" class="form-control addbtn" tabindex="540">Import</button>
+							</div>
+						
+						</form>
+							
+	
+	</div>

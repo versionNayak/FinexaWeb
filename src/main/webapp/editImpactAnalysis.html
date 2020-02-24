@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Finlabs">
+    <title>Finexa - Masters Change Impact Analysis</title>
+    <script src="Common/assets/js-library/bootbox.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../webapp/Common/assets/css-library/Bootstrap v3.3.7.css">
+    <link href="Common/assets/css-library/bootstrap.min.css" rel="stylesheet" />
+    <link href="Common/assets/css/dashboard.css" rel="stylesheet" />
+    <link href="Common/assets/css/style.css" rel="stylesheet" />
+    <link href="Common/assets/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="../Common/assets/js-library/jquery-3.2.1.min.js"></script>
+    <script src="Common/assets/js-library/bootstrap.min.js"></script>
+    <script src="Common/assets/js-library/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="../Common/assets/js-library/bootbox.js"></script>
+
+    <script type="text/javascript" src="../webapp/Common/assets/js-library/jQuery v1.11.1.js"></script>
+    <script type="text/javascript" src="Common/assets/js-library/jquery.serializeToJSON.js"></script>
+    <script type="text/javascript" src="Common/assets/js/myclient_global.js"></script>
+    <script type="text/javascript" src="Common/assets/js/serviceclient.js"></script>
+    <link rel="stylesheet" href="Common/assets/css-library/validationEngine.jquery.css" type="text/css" />
+    <script type="text/javascript" src="Common/assets/js/editImpactAnalysis.js"></script>
+</head>
+
+<body>
+    <div class="col-lg-6" align="center">
+        <!-- <div style="height: 577px; margin-top: 1%; width: 50%; background-color: DodgerBlue; padding-top: 20px"> -->
+        <div style="margin-top: -20px">
+            <div class="submit">
+                <h1>Edit Impacts</h1>
+                <div>
+                    <form class="form-horizontal" id="idUpdateImpactForm" action="#">
+
+                        <div id="MT" class="form-group">
+                            <div class="col-sm-12">
+                                <label>Master Table Name*:</label>
+                                <span class="form-static-value" id="idMasterTableName">
+									<select class="form-control input-width-medium" id="idMTName" name="masterTableName" required="required" tabindex="1">
+									<option value="">Select Table Name or Master Table Name which has a model</option>
+									<option value="adviosrRole">adviosrRole</option>
+									<option value="advisorUser">advisorUser</option>
+									<option value="masterInsurancePolicy">masterInsurancePolicy</option>
+									<option value="lookupAssetClass">lookupAssetClass</option>
+									<option value="clientPPF">clientPPF</option>
+									<option value="clientNPS">clientNPS</option>
+									<option value="clientNonLifeInsurance">clientNonLifeInsurance</option>
+									<option value="clientLifeInsurance">clientLifeInsurance</option>
+									<option value="masterSubAssetClassReturn">masterSubAssetClassReturn</option>
+									<option value="clientGoal">clientGoal</option>
+									<option value="clientMutualFund">clientMutualFund</option>
+									<option value="clientFamilyIncome">clientFamilyIncome</option>
+									<option value="clientFamilyMember">clientFamilyMember</option>
+									<option value="clientMaster">clientMaster</option>
+									<option value="masterState">masterState</option>
+									<option value="clientAtalPensionYojana">clientAtalPensionYojana</option>
+									<option value="clientAnnuity">clientAnnuity</option>
+									<option value="lookupCountry">lookupCountry</option>
+									<option value="viewRiskProfileSumMinMaxScore">viewRiskProfileSumMinMaxScore</option>
+									<option value="masterGoalInflationRate">masterGoalInflationRate</option>
+									<option value="masterDirectEquity">masterDirectEquity</option>
+									<option value="masterDirectEquityMarketCap">masterDirectEquityMarketCap</option>
+									<option value="master52WeekHighLowMF">master52WeekHighLowMF</option>
+									<option value="masterFundManager">masterFundManager</option>
+									<option value="masterMFAssetAllocation">masterMFAssetAllocation</option>
+									<option value="masterMFHolding">masterMFHolding</option>
+									<option value="masterMFHoldingMaturity">masterMFHoldingMaturity</option>
+									<option value="masterMFHoldingRatingWise">masterMFHoldingRatingWise</option>
+									<option value="masterMFHoldingSectorWise">masterMFHoldingSectorWise</option>
+									<option value="masterMutualFundETF">masterMutualFundETF</option>
+									<option value="masterMFDailyNAV">masterMFDailyNAV</option>
+									</select>
+									<span class="formentry-errmsg" id="alertMTName"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div id="MN" class="form-group">
+                            <div class="col-sm-12">
+                                <label>Module Name*:</label>
+                                <p class="input-group input-width-medium">
+                                    <input type="text" class="form-control valid-state" id="idMName" name="moduleName" readonly tabindex="2">
+                                </p>
+                            </div>
+                        </div>
+
+                        <div id="SMN" class="form-group">
+                            <div class="col-sm-12">
+                                <label>Sub Module Name*:</label>
+                                <p class="input-group input-width-medium">
+                                    <input type="text" class="form-control valid-state" id="idSMName" name="subModuleName" readonly tabindex="3">
+                                </p>
+                            </div>
+                        </div>
+
+                        <div id="CN" class="form-group">
+                            <div class="col-sm-12">
+                                <label>Controller Name*:</label>
+                                <p class="input-group input-width-medium">
+                                    <input type="text" class="form-control valid-state" id="idController" name="controller" placeholder="Enter Controller Name" tabindex="4">
+                                </p>
+                                <span class="formentry-errmsg" id="alertController"></span>
+                            </div>
+                        </div>
+
+                        <div id="SIN" class="form-group">
+                            <div class="col-sm-12">
+                                <label>Service Implementation Name*:</label>
+                                <p class="input-group input-width-medium">
+                                    <input type="text" class="form-control valid-state" id="idServiceImpl" name="serviceImpl" placeholder="Enter Service Implementation Name" tabindex="5">
+                                </p>
+                                <span class="formentry-errmsg" id="alertServiceImpl"></span>
+                            </div>
+                        </div>
+
+                        <div id="R" class="form-group">
+                            <div class="col-sm-12">
+                                <label>Repository:</label>
+                                <p class="input-group input-width-medium">
+                                    <input type="text" class="form-control valid-state" id="idRepository" name="repository" placeholder="Enter Repository Name" tabindex="6">
+                                </p>
+                                <span class="formentry-errmsg" id="alertServiceImpl"></span>
+                            </div>
+                        </div>
+
+                        <div id="M" class="form-group">
+                            <div class="col-sm-12">
+                                <label>Methods in the Controller*:</label>
+                                <p class="input-group input-width-medium">
+                                    <input type="text" class="form-control valid-state" id="idMethod" name="method" placeholder="Enter Method Name" tabindex="7">
+                                </p>
+                                <span class="formentry-errmsg" id="alertServiceImpl"></span>
+                            </div>
+                        </div>
+
+                        <div id="Ch" class="form-group">
+                            <div class="col-sm-12">
+                                <label>Changes To Do*:</label>
+                                <textarea form="idUpdateImpactForm" name="changes" id="idChanges" rows="4" cols="50" wrap="soft" tabindex="8"></textarea>
+                            </div>
+                        </div>
+
+                        <div id="Im" class="form-group">
+                            <div class="col-sm-12">
+                                <label>Impact*:</label>
+                                <textarea form="idUpdateImpactForm" name="impact" id="idImpacts" rows="4" cols="50" wrap="soft" tabindex="9"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                        <br><br>
+                        <div id="idButton" class="form-group">
+                            <div class="col-sm-offset-1 col-sm-12">
+                                <input id="idUpdateImpacts" type="button" value="Update" class="form-control addbtn" tabindex="10" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- </div> -->
+    </div>
+</body>
+
+</html>

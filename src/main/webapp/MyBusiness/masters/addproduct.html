@@ -1,0 +1,83 @@
+<script src="masters/js/addProduct.js"></script>
+<script src="masters/js/common.js"></script>
+<div class="cicontainerbusiness" style="overflow-y:scroll">
+	<div style="overflow: hidden;">
+		<form class="form-horizontal" action="#">
+			<div style="margin-left:5px">
+			<div class="row">
+			<div class="col-sm-5">
+				<label>Maximum number of funds recommended:</label>
+			</div>
+			<div class="col-sm-6">
+				<select style="width:175px;
+margin-top: -8px;" class="form-control" required="required" tabindex="430" id="noOfFunds" >
+					<option value="">Select No Of Funds</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+<!-- 					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option> -->
+				</select> 
+			</div><!-- <div class="col-sm-3">
+				<label>Select Fund House:</label>
+			</div> -->
+			<!-- 	<div class="col-sm-1">
+				<select style="padding-top:2px;width:200px;margin-left: -53px;
+margin-top: -8px;" class="form-control" required="required" tabindex="430" id="fundHouseNames" >
+					
+				</select>
+			</div> -->
+			</div>
+			<br>
+			<div class="row">
+			<div class="col-sm-4" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px"> 
+						<label class="control-label" for="idppfdeposite" style="text-align:left">From Date: </label><br/>
+						<p id="datepicker" style="width:16em;z-index:1" class="input-group date" data-date-format="dd-mm-yyyy">
+							<input class="form-control" id="fromDate" value="" style="font-size:14px" type="text" placeholder="DD/MM/YYYY"/>
+							<span class="input-group-addon calendar-icon-container"><i class="glyphicon calendar-icon-theme"></i></span>
+						</p>
+					</div>
+					<div class="col-sm-4" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px"> 
+						<label class="control-label" for="idppfdeposite" style="text-align:left">TO Date: </label><br/>
+						<p id="datepicker1" style="width:16em;z-index:1" class="input-group date" data-date-format="dd-mm-yyyy">
+							<input class="form-control" id="endDate" value="" style="font-size:14px" type="text" placeholder="DD/MM/YYYY"/>
+							<span class="input-group-addon calendar-icon-container"><i class="glyphicon calendar-icon-theme"></i></span>
+						</p>
+					</div>
+			</div>
+			</div>
+			<div style="overflow-y: scroll;overflow-x: hidden;height: 1025px;">
+				<table width="99%"  style="z-index:10 !important;margin-top:14px;margin-left:5px" id="productRecoMasterTable" class="tdthcenter firsttwotdthleft thirdtdright">
+				<thead>
+					<tr>
+						<th>Asset Class
+						</th>
+						<th>Sub Asset Class
+						</th>
+						<th>Recommended Scheme Name
+						</th>
+					</tr> 
+				</thead>
+				<tbody id="assetSubAssetClassID">
+			
+					</tbody>
+				</table>
+			</div>
+				<br/>
+				<div class="row">
+				<div class="col-sm-1"></div>
+				<div class="col-sm-5">
+				<input type="button" class="form-control addbtn" id="saveForm" value="Save" style="float: right;"/></div>
+				<div class="col-sm-5">
+				<!-- <input type="submit" class="form-control addbtn" value="Finish" /> -->
+				</div>
+				<div class="col-sm-1"></div>
+				</div>
+			</form>
+		</div>
+	</div>	

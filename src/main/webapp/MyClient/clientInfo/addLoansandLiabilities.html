@@ -1,0 +1,297 @@
+<script src="clientInfo/js/addLoans.js"></script>
+<script src="clientInfo/js/validateLoan.js"></script>
+<script src="clientInfo/js/validationForAll.js"></script>
+<script src="clientInfo/js/common.js"></script>
+ 
+<div class="cicontainer">
+	<form class="form-horizontal" id="clientLoan" action="#">
+		<label class="col-sm-1 control-label"></label>
+		<div class="col-md-10 no_padding">
+			<div id="idRadioStart" style="display:none">
+				<label>Loan Type*:</label>
+				<input id='idEMI' name='loanType' type='radio' value="1" /> EMI Based Loan &nbsp;&nbsp;&nbsp;
+				<input id='idNonEMI' name='loanType' type='radio' value="2" /> Non-EMI Based Loan
+			</div>
+			<br><br>
+			<div id="MainDiv" style="display:none;">
+				<div class="form-group">
+					<div class="col-sm-12">
+						<span class="formentry-errmsg" id="alertform"></span>
+					</div>
+				</div>
+				<p><span id="idSpan" style="color:black;font-weight:bold">Kindly note in case you are changing any or more than one of the following  ‘Outstanding Principal Today’ , 
+				‘Current EMI Amount’ and ‘Current Interest Rate’ , please update the ‘Date of Outstanding Principal’ to reflect the loan status as of today.</span></p>
+				<div id="FM" class="form-group form-group-lg">
+					<div class="col-sm-8 asset-owner-wrapper">
+						<label>Family Member:</label><br/>
+						<table class="familymembertbl" width="20px">
+							<tr class="mem_icon" id="familyMemberImage">									
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id='emi-header'>
+					<hr class="full-width-divider">
+					<div class="form-group">
+						<div class="col-sm-4">
+							<label>Loan Category*:</label>
+							<span class="form-static-value" id="idLoanCategory">
+							<select class="form-control input-width-medium" id="idLCategory" name="loanCategoryId" onchange="otherLoan()" tabindex="1">
+							</select>
+							<span class="formentry-errmsg" id="alertloancategory"></span>
+							</span>
+						</div>
+						<div class="col-sm-4">
+							<label>If Others, specify:</label>
+							<input type="text" class="form-control input-width-medium"  id="idOtherLoanCategory" name="otherLoanCategory" placeholder="Please Enter Other Category" tabindex="-1">
+							<span class="formentry-errmsg" id="alertOtherLoanCategory"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>Loan Description:</label>
+							<input type="text" class="form-control input-width-medium" id="idLoanDescription" name="loanDescription" placeholder="Enter Description" tabindex="3">
+						</div>
+					</div>
+					<!-- <div class="form-group">
+						<div class="col-sm-12">
+							<label>Loan Provider*:</label>
+							<span class="form-static-value" id="idLoanProvider">
+						<select class="form-control input-width-medium" id="idLProvider" name="loanProviderId" onchange="otherLoanProvider()" tabindex="4">
+						</select>
+						<span class="formentry-errmsg" id="alertloanprovider"></span>
+						</span>
+					</div> -->
+					
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>Loan Provider*</label>
+							<input type="text" class="form-control input-width-medium" id="idLProvider" name="emiLoanProviderName" placeholder="Enter loan Provider" tabindex="4">
+							<span class="formentry-errmsg" id="alertloanprovider"></span>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="col-sm-11">
+							<label>Loan Amount Type:</label>
+							<div class="displayflex" id="idLoanAmountTypeRadioGroup">
+								<label class="radio-inline custom-radio-theme">
+									<input type="radio" name="loanOriginalFlag" id="loanOriginalY" value="Y" tabindex="5" /><i></i>Original Loan Amount(Rs)
+								</label>
+								<label class="radio-inline custom-radio-theme">
+									<input type="radio" name="loanOriginalFlag" id="loanOriginalN" value="N" tabindex="6"/><i></i>Outstanding Principal Today(Rs)
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="emi-original">
+					<div class="form-group">
+						<div class="col-sm-11">
+							<label>Loan Start Date*:</label>
+							<p id="idLoanStartDateGroup" class="input-group input-width-medium">
+								<input type="text" class="form-control" id="idLoanStartDate" name="loanStartDate" placeholder="DD/MM/YYYY" tabindex="7">
+								 <span class="input-group-btn datepicker-icon">
+									<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Start Date"><em class="glyphicon calendar-icon-theme"></em></button>
+								</span> 
+							</p>
+							<span class="formentry-errmsg" id="alertstartdate"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>Original Loan Amount(Rs)*</label>
+							<input type="text" class="form-control input-width-medium" id="idOriginalLoanAmount" name="loanAmount" onfocusout="maskAmount('#idOriginalLoanAmount')" placeholder="Enter Amount" tabindex="8">
+							<span class="formentry-errmsg" id="alertoriginalloanamount"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>Original Interest Rate(%)*:</label>
+							<input type="text" class="form-control input-width-medium" id="idOriginalInterestRate" name="interestRate" placeholder="Enter Interest Rate" tabindex="9">
+							<span class="formentry-errmsg" id="alertoriginalinterestrate"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>Original Loan Tenure(Years)*:</label>
+							<input type="text" class="form-control input-width-medium" id="idOriginalLoanTenure" name="loanTenure" placeholder="Enter Tenure" tabindex="10">
+							<span class="formentry-errmsg" id="alertoriginalloantenure"></span>
+						</div>
+						
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>Original EMI Amount(Rs)*:</label>
+							<input type="text" class="form-control input-width-medium" id="idEmiAmount" name="emiAmount"  onfocusout="maskAmount('#idEmiAmount')" placeholder="Enter Number" tabindex="-1" readonly>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-11">
+							<label>Original Loan End Date:</label>
+							<input type="text" class="form-control input-width-medium" id="idLoanEndDate" name="loanEndDate" placeholder="DD/MM/YYYY" tabindex="-1" readonly>
+						</div>
+					</div>
+				</div>
+				<div id="emi-outstanding">
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>Outstanding Principal Today(Rs)*:</label>
+							<input type="text" class="form-control input-width-medium" id="idOutstandingPrincipalToday" name="outstandingPrincipalToday" onfocusout="maskAmount('#idOutstandingPrincipalToday')" placeholder="Enter Amount" tabindex="11">
+							<span class="formentry-errmsg" id="alertlOutstandingPrincipalToday"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>Current EMI Amount(Rs)*:</label>
+							<input type="text" class="form-control input-width-medium" id="idCurrentEmiAmount" name="emiAmountOut" onfocusout="maskAmount('#idCurrentEmiAmount')" placeholder="Enter Amount" tabindex="12">
+							<span class="formentry-errmsg" id="alertCurrentEmiAmount"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>Current Interest Rate(%)*:</label>
+							<input type="text" class="form-control input-width-medium" id="idCurrentInterestRate" name="interestRateOut" placeholder="Enter Interest Rate" tabindex="13">
+							<span class="formentry-errmsg" id="alertCurrentInterestRate"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-11">
+							<label>Date Of Outstanding Principal*:</label>
+							<p id="idLoanStartDateGroupOut" class="input-group input-width-medium">
+								<input type="text" class="form-control" id="idOutLoanStartDate" name="loanStartDateOut" placeholder="DD/MM/YYYY" tabindex="-1" readonly>
+								 <span class="input-group-btn datepicker-icon">
+									<button type="button" id="idDate" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" ><em class="glyphicon calendar-icon-theme"></em></button>
+								</span> 
+							</p>
+							<!-- <span class="formentry-errmsg" id="alertoutstartdate"></span> -->
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>No. of Pending Installments:</label>
+							<input type="text" class="form-control input-width-medium" id="idPendingInstallments" name="pendingInstalments" placeholder="Enter Installments" tabindex="-1" readonly>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-11">
+							<label>Current Loan End Date:</label>
+							<p class="input-group input-width-medium">
+								<input type="text" class="form-control" id="idLoanEndDateOut" name="loanEndDateOut" placeholder="DD/MM/YYYY" tabindex="-1" readonly>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div id='nonemi-header' style='display:none;'>
+					<hr class="full-width-divider">
+					<div class="form-group">
+						<div class="col-sm-4">
+							<label>Loan Category*:</label>
+							<span class="form-static-value" id="idLoanCategory">
+						<select class="form-control input-width-medium" id="idLCategoryNE" name="loanCategoryIdNE" onchange="otherLoanNE()" tabindex="14">
+						</select>
+						<span class="formentry-errmsg" id="alertloancategoryNE"></span>
+					</span>
+						</div>
+						<div class="col-sm-4">
+							<label>If Others, specify:</label>
+							<input type="text" class="form-control input-width-medium" id="idOthersNE" name="otherLoanCategoryNE" placeholder="Please Enter other Category" tabindex="15">
+							 <span class="formentry-errmsg" id="alertOtherLoanCategoryNE"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>Loan Description:</label>
+							<input type="text" class="form-control input-width-medium" id="idLoanDescriptionNE" name="loanDescriptionNE" placeholder="Enter Description" tabindex="16">
+						</div>
+					</div>
+					<!-- <div class="form-group">
+						<div class="col-sm-12">
+							<label>Loan Provider:</label>
+							<span class="form-static-value" id="idLoanProvider">
+								<select class="form-control input-width-medium" id="idLProviderNE" name="loanProviderIdNE"  tabindex="17">
+								</select>
+							<span class="formentry-errmsg" id="alertLoanProviderNE"></span>
+							</span>
+						</div>
+					</div> -->
+					
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>Loan Provider*</label>
+							<input type="text" class="form-control input-width-medium" id="idLProviderNE" name="loanProviderName" placeholder="Enter loan Provider" tabindex="17">
+							<span class="formentry-errmsg" id="alertLoanProviderNE"></span>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>Loan Amount(Rs)*:</label>
+							<input type="text" class="form-control input-width-medium" id="idLoanAmountNE" name="loanAmountNE" placeholder="Enter Amount" tabindex="18">
+							<span class="formentry-errmsg" id="alertLoanAmountNE"></span>						
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-11">
+							<label>Loan Start Date*:</label>
+							<p id="idLoanStartDateNEGroup" class="input-group input-width-medium">
+								<input type="text" class="form-control" id="idLoanStartDateNE" name="loanStartDateNE" placeholder="DD/MM/YYYY" tabindex="19">
+								<span class="input-group-btn datepicker-icon">
+									<button type="button"  class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Loan Start Date"><em class="glyphicon calendar-icon-theme"></em></button>
+								</span> 
+							</p>
+							<span class="formentry-errmsg" id="alertLoanStartDateNE"></span>	
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>Interest Rate(%)*:</label>
+							<input type="text" class="form-control input-width-medium" id="idInterestRateNE" name="interestRateNE" placeholder="Enter Rate" tabindex="20">
+							<span class="formentry-errmsg" id="alertInterestRateNE"></span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>Loan Tenure(Months)*:</label>
+							<input type="text" class="form-control input-width-medium" id="idLoanTenureNE" name="loanTenureNE" placeholder="Enter Loan Tenure" tabindex="21">
+							<span class="formentry-errmsg" id="alertLoanTenureNE"></span>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="col-sm-12">
+							<label>Interest Payment Frequency*:</label>
+							<span class="form-static-value" id="idInterestPaymentFrequency">
+						<select class="form-control input-width-medium" id="idInterestFrequency" name="interestPaymentFrequency"  tabindex="22">
+						</select>
+						<span class="formentry-errmsg" id="alertIPF"></span>
+						</span>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="col-sm-11">
+							<label>Loan End Date:</label>
+							<input type="text" class="form-control input-width-medium" id="idLoanEndDateNE" name="loanEndDateNE" placeholder="DD/MM/YYYY" tabindex="-1" readonly>	
+							<span class="formentry-errmsg" id="alertLoanEndDateNE"></span>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<br><br>
+		<div id="idButton" class="form-group" style="display:none;">
+			<div class="col-sm-offset-1 col-sm-11">
+				<button type="button" id="idSaveLoan"  class="pull-left btn addbtn" class="form-control addbtn" tabindex="23">SAVE</button>
+				<!-- <button type="reset" id="undo" class="pull-left btn addbtn" tabindex="24" onclick="undoChange()">UNDO</button> --> 
+				<!-- <input type="button" name="clear" value="Clear Form" onclick="clearForm(this.form);"> -->
+			    <!-- <input type="button" name="reset_form" value="Reset Form" onclick="this.form.reset();"> -->
+			    <button type="button" id="idUndo" class="pull-left btn addbtn" tabindex="24" onclick="undoChange()">UNDO</button>
+			    
+			</div>
+		</div>
+		<div id="focusguard-2" tabindex="25"></</div>	
+	</form>
+</div>

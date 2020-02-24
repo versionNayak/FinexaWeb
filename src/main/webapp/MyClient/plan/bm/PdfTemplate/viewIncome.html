@@ -1,0 +1,1066 @@
+<div>
+    <div id="showIncomediv">
+        <div align="center" style="page-break-after: always;">
+            <h1 align="center">Income</h1>
+            <h3 align="center">Current Income</h3>
+            <table align="center" border="0" class="tableNonGlideWrapper" style="background:none !important;">
+                <tr align="center" style="background: none !important;">
+                    <td width="60%" align="center">
+                        <table id="idIncomeTablePDF" class="currentincometbl margintop44" style="z-index: 10 !important">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Income Source</th>
+                                    <th>Annual Income</th>
+                                    <th>% of Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="classSalary">
+                                    <td><img id="classSalary" src="../Common/assets/images/circle2.png" /></td>
+                                    <td> &nbsp; Salary Income
+                                    </td>
+                                    <td id="salaryAmountPDF"></td>
+                                    <td id="salaryPercentPDF"></td>
+                                </tr>
+                                <tr class="classBonus">
+                                    <td><img id="classBonus" src="../Common/assets/images/circle3.png" /></td>
+                                    <td> &nbsp;Bonus Income/Variable Pay</td>
+                                    <td id="bonousAmountPDF"></td>
+                                    <td id="bonousPercentPDF"></td>
+                                </tr>
+                                <tr class="classProf">
+                                    <td><img id="classProf" src="../Common/assets/images/circle4.png" /></td>
+                                    <td> &nbsp; Professional Fees</td>
+                                    <td id="profFessPDF"></td>
+                                    <td id="profPercentPDF">
+                                </tr>
+                                <tr class="classBuss">
+                                    <td><img id="classBuss" src="../Common/assets/images/circle5.png" /></td>
+                                    <td> &nbsp; Business Income
+                                    </td>
+                                    <td id="bussIncomePDF"></td>
+                                    <td id="bussPercentPDF">
+                                </tr>
+                                <tr class="classRent">
+                                    <td><img id="classRent" src="../Common/assets/images/circle6.png" /></td>
+                                    <td> &nbsp; Rental Income
+                                    </td>
+                                    <td id="rentIncomePDF"></td>
+                                    <td id="rentIncomePercentPDF">
+                                </tr>
+                                <tr class="classPension">
+                                    <td><img id="classPension" src="../Common/assets/images/circle7.png" /></td>
+                                    <td> &nbsp; Pension</td>
+                                    <td id="pensionPDF"></td>
+                                    <td id="pensionPercentPDF">
+                                </tr>
+                                <tr class="classOther">
+                                    <td><img id="classOther" src="../Common/assets/images/circle8.png" /></td>
+                                    <td> &nbsp; Other Income
+                                    </td>
+                                    <td id="otherIncomePDF">-</td>
+                                    <td id="otherIncomePercentPDF">
+                                </tr>
+
+                                <tr class="classInterest">
+                                    <td><img id="classInterest" src="../Common/assets/images/circle9.png" /></td>
+                                    <td> &nbsp; Interest Income
+                                    </td>
+                                    <td id="interestIncomePDF"></td>
+                                    <td id="interestIncomePercentPDF"></td>
+                                </tr>
+                                <tr class="classIndTotal">
+                                    <td><img id="classIndTotal" src="../Common/assets/images/circle10.png" /></td>
+                                    <td> &nbsp; Individual Total Income</td>
+                                    <td id="indTotalIncomePDF"></td>
+                                    <td id="indTotalIncomePercentPDF"></td>
+                                </tr>
+
+                                <tr class="nonglidtotal">
+                                    <td colspan="2"><b>Total </b></td>
+                                    <td id="totalIncomePDF"></td>
+                                    <td id="totalIncomePercentPDF"><b></b>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </td>
+                        <td width="40%" align="center">
+                            <div id="idCurrentIncomePDF" style="min-width:200px;height:200px;margin:0 auto"></div>
+                        </td>
+                </tr>
+            </table>
+        </div>
+
+        <div align="center" style="page-break-after:always;">
+            <h1 align="center">Income</h1>
+            <h3 align="center">Income Projections</h3>
+            <br />
+            <div id="mainIncomeDiv"></div>
+            <table align="center" width="100%" id="idMainIncomeTablePDF">
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Salary,Bonus &<br>Professional<br>Income</th>
+                        <th>Business Income</th>
+                        <th>Rental Income</th>
+                        <th>Pension</th>
+                        <th>Other Income</th>
+                        <th>Interest Income</th>
+                        <th>Individual Total Income</th>
+                        <th>Total Income</th>
+                    </tr>
+                </thead>
+                <tbody id="idIncomeProjectionTablePDF">
+                </tbody>
+            </table>
+            <div id="resultTable">
+
+            </div>
+        </div>
+
+        <div align="center" style="page-break-after:always;">
+            <h1 align="center">Income</h1>
+            <h3 align="center">Income Projections Graph</h3>
+            <br/>
+            <div id="idIncomeProjectionPDF"></div>
+        </div>
+
+
+        <!-- <div  align="center" style="page-break-after:always;">
+			<h1 align="center">Income</h1>
+			<h3 align="center">Key Assumptions</h3>
+			<br/>
+			<div id="idAssumptions">				
+					<table class="familymembertbl">
+						<tr>
+							<td>Family Member:</td>
+							<td class="assetOwners" id="idassetOwner1PDF"><img id="idSelfImgPDF" 
+								src="../Common/assets/images/icons/Lady-A.png"
+								class="assetOwner1_img" alt="Self" tabindex="200"/>self</td>
+							<td class="assetOwners" id="idassetOwner2PDF"><img id="idSpouseImgPDF"  
+								src="../Common/assets/images/icons/Man-A.png"
+								class="assetOwner2_img" alt="Spouse" tabindex="210"/>&nbsp;
+								&nbsp; Spouse</td>
+							<td class="assetOwners" id="idassetOwner3PDF"><img id="idBoyImg" 
+								src="../Common/assets/images/icons/Boy-A.png"
+								class="assetOwner3_img" alt="Son" tabindex="220" />Son</td>
+							<td class="assetOwners" id="idassetOwner4PDF"><img id="idGirlImg"
+								src="../Common/assets/images/icons/Girl-A.png"
+								class="assetOwner4_img" alt="Daughter" tabindex="230" />&nbsp;
+								&nbsp; &nbsp; &nbsp; Daughter</td>
+							<td class="assetOwners" id="idassetOwner5PDF"><img id="idFatherImg"
+								src="../Common/assets/images/icons/Father-A.png"
+								class="assetOwner5_img" alt="Father" tabindex="240" />&nbsp;
+								&nbsp; &nbsp;Father</td>
+							<td class="assetOwners" id="idassetOwner6PDF"><img id="idMotherImg"
+								src="../Common/assets/images/icons/Mother-A.png"
+								class="assetOwner6_img" alt="Mother" tabindex="250" />&nbsp;
+								&nbsp; &nbsp; Mother</td>
+							<td class="assetOwners" id="idassetOwner7PDF"><img id="idOtherImg"
+								src="../Common/assets/images/icons/Other-A.png"
+								class="assetOwner7_img" alt="Other" tabindex="260" />&nbsp;
+								&nbsp; Other</td>
+						</tr>
+					</table>					
+					<table width="89%" id="idKeyAssumptionMainTablePDF" class="keyassumptions" style="margin-top: 4px">
+						<thead>
+							<tr>
+								<th>Income Source</th>
+								<th>Amount</th>
+								<th>Frequency</th>
+								<th>Reference Month</th>
+								<th>Year till Income will continue</th>
+								<th>Annual Income Growth rate(%)</th>
+							</tr>
+						</thead>
+						<tbody id="idKeyAssumptionPDF">
+						</tbody>
+					</table>					
+			</div>		
+		</div> -->
+
+
+    </div>
+
+    <div id="showIncomeJsdiv">
+
+        <script type="text/javascript">
+            getDataUri(
+                '../Common/assets/images/icons/Lady-A.png',
+                function(dataUri) {
+                    $('#idSelfImgPDF')
+                        .attr("src", dataUri);
+                });
+
+            getDataUri(
+                '../Common/assets/images/icons/Man-A.png',
+                function(dataUri) {
+                    $('#idSpouseImgPDF')
+                        .attr("src", dataUri);
+                });
+
+            getDataUri(
+                '../Common/assets/images/icons/Boy-A.png',
+                function(dataUri) {
+                    $('#idBoyImg')
+                        .attr("src", dataUri);
+                });
+
+            getDataUri(
+                '../Common/assets/images/icons/Girl-A.png',
+                function(dataUri) {
+                    $('#idGirlImg')
+                        .attr("src", dataUri);
+                });
+
+            getDataUri(
+                '../Common/assets/images/icons/Father-A.png',
+                function(dataUri) {
+                    $('#idFatherImg')
+                        .attr("src", dataUri);
+                });
+
+            getDataUri(
+                '../Common/assets/images/icons/Mother-A.png',
+                function(dataUri) {
+                    $('#idMotherImg')
+                        .attr("src", dataUri);
+                });
+
+            getDataUri(
+                '../Common/assets/images/icons/Other-A.png',
+                function(dataUri) {
+                    $('#idOtherImg')
+                        .attr("src", dataUri);
+                });
+
+            // <!--Separator-->
+
+            getDataUri(
+                '../Common/assets/images/circle2.png',
+                function(dataUri) {
+                    $('#classSalary')
+                        .attr("src", dataUri);
+                });
+
+            getDataUri(
+                '../Common/assets/images/circle3.png',
+                function(dataUri) {
+                    $('#classBonus')
+                        .attr("src", dataUri);
+                });
+
+            getDataUri(
+                '../Common/assets/images/circle4.png',
+                function(dataUri) {
+                    $('#classProf')
+                        .attr("src", dataUri);
+                });
+
+            getDataUri(
+                '../Common/assets/images/circle5.png',
+                function(dataUri) {
+                    $('#classBuss')
+                        .attr("src", dataUri);
+                });
+
+            getDataUri(
+                '../Common/assets/images/circle6.png',
+                function(dataUri) {
+                    $('#classRent')
+                        .attr("src", dataUri);
+                });
+
+            getDataUri(
+                '../Common/assets/images/circle7.png',
+                function(dataUri) {
+                    $('#classPension')
+                        .attr("src", dataUri);
+                });
+
+            getDataUri(
+                '../Common/assets/images/circle8.png',
+                function(dataUri) {
+                    $('#classOther')
+                        .attr("src", dataUri);
+                });
+
+            getDataUri(
+                '../Common/assets/images/circle9.png',
+                function(dataUri) {
+                    $('#classInterest')
+                        .attr("src", dataUri);
+                });
+
+            getDataUri(
+                '../Common/assets/images/circle10.png',
+                function(dataUri) {
+                    $('#classIndTotal')
+                        .attr("src", dataUri);
+                });
+
+            $(document).ready(function($) {
+
+                var salaryIncomePercent;
+                var option1 = [];
+                var option2 = [];
+                var option3 = [];
+                var option4 = [];
+                var option5 = [];
+                var option6 = [];
+                var option7 = [];
+                var category = [];
+                var salaryIncome;
+                var bonousPercent;
+                var profPercent;
+                var bussPercent;
+                var rentIncomePercent;
+                var otherIncomePercent;
+                var interestIncomePercent;
+                var pensionPercent;
+                var indTotalPerc;
+                var flagSal = 0;
+                var flagBusiness = 0;
+                var flagRental = 0;
+                var flagPension = 0;
+                var flagOther = 0;
+                var flagInd = 0;
+                var flagInterest = 0;
+                var flagTotal = 0;
+
+                $("#idIncomeTablePDF").hide();
+                //$('#idMainIncomeTablePDF').hide();
+
+                $.ajax({
+                    type: 'GET',
+                    async: false,
+                    url: REQUEST_URL_BM + '/getClientIncomeInfo?clientId=' + vClientId + '&mode=yearly&fpFlag=0',
+                    dataType: 'json',
+                    success: function(data) {
+
+                        salaryIncome = data.salaryIncome;
+                        $("#salaryAmountPDF").text(parseFloat((salaryIncome * 100) / 100).toFixed(2));
+                        if (salaryIncome == 0) {
+                            $("#idIncomeTablePDF tbody tr.classSalary").hide().addClass('noprint');
+                        }
+                        $("#bonousAmountPDF").text(parseFloat((data.bonousIncome * 100) / 100).toFixed(2));
+                        if (data.bonousIncome == 0) {
+                            $("#idIncomeTablePDF tbody tr.classBonus").hide().addClass('noprint');
+                        }
+                        $("#profFessPDF").text(parseFloat((data.professionalFee * 100) / 100).toFixed(2));
+                        if (data.professionalFee == 0) {
+                            $("#idIncomeTablePDF tbody tr.classProf").hide().addClass('noprint');
+                        }
+                        $("#bussIncomePDF").text(parseFloat((data.bussinessIncome * 100) / 100).toFixed(2));
+                        if (data.bussinessIncome == 0) {
+                            $("#idIncomeTablePDF tbody tr.classBuss").hide().addClass('noprint');
+                        }
+                        $("#rentIncomePDF").text(parseFloat((data.rentalIncome * 100) / 100).toFixed(2));
+                        if (data.rentalIncome == 0) {
+                            $("#idIncomeTablePDF tbody tr.classRent").hide().addClass('noprint');
+                        }
+                        $("#pensionPDF").text(parseFloat((data.pension * 100) / 100).toFixed(2));
+                        if (data.pension == 0) {
+                            $("#idIncomeTablePDF tbody tr.classPension").hide().addClass('noprint');
+                        }
+                        $("#otherIncomePDF").text(parseFloat((data.otherIncome * 100) / 100).toFixed(2));
+                        if (data.otherIncome == 0) {
+                            $("#idIncomeTablePDF tbody tr.classOther").hide().addClass('noprint');
+                        }
+                        $("#interestIncomePDF").text(parseFloat((data.interestIncome * 100) / 100).toFixed(2));
+                        if (parseInt(data.interestIncome) == 0) {
+                            $("#idIncomeTablePDF tbody tr.classInterest").hide().addClass('noprint');
+                        }
+                        $("#indTotalIncomePDF").text(parseFloat((data.individualTotalIncome * 100) / 100).toFixed(2));
+                        if (parseInt(data.individualTotalIncome) == 0) {
+                            $("#idIncomeTablePDF tbody tr.classIndTotal").hide().addClass('noprint');
+                        }
+                        $("#totalIncomePDF").text(parseFloat((data.totalIncome * 100) / 100).toFixed(2));
+                        $("#salaryPercentPDF").text(parseFloat((data.salaryIncome / data.totalIncome) * 100).toFixed(2) + "%");
+                        salaryIncomePercent = (data.salaryIncome / data.totalIncome) * 100;
+
+                        $("#bonousPercentPDF").text(parseFloat((data.bonousIncome / data.totalIncome) * 100).toFixed(2) + "%");
+                        bonousPercent = (data.bonousIncome / data.totalIncome) * 100;
+
+                        $("#profPercentPDF").text(parseFloat((data.professionalFee / data.totalIncome) * 100).toFixed(2) + "%");
+                        profPercent = (data.professionalFee / data.totalIncome) * 100;
+
+                        $("#bussPercentPDF").text(parseFloat((data.bussinessIncome / data.totalIncome) * 100).toFixed(2) + "%");
+                        bussPercent = (data.bussinessIncome / data.totalIncome) * 100;
+
+                        $("#rentIncomePercentPDF").text(parseFloat((data.rentalIncome / data.totalIncome) * 100).toFixed(2) + "%");
+                        rentIncomePercent = (data.rentalIncome / data.totalIncome) * 100;
+
+                        $("#pensionPercentPDF").text(parseFloat((data.pension / data.totalIncome) * 100).toFixed(2) + "%");
+                        pensionPercent = (data.pension / data.totalIncome) * 100;
+
+                        $("#otherIncomePercentPDF").text(parseFloat((data.otherIncome / data.totalIncome) * 100).toFixed(2) + "%");
+                        otherIncomePercent = (data.otherIncome / data.totalIncome) * 100;
+
+                        $("#interestIncomePercentPDF").text(parseFloat((data.interestIncome / data.totalIncome) * 100).toFixed(2) + "%");
+                        interestIncomePercent = (data.interestIncome / data.totalIncome) * 100;
+
+                        $("#indTotalIncomePercentPDF").text(parseFloat((data.individualTotalIncome / data.totalIncome) * 100).toFixed(2) + "%");
+                        indTotalPerc = (data.individualTotalIncome / data.totalIncome) * 100;
+
+                        $("#totalIncomePercentPDF").text(parseFloat((data.totalIncome / data.totalIncome) * 100).toFixed(2) + "%");
+
+                        $.each(data.clientFamilyList,
+                            function(index, value) {
+                                category.push(value.year);
+                                option1.push(value.salaryIncome);
+                                option2.push(value.bussinessIncome);
+                                option3.push(value.rentalIncome);
+                                option4.push(value.pension);
+                                option5.push(value.interestIncome);
+                                option6.push(value.otherIncome);
+                                option7.push(value.individualTotalIncome);
+
+                                $('#idIncomeProjectionTablePDF').append(
+                                    '<tr><td>' + value.year + '</td><td>' +
+                                    parseFloat(value.salaryIncome).toFixed(2) + '</td><td>' +
+                                    parseFloat(value.bussinessIncome).toFixed(2) + '</td><td>' +
+                                    parseFloat(value.rentalIncome).toFixed(2) + '</td><td>' +
+                                    parseFloat(value.pension).toFixed(2) + '</td><td>' +
+                                    parseFloat(value.otherIncome).toFixed(2) + '</td><td>' +
+                                    parseFloat(value.interestIncome).toFixed(2) + '</td><td>' +
+                                    parseFloat(value.individualTotalIncome).toFixed(2) + '</td><td>' +
+                                    parseFloat(value.totalIncome).toFixed(2) + '</td></tr>');
+
+
+                                if (parseFloat(value.salaryIncome).toFixed(2) != 0.00) {
+                                    flagSal = 1;
+                                }
+                                if (parseFloat(value.bussinessIncome).toFixed(2) != 0.00) {
+                                    flagBusiness = 1;
+                                }
+                                if (parseFloat(value.rentalIncome).toFixed(2) != 0.00) {
+                                    flagRental = 1;
+                                }
+                                if (parseFloat(value.pension).toFixed(2) != 0.00) {
+                                    flagPension = 1;
+                                }
+                                if (parseFloat(value.otherIncome).toFixed(2) != 0.00) {
+                                    flagOther = 1;
+                                }
+                                if (parseFloat(value.interestIncome).toFixed(2) != 0.00) {
+                                    flagInterest = 1;
+                                }
+                                if (parseFloat(value.individualTotalIncome).toFixed(2) != 0.00) {
+                                    flagInd = 1;
+                                }
+                                if (parseFloat(value.totalIncome).toFixed(2) != 0.00) {
+                                    flagTotal = 1;
+                                }
+
+                            });
+
+                        // hide all zero containing columns					
+                        if (flagSal == 0) {
+                            $('#idMainIncomeTablePDF td:nth-child(2),#idMainIncomeTablePDF th:nth-child(2)').hide().addClass('noprint');
+                        }
+                        if (flagBusiness == 0) {
+                            $('#idMainIncomeTablePDF td:nth-child(3),#idMainIncomeTablePDF th:nth-child(3)').hide().addClass('noprint');
+                        }
+                        if (flagRental == 0) {
+                            $('#idMainIncomeTablePDF td:nth-child(4),#idMainIncomeTablePDF th:nth-child(4)').hide().addClass('noprint');
+                        }
+                        if (flagPension == 0) {
+                            $('#idMainIncomeTablePDF td:nth-child(5),#idMainIncomeTablePDF th:nth-child(5)').hide().addClass('noprint');
+                        }
+                        if (flagOther == 0) {
+                            $('#idMainIncomeTablePDF td:nth-child(6),#idMainIncomeTablePDF th:nth-child(6)').hide().addClass('noprint');
+                        }
+                        if (flagInterest == 0) {
+                            $('#idMainIncomeTablePDF td:nth-child(7),#idMainIncomeTablePDF th:nth-child(7)').hide().addClass('noprint');
+                        }
+                        if (flagInd == 0) {
+                            $('#idMainIncomeTablePDF td:nth-child(8),#idMainIncomeTablePDF th:nth-child(8)').hide().addClass('noprint');
+                        }
+                        if (flagTotal == 0) {
+                            $('#idMainIncomeTablePDF td:nth-child(9),#idMainIncomeTablePDF th:nth-child(9)').hide().addClass('noprint');
+                        }
+
+                        loadCharts();
+                    },
+                    error: function(data) {
+                        //$("#incomeHeadIdPDF").text("Annual Income");	
+                        $("#salaryAmountPDF").text("0.00");
+                        $("#bonousAmountPDF").text("0.00");
+                        $("#profFessPDF").text("0.00");
+                        $("#bussIncomePDF").text("0.00");
+                        $("#rentIncomePDF").text("0.00");
+                        $("#pensionPDF").text("0.00");
+                        $("#otherIncomePDF").text("0.00");
+                        $("#interestIncomePDF").text("0.00");
+                        $("#totalIncomePDF").text("0.00");
+                        $("#salaryPercentPDF").text("0.00%");
+                        $("#bonousPercentPDF").text("0.00%");
+                        $("#profPercentPDF").text("0.00%");
+                        $("#bussPercentPDF").text("0.00%");
+                        $("#rentIncomePercentPDF").text("0.00%");
+                        $("#pensionPercentPDF").text("0.00%");
+                        $("#interestIncomePercentPDF").text("0.00%");
+                        $("#otherIncomePercentPDF").text("0.00%");
+                        $("#totalIncomePercentPDF").text("0.00%");
+                        loadCharts();
+                    }
+                });
+
+                $("#idIncomeTablePDF").show();
+
+                var table_html = $('#idMainIncomeTablePDF').html();
+                table_html = '<table align="center" width="100%" id="idMainIncomeTablePDF">' + table_html + '</table>';
+                $html = $(table_html);
+                $html.find('.noprint').remove();
+                $('#idMainIncomeTablePDF').remove();
+                $('#mainIncomeDiv').html('<table align="center" width="100%" id="idMainIncomeTablePDF">' + $html.html() + '</table>');
+
+                function loadCharts() {
+                    Highcharts.chart('idCurrentIncomePDF', {
+                        chart: {
+                            plotBackgroundColor: null,
+                            plotBorderWidth: null,
+                            plotShadow: false,
+                            type: 'pie'
+                        },
+                        title: {
+                            text: ''
+                        },
+                        tooltip: {
+                            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        },
+                        legend: {
+                            align: 'right',
+                            verticalAlign: 'middle',
+                            layout: 'vertical'
+                        },
+                        plotOptions: {
+                            pie: {
+                                allowPointSelect: true,
+                                cursor: 'pointer',
+                                dataLabels: {
+                                    enabled: false
+                                },
+                                showInLegend: false
+                            }
+                        },
+                        series: [{
+                            name: 'Allocation',
+                            colorByPoint: true,
+                            data: [{
+                                name: 'Salary Income',
+                                y: salaryIncomePercent,
+                                color: '#95ceff'
+                            }, {
+                                name: 'Bonus Income/Variable Pay',
+                                y: bonousPercent,
+                                color: '#f7a35c'
+                            }, {
+                                name: 'Professional Fees',
+                                y: profPercent,
+                                color: '#90ed7d',
+                                sliced: true,
+                                selected: true
+                            }, {
+                                name: 'Business Income',
+                                y: bussPercent,
+                                color: '#8085d9'
+                            }, {
+                                name: 'Rental Income',
+                                y: rentIncomePercent,
+                                color: '#f15c80'
+                            }, {
+                                name: 'Pension',
+                                y: pensionPercent,
+                                color: '#727276'
+
+                            }, {
+                                name: 'Other Income',
+                                y: otherIncomePercent,
+                                color: '#5adedc'
+
+                            }, {
+                                name: 'Interest Income',
+                                y: interestIncomePercent,
+                                color: '#9164aa'
+
+                            }, {
+                                name: 'Individual Total Income',
+                                y: indTotalPerc,
+                                color: '#cdaa5f'
+
+                            }]
+                        }]
+                    });
+
+                    /* Highcharts.chart('idIncomeProjectionPDF', {
+							chart: {
+								type: 'column'
+							},
+							title: {
+								text: '<p style="color:white;font-weight: bold;">Expected Income Projections</p>'
+							},
+							xAxis: {
+								categories: category
+							},
+							yAxis: {
+								min: 0,
+								title: {
+									text: ''
+								},
+								stackLabels: {
+			
+									style: {
+										fontWeight: 'bold',
+										color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+									}
+								}
+							},
+							legend: {
+								align: 'right',
+								x: 0,
+								verticalAlign: 'bottom',
+								y: 50,
+								floating: true,
+								backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+								borderColor: '#CCC',
+								borderWidth: 1,
+								shadow: false,
+			
+							},
+							tooltip: {
+								headerFormat: '<b>{point.x}</b><br/>',
+								pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+							},
+							plotOptions: {
+								column: {
+									stacking: 'normal',
+									dataLabels: {
+			
+										color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+									},
+									showInLegend: true
+								}
+							},
+							series: [{
+								name: 'Salary, Bonus & Professional Income',
+								data: option1,
+								color:"#8cb6da"
+							}, {
+								name: 'Business Income',
+								data: option2,
+								color:"#6ba0ce"
+							}, {
+								name: 'Rental Income',
+								data: option3,
+								color:"#5c96c8"
+							},{
+								name: 'Pension',
+								data: option4,
+								color:"#337ab7"
+							},{
+								name: 'Other Income',
+								data: option6,
+								color:"#3072ab"
+							},{
+								name: 'Interest Income',
+								data: option5,
+								color:"#3072ab"
+							},{
+								name: 'Individual total Income',
+								data: option7,
+								color:"#3072ab"
+							}]
+						});  */
+
+                    Highcharts.chart('idIncomeProjectionPDF', {
+                        chart: {
+                            type: 'column'
+                        },
+                        title: {
+                            text: '<p style="color:white;font-weight: bold;">Expected Income Projections</p>'
+                        },
+                        xAxis: {
+                            categories: category
+                        },
+                        yAxis: {
+                            min: 0,
+                            title: {
+                                text: ''
+                            },
+                            stackLabels: {
+
+                                style: {
+                                    fontWeight: 'bold',
+                                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                                }
+                            }
+                        },
+                        legend: {
+                            align: 'right',
+                            x: 0,
+                            verticalAlign: 'top',
+                            y: 0,
+                            floating: true,
+                            backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+                            borderColor: '#CCC',
+                            borderWidth: 1,
+                            shadow: false,
+                        },
+                        tooltip: {
+                            headerFormat: '<b>{point.x}</b><br/>',
+                            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+                        },
+                        plotOptions: {
+                            column: {
+                                stacking: 'normal',
+                                dataLabels: {
+
+                                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+                                }
+                            }
+                        },
+                        series: [{
+                            name: 'Salary, Bonus & Professional Income',
+                            data: option1,
+                            color: "#8cb6da"
+                        }, {
+                            name: 'Business Income',
+                            data: option2,
+                            color: "#6ba0ce"
+                        }, {
+                            name: 'Rental Income',
+                            data: option3,
+                            color: "#5c96c8"
+                        }, {
+                            name: 'Pension',
+                            data: option4,
+                            color: "#337ab7"
+                        }, {
+                            name: 'Other Income',
+                            data: option6,
+                            color: "#3072ab"
+                        }, {
+                            name: 'Interest Income',
+                            data: option5,
+                            color: "#3072ab"
+                        }, {
+                            name: 'Individual total Income',
+                            data: option7,
+                            color: "#3072ab"
+                        }]
+                    });
+                }
+
+                function databasecall(val) {
+                    $.ajax({
+                        type: 'GET',
+                        async: false,
+                        url: REQUEST_URL_BM + '/getIncomeDetailOfFamilyMember?memberId=' + val,
+                        dataType: 'json',
+                        success: function(data) {
+                            $('#idKeyAssumptionPDF').empty();
+                            $.each(data, function(index, value) {
+                                $("#idKeyAssumptionPDF").append('<tr>' +
+                                    '<td>' + value.incomeCategory + '</td>' +
+                                    '<td>' + value.income + '</td>' +
+                                    '<td>' + value.frequency + '</td>' +
+                                    '<td>' + value.referenceMonth + '</td>' +
+                                    '<td>' + value.continueUpto + '</td>' +
+                                    '<td>' + (value.annualIncomeGrowthRate * 100) + '</td>' +
+                                    '</tr>');
+                            });
+                        },
+                        error: function(data) {}
+                    });
+                }
+
+                $(".assetOwners").hide();
+
+                //alert(window.income_key_selection_default);
+
+                $.each(relation, function(index, value) {
+                    if (value == 0 && window.income_key_selection_default == 0) {
+                        $("#idassetOwner1PDF").show();
+                        databasecall(memberIdList[index]);
+                        if (window.income_key_selection_gender_default == "M") {
+                            getDataUri('../Common/assets/images/icons/Man-C.png', function(dataUri) {
+                                $('#idSelfImgPDF').attr("src", dataUri);
+                            });
+                            //getDataUri('../Common/assets/images/icons/Lady-A.png',function(dataUri) { $('.assetOwner1_img').attr("src", dataUri); });		
+                            getDataUri('../Common/assets/images/icons/Man-A.png', function(dataUri) {
+                                $('#idSpouseImgPDF').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Boy-A.png', function(dataUri) {
+                                $('#idBoyImg').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Girl-A.png', function(dataUri) {
+                                $('#idGirlImg').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Father-A.png', function(dataUri) {
+                                $('#idFatherImg').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Mother-A.png', function(dataUri) {
+                                $('#idMotherImg').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Other-A.png', function(dataUri) {
+                                $('#idOtherImg').attr("src", dataUri);
+                            });
+                        } else {
+                            //getDataUri('../Common/assets/images/icons/Man-C.png',function(dataUri) {$('.assetOwner1_img').attr("src", dataUri);});
+                            getDataUri('../Common/assets/images/icons/Lady-C.png', function(dataUri) {
+                                $('#idSelfImgPDF').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Man-A.png', function(dataUri) {
+                                $('#idSpouseImgPDF').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Boy-A.png', function(dataUri) {
+                                $('#idBoyImg').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Girl-A.png', function(dataUri) {
+                                $('#idGirlImg').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Father-A.png', function(dataUri) {
+                                $('#idFatherImg').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Mother-A.png', function(dataUri) {
+                                $('#idMotherImg').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Other-A.png', function(dataUri) {
+                                $('#idOtherImg').attr("src", dataUri);
+                            });
+                        }
+                    }
+                    if (value == 1 && window.income_key_selection_default == 1) {
+                        $("#idassetOwner2PDF").show();
+                        databasecall(memberIdList[index]);
+                        if (window.income_key_selection_gender_default == "M") {
+                            //getDataUri('../Common/assets/images/icons/Man-C.png',function(dataUri) {$('.assetOwner1_img').attr("src", dataUri);});
+                            getDataUri('../Common/assets/images/icons/Lady-A.png', function(dataUri) {
+                                $('#idSelfImgPDF').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Man-A.png', function(dataUri) {
+                                $('#idSpouseImgPDF').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Boy-A.png', function(dataUri) {
+                                $('#idBoyImg').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Girl-A.png', function(dataUri) {
+                                $('#idGirlImg').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Father-A.png', function(dataUri) {
+                                $('#idFatherImg').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Mother-A.png', function(dataUri) {
+                                $('#idMotherImg').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Other-A.png', function(dataUri) {
+                                $('#idOtherImg').attr("src", dataUri);
+                            });
+                        } else {
+                            //getDataUri('../Common/assets/images/icons/Man-C.png',function(dataUri) {$('.assetOwner1_img').attr("src", dataUri);});
+                            getDataUri('../Common/assets/images/icons/Man-A.png', function(dataUri) {
+                                $('#idSelfImgPDF').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Man-A.png', function(dataUri) {
+                                $('#idSpouseImgPDF').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Boy-A.png', function(dataUri) {
+                                $('#idBoyImg').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Girl-A.png', function(dataUri) {
+                                $('#idGirlImg').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Father-A.png', function(dataUri) {
+                                $('#idFatherImg').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Mother-A.png', function(dataUri) {
+                                $('#idMotherImg').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Other-A.png', function(dataUri) {
+                                $('#idOtherImg').attr("src", dataUri);
+                            });
+                        }
+                    }
+                    if (value == 2 && window.income_key_selection_default == 2) {
+                        $("#idassetOwner3PDF").show();
+                        databasecall(memberIdList[index]);
+                        if (window.income_key_selection_gender_default == "M") {
+                            getDataUri('../Common/assets/images/icons/Man-A.png', function(dataUri) {
+                                $('#idSelfImgPDF').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Lady-A.png', function(dataUri) {
+                                $('#idSpouseImgPDF').attr("src", dataUri);
+                            });
+                        } else {
+                            getDataUri('../Common/assets/images/icons/Lady-A.png', function(dataUri) {
+                                $('#idSelfImgPDF').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Man-A.png', function(dataUri) {
+                                $('#idSpouseImgPDF').attr("src", dataUri);
+                            });
+                        }
+                        getDataUri('../Common/assets/images/icons/Boy-C.png', function(dataUri) {
+                            $('#idBoyImg').attr("src", dataUri);
+                        });
+                        getDataUri('../Common/assets/images/icons/Girl-A.png', function(dataUri) {
+                            $('#idGirlImg').attr("src", dataUri);
+                        });
+                        getDataUri('../Common/assets/images/icons/Father-A.png', function(dataUri) {
+                            $('#idFatherImg').attr("src", dataUri);
+                        });
+                        getDataUri('../Common/assets/images/icons/Mother-A.png', function(dataUri) {
+                            $('#idMotherImg').attr("src", dataUri);
+                        });
+                        getDataUri('../Common/assets/images/icons/Other-A.png', function(dataUri) {
+                            $('#idOtherImg').attr("src", dataUri);
+                        });
+
+                    }
+                    if (value == 3 && window.income_key_selection_default == 3) {
+                        $("#idassetOwner4PDF").show();
+                        databasecall(memberIdList[index]);
+                        if (window.income_key_selection_gender_default == "M") {
+                            getDataUri('../Common/assets/images/icons/Man-A.png', function(dataUri) {
+                                $('#idSelfImgPDF').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Lady-A.png', function(dataUri) {
+                                $('#idSpouseImgPDF').attr("src", dataUri);
+                            });
+                        } else {
+                            getDataUri('../Common/assets/images/icons/Lady-A.png', function(dataUri) {
+                                $('#idSelfImgPDF').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Man-A.png', function(dataUri) {
+                                $('#idSpouseImgPDF').attr("src", dataUri);
+                            });
+                        }
+                        getDataUri('../Common/assets/images/icons/Boy-A.png', function(dataUri) {
+                            $('#idBoyImg').attr("src", dataUri);
+                        });
+                        getDataUri('../Common/assets/images/icons/Girl-C.png', function(dataUri) {
+                            $('#idGirlImg').attr("src", dataUri);
+                        });
+                        getDataUri('../Common/assets/images/icons/Father-A.png', function(dataUri) {
+                            $('#idFatherImg').attr("src", dataUri);
+                        });
+                        getDataUri('../Common/assets/images/icons/Mother-A.png', function(dataUri) {
+                            $('#idMotherImg').attr("src", dataUri);
+                        });
+                        getDataUri('../Common/assets/images/icons/Other-A.png', function(dataUri) {
+                            $('#idOtherImg').attr("src", dataUri);
+                        });
+
+                    }
+                    if (value == 4 && window.income_key_selection_default == 4) {
+                        $("#idassetOwner5PDF").show();
+                        //alert(window.income_key_selection_default);
+                        databasecall(memberIdList[index]);
+                        if (window.income_key_selection_gender_default == "M") {
+                            getDataUri('../Common/assets/images/icons/Man-A.png', function(dataUri) {
+                                $('#idSelfImgPDF').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Lady-A.png', function(dataUri) {
+                                $('#idSpouseImgPDF').attr("src", dataUri);
+                            });
+                        } else {
+                            getDataUri('../Common/assets/images/icons/Lady-A.png', function(dataUri) {
+                                $('#idSelfImgPDF').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Man-A.png', function(dataUri) {
+                                $('#idSpouseImgPDF').attr("src", dataUri);
+                            });
+                        }
+                        getDataUri('../Common/assets/images/icons/Boy-A.png', function(dataUri) {
+                            $('#idBoyImg').attr("src", dataUri);
+                        });
+                        getDataUri('../Common/assets/images/icons/Girl-A.png', function(dataUri) {
+                            $('#idGirlImg').attr("src", dataUri);
+                        });
+                        getDataUri('../Common/assets/images/icons/Father-C.png', function(dataUri) {
+                            $('#idFatherImg').attr("src", dataUri);
+                        });
+                        getDataUri('../Common/assets/images/icons/Mother-A.png', function(dataUri) {
+                            $('#idMotherImg').attr("src", dataUri);
+                        });
+                        getDataUri('../Common/assets/images/icons/Other-A.png', function(dataUri) {
+                            $('#idOtherImg').attr("src", dataUri);
+                        });
+
+                    }
+                    if (value == 5 && window.income_key_selection_default == 5) {
+                        $("#idassetOwner6PDF").show();
+                        databasecall(memberIdList[index]);
+                        if (window.income_key_selection_gender_default == "M") {
+                            getDataUri('../Common/assets/images/icons/Man-A.png', function(dataUri) {
+                                $('#idSelfImgPDF').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Lady-A.png', function(dataUri) {
+                                $('#idSpouseImgPDF').attr("src", dataUri);
+                            });
+                        } else {
+                            getDataUri('../Common/assets/images/icons/Lady-A.png', function(dataUri) {
+                                $('#idSelfImgPDF').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Man-A.png', function(dataUri) {
+                                $('#idSpouseImgPDF').attr("src", dataUri);
+                            });
+                        }
+                        getDataUri('../Common/assets/images/icons/Boy-A.png', function(dataUri) {
+                            $('#idBoyImg').attr("src", dataUri);
+                        });
+                        getDataUri('../Common/assets/images/icons/Girl-A.png', function(dataUri) {
+                            $('#idGirlImg').attr("src", dataUri);
+                        });
+                        getDataUri('../Common/assets/images/icons/Father-A.png', function(dataUri) {
+                            $('#idFatherImg').attr("src", dataUri);
+                        });
+                        getDataUri('../Common/assets/images/icons/Mother-C.png', function(dataUri) {
+                            $('#idMotherImg').attr("src", dataUri);
+                        });
+                        getDataUri('../Common/assets/images/icons/Other-A.png', function(dataUri) {
+                            $('#idOtherImg').attr("src", dataUri);
+                        });
+
+                    }
+                    if (value == 6 && window.income_key_selection_default == 6) {
+                        $("#idassetOwner7PDF").show();
+                        databasecall(memberIdList[index]);
+                        if (window.income_key_selection_gender_default == "M") {
+                            getDataUri('../Common/assets/images/icons/Man-A.png', function(dataUri) {
+                                $('#idSelfImgPDF').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Lady-A.png', function(dataUri) {
+                                $('#idSpouseImgPDF').attr("src", dataUri);
+                            });
+                        } else {
+                            getDataUri('../Common/assets/images/icons/Lady-A.png', function(dataUri) {
+                                $('#idSelfImgPDF').attr("src", dataUri);
+                            });
+                            getDataUri('../Common/assets/images/icons/Man-A.png', function(dataUri) {
+                                $('#idSpouseImgPDF').attr("src", dataUri);
+                            });
+                        }
+                        getDataUri('../Common/assets/images/icons/Boy-A.png', function(dataUri) {
+                            $('#idBoyImg').attr("src", dataUri);
+                        });
+                        getDataUri('../Common/assets/images/icons/Girl-A.png', function(dataUri) {
+                            $('#idGirlImg').attr("src", dataUri);
+                        });
+                        getDataUri('../Common/assets/images/icons/Father-A.png', function(dataUri) {
+                            $('#idFatherImg').attr("src", dataUri);
+                        });
+                        getDataUri('../Common/assets/images/icons/Mother-A.png', function(dataUri) {
+                            $('#idMotherImg').attr("src", dataUri);
+                        });
+                        getDataUri('../Common/assets/images/icons/Other-C.png', function(dataUri) {
+                            $('#idOtherImg').attr("src", dataUri);
+                        });
+
+                    }
+                });
+            });
+        </script>
+    </div>
+</div>

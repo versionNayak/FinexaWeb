@@ -1,0 +1,67 @@
+<script src="MF/Mfjs/clientMaster.js"></script>
+<script src="MF/Mfjs/validateClientMaster.js"></script>
+<script src="MF/Mfjs/validationForAll.js"></script>
+<div class="MFforms">
+	<!--  <h4 class="formhead">Client Auto Creation</h4>
+	<form class="form-horizontal marginleft10per" id="idClientAutoCreationForm" action="#" >
+		<div class="form-group">
+		<div>
+			<label>Options:</label>
+			<span class="form-static-value">
+				<select class="form-control input-width-medium" tabindex="1">
+					<option value="1">Pan Number and Name</option>
+				</select>
+			</span>
+		</div>
+		<br/>
+		<input type="button" class="form-control addbtn" id="idCreateAutoClient" value="Submit" tabindex="2" />
+		</div>
+	
+	</form> -->
+	
+	<h4 class="formhead">Client Creation</h4>
+	<form id="idClientMasterForm" class="form-horizontal marginleft10per" action="#">
+						
+						<div class="form-group">
+							<span class="formentry-errmsg" id="alertform"></span>
+							
+							<div>
+								<label>Investor Name:</label> 
+								<input type="text" id="investorName" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter Name" tabindex="1"/>
+								<span class="formentry-errmsg" id="alertInvestorName"></span>
+							</div>
+							<br/>
+							
+							<div>
+								<label>Investor PAN:</label> 
+								<input type="text" id="investorPAN" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter PAN" tabindex="2"/>
+								<span class="formentry-errmsg" id="alertInvestorPan"></span>
+							</div>
+							<br/>
+							
+							<input type="button" class="form-control addbtn" id = "idInvestorMasterSearch"  value="Search" tabindex="3"/>
+							<br/>
+						    <input type="button" class="form-control addbtn" id = "idInvestorMasterClear"  value="Clear" tabindex="4"/>				
+							</div>
+					<table style='margin-left: -13px;'>
+					<thead>
+						<tr>
+						<th>S.No</th>
+						<th>Investor Name</th>
+						<th>PAN</th>
+						<th>DOB</th>
+						<th>Select Account</th>
+						<th>Client Name/Family Head</th>
+					 	<th>Account Status</th>
+						<th>Gender</th>
+						</tr>
+						</thead>
+						<tbody id = "idInvestorTable"></tbody>
+						</table>
+						<br/>
+						<input type="button" id = "idCreateClient" style='margin-left: -12px;' class="form-control addbtn" value="Create Client" tabindex="540"/>
+						</form>
+		
+							
+	
+	</div>

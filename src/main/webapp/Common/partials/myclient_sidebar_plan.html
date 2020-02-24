@@ -1,0 +1,204 @@
+<script src="../Common/assets/js/myclient_sidebar_plan.js"></script>
+<!-- sidebar wrappers css for sidebar style -->
+<link href="../Common/assets/css/sidebar-wrappers.css" rel="stylesheet" type="text/css">
+<!--load common all styles -->
+<link href="../Common/assets/css/commonall.css" rel="stylesheet" type="text/css" />
+<!-- sidebar wrappers css for sidebar -->
+<script src="../Common/assets/js/sidebar-wrappers.js"></script>
+
+
+<div class="page-wrappers chiller-theme toggled">
+    <nav class="sidebar-wrappers">
+        <div class="sidebar-content">
+            <div class="sidebar-menu">
+                <ul id="menu">
+                    <!-- Budget Management nav -->
+                    <li class="sidebar-dropdown " id="IDmenuBudget">
+                        <a href="#" class="addactive">
+                            <i class="fas fa-funnel-dollar"></i>
+                            <span>Budget Management</span>
+                        </a>
+                        <div class="sidebar-submenu">
+                            <ul id="idBMul" class="">
+                                <!-- <li><a href="#" class="budgetdash">Dashboard <span class="budgetdash_arrow" >&#8594;</span></a> </li>
+                           <li><a href="#" class="budgetinput">Input <span class="budgetinput_arrow">&#8594;</span> </a></li> -->
+                                <!-- <li><a href="#" class="budgetplanning">Budget Planning Report <span class="budgetplanning_arrow">&#8594;</span></a></li> -->
+                                <li>
+                                    <a href="#" class="Income">
+                                        <span>Income</span>
+                                    </a>
+                                </li>
+                                <li><a href="#" class="Expenses">Expenses</a></li>
+                                <li><a href="#" class="committed">Committed Outflows </a>
+                                </li>
+                                <li><a href="#" class="Loans">Loans </a></li>
+                                <li><a href="#" class="NetSurplus">Net Surplus</a></li>
+                                <li><a href="#" class="BudgetRatio">Budget Ratio </a></li>
+                                <li><a href="#" class="Recommendations">Budget Recommendations </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- Goal Planning nav -->
+                    <li class="sidebar-dropdown" id="IDmenuGoal">
+                        <a href="#">
+                            <i class="fas fa-bullseye"></i>
+                            <span class="activeincome">Goal Planning</span></a>
+                        <div class="sidebar-submenu">
+                            <ul class=" nestedincome">
+                                <li><a href="#" class="goaldash">Dashboard </a></li>
+                                <!-- <li><a href="#" class="inputplanning">Input <span class="goalinput_arrow" >&#8594;</span></a></li> -->
+                                <!-- <li><a href="#" class="goalplanning">Goal Planning Report <span class="goalplanning_arrow" >&#8594;</span></a></li> -->
+                                <div id="idGoalOptions" style="font-size: 14px;">
+                                    <li><a href="#" class="goalsdetails" onclick="closeNav1()">Goals Details</a></li>
+                                    <li><a href="#" class="riskprofile" onclick="closeNav1()">Risk Profile</a></li>
+                                    <li><a href="#" class="recommended" onclick="closeNav1()">Recommended Asset Allocation</a>
+                                    </li>
+                                    <li><a href="#" class="amount" onclick="closeNav1()">Amount Needed</a></li>
+                                    <li><a href="#" class="product" onclick="closeNav1()">Product Recommendation</a>
+                                    </li>
+                                    <li><a href="#" id="idYEarly" class="yearly" onclick="closeNav1()">Yearly Cashflows</a>
+                                    </li>
+                                    <li><a href="#" class="goalinput" onclick="closeNav1()">Goal Input</a></li>
+                                </div>
+                            </ul>
+                        </div>
+
+                    </li>
+                    <!-- Portfolio Management nav -->
+                    <li class="sidebar-dropdown" id="nestedportfolio">
+                        <a href="#" class="activeloans">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>Portfolio Management</span>
+                        </a>
+                        <div class="sidebar-submenu">
+                            <ul class="nestedportfolio">
+                                <!-- old <li><a href="#" class="portfoliodash">Dashboard <span class="portfoliodash_arrow" >&#8594;</span></a></li>
+                           -		<li><a href="#" class="portfolioinput">Input <span class="portfolioinput_arrow" >&#8594;</span></a></li> -->
+                                <!-- old <li><a href="#" class="portfolioplanning">Portfolio Planning Report <span class="portfolioplanning_arrow" >&#8594;</span></a></li> -->
+                                <li><a href="#" class="pmRiskProfile" onclick="closeNav()">Risk Profile</a></li>
+                                <li><a href="#" class="pmtracker" onclick="closeNav()">Portfolio Tracker</a></li>
+                                <li><a href="#" class="pmloans" onclick="closeNav()">Loans</a></li>
+                                <li><a href="#" class="pmnetworth" onclick="closeNav()">NetWorth</a></li>
+                                <li><a href="#" class="pmratios" onclick="closeNav()">Ratios</a></li>
+                                <li><a href="#" class="pmassetallocation" onclick="closeNav()">Asset Allocation Review</a></li>
+                                <li><a href="#" class="pmportfolioequity" onclick="closeNav()">Portfolio Overview -Equity </a></li>
+                                <li><a href="#" class="pmportfoliofxtincome" onclick="closeNav()">Portfolio Overview Debt </a></li>
+                                <li><a href="#" id="idPortfolioRecommemdation" class="pmportfoliorecom" onclick="closeNav()">Portfolio Recommendation </a></li>
+                                <li><a href="#" class="pmproductrecom" onclick="closeNav()">Product Recommendation </a></li>
+                                <li><a href="#" class="pmadvisorrecommend" onclick="closeNav()">Advisor Recommendations </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- Financial Planning nav -->
+                    <li class="sidebar-dropdown " id="IDmenuFinancial">
+                        <a href="#" class="activeportfolio">
+                            <i class="fas fa-money-check-alt"></i>
+                            <span>Financial Planning</span></a>
+                        <div class="sidebar-submenu">
+                            <ul class="nestedfinancial">
+                                <!-- <li><a href="#" class="financialdash">Dashboard <span class="financialdash_arrow" >&#8594;</span></a></li>
+                           <li><a href="#" class="financialInput">Input <span class="financialInput_arrow" >&#8594;</span></a></li> -->
+                                <!-- <li><a href="#" class="financialplanning">Financial Planning Report <span class="financialplanning_arrow" >&#8594;</span></a></li> -->
+                                <li><a href="#" class="pfnetsurplus" onclick="closeNav()">Net Surplus</a></li>
+                                <li><a href="#" class="pfnetworth" onclick="closeNav()">Networth</a></li>
+                                <li><a href="#" class="pffinancialratio" onclick="closeNav()">Financial Ratios</a></li>
+                                <li><a href="#" class="fpriskprofile" onclick="closeNav()">Risk Profile</a></li>
+                                <li><a href="#" class="fpassetallocation" onclick="closeNav()">Asset Allocation Review</a></li>
+                                <li><a href="#" class="fpcontigencyfund" onclick="closeNav()">Contingency Fund </a></li>
+                                <li><a href="#" class="fpgoalrecommendations" onclick="closeNav()">Goal Recommendations </a></li>
+                                <li><a href="#" class="fpgoalexecution" onclick="closeNav()">Goal Execution </a>
+                                    <li><a href="#" class="fpinsuranceplanning" onclick="closeNav()">Insurance Planning </a></li>
+                                    <li><a href="#" id="idCashflows" class="fpcashflows" onclick="closeNav()">CashFlows</a></li>
+                                    <li><a href="#" class="fplantofaction" onclick="closeNav()">Plan Of Action</a></li>
+                            </ul>
+                        </div>
+                        </li>
+                </ul>
+                <div style="margin: 100px;"></div>
+            </div>
+            <!-- sidebar-menu  -->
+        </div>
+    </nav>
+</div>
+<!-- <ul class="sidebar-nav nav-pills nav-stacked" id="menu"> -->
+<!-- <li class="has-submenu" id="IDmenuBudget">
+   <a href="#" class="margintopmin3px"><span class="fa-stack fa-lg pull-left"></span><span class="addactive">Budget
+           Management</span></a>
+   <ul id="idBMul" class="nav-pills nav-stacked nestedpersonalp"> -->
+<!--  old <li><a href="#" class="budgetdash">Dashboard <span class="budgetdash_arrow" >&#8594;</span></a> </li>
+   <li><a href="#" class="budgetinput">Input <span class="budgetinput_arrow">&#8594;</span> </a></li> -->
+<!-- <li><a href="#" class="budgetplanning">Budget Planning Report <span class="budgetplanning_arrow">&#8594;</span></a></li> -->
+<!-- <li><a href="#" class="Income">Income <span class="budgetplanning_arrow">&#8594;</span></a></li>
+   <li><a href="#" class="Expenses">Expenses <span class="budgetplanning_arrow">&#8594;</span></a></li>
+   <li><a href="#" class="committed ">Committed Outflows <span class="budgetplanning_arrow">&#8594;</span></a>
+   </li>
+   <li><a href="#" class="Loans">Loans <span class="budgetplanning_arrow">&#8594;</span></a></li>
+   <li><a href="#" class="NetSurplus">Net Surplus <span class="budgetplanning_arrow">&#8594;</span></a></li>
+   <li><a href="#" class="BudgetRatio">Budget Ratio <span class="budgetplanning_arrow">&#8594;</span></a></li>
+   <li><a href="#" class="Recommendations">Budget Recommendations <span
+               class="budgetplanning_arrow">&#8594;</span></a></li>
+   </ul>
+   </li> -->
+<!-- <li class="has-submenu" id="IDmenuGoal">
+   <a href="#"><span class="fa-stack fa-lg pull-left"></span><span class="activeincome">Goal Planning</span></a>
+   <ul class="nav-pills nav-stacked nestedincome">
+       <li><a href="#" class="goaldash" style="font-size:13px">Dashboard <span
+                   class="goaldash_arrow">&#8594;</span></a></li> -->
+<!-- old <li><a href="#" class="inputplanning">Input <span class="goalinput_arrow" >&#8594;</span></a></li> -->
+<!-- <li><a href="#" class="goalplanning">Goal Planning Report <span class="goalplanning_arrow" >&#8594;</span></a></li> -->
+<!-- <div id="idGoalOptions">
+   <li><a href="#" class="goalsdetails" onclick="closeNav1()" style="font-size:13px">Goals Details</a></li>
+   <li><a href="#" class="riskprofile" onclick="closeNav1()" style="font-size:13px">Risk Profile</a></li>
+   <li><a href="#" class="recommended" onclick="closeNav1()" style="font-size:12px">Recommended Asset
+           Allocation</a>
+   </li>
+   <li><a href="#" class="amount" onclick="closeNav1()" style="font-size:13px">Amount Needed</a></li>
+   <li><a href="#" class="product" onclick="closeNav1()" style="font-size:13px">Product Recommendation</a>
+   </li>
+   <li><a href="#" id="idYEarly" class="yearly" onclick="closeNav1()" style="font-size:13px">Yearly
+           Cashflows</a>
+   </li>
+   <li><a href="#" class="goalinput" onclick="closeNav1()" style="font-size:13px">Goal Input</a></li>
+   </div>
+   </ul>
+   </li> -->
+<!-- <li class="has-submenu" id="IDmenuPortfolio">
+   <a href="#"><span class="fa-stack fa-lg pull-left"></span><span class="activeloans">Portfolio Management</span></a>
+   <ul class="nav-pills nav-stacked nestedportfolio"> -->
+<!-- old <li><a href="#" class="portfoliodash">Dashboard <span class="portfoliodash_arrow" >&#8594;</span></a></li>
+   -		<li><a href="#" class="portfolioinput">Input <span class="portfolioinput_arrow" >&#8594;</span></a></li> -->
+<!-- old <li><a href="#" class="portfolioplanning">Portfolio Planning Report <span class="portfolioplanning_arrow" >&#8594;</span></a></li> -->
+<!-- <li><a href="#" class="pmRiskProfile" onclick="closeNav()">Risk Profile</a></li>
+   <li><a href="#" class="pmtracker" onclick="closeNav()">Portfolio Tracker</a></li>
+   <li><a href="#" class="pmloans" onclick="closeNav()">Loans</a></li>
+   <li><a href="#" class="pmnetworth" onclick="closeNav()">NetWorth</a></li>
+   <li><a href="#" class="pmratios" onclick="closeNav()">Ratios</a></li>
+   <li><a href="#" class="pmassetallocation" onclick="closeNav()">Asset Allocation Review</a></li>
+   <li><a href="#" class="pmportfolioequity" onclick="closeNav()">Portfolio Overview -Equity </a></li>
+   <li><a href="#" class="pmportfoliofxtincome" onclick="closeNav()">Portfolio Overview Debt </a></li>
+   <li><a href="#" id="idPortfolioRecommemdation" class="pmportfoliorecom" onclick="closeNav()">Portfolio Recommendation </a></li>
+   <li><a href="#" class="pmproductrecom" onclick="closeNav()">Product Recommendation </a></li>
+   <li><a href="#" class="pmadvisorrecommend" onclick="closeNav()">Advisor Recommendations </a></li>
+   </ul>
+   </li> -->
+<!-- <li class="has-submenu" id="IDmenuFinancial">
+   <a href="#"><span class="fa-stack fa-lg pull-left"></span><span class="activeportfolio">Financial
+               Planning</span></a>
+   <ul class="nav-pills nav-stacked nestedfinancial"> -->
+<!--old <li><a href="#" class="financialdash">Dashboard <span class="financialdash_arrow" >&#8594;</span></a></li>
+   <li><a href="#" class="financialInput">Input <span class="financialInput_arrow" >&#8594;</span></a></li> -->
+<!-- old <li><a href="#" class="financialplanning">Financial Planning Report <span class="financialplanning_arrow" >&#8594;</span></a></li> -->
+<!-- <li><a href="#" class="pfnetsurplus" onclick="closeNav()">Net Surplus</a></li>
+   <li><a href="#" class="pfnetworth" onclick="closeNav()">Networth</a></li>
+   <li><a href="#" class="pffinancialratio" onclick="closeNav()">Financial Ratios</a></li>
+   <li><a href="#" class="fpriskprofile" onclick="closeNav()">Risk Profile</a></li>
+   <li><a href="#" class="fpassetallocation" onclick="closeNav()">Asset Allocation Review</a></li>
+   <li><a href="#" class="fpcontigencyfund" onclick="closeNav()">Contingency Fund </a></li>
+   <li><a href="#" class="fpgoalrecommendations" onclick="closeNav()">Goal Recommendations </a></li>
+   <li><a href="#" class="fpgoalexecution" onclick="closeNav()">Goal Execution </a>
+       <li><a href="#" class="fpinsuranceplanning" onclick="closeNav()">Insurance Planning </a></li>
+       <li><a href="#" id="idCashflows" class="fpcashflows" onclick="closeNav()">CashFlows</a></li>
+       <li><a href="#" class="fplantofaction" onclick="closeNav()">Plan Of Action</a></li>
+       </ul>
+   </li>
+   </ul> -->

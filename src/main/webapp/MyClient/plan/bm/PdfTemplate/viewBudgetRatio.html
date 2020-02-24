@@ -1,0 +1,495 @@
+<div>
+	<div id="showBudgetRatioPrintdiv">
+		<div align="center" style="page-break-after:always;">
+			<h1 align="center">Budget Ratio</h1>
+			<h3 align="center">Budget Ratio Scores</h3>
+			<br/>		
+			<table align="center" class="risktblpdf">
+				<tr>
+					<td>
+						<div id="idRiskScore1PDF" style="min-width: 200px;height: 200px; margin: 0 auto"></div>	
+					</td>
+					<td>
+						<div id="idRiskScore2PDF" style="min-width: 200px;height: 200px; margin: 0 auto"></div>	
+					</td>
+					<td>
+						<div id="idRiskScore3PDF" style="min-width: 200px;height: 200px; margin: 0 auto"></div>
+					</td>
+				</tr>
+				<tr>
+					<td><div>Savings Ratio</div></td>
+					<td><div>Debt Servicing Ratio</div></td>
+					<td><div>Housing Expense Ratio</div></td>
+				</tr>
+			</table>
+			<table align="center" class="bmratiotblPDF" style="margin-left: none;">
+				<tr>
+					<td><img id="imgCircle6"
+						src="../Common/assets/images/circle6.png" /></td>
+					<td>Alarming</td>
+					<td><img id="imgCircle3"
+						src="../Common/assets/images/circle3.png" /></td>
+					<td>Stressed</td>
+					<td><img id="imgCircle4"
+						src="../Common/assets/images/circle4.png" /></td>
+					<td>Comfortable</td>
+					<td><img id="imgCircle5"
+						src="../Common/assets/images/circle5.png" /></td>
+					<td>Healthy</td>
+					<td><img id="imgCircle2"
+						src="../Common/assets/images/circle2.png" /></td>
+					<td>Very Comfortable</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div style="page-break-after:always;">		
+			<h1 align="center">Budget Ratio</h1>
+			<h3 align="center">Budget Ratio Scores Details</h3>
+			<table align="center" class="ratiotblPDF">
+				<thead>
+					<tr>
+						<th>Ratios</th>
+						<th>Logic / Rationale</th>
+						<th>Value</th>
+						<th>Comment</th>
+					</tr>
+				</thead>
+				<tbody id="idBudgetRatioTablePDF">
+				</tbody>
+			</table>
+		</div>		
+		
+		<div style="page-break-after:always;">	
+			<h1 align="center">Budget Recommendations</h1>
+			<h3 align="center">Recommendations</h3>			
+			<div align="center" id="recommendationsPDF"></div>
+		</div>
+		
+	</div>
+	
+	<div id="showBudgetRatioJsdiv">		
+		<script type="text/javascript">	
+		
+			$('#recommendationsPDF').html($('#recommendations').val());
+		
+			getDataUri(
+			'../Common/assets/images/circle6.png',
+			function(dataUri) {
+				$('#imgCircle6')
+						.attr("src", dataUri);
+			});
+			
+			getDataUri(
+			'../Common/assets/images/circle3.png',
+			function(dataUri) {
+				$('#imgCircle3')
+						.attr("src", dataUri);
+			});
+			
+			getDataUri(
+			'../Common/assets/images/circle4.png',
+			function(dataUri) {
+				$('#imgCircle4')
+						.attr("src", dataUri);
+			});
+			
+			getDataUri(
+			'../Common/assets/images/circle5.png',
+			function(dataUri) {
+				$('#imgCircle5')
+						.attr("src", dataUri);
+			});
+			
+			getDataUri(
+			'../Common/assets/images/circle2.png',
+			function(dataUri) {
+				$('#imgCircle2')
+						.attr("src", dataUri);
+			});
+			
+			var saving = [];
+			var debtService = [];
+			var housingExp = [];
+			
+			$.ajax({
+				type: 'GET',
+				async:false,
+				url: REQUEST_URL_BM+'/getClientBudgetRatioInfo?clientId='+vClientId+'',
+				dataType: 'json',
+				success: function (data) {
+					$('#idBudgetRatioTablePDF').append(
+							'<tr>'+
+							'<td>Savings Ratio</td>'+ 
+							'<td>Net Surplus / Total Income</td>'+ 
+							'<td>'+parseFloat((data.savingsRatioPerc * 100.0)/100.0).toFixed(2)+'</td>'+
+							'<td>'+data.savingsRatioPercComment+'</td>'+
+							'</tr>' +
+							'<tr>'+
+							'<td>Debt Servicing Ratio</td>'+ 
+							'<td>Total EMI / Total Cash Inflow</td>'+ 
+							'<td>'+parseFloat((data.debtServicingRatioPerc * 100.0)/100.0).toFixed(2)+'</td>'+
+							'<td>'+data.debtServicingRatioPercComment+'</td>'+
+							'</tr>'+
+							'<tr>'+
+							'<td>Housing Ratio</td>'+ 
+							'<td>Monthly Expense/ Total Income</td>'+ 
+							'<td>'+parseFloat((data.housingExpenseRatioPerc * 100.0)/100.0).toFixed(2)+'</td>'+
+							'<td>'+data.housingExpenseRatioPercComment+'</td>'+
+					'</tr>');
+					saving.push(parseInt(data.savingsRatioPerc));
+					debtService.push(parseInt(data.debtServicingRatioPerc));
+					housingExp.push(parseInt(data.housingExpenseRatioPerc));
+				},
+				error: function (data) {
+				}
+			});
+			
+			
+			Highcharts.chart('idRiskScore1PDF', {
+			    chart: {
+			        type: 'gauge',
+				},
+			    pane: {
+			        startAngle: -150,
+			        endAngle: 150,
+			        background: [{
+			            backgroundColor: {
+			                linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+						},
+						}, {
+			            backgroundColor: {
+			                linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+			                stops: [
+			                    [0, '#333'],
+			                    [1, '#FFF']
+							]
+						},
+			            borderWidth: 1,
+			            outerRadius: '107%'
+						}, {
+			            // default background
+						}, {
+			            backgroundColor: '#DDD',
+			            borderWidth: 0,
+			            outerRadius: '105%',
+			            innerRadius: '103%'
+					}]
+				},
+			    // the value axis
+			    yAxis: {
+			        min: -50,
+			        max: 100,
+			        tickPixelInterval: 50,
+			        tickWidth: 2,
+			        tickPosition: 'inside',
+			        tickLength: 10,
+			        tickColor: '#666',
+			        labels: {
+			            step: 2,
+			            //rotation: 'auto'
+					},
+			        title: {
+			            text: '',
+						style:{
+							fontSize: '18px'
+						}       
+					},
+			        plotBands: [
+						{
+							from: -50,
+							to: 0,
+							color: '#f15c80',
+							fill:'#f15c80'
+							}, {
+							from: 1,
+							to: 15,
+							color: '#f7a35c',
+							fill:'#f7a35c'
+							}, {
+							from: 16,
+							to: 35,
+							color: '#90ed7d',
+							fill:'#90ed7d'
+						},
+						{
+							from: 36,
+							to: 60,
+							color: '#8085d9',
+							fill:'#8085d9'
+						},
+						{
+							from: 61,
+							to: 100,
+							color: '#95ceff',
+							fill:'#95ceff'
+						}]
+				},
+			    series:[{
+					name: 'Score',
+					data: saving,
+					dataLabels: {
+						formatter: function () {						    
+							var kmh = this.y;
+							if(kmh < -50){
+								var newvar = [-50];
+								var chart = $('#idRiskScore1PDF').highcharts();
+								//chart1.series[0].setData(newvar1,true);
+								//chart.series[0].setData(newvar,true);
+								$("#idRiskScore1PDF .highcharts-data-labels .highcharts-label:nth-child(1)").hide();
+								return '<span style="color:#f15c80;font-size:16px;">'+ kmh + '</span>' ;
+							}
+							if(kmh >= -50 & kmh <= 0){
+			                    return '<span style="color:#f15c80;font-size:16px;">'+ kmh + '</span>' ;
+							}
+							if(kmh >= 1 & kmh <= 15){
+			                    return '<span style="color:#f7a35c;font-size:16px;">'+ kmh + '</span>' ;
+							}
+							if(kmh >= 16 & kmh <= 35){
+			                    return '<span style="color:#90ed7d;font-size:16px;">'+ kmh + '</span>' ;
+							}
+							if(kmh >= 36 & kmh <= 60){
+			                    return '<span style="color:#8085d9;font-size:16px;">'+ kmh + '</span>' ;
+							}
+							if(kmh >= 61 & kmh <= 100){
+			                    return '<span style="color:#95ceff;font-size:16px;">'+ kmh + '</span>' ;
+							}
+						},
+					},
+				}]
+			});
+			
+			Highcharts.chart('idRiskScore3PDF', {
+			    chart: {
+			        type: 'gauge',
+				},
+			    pane: {
+			        startAngle: -150,
+			        endAngle: 150,
+			        background: [{
+			            backgroundColor: {
+			                linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+						},
+						}, {
+			            backgroundColor: {
+			                linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+			                stops: [
+			                    [0, '#333'],
+			                    [1, '#FFF']
+							]
+						},
+			            borderWidth: 1,
+			            outerRadius: '107%'
+						}, {
+			            // default background
+						}, {
+			            backgroundColor: '#DDD',
+			            borderWidth: 0,
+			            outerRadius: '105%',
+			            innerRadius: '103%'
+					}]
+				},
+			    // the value axis
+			    yAxis: {
+			        min: -50,
+			        max: 100,
+			        tickPixelInterval: 50,
+			        tickWidth: 2,
+			        tickPosition: 'inside',
+			        tickLength: 10,
+			        tickColor: '#666',
+			        labels: {
+			            step: 2,
+			            //rotation: 'auto'
+					},
+			        title: {
+			            text: '',
+						style:{
+							fontSize: '18px'
+						}       
+					},
+			        plotBands: [
+						{
+							from: -50,
+							to: 0,
+							color: '#f15c80',
+							fill:'#f15c80'
+							}, {
+							from: 1,
+							to: 15,
+							color: '#f7a35c',
+							fill:'#f7a35c'
+							}, {
+							from: 16,
+							to: 35,
+							color: '#90ed7d',
+							fill:'#90ed7d'
+						},
+						{
+							from: 36,
+							to: 60,
+							color: '#8085d9',
+							fill:'#8085d9'
+						},
+						{
+							from: 61,
+							to: 100,
+							color: '#95ceff',
+							fill:'#95ceff'
+						}]
+				},
+			    series:[{
+					name: 'Score',
+					data: housingExp,
+					dataLabels: {
+						formatter: function () {
+					 
+							// chart.series[0].setData([-60])
+							var kmh = this.y;
+							if(kmh < -50){
+								var newvar = [-50];
+								var chart= $('#idRiskScore3PDF').highcharts(); 
+								//chart.series[0].setData(newvar,true);
+								
+								$("#idRiskScore3PDF .highcharts-data-labels .highcharts-label:nth-child(1)").hide();
+								return '<span style="color:#f15c80;font-size:16px;">'+ kmh + '</span>' ;
+							}
+							if(kmh >= -50 & kmh <= 0){
+			                    return '<span style="color:#f15c80;font-size:16px;">'+ kmh + '</span>' ;
+							}
+							if(kmh >= 1 & kmh <= 15){
+			                    return '<span style="color:#f7a35c;font-size:16px;">'+ kmh + '</span>' ;
+							}
+							if(kmh >= 16 & kmh <= 35){
+			                    return '<span style="color:#90ed7d;font-size:16px;">'+ kmh + '</span>' ;
+							}
+							if(kmh >= 36 & kmh <= 60){
+			                    return '<span style="color:#8085d9;font-size:16px;">'+ kmh + '</span>' ;
+							}
+							if(kmh >= 61 & kmh <= 100){
+			                    return '<span style="color:#95ceff;font-size:16px;">'+ kmh + '</span>' ;
+							}
+						},
+					},
+				}]
+			});
+			
+			Highcharts.chart('idRiskScore2PDF', {
+			    chart: {
+			        type: 'gauge',
+				},
+			    pane: {
+			        startAngle: -150,
+			        endAngle: 150,
+			        background: [{
+			            backgroundColor: {
+			                linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+						},
+						}, {
+			            backgroundColor: {
+			                linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+			                stops: [
+			                    [0, '#333'],
+			                    [1, '#FFF']
+							]
+						},
+			            borderWidth: 1,
+			            outerRadius: '107%'
+						}, {
+			            // default background
+						}, {
+			            backgroundColor: '#DDD',
+			            borderWidth: 0,
+			            outerRadius: '105%',
+			            innerRadius: '103%'
+					}]
+				},
+			    // the value axis
+			    yAxis: {
+			        min: -50,
+			        max: 100,
+			        tickPixelInterval: 50,
+			        tickWidth: 2,
+			        tickPosition: 'inside',
+			        tickLength: 10,
+			        tickColor: '#666',
+			        labels: {
+			            step: 2,
+			            //rotation: 'auto'
+					},
+			        title: {
+			            text: '',
+						style:{
+							fontSize: '18px'
+						}       
+					},
+			        plotBands: [
+						{
+							from: -50,
+							to: 0,
+							color: '#f15c80',
+							fill:'#f15c80'
+							}, {
+							from: 1,
+							to: 15,
+							color: '#f7a35c',
+							fill:'#f7a35c'
+							}, {
+							from: 16,
+							to: 35,
+							color: '#90ed7d',
+							fill:'#90ed7d'
+						},
+						{
+							from: 36,
+							to: 60,
+							color: '#8085d9',
+							fill:'#8085d9'
+						},
+						{
+							from: 61,
+							to: 100,
+							color: '#95ceff',
+							fill:'#95ceff'
+						}]
+				},
+			    series:[{
+					name: 'Score',
+					data: debtService,
+					dataLabels: {
+						formatter: function () {
+					 
+							// chart.series[0].setData([-60])
+							var kmh = this.y;
+							if(kmh < -50){
+								var newvar = [-50];
+								var chart = $('#idRiskScore2PDF').highcharts(); 
+								//chart.series[0].setData(newvar,true);
+								
+								$("#idRiskScore2PDF .highcharts-data-labels .highcharts-label:nth-child(1)").hide();
+								return '<span style="color:#f15c80;font-size:16px;">'+ kmh + '</span>' ;
+							}
+							if(kmh >= -50 & kmh <= 0){
+			                    return '<span style="color:#f15c80;font-size:16px;">'+ kmh + '</span>' ;
+							}
+							if(kmh >= 1 & kmh <= 15){
+			                    return '<span style="color:#f7a35c;font-size:16px;">'+ kmh + '</span>' ;
+							}
+							if(kmh >= 16 & kmh <= 35){
+			                    return '<span style="color:#90ed7d;font-size:16px;">'+ kmh + '</span>' ;
+							}
+							if(kmh >= 36 & kmh <= 60){
+			                    return '<span style="color:#8085d9;font-size:16px;">'+ kmh + '</span>' ;
+							}
+							if(kmh >= 61 & kmh <= 100){
+			                    return '<span style="color:#95ceff;font-size:16px;">'+ kmh + '</span>' ;
+							}
+						},
+					},
+				}]
+			}); 
+		
+		</script>	
+	</div>
+</div>
+

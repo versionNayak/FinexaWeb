@@ -1,0 +1,543 @@
+<script src="invest/js/stp.js"></script>
+<script src="invest/js/validateStp.js"></script>
+<script src="clientInfo/js/common.js"></script>
+<!-- <script src="clientInfo/js/validationForAll.js"></script>
+ --><script src="clientInfo/js/common.js"></script>
+<style>
+	a:active, a:focus {
+  outline: 0;
+  border: none;
+  -moz-outline-style: none
+}
+</style>
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
+		
+		
+		<link href="../Common/assets/css/addtocartreset.css" rel="stylesheet"/>
+		<link href="../Common/assets/css/addtocart.css" rel="stylesheet"/>
+		<div class="head" style="height:34px"><span class="fieldsrequired"> </span>
+			<div style="float:right">
+			<img src="../Common/assets/images/shopping.png" style="width:29px;margin-top:-2px;margin-right:6px" 
+			class="cartIcon" title="Cart"/>
+		
+			</div>
+
+		</div>
+			
+			<input type="text" id="text" readonly=true style="float:right;display:none;padding:4px;
+			width: 17px;border-radius: 7px;border:none;height: 17px;font-size: 9px;padding-top: 5px;margin-top: -37px;margin-right: -42px;"/>
+		
+<div class="cicontainer">
+	
+	<form class="form-horizontal" id="idFormSTP" name="formSTP" onsubmit="return false">
+		
+		<!-- <div class="form-group"> -->
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<span class="formentry-errmsg" id="alertform"></span>
+		</div>
+		<br/><br/>
+		
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="" style="text-align:left;font-size:14px;font-weight: bold; margin-bottom: 5px;">Client Id(UCC)* </label><br/>
+			<span class="form-static-value" id="idSpamClientCode" >
+				<select style="padding-top: 2px"
+				class="form-control input-width-medium" id="idClientUCCCombo"
+				name="clientCode" tabindex="1">
+				</select>
+				<span class="formentry-errmsg" id="alertClientCode"></span>
+			</span>
+		</div>
+		<br/><br/><br/><br/>
+		
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="schemeType" style="text-align:left;font-size:14px;font-weight: bold; margin-bottom: 5px;">Transaction Mode*: </label><br/>
+		<select style="padding-top: 2px"
+				class="form-control input-width-medium" id="idTransMode"
+				name="transactionMode" tabindex="2">
+				<option value="">Select</option>
+				<option value="P">Physical</option>
+				<option value="D">NSDL Demat</option>
+				<option value="D">CDSL Demat</option>
+		</select>
+		<span class="formentry-errmsg" id="alertTransacType"></span>
+		</div>
+		
+		<br/><br/><br/><br/>
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="schemeName" style="text-align:left;font-size:14px;font-weight: bold; margin-bottom: 5px;">Amc Name* </label><br/>
+			<span class="form-static-value" id="idSpamSchemeName" >
+				<select style="padding-top: 2px"
+				class="form-control input-width-medium" id="idAmcName"
+				name="amcName" tabindex="3">
+				<option value="">Select</option>
+				</select>
+				<span class="formentry-errmsg" id="alertAmcName"></span>
+			</span>
+		</div>
+		<br/><br/><br/><br/>
+		
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="schemeType" style="text-align:left;font-size:14px;font-weight: bold; margin-bottom: 5px;">From Scheme Type*: </label><br/>
+		<select style="padding-top: 2px"
+				class="form-control input-width-medium" id="idFromSchemeType"
+				name="schemeType" tabindex="4">
+		<option value="">Select</option>
+		</select>
+		<span class="formentry-errmsg" id="alertFromSchemeType"></span>
+		</div>
+		<br/><br/><br/><br/>
+		
+		
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="schemeName" style="text-align:left;font-size:14px;font-weight: bold;
+		margin-bottom: 5px;">From Scheme Name*: </label><br/>
+			<!-- 
+			<input type="text" placeholder="Enter Scheme Name" class="form-control" id="idSchemeName" name="schemeName" style="width:16em"/> 
+			 -->
+			<span class="form-static-value" id="idSpamSchemeName" >
+				<select class="form-control" id="idFromSchemeName" name="fromSchemeUniqueNo" onchange="initAmountAndUnits($(this))" tabindex="5" style="width: 700px;">
+				<option value="">Select</option>
+				</select>
+				<span class="formentry-errmsg" id="alertFromSchemeName"></span>
+			</span>
+		</div>
+			<br/><br/><br/><br/>
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="IsinNo" style="text-align:left;font-size:14px;font-weight: bold;
+margin-bottom: 5px;">From ISIN No*: </label><br/>
+			<input type="text" placeholder="Enter From ISIN No." class="form-control" id="idFromIsinNo" name="IsinNo" style="width:16em" tabindex="6"/> 
+			<span class="formentry-errmsg" id="alertFromIsinNo"></span>
+		</div>
+			<br/><br/><br/><br/>
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="schemeId" style="text-align:left;font-size:14px;font-weight: bold;
+margin-bottom: 5px;">From Scheme Code/ID*: </label><br/>
+			<input type="text" placeholder="Enter From Scheme Code/ID" class="form-control" id="idFromSchemeId" name="schemeId" tabindex="7" style="width:16em"/>
+			<span class="formentry-errmsg" id="alertFromSchemeId"></span>
+		</div>
+			
+			<br/><br/><br/><br/>
+			
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="schemeType" style="text-align:left;font-size:14px;font-weight: bold; margin-bottom: 5px;">To Scheme Type*: </label><br/>
+		<select style="padding-top: 2px"
+				class="form-control input-width-medium" id="idToSchemeType"
+				name="schemeType" tabindex="8">
+			<option value="">Select</option>
+		</select>
+		<span class="formentry-errmsg" id="alertToSchemeType"></span>
+		</div>
+		<br/><br/><br/><br/>
+		
+		
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="schemeName" style="text-align:left;font-size:14px;font-weight: bold;
+margin-bottom: 5px;">To Scheme Name*: </label><br/>
+			<!-- <input type="text" placeholder="Enter Scheme Name" class="form-control" id="idSchemeName" name="schemeName" style="width:16em"/>  -->
+			<span class="form-static-value" id="idSpamFromSchemeName" >
+				<select class="form-control" id="idToSchemeName" name="toSchemeUniqueNo" tabindex="9" style="width: 700px;">
+					<option value="">Select Scheme</option>
+				</select>
+				<span class="formentry-errmsg" id="alertToSchemeName"></span>
+			</span>
+		</div>
+		<br/><br/><br/><br/>
+		
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="fromIsinNo" style="text-align:left;font-size:14px;font-weight: bold;
+margin-bottom: 5px;">To ISIN No*: </label><br/>
+			<input type="text" placeholder="Enter To ISIN No" class="form-control" id="idToIsinNo" name="fromIsinNo" tabindex="10" style="width:16em"/> 
+			<span class="formentry-errmsg" id="alertToIsinNo"></span>
+		</div>
+		<br/><br/><br/><br/>
+		
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="fromSchemeCode" style="text-align:left;font-size:14px;font-weight: bold;
+margin-bottom: 5px;">To Scheme Code/ID*: </label><br/>
+			<input type="text" placeholder="Enter To Scheme Code/ID" class="form-control" id="idToSchemeCode" name="fromSchemeCode" tabindex="11" style="width:16em"/>				
+			<span class="formentry-errmsg" id="alertToSchemeCode"></span>
+		</div>
+			<br/><br/><br/><br/>
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="transactionType" style="text-align:left;font-size:14px;font-weight: bold;
+margin-bottom: 5px;">Transaction Type*: </label><br/>
+			<span class="form-static-value" id="idSpanTransactionType">
+				<select style="padding-top:2px" class="form-control input-width-medium" id="idTransactionType" name="buySellType" tabindex="12">
+					<option value="">Select</option>
+					<option value="Fresh">Fresh</option>
+					<option value="Additional">Additional</option>
+				</select>
+				<span class="formentry-errmsg" id="alertTransactionType"></span>
+			</span> 
+		</div>
+			<br/><br/><br/><br/>
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="folioNumber" style="text-align:left;font-size:14px;font-weight: bold;
+margin-bottom: 5px;">Folio Number: </label><br/>
+			<input type="text" placeholder="Enter Folio Number" class="form-control" id="idFolioNumber" name="folioNo" tabindex="13" style="width:16em"/> 
+			<span class="formentry-errmsg" id="alertFolioNumber"></span>
+		</div>
+			<br/><br/><br/><br/>
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="frequencyType" style="text-align:left;font-size:14px;font-weight: bold;
+margin-bottom: 5px;">Frequency Type*: </label><br/> 
+			<span class="form-static-value" id="idSpamFrequencyType">
+				<select style="padding-top:2px" class="form-control input-width-medium" id="idFrequencyType" name="frequencyType" tabindex="14">
+					<option value="">Select</option>
+					<option value="MONTHLY">Monthly</option>
+					<option value="QUARTERLY">Quarterly</option>
+				</select>
+				<span class="formentry-errmsg" id="alertFrequencyType"></span>
+			</span>
+		</div>
+			<br/><br/><br/><br/>
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="switchAmount" style="text-align:left;font-size:14px;font-weight: bold;
+margin-bottom: 5px;">Installment Amount*: </label>
+		<img id = "infoBox" src="../Common/assets/images/info.png" title = "Please select From Scheme Name and To Scheme Name ">
+		<br/>
+			<input type="text" placeholder="Enter Installment Amount" class="form-control" id="idSwitchAmount" name="installmentAmount" tabindex="15" style="width:16em"/> 
+			<span class="formentry-errmsg" id="alertInstallAmount"></span>
+		</div>
+			<br/><br/><br/><br/>
+		<!-- <div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="switchUnits" style="text-align:left;font-size:14px;font-weight: bold;
+margin-bottom: 5px;">No Of Transfers: </label><br/>
+			<input type="text" placeholder="Enter No Of Transfers" class="form-control" id="idSwitchUnits" name="switchUnits" tabindex="14" style="width:16em"/> 
+			<span class="formentry-errmsg" id="alertNoTranfers"></span>
+		</div>
+			<br/><br/><br/><br/> -->
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="noOfTransfers" style="text-align:left;font-size:14px;font-weight: bold;
+margin-bottom: 5px;">No. of Transfers*: </label>
+		<img id = "infoBoxInstallments" src="../Common/assets/images/info.png" title = "Please select From Scheme Name and To Scheme Name ">
+		<br/>
+			<input type="text" placeholder="Enter No. of Transfers" class="form-control" id="idNoOfTransfers" name="noOfTransfers" style="width:16em" tabindex="16" /> 
+			<span class="formentry-errmsg" id="alertNoOfTransfers"></span>
+		</div>
+			<br/><br/><br/><br/>
+		
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">Start Date*: </label><br/>
+					<span class="form-static-value">
+						<p class="input-group input-width-medium">
+						<input type="text" class="form-control" id="idStartDate" name="startDate" placeholder="DD/MM/YYYY" tabindex="17">
+						<span class="formentry-errmsg" id="alertStartDate"></span>
+						<span class="input-group-btn datepicker-icon">
+							<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Start Date"><em class="glyphicon calendar-icon-theme"></em></button>
+						</span>
+					</p>
+			</span> 
+		</div>
+		<br/><br/><br/><br/>
+		
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 0.5; margin-left: -4px; padding-left: 9em; padding-top: 7px; margin-top: -13px">
+			<label class="control-label" for="firstOrderFlag"
+				style="text-align: left; font-size: 14px; font-weight: bold; margin-bottom: 5px;">First
+				Order Flag*: </label><br /> <span class="form-static-value"
+				id="idSpamFirstOrderFlag"> <select style="padding-top: 2px"
+				class="form-control input-width-medium" id="idFirstOrderFlag"
+				name="firstOrderToday" tabindex="18">
+					<option value="">Select</option>
+					<option value="Y">Yes</option>
+					<option value="N">No</option>
+			</select> <span class="formentry-errmsg" id="alertFirstOrderFlag"></span>
+			</span>
+		</div>
+		<br />
+		<br />
+		<br />
+		<br />
+		
+				<div class="col-sm-7"
+			style="text-align: left; z-index: 0.5; margin-left: -4px; padding-left: 9em; padding-top: 7px; margin-top: -13px">
+			<label class="control-label" for="subBrCode"
+				style="text-align: left; font-size: 14px; font-weight: bold; margin: none">Sub
+				Broker Code: </label><br /> <input type="text" placeholder="Enter Sub Broker Code"
+				class="form-control" id="idSubBrokerCode" name="subBrCode"
+				style="width: 16em" tabindex="19" /> <span class="formentry-errmsg"
+				id="alertSubBrokerCode"></span>
+		</div>
+		<br />
+		<br />
+		<br />
+		<br />
+
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 0.5; margin-left: -4px; padding-left: 9em; padding-top: 7px; margin-top: -13px">
+			<label class="control-label" for="subBrokerARNCode"
+				style="text-align: left; font-size: 14px; font-weight: bold; margin: none">Sub
+				Broker ARN Code: </label><br /> <input type="text" placeholder="Enter Sub Broker ARN"
+				class="form-control" id="idSubBrokerARNCode" name="param1"
+				style="width: 16em" tabindex="20" /> <span class="formentry-errmsg"
+				id="alertSubBrokerARNCode"></span>
+		</div>
+		<br />
+		<br />
+		<br />
+		<br />
+
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 0.5; margin-left: -4px; padding-left: 9em; padding-top: 7px; margin-top: -13px">
+			<label class="control-label" for="euinDeclaration"
+				style="text-align: left; font-size: 14px; font-weight: bold; margin: none">EUIN
+				Declaration*: </label><br />
+			<!-- <input type="text" placeholder="" class="form-control" id="idEuinDeclaration" name="euinDeclaration" style="width:16em"/>  -->
+			<select style="padding-top: 2px"
+				class="form-control input-width-medium" id="idEUINDeclaration"
+				name="euinDeclaration" tabindex="21">
+				<option value="">Select</option>
+				<option value="Y">Yes</option>
+				<option value="N">No</option>
+			</select> <span class="formentry-errmsg" id="alertEuinDeclaration"></span>
+		</div>
+		<br />
+		<br />
+		<br />
+		<br />
+		
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 0.5; margin-left: -4px; padding-left: 9em; padding-top: 7px; margin-top: -13px">
+			<label class="control-label" for="euin"
+				style="text-align: left; font-size: 14px; font-weight: bold; margin: none">EUIN:
+			</label><br /> <input type="text" placeholder="Enter EUIN" class="form-control"
+				id="idEuin" name="euinNumber" style="width: 16em" tabindex="22" /> <span
+				class="formentry-errmsg" id="alertEuin"></span>
+		</div>
+		<br />
+		<br />
+		<br />
+		<br />
+		
+		<!-- End of Hidden Fields -->
+		<div class="col-sm-6" style="text-align: left;z-index:1;padding-top: 7px;margin-top:-13px;font-style:bold"> 
+								<input type="submit" id = "idBuyNow" class="pull-left btn addbtn" value="Buy Now" tabindex="23" style="width:9em;font-style:bold;float:right;margin-left:20em"/> 
+							</div>
+							<div class="col-sm-4" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px"> 
+								<input type="submit" id = "idAddToCart" class="btn addbtn" value="Add to Cart" tabindex="24" style="width:9em"/> 
+							
+							</div>
+		
+	</form>
+				
+
+<!--<a href="#0" class="cd-add-to-cart" data-price="25.99">Add To Cart</a>-->
+
+
+<div class="cd-cart-container empty">
+	<a href="#0" class="cd-cart-trigger" style="border:none">
+	<img src="../Common/assets/images/cart.jpg" style="margin-left: -6px;margin-top: 27px;width: 39px;"/>
+		<ul class="count"> <!-- cart items count -->
+			<li>0</li>
+			<li>0</li>
+		</ul> <!-- .count -->
+	</a>
+
+	<div class="cd-cart">
+		<div class="wrapper">
+			<header>
+				<h2>Cart</h2>
+				<span class="undo">Item removed. <a href="#0">Undo</a></span>
+			</header>
+			
+			<div class="body">
+				<ul>
+					<!-- products added to the cart will be inserted here using JavaScript -->
+				</ul>
+			</div>
+
+			<footer>
+				<a href="#0" class="checkout btn"><em>Checkout - $<span>0</span></em></a>
+			</footer>
+			
+			
+			
+		</div>
+	</div> <!-- .cd-cart -->
+</div> <!-- cd-cart-container -->
+
+		 
+	</div>
+	<script>
+		
+		jQuery(document).ready(function($){
+		
+		
+	var cartWrapper = $('.cd-cart-container');
+	//product id - you don't need a counter in your real project but you can use your real product id
+	var productId = 0;
+
+	if( cartWrapper.length > 0 ) {
+		//store jQuery objects
+		var cartBody = cartWrapper.find('.body')
+		var cartList = cartBody.find('ul').eq(0);
+		var cartTotal = cartWrapper.find('.checkout').find('span');
+		var cartTrigger = cartWrapper.children('.cd-cart-trigger');
+		var cartCount = cartTrigger.children('.count')
+		var addToCartBtn = $('.cd-add-to-cart');
+		var undo = cartWrapper.find('.undo');
+		var undoTimeoutId;
+
+		//add product to cart
+		addToCartBtn.on('click', function(event){
+			event.preventDefault();
+			addToCart($(this));
+		});
+
+		//open/close cart
+		cartTrigger.on('click', function(event){
+			event.preventDefault();
+			toggleCart();
+		});
+
+		//close cart when clicking on the .cd-cart-container::before (bg layer)
+		cartWrapper.on('click', function(event){
+			if( $(event.target).is($(this)) ) toggleCart(true);
+		});
+
+		//delete an item from the cart
+		cartList.on('click', '.delete-item', function(event){
+			event.preventDefault();
+			removeProduct($(event.target).parents('.product'));
+		});
+
+		//update item quantity
+		cartList.on('change', 'select', function(event){
+			quickUpdateCart();
+		});
+
+		//reinsert item deleted from the cart
+		undo.on('click', 'a', function(event){
+			clearInterval(undoTimeoutId);
+			event.preventDefault();
+			cartList.find('.deleted').addClass('undo-deleted').one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(){
+				$(this).off('webkitAnimationEnd oanimationend msAnimationEnd animationend').removeClass('deleted undo-deleted').removeAttr('style');
+				quickUpdateCart();
+			});
+			undo.removeClass('visible');
+		});
+	}
+
+	function toggleCart(bool) {
+		var cartIsOpen = ( typeof bool === 'undefined' ) ? cartWrapper.hasClass('cart-open') : bool;
+		
+		if( cartIsOpen ) {
+			cartWrapper.removeClass('cart-open');
+			//reset undo
+			clearInterval(undoTimeoutId);
+			undo.removeClass('visible');
+			cartList.find('.deleted').remove();
+
+			setTimeout(function(){
+				cartBody.scrollTop(0);
+				//check if cart empty to hide it
+				if( Number(cartCount.find('li').eq(0).text()) == 0) cartWrapper.addClass('empty');
+			}, 500);
+		} else {
+			cartWrapper.addClass('cart-open');
+		}
+	}
+
+	function addToCart(trigger) {
+		var cartIsEmpty = cartWrapper.hasClass('empty');
+		//update cart product list
+		addProduct();
+		//update number of items 
+		updateCartCount(cartIsEmpty);
+		//update total price
+		updateCartTotal(trigger.data('price'), true);
+		//show cart
+		cartWrapper.removeClass('empty');
+	}
+
+	function addProduct() {
+		//this is just a product placeholder
+		//you should insert an item with the selected product info
+		//replace productId, productName, price and url with your real product info
+		productId = productId + 1;
+		var productAdded = $('<li class="product"><div class="product-image"><a href="#0"><img src="../Common/assets/images/cart.jpg" style="width: 39px;margin-top: 21px;"/></a></div><div class="product-details"><h3><a href="#0">Product Name</a></h3><span class="price">$25.99</span><div class="actions"><a href="#0" class="delete-item">Delete</a><div class="quantity"><label for="cd-product-'+ productId +'">Qty</label><span class="select"><select id="cd-product-'+ productId +'" name="quantity"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></span></div></div></div></li>');
+		cartList.prepend(productAdded);
+	}
+
+	function removeProduct(product) {
+		clearInterval(undoTimeoutId);
+		cartList.find('.deleted').remove();
+		
+		var topPosition = product.offset().top - cartBody.children('ul').offset().top ,
+			productQuantity = Number(product.find('.quantity').find('select').val()),
+			productTotPrice = Number(product.find('.price').text().replace('$', '')) * productQuantity;
+		
+		product.css('top', topPosition+'px').addClass('deleted');
+
+		//update items count + total price
+		updateCartTotal(productTotPrice, false);
+		updateCartCount(true, -productQuantity);
+		undo.addClass('visible');
+
+		//wait 8sec before completely remove the item
+		undoTimeoutId = setTimeout(function(){
+			undo.removeClass('visible');
+			cartList.find('.deleted').remove();
+		}, 8000);
+	}
+
+	function quickUpdateCart() {
+		var quantity = 0;
+		var price = 0;
+		
+		cartList.children('li:not(.deleted)').each(function(){
+			var singleQuantity = Number($(this).find('select').val());
+			quantity = quantity + singleQuantity;
+			price = price + singleQuantity*Number($(this).find('.price').text().replace('$', ''));
+		});
+
+		cartTotal.text(price.toFixed(2));
+		cartCount.find('li').eq(0).text(quantity);
+		cartCount.find('li').eq(1).text(quantity+1);
+	}
+
+	function updateCartCount(emptyCart, quantity) {
+		if( typeof quantity === 'undefined' ) {
+			var actual = Number(cartCount.find('li').eq(0).text()) + 1;
+			var next = actual + 1;
+			
+			if( emptyCart ) {
+				cartCount.find('li').eq(0).text(actual);
+				cartCount.find('li').eq(1).text(next);
+			} else {
+				cartCount.addClass('update-count');
+
+				setTimeout(function() {
+					cartCount.find('li').eq(0).text(actual);
+				}, 150);
+
+				setTimeout(function() {
+					cartCount.removeClass('update-count');
+				}, 200);
+
+				setTimeout(function() {
+					cartCount.find('li').eq(1).text(next);
+				}, 230);
+			}
+		} else {
+			var actual = Number(cartCount.find('li').eq(0).text()) + quantity;
+			var next = actual + 1;
+			
+			cartCount.find('li').eq(0).text(actual);
+			cartCount.find('li').eq(1).text(next);
+		}
+	}
+
+	function updateCartTotal(price, bool) {
+		bool ? cartTotal.text( (Number(cartTotal.text()) + Number(price)).toFixed(2) )  : cartTotal.text( (Number(cartTotal.text()) - Number(price)).toFixed(2) );
+	}
+	$(".cd-cart-trigger").click(function(){
+$(".cd-cart-trigger .cd-cart").hide();
+	$("#idInvest").empty();
+		
+		$(".dashboardheading").html("Checkout");
+		$("#idInvest").load("invest/checkout.html");
+	});	
+});
+		</script>

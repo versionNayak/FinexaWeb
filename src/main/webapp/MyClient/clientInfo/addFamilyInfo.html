@@ -1,0 +1,448 @@
+<!-- <script src="clientInfo/js/addClient.js"></script> -->
+<script type="text/javascript" src="clientInfo/js/common.js"></script>
+<script type="text/javascript" src="clientInfo/js/validationForAll.js"></script>
+<script type="text/javascript" src="clientInfo/js/validateFamilyMember.js"></script>
+<script src="../../Common/assets/js-library/moment-2.11.0.js"></script>
+
+<div class="cicontainer">
+    <div>
+        <form class="form-horizontal" id="idAddFamilyMember" name="AddFamilyMember" action="#">
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <span class="formentry-errmsg" id="alertform"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="idFMFirstName" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>First Name*: </label>
+                    <input type="text" id="idFMFirstName" name="firstName" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="First Name" tabindex="1" maxlength="50" />
+                    <span class="formentry-errmsg" id="alertfname"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="idFMMiddleName" name="" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>Middle Name:</label>
+                    <input type="text" id="idFMMiddleName" name="middleName" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Middle Name" tabindex="2" maxlength="50" />
+                    <span class="formentry-errmsg" id="alertmname"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="idFMLastName" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>Last Name:</label>
+                    <input type="text" id="idFMLastName" name="lastName" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Last Name" tabindex="3" maxlength="50" />
+                    <span class="formentry-errmsg" id="alertlname"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="idFMRelation" class="col-sm-1 control-label"></label>
+                <div class="col-sm-4">
+                    <label>Relation*</label>
+                    <span class="form-static-value" id="hide320">
+						<select class="form-control input-width-medium" id="idFMRelation" name="relationID" onchange="toggleOtherRelation()" required="required" tabindex="4">
+						</select>
+						<span class="formentry-errmsg" id="alertrelation"></span>
+                    </span>
+                </div>
+                <div class="col-sm-4">
+                    <label>If Others, specify:</label>
+                    <p class="input-group input-width-medium">
+                        <input type="text" class="form-control valid-state" id="idFMOtherRelation" name="otherRelation" placeholder="Please Enter Relationship" tabindex="5" maxlength="50" disabled>
+                        <span class="formentry-errmsg" id="alertotherrelation"></span>
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="idFMBdate" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>Date of Birth*:</label>
+                    <p id="idFMBirthDateGroup" class="input-group input-width-medium">
+                        <input type="text" class="form-control" id="idFMBdate" name="birthDate" placeholder="DD/MM/YYYY" tabindex="6">
+                        <span class="input-group-btn datepicker-icon">
+							<button id="idFMDobCalendar" type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Date of Birth"><em class="glyphicon calendar-icon-theme"></em></button>
+						</span>
+                    </p>
+                    <span class="formentry-errmsg" id="alertbdate"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="idFMPan" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>PAN:</label>
+                    <p class="input-group input-width-medium">
+                        <input type="text" class="form-control valid-state" id="idFMPan" name="pan" placeholder="Enter Pan No" tabindex="7" maxlength="10">
+                        <span class="formentry-errmsg" id="alertpan"></span>
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="idFMAadhar" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>Aadhar Card No.:</label>
+                    <p class="input-group input-width-medium">
+                        <input type="text" class="form-control valid-state" id="idFMAadhar" name="aadhar" placeholder="Enter Aadhar No" tabindex="8" maxlength="12">
+                        <span class="formentry-errmsg" id="alertaadhar"></span>
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>Dependent?*:</label>
+                    <div class="displayflex" id="idFMDependent">
+                        <label class="radio-inline custom-radio-theme">
+							<input type="radio" name="dependentFlag" id="idFMDependentN" value="N" tabindex="9" checked="checked" /><i></i>No
+						</label>
+                        <label class="radio-inline custom-radio-theme">
+							<input type="radio" name="dependentFlag" id="idFMDependentY" value="Y" tabindex="10" /><i></i>Yes
+						</label>
+                    </div>
+                    <span class="formentry-errmsg" id="alertdependent"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>Already Retired?:</label>
+                    <div class="displayflex" id="idFMRetired">
+                        <label class="radio-inline custom-radio-theme">
+							<input type="radio" name="retiredFlag" id="idFMRetiredN" onclick="showHideRetirementAge(this);"  value="N" tabindex="11" checked="checked"/><i></i>No
+						</label>
+                        <label class="radio-inline custom-radio-theme">
+							<input type="radio" name="retiredFlag" id="idFMRetiredY" onclick="showHideRetirementAge(this);"  value="Y" tabindex="12"/><i></i>Yes
+						</label>
+                    </div>
+                    <span class="formentry-errmsg" id="alertretired"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="idRetirementAge" class="col-sm-1 control-label"></label>
+                <div class="col-sm-8">
+                    <label>Retirement Age*:</label>
+                    <p class="input-group input-width-medium">
+                        <input type="text" id="idRetirementAge" name="retirementAge" class="form-control valid-state" placeholder="Enter Age" tabindex="13" maxlength="3">
+                        <span class="formentry-errmsg" id="alertretirementage"></span>
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-1 col-sm-11">
+                    <button type="button" id="idAddFamilyMemberSubmit" class="pull-left btn addbtn" tabindex="14">SAVE</button>
+                    <button type="button" id="undo" class="pull-left btn addbtn" tabindex="15" onclick="undoChange()">UNDO</button>
+                </div>
+                <div id="focusguard-2" tabindex="16"></div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        //console.log("addFamilyInfo page");
+        //console.log("FAMILY_ADD_CLIENT "+sessionStorage.getItem("FAMILY_ADD_CLIENT"));
+        var loggedUser = JSON.parse(sessionStorage.getItem("LOGGED_IN_USER"));
+        var loggedClient;
+        if (loggedUser == null) {
+            loggedClient = JSON.parse(sessionStorage.getItem("LOGGED_IN_CLIENT"));
+        } else {
+            loggedClient = sessionStorage.getItem("LOGGED_IN_CLIENT");
+        }
+        if (loggedClient != null && loggedClient.role === "Client") {
+            if (loggedClient.clientInfoAddEdit === "Y") {
+                $("#idAddFamilyMemberSubmit").show();
+                $("#undo").show();
+            } else if (loggedClient.clientInfoView === "Y") {
+                $("#idAddFamilyMemberSubmit").hide();
+                $("#undo").hide();
+            }
+        } else if (loggedUser != null && loggedUser.role === "Admin") {
+            $("#idAddFamilyMemberSubmit").hide();
+            $("#undo").hide();
+        } else {
+            if (loggedUser != null && loggedUser.clientInfoAddEdit === "Y") {
+                $("#idAddFamilyMemberSubmit").show();
+                $("#undo").show();
+            } else if (loggedUser != null && loggedUser.clientInfoView === "Y") {
+                $("#idAddFamilyMemberSubmit").hide();
+                $("#undo").hide();
+            }
+        }
+        $("#idFMRelation option[value='Self']").remove();
+        /* var relation = document.getElementById("idFMRelation");
+            relation.remove(0); */
+        /*  var relation = document.getElementById("idFMRelation");
+         relation.removeChild(relation.childNodes[0]); */
+        $("#idFMFirstName").focus();
+
+        $("input[type='radio']", $('#idFMDependent')).change(function() {
+            if ((document.getElementById("idFMRelation").value == 2) || (document.getElementById("idFMRelation").value == 3)) {
+                if ($("#idFMDependentY").prop("checked")) {
+                    // do something
+                    $("#idFMRetiredN").prop("checked", false);
+                    $('#idRetirementAge').prop("disabled", true);
+                    $("#idFMRetiredN").prop("disabled", true);
+                    $("#idFMRetiredY").prop("disabled", true);
+
+                } else {
+                    if ($("#idFMDependentN").prop("checked")) {
+                        $("#idFMRetiredN").prop("checked", true);
+                        $('#idRetirementAge').prop("disabled", false);
+                        $("#idFMRetiredN").prop("disabled", false);
+                        $("#idFMRetiredY").prop("disabled", false);
+                    }
+                }
+            }
+        });
+
+        var options = {
+            onComplete: function(cep) {
+                //window.given_start_date = moment($('#idInvestmentStartDate').val(),'DD/MM/YYYY').toDate();
+                //window.ln_start_dt_isvalid = isDateBetwenRange(window.clientDOB, new Date() ,window.given_start_date);
+            },
+            onKeyPress: function(cep, event, currentField, options) {},
+            onChange: function(cep) {},
+            onInvalid: function(val, e, f, invalid, options) {}
+        };
+
+        $('#idFMBdate').mask('00/00/0000', options);
+        // calendar
+        "use strict";
+        $("[data-toggle=\"tooltip\"]").tooltip();
+        $("#idFMBdate").datepicker({
+            format: "dd/mm/yyyy",
+            todayHighlight: true,
+            todayBtn: true,
+            autoclose: true,
+            forceParse: false,
+            endDate: new Date()
+        }).on('changeDate', function(ev) {
+            $("#alertbdate").css('color', '');
+            $("#alertbdate").text("");
+            $("#idFMBirthDateGroup").css('border', '');
+            $("#idAddFamilyMemberSubmit").prop("disabled", false);
+        });
+
+        $(".datepicker-icon").on("click", function() {
+            $(this).closest(".input-group").find("input").trigger("focus");
+        });
+
+        $("#idFMBdate").blur(function() {
+
+            if ($(this).val() != "") {
+                if (!checkValidDate($(this).val())) {
+                    $("#alertbdate").css('color', 'red');
+                    $("#alertbdate").text("Date is invalid!");
+                    $("#idFMBirthDateGroup").css('border', '2px solid red');
+                    $("#idAddFamilyMemberSubmit").prop("disabled", true);
+                } else {
+                    $("#alertbdate").css('color', '');
+                    $("#alertbdate").text("");
+                    $("#idFMBirthDateGroup").css('border', '');
+                    $("#idAddFamilyMemberSubmit").prop("disabled", false);
+                }
+            } else {
+                $("#alertbdate").css('color', '');
+                $("#alertbdate").text("");
+                $("#idFMBirthDateGroup").css('border', '');
+                $("#idAddFamilyMemberSubmit").prop("disabled", false);
+            }
+
+
+        });
+
+        populateRelationDrop($("#idFMRelation"));
+
+
+        $("#idAddFamilyMemberSubmit").on("click", function(event) {
+            var validate;
+            console.log("FAMILY_ADD_CLIENT " + sessionStorage.getItem("FAMILY_ADD_CLIENT"));
+            validate = validateFamilyMember($('#idAddFamilyMember'));
+            //alert(validate);
+            if (sessionStorage.getItem("FAMILY_ADD_CLIENT") == "YES") {
+                var relation = document.getElementById("idFMRelation");
+                if (hasValue(relation.value)) {
+                    if (validate) {
+
+                        showLoaderOnSave("#idAddFamilyMemberSubmit");
+                        //$(this).addClass('active');
+                        window.setTimeout(function() {
+                            var formData = $('#idAddFamilyMember').serializeToJSON();
+                            var data = JSON.stringify(formData);
+                            sessionStorage.setItem("CLIENT_FAMILY_INFO", data);
+                            sessionStorage.setItem("LifeExpecTancy_ADD_CLIENT", "YES");
+                            sessionStorage.setItem("PAGE_MODE", "ADD");
+
+                            //	addPage("clientInfo/addFamilyInfo.html","Add Client Family Info ");
+
+                            var heading = "Add Life Expectancy ";
+                            var path = "clientInfo/addClientLifeExpectancy.html ";
+                            $("#idClient").empty();
+                            hideLoaderOnSave("#idAddFamilyMemberSubmit");
+                            $("#idClient").load(path);
+                            $("#addRecord").addClass('btn_Disabled');
+                            $('#editRecord').hide();
+                            $('#deleteRecord').hide();
+                            $(".dashboardheading    ").html(heading);
+                            $("#mandatory-field-msg").show();
+                        }, 5000);
+                    }
+
+                } else {
+                    //	alert("Relation does not have value");
+                    if (validate) {
+                        showLoaderOnSave("#idAddFamilyMemberSubmit");
+                        //$(this).addClass('active');
+                        window.setTimeout(function() {
+                            sessionStorage.setItem("LifeExpecTancy_ADD_CLIENT", "YES");
+                            sessionStorage.setItem("PAGE_MODE", "ADD");
+
+                            //	addPage("clientInfo/addFamilyInfo.html","Add Client Family Info ");
+
+                            var heading = "Add Life Expectancy ";
+                            var path = "clientInfo/addClientLifeExpectancy.html ";
+                            $("#idClient").empty();
+                            hideLoaderOnSave("#idAddFamilyMemberSubmit");
+                            $("#idClient").load(path);
+                            $("#addRecord").addClass('btn_Disabled');
+                            $('#editRecord').hide();
+                            $('#deleteRecord').hide();
+                            $(".dashboardheading    ").html(heading);
+                            $("#mandatory-field-msg").show();
+                        }, 5000);
+                    }
+                }
+            } else {
+                if (sessionStorage.getItem("FAMILY_ADD_CLIENT") == "NO") {
+
+                    if (validate) {
+                        showLoaderOnSave("#idAddFamilyMemberSubmit");
+                        //$(this).addClass('active');
+                        window.setTimeout(function() {
+                            var selectedClientId = sessionStorage.getItem("SELECTED_CLIENT_ID");
+                            var formData = $('#idAddFamilyMember').serializeToJSON();
+                            formData["clientID"] = selectedClientId;
+                            var data = JSON.stringify(formData);
+                            console.log("Family member info before POST = " + data);
+
+                            //	getClientDataWithErrorHandling("POST", data, "clientFamilyMember",onSuccess,onError);
+                            saveData("POST", data, "clientFamilyMember", onAddSuccess);
+
+                            function onAddSuccess(data) {
+                                hideLoaderOnSave("#idAddFamilyMemberSubmit");
+                                console.log("Saved family member info = " + data);
+                                serviceurl = "clientFamilyMember/client/" + selectedClientId;
+                                getClientData("GET", "", serviceurl, onSuccess);
+
+                                function onSuccess(data) {
+                                    sessionStorage.setItem("FAMILY_MEMBER_LIST", JSON.stringify(data));
+                                    $("#idClient").load("clientInfo/viewFamilyInfo.html");
+                                    $(".dashboardheading").html("");
+                                    $(".dashboardheading").html("Family Members");
+
+                                }
+
+
+                            }
+                            /* function onError(err){
+		 				    $("#alertform").text("Error saving family information. Please try after sometime or contact system administrator.");
+		 					$(window).scrollTop(0);
+		 					hideLoaderOnSave("#idAddFamilyMemberSubmit");
+		 				} */
+                        }, 5000);
+                    }
+
+                }
+            }
+        });
+
+        $('#focusguard-2').on('focus', function() {
+            // "last" focus guard got focus: set focus to the first field
+            $("#idFMFirstName").focus();
+            $(window).scrollTop(0);
+        });
+    });
+
+    function toggleOtherRelation() {
+        if (document.getElementById("idFMRelation").value == 8) {
+            document.getElementById("idFMOtherRelation").disabled = false;
+        } else {
+            document.getElementById("idFMOtherRelation").value = "";
+            document.getElementById("idFMOtherRelation").disabled = true;
+            /* if((document.getElementById("idFMRelation").value == 2) || (document.getElementById("idFMRelation").value == 3)){
+            	$("input[type='radio']",$('#idFMDependent')).change( function() {
+            		if( $("#idFMDependentY").prop("checked", true)){
+            			$("#idFMRetiredN").prop("checked", false);
+            			$('#idRetirementAge').prop("disabled", true);
+            			$("#idFMRetiredN").prop("disabled", true);
+            			$("#idFMRetiredY").prop("disabled", true);
+            		}
+            	});
+            } */
+        }
+    }
+
+    function showHideRetirementAge(retiredYesNo) {
+        if (retiredYesNo.value == "Y") {
+            document.getElementById("idRetirementAge").disabled = true;
+        } else {
+            document.getElementById("idRetirementAge").disabled = false;
+        }
+    }
+
+    function undoChange() {
+        updateUNDO();
+
+        $(".form-control").val("");
+        $("#idFMOtherRelation").prop("disabled", true);
+        $("#idFMDependentN").prop("checked", true);
+        $("#idFMDependentY").prop("checked", false);
+        $("#idFMRetiredN").prop("checked", true);
+        $("#idFMRetiredY").prop("checked", false);
+        $("#idRetirementAge").prop("disabled", false);
+    }
+
+    function updateUNDO() {
+        var lFirstName = document.getElementById("idFMFirstName");
+        var lMiddleName = document.getElementById("idFMMiddleName");
+        var lLastName = document.getElementById("idFMLastName");
+        var lRelation = document.getElementById("idFMRelation");
+        var lOtherRelation = document.getElementById("idFMOtherRelation");
+        var lPan = document.getElementById("idFMPan");
+        var lIdBdate = document.getElementById("idFMBdate");
+        var lAadhar = document.getElementById("idFMAadhar");
+        var lIdCalendar = document.getElementById("idFMDobCalendar");
+        var lRetiredFlag = document.getElementsByName("idFMRetired");
+        var lRetirementAge = document.getElementById("idRetirementAge");
+        var lDependentFlag = document.getElementsByName("idFMDependent");
+
+
+        lFirstName.style.border = "";
+        lMiddleName.style.border = "";
+        lLastName.style.border = "";
+        lPan.style.border = "";
+        lRelation.style.border = "";
+        lOtherRelation.style.border = "";
+        lIdBdate.style.border = "";
+        lIdCalendar.style.border = "";
+        document.getElementById("idFMRetired").style.border = "";
+        document.getElementById("idRetirementAge").style.border = "";
+        lAadhar.style.border = "";
+
+        document.getElementById('alertfname').innerHTML = "";
+        document.getElementById('alertmname').innerHTML = "";
+        document.getElementById('alertlname').innerHTML = "";
+        document.getElementById('alertrelation').innerHTML = "";
+        document.getElementById('alertpan').innerHTML = "";
+        document.getElementById('alertotherrelation').innerHTML = "";
+        document.getElementById('alertbdate').innerHTML = "";
+        document.getElementById('alertretirementage').innerHTML = "";
+        document.getElementById('alertretired').innerHTML = "";
+        document.getElementById('alertaadhar').innerHTML = "";
+        document.getElementById('alertdependent').innerHTML = "";
+        document.getElementById("alertotherrelation").innerHTML = "";
+        document.getElementById('alertform').innerHTML = "";
+    }
+</script>

@@ -1,0 +1,283 @@
+<script src="plan/bm/js/viewIncome.js"></script>
+<script src="plan/bm/js/common.js"></script>
+<style>
+    .top30negtive[style]{
+        top: -30px !important;
+    }
+</style>
+<div id="jssor_10" class="height413px">
+	<div data-u="slides" class="slider9" style="height: 400px; top: 30px">
+		<div>
+			<div data-u="image">
+				<div class="col-lg-6" id="incomeTable">
+					<table width="100%" id="idIncomeTable" class="currentincometbl margintop44"
+						style="z-index: 10 !important">
+						<thead>
+							<tr>
+								<th>Income Source</th>
+								<th>Annual Income</th>
+								<th>% of Total</th>
+							</tr>
+						</thead>
+						<tbody>
+   							<tr class="classSalary">
+								<td><img src="../Common/assets/images/circle2.png" />
+									&nbsp; Salary Income</td>
+								<td id="salaryAmount" style="text-align-last: right"></td>
+								<td id="salaryPercent" style="text-align-last: right"></td>
+							</tr>
+							<tr class="classBonus">
+								<td><img src="../Common/assets/images/circle3.png" />
+									&nbsp;Bonus Income/Variable Pay</td>
+							<td id="bonousAmount" style="text-align-last: right"></td>
+								<td id="bonousPercent" style="text-align-last: right"></td>
+							</tr>
+							<tr class="classProf">
+								<td><img src="../Common/assets/images/circle4.png" />
+									&nbsp; Professional Fees</td>
+								<td id="profFess" style="text-align-last: right"></td>
+								<td id="profPercent" style="text-align-last: right">
+							</tr>
+							<tr class="classBuss">
+								<td><img src="../Common/assets/images/circle5.png" />
+									&nbsp; Business Income</td>
+								<td id="bussIncome" style="text-align-last: right"></td>
+								<td id="bussPercent" style="text-align-last: right">
+							</tr>
+							<tr class="classRent">
+								<td><img src="../Common/assets/images/circle6.png" />
+									&nbsp; Rental Income</td>
+								<td id="rentIncome" style="text-align-last: right"></td>
+								<td id="rentIncomePercent" style="text-align-last: right"></td>
+							</tr>
+							<tr class="classPension">
+								<td><img src="../Common/assets/images/circle7.png" />
+									&nbsp; Pension</td>
+								<td id="pension" style="text-align-last: right"></td>
+								<td id="pensionPercent" style="text-align-last: right"></td>
+							</tr>
+							<tr class="classOther">
+								<td><img src="../Common/assets/images/circle8.png" />
+									&nbsp; Other Income</td>
+								<td id="otherIncome" style="text-align-last: right">-</td>
+								<td id="otherIncomePercent" style="text-align-last: right"></td>
+							</tr>
+							
+							<tr class="classInterest">
+								<td><img src="../Common/assets/images/circle9.png" />
+									&nbsp; Interest Income</td>
+								<td id="interestIncome" style="text-align-last: right"></td>
+								<td id="interestIncomePercent" style="text-align-last: right"></td>
+							</tr>
+							<tr class="classIndTotal">
+								<td><img src="../Common/assets/images/circle10.png" />
+									&nbsp; Individual Total Income</td>
+								<td id="indTotalIncome" style="text-align-last: right"></td>
+								<td id="indTotalIncomePercent" style="text-align-last: right"></td>
+							</tr>
+
+							<tr class="nonglidtotal">
+								<td><b>Total Income</b></td>
+								<td id="totalIncome" style="text-align-last: right"></td>
+								<td id="totalIncomePercent" style="text-align-last: right"><b></b>
+							</tr>							
+ 						</tbody>
+					</table>
+				</div>
+				<div class="col-lg-6">
+					<div id="idCurrentIncome" style="position: relative; left: -50px;"></div>
+				</div>
+			</div>
+			<button data-u="thumb" name="but1" tabindex="1">Current Income</button>
+		</div>
+
+		<div>
+			<div data-u="image">
+
+				<div id="idMaxIncome" class="popup" style="position: relative; left: 10px; top: 20px;">
+					<img src="../Common/assets/images/maximg.png" class="maxbtn"/>
+				</div>
+				<table id="idMainIncomeTable" class="incomeprojtbl marginleft35px table" style="width: 90%; margin-left: 42px">
+					<thead>
+						<tr>
+							<th>Year</th>
+							<th>Salary,Bonus & Professional Income</th>
+							<th>Business Income</th>
+							<th>Rental Income</th>
+							<th>Pension</th>
+							<th>Other Income</th>
+							<th>Interest Income</th>
+							<th>Individual Total Income</th>
+							<th>Total Income</th>
+						</tr>
+					</thead>
+					<tbody id="idIncomeProjectionTable">
+					</tbody>
+				</table>
+
+				<br />
+
+				<table width="46%" style="margin-left: 280px">
+
+					<tr>
+						<td><b>Download Projections</b></td>
+						<td><input type="radio" id="idMonthlyRadio" name="download"
+							style="position: sticky"></input></td>
+						<td style="text-align: left; vertical-align: bottom;"><label>Monthly</label></td>
+						<td><input type="radio" id="idYearlyRadio" name="download"
+							style="position: sticky" checked="true"></input></td>
+						<td style="text-align: left; vertical-align: bottom;"><label>Annually</label></td>
+						<td><input type="submit" value="Save" id="idDownload" class="form-control"></td>
+					</tr>
+				</table>
+				<br />
+
+			</div>
+			<button data-u="thumb" name="but2" tabindex="2">Income Projections</button>
+		</div>
+		<div>
+			<div data-u="image">
+				<div id="idIncomeProjection" style="margin-top: -25px !important;"></div>
+			</div>
+			<button data-u="thumb" name="but3" tabindex="3">Income Projection Graph</button>
+		</div>
+		<div>
+			<div data-u="image">
+				<div>
+
+					<div class="row familymember">
+						<div class="col-lg-2">Family Member:</div>
+						<div class="col-lg-6" style="margin-top: -12px">
+							<table class="familymembertbl">
+								<tr>
+									<td id="idassetOwner1"><img id="idSelfImg" 
+										src="../Common/assets/images/icons/Lady-A.png"
+										class="assetOwner1_img" alt="Self" tabindex="200"/>self</td>
+									<td id="idassetOwner2"><img id="idSpouseImg"  
+										src="../Common/assets/images/icons/Man-A.png"
+										class="assetOwner2_img" alt="Spouse" tabindex="210"/>&nbsp;
+										&nbsp; Spouse</td>
+									<td id="idassetOwner3"><img
+										src="../Common/assets/images/icons/Boy-A.png"
+										class="assetOwner3_img" alt="Son" tabindex="220" />Son</td>
+									<td id="idassetOwner4"><img
+										src="../Common/assets/images/icons/Girl-A.png"
+										class="assetOwner4_img" alt="Daughter" tabindex="230" />&nbsp;
+										&nbsp; &nbsp; &nbsp; Daughter</td>
+									<td id="idassetOwner5"><img
+										src="../Common/assets/images/icons/Father-A.png"
+										class="assetOwner5_img" alt="Father" tabindex="240" />&nbsp;
+										&nbsp; &nbsp;Father</td>
+									<td id="idassetOwner6"><img
+										src="../Common/assets/images/icons/Mother-A.png"
+										class="assetOwner6_img" alt="Mother" tabindex="250" />&nbsp;
+										&nbsp; &nbsp; Mother</td>
+									<td id="idassetOwner7"><img
+										src="../Common/assets/images/icons/Other-A.png"
+										class="assetOwner7_img" alt="Other" tabindex="260" />&nbsp;
+										&nbsp; Other</td>
+								</tr>
+							</table>
+
+
+						</div>
+
+					</div>
+
+					<div>
+						<table width="89%" id="idKeyAssumptionMainTable" class="keyassumptions" style="margin-top: 4px">
+							<thead>
+								<tr>
+									<th>Income Source</th>
+									<th>Amount</th>
+									<th>Frequency</th>
+									<th>Reference Month</th>
+									<th>Year till Income will continue</th>
+									<th>Annual Income Growth rate(%)</th>
+								</tr>
+							</thead>
+							<tbody id="idKeyAssumption">
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<button data-u="thumb" name="but4" tabindex="4">Key Assumptions</button>
+			
+		</div>
+	</div>
+	<!-- Thumbnail Navigator -->
+	<div data-u="thumbnavigator" class="jssort10" data-autocenter="1">
+		<!-- Thumbnail Item Skin Begin -->
+		<div data-u="slides">
+			<div data-u="prototype" class="p">
+				<div>
+					<div data-u="thumbnailtemplate"></div>
+				</div>
+				<div></div>
+			</div>
+		</div>
+		<!-- Thumbnail Item Skin End -->
+	</div>
+	<!-- Arrow Navigator -->
+	<span data-u="arrowleft" class="jssora05l Incomeleft"><img
+		src="../Common/assets/images/leftarrow.png" /></span> <span
+		data-u="arrowright" class="jssora05r Incomeright"><img
+		src="../Common/assets/images/rightarrow.png" /></span>
+</div>
+
+
+
+<!--income projection max table-->
+<div id="idPopIncome" class="modal">
+
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close">&times;</span>
+			<h2></h2>
+		</div>
+		<div class="modal-body">
+			<table width="90%" id="idMainIncomeTableModal" class="incomeprojtbl">
+				<thead>
+					<tr>
+						<th>Year</th>
+						<th>Salary,Bonus & Professional Income</th>
+						<th>Business Income</th>
+						<th>Rental Income</th>
+						<th>Pension</th>
+						<th>Other Income</th>
+						<th>Interest Income</th>
+						<th>Individual Total Income</th>
+						<th>Total Income</th>
+					</tr>
+				</thead>
+				<tbody id="idIncomeProjectionTableModal">
+				</tbody>
+			</table>
+			<br />
+			<table width="31%" style="margin-left: 424px">
+
+				<tr>
+					<td><b>Download Projections</b></td>
+					<td><input type="radio" id="idMonthlyRadioModal" name="download"
+						style="position: sticky"></input></td>
+					<td style="text-align: left; vertical-align: bottom;"><label>Monthly</label></td>
+					<td><input type="radio" id="idYearlyRadioModal" name="download"
+						style="position: sticky" checked="true"></input></td>
+					<td style="text-align: left; vertical-align: bottom;"><label>Annually</label></td>
+					<td><input type="submit" value="Save" id="idDownloadModal" class="form-control"></td>
+				</tr>
+
+			</table>
+			<br />
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+
+</div>
+
+
+

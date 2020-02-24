@@ -1,0 +1,169 @@
+<script src="plan/bm/js/viewCommitted.js"></script>
+<script src="plan/bm/js/common.js"></script>
+<style>
+	.top30negtive[style]{
+		top: -30px !important;
+	}
+</style>
+<div id="idCom">
+<div id="jssor_12" class="height413px">
+	<div data-u="slides" class="slider9" style="height: 400px; top: 30px">
+		<div id="idDivCom1">
+			<div data-u="image">
+                <div class="col-lg-3"></div>
+				<div class="col-lg-6">
+
+
+					<table width="100%" class="commited table" id="idCOCurrentTable" style="margin-left: 0px">
+						<thead>
+							<tr>
+								<th></th>
+								<th>Annual Outflows (Rs.)</th>
+								<th>% of Total</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr></tr>
+							<tr class="classCOLifePremium">
+								<td>Life Insurance Premium</td>
+								<td id="commitedOutflowPremium" style="text-align-last: right"></td>
+								<td id="commitedOutflowPremiumPerc" style="text-align-last: right"></td>
+							</tr>
+							<tr class="classCOGeneralPremium">
+								<td class="textalignleft" id="iewdth47">General Insurance Premium</td>
+								<td id="commitedOutflowPremiumGeneral" style="text-align-last: right"></td>
+								<td id="commitedOutflowPremiumGeneralPerc" style="text-align-last: right"></td>
+							</tr>
+							<tr class="classCOHealthPremium">
+								<td>Health Insurance Premium</td>
+								<td id="commitedOutflowPremiumHealth" style="text-align-last: right"></td>
+								<td id="commitedOutflowPremiumHealthPerc" style="text-align-last: right"></td>
+							</tr>
+							<tr class="classCOInvestment">
+								<td>Investments</td>
+								<td id="commitedOutflowInvestment" style="text-align-last: right"></td>
+								<td id="commitedOutflowInvestmentPerc" style="text-align-last: right"></td>
+							</tr>
+							<tr class="nonglidtotal">
+								<td><b>Total Committed Outflows</b></td>
+								<td style="text-align-last: right"><b id="totalOutFlow"></b></td>
+								<td style="text-align-last: right"><b id="totalOutFlowPerc"></b></td>
+							</tr>
+
+						</tbody>
+					</table>
+                    <div class="text-center" id="alertForOutFlows"><b> No Insurance Found for This Client.</b></div>
+				</div>
+                <div class="col-lg-3"></div>
+			</div>
+			<button data-u="thumb" name="but1" tabindex="1">Current Committed Outflows</button>
+		</div>
+
+		<div id="idDivCom2">
+			<div data-u="image" style="margin-top: -30px">
+				<div id="idMaxCommit" class="popup" style="position: relative; left: 180px; top: 20px;">
+					<img src="../Common/assets/images/maximg.png" class="maxbtn"/>
+				</div>
+				<table class="committedtbl" id="idCOTable" style="margin-left:33px; width: 91%">
+					<thead>
+						<tr>
+							<th>Year</th>
+							<th>Life Insurance Premium</th>
+							<th>General Insurance Premium</th>
+							<th>Health Insurance Premium</th>
+							<th>Investments</th>
+							<th>Total</th>
+						</tr>
+					</thead>
+					<tbody id="idCOProjection">
+					</tbody>
+				</table>
+				<br />
+				<table width="50%" style="margin-left: 280px">
+
+					<tr>
+						<td><b>Download Projections</b></td>
+						<td><input type="radio" id="idMonthlyRadio" name="download"
+							style="position: sticky"></input></td>
+						<td style="text-align: left; vertical-align: bottom;"><label>Monthly</label></td>
+						<td><input type="radio" id="idYearlyRadio" name="download"
+							style="position: sticky" checked="true"></input></td>
+						<td style="text-align: left; vertical-align: bottom;"><label>Annually</label></td>
+						<td><input type="submit" value="Save" id="idDownload"
+							class="form-control"></td>
+					</tr>
+				</table>
+				<div style="height: 60px" hidden></div>
+
+			</div>
+			<button data-u="thumb" name="but2" tabindex="2">Committed Outflow Projections</button>
+		</div>
+
+	</div>
+	<!-- Thumbnail Navigator -->
+	<div data-u="thumbnavigator" class="jssort12" data-autocenter="1">
+		<!-- Thumbnail Item Skin Begin -->
+		<div data-u="slides">
+			<div data-u="prototype" class="p">
+				<div>
+					<div data-u="thumbnailtemplate"></div>
+				</div>
+				<div></div>
+			</div>
+		</div>
+		<!-- Thumbnail Item Skin End -->
+	</div>
+	<!-- Arrow Navigator -->
+	<span data-u="arrowleft" class="jssora05l committedleft"><img
+		src="../Common/assets/images/leftarrow.png" /></span> <span
+		data-u="arrowright" class="jssora05r committedright"><img
+		src="../Common/assets/images/rightarrow.png" /></span>
+</div>
+
+
+<div id="idPopCommit" class="modal">
+
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close">&times;</span>
+			<h2></h2>
+		</div>
+		<div class="modal-body">
+			<table width="70%" id="idCOTableModal" class="committedtbl" style="margin-left: 200px">
+				<thead>
+					<tr>
+						<th>Year</th>
+						<th>Life Insurance Premium</th>
+						<th>General Insurance Premium</th>
+						<th>Health Insurance Premium</th>
+						<th>Investments</th>
+						<th>Total</th>
+					</tr>
+				</thead>
+				<tbody id="idCOProjectionModal">
+
+				</tbody>
+			</table>
+			<br />
+			<table width="31%" style="margin-left: 424px">
+				<tr>
+					<td><b>Download Projections</b></td>
+					<td><input type="radio" id="idMonthlyRadioModal"
+						name="download" style="position: sticky"></input></td>
+					<td style="text-align: left; vertical-align: bottom;"><label>Monthly</label></td>
+					<td><input type="radio" id="idYearlyRadioModal"
+						name="download" style="position: sticky" checked="true"></input></td>
+					<td style="text-align: left; vertical-align: bottom;"><label>Annually</label></td>
+					<td><input type="submit" value="Save" id="idDownloadModal"
+						class="form-control"></td>
+				</tr>
+			</table>
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+
+</div>
+</div>

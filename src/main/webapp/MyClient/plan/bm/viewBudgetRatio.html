@@ -1,0 +1,123 @@
+<script src="plan/bm/js/viewBudgetRatio.js"></script>
+<script src="plan/bm/js/viewHousingRatio.js"></script>
+<script src="plan/bm/js/viewDebtRatio.js"></script>
+<script src="plan/bm/js/common.js"></script>
+<style>
+	.highcharts-title {
+		display:none;
+	}
+	.top30negtive[style]{
+		top: -30px !important;
+	}
+    .top50negtive[style]{
+        top: -50px !important;
+    }
+</style>
+<div id="jssor_15" class="height413px">
+	<div data-u="slides" class="slider9" style="height: 408px">
+
+		<div>
+			<div data-u="image">
+
+				<table width="90%" class="riskprofiletbl">
+					<tr>
+						<td>
+							<div id="idRiskScore1"></div>
+
+						</td>
+						<td>
+							<div id="idRiskScore2"></div>
+
+						</td>
+						<td>
+							<div id="idRiskScore3"></div>
+
+
+						</td>
+					</tr>
+					<tr>
+						<td>
+
+							<p style="margin-top: -156px; margin-left: 61px">Savings
+								Ratio</p>
+						</td>
+						<td>
+
+							<p
+								style="margin-top: -156px; margin-left: 36px">Debt
+								Servicing Ratio</p>
+						</td>
+						<td>
+
+							<p
+								style="margin-top: -156px; margin-left: 36px">Housing
+								Expense Ratio</p>
+
+						</td>
+					</tr>
+				</table>
+				<table style="margin-top: -124px; margin-left: 180px;"
+					class="bmratiotbl">
+					<tr>
+						<td><img src="../Common/assets/images/circle6.png" /></td>
+						<td>Alarming</td>
+						<td><img src="../Common/assets/images/circle3.png" /></td>
+						<td>Stressed</td>
+						<td><img src="../Common/assets/images/circle4.png" /></td>
+						<td>Comfortable</td>
+						<td><img src="../Common/assets/images/circle5.png" /></td>
+						<td>Healthy</td>
+						<td><img src="../Common/assets/images/circle2.png" /></td>
+						<td>Very Comfortable</td>
+
+					</tr>
+
+				</table>
+
+
+
+			</div>
+			<button data-u="thumb" name="but1">Budget Ratio Scores</button>
+		</div>
+		<div class="top50negtive">
+			<div data-u="image">
+				<div>
+					<table class="ratiotbl" style="width: 86%; margin-left: 40px">
+						<thead>
+							<tr>
+								<th>Ratios</th>
+								<th>Logic / Rationale</th>
+
+								<th>Value</th>
+								<th>Comment</th>
+							</tr>
+						</thead>
+						<tbody id="idBudgetRatioTable">
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<button data-u="thumb" name="but2">Budget Ratio Scores Details</button>
+		</div>
+
+
+	</div>
+	<!-- Thumbnail Navigator -->
+	<div data-u="thumbnavigator" class="jssort15" data-autocenter="1">
+		<!-- Thumbnail Item Skin Begin -->
+		<div data-u="slides">
+			<div data-u="prototype" class="p">
+				<div>
+					<div data-u="thumbnailtemplate"></div>
+				</div>
+				<div></div>
+			</div>
+		</div>
+		<!-- Thumbnail Item Skin End -->
+	</div>
+	<!-- Arrow Navigator -->
+	<span data-u="arrowleft" class="jssora05l ratioleft"><img
+		src="../Common/assets/images/leftarrow.png" /></span> <span
+		data-u="arrowright" class="jssora05r ratioright"><img
+		src="../Common/assets/images/rightarrow.png" /></span>
+</div>

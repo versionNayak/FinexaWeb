@@ -1,0 +1,46 @@
+<script type="text/javascript" src="clientRecords/js/viewMappingBulkUpload.js"></script>
+<div class="dmcontainer">
+
+<div class="clearfix"></div>
+<br/>
+
+<form class="form-horizontal" action="#">
+      <div class="form-group">
+                <label for="ownerName" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>Template Format*:</label>
+                       <select id="idFileFormat" class="form-control input-width-medium" required="required" tabindex="430">
+                            <option value="">Select Format</option>
+                            <option value="excel">Excel</option>
+                            <option value="csv">CSV</option>
+                        </select>
+                </div>
+            </div>
+       <div class="form-group">
+                <div class="col-sm-offset-1 col-sm-11">
+                    <input type="button" class="pull-left form-control addbtn" tabindex="540" id="idDownload" value="Download Format">
+                    
+                 </div>
+            </div>     
+</form>
+
+<form class="form-horizontal" action="#" id="idBulkUploadForm">
+            <div class="form-group">
+                <label for="ownerName" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>Select File*:</label>
+                    <input type="file" name="file" id="idSelectedFile" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="file" tabindex="270">
+                </div>
+            </div>
+
+         
+            <div class="form-group">
+                <div class="col-sm-offset-1 col-sm-11">
+                    <input type="button" class="pull-left form-control addbtn" tabindex="540" id="idUpload" value="Import">
+                   
+                 </div>
+            </div>
+
+</form>
+
+</div>

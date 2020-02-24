@@ -1,0 +1,550 @@
+<script src="plan/pm/js/viewPortfolioEquity.js"></script>
+<script src="plan/pm/js/common.js"></script>
+<script type="text/javascript" src="../Common/assets/js-library/moment.js"></script>
+<script type="text/javascript" src="../Common/assets/js-library/pagination.js"></script>
+<link rel="stylesheet" href="../Common/assets/css-library/bootstrap.min.css">
+<script type="text/javascript" src="../Common/assets/js-library/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../Common/assets/css-library/daterangepicker.css" />
+<style>
+    #idEquityOverviewMarketCapGraph svg {
+        margin-top: 18px !important;
+        width: 100% !important;
+    }
+    
+    #jssor_22>div>div>div:nth-child(2)>div:nth-child(2) {
+        overflow-y: scroll !important;
+        width: 895px !important;
+        height: 414px !important;
+        overflow-x: hidden !important;
+    }
+    
+    .top30negtive[style] {
+        top: -30px !important;
+    }
+    /* .highcharts-root{
+		display:block;
+		height:400px;
+		paddingTop: '50px';
+	    paddingBottom: '50px';
+	}  */
+    /* 	.highcharts-container { overflow: visible !important; }
+ */
+</style>
+<script>
+    function cb1(start, end) {
+        $('#reportrange span').html(
+            start.format('MMMM D, YYYY') + ' - ' +
+            end.format('MMMM D, YYYY'));
+
+    }
+    //$('#reportrange span').html(moment().subtract(29, 'days'), moment());
+    //cb1(moment().subtract(29, 'days'), moment());
+    $('#reportrange').daterangepicker({
+        ranges: {
+            '': [moment(), moment()],
+            '1 Month': [moment().subtract(1, 'month'), moment()],
+            '3 Months': [moment().subtract(3, 'months'), moment()],
+            '6 Months': [moment().subtract(6, 'months'), moment()],
+            '1 Year': [moment().subtract(1, 'year'), moment()],
+            '3 Years': [moment().subtract(3, 'years'), moment()],
+            '5 Years': [moment().subtract(5, 'years'), moment()],
+        }
+
+    }, cb1);
+
+    $('#reportrange span').on('DOMSubtreeModified', function() {
+        var text = $('#reportrange span').text();
+        // alert("stock "+text);
+        stockCustomClick(text);
+    })
+
+    function cb(start, end) {
+        mfClickEnter = 0;
+        $('#reportrangekotak span').html(
+            start.format('MMMM D, YYYY') + ' - ' +
+            end.format('MMMM D, YYYY'));
+
+    }
+    //cb(moment().subtract(29, 'days'), moment());
+    $('#reportrangekotak').daterangepicker({
+        ranges: {
+            '': [moment(), moment()],
+            '1 Month': [moment().subtract(1, 'month'), moment()],
+            '3 Months': [moment().subtract(3, 'months'), moment()],
+            '6 Months': [moment().subtract(6, 'months'), moment()],
+            '1 Year': [moment().subtract(1, 'year'), moment()],
+            '3 Years': [moment().subtract(3, 'years'), moment()],
+            '5 Years': [moment().subtract(5, 'years'), moment()],
+        }
+
+    }, cb);
+
+    $('#reportrangekotak span').on('DOMSubtreeModified', function() {
+        //alert("mfClickEnter "+mfClickEnter);
+        if (mfClickEnter == 0) {
+            var text = $('#reportrangekotak span').text();
+            //alert("reportrangekotak "+text);
+            mfCustomClick(text);
+        }
+    })
+    $(".applyBtn").click(function() {
+        //alert("mfModal "+mfModal);
+        //alert("equityModal "+equityModal);
+        if (mfModal == 1) {
+            var text = $('#reportrangekotak span').text();
+            //alert("applyBtn reportrangekotak "+text);
+            mfCustomClick(text);
+        }
+
+        if (equityModal == 1) {
+            var text = $('#reportrange span').text();
+            //alert("applyBtn reportrange " +text);
+            stockCustomClick(text);
+        }
+
+    });
+</script>
+<div id="jssor_22" class="height413px">
+    <div data-u="slides" class="slider9" style="height:416px; top: 20px">
+        <div style="height: 416px; overflow: scroll">
+            <div data-u="image">
+                <div id="idMaxcurrentaa" class="popup" style="position: relative; left: 60px; top: 21px">
+                    <img src="../Common/assets/images/maximg.png" class="maxbtn" style="margin-top: -48px !important;margin-right:0px" /></div>
+                <table class="whitebg" style="z-index: 10 !important; margin-top: 31px; margin-left: 51px; width: 86%">
+
+                    <thead>
+
+
+                        <tr>
+                            <th class="nonglidtotal" style="text-align: left">Product</th>
+                            <th class="nonglidtotal" style="text-align: left">Product Type
+                            </th>
+                            <th class="nonglidtotal">Current Value</th>
+                            <th class="nonglidtotal">Investment Value</th>
+                            <th class="nonglidtotal">Gain/Loss</th>
+
+                            <th class="nonglidtotal">CAGR/XIRR</th>
+                            <th class="nonglidtotal">PTP Returns</th>
+                            <th class="nonglidtotal">Locked-In Upto Date</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="idEquityTBody"></tbody>
+
+                    <tr>
+                        <td colspan="9" style="text-align: right !important"><a id="equitymore"> Know More...</a></td>
+                    </tr>
+                </table>
+
+
+            </div>
+            <!--<button data-u="thumb">Overview(By Products) </button>-->
+        </div>
+        <div>
+
+            <!--<button data-u="thumb">Overview(By Sectors) </button>-->
+        </div>
+    </div>
+    <!-- Thumbnail Navigator -->
+    <div data-u="thumbnavigator" class="jssort22" data-autocenter="1">
+        <!-- Thumbnail Item Skin Begin -->
+        <div data-u="slides">
+            <div data-u="prototype" class="p">
+                <div>
+                    <div data-u="thumbnailtemplate"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Thumbnail Item Skin End -->
+    </div>
+    <!-- Arrow Navigator -->
+    <span data-u="arrowleft" class="jssora05l Incomeleft"><img src="../Common/assets/images/leftarrow.png"/></span>
+    <span data-u="arrowright" class="jssora05r Incomeright"><img src="../Common/assets/images/rightarrow.png"/></span>
+</div>
+<!--Current AA max pop-->
+<div id="idpopcurrentaa" class="modal modal1">
+    <!-- Modal content -->
+    <div class="modal-content" style="margin-left: 24px; background-color: #ededee">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h4 style="margin-top: 5px">Portfolio Equity</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row" style="margin-top: 19px">
+                <div class="col-lg-12" style="width: 101em">
+                    <div class="col-lg-11 bgwhite" style="margin-right: .5em">
+                        <h4 class="fontblue">
+                            <b>Portfolio Overview Equity</b>
+                        </h4>
+                        <table width="97%" style="z-index: 10 !important; margin-left: 1px; margin-bottom: 24px; margin-top: 27px;" class="currentaatab protfoiliequity">
+                            <thead>
+
+
+                                <tr>
+                                    <th style="text-align: left">Product</th>
+                                    <th style="text-align: left">Product Type</th>
+                                    <th>Current Value</th>
+                                    <th>Investment Value</th>
+                                    <th>Gain/Loss</th>
+
+                                    <th>CAGR/XIRR</th>
+                                    <th>PTP Returns</th>
+                                    <th>Locked-In Upto Date</th>
+
+                                </tr>
+                            </thead>
+                            <tbody id="idEquityTbodyModal"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-12" style="margin-top: 18px; margin-bottom: 19px; margin-left: -15px; width: 100em">
+
+                <div class="col-lg-5 bgwhite" style="margin-right: 0.8em; height: 32em; width: 41em">
+                    <h4 class="fontblue">
+                        <b>Equity Overview By Product Type</b>
+                    </h4>
+                    <div id="idEquityOverviewByProdTypeGraph" style="width: 40%; margin-left: -80px; margin-top: 5em; width: 35em"></div>
+                </div>
+                <div class="col-lg-6 bgwhite" style="height: 32em">
+                    <h4 class="fontblue">
+                        <b>Equity Overview By Marketcap</b>
+                    </h4>
+                    <div id="idEquityOverviewMarketCapGraph" style="width: 40%; margin-left: 80px; margin-top: -1em; width: 31em"></div>
+                </div>
+
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-5 bgwhite" style="width: 41em; margin-left: 15px; margin-bottom: 1em; margin-top: -.5em;">
+                    <h4 class="fontblue">
+                        <b>Overview By Sectors</b>
+                    </h4>
+                    <div id="idEquityOverviewSectorHoldingGraph" style="width: 40%; margin-bottom: 7px"></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <h3></h3>
+        </div>
+    </div>
+</div>
+
+<!--Equity One Pager -->
+<div id="idpopinfosys" class="modal3 modal5">
+    <!-- Modal content -->
+    <div class="modal-content" style="margin-left: 24px; background-color: #ededee">
+        <div class="modal-header">
+            <span class="close3 close5" style="margin-top: -5px">&times;</span>
+            <h4 style="margin-top: 5px" id="idStockPagerHeader"></h4>
+            <h2></h2>
+        </div>
+
+        <div class="modal-body">
+            <div class="row" style="margin-top: 19px">
+                <div class="col-lg-12">
+
+                    <div class="col-lg-12 bgwhite">
+                        <h4 class="fontblue">
+                            <b>Fund Snapshot</b>
+                        </h4>
+                        <table width="100%" style="margin-bottom: 19px" class="PMkotakpop">
+                            <tr>
+                                <td><span class="font1p2em"><b
+										id="idLastClosingPriceStock"></b></span><br /> <span> Last
+										Closing Price</span></td>
+                                <td><span class="font1p2em"><b
+										id="id52WeekHighStock"></b></span> <br />52 Week High</td>
+                                <td><span class="font1p2em"><b id="id52WeekLowStock"></b></span><br />52 Week Low</td>
+                                <td><span class="font1p2em"><b
+										id="idDailyTradedVolumeStock"></b></span><br /> Daily Traded Volume</td>
+                                <!-- <td><span class="font1p2em"><b id="idBetaStock"></b></span><br />Beta</td> -->
+                                <td><span class="font1p2em"><b id="idMarketCapStock"></b></span><br /> Marketcap
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="font1p2em"><b id="idPEStock"></b></span><br />P/E</td>
+                                <td><span class="font1p2em"><b id="idPBStock"></b></span><br />P/B</td>
+                                <td><span class="font1p2em"><b id="idDivYieldStock"></b></span><br />Div Yield
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 bgwhite" style="margin-top: 18px; margin-bottom: 19px;">
+                <h4 class="fontblue" id="idPerformHeaderEquity">
+                    <b>Performance vs. Index</b>
+                </h4>
+                <div id="reportrange" class="pull-right" style="background: #ededee; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 28%; margin-top: -24px; border-radius: 8px;">
+                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp; <span></span>
+                    <b class="caret"></b>
+                </div>
+                <br />
+
+                <div id="idEquityOnePagerGrowthGraph" style="width: 90%"></div>
+                <h4 class="fontblue">
+                    <b>Performance</b>
+                </h4>
+
+
+
+
+
+
+                <table width="63%" style="z-index: 10 !important; margin-left: 30px; margin-bottom: 24px; margin-top: 27px;" class="kotakperfomancetbl">
+                    <thead>
+                        <tr>
+                            <th style="text-align: left"></th>
+                            <th>1M</th>
+                            <th>3M</th>
+                            <th>6M</th>
+                            <th>1Y</th>
+                            <th>3Y</th>
+                            <th>5Y</th>
+                        </tr>
+                    </thead>
+                    <tbody id="idStockNiftyTable"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal-footer">
+        <h3></h3>
+    </div>
+</div>
+
+
+<!--MF One Pager -->
+<div id="idpopkotak" class="modal4 modal2">
+    <!-- Modal content -->
+    <div class="modal-content" style="margin-left: 24px; background-color: #ededee">
+        <div class="modal-header">
+            <span class="close4 close2 closeBtn" style="margin-top: -5px">&times;</span>
+            <h4 style="margin-top: 5px" id="idPortfolioMFPagerHeader"></h4>
+        </div>
+        <div class="modal-body">
+            <div class="row" style="margin-top: 19px">
+                <div class="col-lg-12">
+                    <!-- <div class="col-lg-3 bgwhite" style="margin-right: 24px">
+						<h4 class="fontblue">
+							<b id="idStyleBoxHeader">Style Box</b>
+						</h4>
+						<table class="whitebg"
+							style="width: 70%; margin: auto; margin-bottom: 17px; margin-top: 25px">
+							<tr>
+								<td style="background-color: #ededee; width: 35%" id="LG"></td>
+								<td style="background-color: #ededee; width: 35%" id="MG"></td>
+								<td style="background-color: #ededee; width: 35%" id="SG"></td>
+								<td style="width: 1px">Growth</td>
+							</tr>
+							<tr>
+								<td style="background-color: #ededee; width: 35%" id="LV"></td>
+								<td style="background-color: #ededee; width: 35%" id="MV"></td>
+								<td style="background-color: #ededee; width: 35%" id="SV"></td>
+								<td style="width: 1px">Value</td>
+							</tr>
+							<tr>
+								<td style="background-color: #ededee; width: 35%" id="LB"></td>
+								<td style="background-color: #ededee; width: 35%" id="MB"></td>
+								<td style="background-color: #ededee; width: 35%" id="SB"></td>
+								<td style="width: 1px">Blend</td>
+							</tr>
+							<tr>
+								<td>LargeCap</td>
+								<td>MidCap</td>
+								<td>SmallCap</td>
+								<td></td>
+							</tr>
+						</table>
+					</div> -->
+                    <div class="col-lg-3 bgwhite" style="margin-right: 24px">
+                        <h4 class="fontblue">
+                            <b id="idStyleBoxHeader">Style Box</b>
+                        </h4>
+                        <table class="whitebg" style="width: 50%; margin: auto; margin-bottom: 17px; margin-top: 25px">
+                            <tr>
+                                <td style="background-color: #ededee; width: 35%; border-right: solid; border-bottom: solid" id="LG"><br /><br /></td>
+                                <td style="background-color: #ededee; width: 35%; border-right: solid; border-bottom: solid" id="MG"></td>
+                                <td style="background-color: #ededee; width: 35%; border-bottom: solid" id="SG"></td>
+                                <td style="width: 1px;">Growth</td>
+                            </tr>
+                            <tr>
+                                <td style="background-color: #ededee; width: 35%; border-right: solid; border-bottom: solid" id="LV"><br /><br /></td>
+                                <td style="background-color: #ededee; width: 35%; border-right: solid; border-bottom: solid" id="MV"></td>
+                                <td style="background-color: #ededee; width: 35%; border-bottom: solid" id="SV"></td>
+                                <td style="width: 1px;">Blend</td>
+                            </tr>
+                            <tr>
+                                <td style="background-color: #ededee; border-right: solid" id="LB"></td>
+                                <td style="background-color: #ededee; border-right: solid;" id="MB"></td>
+                                <td style="background-color: #ededee" id="SB"><br />
+                                    <br /></td>
+                                <td style="width: 1px">Value</td>
+                            </tr>
+                            <tr>
+                                <td>LargeCap</td>
+                                <td>SmallCap</td>
+                                <td>MidCap</td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-lg-6 bgwhite" style="width: 57.7em">
+                        <h4 class="fontblue">
+                            <b>Fund Snapshot</b>
+                        </h4>
+                        <table width="100%" style="margin-bottom: 19px" class="PMkotakpop">
+                            <tr>
+                                <td><span class="font1p2em"><b id="idAumMF"></b></span><br />
+                                    <span> Aum(in-CR.)</span></td>
+                                <td><span class="font1p2em"><b id="idBenchmarkMF"></b></span>
+                                    <br />Benchmark Index</td>
+                                <td><span class="font1p2em"><b id="idFundManagerMF"></b></span><br />Fund Managers
+                                </td>
+                                <td><span class="font1p2em"><b id="idExpenseRatioMF"></b></span><br /> Expense Ratio</td>
+                            </tr>
+                            <tr>
+                                <td><span class="font1p2em"><b
+										id="idInceptionDateMF"></b></span><br />Inception</td>
+                                <td><span class="font1p2em"><b
+										id="idSubAssetClassMF"></b></span><br /> Sub Asset Class</td>
+                                <td><span class="font1p2em"><b id="id52WeekHighMF"></b></span><br />52 Week High</td>
+                                <td><span class="font1p2em"><b id="id52WeekLowMF"></b></span><br />52 Week Low</td>
+                            </tr>
+                            <tr>
+                                <td><span class="font1p2em"><b
+										id="idMinInvestmentMF"></b></span><br />Min.Investment</td>
+                                <td><span class="font1p2em"><b
+										id="idExitAndLoadPeriodMF"></b></span><br />Exit Load and Period</td>
+                                <td><span class="font1p2em"><b id="idPEMF"></b></span><br />PE</td>
+                                <td><span class="font1p2em"><b id="idPBMF"></b></span><br />PB</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 bgwhite" style="margin-top: 18px; margin-bottom: 19px;">
+                <h4 class="fontblue" id="idPerformMF">
+                    <b>Performance vs. Index</b>
+                </h4>
+
+
+                <div id="reportrangekotak" class="pull-right" style="background: #ededee; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 28%; margin-top: -24px; border-radius: 8px;">
+                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp; <span></span>
+                    <b class="caret"></b>
+
+                </div>
+
+
+                <br />
+
+
+                <div id="idMFOnePagerGrowthGraph" style="width: 90%"></div>
+                <h4 class="fontblue">
+                    <b>Performance</b>
+                </h4>
+
+                <table width="63%" style="z-index: 10 !important; margin-left: 30px; margin-bottom: 24px; margin-top: 27px;" class="kotakperfomancetbl">
+                    <thead>
+                        <tr>
+                            <th style="text-align: left"></th>
+                            <th>1M</th>
+                            <th>3M</th>
+                            <th>6M</th>
+                            <th>1Y</th>
+                            <th>3Y</th>
+                            <th>5Y</th>
+                        </tr>
+                    </thead>
+                    <tbody id="idTBodyMFPager"></tbody>
+                </table>
+            </div>
+            <div class="row" style="margin-top: 34px">
+                <div class="col-lg-12" style="width: 114%">
+                    <div class="col-lg-3 bgwhite" style="margin-right: 24px; width: 29em">
+                        <h4 class="fontblue">
+                            <b>Risk Measures</b>
+                        </h4>
+                        <table style="width: 100%; margin-bottom: 20px; margin-top: 14px;" class="riskmeasure">
+                            <tbody id="idRiskMeasureMFEquityPagerTBody"></tbody>
+                            <!-- <tr>
+								<td>Standard Deviation</td>
+								<td>8.03%</td>
+							</tr>
+							<tr>
+								<td>Treynor Ratiound</td>
+								<td>0.00%</td>
+							</tr>
+							<tr>
+								<td>Information Ratioeta</td>
+								<td>0.00%</td>
+							</tr>
+							<tr>
+								<td>Treynor Ratio</td>
+								<td>8.85%</td>
+							</tr>
+							<tr>
+								<td>Beta</td>
+								<td>8.39%</td>
+							</tr> -->
+
+                        </table>
+
+
+                    </div>
+                    <div class="col-lg-3 bgwhite" style="margin-right: 24px; width: 29em; height: 219px">
+                        <h4 class="fontblue">
+                            <b id="idAssetAllocationHeader">Asset Allocation</b>
+                        </h4>
+                        <div id="idMFOnePagerMarketCapGraph" style="width: 20%"></div>
+                    </div>
+                    <div class="col-lg-3 bgwhite" style="margin-right: 24px; width: 29em; height: 218px;">
+                        <h4 class="fontblue">
+                            <b id="idMarketCapHeader">Market Capitalization</b>
+                        </h4>
+
+                        <div id="idMFOnePagerAssetAllocationGraph" style="height: 30%; width: 30%; margin-left: -14px"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 19px; margin-bottom: 20px;">
+                <div class="col-lg-12">
+                    <div class="col-lg-5 bgwhite" style="margin-right: 24px; width: 46.7em">
+                        <h4 class="fontblue">
+                            <b id="idSectorHoldingHeader">Top 10 Sector Holdings</b>
+                        </h4>
+
+                        <div id="idMFOnePagerSectorHoldingGraph" style="width: 47%; margin-bottom: 7px"></div>
+                    </div>
+                    <div class="col-lg-5 bgwhite">
+                        <h4 class="fontblue">
+                            <b id="idPortfolioDetailsHeader">Portfolio Details</b>
+                        </h4>
+
+                        <!--pagination-->
+                        <div class="container" id="idPaginationDiv" style="width: 100%; margin-top: -19px">
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+            <h3></h3>
+        </div>
+    </div>
+</div>
+<script>
+    $(".closeBtn").click(function() {
+        //alert("hi");
+    })
+</script>

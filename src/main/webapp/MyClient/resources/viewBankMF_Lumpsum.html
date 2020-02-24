@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="resources/js/viewBankMF_Lumpsum.js"></script>
+    <script src="../../Common/assets/js-library/multilineSelectmenu.js"></script>
+    <link href="../../Common/assets/css-library/multilineSelectmenu.css">
+</head>
+
+<body>
+    <div class="container-fluid" style="width: 65em;
+margin-left: -2em;margin-top:2em;padding-top:1em;background-color:white;z-index:0">
+
+        <!--<h3 style="color:#0b71c6;margin-bottom:27px;margin-left:58px;width:107%">Loan Calculator
+		</h3>-->
+        <br />
+        <div class="row">
+            <div class="form-group">
+                <div class="col-sm-7" style="text-align: left;z-index:2;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px">
+                    <label class="control-label" for="idppfdeposite" style="text-align:left">Investment Mode: </label><br/>
+                    <select class="form-control" id="investmd" style="width:15.7em;font-size:14px;position:absolute;z-index:2" onfocus='this.size=4;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+					
+						<option value="">Select Investemnt Mode</option>
+						<option value="Lumpsum">Lumpsum</option>
+						<option value="SIP">SIP</option>
+						<option value="SWP">SWP</option>
+						<option value="STP">STP</option>
+					</select>
+                </div>
+                <div class="col-sm-4" style="text-align: left;z-index:2;padding-top: 7px;margin-top:-13px">
+                    <label class="control-label" for="idppfdeposite" style="text-align:left">Select Mutual Fund: </label><br/>
+                    <select class="form-control" id="changewidth" style="width:15.7em;font-size:14px;position:absolute;z-index:2" onfocus='this.size=4;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+											<option>Select Mutual Fund</option>
+				
+						<option>Axis Asset Management<br/> Company</option>
+						<option>Baroda Pioneer Asset Management Company</option>
+						<option>Birla Sun Life Asset Management Company</option>
+						<option>BNP Paribas Asset Management Company</option>
+						<option>BOI AXA Asset Management Company</option>
+						<option>Canara Robeco Asset Management Company</option>
+						<option> Deutsche Asset Management Company</option>
+						<option>DHFL Pramerica Asset Management Company</option>
+						<option>DSP BlackRock Asset Management Company</option>
+						<option>Edelweiss Asset Management Company</option>
+						<option>Escorts Asset Management Company</option>
+						<option>Franklin Templeton Asset Management Company</option>
+						<option>Goldman Sachs Asset Management Company</option>
+						<option>HDFC Asset Management Company</option>
+						<option>HSBC Global Asset Management Company</option>
+						<option>ICICI Prudential Asset Management Company</option>
+						<option>IDBI Asset Management Company</option>
+						<option>IDFC Asset Management Company</option>
+						<option>IIFCL Asset Management Asset</option>
+						<option>IIFL Asset Management Company</option>
+						<option>IL & FS Infra Asset Management Company</option>
+						<option>Indiabulls Asset Management Company</option>
+						<option>JM Financial Asset Management</option>
+						<option>J.P. Morgan Asset Management Company</option>
+						<option>Kotak Mahindra Asset Management Company</option>
+						<option>L&T Asset Management Company</option>
+						<option>LIC Nomura Mutual Fund Asset Management Company</option>
+						<option>Mirae Asset Management Company</option>
+						<option>Motilal Oswal Asset Management Company</option>
+						<option>Peerless Asset Management Company</option>
+						<option>PPFAS Asset Management Company</option>
+						<option>Principal Asset Management Company</option>
+						<option>Quantum Asset Management Company</option>
+						<option>Reliance Asset Management Company</option>
+						<option>Religare Global Asset Management Company</option>
+						<option>Sahara Asset Management Company</option>
+						<option>SBI Asset Management Company</option>
+						<option>Shriram Asset Management Company</option>
+						<option>Sundaram Asset Management Company</option>
+						<option>Tata Asset Management Company</option>
+						<option>Taurus Asset Management Company</option>
+						<option>Union KBC Asset Management Compay</option>
+						<option>UTI Asset Management Company</option>
+					</select>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-sm-7" style="text-align: left;z-index:1;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px">
+                    <label class="control-label" for="" style="text-align:left;z-index:1">Select Scheme:</label><br/>
+                    <select class="form-control" id="selectscheme" style="width:15.7em;font-size:14px;z-index:1;position:absolute" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+							<option>Select Scheme</option>
+						<option> ICICI Pru Top 100 Fund - Direct (D)</option>
+						<option> ICICI Pru Select Large Cap Fund - DP (G)</option>
+						<option> ICICI Pru Select Large Cap Fund - RP (G) </option>
+						<option> Kotak Select Focus Fund - Regular (G)</option>
+						<option> Mirae Emerging Bluechip Fund - Regular (G)</option>
+						<option> Birla SL Tax Relief 96 - Regular (G)</option>
+						<option> Birla SL Frontline Eqty-Direct (G)</option>
+						<option> Union KBC Trigger Fund - Sr2-DP (G)</option>
+						<option> SBI Magnum Equity Fund - Direct (G)</option>
+						<option> Kotak Select Focus Fund - Regular (G) </option>
+						<option> Birla Equity - DP (G)</option>
+						<option> SBI - Contra - Direct (G)</option>
+						<option> Axis Short Term Fund (G)</option>
+						<option> Birla Sun Life Dynamic Bond Fund - RP (G)</option>
+						<option> SBI Magnum Income - DP (D)</option>
+						<option> Birla Sun Life Income Plus - DP (D)</option>
+						<option> Birla Sun Life Short Term Fund - RP (D)</option>
+						<option> ICICI Prudential STP - RP (D)</option>
+						<option> Kotak Treasury Advantage Fund - DP(G)</option>
+						<option> ICICI Prudential Flexible Income Plan - DP (D)</option>
+						<option> Kotak Liquid Fund - RP (G)</option>
+						<option> ICICI Prudential Liquid - Regular Plan -  Growth</option>
+						<option> Kotak Gold ETF - RP (G)</option>
+						<option> Birla Sun Life Nifty ETF - RP (G)</option>
+						<option> ICICI Prudential CNX 100 ETF - RP (G)</option>
+						<option> Axis Equity Fund</option>
+						</select>
+                </div>
+                <div class="col-sm-4" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px">
+                    <label class="control-label" for="idppfdeposite" style="text-align:left">Portfolio Value As On Date: </label><br/>
+                    <div class="col-sm-8" id="cf">
+                        <p id="datepicker" style="width:16em;z-index:0;margin-left: -14px;" class="input-group date" data-date-format="dd-mm-yyyy">
+                            <input class="form-control" id="datepkr" value="" style="font-size:14px" type="text" placeholder="DD/MM/YYYY" />
+                            <span class="input-group-addon calendar-icon-container"><i class="glyphicon calendar-icon-theme"></i></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-sm-7 lonesection" style="text-align: left;z-index:0;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px">
+                    <label class="control-label" for="idppfdeposite" style="text-align:left;z-index:0">Date Of Investment: </label><br/>
+                    <p id="datepicker" style="width:16em;z-index:0" class="input-group date" data-date-format="dd-mm-yyyy">
+                        <input class="form-control" id="dateofInvestment" value="" style="font-size:14px" type="text" placeholder="DD/MM/YYYY" />
+                        <span class="input-group-addon calendar-icon-container"><i class="glyphicon calendar-icon-theme"></i></span>
+                    </p>
+                </div>
+                <div class="col-sm-4" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px">
+                    <label class="control-label" for="idppfdeposite" style="text-align:left">Amount Invested:</label><br/>
+
+                    <input type="text" placeholder="Enter Amount Invested" class="form-control" id="amtinvest" style="width:15.7em;" />
+
+                </div>
+            </div>
+        </div>
+        <br/>
+
+        <div class="row">
+            <div class="form-group">
+                <div class="col-sm-7 lonesection" style="text-align: left;z-index:0;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px">
+                    <label class="control-label" for="idppfdeposite" style="text-align:left;z-index:0">Units Purchased:</label><br/>
+                    <input type="text" placeholder="Enter Units Purchased" class="form-control" id="amtinvest" style="margin-left:1px;width:15.7em;" />
+                </div>
+                <div class="col-sm-4" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px">
+
+                </div>
+            </div>
+        </div>
+        <br/>
+        <br/>
+
+        <div class="row">
+            <div class="form-group">
+                <div class="col-sm-6"> </div>
+                <div class="col-sm-3">
+                    <button type="submit" class="pull-left btn addbtn" style="width:5em;margin-left:-118px;outline:none !important;margin-bottom: 1em;" onclick="$('.result').show()">Submit</button>
+                </div>
+            </div>
+        </div>
+        <div style="display:none" class="result">
+            <h3 style="color:#0b71c6;margin-left: 4.4em;"> Results : </h3>
+            <br/>
+            <br/>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-7" style="text-align: left;z-index:1;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px">
+                        <label class="control-label" for="idppfdeposite" style="text-align:left">Total Amount Invested: </label><br/> &#8377 202,999
+                        <br/>
+                        <br/>
+                        <label class="control-label" for="idppfdeposite" style="text-align:left;z-index:0">Portfolio Value As On Date: </label><br/> &#8377 202,999
+                        <br/>
+                        <br/>
+                        <label class="control-label" for="idppfdeposite" style="text-align:left;z-index:0">Total Returns As On Date: </label><br/> &#8377 202,999
+                        <br/>
+                        <br/>
+                        <label class="control-label" for="idppfdeposite" style="text-align:left;z-index:0">PTP Returns: </label><br/> 35.44%
+                        <br/>
+                        <br/>
+                        <label class="control-label" for="idppfdeposite" style="text-align:left;z-index:0">CAGR: </label><br/> 35.44%
+                    </div>
+                    <div class="col-sm-4" style="text-align: left;z-index:0">
+                        <div id="idcaa1" style="width:30%;margin-top: -11em;margin-left: -5em;"> </div>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <div id="stdgraph" style="height: 300px; width:60%;margin-left:62px">
+            </div>
+            <br/>
+            <div class="container-fluid" style="height: 16em;overflow-y: auto;overflow-x:hidden">
+                <table style="margin-left: 2em;width: 99%;" class="tblfirstrowleft">
+                    <thead>
+                        <tr>
+                            <th>Month Reference</th>
+                            <th>Financial Year</th>
+                            <th>Amount Invested</th>
+                            <th>Units Purchased</th>
+                            <th>NAV As On Year End</th>
+                            <th>Portfolio Value As On Year End</th>
+                            <th>PTP Returns</th>
+                            <th>Annualised Return</th>
+                            <th>Investment Tenure (Years)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr></tr>
+                        <tr>
+                            <td>2013-14</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                        </tr>
+                        <tr>
+                            <td>2013-14</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                        </tr>
+                        <tr>
+                            <td>2013-14</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                        </tr>
+                        <tr>
+                            <td>2013-14</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                        </tr>
+                        <tr>
+                            <td>2013-14</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                        </tr>
+                        <tr>
+                            <td>2013-14</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                        </tr>
+                        <tr>
+                            <td>2013-14</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                        </tr>
+                        <tr>
+                            <td>2013-14</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                        </tr>
+                        <tr>
+                            <td>2013-14</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                        </tr>
+                        <tr>
+                            <td>2013-14</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                        </tr>
+                        <tr>
+                            <td>2013-14</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                        </tr>
+                        <tr>
+                            <td>2013-14</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                        </tr>
+                        <tr>
+                            <td>2013-14</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                        </tr>
+                        <tr>
+                            <td>2013-14</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                        </tr>
+                        <tr>
+                            <td>2013-14</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                        </tr>
+                        <tr>
+                            <td>2013-14</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                        </tr>
+                        <tr>
+                            <td>2013-14</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                        </tr>
+                        <tr>
+                            <td>2013-14</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                            <td>453543</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table width="50%" style="margin:auto">
+                        <tr>
+                            <td><b>Download Projections</b></td>
+                            <td><input type="radio" name="download" style="position:sticky"></input>
+                            </td>
+                            <td style="text-align: left;vertical-align:bottom;"><label>Monthly</label></td>
+                            <td><input type="radio" name="download" style="position:sticky" checked="true"></input>
+                            </td>
+                            <td style="text-align: left;vertical-align:bottom;"><label>Annually</label></td>
+                            <td><input type="submit" value="Save" class="form-control" /> </td>
+                        </tr>
+                    </table>
+                    <br/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

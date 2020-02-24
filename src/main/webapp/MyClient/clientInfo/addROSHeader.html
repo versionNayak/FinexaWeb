@@ -1,0 +1,210 @@
+<div class="cicontainer">
+	<div>
+		<form class="form-horizontal" action="#" id="idRetirementForm">
+			<label class="col-sm-1 control-label"></label>
+			<div class="col-md-10 no_padding">
+				<div id="idRadioStart">
+					<label>Product*:</label>
+					<input id="idEPF" name="financialAssetType" onclick="ROSClickAction();" type="radio" value="13" /> EPF
+					<input id="idPPF" name="financialAssetType" type="radio" value="12" onclick="ROSClickAction();" /> PPF
+					<input id="idNPS" name="financialAssetType" type="radio" value="14" onclick="ROSClickAction();" /> NPS
+					<input id="idAnnuity" name="financialAssetType" type="radio" value="34" onclick="ROSClickAction();" /> Annuity
+					<input id="idAPY" name="financialAssetType" type="radio" value="33" onclick="ROSClickAction();" /> Atal Pension Yojana
+				</div>
+	       		<br><br>          		            
+			</div>
+            <div class="clearfix"></div>
+       		<br><br>          		            
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+
+
+$(document).ready(function() { 
+//alert("inside ros header");
+		//console.log(document.idRetirementForm);	
+	       /*  var rad = document.idRetirementForm.financialAssetType;
+	        //alert("rad: " + rad);
+		    var prev = null;
+		    for(var i = 0; i < rad.length; i++) {
+		        rad[i].onclick = ROSClickAction();
+		    } */
+		    
+		});
+		
+function ROSClickAction() {
+	
+	var assetType = $("input[name='financialAssetType']:checked").val(); 
+	//alert("assetType: " + assetType);
+	var description;
+	if(assetType == 13) {
+		sessionStorage.removeItem("SELECTED_ROS_ASSET_TYPE");
+		sessionStorage.setItem("SELECTED_ROS_ASSET_TYPE", assetType);
+		description = "EPF";
+		var retirementStatus = sessionStorage.getItem("SELECTED_CLIENT_RETIREMENT_STATUS");
+		
+		//start new code 
+		var flag = false;
+		var nonEPF = [];
+		var allow = [];
+		var j = 0;
+		var data = JSON.parse(sessionStorage.getItem("FAMILY_MEMBER_LIST"));
+		var selectedClientId = sessionStorage.getItem("SELECTED_CLIENT_ID");	
+		getClientData("GET", "", "checkIfEpfPresentForAll/" + selectedClientId, EpfPresent);
+		function EpfPresent(data) {
+			
+			$.each(data, function (index, cfm) {
+				nonEPF.push(cfm.id);
+				//console.log(nonEPF);
+			});
+		
+		$.each(data, function (index, cfm) {
+			//console.log("cfm.id "+cfm.id);
+			//console.log("first index "+index);
+			allow[index] = true;
+			//console.log("l "+data.length);
+			if(cfm.retiredFlag == "N"){
+				for (var i = 0; i < nonEPF.length; i++) {
+					 
+					  console.log("nonEPF[i] "+nonEPF[i]);
+					   if(cfm.id == nonEPF[i]){
+						   allow[j] = true;
+					      // console.log("111 j "+j);
+					       //console.log("allow[j] "+allow[j]);
+					       return;
+					   }
+						   
+					}
+				
+			}else{
+				
+				allow[j] = false;
+				 //console.log("22 j "+j);
+				//console.log("allow[j] "+allow[j]);
+			}
+			j++;
+		});
+		//console.log("allow.length "+allow.length);
+		for (var i = 0; i < allow.length; i++) {
+			//console.log("333j "+j);
+			//console.log("allow[j] "+allow[j]);
+			if(allow[i] == true){
+				flag = true;
+			}
+		}
+        //console.log("flag "+flag);
+		if(flag == false){
+			/* bootbox.alert("Cannot Add EPF since client is retired or EPF already added!",function(){
+				var pageUrl = "clientInfo/addROSHeader.html";
+				addPage(pageUrl,"Add Retirement Oriented Schemes");
+			}); */
+			 bootbox.alert("Cannot Add EPF since client is retired or EPF already added!");
+		}else{
+			var pageUrl = "clientInfo/addRetirementScheme.html";
+			addPage(pageUrl,"Add " +description);
+		}
+	}
+		//end new code
+		//alert("retirementStatus: " + retirementStatus);
+/* 		if(retirementStatus == "N"){
+			getClientData("GET","",'checkIfEpfPresentForAll/'+sessionStorage.getItem("SELECTED_CLIENT_ID"),checkEpfSuccess);
+			function checkEpfSuccess(data) {
+				if(data.length==0){
+					bootbox.alert("Cannot Add EPF since a record already exists!", function(){
+						var pageUrl = "clientInfo/addROSHeader.html";
+						addPage(pageUrl,"Add Retirement Oriented Schemes");
+					});
+				} else {
+					
+					var pageUrl = "clientInfo/addRetirementScheme.html";
+					addPage(pageUrl,"Add" +description);
+				}
+			}
+		}  else{
+			  bootbox.alert("Cannot Add EPF since client is retired!",function(){
+					var pageUrl = "clientInfo/addROSHeader.html";
+					addPage(pageUrl,"Add Retirement Oriented Schemes");
+					});
+		}  */
+	} else if(assetType == 12) {
+		sessionStorage.removeItem("SELECTED_ROS_ASSET_TYPE");
+		sessionStorage.setItem("SELECTED_ROS_ASSET_TYPE", assetType);
+		description = "PPF";
+			
+			getClientData("GET","",'checkIfPpfPresentForAll/'+sessionStorage.getItem("SELECTED_CLIENT_ID"),checkPpfSuccess);
+			function checkPpfSuccess(data) {
+				if(data.length==0){
+					bootbox.alert("Cannot Add PPF since a record already exists!", function(){
+						var pageUrl = "clientInfo/addROSHeader.html";
+						addPage(pageUrl,"Add Retirement Oriented Schemes");
+					});
+					
+				}else{
+					var pageUrl = "";
+					$("#divEPF").hide();
+					var pageUrl = "clientInfo/addRetirementScheme.html";
+					addPage(pageUrl,"Add " +description);
+				}
+			}
+	}else if(assetType == 14) {
+		sessionStorage.removeItem("SELECTED_ROS_ASSET_TYPE");
+		sessionStorage.setItem("SELECTED_ROS_ASSET_TYPE", assetType);
+		description = "NPS";
+		
+			getClientData("GET","",'checkIfNpsPresentForAll/'+sessionStorage.getItem("SELECTED_CLIENT_ID"),checkNpsSuccess);
+			function checkNpsSuccess(data) {
+				if(data.length==0){
+					bootbox.alert("Cannot Add NPS since a record already exists!", function(){
+						var pageUrl = "clientInfo/addROSHeader.html";
+						addPage(pageUrl,"Add Retirement Oriented Schemes");
+					});
+				} else{
+					var pageUrl = "clientInfo/addRetirementScheme.html";
+					addPage(pageUrl,"Add " +description);
+				}
+			}
+	}else if(assetType == 34) {
+		sessionStorage.removeItem("SELECTED_ROS_ASSET_TYPE");
+		sessionStorage.setItem("SELECTED_ROS_ASSET_TYPE", assetType);
+		description = "Annuity";
+		
+		if (localStorage.getItem("ANNUITY_TYPE") == 6) {
+			getClientData("GET","",'checkIfAnnuityPresentForAll/'+sessionStorage.getItem("SELECTED_CLIENT_ID"),checkAnnuitySuccess);
+			function checkAnnuitySuccess(data) {
+				if(data.length==0){
+					bootbox.alert("Cannot Add Annuity since a record with EPS Annuity type already exists!", function(){
+						var pageUrl = "clientInfo/addROSHeader.html";
+						addPage(pageUrl,"Add Retirement Oriented Schemes");
+					});
+				} else {
+					var pageUrl = "clientInfo/addRetirementScheme.html";
+					addPage(pageUrl,"Add "+description);
+				}
+			}
+		} else {
+			var pageUrl = "clientInfo/addRetirementScheme.html";
+			addPage(pageUrl,"Add "+description);
+		}
+			
+		
+	}else if(assetType == 33) {
+		sessionStorage.removeItem("SELECTED_ROS_ASSET_TYPE");
+		sessionStorage.setItem("SELECTED_ROS_ASSET_TYPE", assetType);
+		description = "Atal Pension Yojana";
+		
+		getClientData("GET","",'checkIfApyPresentForAll/'+sessionStorage.getItem("SELECTED_CLIENT_ID"),checkApySuccess);
+		function checkApySuccess(data) {
+			if(data.length==0){
+				bootbox.alert("Cannot Add Atal Pension yojana since a record already exists!", function(){
+					var pageUrl = "clientInfo/addROSHeader.html";
+					addPage(pageUrl,"Add Retirement Oriented Schemes");
+				});
+			} else{
+				var pageUrl = "clientInfo/addRetirementScheme.html";
+				addPage(pageUrl,"Add " +description);
+			}
+		}
+	}
+}
+</script>

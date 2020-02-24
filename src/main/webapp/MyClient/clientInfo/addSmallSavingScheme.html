@@ -1,0 +1,198 @@
+<script src="clientInfo/js/addSmallSavingScheme.js"></script>
+<script src="clientInfo/js/validateNSC.js"></script>
+<script src="clientInfo/js/validateKVP.js"></script>
+<script src="clientInfo/js/validatePOTD.js"></script>
+<script src="clientInfo/js/validatePOMIS.js"></script>
+<script src="clientInfo/js/validateSCSS.js"></script>
+<script src="clientInfo/js/validatePORD.js"></script>
+<script src="clientInfo/js/validateSukanya.js"></script>
+<script src="clientInfo/js/validationForAll.js"></script>
+<script src="clientInfo/js/common.js"></script>
+<link href="../Common/assets/css/finexa.css" rel="stylesheet">
+
+<div class="cicontainer">
+	<!-- <div> -->
+		<form class="form-horizontal" id="idAddSmallSavingForm" action="#">
+			<label class="col-sm-1 control-label"></label>
+			<div class="col-md-10 no_padding">
+				<div id="idRadioStart" style="display:none;">
+					<label>Product*:</label>
+           			<input id="idNSC" name="financialAssetType" type="radio" value="25" /> NSC   &nbsp;&nbsp;&nbsp;
+           			<input id="idKVP" name="financialAssetType" type="radio" value="26" /> KVP  &nbsp;&nbsp;&nbsp;
+           			<input id="idPOTD" name="financialAssetType" type="radio" value="29" /> PO Time Deposit &nbsp;&nbsp;&nbsp;
+           			<input id="idPOMIS" name="financialAssetType" type="radio" value="30" /> PO MIS &nbsp;&nbsp;&nbsp;
+           			<input id="idSCSS" name="financialAssetType" type="radio" value="31" /> Senior Citizen Saving Scheme  &nbsp;&nbsp;&nbsp;<br>
+           			<input id="idPORD" name="financialAssetType" type="radio" value="28" /> PO Recurring Deposit &nbsp;&nbsp;&nbsp;
+           			<input id="idSSS" name="financialAssetType" type="radio" value="32" /> Sukanya Samriddhi Scheme &nbsp;&nbsp;&nbsp;
+           		</div>
+          		<br><br>
+			   	<div id="MainDiv" style="display:none;">    
+					<div class="form-group">
+						<div class="col-sm-12">
+							<span class="formentry-errmsg" id="alertform"></span>
+						</div>
+					</div>
+					<div id="FAO" class="form-group form-group-lg">
+						<div class="col-sm-8 asset-owner-wrapper">
+							<label>Financial Asset Owner:</label><br/>
+							<table class="familymembertbl" width="20px">
+								<tr class="mem_icon" id="familyMemberImage">
+								</tr>
+							</table>
+						</div>
+					</div>
+					<hr class="full-width-divider">
+					<div id="DA" class="form-group">
+						<div class="col-sm-12">
+						    <div id="firstlabel">
+						    <label>Deposit Amount(Rs)*:</label>
+						    </div>
+						    <div id="RDA">
+						    <label>Recurring Deposit amount(Rs)*:</label>
+						    </div>
+						    <div id="PI">
+						    <label>Periodic Investment(Rs)*:</label>
+						    </div>
+							<input type="text" class="form-control input-width-medium" id="idDepositAmount" name="investmentAmount" onfocusout="maskAmount('#idDepositAmount')" placeholder="Enter Deposit Amount"  tabindex="1">
+							<span class="formentry-errmsg" id="alertDepositAmount"></span>
+						</div>
+					</div>	
+					
+					<!-- Start: 
+					<p class="input-group input-width-medium">
+					<input type="text" class="form-control" id="idStart" placeholder="DD/MM/YYYY"/>
+					<span class="input-group-btn datepicker-icon">
+						<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Start Date"><em class="glyphicon calendar-icon-theme"></em></button>
+					</span>
+					</p>
+					
+					End:
+					<p class="input-group input-width-medium">
+					<input type="text" class="form-control" id="idEnd" placeholder="DD/MM/YYYY"/>
+					<span class="input-group-btn datepicker-icon">
+						<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select End Date"><em class="glyphicon calendar-icon-theme"></em></button>
+					</span>
+					</p> -->
+					
+					<!-- <hr /> Result: 
+					<input id="idResult" /> -->
+							
+					<div id="DSD" class="form-group">
+						<div class="col-sm-12">
+							<div id="firstSdLabel">
+							<label>Deposit Start Date*:</label>
+							</div>
+							<div id="ISD">
+							<label>Investment Start Date*:</label>
+							</div>
+							<p id="idDepositStartDateGroup" class="input-group input-width-medium">
+								<input type="text" class="form-control" id="idDepositStartDate" name="startDate" placeholder="DD/MM/YYYY" tabindex="2">
+								<span class="input-group-btn datepicker-icon">
+									<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Deposit Start Date"><em class="glyphicon calendar-icon-theme"></em></button>
+								</span>
+							</p>
+							<span class="formentry-errmsg" id="alertStartDate"></span>
+						</div>
+					</div>
+					<div id="DF" class="form-group">
+						<div class="col-sm-12">
+							<div id="firstDfLabel">
+							<label>Deposit Frequency*:</label>
+							</div>
+							<div id="IF">
+							<label>Investment Frequency*:</label>
+							</div>
+							<span class="form-static-value" id="idDepositFrequency" >
+								<select class="form-control input-width-medium" id="idDF" name="depositFrequency" required="required" tabindex="3">
+								</select>
+							</span>
+							<span class="formentry-errmsg" id="alertdf"></span>
+						</div>
+					</div>			
+					<div id="IR" class="form-group">
+						<div class="col-sm-12">
+						    <label>Interest Rate*(%):</label>
+							<input type="text" class="form-control input-width-medium" id="idInterestRate" name="interestRate" placeholder="Interest Rate"  tabindex="4" readonly>
+							<span class="formentry-errmsg" id="alertInterestRate"></span>
+						</div>
+					</div>
+					<div id="T" class="form-group">
+						<div class="col-sm-12">
+							<div id="firstTLabel">
+							 <label>Tenure (Years)*:</label>
+							</div>
+						   	<div id="DT">
+						   	<label>Deposit Tenure (Years):</label>
+						   	</div>
+							<input type="text" class="form-control input-width-medium" id="idTenureYears" name="depositTenure" value="5" tabindex="5">
+						</div>
+					</div>			
+					<div id="MT" class="form-group">
+						<div class="col-sm-12">
+						    <label>Maturity Tenure (Years):</label>
+							<input type="text" class="form-control input-width-medium" id="idMaturityTenure" name="maturityTenure" value="21"  tabindex="6" readonly>
+						</div>
+					</div>			
+					<div id="KVP-T" class="form-group">
+						<div class="col-sm-12">
+						    <label>Tenure (Years & Months)*:</label>
+							<table>
+								<tr>
+									<td>
+										<input type="text" class="form-control input-width-small-ss" id="idKvpTenureYears" name="kvpTenureYear" tabindex="7" readonly>
+									</td>
+									<td>
+										<input type="text" class="form-control input-width-small-ss" id="idKvpTenureMonths" name="kvpTenureMonth" tabindex="8" readonly>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>			
+					<div id="CF" class="form-group">
+						<div class="col-sm-12">
+							<label>Compounding Frequency*:</label>
+							<span class="form-static-value" id="idCompoundingFrequency" >
+								<select class="form-control input-width-medium" id="idCF" name="compoundingFrequency" required="required" tabindex="-1" >
+								</select>
+								<input type="hidden" id="idCFText" name="compoundingFrequencySelect" required="required" tabindex="-1">
+							</span>
+							<span class="formentry-errmsg" id="alertcf"></span>
+						</div>
+					</div>			
+					<div id="IPF" class="form-group">
+						<div class="col-sm-12">
+							<label>Interest Payout Frequency*:</label>
+							<span class="form-static-value" id="idInterestPayoutFrequency" >
+								<select class="form-control input-width-medium" id="idPF" name="interestPayoutFrequency" required="required" tabindex="-1" >
+								</select>
+							    <input type="hidden" id="idPFText" name="interestPayoutFrequencySelect" required="required" tabindex="-1">
+							</span>
+							<span class="formentry-errmsg" id="alertipf"></span>
+						</div>
+					</div>		
+					<div id="DMD" class="form-group">
+						<div class="col-sm-12">
+							<div id="firstDmdLabel">
+								<label>Deposit Maturity Date:</label>
+								</div>
+								<div id="MD">
+								<label>Maturity Date:</label>
+							</div>
+							<input type="text" class="form-control input-width-medium" id="idDepositMaturityDate" name="maturityDate" placeholder="DD/MM/YYYY" tabindex="-1" readonly>
+							<span class="formentry-errmsg" id="alertMaturitytDate"></span>
+						</div>
+					</div>
+				</div>
+			</div>	
+       		<div class="clearfix"></div>
+       		<br><br>          		
+		 	<div id="idButton" class="form-group" style="display:none;">
+				<div class="col-sm-offset-1 col-sm-11">
+					<button type="button" class="pull-left btn addbtn" id="idSaveSmallSaving" tabindex="12">SAVE</button>
+					<button type="button" id="undo" class="pull-left btn addbtn" tabindex="13" onclick="undoChange()">UNDO</button> 
+				</div>
+			</div>
+			<div id="focusguard-2" tabindex="14"></</div>			
+		</form>
+	<!-- </div> -->
+</div>

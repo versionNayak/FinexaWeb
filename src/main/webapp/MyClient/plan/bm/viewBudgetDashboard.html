@@ -1,0 +1,389 @@
+<script src="plan/bm/js/viewBudgetDashboard.js"></script>
+<script src="plan/bm/js/common.js"></script>
+<script src="../Common/assets/js-library/xepOnline.jqPlugin.js"></script>
+<style type="text/css">
+	.expenseDetpdf tr td, .expenseDetpdf tr th {
+		width: 18%;
+	}
+	.expensetblpdf tr td, .expensetblpdf tr th {
+		width: 18%;
+	}
+	.recommendedtblpdf	tbody tr td:nth-child(2) {
+		text-align: left;
+	}
+	.recommendedtblpdf tr td:nth-child(1) img{
+		width: 12px;
+		height: 12px;
+	}
+	.noprint {display:none;} 
+	.modal-dialog {
+	  width: 100%;
+	  height: auto;
+	  margin: 0;
+	  padding: 0;
+	}
+	.modal-content {
+	  height: auto;
+	  min-height: 100%;
+	  border-radius: 0;
+	}
+	.modal-body {
+		width : 90%;
+		height : auto;
+	    /* max-height: calc(100vh - 210px); */
+	    overflow-y: auto;
+	} 
+	.risktblpdf tr {
+		background-color:white !important;
+	}
+	.risktblpdf tr td{
+		text-align:left;
+	}
+	.risktblpdf tr td:nth-child(1) img{
+		width:12px;height: 12px;margin-top:-3px;
+	}
+	.risktblpdf tr:nth-child(2n+1){
+		background-color:white !important;
+	}
+	#idRecommendedbarGraphPDF .highcharts-container,#idcurrentVsrecommended .highcharts-container { 
+		height: 450px !important;
+	}
+	#idRecommendedbarGraphPDF {
+		/* width: 790px; */
+		height:45%; margin-top: 6px;margin-left:30px;
+	}
+	#idRecommendedbarGraphPDF .highcharts-container svg,#idcurrentVsrecommended .highcharts-container svg {
+		height:600px !important;
+	}
+	#rangeslide14_label1 span{
+		background-color: none !important;
+	}
+	#idLinebarGraphPDF {	
+		height: 370px;
+	}
+	.bmratiotblPDF tr {
+		background-color: white !important;
+	}
+	.bmratiotblPDF tr td img {
+		width: 12px;
+		margin-top: -1px;
+	}
+	.ratiotblPDF tr td {
+		text-align: left;
+	}
+	.ratiotblPDF tr td:nth-child(3) {
+		text-align: center;
+	}
+	.ratiotblPDF tr td:nth-child(2), .ratiotbl tr td:nth-child(5) {
+		text-align: left;
+	}
+	.ratiotblPDF tr th {
+		text-align: left !important;
+	}
+	.netsurplurtblspdf tr td {
+		width: 189px;
+	}
+	.netsurplusprojpdf tr th {
+		width: 3%;
+	}
+	#committedtblpdf tr td {
+		width: 14% !important;
+	}
+	.loanscurrentPDF tr td:nth-child(2) {
+		text-align: left;
+	}
+	.loantotalpdf tr th:nth-child(1) {
+		text-align: left !important;
+	}	
+</style>
+
+<div class="head"><span id="idHeading">Income </span>
+	<span style="cursor:pointer;" onclick="openPDFPreview();" class=" fa-fw pull-right glyphicon glyphicon-print" id="idBudgetDownloadReport"></span> 
+	<!-- <span onclick="openNav()" class="humbm">&#9776; </span>
+	<div id="idBudgetnav" class="budgetsidenav" style="display:none">
+		<a href="#" class="Income" onclick="closeNav()">Income</a>
+		<a href="#" class="Expenses" onclick="closeNav()">Expenses</a>
+		<a href="#" class="committed" onclick="closeNav()">Committed Outflows</a>
+		<a href="#" class="Loans" onclick="closeNav()">Loans</a>
+		<a href="#" class="NetSurplus" onclick="closeNav()">Net Surplus</a>
+		<a href="#" class="BudgetRatio" onclick="closeNav()">Budget Ratio</a>
+		<a href="#" class="Recommendations" onclick="closeNav()">Budget Recommendations</a>
+	</div> -->
+</div>
+
+<!-- <div id="idBudget"></div> -->
+<div id="idBody"></div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Goal Planing Reports</h4>
+      </div>
+      <div class="modal-body" >
+      	<div class="printPDFButton pull-right"></div>
+      	<br/>
+      	<div id="printArea"></div>
+      	<div id="printJSArea"></div>
+      	<br/>
+      	<div class="printPDFButton pull-right"></div>
+      </div>
+      
+      <div class="modal-footer">		
+      </div>
+      
+    </div>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+
+/* var loggedUser = JSON.parse(sessionStorage.getItem("LOGGED_IN_USER"));
+var loggedClient;
+	if(loggedUser == null){
+	loggedClient = JSON.parse(sessionStorage.getItem("LOGGED_IN_CLIENT"));
+	}else{
+	loggedClient = sessionStorage.getItem("LOGGED_IN_CLIENT");
+	}
+if(loggedUser == null && loggedClient != null){
+	 $('#idBudgetDownloadReport').hide()
+	 advisorUserId = loggedClient.userId;
+	 advisorMasterId = loggedClient.advisorMasterID;
+}else{
+	 $('#idBudgetDownloadReport').show();
+	 advisorUserId = loggedUser.advisorID;
+	 advisorMasterId = loggedUser.advisorMasterId;
+}  */
+
+$('#idBudgetDownloadReport').hide()
+
+function loadIncome(){
+	loadLoader();
+	$.ajax({
+		  url: "plan/bm/PdfTemplate/viewIncome.html",
+		  type: "GET",
+		  cache: false,
+		  async: window.call_type,
+		  data: {},
+		  dataType: "html",
+		  success: function(data){
+			  $data = $(data);   		
+			  $('#printArea').html('');
+			  $('#printJSArea').html('');
+			  $data.find('#showIncomediv').appendTo('#printArea');
+			  $data.find('#showIncomeJsdiv').appendTo('#printJSArea');
+		  },
+		  beforeSend : function(){
+	  			//loadLoader();
+		  },
+		  complete : function(data){
+			  //hideLoader();
+		  },
+		  error : function(data) {
+			//hideLoader();
+			alert('Call not resolved')
+		  }
+	});
+	hideLoader();
+	loadExpenses();
+}
+
+function loadExpenses(){
+	//loadLoader();
+	$.ajax({
+		  url: "plan/bm/PdfTemplate/viewExpenses.html",
+		  type: "GET",
+		  cache: false,
+		  async: window.call_type,
+		  data: {},
+		  dataType: "html",
+		  success: function(data){
+			  $data = $(data);   		
+			  //$('#printArea').html('');
+			  //$('#printJSArea').html('');
+			  $data.find('#expensediv').appendTo('#printArea');
+			  $data.find('#expenseJsdiv').appendTo('#printJSArea');
+		  },
+		  beforeSend : function(){
+	  			//loadLoader();
+		  },
+		  complete : function(data){
+			  //hideLoader();
+		  },
+		  error : function(data) {
+			//hideLoader();
+			alert('Call not resolved')
+		  }
+	});
+	//hideLoader();
+	loadCommitedOutflows();
+}
+
+function loadCommitedOutflows(){
+	//loadLoader();
+	$.ajax({
+		  url: "plan/bm/PdfTemplate/viewCommitted.html",
+		  type: "GET",
+		  cache: false,
+		  async: window.call_type,
+		  data: {},
+		  dataType: "html",
+		  success: function(data){
+			  $data = $(data);   		
+			  //$('#printArea').html('');
+			  //$('#printJSArea').html('');
+			  $data.find('#commiteddiv').appendTo('#printArea');
+			  $data.find('#commitedJsdiv').appendTo('#printJSArea');
+		  },
+		  beforeSend : function(){
+	  			//loadLoader();
+		  },
+		  complete : function(data){
+			  //hideLoader();
+		  },
+		  error : function(data) {
+			//hideLoader();
+			alert('Call not resolved')
+		  }
+	});
+	//hideLoader();
+	loadLoans();
+}
+
+function loadLoans(){
+	//loadLoader();
+	$.ajax({
+		  url: "plan/bm/PdfTemplate/viewLoans.html",
+		  type: "GET",
+		  cache: false,
+		  async: window.call_type,
+		  data: {},
+		  dataType: "html",
+		  success: function(data){
+			  $data = $(data);   		
+			  //$('#printArea').html('');
+			  //$('#printJSArea').html('');
+			  $data.find('#Loansdiv').appendTo('#printArea');
+			  $data.find('#LoansJsdiv').appendTo('#printJSArea');
+		  },
+		  beforeSend : function(){
+	  			//loadLoader();
+		  },
+		  complete : function(data){
+			  //hideLoader();
+		  },
+		  error : function(data) {
+			//hideLoader();
+			alert('Call not resolved')
+		  }
+	});
+	//hideLoader();
+	loadNetSurplus();
+}
+
+function loadNetSurplus(){
+	loadLoader();
+	$.ajax({
+		  url: "plan/bm/PdfTemplate/viewNetSurplus.html",
+		  type: "GET",
+		  cache: false,
+		  async: window.call_type,
+		  data: {},
+		  dataType: "html",
+		  success: function(data){
+			  $data = $(data);   		
+			  //$('#printArea').html('');
+			  //$('#printJSArea').html('');
+			  $data.find('#netSurplusPrintdiv').appendTo('#printArea');
+			  $data.find('#netSurplusJsdiv').appendTo('#printJSArea');
+		  },
+		  beforeSend : function(){
+	  			//loadLoader();
+		  },
+		  complete : function(data){
+			  //hideLoader();
+		  },
+		  error : function(data) {
+			//hideLoader();
+			alert('Call not resolved')
+		  }
+	});
+	//hideLoader();
+	loadBudgetRatio();
+}
+
+
+function loadBudgetRatio(){
+	//loadLoader();
+	$.ajax({
+		  url: "plan/bm/PdfTemplate/viewBudgetRatio.html",
+		  type: "GET",
+		  cache: false,
+		  async: window.call_type,
+		  data: {},
+		  dataType: "html",
+		  success: function(data){
+			  $data = $(data);   		
+			  //$('#printArea').html('');
+			  //$('#printJSArea').html('');
+			  $data.find('#showBudgetRatioPrintdiv').appendTo('#printArea');
+			  $data.find('#showBudgetRatioJsdiv').appendTo('#printJSArea');
+		  },
+		  beforeSend : function(){
+	  			//loadLoader();
+		  },
+		  complete : function(data){
+			  hideLoader();
+		  },
+		  error : function(data) {
+			//hideLoader();
+			alert('Call not resolved')
+		  }
+	});
+	hideLoader();
+}
+
+
+function downloadReport(){
+	$('#myModal').modal('hide');
+	//return xepOnline.Formatter.Format('printArea', {render:'newwin','filename' : 'Budget Planning Report'});
+	return xepOnline.Formatter.Format('printArea', {render:'download','filename' : 'Budget-Planning-Report'});
+}
+
+function loadAllReport(){
+	loadIncome();
+	//loadLoans();
+	//loadExpenses();
+	//loadCommitedOutflows();
+	//loadLoans();
+	//loadNetSurplus();
+	//loadBudgetRatio();	
+}
+
+function openPDFPreview(){		
+	//loadLoader();	
+	loadAllReport();
+	//hideLoader();
+	
+	$('#myModal').modal('show');
+    $('.modal-dialog .modal-body .bootbox-body .riskleft,.modal-dialog .modal-body .bootbox-body .riskright').addClass("hidden");    
+  	$('.printPDFButton').html('<button type="button" onclick="downloadReport();" class="btn btn-primary">Print PDF</button>');
+	
+}
+
+function loadLoader(){	
+	var ineerHtml = '<div style="width: 250px; height: 75px; text-align: center; position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; margin: auto; font-size: 16px; z-index: 10; color: rgb(255, 255, 255);"> <div> <h1 id="overlayLoadingText" style=" opacity:0.5; background: rgb(128, 191, 255) none repeat scroll 0% 0%; font-size: 14px; font-weight: bold; width: auto; padding: 10px; color: black;">Processing... </h1> </div></div><div id="overlayLoadingBG" style="background: rgb(0, 0, 0) none repeat scroll 0% 0%; opacity: 0; width: 100%; position: absolute; top: 0px; height: 100%;"></div>';		
+	$("#overlayLoading").html(ineerHtml).css({'display':'block'});
+}
+
+function hideLoader(){
+	$("#overlayLoading").css({'display':'none'}).html("");
+}
+</script>
+  
+

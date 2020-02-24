@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Finexa - Masters Change Impact Analysis</title>
+    <script src="Common/assets/js-library/bootbox.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../webapp/Common/assets/css-library/Bootstrap v3.3.7.css">
+    <link href="Common/assets/css-library/bootstrap.min.css" rel="stylesheet" />
+    <link href="Common/assets/css/dashboard.css" rel="stylesheet" />
+    <link href="Common/assets/css/style.css" rel="stylesheet" />
+    <link href="Common/assets/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../webapp/Common/assets/css-library/dataTables.min-1.10.16.css">
+    <link rel="stylesheet" type="text/css" href="../webapp/Common/assets/css-library/buttons.dataTables-1.5.1.min.css">
+    <link rel="stylesheet" href="../webapp/Common/assets/css-library/timepicker.min.css">
+    <script type="text/javascript" src="../Common/assets/js-library/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="Common/assets/js-library/bootstrap.min.js"></script>
+    <script src="Common/assets/js-library/bootstrap-datepicker.min.js"></script>
+    <script src="../webapp/Common/assets/js-library/timepicker-1.3.5.min.js"></script>
+    <!-- <script type="text/javascript" src="Common/assets/js/plugins/DataTables/datatables.min.js"></script> -->
+    <script type="text/javascript" src="../webapp/Common/assets/js-library/DataTables-1.10.16.js">
+    </script>
+    <script type="text/javascript" src="../webapp/Common/assets/js-library/dataTables.buttons.min.js">
+    </script>
+    <script type="text/javascript" src="../webapp/Common/assets/js-library/buttons.flash-1.5.1.min.js">
+    </script>
+    <script type="text/javascript" src="../webapp/Common/assets/js-library/JSZip-v3.1.3.js">
+    </script>
+    <script type="text/javascript" src="../webapp/Common/assets/js-library/pdfmake.min.js">
+    </script>
+    <script type="text/javascript" src="../webapp/Common/assets/js-library/vfs_fonts.js">
+    </script>
+    <script type="text/javascript" src="../webapp/Common/assets/js-library/buttons.html5.min.js">
+    </script>
+    <script type="text/javascript" src="../webapp/Common/assets/js-library/buttons.print.min.js">
+    </script>
+    <script type="text/javascript" src="../Common/assets/js-library/tableExport.js"></script>
+    <script type="text/javascript" src="Common/assets/js-library/jquery.serializeToJSON.js"></script>
+    <script type="text/javascript" src="Common/assets/js/myclient_global.js"></script>
+    <script type="text/javascript" src="Common/assets/js/serviceclient.js"></script>
+    <!-- <link rel="stylesheet" href="Common/assets/css-library/validationEngine.jquery.css" type="text/css" />-->
+    <script type="text/javascript" class="init">
+        var findId;
+        var impactData;
+        $(document).ready(function() {
+            $("#idEditImpacts").hide();
+
+            var table = $('#idTable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ],
+                data: impactData,
+                columns: [{
+                        title: "ID"
+                    }, {
+                        title: "Master Table Name"
+                    }, {
+                        title: "Module"
+                    }, {
+                        title: "Sub Module"
+                    }, {
+                        title: "Controller"
+                    }, {
+                        title: "Service Implementation"
+                    }, {
+                        title: "Repository"
+                    }, {
+                        title: "Method"
+                    }, {
+                        title: "Changes Required"
+                    }, {
+                        title: "Possible Impact After Change"
+                    },
+
+                ],
+
+                "lengthMenu": [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, "All"]
+                ]
+
+            });
+
+            $("#idAddImpacts").on("click", function(event) {
+
+                window.location = "addImpactAnalysis.html";
+
+            });
+
+            getClientData("GET", "", "finexaImpactAnalysisList", onSuccess);
+
+            function onSuccess(data) {
+
+                //$('#idTable').dataTable().fnDestroy();
+                $.each(data, function(index, impactList) {
+
+                    impactData = [
+                        [
+                            impactList.id,
+                            impactList.masterTableName,
+                            impactList.moduleName,
+                            impactList.subModuleName,
+                            impactList.controller,
+                            impactList.serviceImpl,
+                            impactList.repository,
+                            impactList.method,
+                            impactList.changes,
+                            impactList.impact
+                        ]
+                    ];
+
+                    console.log(impactData);
+
+                    $('#idTable').dataTable().fnAddData(impactData);
+
+
+                });
+
+            }
+
+            $("#idImpactList").on("click", "tr", function(e) {
+
+                $("#idEditImpacts").show();
+                var indexData = table.row(this).data();
+                //console.log(indexData[8]);
+                findId = indexData[0];
+                console.log("id of Impact: " + findId);
+
+                sessionStorage.removeItem("SELECTED_IMPACT_ID");
+                sessionStorage.setItem("SELECTED_IMPACT_ID", findId);
+
+                $(this).addClass("selected");
+                $(this).addClass("selected").siblings().removeClass("selected");
+
+            });
+
+            $("#idEditImpacts").on("click", function(event) {
+
+                window.location = "editImpactAnalysis.html";
+
+            });
+
+
+        });
+    </script>
+    <!-- <script type="text/javascript" src="Common/assets/js/viewImpactAnalysis.js"></script> -->
+</head>
+
+<body>
+    <div class="col-lg-6" align="center">
+        <!-- <div style="height: 577px; margin-top: 1%; width: 100%; background-color: DodgerBlue; padding-top: 20px"> -->
+        <div style="margin-top: -20px">
+            <div class="submit">
+                <h1>View Impacts</h1>
+                <div>
+
+                    <!-- <div style="width:800px;height:800px;line-height:3em;overflow:scroll;padding:5px;background-color:#FCFADD;color:#714D03;border:4px double #DEBB07;"> -->
+                    <table id="idTable" style="width:400px" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Master Table Name</th>
+                                <th>Module</th>
+                                <th>Sub Module</th>
+                                <th>Controller</th>
+                                <th>Service Implementation</th>
+                                <th>Repository</th>
+                                <th>Method</th>
+                                <th>Changes Required</th>
+                                <th>Possible Impact After Change</th>
+                            </tr>
+                        </thead>
+                        <tbody id="idImpactList">
+                        </tbody>
+                    </table>
+                    <br>
+
+
+                    <div class="clearfix"></div>
+
+                    <div class="col-md-12 pad0">
+
+                        <div class="col-md-offset-1 col-md-5 pad0">
+                            <input type="button" id="idAddImpacts" class="pull-left form-control addbtn" style="width: 45%;" tabindex="540" value="Add Impact">
+                        </div>
+                        <div class="col-md-offset-1 col-md-5 pad0">
+                            <input type="button" id="idEditImpacts" class="pull-left form-control addbtn" style="width: 45%;" tabindex="540" value="Edit Impact">
+                        </div>
+                        <!-- <div class="col-md-offset-1 col-md-5 pad0">
+   		<input type="button" id="idImpactDownload" class="pull-left form-control addbtn" style="width: 45%;" tabindex="540" value="Download">
+    </div> -->
+                    </div>
+
+                    <!-- </div> -->
+
+
+
+                </div>
+            </div>
+        </div>
+        <!-- </div> -->
+    </div>
+</body>
+
+</html>

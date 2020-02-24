@@ -1,0 +1,129 @@
+<script src="MyClient/invest/js/verificationprocess.js"></script>
+<script src="clientInfo/js/common.js"></script>
+<link href="../Common/assets/css/addtocartreset.css" rel="stylesheet"/>
+<link href="../Common/assets/css/addtocart.css" rel="stylesheet"/>
+<link href="../Common/assets/css/addtocart.css" rel="stylesheet"/>
+<div class="head" style="height:34px"><span class="fieldsrequired"> </span>
+	<div style="float:right">
+		<img src="../Common/assets/images/shopping.png" style="width:29px;margin-top:-2px;margin-right:6px" title="delete"/>
+		
+	</div>
+
+	</div>
+	<input type="text" id="text" disabled value="" style="float:right;width: 19px;border-radius: 7px;height: 19px;margin-top: -28px;"/>
+<div class="cicontainer" style="height:265%">
+	
+		<div class="col-sm-7" style="text-align: left;z-index:1;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">Select Mode of Investment
+						*: </label><br/>
+						
+						<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="schemeName" style="text-align:left;font-size:14px;font-weight: bold; margin-bottom: 5px;">Client Id(UCC)* </label><br/>
+			<span class="form-static-value" id="idSpamSchemeName" >
+				<select style="padding-top: 2px"
+				class="form-control input-width-medium" id="idClientUCCCombo"
+				name="clientCode" tabindex="430">
+				</select>
+				<span class="formentry-errmsg" id="alertSchemeName"></span>
+			</span>
+		</div>
+		<br/><br/><br/><br/>
+						
+					<span class="form-static-value">
+						<select style="padding-top:2px" class="form-control input-width-medium" required="required" tabindex="430">
+										<option value="">Select</option>
+										<option value="Annually">Lumpsum</option>
+										<option value="Monthly">ISIP</option>
+												<option value="Quarterly">SWP</option>
+												<option value="Quarterly">Switch</option>
+												<option value="Quarterly">Redeem</option>
+												<option value="Quarterly">Plan & Invest</option>
+						</select>
+									<br/>
+					</span> 
+				</div>
+				<br/>
+				<br/>
+				<br/>
+					<table width="101%" class="">
+														<thead>
+															<tr>
+															
+																<th>Sr. No
+																	</th>
+																<th>AMC Name*
+																	</th>
+																<th>Scheme Name*
+																	</th>
+																<th>SchemeType*
+																	</th>
+																<th>Amount Invested
+																	</th>
+																<th>Units Purchased*
+																	</th>
+																
+																<th>Select / Unselect
+																	</th>
+																
+															</tr>
+														</thead>
+														<tbody>
+															<tr></tr>   
+															<tr>
+																<td>Kotak Mutual Fund
+																</td>
+																<td>Kotak Mutual Fund
+																</td>
+																<td>
+																</td>
+																<td>
+																</td>
+																<td>
+																</td>
+																<td>
+																</td>
+																<td><input type='checkbox' class='form-control' style='width: 10%;'/></td>
+																														
+																
+																
+															</tr> 
+																<tr>
+																<td>Axis Mutual Fund
+																</td>
+																<td>Axis Long term Equity Fund
+																</td>
+																<td>
+																</td>
+																<td>
+																</td>
+																<td>
+																</td>
+																<td>
+																</td>
+																<td><input type='checkbox' class='form-control' style='width: 10%;'/></td>
+															</tr> 
+																
+													
+														</tbody>
+					</table>
+					<br/>
+					
+					<button type="submit" style="width:40%" onClick="increase()" class="form-control addbtn cd-add-to-cart" data-price="25.99" tabindex="540">Add to cart</button>
+			
+</div>
+
+	
+	
+<script>
+		var a = 1;
+			  function increase(){
+					var textBox = document.getElementById("text");
+					textBox.value = a;
+					a++;
+			  } 
+		  
+		
+		</script>
+
+</body>
+

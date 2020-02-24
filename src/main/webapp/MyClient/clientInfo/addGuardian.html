@@ -1,0 +1,172 @@
+<script src="clientInfo/js/common.js"></script>
+<script src="clientInfo/js/addGuardian.js"></script>
+<script src="clientInfo/js/validateGuardian.js"></script>
+<script src="clientInfo/js/validationForAll.js"></script>
+
+<div class="cicontainer">
+	<div>
+		<form class="form-horizontal" id="guardian_form" action="#">
+			
+			
+			
+			<input type="hidden" id="idSalutation"
+						name="salutation"
+						class="form-control input-width-medium-min input-width-owner input-width-medium"
+						value="" />
+						
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-10">
+					<span class="formentry-errmsg" id="alertform"></span>
+				</div>
+			</div>		       
+			
+			<div class="form-group">
+				<label for="idFirstName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>First Name*:</label>  <input type="text" id="idGFirstName"
+						name="firstName"
+						class="form-control input-width-medium-min input-width-owner input-width-medium"
+						placeholder="First Name" tabindex="1" />
+						<span class="formentry-errmsg" id="alertfname"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="idMiddleName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Middle Name:</label> <input type="text" id="idGMiddleName"
+						name="middleName"
+						class="form-control input-width-medium-min input-width-owner input-width-medium"
+						placeholder="Middle Name" tabindex="2" />
+						<span class="formentry-errmsg" id="alertmname"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="idLastName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Last Name:</label> <input type="text" id="idGLastName"
+						name="lastName"
+						class="form-control input-width-medium-min input-width-owner input-width-medium"
+						placeholder="Last Name" tabindex="3" />
+						<span class="formentry-errmsg" id="alertlname"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="idGenderRadioGroup" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Gender*:</label>
+					<div class="displayflex" id="idGGender">
+                   		<p id="idGGenderRadioGroup" class="input-group input-width-small" tabindex="">
+							<label class="radio-inline custom-radio-theme"> <input
+								type="radio" name="gender" id="idGGenderM" value="M" checked="checked"
+								tabindex="4"><i></i>Male
+							</label> <label class="radio-inline custom-radio-theme"> <input
+								type="radio" name="gender" id="idGGenderF" value="F"
+								tabindex="5"><i></i>Female
+							</label>
+						</p>
+					</div>
+					<span class="formentry-errmsg" id="alertgender"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Date of Birth*:</label>
+					<p class="input-group input-width-medium">
+						<input type="text" class="form-control" id="idGBdate"
+							name="birthDate" placeholder="DD/MM/YYYY" tabindex="6">
+						<span class="input-group-btn datepicker-icon">
+							<button type="button" id="idGDobCalendar"
+								class="btn btn-default calendar-icon-container"
+								data-toggle="tooltip" data-placement="top"
+								title="Select Date of Birth">
+								<em class="glyphicon calendar-icon-theme"></em>
+							</button>
+						</span>
+					</p>
+					<span class="formentry-errmsg" id="alertbdate"></span>
+				</div>
+			</div>
+			
+			
+			<div class="form-group">
+				<label for="idPan" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Pan*:</label>
+					<p class="input-group input-width-medium">
+						<input type="text" class="form-control valid-state" id="idGPan"
+							name="pan" placeholder="Enter Pan" tabindex="7">
+						<span class="formentry-errmsg" id="alertpan"></span>
+				</div>
+			</div>
+					
+			<div class="form-group">
+				<label for="idAadhar" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Aadhar Card No.:</label>
+					<p class="input-group input-width-medium">
+						<input type="text" class="form-control valid-state" id="idGAadhar"
+							name="aadhar" placeholder="Enter Aadhar No" tabindex="8">
+					</p>
+					<span class="formentry-errmsg" id="alertaadhar"></span>
+				</div>
+			</div>
+			
+		
+			
+			
+			
+			<div class="form-group">
+				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-4">
+					<label>Resident Type*:</label> <span class="form-static-value"
+						id="hide320"> <select
+						class="form-control input-width-medium" id="idGResType"
+						name="residentType"
+						onchange="toggleOtherResidentType()"
+						tabindex="9">
+							<option value="">Select</option>
+					</select>
+					</span>
+					<span class="formentry-errmsg" id="alertrestype"></span>
+				</div>
+				<div class="col-sm-4">
+					<label>If Others, specify:</label>
+					<p class="input-group input-width-medium">
+						<input type="text" class="form-control valid-state"
+							id="idGOtherResidentType" name="otherResidentType" disabled=""
+							placeholder="Enter Resident Type" tabindex="10">
+					</p>
+					<span class="formentry-errmsg" id="alertOtherResidentType"></span>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Country of Residence*:</label> <span
+						class="form-static-value" id="hide320"> <select
+						class="form-control input-width-medium" id="idGCountry"
+						name="countryOfResidence" tabindex="11">
+							
+					</select>
+
+					</span>
+					<span class="formentry-errmsg" id="alertCountry"></span>
+				</div>
+			</div>
+			
+		
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-11">
+					<button type="button" class="pull-left btn addbtn" id="idGuardianSubmit"
+						 tabindex="11" >SAVE</button>
+					<button type="button" id="undo" class="pull-left btn addbtn" tabindex="12" onclick="undoChange()">UNDO</button> 
+				</div>
+			</div>
+			<div id="focusguard-2" tabindex="13"></div>	
+
+		</form>
+	</div>
+</div>
+

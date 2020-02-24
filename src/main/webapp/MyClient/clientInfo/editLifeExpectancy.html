@@ -1,0 +1,151 @@
+<script src="clientInfo/js/common.js"></script>
+<script src="clientInfo/js/editLifeExpectancy.js"></script>
+<div class="cicontainer">
+	<div>
+		<form class="form-horizontal" id="idFormLifeExp" action="#">
+			<div class="form-group form-group-lg">
+				<label for="plannedDepositAmount" class="col-sm-1 control-label"></label>
+				<div class="col-sm-8 asset-owner-wrapper">
+					<label>Family Member:</label><br/>
+					<table class="familymembertbl" width="20px">
+						<tr class="mem_icon" id="familyMemberImage">
+						
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="idBDate" class="col-sm-1 control-label"></label>
+				<div class="col-sm-4">
+					<label>Client Date Of Birth</label>
+					<p class="input-group input-width-medium">
+						<input type="text" class="form-control" id="idBirthDate"
+							readonly name="birthDate" placeholder="DD/MM/YYYY"
+							tabindex="330"> <!-- <span
+							class="input-group-btn datepicker-icon">
+							<button type="button"
+								class="btn btn-default calendar-icon-container"
+								data-toggle="tooltip" data-placement="top"
+								title="Select Date of Birth">
+								<em class="glyphicon calendar-icon-theme"></em>
+							</button>
+						</span> -->
+					</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-6">
+					<label>Gender:</label> <input type="text" id="idLifeExpGender" name="gender"
+						class="form-control input-width-medium-min input-width-owner input-width-medium"
+						readonly placeholder="Female" tabindex="" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-6">
+					<label>Annual Income:</label> <input type="text" id="idAnnualIncome" name="annualIncome"
+						class="form-control input-width-medium-min input-width-owner input-width-medium" onfocusout="maskAmount('#idAnnualIncome')" readonly tabindex="1" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-8">
+					<label>Tobacco User:</label>
+					<div class="displayflex">
+						<label class="radio-inline custom-radio-theme"> <input
+							type="radio" name="isTobaccoUser" id="idTobaccoN"
+							placeholder="EPF &amp; EPS" value="off"  tabindex="2"><i></i>No
+						</label> <label class="radio-inline custom-radio-theme"> <input
+							type="radio" name="isTobaccoUser" value="on" id="idTobaccoY" placeholder="PPF"
+							tabindex="3" required="required"><i></i>Yes
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-8">
+					<label>BMI is between 18 and 25(includes both)</label>
+					<div class="displayflex">
+						<label class="radio-inline custom-radio-theme"> <input
+							type="radio" name="isProperBMI" id="idBMIN" value="off" placeholder="EPF &amp; EPS"
+							 tabindex="4"><i></i>No
+						</label> <label class="radio-inline custom-radio-theme"> <input
+							type="radio" name="isProperBMI" id="idBMIY" value="on" placeholder="PPF" tabindex="5"
+							required="required"><i></i>Yes
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-8">
+					<label>No History of Cancer, Diabetes, Coronary Arterial
+						Disease (CAD),<br> Cardio Vascular Disease (CVD), Stroke,
+						alcohol or drug abuse.
+					</label>
+					<div class="displayflex">
+						<label class="radio-inline custom-radio-theme"> <input
+							type="radio" name="hasDiseaseHistory" value="off" id="idHistoryN"
+							placeholder="EPF &amp; EPS"  tabindex="6"><i></i>No
+						</label> <label class="radio-inline custom-radio-theme"> <input
+							type="radio" name="hasDiseaseHistory" value="on" id="idHistoryY" placeholder="PPF"
+							tabindex="7" required="required"><i></i>Yes
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-8">
+					<label>Normal Blood Pressure:</label>
+					<div class="displayflex">
+						<label class="radio-inline custom-radio-theme"> <input
+							type="radio" name="hasNormalBP" value="off" id="idNormalBPN"
+							placeholder="EPF &amp; EPS" value="on"  tabindex="8"><i></i>No
+						</label> <label class="radio-inline custom-radio-theme"> <input
+							type="radio" name="hasNormalBP" id="idNormalBPY" placeholder="PPF"
+							tabindex="9" required="required"><i></i>Yes
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-11">
+					<button type="submit" class="form-control addbtn" tabindex="10" id="idSaveLifeExp">Submit</button>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-6">
+					<label>Future Life Expectancy (years)</label>
+					<p class="input-group input-width-medium">
+						<input type="text" id="idFutureLifeExp" name="futureLifeExpectancy" readonly
+							class="form-control invalid-state" placeholder="" tabindex="">
+					</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-6">
+					<label>Total Life Expectancy (years)</label>
+					<p class="input-group input-width-medium">
+						<input type="text" id="idLifeExp" name="totalLifeExpectancy" readonly
+							class="form-control invalid-state" placeholder="" tabindex="">
+					</p>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-11">
+					<button type="submit" class="pull-left form-control addbtn"
+						id="idOk" tabindex="11">OK</button>
+					<button type="reset" id="idUndo" class="pull-left form-control addbtn"
+						tabindex="12">UNDO</button>
+				</div>
+				<div id="focusguard-2" tabindex="13"></div>	
+			</div>
+		</form>
+	</div>
+</div>

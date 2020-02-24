@@ -1,0 +1,964 @@
+<script src="invest/js/verificationprocess.js"></script>
+<script src="invest/js/fatca.js"></script>
+<script src="clientInfo/js/validationForAll.js"></script>
+<script src="invest/js/validateFatca.js"></script>
+<script src="clientInfo/js/common.js"></script>
+<div class="cicontainer" style="height: 315%">
+	<form class="form-horizontal" id="formFatca" onsubmit="return false">
+	<table class="verificationpath" id = "idNavigationTable" style="margin-left:26px;width:88%;">
+	<tr>
+		<td style="width: 14%;"><button type="submit" style="width:101%;" class="form-control addbtn" tabindex="540" disabled>CC Creation</button></td>
+		<td style="text-align:center!important;width:20% !important"><img src="../Common/assets/images/bluearrow.png" style="width:45%"></td>
+		<td style="width: 13%;"><button type="submit" style="width:101%" class="form-control addbtn" tabindex="540" disabled>FATCA</button></td>
+		<td style="text-align:center !important;width:20% !important"><img src="../Common/assets/images/bluearrow.png" style="width:45%"></td>
+		<td style="width: 11%;"><button type="submit" style="width:141%" class="form-control greywhite" tabindex="540" disabled>ISIP</button></td></tr>
+	</table>
+	<br/> <br/>
+		
+	<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-top: 7px;margin-top:-13px"> 
+		<span class="formentry-errmsg" id="alertform"></span>
+	</div>
+	<br/><br/>	
+	
+	<div class="col-sm-7" id = "idDivUCCCombo"
+			style="text-align: left; z-index: 0.5; margin-left: -4px; padding-top: 7px; margin-top: -13px">
+			<label class="control-label" for="idppfdeposite"
+				style="text-align: left; font-size: 14px">Client Id(UCC)* </label><br />
+				<select style="padding-top: 2px"
+				class="form-control input-width-medium" id="idClientUCCCombo"
+				name="clientCode" tabindex="1">
+				</select>
+			<span class="formentry-errmsg" id="alertClientCombo"></span>
+	</div>
+	<div class="col-sm-7" id = "idDivUCCText"
+			style="text-align: left; z-index: 0.5; margin-left: -4px; padding-top: 7px; margin-top: -13px">
+			<label class="control-label" for="idppfdeposite"
+				style="text-align: left; font-size: 14px">Client Id(UCC)* </label><br />
+			<input type="text"
+				placeholder="Client Id(UCC)" class="form-control"
+				id="idClientUCCText" name="clientCode"
+				style="width: 16em" />
+	</div>		
+	<br /> <br /> <br /> <br />
+	
+	<div class="col-sm-7"
+			style="text-align: left; z-index: 0.5; margin-left: -4px; padding-top: 7px; margin-top: -13px">
+			<label class="control-label" for="idppfdeposite"
+				style="text-align: left; font-size: 14px">Applicant Name* : </label><br />
+			<input type="text" placeholder="Applicant Name" maxlength="100" 
+				class="form-control" id="idApplicantName" name = "invName" style="width: 16em" tabindex="2" /> <span
+				class="formentry-errmsg" id="alertApplicantName"></span>
+	</div>
+	<br /> <br /> <br /> <br />
+	<div class="col-sm-7"
+			style="text-align: left; z-index: 0.5; margin-left: -4px; padding-top: 7px; margin-top: -13px">
+			<label class="control-label" for="idppfdeposite"
+				style="text-align: left; font-size: 14px">Pan Number*: </label><br />
+			<input type="text" placeholder="Pan Number" maxlength="10"
+				style="width: 16em" 
+				class="form-control" id="idPAN" name = "panRP" tabindex="3"/> <span class="formentry-errmsg"
+				id="alertPan"></span>
+	</div>
+	<br /> <br /> <br /> <br />
+	<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idTaxStatusFatca"
+				style="text-align: left; font-size: 14px">Tax Status*:
+				</label><br /> <select name="taxStatus" id="idTaxStatusFatca"
+				style="padding-top: 2px" class="form-control input-width-medium"
+				tabindex="4">
+			</select>
+			<span class="formentry-errmsg" id="alertTaxStatusFatca"></span>
+	</div>
+	<br/><br/><br/>
+	<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idDataSourceFatca"
+				style="text-align: left; font-size: 14px">Data Source*:
+				</label><br /> <select name="dataSrc" id="idDataSourceFatca"
+				style="padding-top: 2px" class="form-control input-width-medium"
+				tabindex="5">
+				<option value="">Select</option>
+				<option value="E">Electronic</option>
+				<option value="P">Physical</option>
+			</select>
+			<span class="formentry-errmsg" id="alertDataSourceFatca"></span>
+	</div>
+	<br/><br/><br/>
+		
+	<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="addressType"
+				style="text-align: left; font-size: 14px">Address Type*:</label><br />
+			<select style="padding-top: 2px" name="addrType" id="idAddressType"
+				class="form-control input-width-medium"
+				tabindex="6">
+			</select>
+			<span class="formentry-errmsg" id="alertAddressType"></span>
+	</div>
+	<br /><br/><br/>
+		 
+	<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idppfdeposite"
+				style="text-align: left; font-size: 14px">Place of Birth*</label><br />
+			<input type="text" placeholder="Place of Birth" maxlength="100"
+				class="form-control" id="idPlaceOfBirthFatca" name = "poBirInc" style="width: 16em" tabindex="7" />
+			<span class="formentry-errmsg" id="alertPlaceOfBirth"></span>
+		</div>
+		<br /><br /><br />
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idppfdeposite"
+				style="text-align: left; font-size: 14px"> Country Of Birth*</label><br />
+			<select style="padding-top: 2px"
+				class="form-control input-width-medium" 
+				id="idCountryOfBirth" name = "coBirInc" tabindex="8">
+			</select> <span class="formentry-errmsg" id="alertCountryOfBirth"></span>
+	</div>
+	<br /><br/><br/>
+	
+	<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idppfdeposite"
+				style="text-align: left; font-size: 14px"> Country Of Tax Residency*</label><br />
+			<select style="padding-top: 2px"
+				class="form-control input-width-medium" 
+				id="idCountryOfTaxResidency" name = "taxRes1" tabindex="9">
+			</select> <span class="formentry-errmsg" id="alertCountryOfTax"></span>
+	</div>
+	<br /><br/><br/>
+	
+	<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="taxPayerIden"
+				style="text-align: left; font-size: 14px">Tax Payer
+				Identification No.*</label><br /> <input type="text"
+				placeholder="Tax payer identification No" maxlength="100"
+				class="form-control" id="idTaxPayerIden" name="tpin1" style="width: 16em" tabindex="10" />
+			<span class="formentry-errmsg" id="alertTaxPayerIden"></span>
+		</div>
+		<br />
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="identificationType"
+				style="text-align: left; font-size: 14px">Identification
+				Type*</label><br /><select style="padding-top: 2px"
+				class="form-control input-width-medium" 
+				id="idIdentificationType" name = "id1Type" tabindex="11">
+				<option value="">Select</option></select>
+			<span class="formentry-errmsg" id="alertIdentificationType"></span>
+	</div>
+	<br/><br/><br/>
+	
+	<div id="idDivApplicant2">
+		<div class="col-sm-7"
+				style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+				<label class="control-label" for="idppfdeposite"
+					style="text-align: left; font-size: 14px"> Country Of Tax Residency 2*</label><br />
+				<select style="padding-top: 2px"
+					class="form-control input-width-medium" 
+					id="idCountryOfTaxResidency2" name = "countryOfTaxResidency2" tabindex="9">
+				</select> <span class="formentry-errmsg" id="alertCountryOfTaxResi2"></span>
+		</div>
+		<br /><br/><br/>
+	
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="taxPayerIden"
+				style="text-align: left; font-size: 14px">Tax Payer
+				Identification No. 2*</label><br /> <input type="text"
+				placeholder="Tax payer identification No" maxlength="100"
+				class="form-control" id="idTaxPayerIden2" name="tpin2" style="width: 16em" tabindex="10" />
+			<span class="formentry-errmsg" id="alertTaxPayerIden2"></span>
+		</div>
+		<br />
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="identificationType"
+				style="text-align: left; font-size: 14px">Identification
+				Type 2*</label><br /><select style="padding-top: 2px"
+				class="form-control input-width-medium" 
+				id="idIdentificationType2" name = "id2Type" tabindex="11">
+				<option value="">Select</option></select>
+			<span class="formentry-errmsg" id="alertIdentificationType2"></span>
+		</div>
+		<br/><br/><br/>
+	</div>
+
+
+	<div id="idDivApplicant3">
+		<div class="col-sm-7"
+				style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+				<label class="control-label" for="idppfdeposite"
+					style="text-align: left; font-size: 14px"> Country Of Tax Residency 3*</label><br />
+				<select style="padding-top: 2px"
+					class="form-control input-width-medium" 
+					id="idCountryOfTaxResidency3" name = "taxRes3" tabindex="9">
+				</select> <span class="formentry-errmsg" id="alertCountryOfTaxResi3"></span>
+		</div>
+		<br /><br/><br/>
+	
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="taxPayerIden"
+				style="text-align: left; font-size: 14px">Tax Payer
+				Identification No. 3*</label><br /> <input type="text"
+				placeholder="Tax payer identification No" maxlength="100"
+				class="form-control" id="idTaxPayerIden3" name="tpin3" style="width: 16em" tabindex="10" />
+			<span class="formentry-errmsg" id="alertTaxPayerIden3"></span>
+		</div>
+		<br />
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="identificationType"
+				style="text-align: left; font-size: 14px">Identification
+				Type 3*</label><br /><select style="padding-top: 2px"
+				class="form-control input-width-medium" 
+				id="idIdentificationType3" name = "id3Type" tabindex="11">
+				<option value="">Select</option></select>
+			<span class="formentry-errmsg" id="alertIdentificationType3"></span>
+		</div>
+		<br/><br/><br/>
+	</div>	
+
+
+	<div id="idDivApplicant4">
+		<div class="col-sm-7"
+				style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+				<label class="control-label" for="idppfdeposite"
+					style="text-align: left; font-size: 14px"> Country Of Tax Residency (Guardian)*</label><br />
+				<select style="padding-top: 2px"
+					class="form-control input-width-medium" 
+					id="idCountryOfTaxResidency4" name = "taxRes4" tabindex="9">
+				</select> <span class="formentry-errmsg" id="alertCountryOfTaxResi4"></span>
+		</div>
+		<br /><br/><br/>
+	
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="taxPayerIden"
+				style="text-align: left; font-size: 14px">Tax Payer
+				Identification No. (Guardian)*</label><br /> <input type="text"
+				placeholder="Tax payer identification No" maxlength="100"
+				class="form-control" id="idTaxPayerIden4" name="tpin4" style="width: 16em" tabindex="10" />
+			<span class="formentry-errmsg" id="alertTaxPayerIden4"></span>
+		</div>
+		<br />
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="identificationType"
+				style="text-align: left; font-size: 14px">Identification
+				Type (Guardian)*</label><br /><select style="padding-top: 2px"
+				class="form-control input-width-medium" 
+				id="idIdentificationType4" name = "id4Type" tabindex="11">
+				<option value="">Select</option></select>
+			<span class="formentry-errmsg" id="alertIdentificationType4"></span>
+		</div>
+		<br/><br/><br/>
+	</div>
+	
+	
+	<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idppfdeposite"
+				style="text-align: left; font-size: 14px"> Source Of Wealth*</label><br />
+			<select style="padding-top: 2px"
+				class="form-control input-width-medium" 
+				id="idSourceOfWealth" name = "srceWealt" tabindex="12" >
+			</select> <span class="formentry-errmsg" id="alertSourceOfWealth"></span>
+	</div>
+	<br /><br/><br/>
+	<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idppfdeposite"
+				style="text-align: left; font-size: 14px">Gross Annual
+				Income in INR*</label><br /> <select style="padding-top: 2px"
+				class="form-control input-width-medium" 
+				id="idIncomeFatca" name = "incSlab" tabindex="13" >
+				<option value="">Select</option>
+			</select> <span class="formentry-errmsg" id="alertIncome"></span>
+	</div>
+		<br />
+		
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="politicallyExposed"
+				style="text-align: left; font-size: 14px">Are you a
+				politically exposed person?*:</label><br /> <select style="padding-top: 2px"
+				class="form-control input-width-medium" 
+				name = "pepFlag" id="idPoliticallyExposed" tabindex="14" >
+				<option value="">Select</option>
+				<option value="Y">Yes</option>
+				<option value="N">No</option>
+			</select>
+			<span class="formentry-errmsg" id="alertPoliticallyExposed"></span>
+		</div>
+		<br />
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idppfdeposite"
+				style="text-align: left; font-size: 14px">Occupation*</label><br />
+			<!-- <input type="text" placeholder="Occupation" class="form-control"
+				id="idOccupationFatca" style="width: 16em" /> -->
+			<select style="padding-top: 2px"
+				class="form-control input-width-medium" id="idOccupationFatca"
+				name="occCode" tabindex="15">
+				<option value="" selected="selected">Select</option>
+			</select>
+			<span class="formentry-errmsg" id="alertOccupation"></span>
+		</div>
+		<br />
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idOccpTypeFatca"
+				style="text-align: left; font-size: 14px">Occupation Type*:</label><br />
+			<select style="padding-top: 2px"
+				class="form-control input-width-medium" id="idOccpTypeFatca"
+				name="occType" tabindex="16" >
+				<option value="" selected="selected">Select Occupation Type</option>
+				<option value="S" selected="selected">Service</option>
+				<option value="B" selected="selected">Business</option>
+				<option value="O" selected="selected">Others</option>
+				<option value="X" selected="selected">Not Categorized</option>
+				
+			</select>
+			<span class="formentry-errmsg" id="alertOccpTypeFatca"></span>
+		</div>
+		<br />
+		 <div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idExchangeNameFatca"
+				style="text-align: left; font-size: 14px">Exchange Name*:
+				</label><br /> <select name="exchName" id="idExchangeNameFatca"
+				style="padding-top: 2px" class="form-control input-width-medium"
+				tabindex="17" >
+				<option value="">Select</option>
+				<option value="B">BSE</option>
+				<option value="N">NSE</option>
+				<option value="O">Others</option>
+			</select>
+			<span class="formentry-errmsg" id="alertExchangeNameFatca"></span>
+		</div>
+		<!-- In case of Non-Individuals -->
+		<br /> <br /> <br />
+
+		
+		<div id = "idDivNonIndividual">
+		
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="corpServiceSector"
+				style="text-align: left; font-size: 14px">Corporate Service Sector</label><br /> 
+				<select style="padding-top: 2px" class="form-control input-width-medium"
+				name="corpServs" id="idCorpServiceSector" tabindex="430">
+			</select>
+			<span class="formentry-errmsg" id="alertCorpServiceSector"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="networth"
+				style="text-align: left; font-size: 14px">Networth</label><br /> <input type="text" placeholder="Networth"
+				maxlength="100" class="form-control" id="idNetworth" name="networth"
+				style="width: 16em" />
+			<span class="formentry-errmsg" id="alertNetwork"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 0.5; margin-left: -4px; padding-top: 7px; margin-top: -13px">
+			<label class="control-label" for="networthDate"
+				style="text-align: left; font-size: 14px">Networth Date: </label><br />
+			<p class="input-group input-width-medium">
+				<input type="text" maxlength="100" class="form-control"
+					id="idNetworthDate" name="networthDate" placeholder="DD/MM/YYYY"
+					tabindex="330"> <span
+					class="input-group-btn datepicker-icon">
+					<button type="button"
+						class="btn btn-default calendar-icon-container"
+						data-toggle="tooltip" data-placement="top"
+						title="Select Networth Date">
+						<em class="glyphicon calendar-icon-theme"></em>
+					</button>
+				</span>
+			</p>
+			<span class="formentry-errmsg" id="alertNetworthDate"></span>
+		</div>
+		<br /> <br /> <br /> <br />
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idExemptionCode"
+				style="text-align: left; font-size: 14px">Exemption Code</label><br /> 
+				<select style="padding-top: 2px" class="form-control input-width-medium"
+				name="exempCode" id="idExemptionCode" tabindex="430">
+				<option value="">Select </option>
+				<option value="">Service 1</option>
+				<option value="">Service 2</option>
+			</select>
+			<span class="formentry-errmsg" id="alertExemptionCode"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idFFI"
+				style="text-align: left; font-size: 14px">FFI/DRNFE</label><br /> 
+				<select style="padding-top: 2px" class="form-control input-width-medium"
+				name="ffiDrnfe" id="idFFI" tabindex="430">
+				<option value="">Select </option>
+				<option value="FFI">FFI</option>
+				<option value="DRNFE">DRNFE</option>
+				<option value="NA">NA</option>
+			</select>
+			<span class="formentry-errmsg" id="alertFFI"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idGIINno"
+				style="text-align: left; font-size: 14px">GIIN Number</label><br /> 
+				<input type="text" placeholder="GIIN Number"
+				maxlength="100" class="form-control" id="idGIINno" name="giinNo"
+				style="width: 16em" />
+			<span class="formentry-errmsg" id="alertGiinNo"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idSponEntity"
+				style="text-align: left; font-size: 14px">Sponsoring Entity</label><br /> 
+				<input type="text" placeholder="Sponsoring Entity"
+				maxlength="100" class="form-control" id="idSponEntity" name="sprEntity"
+				style="width: 16em" />
+			<span class="formentry-errmsg" id="alertSponEntity"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idGIIN"
+				style="text-align: left; font-size: 14px">GIIN</label><br /> 
+				<select style="padding-top: 2px" class="form-control input-width-medium"
+				name="giinNa" id="idGIIN" tabindex="430">
+				<option value="">Select </option>
+				<option value="AF">Applied For</option>
+				<option value="NR">Not Required To Apply For</option>
+				<option value="NO">Not Obtained</option>
+				<option value="FI">Non Participating</option>
+			</select>
+			<span class="formentry-errmsg" id="alertGIIN"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idGIINExceptCode"
+				style="text-align: left; font-size: 14px">GIIN Exemption Code</label><br /> 
+				<select style="padding-top: 2px" class="form-control input-width-medium"
+				name="giinExemc" id="idGIINExceptCode" tabindex="430">
+				<option value="">Select </option>
+				<option value="">1</option>
+				<option value="">2</option>
+			</select>
+			<span class="formentry-errmsg" id="alertGIINExceptCode"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idNonFinanEntityCat"
+				style="text-align: left; font-size: 14px">Non-Financial Entity Category</label><br /> 
+				<select style="padding-top: 2px" class="form-control input-width-medium"
+				name="nffeCatg" id="idNonFinanEntityCat" tabindex="430">
+				<option value="">Select </option>
+				<option value="L">Listed entity</option>
+				<option value="RL">Related to listed entity</option>
+				<option value="A">Active NFFE</option>
+				<option value="P">Passive NFFE</option>
+				<option value="NA">Not Applicable</option>
+				
+			</select>
+			<span class="formentry-errmsg" id="alertNonFinanEntityCat"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idNonFinanSubEntityCat"
+				style="text-align: left; font-size: 14px">Non-Financial Sub-Entity Category</label><br /> 
+				<select style="padding-top: 2px" class="form-control input-width-medium"
+				name="actNfeSc" id="idNonFinanSubEntityCat" tabindex="430">
+				<option value="">Select </option>
+				<option value="">1</option>
+				<option value="">2</option>
+			</select>
+			<span class="formentry-errmsg" id="alertNonFinanSubEntityCat"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idNatureBusiness"
+				style="text-align: left; font-size: 14px">Nature of Business</label><br /> 
+				<input type="text" placeholder="Nature of Buiness" maxlength="100" 
+				class="form-control" id="idNatureBusiness" name="natureBus"
+				style="width: 16em" />
+			<span class="formentry-errmsg" id="alertNatureBusiness"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idReltdListCompany"
+				style="text-align: left; font-size: 14px">Related to Listed Company</label><br /> 
+				<input type="text" placeholder="Related to Listed Company"
+				maxlength="100" class="form-control" id="idReltdListCompany" name="relListed"
+				style="width: 16em" />
+			<span class="formentry-errmsg" id="alertReltdListCompany"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUBOApplicable"
+				style="text-align: left; font-size: 14px">UBO Applicable</label><br /> 
+				<select style="padding-top: 2px" class="form-control input-width-medium"
+				name="uboAppl" id="idUBOApplicable" tabindex="430">
+				<option value="">Select </option>
+				<option value="Y">Yes</option>
+				<option value="N">No</option>
+			</select>
+			<span class="formentry-errmsg" id="alertUBOApplicable"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUBOCount"
+				style="text-align: left; font-size: 14px">UBO Count</label><br /> 
+				<input type="text" placeholder="UBO Count" maxlength="100" 
+				class="form-control" id="idUBOCount" name="uboCount"
+				style="width: 16em" />
+			<span class="formentry-errmsg" id="alertUBOCount"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUBOName"
+				style="text-align: left; font-size: 14px">UBO Name</label><br /> 
+				<input type="text" placeholder="UBO Name" maxlength="100" 
+				class="form-control" id="idUBOName" name="uboName"
+				style="width: 16em" />
+			<span class="formentry-errmsg" id="alertUBOName"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUBOPan"
+				style="text-align: left; font-size: 14px">UBO PAN</label><br /> 
+				<input type="text" placeholder="UBO PAN" maxlength="100" 
+				class="form-control" id="idUBOPan" name="uboPan"
+				style="width: 16em" />
+			<span class="formentry-errmsg" id="alertUBOPan"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUBONationality"
+				style="text-align: left; font-size: 14px">UBO Nationality</label><br /> 
+				<select style="padding-top: 2px" class="form-control input-width-medium"
+				name="uboNation" id="idUBONationality" tabindex="430">
+			</select>
+			<span class="formentry-errmsg" id="alertUBONationality"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUBOAddress1"
+				style="text-align: left; font-size: 14px">UBO Address 1</label><br /> 
+				<input type="text" placeholder="UBO Address 1" maxlength="100" 
+				class="form-control" id="idUBOAddress1" name="uboAdd1"
+				style="width: 16em" />
+			<span class="formentry-errmsg" id="alertUBOAddress1"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUBOAddress2"
+				style="text-align: left; font-size: 14px">UBO Address 2</label><br /> 
+				<input type="text" placeholder="UBO Address 2" maxlength="100" 
+				class="form-control" id="idUBOAddress2" name="uboAdd2"
+				style="width: 16em" />
+			<span class="formentry-errmsg" id="alertUBOAddress2"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUBOAddress3"
+				style="text-align: left; font-size: 14px">UBO Address 3</label><br /> 
+				<input type="text" placeholder="UBO Address 3" maxlength="100" 
+				class="form-control" id="idUBOAddress3" name="uboAdd3"
+				style="width: 16em" />
+			<span class="formentry-errmsg" id="alertUBOAddress3"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUBOCity"
+				style="text-align: left; font-size: 14px">UBO City</label><br /> 
+				<input type="text" placeholder="UBO City" maxlength="100" 
+				class="form-control" id="idUBOCity" name="uboCity"
+				style="width: 16em" />
+			<span class="formentry-errmsg" id="alertUBOCity"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUBOPin"
+				style="text-align: left; font-size: 14px">UBO PIN</label><br /> 
+				<input type="text" placeholder="UBO PIN" maxlength="100" 
+				class="form-control" id="idUBOPin" name="uboPin"
+				style="width: 16em" />
+			<span class="formentry-errmsg" id="alertUBOPin"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUBOStateCode"
+				style="text-align: left; font-size: 14px">UBO State Code</label><br /> 
+				<select style="padding-top: 2px" class="form-control input-width-medium"
+				name="uboState" id="idUBOStateCode" tabindex="430">
+				<option value="">Select </option>
+				<option value="">1</option>
+				<option value="">2</option>
+			</select>
+			<span class="formentry-errmsg" id="alertUBOStateCode"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUBOCountry"
+				style="text-align: left; font-size: 14px">UBO Country</label><br /> 
+				<select style="padding-top: 2px" class="form-control input-width-medium"
+				name="uboCntry" id="idUBOCountry" tabindex="430">
+				<option value="">Select </option>
+				<option value="">1</option>
+				<option value="">2</option>
+			</select>
+			<span class="formentry-errmsg" id="alertUBOCountry"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUBOAddrType"
+				style="text-align: left; font-size: 14px">UBO Address Type</label><br /> 
+				<select style="padding-top: 2px" class="form-control input-width-medium"
+				name="uboAddTy" id="idUBOAddrType" tabindex="430">
+				<option value="">Select </option>
+				<option value="">1</option>
+				<option value="">2</option>
+			</select>
+			<span class="formentry-errmsg" id="alertUBOAddrType"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUBOCountryTaxResi"
+				style="text-align: left; font-size: 14px">UBO Country of Tax Residency</label><br /> 
+				<select style="padding-top: 2px" class="form-control input-width-medium"
+				name="uboCtr" id="idUBOCountryTaxResi" tabindex="430">
+				<option value="">Select </option>
+				<option value="">1</option>
+				<option value="">2</option>
+			</select>
+			<span class="formentry-errmsg" id="alertUBOCountryTaxResi"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUBOTaxPayIdenNo"
+				style="text-align: left; font-size: 14px">UBO Tax Payer Identification No</label><br /> 
+				<input type="text" placeholder="UBO Tax Payer Identification No" maxlength="100" 
+				class="form-control" id="idUBOTaxPayIdenNo" name="uboTin"
+				style="width: 16em" />
+			<span class="formentry-errmsg" id="alertUBOTaxPayIdenNo"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUBOIdenDocType"
+				style="text-align: left; font-size: 14px">UBO Identification Document Type</label><br /> 
+				<select style="padding-top: 2px" class="form-control input-width-medium"
+				name="uboIdTy" id="idUBOIdenDocType" tabindex="430">
+				<option value="">Select </option>
+				<option value="">1</option>
+				<option value="">2</option>
+			</select>
+			<span class="formentry-errmsg" id="alertUBOIdenDocType"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUBOCountryBirth"
+				style="text-align: left; font-size: 14px">UBO Country of Birth</label><br /> 
+				<select style="padding-top: 2px" class="form-control input-width-medium"
+				name="uboCob" id="idUBOCountryBirth" tabindex="430">
+				<option value="">Select </option>
+				<option value="">1</option>
+				<option value="">2</option>
+			</select>
+			<span class="formentry-errmsg" id="alertUBOCountryBirth"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 0.5; margin-left: -4px; padding-top: 7px; margin-top: -13px">
+			<label class="control-label" for="idUBODateOfBirth"
+				style="text-align: left; font-size: 14px">UBO Date of Birth: </label><br />
+			<p class="input-group input-width-medium">
+				<input type="text" maxlength="100" class="form-control"
+					id="idUBODateOfBirth" name="uboDob" placeholder="DD/MM/YYYY"
+					tabindex="330"> <span
+					class="input-group-btn datepicker-icon">
+					<button type="button"
+						class="btn btn-default calendar-icon-container"
+						data-toggle="tooltip" data-placement="top"
+						title="Select UBO Date of Birth">
+						<em class="glyphicon calendar-icon-theme"></em>
+					</button>
+				</span>
+			</p>
+			<span class="formentry-errmsg" id="alertUBODateOfBirth"></span>
+		</div>
+		<br /> <br /> <br /> <br />
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUBOGender"
+				style="text-align: left; font-size: 14px">UBO Gender</label><br /> 
+				<select style="padding-top: 2px" class="form-control input-width-medium"
+				name="uboGender" id="idUBOGender" tabindex="430">
+				<option value="">Select </option>
+				<option value="M">Male</option>
+				<option value="F">Female</option>
+			</select>
+			<span class="formentry-errmsg" id="alertUBOGender"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUBOFatherName"
+				style="text-align: left; font-size: 14px">UBO Father's Name</label><br /> 
+				<input type="text" placeholder="UBO Father's Name" maxlength="100" 
+				class="form-control" id="idUBOFatherName" name="uboFrNam"
+				style="width: 16em" />
+			<span class="formentry-errmsg" id="alertUBOFatherName"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUBOOccupation"
+				style="text-align: left; font-size: 14px">UBO Occupation</label><br /> 
+				<select style="padding-top: 2px" class="form-control input-width-medium"
+				name="uboOcc" id="idUBOOccupation" tabindex="430">
+			</select>
+			<span class="formentry-errmsg" id="alertUBOOccupation"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUBOOccupationType"
+				style="text-align: left; font-size: 14px">UBO Occupation Type</label><br /> 
+				<select style="padding-top: 2px" class="form-control input-width-medium"
+				name="uboOccTy" id="idUBOOccupationType" tabindex="430">
+				<option value="">Select </option>
+				<option value=""></option>
+				<option value=""></option>
+			</select>
+			<span class="formentry-errmsg" id="alertUBOOccupationType"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUBOTelephone"
+				style="text-align: left; font-size: 14px">UBO Telephone</label><br /> 
+				<input type="text" placeholder="UBO Telephone" maxlength="100" 
+				class="form-control" id="idUBOTelephone" name="uboTel"
+				style="width: 16em" />
+			<span class="formentry-errmsg" id="alertUBOTelephone"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUBOMobile"
+				style="text-align: left; font-size: 14px">UBO Mobile</label><br /> 
+				<input type="text" placeholder="UBO Mobile" maxlength="100" 
+				class="form-control" id="idUBOMobile" name="uboMobile"
+				style="width: 16em" />
+			<span class="formentry-errmsg" id="alertUBOMobile"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUBOCode"
+				style="text-align: left; font-size: 14px">UBO Code</label><br /> 
+				<select style="padding-top: 2px" class="form-control input-width-medium"
+				name="uboCode" id="idUBOCode" tabindex="430">
+				<option value="">Select </option>
+				<option value=""></option>
+				<option value=""></option>
+			</select>
+			<span class="formentry-errmsg" id="alertUBOCode"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUBOHolPc"
+				style="text-align: left; font-size: 14px">UBO HOL PC</label><br /> 
+				<input type="text" placeholder="UBO HOL PC" maxlength="100" 
+				class="form-control" id="idUBOHolPc" name="uboHolPc"
+				style="width: 16em" />
+			<span class="formentry-errmsg" id="alertUBOHolPc"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUBODeclarationFlag"
+				style="text-align: left; font-size: 14px">UBO Declaration Flag</label><br /> 
+				<select style="padding-top: 2px" class="form-control input-width-medium"
+				name="uboDf" id="idUBODeclarationFlag" tabindex="430">
+				<option value="">Select </option>
+				<option value="Y">Yes</option>
+				<option value="N">No</option>
+			</select>
+			<span class="formentry-errmsg" id="alertUBODeclarationFlag"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idAadhaarReportPerson"
+				style="text-align: left; font-size: 14px">Aadhaar of Reporting Person</label><br /> 
+				<input type="text" placeholder="Aadhaar of Reporting Person" maxlength="100" 
+				class="form-control" id="idAadhaarReportPerson" name="aadhaarRp"
+				style="width: 16em" />
+			<span class="formentry-errmsg" id="alertAadhaarReportPerson"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idUpdateIndicator"
+				style="text-align: left; font-size: 14px">New or Update Indicator</label><br /> 
+				<select style="padding-top: 2px" class="form-control input-width-medium"
+				name="newChange" id="idUpdateIndicator" tabindex="430">
+				<option value="">Select </option>
+				<option value="Y">Yes</option>
+				<option value="N">No</option>
+			</select>
+			<span class="formentry-errmsg" id="alertUpdateIndicator"></span>
+		</div>
+		<br/><br/><br/>
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idLogName"
+				style="text-align: left; font-size: 14px">Log Name</label><br /> 
+				<input type="text" placeholder="Log Name" maxlength="100" 
+				class="form-control" id="idLogName" name="logName"
+				style="width: 16em" />
+			<span class="formentry-errmsg" id="alertLogName"></span>
+		</div>
+		<br/><br/><br/>
+	</div>
+		<!-- End of Non-Individuals Section -->
+		
+		
+		<br />
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idppfdeposite"
+				style="text-align: left; font-size: 14px">Declaration</label><br />
+			<textarea name="message" rows="10" cols="30"
+				placeholder="Declaration" class="form-control"
+				id="idDeclarationFatca" tabindex="18" disabled >I acknowledge and confirm that the information provided above is true and correct to the best of my knowledge 
+and belief. In case any of 
+the above specified information is found to be false or untrue or misleading or misrepresenting, I/ am aware that I may liabl
+e for it. 
+I hereby 
+authorize you [CAMS/Fund/AMC] to disclose, share,
+rely
+,
+remit in any form, mode or manner, all / any of the information provided by me, 
+including  all  changes,  updates  to  such  information  as  and  when  provided  by  me  to
+/  any  of  the
+Mutual  Fund,  its  Sponsor,  Asset 
+Management Company, trustees, their employees / R
+TAs  ('the Authorized Parties') or any Indian or foreign governmental or statutory or 
+judicial  authorities  /  agencies  including  but  not  limited  to  the  Financial  Intelligence  Unit
+-
+India  (FIU
+-
+IND),  the  tax  /  revenue  authorities  in 
+India or outside India wher
+ever it is legally required and other investigation agencies without any obligation of advising me of the same. 
+Further, I authorize to share the given information to other SEBI Registered Intermediaries/or any regulated intermediaries r
+egistered with 
+SEBI
+/ RBI / IRDA / PFRDA to facilitate single submission / update & for other relevant purposes. 
+I also undertake to keep you informed in 
+writing  about  any  changes  /  modification  to  the  above  information  in  future
+within  30  days
+and  also  undertake  to  provide 
+any  other 
+additional information as may be required at your / Fund�s end
+or
+by  domestic  or  overseas  regulators/  tax  authorities
+.
+I/We  authorize 
+Fund/AMC/RTA to provide relevant information to upstream payors to enable withholding to occur and pay out any s
+ums from my account 
+or close or suspend my account(s) without any obligation of advising me of the same
+. I also confirm that I have read and understood the 
+FATCA & CRS Terms and Conditions
+given
+below
+and hereby accept the same</textarea>
+		</div>
+		<br />
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<label class="control-label" for="idppfdeposite"
+				style="text-align: left; font-size: 14px">Accept</label><br /> <input
+				type="checkbox" id= "idAccept" class="form-control" id="currentvalue"
+				style="width: 1em" tabindex="19" />
+		<span class="formentry-errmsg" id="alertAccept"></span>
+		</div>
+
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 1; margin-left: -4px; padding-top: 14px">
+			<button type="submit" style="width: 14%; margin-left: 24px;"
+				class="form-control addbtn" tabindex="20"
+				id="idFatcaSubmit" name="fatcaSubmit" >Submit</button>
+		</div>
+	</form>
+</div>
+<br />
+<br />
+<br />
+<script>
+	$(document).ready(function() {
+		$(function() {
+			"use strict";
+			$("[data-toggle=\"tooltip\"]").tooltip();
+			$("#idStartDate,#idMaturityDate,#idExtensionDate").datepicker({
+				format : "dd/mm/yyyy",
+				todayHighlight : true,
+				todayBtn : true
+			});
+			$(".datepicker-icon").on("click", function() {
+				$(this).closest(".input-group").find("input").trigger("focus");
+			});
+		});
+
+		$(".gotoisip").click(function() {
+			 $("#idInvest").empty();
+
+			$(".dashboardheading").html("ISIP Mandate Registration");
+			$("#idInvest").load("invest/isip.html"); 
+
+		});
+
+		$(".fatchprev").click(function() {
+			$("#idInvest").empty();
+			$(".dashboardheading").html("upload Document");
+			$("#idInvest").load("invest/cccreation.html");
+		});
+	});
+</script>

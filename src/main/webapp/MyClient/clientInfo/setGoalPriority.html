@@ -1,0 +1,36 @@
+<script src="clientInfo/js/setGoalPriority.js"></script>
+<script src="clientInfo/js/validationForAll.js"></script>
+<script src="clientInfo/js/common.js"></script>
+
+<div class="cicontainer">
+	<form class="form-horizontal" action="#">
+		<div class="form-group">
+			<div class="col-sm-12">
+				<span class="formentry-errmsg" id="alertform"></span>
+			</div>
+		</div>
+		<div class="form-group">
+			<table width="100%" class="table table-hover">
+				<thead>
+					<tr>
+						<th>Goal Type</th>
+			           	<th>Goal Description</th>
+			           	<th>Current Priority</th>
+			           	<th>New Priority</th>
+			           	<th>Start month and year for goal</th>
+					</tr>
+				</thead>
+				 <tbody id="idGoalList">
+				</tbody>
+			</table>
+ 		</div>
+ 		<div class="clearfix"></div>
+		<br><br>
+		<div class="form-group">
+			<div class="col-sm-12">
+				<button type="button" class="pull-left btn addbtn" id="savePriority" tabindex="540">Save</button>
+				<button type="reset" id="undo" class="pull-left btn addbtn" tabindex="27">UNDO</button> 
+			</div>
+		</div>
+	</form>
+</div>

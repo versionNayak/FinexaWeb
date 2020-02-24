@@ -1,0 +1,183 @@
+<!doctype html>
+<script type="text/javascript" src="clientRecords/js/viewClientContactManagement.js"></script>
+<script src="../Common/assets/js-library/xepOnline.jqPlugin.js"></script>
+<style type="text/css">
+td {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.expand-maximum-on-hover:hover {
+  max-width : initial; 
+}
+</style>
+<div class="dmcontainer user_table" width="1100px" style="overflow:scroll;">
+
+<form class="form-horizontal form_search_client" name="seacrhClientRecordForm" id="idSeacrhClientRecordForm" action="#">
+            <div class="form-group">
+                <label for="ownerName" class="col-sm-1 control-label"></label>
+                <div class="col-sm-8 col-md-5 col-lg-5">
+                    <label>User:</label>
+                    <span class="form-static-value">
+                        <select id="idUserList" name="advisorId" class="form-control input-width-medium" tabindex="430">
+                        </select>
+                            </span>
+                </div>
+
+                <label for="ownerMobile" class="col-sm-1 control-label"></label>
+                <div class="col-sm-8 col-md-5 col-lg-5">
+                    <label>Location:</label>
+                    <span class="form-static-value">
+                        <select id="idLocation" name="advisorCity"  class="form-control input-width-medium" tabindex="430">
+                        		<option value="">Select Location</option>             
+                        </select>
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="ownerPan" class="col-sm-1 control-label"></label>
+                <div class="col-sm-8 col-md-5 col-lg-5">
+                    <label>Organisation:</label>
+                    <span class="form-static-value" id="hide320" >
+                        <select id="idOrgName" name="clientOrgName" class="form-control input-width-medium" tabindex="430">
+                                     </select>
+                            </span>
+                </div>
+
+                <label for="aadhar" class="col-sm-1 control-label"></label>
+                <div class="col-sm-8 col-md-5 col-lg-5">
+                    <label>Gender:</label>
+                    <span class="form-static-value" id="hide320" >
+                        <select id="idGender" name="clientGender" class="form-control input-width-medium"  tabindex="430">
+                                      <option selected value="">Select</option>
+                                        <option value="M">Male</option>
+                                        <option value="F">Female</option>
+                                    </select>
+                            </span>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="ownerPan" class="col-sm-1 control-label"></label>
+                <div class="col-sm-8 col-md-5 col-lg-5">
+                    <label>Marital Status:</label>
+                    <span class="form-static-value" id="hide320" >
+                        <select class="form-control input-width-medium" id="idMaritalStatus" name="clientMaritalSatusId" tabindex="430">
+                         </select>
+                            </span>
+                </div>
+
+                <label for="aadhar" class="col-sm-1 control-label"></label>
+                <div class="col-sm-8 col-md-5 col-lg-5">
+                    <label>Already Retired:</label>
+                    <span class="form-static-value" id="hide320" >
+                        <select class="form-control input-width-medium" id="idRetiredFlag" name="clientRtdFlag" tabindex="430">
+                                      <option selected value="">Select</option>
+                                        <option value="Y">Yes</option>
+                                        <option value="N">No</option>
+ 
+                       </select>
+                            </span>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="ownerPan" class="col-sm-1 control-label"></label>
+                <div class="col-sm-8 col-md-5 col-lg-5">
+                    <label>City:</label>
+                    <span class="form-static-value" id="hide320" >
+                        <select class="form-control input-width-medium" id="idCity" name="clientCity" tabindex="430">
+                        
+                        </select>
+                            </span>
+                </div>
+                
+
+                <label for="aadhar" class="col-sm-1 control-label"></label>
+                <div class="col-sm-8 col-md-5 col-lg-5">
+                     <div class="col-md-12 pad0">
+                    <label>Age between:</label>
+                    </div>
+                    <div class="col-md-5 padl0">
+                    <input type="text" id="idMinAge" name="clientMinAge" class="form-control input-width-small-min input-width-owner input-width-small" placeholder="" tabindex="270"/>
+                    </div>
+                    <div class="col-md-5 padl0">
+                    <input type="text" id="idMaxAge" name="clientMaxAge" class="form-control input-width-small-min input-width-owner input-width-small" placeholder="" tabindex="270"/>
+                    </div>
+                </div>
+                </div>
+           <br>
+
+          
+
+            <div class="form-group search_btns">
+                <div class="col-sm-12 col-sm-offset-1" align="center" style="margin-left:215px">
+                    <input type="button" class="pull-left btn addbtn" tabindex="540" id="idContactSearch" value="Search">
+                    <input  type="reset" class="pull-left btn addbtn" tabindex="540" value="Reset">
+                </div>
+            </div>
+</form>
+
+<!-- <div class="clearfix"></div>
+ 
+ <br> -->
+ 
+<!-- ============================================== -->
+<table width="100%" id="idContactListTable" class="table table-hover">
+<thead>
+  <!-- <tr class="nonglidtotal"> -->
+  <tr>
+    <th>Client name </th>
+    <th>Gender</th>
+    <th>Age</th>
+    <th>Marital Status</th>
+    <th>Already Retired</th>
+    <th>Organization</th>
+    <th>Mobile Number</th> 
+    <th>Email ID</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Country</th>
+    <th>User</th>
+    <th>User Location</th>
+    <th class = "hidden">A</th>
+  </tr>
+</thead>
+<tbody id="idContactList">
+</tbody>
+</table>
+<!-- ============================================== -->
+   <!-- <br>
+
+
+   <div class="clearfix"></div>
+
+   <div class="col-md-12 pad0"> -->
+
+   <div class="col-md-offset-1 col-md-5 pad0">
+   <input type="button" id="idContactSearchDownload" class="pull-left form-control addbtn" style="width: 45%;margin-left:250px;margin-top:20px" tabindex="540" value="Download">
+   </div>
+
+   <!-- <div class="col-md-6 pad0 text-right">
+   <ul class="pagination">
+    <li class="active"><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+  </ul>
+   </div> -->
+
+</div>
+<!-- 
+    <div class="clearfix"></div>
+
+</div> 
+ -->

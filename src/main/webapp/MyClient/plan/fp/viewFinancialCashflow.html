@@ -1,0 +1,342 @@
+<script src="plan/fp/js/viewFinancialCashflow.js"></script>
+<script src="plan/fp/js/common.js"></script>
+<style>
+	.a[style]{
+		overflow: scroll !important;
+	}
+</style>
+<div id="jssor_22" class="height413px">
+	<div data-u="slides" class="slider9" style="height: 400px; top: 30px">
+		<div class="a">
+			<div data-u="image" style="">
+				<div id="idMaxcurrentaa" class="popup">
+					<img src="../Common/assets/images/maximg.png" class="maxbtn">
+				</div>
+				<table width="76%" class="cashflowInflows"
+					style="z-index: 10 !important; margin-top: 31px; margin-left: 47px"
+					border="1" id="idCashInflowTable">
+					<thead>
+
+						<tr>
+							<th>Age</th>
+							<th>Year</th>
+							<th>Salary,Bonus & Professional Income</th>
+							<th>Business Income</th>
+							<th>Rental Income</th>
+							<th>Pension Income</th>
+							<th>Other Income</th>
+							<th>Interest Income</th>
+							<th>Total Individual Income</th>
+							<th>Lumpsum inflows</th>
+							<th>Total Income</th>
+
+						</tr>
+					</thead>
+					<tbody id="idCashInflowTbody">
+				</table>
+				<br />
+
+			</div>
+			<button data-u="thumb">Cash Inflows</button>
+		</div>
+		<div>
+			<div data-u="image">
+				<div id="idmaxrecommendedaa" class="popup">
+					<img src="../Common/assets/images/maximg.png" class="maxbtn" />
+				</div>
+				<table width="76%" class="cashflowInflows"
+					style="z-index: 10 !important; margin-top: 31px; margin-left: 47px"
+					border="1" id="idCashOutflowTable">
+					<thead>
+
+						<tr>
+							<th>Age</th>
+							<th>Year</th>
+							<th>Living Expense</th>
+							<th>Discretionary Expense</th>
+							<th>Loan Payments</th>
+							<th>Investment Contributions</th>
+							<th>Other Committed outflows</th>
+							<th>Total Expense</th>
+
+
+						</tr>
+					</thead>
+					<tbody id="idCashOutflowTbody">
+				</table>
+				<br />
+				<!--<table width="49%" style="margin-left:215px">
+							<tr>
+							<td><b>Download Projections</b></td>
+							<td><input type="radio" name="download" style="position:sticky"></input></td>
+							<td style="text-align: left;vertical-align:bottom;"><label>Monthly</label></td>
+							<td><input type="radio" name="download" style="position:sticky" checked="true"></input></td>
+							<td style="text-align: left;vertical-align:bottom;"><label>Annually</label></td>
+							<td><input type="submit" value="Submit" class="form-control"/> </td>
+							</tr>
+						</table>-->
+				<div class="row">
+					<div class="col-lg-12">
+						<table width="100%" style="margin-left: 30px; margin-top: 12px">
+
+							<tr style="background-color: white; vertical-align: top">
+								<td><div id="idmarketcap"
+										style="width: 100%; margin-top: -25px; margin-left: -14px">
+									</div></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<button data-u="thumb">Cash Outflows</button>
+		</div>
+		<div>
+			<div data-u="image">
+				<div id="idMaxcurrentsubaa" class="popup">
+					<img src="../Common/assets/images/maximg.png" class="maxbtn"/>
+				</div>
+				<table width="96%" class="recommendedtbl cashflowdetails"
+					style="z-index: 10 !important; margin-top: 31px; margin-left: 27px"
+					border="1">
+					<thead>
+						<tr>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th colspan="5" class="aligncenter">Investment Portfolio</th>
+							<th colspan="5" class="aligncenter">Not Earmarked</th>
+						</tr>
+						<tr>
+							<th>Year</th>
+							<th>Age</th>
+							<th>Income</th>
+							<th>Expense</th>
+							<th>Contigency Fund</th>
+							<th>Surplus</th>
+							<th>Surplus Allocated</th>
+							<th>Net Flow</th>
+							<th>Opening Balance</th>
+							<th>Additions</th>
+							<th>Return</th>
+							<th>Goal Payout</th>
+							<th>Closing Balance</th>
+							<th>Opening Balance</th>
+							<th>Investible Surplus not earmarked to goals</th>
+							<th>Return on Investment</th>
+							<th>Closing Balance</th>
+						</tr>
+					</thead>
+					<tbody id="idCashflowDetailed"></tbody>
+				</table>
+				<br />
+				<!--<table width="49%" style="margin-left:215px">
+								<tr>
+								<td><b>Download Projections</b></td>
+								<td><input type="radio" name="download" style="position:sticky"></input></td>
+								<td style="text-align: left;vertical-align:bottom;"><label>Monthly</label></td>
+								<td><input type="radio" name="download" style="position:sticky" checked="true"></input></td>
+								<td style="text-align: left;vertical-align:bottom;"><label>Annually</label></td>
+								<td><input type="submit" value="Submit" class="form-control"/> </td>
+								</tr>
+							</table>-->
+
+			</div>
+			<button data-u="thumb">Cashflows Detailed</button>
+		</div>
+	</div>
+	<!-- Thumbnail Navigator -->
+	<div data-u="thumbnavigator" class="jssort22" data-autocenter="1">
+		<!-- Thumbnail Item Skin Begin -->
+		<div data-u="slides">
+			<div data-u="prototype" class="p">
+				<div>
+					<div data-u="thumbnailtemplate"></div>
+				</div>
+			</div>
+		</div>
+		<!-- Thumbnail Item Skin End -->
+	</div>
+	<!-- Arrow Navigator -->
+	<span data-u="arrowleft" class="jssora05l Incomeleft"><img
+		src="../Common/assets/images/leftarrow.png" /></span> <span
+		data-u="arrowright" class="jssora05r Incomeright"><img
+		src="../Common/assets/images/rightarrow.png" /></span>
+</div>
+<!--Current AA max pop-->
+<div id="idpopcurrentaa" class="modal">
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close" style="margin-top: -5px">&times;</span>
+			<h4 style="margin-top: 5px">Cash Inflows</h4>
+		</div>
+		<div class="modal-body">
+			<table width="75%" class="cashflowInflows"
+				style="z-index: 10 !important; margin-top: 13px; margin-left: 47px"
+				border="1" id="idCashInflowTableModal">
+				<thead>
+					<tr>
+						<th>Age</th>
+						<th>Year</th>
+						<th>Salary,Bonus & Professional Income</th>
+						<th>Business Income</th>
+						<th>Rental Income</th>
+						<th>Pension Income</th>
+						<th>Other Income</th>
+						<th>Interest Income</th>
+						<th>Total Individual Income</th>
+						<th>Lumpsum inflows</th>
+						<th>Total Income</th>
+
+					</tr>
+				</thead>
+				<tbody id="idCashInflowTbodyModal"></tbody>
+			</table>
+			<br />
+			<!--<table width="49%" style="margin-left:215px">
+								<tr>
+								<td><b>Download Projections</b></td>
+								<td><input type="radio" name="download" style="position:sticky"></input></td>
+								<td style="text-align: left;vertical-align:bottom;"><label>Monthly</label></td>
+								<td><input type="radio" name="download" style="position:sticky" checked="true"></input></td>
+								<td style="text-align: left;vertical-align:bottom;"><label>Annually</label></td>
+								<td><input type="submit" value="Submit" class="form-control"/> </td>
+								</tr>
+							</table>-->
+
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+</div>
+<!-- Recommended aa pop -->
+<div id="idpoprecommendedaa" class="modal1">
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close1" style="margin-top: -5px">&times;</span>
+			<h4 style="margin-top: 5px">Cash Outflows</h4>
+		</div>
+		<div class="modal-body">
+			<table width="65%" class="cashflowInflows"
+				style="z-index: 10 !important; margin-top: 31px; margin-left: 47px"
+				id="idCashOutflowTableModal">
+				<thead>
+
+					<tr>
+						<th>Age</th>
+						<th>Year</th>
+						<th>Living Expense</th>
+						<th>Discretionary Expense</th>
+						<th>Loan Payments</th>
+						<th>Investment Contributions</th>
+						<th>Other Committed outflows</th>
+						<th>Total Expense</th>
+
+
+					</tr>
+				</thead>
+				<tbody id="idCashOutflowTbodyModal">
+			</table>
+			<br />
+			<!--<table width="49%" style="margin-left:215px">
+									<tr>
+									<td><b>Download Projections</b></td>
+									<td><input type="radio" name="download" style="position:sticky"></input></td>
+									<td style="text-align: left;vertical-align:bottom;"><label>Monthly</label></td>
+									<td><input type="radio" name="download" style="position:sticky" checked="true"></input></td>
+									<td style="text-align: left;vertical-align:bottom;"><label>Annually</label></td>
+									<td><input type="submit" value="Submit" class="form-control"/> </td>
+									</tr>
+								</table>-->
+			<div class="row">
+				<div class="col-lg-12">
+					<table width="100%" style="margin-top: 12px">
+
+						<tr style="background-color: white; vertical-align: top">
+							<td><div id="idmarketcappop"
+									style="width: 80%; margin-top: 18px; margin-left: 10px">
+								</div></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+</div>
+<!-- Current sub AA -->
+<div id="idpopcurrentsubaa" class="modal2">
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close2" style="margin-top: -5px">&times;</span>
+			<h4 style="margin-top: 5px">Cashflows Detailed</h4>
+		</div>
+		<div class="modal-body" style="overflow:auto">
+			<table width="96%" class="recommendedtbl cashflowdetails"
+				style="z-index: 10 !important; margin-top: 10px; margin-left: 4px;"
+				border="1">
+				<thead>
+					<tr>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th colspan="5" class="aligncenter">Investment Portfolio</th>
+						<th colspan="5" class="aligncenter">Not Earmarked</th>
+					</tr>
+					<tr>
+						<th>Year</th>
+						<th>Age</th>
+						<th>Income</th>
+						<th>Expense</th>
+						<th>Contigency Fund</th>
+						<th>Surplus</th>
+						<th>Surplus Allocated</th>
+						<th>Net Flow</th>
+						<th>Opening Balance</th>
+						<th>Additions</th>
+						<th>Return</th>
+						<th>Goal Payout</th>
+						<th>Closing Balance</th>
+						<th>Opening Balance</th>
+						<th>Investible Surplus not earmarked to goals</th>
+						<th>Return on Investment</th>
+						<th>Closing Balance</th>
+					</tr>
+				</thead>
+				<tbody id="idCashflowDetailedModal">
+				</tbody>
+			</table>
+			<br />
+			<!--<table width="49%" style="margin-left:215px">
+										<tr>
+										<td><b>Download Projections</b></td>
+										<td><input type="radio" name="download" style="position:sticky"></input></td>
+										<td style="text-align: left;vertical-align:bottom;"><label>Monthly</label></td>
+										<td><input type="radio" name="download" style="position:sticky" checked="true"></input></td>
+										<td style="text-align: left;vertical-align:bottom;"><label>Annually</label></td>
+										<td><input type="submit" value="Submit" class="form-control"/> </td>
+										</tr>
+									</table>-->
+
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+</div>
+<!--Infosys -->

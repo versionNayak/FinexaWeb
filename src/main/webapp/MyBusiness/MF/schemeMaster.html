@@ -1,0 +1,44 @@
+<script src="MyBusiness/MF/Mfjs/schemeMaster.js"></script>
+<script src="MyBusiness/MF/Mfjs/validateSchemeMaster.js"></script>
+<script src="MyBusiness/MF/Mfjs/validationForAll.js"></script>
+<div class="MFforms">
+	<h4 class="formhead">Scheme Master Upload</h4>
+	<form class="form-horizontal marginleft10per" action="#" >
+						<div class="form-group">
+							<div>
+								<label>RTA:</label>
+								<span class="form-static-value">
+									<select class="form-control input-width-medium" id="idRTA" name="nameRTA" tabindex="1">
+										<option value="">Select</option>
+										<option value="1">CAMS</option>
+										<option value="2">Karvy</option>
+									</select>
+									<span class="formentry-errmsg" id="alertRTA"></span>
+								</span>
+							</div>
+							<br/>
+							<div>
+								<label>File Type:</label>
+								<span class="form-static-value">
+									<select class="form-control input-width-medium" id="idFileType" name="nameFileType" tabindex="2">
+										<option value="">Select</option>
+										<option value="1">DBF</option>
+										<option value="2">CSV</option>
+									</select>
+									<span class="formentry-errmsg" id="alertFileType"></span>
+								</span>
+							</div>
+							<br/>
+							<div>
+								<label>Select File:</label>
+								<input type="file" id="myFile" multiple size="50" id="idSelectFile" name="nameSelectFile" tabindex="3">
+								<span class="formentry-errmsg" id="alertFileType"></span>
+							</div>
+							<br/>
+							<button type="submit" class="form-control addbtn" tabindex="4">Import</button>
+							</div>
+						
+						</form>
+							
+	
+	</div>

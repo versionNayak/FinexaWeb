@@ -1,0 +1,81 @@
+<script src="clientInfo/js/common.js"></script>
+<script  src="clientInfo/js/addGoalRetirement.js"></script>
+<script type="text/javascript" src="clientInfo/js/validateRetirementGoal.js"></script>
+<script type="text/javascript" src="clientInfo/js/validationForAll.js"></script>
+<div class="cicontainer">
+	<div>
+		<form class="form-horizontal" action="#" id="GoalForm">
+			<input type="hidden" name="lookupGoalTypeId" id="IdlookupGoalType"/>
+			<input type="hidden" name="id" id="Idgoal" value="0"/>
+			<div class="form-group form-group-lg">
+ 				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-8 asset-owner-wrapper">
+					<span class="formentry-errmsg" id="alertform"></span>
+				</div>
+			</div>
+			<div class="form-group form-group-lg">
+				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-8 asset-owner-wrapper">
+					<label>Family Member*:</label><br />
+					<table class="familymembertbl" width="20px">
+						<tr class="mem_icon" id="familyMemberImage">
+
+						</tr>
+					</table>
+				</div>
+			</div>
+			<hr class="full-width-divider">
+ 				<div class="form-group">
+				<label for="idgoalPriority" class="col-sm-1 control-label"></label>
+				<div class="col-sm-6">
+					<label>Goal Priority*:</label> 
+					<input type="text" id="idgoalPriority" name="priority" readonly="readonly" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter Goal Priority" tabindex="20" />
+					<span class="formentry-errmsg" id="alertgoalpriority"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="idcurrentAnnualExpense" class="col-sm-1 control-label"></label>
+				<div class="col-sm-6">
+					<label>Post Retirement Living Expenses as on today (Rs)*:</label>
+					<input type="text" id="idcurrentAnnualExpense" name="postRetirementAnnualExpense" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter Projected Annual Living Expenses"   tabindex="30">
+					<span class="formentry-errmsg" id="alertcurrentannualexpense"></span>
+				</div>
+			</div> 
+			<div class="form-group">
+				<label for="idcorpusFrequency" class="col-sm-1 control-label"></label>
+				<div class="col-sm-6">
+					<label>Post Retirement Payout Frequency*:</label> 
+					<span class="form-static-value">
+						<select class="form-control input-width-medium" id="idpayoutFrequency" name="postRetirementExpectedPayoutFrequency" required="required" tabindex="40">
+						</select>
+						<span class="formentry-errmsg" id="alertpayoutfrequency"></span>
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-6">
+					<label>Expected Inflation Rate (%):</label>
+					<input type="text" id="idinflationRate" name="expectedInflationRate" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter Expected Inflation Rate" tabindex="50" />
+					<span class="formentry-errmsg" id="alertinflationrate"></span>
+				</div>
+			</div>
+			<!-- <div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-6">
+					<label>Expected Returns on Corpus Post Goal Start (%):</label>
+					<input type="text" id="idreturnRate" name="expectedReturnOnCorpus" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Enter Expected Return on Corpus" tabindex="60" />
+					<span class="formentry-errmsg" id="alertreturnrate"></span>
+				</div>
+			</div> -->
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-11">
+					<button type="button" id="idSaveGoal" class="pull-left btn addbtn" tabindex="70">SAVE</button>
+					<button type="button" id="undo" class="pull-left btn addbtn" tabindex="80" onclick="undoChange()">UNDO</button> 
+				</div>
+			</div>
+			<div id="focusguard-2" tabindex="81"></</div>						
+		</form>
+	</div>
+</div>
+

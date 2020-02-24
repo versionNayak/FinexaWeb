@@ -1,0 +1,196 @@
+<script src="plan/gp/js/showGlidePath.js"></script>
+<script src="plan/gp/js/common.js"></script>
+<style>
+	@supports (-moz-appearance:none) {
+        .jssort08 div:nth-child(2) div:nth-child(2)[style] {
+            left: -80px !important;
+        }
+        .jssort08 div:nth-child(2) div:nth-child(3)[style] {
+            margin-left: -70px !important;
+        }
+        .jssort08 div:nth-child(2) div:nth-child(4)[style] {
+            left: 420px !important;
+        }
+        .jssort08 div:nth-child(2) div:nth-child(5)[style] {
+            left: 645px !important;
+        }
+	}
+</style>
+<div id="jssor_8" class="height413px">
+	<div data-u="slides" class="slider9" style="top: 30px">
+		<div>
+			<div data-u="image" class="row">
+				<div class="col-lg-6">
+					<table width="100%" id="glideTable" class="recommendedtbl" style="z-index:10 !important">
+						<thead>
+							<tr>
+								<th> Sub Asset Class
+								</th>
+								<th> Asset Class
+								</th>
+								<th>Allocation %
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr></tr>   
+							<tr class="classCash">
+								<td> <img src="../Common/assets/images/circle1.png"/> &nbsp; Cash/Liquid</td>
+								<td>Cash
+								</td>
+								<td id="idCash"> 0.0%
+								</td>
+							</tr> 
+							<tr class="classUSTD">
+								<td><img src="../Common/assets/images/circle2.png"/> &nbsp;Ultra Short Term Debt
+								</td>
+								<td>Fixed Income
+								</td>
+								<td id="idFIUltraShortTermDebt"> 
+									6.25%
+								</td>
+							</tr> 
+							<tr class="classSTD">
+								<td> <img src="../Common/assets/images/circle3.png"/> &nbsp; Short Term Debt
+								</td>
+								<td>Fixed Income
+								</td>
+								<td id="idFIShortTermDebt"> 7.50%
+								</td>
+							</tr>
+							<tr class="classLTD">
+								<td><img src="../Common/assets/images/circle4.png"/> &nbsp;Long Term Debt
+								</td>
+								<td>Fixed Income
+								</td>
+								<td id="idFILongTermDebt">3.75%
+								</td>
+							</tr>
+							<tr class="classDebtOthers">
+								<td><img src="../Common/assets/images/circle14.png"/> &nbsp;Debt Others
+								</td>
+								<td>Fixed Income
+								</td>
+								<td id="idFIDebtOthers">3.75%
+								</td>
+							</tr>
+							<tr class="classEquityLC">
+								<td> <img src="../Common/assets/images/circle5.png"/> &nbsp; Equity Large Cap 
+								</td>
+								<td >Equity 
+								</td>
+								<td id="idEquityLargeCap">7.50%
+								</td>
+								</tr>
+							<tr class="classEquityMDC">
+								<td><img src="../Common/assets/images/circle6.png"/> &nbsp;Equity Mid Cap
+								</td>
+								<td > Equity 
+								</td>
+								<td id="idEquityMidCap">0.00%
+								</td>
+							</tr>
+							<tr class="classEquitySC">
+								<td><img src="../Common/assets/images/circle11.png"/> &nbsp;Equity Small Cap
+								</td>
+								<td > Equity 
+								</td>
+								<td id="idEquitySmallCap">0.00%
+								</td>
+							</tr>
+							<tr class="classEquityMC">
+								<td><img src="../Common/assets/images/circle12.png"/> &nbsp;Equity Multi Cap
+								</td>
+								<td > Equity 
+								</td>
+								<td id="idEquityMultiCap">0.00%
+								</td>
+							</tr>
+							<tr class="classEquityInt">
+								<td><img src="../Common/assets/images/circle7.png"/> &nbsp; Equity International
+								</td>
+								<td > Equity 
+								</td>
+								<td id="idEquityInternational">0.00%
+								</td>
+							</tr>
+							<tr class="classEquityOther">
+								<td><img src="../Common/assets/images/circle13.png"/> &nbsp; Equity - Others
+								</td>
+								<td > Equity 
+								</td>
+								<td id="idEquityOther">0.00%
+								</td>
+							</tr>
+							<tr class="classAltPrec">
+								<td><img src="../Common/assets/images/circle8.png"/> &nbsp;Alternatives - Precious Metals
+								</td>
+								<td >Alternatives 
+								</td>
+								<td id="idAlternativesPrecious">100.00%
+								</td>
+							</tr>
+							<tr class="classAltReal">
+								<td><img src="../Common/assets/images/circle9.png"/> &nbsp;Alternatives - Real Estate
+								</td>
+								<td>Alternatives 
+								</td>
+								<td id="idAlternativeRealEstate">100.00%
+								</td>
+							</tr>
+							<tr class="classAltOther">
+								<td><img src="../Common/assets/images/circle10.png"/> &nbsp;Alternatives - Others
+								</td>
+								<td >Alternatives 
+								</td>
+								<td id="idAlternativeOther">100.00%
+								</td>
+							</tr>
+							<tr class="nonglidtotal">
+								<td ><b>Total
+								</b></td>
+								<td>
+								</td>
+								<td ><b id="idTotal">100.00%</b>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-lg-6">
+					<div id="idRecommendedasset"></div>
+				</div>
+			</div>
+			<button data-u="thumb"> Recommended Asset Allocation  </button>
+		</div>
+		
+		<div>
+			<div data-u="image"> <div id="idLineGraph"></div></div>
+			<button data-u="thumb">Glide Path </button>
+		</div>
+		<div>
+			<div data-u="image"> <div id="idRecommendedbarGraph"></div></div>
+			<button data-u="thumb">Asset Allocation Movement </button>
+		</div>
+		<div style="padding-top: 10px">
+			<div data-u="image"><div id="idHistoricalGraph" ></div></div>
+			<button data-u="thumb">Historical Returns </button>
+		</div>
+	</div>
+	<!-- Thumbnail Navigator -->
+	<div data-u="thumbnavigator" class="jssort08" data-autocenter="1">
+		<!-- Thumbnail Item Skin Begin -->
+		<div data-u="slides">
+			<div data-u="prototype" class="p">
+				<div>
+					<div data-u="thumbnailtemplate"></div>
+				</div>
+				<div></div>
+			</div>
+		</div>
+		<!-- Thumbnail Item Skin End -->
+	</div>
+	<!-- Arrow Navigator -->
+	<span data-u="arrowleft" class="jssora05l glidrleftarrow"><img src="../Common/assets/images/leftarrow.png"/></span>
+	<span data-u="arrowright" class="jssora05r glidright"><img src="../Common/assets/images/rightarrow.png"/></span>
+</div>

@@ -1,0 +1,293 @@
+<script src="plan/fp/js/viewInsurancePlanning.js"></script>
+<script src="plan/fp/js/common.js"></script>
+<div id="jssor_13" class="height413px">
+	<div data-u="slides" class="slider9" style="height: 400px; top: 30px">
+		<div>
+			<div data-u="image">
+				<div class="col-lg-6">
+					<!-- <br />
+							<h4 style="margin-left:34px;width:100%"> Life Insurance Analysis and Recommendations</h4><br/>
+					 --><br>
+					<table width="181%" style="margin-left: 34px">
+						<thead>
+							<tr>
+								<th>Family Members</th>
+								<th>Existing Life Cover</th>
+								<th>Recommended Life Cover*</th>
+								<th>Additional Life Cover to be taken</th>
+
+
+							</tr>
+						</thead>
+						<tbody id="lifeCoverTable">
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<button data-u="thumb">Life Cover</button>
+		</div>
+
+		<div>
+			<div data-u="image">
+
+				<div id="idMaxcurrentaa" class="popup">
+				</div>
+				<div>
+					<!-- <br>
+					<h4 style="margin-left:30px;margin-top:-33px">Health Insurance Analysis & Recommendations</h4> -->
+				<br>
+					<div>
+						<div>
+							<div class="container-fluid">
+								<table width="95%" class="individualoan">
+									<thead>
+										<tr>
+										<th colspan="1">Family Member</th>
+										<th colspan="2">Existing Health Cover</th>
+										<th colspan="2">Required Health Cover</th>
+										<th colspan="4">Recommended Health Cover</th>
+										</tr>
+										<tr>
+										<th></th>
+											<th>Individual Cover</th>
+											<th>Floating Cover</th>
+											<th>Individual Cover</th>
+											<th>Floating Cover</th>
+											<th>Individual Cover -Base</th>
+											<th>Individual Cover - Top Up</th>
+											<th>Floating Cover - Base</th>
+											<th>Floating Cover - Top Up</th>
+										</tr>
+									</thead>
+									<tbody id="healthCoverTable">
+									</tbody>
+								</table>
+								<br />
+								<!--	<table width="55%" style="margin-left:244px">
+					
+	<tr>
+	<td><b>Download Projections</b></td>
+	<td><input type="radio" name="download" style="position:sticky"></input></td>
+	<td style="text-align: left;vertical-align:bottom;"><label>Monthly</label></td>
+	<td><input type="radio" name="download" style="position:sticky"></input></td>
+	<td style="text-align: left;vertical-align:bottom;"><label>Annually</label></td>
+	<td><input type="submit" value="Submit" class="form-control"/> </td>
+	</tr>
+
+										</table>-->
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+
+			<button data-u="thumb">Health Cover</button>
+		</div>
+		<div>
+			<div data-u="image">
+
+				<div id="idMaxTotalLoan" class="popup">
+				</div>
+				<!-- <h4 style="margin-left:42px"> Critical Illness Cover Recommendation
+</h4> -->
+				<br>
+				<table width="80%" style="margin-top:-6px;margin-left: 43px;">
+					<thead>
+						<tr>
+							<th>Family Members</th>
+							<th>Existing CI Cover</th>
+							<th>Recommended CI Cover</th>
+							<th>Additional CI Cover to be taken</th>
+
+
+						</tr>
+					</thead>
+					<tbody id="criticalIllnessTable">
+
+
+					</tbody>
+				</table>
+				<br />
+				<!--<table width="55%" style="margin-left:226px">
+					
+	<tr>
+	<td><b>Download Projections</b></td>
+	<td><input type="radio" name="download" style="position:sticky"></input></td>
+	<td style="text-align: left;vertical-align:bottom;"><label>Monthly</label></td>
+	<td><input type="radio" name="download" style="position:sticky"></input></td>
+	<td style="text-align: left;vertical-align:bottom;"><label>Annually</label></td>
+	<td><input type="submit" value="Submit" class="form-control"/> </td>
+	</tr>
+
+											</table>-->
+
+			</div>
+			<button data-u="thumb">Critical Illness</button>
+		</div>
+		<div>
+			<div data-u="image">
+				<br >
+<!-- 				<h4 style="margin-left:34px"> Permanent Disability Cover Recommendation</h4><br/>
+ -->				<table width="90%" style="margin-left: 34px">
+					<thead>
+						<tr>
+							<th>Family Members</th>
+							<th>Existing PA / PD Cover</th>
+							<th>Recommended PA / PD Cover</th>
+							<th>Additional PA / PD Cover to be taken</th>
+
+
+						</tr>
+					</thead>
+					<tbody id="permanentDisabilityTable">
+
+					</tbody>
+				</table>
+
+			</div>
+			<button data-u="thumb">Permanent Disability</button>
+		</div>
+
+	</div>
+	<!-- Thumbnail Navigator -->
+	<div data-u="thumbnavigator" class="jssort13" data-autocenter="1">
+		<!-- Thumbnail Item Skin Begin -->
+		<div data-u="slides">
+			<div data-u="prototype" class="p">
+				<div>
+					<div data-u="thumbnailtemplate"></div>
+				</div>
+				<div></div>
+			</div>
+		</div>
+		<!-- Thumbnail Item Skin End -->
+	</div>
+	<!-- Arrow Navigator -->
+	<span data-u="arrowleft" class="jssora05l Loansleft"><img
+		src="../Common/assets/images/leftarrow.png" /></span> <span
+		data-u="arrowright" class="jssora05r Loansright"><img
+		src="../Common/assets/images/rightarrow.png" /></span>
+</div>
+
+<!--income projection max table-->
+<div id="idPopIndividual" class="modal">
+
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close">&times;</span>
+			<!--  <h4 style="margin-left:34px"> Health Insurance Analysis & Recommendations</h4> -->
+			<br>
+		</div>
+		<div class="modal-body">
+
+
+			<div>
+				<div>
+					<div class="container-fluid">
+						<table width="97%" class="individualoan">
+							<thead>
+										<tr>
+										<th colspan="1">Family Member</th>
+										<th colspan="2">Existing Health Cover</th>
+										<th colspan="2">Required Health Cover</th>
+										<th colspan="4">Recommended Health Cover</th>
+										</tr>
+										<tr>
+											<th></th>
+											<th>Individual Cover</th>
+											<th>Floating Cover</th>
+											<th>Individual Cover</th>
+											<th>Floating Cover</th>
+											<th>Individual Cover -Base</th>
+											<th>Individual Cover - Top Up</th>
+											<th>Floating Cover - Base</th>
+											<th>Floating Cover - Top Up</th>
+										</tr>
+									</thead>
+							<tbody id="healthCoverTablePopup">
+
+							</tbody>
+						</table>
+						<br />
+						<!--<table width="38%" style="margin:auto">
+					
+	<tr>
+	<td><b>Download Projections</b></td>
+	<td><input type="radio" name="download" style="position:sticky"></input></td>
+	<td style="text-align: left;vertical-align:bottom;"><label>Monthly</label></td>
+	<td><input type="radio" name="download" style="position:sticky"></input></td>
+	<td style="text-align: left;vertical-align:bottom;"><label>Annually</label></td>
+	<td><input type="submit" value="Submit" class="form-control"/> </td>
+	</tr>
+
+											</table>-->
+						<br />
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<h3></h3>
+	</div>
+</div>
+
+</div>
+
+
+<!--total Loan popup max-->
+<!--income projection max table-->
+<div id="idPoptotalLoan" class="modal1">
+
+	<!-- Modal content -->
+	<div class="modal-content1">
+		<div class="modal-header">
+			<span class="close1">&times;</span>
+			<!-- <h4 style="margin-left:34px"> Critical Illness Cover Recommendation</h4> -->
+			<br>
+		</div>
+		<div class="modal-body">
+			<table width="62%" class="loantotal" style="margin-left: 47px">
+				<thead>
+					<tr>
+						<th>Family Members</th>
+						<th>Existing CI Cover</th>
+						<th>Recommended CI Cover</th>
+						<th>Additional CI Cover to be taken</th>
+
+
+					</tr>
+				</thead>
+				<tbody id="criticalIllnessTablePopup">
+
+				</tbody>
+			</table>
+			<br />
+			<!--	<table width="40%" style="margin:auto">
+					
+	<tr>
+	<td><b>Download Projections</b></td>
+	<td><input type="radio" name="download" style="position:sticky"></input></td>
+	<td style="text-align: left;vertical-align:bottom;"><label>Monthly</label></td>
+	<td><input type="radio" name="download" style="position:sticky"></input></td>
+	<td style="text-align: left;vertical-align:bottom;"><label>Annually</label></td>
+	<td><input type="submit" value="Submit" class="form-control"/> </td>
+	</tr>
+
+	</table>
+										-->
+
+		</div>
+
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+
+</div>
+

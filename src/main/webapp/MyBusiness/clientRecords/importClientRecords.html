@@ -1,0 +1,69 @@
+<script type="text/javascript" src="clientRecords/js/importClientRecords.js"></script>
+<div class="dmcontainer">
+
+<div class="clearfix"></div>
+<br/>
+<form class="form-horizontal" action="#" id="idImportClientRecordForm">
+<div class="form-group">
+                <label for="ownerName" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>Template Format*:</label>
+                       <select id="idFileFormat" class="form-control input-width-medium" required="required" tabindex="430">
+                            <option value="">Select Format</option>
+                            <option value="excel">Excel</option>
+                            <option value="csv">CSV</option>
+                        </select>
+                </div>
+            </div>
+       <div class="form-group">
+                <div class="col-sm-offset-1 col-sm-11">
+                    <input type="button" class="pull-left form-control addbtn" tabindex="540" value="Download format" id="idDownload" />
+                 </div>
+            </div>  
+            <div class="form-group">
+                <label for="ownerName" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>User*: </label>
+                       <select class="form-control input-width-medium" id="idUserCR" name="advisorUserId" required="required" tabindex="430">
+                       </select>
+                </div>
+            </div>
+            <div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+			    <label>Role*:</label>
+					<input type="text" id="idRoleCR" readonly class="form-control input-width-medium" required="required" tabindex="430" />
+                                       
+			    </div>
+			</div>
+
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+			    <label>Location*:</label>
+					<input type="text" id="idLocationCR" readonly class="form-control input-width-medium" required="required" tabindex="430" />
+			    </div>
+			</div>
+
+
+            <div class="form-group">
+                <label for="ownerName" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>Select File*:</label>
+                    <input type="file" id="idSelectedFile" name="file" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Email Id" tabindex="270">
+                </div>
+            </div>
+
+         
+            <div class="form-group">
+                <div class="col-sm-offset-1 col-sm-11">
+                    <input type="button" class="pull-left form-control addbtn" tabindex="540" value="Import" id="idUpload" />
+                  </div>
+            </div>
+        </form>
+
+
+<form class="form-horizontal" action="#">
+         
+</form>
+	</div>

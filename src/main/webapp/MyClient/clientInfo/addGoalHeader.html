@@ -1,0 +1,147 @@
+<div class="cicontainer">
+	<form class="form-horizontal" action="#">
+			<label class="col-sm-1 control-label"></label>
+			<div class="col-sm-12 no_padding">
+				<label>Goal Type*:</label>
+				<table class="goaltypetbl">
+   					<tr class="goal_icon" id="goalTypeImage">
+					</tr>
+ 				</table>
+			</div>
+       		<br><br>          		            
+            <div class="clearfix"></div>
+       		<br><br>          		            
+ 	</form>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+	populateGoalImage($("#goalTypeImage"));
+});
+
+function populateGoalImage(tableRowId) {
+	getClientData("GET", "", "AllGoalType", goalTypeSuccess);
+	function goalTypeSuccess(data) {
+		$("#goalTypeImage").empty();
+		console.log("data  "+data.length);
+		$.each( data, function(index, item) {
+			if (item.description =='Education') {
+				console.log("item  "+item.description);
+				tableRowId.append('<td><img src="../Common/assets/images/goal/Education_Black.png" class="goalOwner_img" alt="'+ item.description +'" id="addgoal1" onClick="onClickImage13('
+									+ item.id
+									+ ',\''
+									+ item.description
+									+ '\')" tabindex="210"/><br/>'+ item.description +'</td>');
+			}
+
+			if (item.description == 'Wedding') {
+				console.log("item  " + item.description);
+				tableRowId.append('<td> <img src="../Common/assets/images/goal/Wedding_Black.png" class="goalOwner_img" alt="Spouse" id="addgoal2"  onClick="onClickImage13('
+									+ item.id
+									+ ',\''
+									+ item.description
+									+ '\')" tabindex="230"/><br/>'+ item.description +'</td>');
+			}
+
+			if (item.description == 'Buying a House') {
+				console.log("item  " + item.description);
+				tableRowId.append('<td><img src="../Common/assets/images/goal/Home_Black.png" class="goalOwner_img" alt="Spouse" id="addgoal3"  onClick="onClickImage13('
+									+ item.id
+									+ ',\''
+									+ item.description
+									+ '\')" tabindex="240"/"><br/>'+ item.description +'</td>');
+			}
+
+			if (item.description == 'Buying a Car') {
+				console.log("item  " + item.description);
+				tableRowId.append('<td> <img src="../Common/assets/images/goal/Car_Black.png" class="goalOwner_img" alt="Spouse" id="addgoal4"  onClick="onClickImage13('
+									+ item.id
+									+ ',\''
+									+ item.description
+									+ '\')" tabindex="210"/><br/>'+ item.description +'</td>');
+			}
+
+			if (item.description == 'Buying Jewellery') {
+				console.log("item  " + item.description);
+				tableRowId.append('<td> <img src="../Common/assets/images/goal/Jewellery_Black.png"  class="goalOwner_img" alt="Spouse" id="addgoal5"  onClick="onClickImage13('
+									+ item.id
+									+ ',\''
+									+ item.description
+									+ '\')" tabindex="230"/><br/>'+ item.description +'</td>');
+			}
+
+			if (item.description == 'Vacation') {
+				console.log("item  " + item.description);
+				tableRowId.append('<td> <img src="../Common/assets/images/goal/Vacation_Black.png" class="goalOwner_img" alt="Spouse" id="addgoal6"  onClick="onClickImage13('
+									+ item.id
+									+ ',\''
+									+ item.description
+									+ '\')" tabindex="240"/><br/>'+ item.description +'</td>');
+			}
+
+			if (item.description == 'Starting a Business') {
+				console.log("item  " + item.description);
+				tableRowId.append('<td> <img src="../Common/assets/images/goal/Business_Black.png"  class="goalOwner_img" alt="Spouse" id="addgoal7"  onClick="onClickImage13('
+									+ item.id
+									+ ',\''
+									+ item.description
+									+ '\')" tabindex="210"/><br/>'+ item.description +'</td>');
+			}
+
+			if (item.description == 'Retirement') {
+				console.log("item  " + item.description);
+				tableRowId.append('<td> <img src="../Common/assets/images/goal/Asset_Black.png" class="goalOwner_img" alt="Spouse" id="addgoal8"  onClick="onClickImage13('
+									+ item.id
+									+ ',\''
+									+ item.description
+									+ '\')" tabindex="230"/><br/>'+ item.description +'</td>');
+			}
+
+			if (item.description == 'Other') {
+				console.log("item  " + item.description);
+				tableRowId.append('<td> <img src="../Common/assets/images/goal/Others_Black.png" class="goalOwner_img" alt="Spouse" id="addgoal9"  onClick="onClickImage13('
+									+ item.id
+									+ ',\''
+									+ item.description
+									+ '\')" tabindex="240"/><br/>'+ item.description +'</td>');
+			}
+		});
+	}	
+}
+
+
+function onClickImage13(id,description) {
+	
+	sessionStorage.removeItem("SELECTED_GOAL_TYPE");
+	sessionStorage.setItem("SELECTED_GOAL_TYPE", id);
+	if (description == 'Education' || description == 'Vacation'
+		|| description == 'Starting a Business' || description == 'Other') {
+		var pageUrl = "clientInfo/addGoalNonRetirementRecurring.html";
+		addPage(pageUrl,"Add Goal-"+description);
+	}
+	if (description == 'Buying a Car'
+		|| description == 'Buying Jewellery'
+		|| description == 'Wedding'
+		|| description == 'Buying a House') {
+		var pageUrl = "clientInfo/addGoalNonRetirementNonRecurring.html";
+		addPage(pageUrl,"Add Goal-"+description);
+	}
+	if (description == 'Retirement') {
+		
+		getClientData("GET","",'checkIfRetirementGoalPresentForAll/'+sessionStorage.getItem("SELECTED_CLIENT_ID")+"/"+sessionStorage.getItem("SELECTED_GOAL_TYPE"),checkRetirementGoalSuccess);
+		function checkRetirementGoalSuccess(data) {
+			if(data.length>0) {
+				bootbox.alert("Cannot Add Retirement Goal since a record already exists for this client!", function(){
+					var pageUrl = "clientInfo/addGoalHeader.html";
+					addPage(pageUrl,"Add Goals");
+				});
+			} else {
+				var pageUrl = "clientInfo/addGoalRetirement.html";
+				addPage(pageUrl,"Add Goal-"+description);
+			}
+		}
+	}
+	
+	
+}
+
+</script>

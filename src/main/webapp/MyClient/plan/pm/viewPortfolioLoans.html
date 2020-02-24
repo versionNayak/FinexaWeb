@@ -1,0 +1,197 @@
+<script src="plan/pm/js/viewPortfolioLoans.js"></script>
+<script src="plan/pm/js/common.js"></script>
+<style>
+    .top80negtive[style] {
+        top: -80px !important;
+    }
+    
+    .top30negtive[style] {
+        top: -30px !important;
+    }
+</style>
+<div id="jssor_13" class="height413px">
+    <div data-u="slides" class="slider9" style="height: 400px; top: 30px;">
+        <div>
+            <div data-u="image">
+                <div class="col-lg-6">
+                    <table class="loanscurrent" id="idCurrentLoanTable" style="width: 181%">
+                        <thead>
+                            <tr>
+                                <th>Loan Type</th>
+                                <th>Loan Provider</th>
+                                <th>Original Principal</th>
+                                <th>Outstanding Principal</th>
+                                <th>Interest rate%</th>
+                                <th>EMI</th>
+                                <th>Loan Start Date</th>
+                                <th>Loan End Date</th>
+                                <th>Interest payout frequency</th>
+                            </tr>
+                        </thead>
+                        <tbody id="currentClientLoanList">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <button data-u="thumb">Current Liabilities</button>
+        </div>
+
+        <div>
+            <div data-u="image">
+                <div>
+
+                    <div id="idIndividualLoanContainer"></div>
+
+                    <br clear="all" />
+
+                </div>
+            </div>
+            <button id="idIndividualLoanSchedule" data-u="thumb">Individual Loan Schedules</button>
+        </div>
+
+        <div>
+            <div data-u="image">
+
+                <div id="idMaxTotalLoan" class="popup" style="position: relative; top: 20px; left: 40px">
+                    <img src="../Common/assets/images/maximg.png" />
+                </div>
+                <table width="80%" class="loantotal">
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Beginning Balance</th>
+                            <th>Interest Payment</th>
+                            <th>Principal Payment</th>
+                            <th>Ending Balance</th>
+                            <th>EMI Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody id="idTotalLoans">
+
+                    </tbody>
+                </table>
+                <br />
+                <table width="55%" style="margin-left: 226px">
+
+                    <tr>
+                        <td><b>Download Projections</b></td>
+                        <td><input type="radio" id="idMonthlyRadioTotalLoanSchedule" name="download" style="position: sticky"></input>
+                        </td>
+                        <td style="text-align: left; vertical-align: bottom;"><label>Monthly</label></td>
+                        <td><input type="radio" id="idYearlyRadioTotalLoanSchedule" name="download" style="position: sticky"></input>
+                        </td>
+                        <td style="text-align: left; vertical-align: bottom;"><label>Annually</label></td>
+                        <td><input type="submit" value="Submit" id=idDownloadTotalLoanSchedule class="form-control" />
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+            <button id="idTotalLoanSchedule" data-u="thumb">Total Loan Schedule</button>
+        </div>
+        <div>
+            <div data-u="image">
+                <div id="idOutstandingLoan"></div>
+                <div id="idLoanPayment"></div>
+            </div>
+            <button data-u="thumb">Total Loan Schedule Graph</button>
+        </div>
+
+    </div>
+    <!-- Thumbnail Navigator -->
+    <div data-u="thumbnavigator" class="jssort13" data-autocenter="1">
+        <!-- Thumbnail Item Skin Begin -->
+        <div data-u="slides">
+            <div data-u="prototype" class="p">
+                <div>
+                    <div data-u="thumbnailtemplate"></div>
+                </div>
+                <div></div>
+            </div>
+        </div>
+        <!-- Thumbnail Item Skin End -->
+    </div>
+    <!-- Arrow Navigator -->
+    <span data-u="arrowleft" class="jssora05l Loansleft"><img
+		src="../Common/assets/images/leftarrow.png" /></span>
+    <span data-u="arrowright" class="jssora05r Loansright"><img
+		src="../Common/assets/images/rightarrow.png" /></span>
+</div>
+
+<!--income projection max table-->
+<div id="idPopIndividual" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2></h2>
+        </div>
+        <div class="modal-body" id="idIndividualLoanContainerModal">
+            <table width="38%" style="margin: auto">
+                <tr>
+                    <td><b>Download Projections</b></td>
+                    <td><input type="radio" name="download" style="position: sticky"></input>
+                    </td>
+                    <td style="text-align: left; vertical-align: bottom;"><label>Monthly</label></td>
+                    <td><input type="radio" name="download" style="position: sticky"></input>
+                    </td>
+                    <td style="text-align: left; vertical-align: bottom;"><label>Annually</label></td>
+                    <td><input type="submit" value="Submit" class="form-control" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <h3></h3>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!--total Loan popup max-->
+<!--income projection max table-->
+<div id="idPoptotalLoan" class="modal1">
+    <!-- Modal content -->
+    <div class="modal-content1">
+        <div class="modal-header">
+            <span class="close1">&times;</span>
+            <h2></h2>
+        </div>
+        <div class="modal-body">
+            <table width="62%" class="loantotal" style="margin-left: 244px" id="idTotalLoansModal">
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Beginning Balance</th>
+                        <th>Interest Payment</th>
+                        <th>Principal Payment</th>
+                        <th>Ending Balance</th>
+                        <th>EMI Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <br />
+            <table width="40%" style="margin: auto">
+                <tr>
+                    <td><b>Download Projections</b></td>
+                    <td><input type="radio" name="download" style="position: sticky"></input>
+                    </td>
+                    <td style="text-align: left; vertical-align: bottom;"><label>Monthly</label></td>
+                    <td><input type="radio" name="download" style="position: sticky"></input>
+                    </td>
+                    <td style="text-align: left; vertical-align: bottom;"><label>Annually</label></td>
+                    <td><input type="submit" value="Submit" class="form-control" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <h3></h3>
+        </div>
+    </div>
+</div>

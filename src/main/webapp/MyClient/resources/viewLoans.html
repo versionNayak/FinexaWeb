@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="resources/js/viewLoans.js"></script>
+</head>
+<body>
+	<div class="container-fluid" style="width: 65em;
+	margin-left: -2em;margin-top:2em;padding-top:1em;background-color:white;z-index:0">
+		<!--<h3 style="color:#0b71c6;margin-bottom:27px;margin-left:58px;width:107%">Loan Calculator
+		</h3>-->
+		<br />
+		<div class="row">
+			<div class="form-group">
+				<ul id="nav">
+					<li><a href="resources/EMIBasedLoan.html">Page 1</a></li>
+					<li><a href="resources/NonEMIBasedLoan.html">Page 2</a></li>
+					<li><a href="resources/AdvanceLoanCalculator.html">Page 3</a></li>
+				</ul>
+				<!-- <div class="col-sm-7" style="text-align: left;z-index:1;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px">  -->
+					<!-- <label class="control-label" for="idppfdeposite" style="text-align:left">Loan Type: </label><br/> -->
+					<!-- <select class="form-control" id="investmd" style="z-index:1;width:16em !important;font-size:14px;position:absolute" onfocus='this.size=4;'  -->
+					<!-- onblur='this.size=1;'  -->
+					<!-- onchange='this.size=1; this.blur();'> -->
+						<!-- <option value="">Select Loan Type</option> -->
+						<!-- <option value="Home">Home</option> -->
+						<!-- <option value="Vehicle">Vehicle</option> -->
+						<!-- <option value="Personal">Personal</option> -->
+						<!-- <option value="Others">Others</option> -->
+					<!-- </select>  -->
+				<!-- </div> -->
+				<!-- <div class="col-sm-4" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px">  -->
+					<!-- <label class="control-label" for="idppfdeposite" style="text-align:left">Original Loan Amount: </label><br/> -->
+					<!-- <input type="text" placeholder="Enter Loan Amount" class="form-control" id="currentvalue" style="width:16em;"/> -->
+				<!-- </div> -->
+			</div>
+		</div>
+		<br/>
+		<!-- <div class="row"> -->
+			<!-- <div class="form-group"> -->
+				<!-- <div class="col-sm-7" style="text-align: left;z-index:0;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px">  -->
+					<!-- <label class="control-label" for="idppfdeposite" style="text-align:left;z-index:0">Annual Interest Rate: </label><br/> -->
+					<!-- <input type="text" placeholder="Enter Interest Rate" class="form-control" id="currentvalue" style="width:16em;z-index:0"/> -->
+				<!-- </div> -->
+				<!-- <div class="col-sm-4" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px">  -->
+					<!-- <label class="control-label" for="idppfdeposite" style="text-align:left">No. of EMI Installments: </label><br/> -->
+					<!-- <p>240</p> -->
+				<!-- </div> -->
+			<!-- </div> -->
+		<!-- </div> -->
+		<br/>
+		<!-- <div class="row"> -->
+			<!-- <div class="form-group"> -->
+				<!-- <div class="col-sm-7 lonesection" style="text-align: left;z-index:1;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px">  -->
+					<!-- <label class="control-label" for="idppfdeposite" style="text-align:left">Loan Tenure: </label><br/> -->
+					<!-- <select class="form-control loanselect" style="width:16em !important;font-size:14px;z-index:1;position:absolute" onfocus='this.size=5;'  -->
+					<!-- onblur='this.size=1;'  -->
+					<!-- onchange='this.size=1; this.blur();'> -->
+						<!-- <option>Select Loan Tenure</option> -->
+						<!-- <option value="1">1 Year</option> -->
+						<!-- <option value="2">2 Years</option> -->
+						<!-- <option value="3">3 Years</option> -->
+						<!-- <option value="4">4 Years</option> -->
+						<!-- <option value="5">5 Years</option> -->
+						<!-- <option value="6">6 Years</option> -->
+						<!-- <option value="7">7 Years</option> -->
+						<!-- <option value="8">8 Years</option> -->
+						<!-- <option value="9">9 Years</option> -->
+						<!-- <option value="10">10 Years</option> -->
+						<!-- <option value="11">11 Years</option> -->
+						<!-- <option value="12">12 Years</option> -->
+						<!-- <option value="13">13 Years</option> -->
+						<!-- <option value="14">14 Years</option> -->
+						<!-- <option value="15">15 Years</option> -->
+						<!-- <option value="16">16 Years</option> -->
+						<!-- <option value="17">17 Years</option> -->
+						<!-- <option value="18">18 Years</option> -->
+						<!-- <option value="19">19 Years</option> -->
+						<!-- <option value="20">20 Years</option> -->
+						<!-- <option value="21">21 Years</option> -->
+						<!-- <option value="11">22 Years</option> -->
+						<!-- <option value="22">23 Years</option> -->
+						<!-- <option value="24">24 Years</option> -->
+						<!-- <option value="25">25 Years</option> -->
+						<!-- <option value="26">26 Years</option> -->
+						<!-- <option value="27 ">27 Years</option> -->
+						<!-- <option value="28">28 Years</option> -->
+						<!-- <option value="29">29 Years</option> -->
+						<!-- <option value="30">30 Years</option> -->
+					<!-- </select>  -->
+				<!-- </div> -->
+				<!-- <div class="col-sm-4" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px">  -->
+					<!-- <label class="control-label" for="idppfdeposite" style="text-align:left">Start Date for EMI Payment: </label><br/> -->
+					<!-- <p id="datepicker" style="width:16em;z-index:1" class="input-group date" data-date-format="dd-mm-yyyy"> -->
+						<!-- <input class="form-control" id="datepkr" value="" style="font-size:14px" type="text" placeholder="DD/MM/YYYY"/> -->
+                        <!-- <span class="input-group-addon calendar-icon-container"><i class="glyphicon calendar-icon-theme"></i></span> -->
+					<!-- </p> -->
+				<!-- </div> -->
+			<!-- </div> -->
+		<!-- </div> -->
+		<br/>
+		<!-- <div class="row"> -->
+			<!-- <div class="form-group"> -->
+				<!-- <div class="col-sm-7" style="text-align: left;z-index:0;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px">  -->
+					<!-- <label class="control-label" for="idppfdeposite" style="text-align:left;z-index:0">Original EMI Amount: </label><br/> -->
+					<!-- ₹ 49,082  -->
+				<!-- </div> -->
+				<!-- <div class="col-sm-4" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px">  -->
+					<!-- <label class="control-label" for="idppfdeposite" style="text-align:left;z-index:0">Loan End Date: </label><br/> -->
+					<!-- 07-May-2032 -->
+				<!-- </div> -->
+			<!-- </div> -->
+		<!-- </div> -->
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<!-- <div class="container-fluid" style="width:136%"> -->
+			<!-- <table width="75%" style="margin-left:-1em" id="tblinput"> -->
+				<!-- <thead id="inputh"> -->
+					<!-- <tr> -->
+						<!-- <th style="width:22%;vertical-align:super" id="actionwth">Action</th> -->
+						<!-- <th id="effdate">Effective Date</th> -->
+						<!-- <th id="preamt">Prepayment Amount </th> -->
+						<!-- <th>New Interest Rate</th> -->
+						<!-- <th id="changemi">Change in EMI</th> -->
+						<!-- <th id="chngtenur">Change in Tenure</th> -->
+					<!-- </tr> -->
+				<!-- </thead> -->
+				<!-- <tbody id="inputd" class="customFields"> -->
+					<!-- <tr></tr>    -->
+					<!-- <tr> -->
+						<!-- <td style="width:22%" id="dateinput"><p id="datepicker" style="width:100%;margin-top:10px" class="input-group date" data-date-format="dd-mm-yyyy"> -->
+							<!-- <input class="form-control" id="customFieldDate" value="" style="font-size:14px;height:29px" type="text" placeholder="DD/MM/YYYY"/> -->
+							<!-- <span class="input-group-addon calendar-icon-container" style="height:5px;padding:0px 3px 0px 3px"><i class="glyphicon calendar-icon-theme"></i></span> -->
+						<!-- </p></td> -->
+						<!-- <td><input type="text" style="height:29px" value="" id="customField1" class="form-control" readonly/></td> -->
+						<!-- <td><input type="text" style="height:29px" value="" id="customField2" class="form-control"/></td> -->
+						<!-- <td><input type="text" style="height:29px" id="customField3" class="form-control"/></td> -->
+						<!-- <td><select id="customFielddrop" class="form-control" id="investmd" style="width:87px; margin-top:-15px;font-size:14px;position:absolute;z-index:1;height:29px" onfocus='this.size=2;'  -->
+							<!-- onblur='this.size=1;'  -->
+							<!-- onchange='this.size=1; this.blur();'> -->
+								<!-- <option value="Yes">Yes</option> -->
+								<!-- <option value="No">No</option> -->
+							<!-- </select> </td> -->
+							<!-- <td><input type="text" style="height:29px" id="customField4" class="form-control" readonly/></td> -->
+							<!-- <td style="width:11%"><button href="javascript:void(0);" style="height:29px;font-size:14px;padding-top:4px" class="addCF form-control">Add</button></td> -->
+					<!-- </tr>  -->
+				<!-- </tbody> -->
+			<!-- </table> -->
+		<!-- </div> -->
+		<br/>
+		<!-- <div class="row"> -->
+			<!-- <div class="form-group"> -->
+				<!-- <div class="col-sm-6"> </div> -->
+				<!-- <div class="col-sm-3">  -->
+					<!-- <button type="submit" class="pull-left btn addbtn" style="width:5em;margin-left:-118px;outline:none !important;margin-bottom: 1em;" onclick="$('.result').show()">Submit</button> -->
+				<!-- </div> -->
+			<!-- </div> -->
+		<!-- </div> -->
+		<!-- <div style="display:none" class="result"> -->
+			<!-- <h3 style="color:#0b71c6;margin-left:0em"> Results : </h3> -->
+			<!-- <div class="row"> -->
+				<!-- <div class="form-group"> -->
+					<!-- <div class="col-sm-7" style="text-align: left;z-index:1;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px">  -->
+						<!-- <label class="control-label" for="idppfdeposite" style="text-align:left">Loan Type: </label><br/> -->
+						<!-- Home -->
+					<!-- </div> -->
+					<!-- <div class="col-sm-4" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px">  -->
+						<!-- <label class="control-label" for="idppfdeposite" style="text-align:left">Original Loan Amount: </label><br/> -->
+						<!-- 5000 -->
+					<!-- </div> -->
+				<!-- </div> -->
+			<!-- </div> -->
+			<!-- <br/> -->
+			<!-- <div class="row"> -->
+				<!-- <div class="form-group"> -->
+					<!-- <div class="col-sm-7" style="text-align: left;z-index:0;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px">  -->
+						<!-- <label class="control-label" for="idppfdeposite" style="text-align:left;z-index:0">Annual Interest Rate: </label><br/> -->
+						<!-- 10.25% -->
+					<!-- </div> -->
+					<!-- <div class="col-sm-4" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px">  -->
+						<!-- <label class="control-label" for="idppfdeposite" style="text-align:left">No. of EMI Installments: </label><br/> -->
+						<!-- <p>240</p> -->
+					<!-- </div> -->
+				<!-- </div> -->
+			<!-- </div> -->
+			<!-- <br/> -->
+			<!-- <div class="row"> -->
+				<!-- <div class="form-group"> -->
+					<!-- <div class="col-sm-7" style="text-align: left;z-index:0;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px">  -->
+						<!-- <label class="control-label" for="idppfdeposite" style="text-align:left">Loan Tenure: </label><br/> -->
+						<!-- <p>20</p> -->
+					<!-- </div> -->
+					<!-- <div class="col-sm-4" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px">  -->
+						<!-- <label class="control-label" for="idppfdeposite" style="text-align:left">Start Date for EMI Payment: </label><br/> -->
+						<!-- 07-Jun-12  -->
+					<!-- </div> -->
+				<!-- </div> -->
+			<!-- </div> -->
+			<!-- <br/> -->
+			<!-- <div class="row"> -->
+				<!-- <div class="form-group"> -->
+					<!-- <div class="col-sm-7" style="text-align: left;z-index:0;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px">  -->
+						<!-- <label class="control-label" for="idppfdeposite" style="text-align:left">Original EMI Amount: </label><br/> -->
+						<!-- ₹ 49,082  -->
+					<!-- </div> -->
+					<!-- <div class="col-sm-4" style="text-align: left;z-index:0;padding-top: 7px;margin-top:-13px">  -->
+						<!-- <label class="control-label" for="idppfdeposite" style="text-align:left">Loan End Date: </label><br/> -->
+						<!-- 07-May-2032 -->
+					<!-- </div> -->
+				<!-- </div> -->
+			<!-- </div> -->
+			<!-- <br/> -->
+			<!-- <br/> -->
+			<!-- <div class="container-fluid"> -->
+				<!-- <table style="margin-left:-1em" class="tblfirstrowleft"> -->
+					<!-- <thead> -->
+						<!-- <tr> -->
+							<!-- <th style="vertical-align:super;">Action</th> -->
+							<!-- <th>Effective Date</th> -->
+							<!-- <th>Prepayment Amount </th> -->
+							<!-- <th>New Interest Rate</th> -->
+							<!-- <th>Change in EMI</th> -->
+							<!-- <th style="vertical-align:super;">New EMI</th> -->
+							<!-- <th>Change in Tenure</th> -->
+							<!-- <th>New Outstanding Tenure</th> -->
+						<!-- </tr> -->
+					<!-- </thead> -->
+					<!-- <tbody> -->
+						<!-- <tr></tr>    -->
+						<!-- <tr> -->
+							<!-- <td>23-12-2017</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+						<!-- </tr>  -->
+						<!-- <tr> -->
+							<!-- <td>23/12/2017</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+						<!-- </tr>  -->
+						<!-- <tr> -->
+							<!-- <td>23/12/2017</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+						<!-- </tr>  -->
+						<!-- <tr> -->
+							<!-- <td>23/12/2017</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+						<!-- </tr>  -->
+					<!-- </tbody> -->
+				<!-- </table> -->
+			<!-- </div> -->
+			<!-- <hr border="10"/> -->
+			<!-- <div id="linebargraph" style="height: 300px; width:60%;margin-left:-1em"> -->
+			<!-- </div> -->
+			<!-- <br/> -->
+			<!-- <br/> -->
+			<!-- <hr/> -->
+			<!-- <div class="container-fluid" style="height: 16em;overflow-y: auto;overflow-x:hidden"> -->
+				<!-- <table style="margin-left:-1em" class="tblfirstrowleft"> -->
+					<!-- <thead> -->
+						<!-- <tr> -->
+							<!-- <th>Financial Year</th> -->
+							<!-- <th>Beginning Balance</th> -->
+							<!-- <th style="vertical-align:super;">EMI Amount</th> -->
+							<!-- <th>Interest Payment</th> -->
+							<!-- <th>Principal Payment</th> -->
+							<!-- <th style="vertical-align:super;">Prepayment</th> -->
+							<!-- <th>Ending Balance</th> -->
+							<!-- <th>Total Principal Paid to Date</th> -->
+							<!-- <th>Total Interest Paid to Date</th> -->
+						<!-- </tr> -->
+					<!-- </thead> -->
+					<!-- <tbody> -->
+						<!-- <tr></tr>    -->
+						<!-- <tr> -->
+							<!-- <td>2013-14</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+						<!-- </tr>  -->
+						<!-- <tr> -->
+							<!-- <td>2013-14</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+						<!-- </tr> -->
+						<!-- <tr> -->
+							<!-- <td>2013-14</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+						<!-- </tr>    -->
+						<!-- <tr> -->
+							<!-- <td>2013-14</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+						<!-- </tr> -->
+						<!-- <tr> -->
+							<!-- <td>2013-14</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+						<!-- </tr>  -->
+						<!-- <tr> -->
+							<!-- <td>2013-14</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+						<!-- </tr>  -->
+						<!-- <tr> -->
+							<!-- <td>2013-14</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+						<!-- </tr>  -->
+						<!-- <tr> -->
+							<!-- <td>2013-14</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+						<!-- </tr>  -->
+						<!-- <tr> -->
+							<!-- <td>2013-14</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+						<!-- </tr>  -->
+						<!-- <tr> -->
+							<!-- <td>2013-14</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+						<!-- </tr>  -->
+						<!-- <tr> -->
+							<!-- <td>2013-14</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- </tr> <tr> -->
+							<!-- <td>2013-14</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- </tr> <tr> -->
+							<!-- <td>2013-14</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+						<!-- </tr>  -->
+						<!-- <tr> -->
+							<!-- <td>2013-14</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- </tr> <tr> -->
+							<!-- <td>2013-14</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- </tr> <tr> -->
+							<!-- <td>2013-14</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+							<!-- <td>453543</td> -->
+						<!-- </tr>  -->
+					<!-- </tbody> -->
+				<!-- </table> -->
+			<!-- </div> -->
+			<!-- <br/> -->
+			<!-- <div class="row"> -->
+				<!-- <div class="col-sm-12">  -->
+					<!-- <table width="50%" style="margin:auto"> -->
+						<!-- <tr> -->
+							<!-- <td><b>Download Projections</b></td> -->
+							<!-- <td><input type="radio" name="download" style="position:sticky"></input></td> -->
+							<!-- <td style="text-align: left;vertical-align:bottom;"><label>Monthly</label></td> -->
+							<!-- <td><input type="radio" name="download" style="position:sticky" checked="true"></input></td> -->
+							<!-- <td style="text-align: left;vertical-align:bottom;"><label>Annually</label></td> -->
+							<!-- <td><input type="submit" value="Save" class="form-control"/> </td> -->
+						<!-- </tr> -->
+					<!-- </table> -->
+					<!-- <br/> -->
+				<!-- </div> -->
+			<!-- </div> -->
+		<!-- </div> -->
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("#nav li a").click(function() {
+				$("#ajax-content").empty().append("<div id='loading'><img src='images/loading.gif' alt='Loading' /></div>");
+				$("#nav li a").removeClass('current');
+				$(this).addClass('current');
+				$.ajax({ url: this.href, success: function(html) {
+					$("#ajax-content").empty().append(html);
+				}
+				});
+				return false;
+			});
+			$("#ajax-content").empty().append("<div id='loading'><img src='images/loading.gif' alt='Loading' /></div>");
+			$.ajax({ url: 'page_1.html', success: function(html) {
+				$("#ajax-content").empty().append(html);
+			}
+			});
+		});
+	</script>
+</body>
+</html>

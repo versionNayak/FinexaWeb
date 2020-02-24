@@ -1,0 +1,72 @@
+<script src="invest/js/uploadDoc.js"></script>
+<script src="clientInfo/js/common.js"></script>
+<div class="cicontainer" style="height: 315%">
+<form style="display: inline" action="#" id="idFormUpload" onsubmit="return false">
+	<div class="col-sm-7" id="idDivUCCCombo"
+		style="text-align: left; z-index: 0.5; margin-left: -4px; padding-top: 7px; margin-top: -13px">
+		<label class="control-label" for="idppfdeposite"
+			style="text-align: left; font-size: 14px">Client Id(UCC)* </label><br />
+		<select style="padding-top: 2px"
+			class="form-control input-width-medium" id="idClientUCCCombo" tabindex="430">
+		</select>
+	</div>
+	<div class="col-sm-7" id="idDivUCCText"
+		style="text-align: left; z-index: 0.5; margin-left: -4px; padding-top: 7px; margin-top: -13px">
+		<label class="control-label" for="idppfdeposite"
+			style="text-align: left; font-size: 14px">Client Id(UCC)* </label><br />
+		<input type="text" placeholder="Client Id(UCC)" class="form-control"
+			id="idClientUCCText" style="width: 16em" />
+	</div>
+	<br /> <br /> <br /> <br />
+
+	<div class="col-sm-7" id="idDivDocType"
+		style="text-align: left; z-index: 0.5; margin-left: -4px; padding-top: 7px; margin-top: -13px">
+		<label class="control-label" for="idppfdeposite"
+			style="text-align: left; font-size: 14px">Document Type* </label> <img id = "infoBox" src="../Common/assets/images/info.png" title = "Please Select a File Type"><br />
+		Kindly place the cursor/mouse over the i symbol to know the format/requirements for upload
+		<br><br>
+		<select style="padding-top: 2px"
+			class="form-control input-width-medium" id="idDocType"
+			name="docType" tabindex="430">
+			<option value="">Select</option>
+			<option value="1">AOF</option>
+			<option value="2">NACH</option>
+		</select>
+	</div>
+<br /> <br /> <br /> <br />
+	<div class="col-sm-7" id="idDivMandate"
+		style="text-align: left; z-index: 0.5; margin-left: -4px; padding-top: 7px; margin-top: 10px">
+		<label class="control-label" for="idppfdeposite"
+			style="text-align: left; font-size: 14px">Mandate* </label><br />
+		<select style="padding-top: 2px"
+			class="form-control input-width-medium" id="idMandateType"
+			name="mandateType" tabindex="430">
+		</select>
+	</div>
+<br /> <br /> <br /> <br />
+	<div
+		style="padding: 63px; margin: auto; margin-top: 62px; padding-left: 36%; border: 1px dashed;">
+		<label class="control-label" for="idppfdeposite"
+			style="text-align: left; font-size: 14px"> Upload</label><br />
+		<input type="file" id="idSelectedFile" name="file" multiple />
+		<output id="list"></output>
+
+		<div id="drop_zone" hidden>Drop files here</div>
+		<output id="list" hidden></output>
+		<input type="button" value="cancel" id="cancelupload" />
+	</div>
+<br />
+<br />
+<br />
+<br />
+<div class="col-sm-9"
+	style="text-align: left; z-index: 1; margin-left: -38px; padding-top: 7px; margin-top: -80px">
+	<br /> <br />
+	<div class="col-sm-3">
+		<button type="submit" id="idUploadFile"
+			style="width: 145%; margin-left: 24px;" class="form-control addbtn"
+			tabindex="540">Upload</button>
+	</div>
+</div>
+</form>
+</div>

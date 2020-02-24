@@ -1,0 +1,71 @@
+<script type="text/javascript" src="userManagement/js/editHierarchyMapping.js"></script>
+<script src="userManagement/js/validateHierarchyMapping.js"></script>
+<script src="userManagement/js/validationForAll.js"></script>
+<script src="userManagement/js/common.js"></script>
+<div class="dmcontainer">
+<div class="alert alert-danger" id="alertForm" style="display:none;">
+</div>
+
+<div>
+		<form class="form-horizontal" action="#" id="idHierarchyMappingEditForm">
+	<input type="hidden" name="advisorId" id="idHierarchyAdvisorId">
+		<div class="form-group">
+				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Select User*:</label>
+					<span class="form-static-value"  >
+						<select class="form-control input-width-medium" required="required" id="idHierarchyUser" name="userId" tabindex="430">
+										
+									</select>
+					        </span>
+					        <span class="formentry-errmsg" id="alertUserName"></span> 
+					    </div>
+				    </div>
+
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>User Role*:</label>
+					<input type="text" id="idHierarchyRole" name="userRole" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="user Role" tabindex="270" readonly/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Supervisor Role*:</label>
+					<input type="text" id="idHierarchySupervisorRole" name="supervisorRole"  class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Supervisor Role" tabindex="270" readonly/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Select Supervisor*:</label>
+					<span class="form-static-value" >
+						<select class="form-control input-width-medium" id="idHS" name="supervisorId" required="required" tabindex="430">
+									</select>
+					        </span>
+					          <span class="formentry-errmsg" id="alertSupervisorRole"></span>
+					    </div>
+				    </div>
+				     <div class="form-group">
+				    <label class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Change Effective From Date*:</label>
+					<p id="idEffectiveFromDateGroup" class="input-group input-width-medium">
+						<input type="text" class="form-control" id="idDate"  name="effectiveDate" placeholder="DD/MM/YYYY" tabindex="330">
+						<span class="input-group-btn datepicker-icon">
+							<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="" data-original-title="Select  Date"><em class="glyphicon calendar-icon-theme"></em></button>
+						</span>
+					</p>
+					 <span class="formentry-errmsg" id="alertEffectiveFromDate"></span>
+				</div>
+			</div>
+
+		 <div class="form-group">
+				<div class="col-sm-offset-1 col-sm-11">
+					<input type="button" class="form-control addbtn" id="idEditHierarchyButton" tabindex="540" value = "Submit" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

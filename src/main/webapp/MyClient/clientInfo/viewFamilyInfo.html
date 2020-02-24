@@ -1,0 +1,59 @@
+<script src="clientInfo/js/viewFamilyInfo.js"></script>
+<script src="clientInfo/js/common.js"></script>
+<div class="alert alert-success" id="deleteMessage" style="display:none">
+	<strong>Success!</strong> Client Family Member Deleted Successfully;
+</div>
+<div class="cicontainer">
+	<table width="100%" class="table table-hover">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Relation</th>
+				<th>Date Of Birth</th>	
+				<th>Dependent?</th>
+			</tr>
+		</thead>
+		<tbody id="viewFamilyMemberList">
+		
+		</tbody>
+	</table>
+
+</div>
+	
+<!-- <script type="text/javascript">
+$(document).ready(function (event) {
+	var selectedClientId = sessionStorage.getItem("SELECTED_CLIENT_ID");
+	var serviceurl = "clientFamilyMember/client/" + selectedClientId;
+	getClientData("GET", "", serviceurl, onSuccess);
+	function onSuccess(data) {
+		$.each(data, function (index, cfm) {
+			$(".retirementview").append('<tr>' +
+				'<td>' + cfm.firstName +' '+cfm.lastName + '</td>' +
+				'<td>' + cfm.relationName + '</td>' +
+				'<td>' + cfm.birthDate + '</td>' +
+				'<td>' + cfm.dependentFlag + '</td>' +
+				'<td class="hidden"><input type="text" id="idFamilyInfoId" name="familyInfoId"  value=' + cfm.id + ' readonly="readonly"></td>' +
+				'<td class="hidden"><input type="text" id="idIsTobaccoUser" name="isTobaccoUser"  value=' + cfm.isTobaccoUser + ' readonly="readonly"></td>' +
+				'<td class="hidden"><input type="text" id="idIsProperBMI" name="isProperBMI"  value=' + cfm.isProperBMI + ' readonly="readonly"></td>' +
+				'<td class="hidden"><input type="text" id="idHasDiseaseHistory" name="hasDiseaseHistory"  value=' + cfm.hasDiseaseHistory + ' readonly="readonly"></td>' +
+				'<td class="hidden"><input type="text" id="idHasNormalBP" name="hasNormalBP"  value=' + cfm.hasNormalBP + ' readonly="readonly"></td>' +
+				'</tr>');
+		});
+	}		
+	$(".retirementview").on("click", "tr", function (e) {
+		 addRowHandlers();
+		$(this).addClass("selected").siblings().removeClass("selected");
+		$(".retirementview tr:nth-child(0)").removeClass("selected");
+		  $('.editicon').removeClass('btn_Disabled');
+		  $('.deleteicon').removeClass('btn_Disabled');
+		  sessionStorage.setItem("SELECTED_FAMILY_INFO_ID", $(this).find('#idFamilyInfoId').val());
+			sessionStorage.setItem("IS_TOBACCO_USER",$(this).find('#idIsTobaccoUser').val());
+			sessionStorage.setItem("IS_PROPER_BMI",$(this).find('#idIsProperBMI').val());
+			sessionStorage.setItem("HAS_DISEASE_HISTORY",$(this).find('#idHasDiseaseHistory').val());
+			sessionStorage.setItem("HAS_NORMAL_BP",$(this).find('#idHasNormalBP').val());
+	});   
+		
+});
+
+
+</script> -->

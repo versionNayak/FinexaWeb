@@ -1,0 +1,223 @@
+<script src="clientInfo/js/validateMF.js"></script> 
+<script src="clientInfo/js/validateETF.js"></script> 
+<script src="clientInfo/js/validatePMS.js"></script> 
+<script src="clientInfo/js/validationForAll.js"></script>
+<script src="clientInfo/js/common.js"></script>
+<script src="clientInfo/js/addFund.js"></script> 
+
+
+<div class="cicontainer">
+		<div>
+			<form class="form-horizontal" id="idAddFundForm" action="#">
+				<label class="col-sm-1 control-label"></label>    
+				<div class="col-md-10 no_padding">
+					<input type ="hidden" id="idNAV" name="NAV" />
+					<div id="idRadioStart" style="display:none">
+						<label>Product*:</label>
+						<input id="idFundTypeMF" name="fundTypeID" type="radio" value="19" /> Mutual Fund  &nbsp;&nbsp;&nbsp; 
+						<input id="idFundTypeETF" name="fundTypeID" type="radio" value="20" /> ETF &nbsp;&nbsp;&nbsp;
+	           			<input id="idFundTypePMS" name="fundTypeID" type="radio" value="21" /> PMS &nbsp;&nbsp;&nbsp;
+					</div>
+		       		<br><br>
+					<div id="MainDiv" style="display:none;">
+						<div class="form-group">
+							<div class="col-sm-12">
+								<span class="formentry-errmsg" id="alertform"></span>
+							</div>
+						</div>		
+					 	<div id="FAO" class="form-group form-group-lg">
+							<div class="col-sm-8 asset-owner-wrapper">
+								<label>Financial Asset Owner:</label><br/>
+								<table class="familymembertbl" width="20px">
+									<tr class="mem_icon" id="familyMemberImage">
+									</tr>
+								</table>
+							</div>
+						</div>
+						<hr class="full-width-divider">				
+						<div id="FH" class="form-group">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-sm-12">
+								<label>Select Mutual Fund*:</label>
+								<span class="form-static-value" id="idFundHouse" >
+									<select class="form-control input-width-medium" id="idFHouse" name="fundHouse" required="required" tabindex="1" style="width: auto">
+									</select>
+									<span class="formentry-errmsg" id="alertFHouse"></span>
+								</span>
+							</div>
+						</div>								
+						<div id="SN" class="form-group">
+							<div class="col-sm-12">
+								<label>Select Scheme*:</label>
+								<span class="form-static-value" id="idSchemeName" >
+									<select class="form-control input-width-medium" id="idSName" name="schemeName" onchange="initAmountAndUnits($(this))"  required="required" tabindex="2" style="width: auto">
+										<option value="">Select Scheme</option>
+									</select>
+									<span class="formentry-errmsg" id="alertSName"></span>
+								</span>
+							</div>
+						</div>	
+						
+						<input type ="hidden" id="idIsin" name="isin" />
+												
+						<div id="PN" class="form-group">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-sm-12">
+								<label>PMS*:</label>
+								<input type="text" class="form-control input-group input-width-medium" id="idPName" name="providerName" placeholder="Enter Provider Name" tabindex="3">
+								<span class="formentry-errmsg" id="alertPName"></span>
+							</div>
+						</div>							
+						<div id="SN-PMS" class="form-group">
+							<div class="col-sm-12">
+								<label>PMS Scheme*:</label>
+								<input type="text" class="form-control input-group input-width-medium" id="idSNamePMS" name="schemeNamePMS" placeholder="Enter Scheme Name" tabindex="4">
+								<span class="formentry-errmsg" id="alertSchemeNamePMS"></span>
+							</div>
+						</div>							
+						<div id="AC" class="form-group">
+							<div class="col-sm-12">
+								<label>Asset Class*:</label>
+								<span class="form-static-value" id="idAssetCategory" >
+									<select class="form-control input-width-medium" id="idACategory" name="fundCategoryID" required="required" tabindex="5" disabled>
+										<option value="">Select Asset Class</option>
+									</select>
+									<span class="formentry-errmsg" id="alertACategory"></span>
+								</span>
+							</div>
+						</div>
+					 <input type ="hidden" id="idACategory" name="fundCategoryID" /> 
+						<div id="SUB" class="form-group">
+							<div class="col-sm-12">
+								<label>Sub Asset Class*:</label>
+								<span class="form-static-value" id="idSubAsset" >
+									<select class="form-control input-width-medium" id="idSAssetClass" name="subAssetID" required="required" tabindex="6">
+										<option value="">Select Sub Asset </option>
+									</select>
+									<span class="formentry-errmsg" id="alertSubAssetClass"></span>
+								</span>
+							</div>
+						</div>
+						<div id="OECE" class="form-group">
+							<div class="col-sm-12">
+								<label>Open Ended/Close Ended:</label>
+								<span class="form-static-value" id="hide320" >
+									<select class="form-control input-width-medium" id="idOpenClose" name="closeEndedFlag" required="required" tabindex="7" readonly>
+										 <option value="N">Open Ended/Close Ended Flag</option>
+						 			</select>
+								</span>
+					 			<span class="formentry-errmsg" id="alertFlag"></span>
+							</div>
+						</div>		
+						<div id="IM" class="form-group">
+							<div class="col-sm-12">
+								<label>Investment Mode*:</label>
+								<span class="form-static-value" id="idInvestmentMode" >
+									<select class="form-control input-width-medium" id="idIMode" name="investmentModeID" required="required" tabindex="8" onchange="investmentModeChange4MF()">
+									</select>
+									<span class="formentry-errmsg" id="alertIMode"></span>
+								</span>
+							</div>
+						</div> 							
+						<div id="IM-ETF" class="form-group">
+							<div class="col-sm-12">
+								<label>Investment Mode*:</label>
+								<span class="form-static-value" id="idInvestmentMode" >
+									<select class="form-control input-width-medium" id="idIModeETF" name="investmentModeIDETF" required="required" tabindex="9" onchange="investmentModeChange4ETF()">
+									</select>
+									<span class="formentry-errmsg" id="alertIModeETF"></span>
+								</span>
+							</div>
+						</div> 	
+						<div id="SD" class="form-group">
+							<div class="col-sm-12">
+								<div id="LSDL">
+									<label>Date of Investment*:</label>
+								</div>
+								<div id="SIPDL">
+									<label>SIP Start Date*:</label>
+								</div>
+								<p id="idInvestmentStartDateGroup" class="input-group input-width-medium">
+									<input type="text" onchange="dateChangeValidation()" class="form-control" id="idInvestmentStartDate" name="investmentStartDate" placeholder="DD/MM/YYYY" tabindex="10"> <!-- onfocusout="initAmountAndUnits($(this))" -->
+									<span class="input-group-btn datepicker-icon" >
+										<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Start Date" tabindex="-1"><em class="glyphicon calendar-icon-theme" ></em></button>
+									</span>
+								</p>
+								<span class="formentry-errmsg" id="alertIDate"></span>
+								<!-- <span class="formentry-errmsg" id="alertIDate94"></span> -->
+							</div>
+						</div>							
+						<div id="Amount" class="form-group">
+							<div class="col-sm-12">
+								<div id="LSAL">
+									<label>Amount Invested(Rs)*:</label>
+								</div>
+								<div id="SIPAL">
+									<label>SIP Amount(Rs)*:</label>
+								</div>
+								<input type="text" class="form-control input-group input-width-medium" id="idInvestmentAmount" name="investmentAmount" onchange="initAmountAndUnits($(this))" onfocusout="calculateUnitsOrAmount('Amount');maskAmount('#idInvestmentAmount');" placeholder="Enter Amount" tabindex="11">
+								<span class="formentry-errmsg" id="alertAmount"></span>
+							</div>
+						</div>	
+						<div id="LSU" class="form-group">
+							<div class="col-sm-12">
+								<label>Units Purchased*:</label>
+								<!--  <input type="text" class="form-control input-group input-width-medium" id="idUnitsPurchased" name="lumpsumUnitsPurchased" onchange="initAmountAndUnits($(this))" onfocusout="calculateUnitsOrAmount('Units');maskAmount('#idInvestmentAmount');" placeholder="Enter Units Purchased" tabindex="12">
+								  -->
+								 <input type="text" class="form-control input-group input-width-medium" id="idUnitsPurchased" name="lumpsumUnitsPurchased" onchange="initAmountAndUnits($(this))" onfocusout="maskAmount('#idInvestmentAmount');" placeholder="Enter Units Purchased" tabindex="12">
+								
+								<span class="formentry-errmsg" id="alertUnitsPurchased"></span>
+							</div>
+						</div>	
+						<div id="LSLD" class="form-group">
+							<div class="col-sm-12">
+								<label>Lock in Date(if-any):</label>
+								<p id="idLockedInDateGroup" class="input-group input-width-medium">
+									<input type="text" class="form-control" id="idLockedInDate" name="mfLumpsumLockedInDate" placeholder="DD/MM/YYYY" tabindex="12">
+									<span class="input-group-btn datepicker-icon">
+										<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Locked In Date" tabindex="13"><em class="glyphicon calendar-icon-theme"></em></button>
+									</span>
+								</p>
+								<span class="formentry-errmsg" id="alertLockedInDate"></span>
+							</div>
+						</div>
+						<div id="SIPI" class="form-group">
+							<div class="col-sm-12">
+								<label>SIP Installments*:</label>
+								<input type="text" class="form-control input-group input-width-medium" id="idSIPInstallments" name="sipInstalments" placeholder="Enter SIP Installments" tabindex="14">
+								<span class="formentry-errmsg" id="alertSIPInstallments"></span>
+							</div>
+						</div>	
+						<div id="SIPF" class="form-group">
+							<div class="col-sm-12">
+								<label>SIP Frequency*:</label>
+								<span class="form-static-value" id="idSIPFrequency" >
+									<select class="form-control input-width-medium" id="idSIPF" name="sipFrequency" required="required" tabindex="15">
+									</select>
+									<span class="formentry-errmsg" id="alertSipf"></span>
+								</span>
+							</div>
+						</div>							
+						<div id="CurrentMarketValue" class="form-group">
+							<div class="col-sm-12">
+								<label>Current Market Value(Rs)*:</label>
+								<input type="text" class="form-control input-group input-width-medium" id="idCurrentMarketValue" name="currentMarketValue" onfocusout="maskAmount('#idCurrentMarketValue')" placeholder="Enter Current Market Value" tabindex="16">
+								<span class="formentry-errmsg" id="alertCMV"></span>
+							</div>
+						</div>
+					</div>	
+				</div>
+	    		<div class="clearfix"></div>
+	    		<br><br>
+				<div id="idButton" class="form-group" style="display:none;">
+					<div class="col-sm-offset-1 col-sm-11">
+						<button id="idSaveFund" type="button" class="pull-left btn addbtn" onclick="saveFund()" tabindex="17">SAVE</button>
+						<button type="button" id="undo" class="pull-left btn addbtn" onclick="undoChange()" tabindex="18">UNDO</button> 
+					</div>
+				</div>
+				<div id="focusguard-2" tabindex="19"></</div>			
+			</form>
+		</div>
+</div>
+
+	

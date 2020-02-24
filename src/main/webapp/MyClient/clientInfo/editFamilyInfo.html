@@ -1,0 +1,488 @@
+<!-- <script src="clientInfo/js/editClient.js"></script> -->
+<script type="text/javascript" src="clientInfo/js/common.js"></script>
+<script type="text/javascript" src="clientInfo/js/validationForAll.js"></script>
+<script type="text/javascript" src="clientInfo/js/validateFamilyMember.js"></script>
+<script src="../../Common/assets/js-library/moment-2.11.0.js"></script>
+
+<div class="cicontainer">
+    <div>
+        <form class="form-horizontal" id="idEditFamilyInfoForm" name="AddFamilyMember" action="#">
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <span class="formentry-errmsg" id="alertform"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="idFMFirstName" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>First Name*: </label>
+                    <input type="text" id="idFMFirstName" name="firstName" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="First Name" tabindex="270" />
+                    <span class="formentry-errmsg" id="alertfname"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="idFMMiddleName" name="" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>Middle Name:</label>
+                    <input type="text" id="idFMMiddleName" name="middleName" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Middle Name" tabindex="270" />
+                    <span class="formentry-errmsg" id="alertmname"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="idFMLastName" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>Last Name:</label>
+                    <input type="text" id="idFMLastName" name="lastName" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Last Name" tabindex="270" />
+                    <span class="formentry-errmsg" id="alertlname"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="idFMRelation" class="col-sm-1 control-label"></label>
+                <div class="col-sm-4">
+                    <label>Relation*</label>
+                    <span class="form-static-value" id="hide320">
+						<select class="form-control input-width-medium" id="idFMRelation" name="relationID" onchange="toggleOtherRelation()" required="required" tabindex="270">
+						</select>
+						<span class="formentry-errmsg" id="alertrelation"></span>
+                    </span>
+                </div>
+                <div class="col-sm-4">
+                    <label>If Others, specify:</label>
+                    <p class="input-group input-width-medium">
+                        <input type="text" class="form-control valid-state" id="idFMOtherRelation" name="otherRelation" placeholder="Please Enter Relationship" tabindex="340" disabled>
+                        <span class="formentry-errmsg" id="alertotherrelation"></span>
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="idFMBdate" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>Date of Birth*:</label>
+                    <p id="idFMBirthDateGroup" class="input-group input-width-medium">
+                        <input type="text" class="form-control" id="idFMBdate" name="birthDate" placeholder="DD/MM/YYYY" tabindex="330">
+                        <span class="input-group-btn datepicker-icon">
+							<button id="idFMDobCalendar" type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Date of Birth"><em class="glyphicon calendar-icon-theme"></em></button>
+						</span>
+                    </p>
+                    <span class="formentry-errmsg" id="alertbdate"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="idFMPan" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>PAN:</label>
+                    <p class="input-group input-width-medium">
+                        <input type="text" class="form-control valid-state" id="idFMPan" name="pan" placeholder="Enter Pan No" tabindex="340">
+                        <span class="formentry-errmsg" id="alertpan"></span>
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="idFMAadhar" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>Aadhar Card No.:</label>
+                    <p class="input-group input-width-medium">
+                        <input type="text" class="form-control valid-state" id="idFMAadhar" name="aadhar" placeholder="Enter Aadhar No" tabindex="340">
+                        <span class="formentry-errmsg" id="alertaadhar"></span>
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>Dependent?*:</label>
+                    <div class="displayflex" id="idFMDependent">
+                        <label class="radio-inline custom-radio-theme">
+							<input type="radio" name="dependentFlag" id="idFMDependentN" value="N" tabindex="360" checked="checked"/><i></i>No
+						</label>
+                        <label class="radio-inline custom-radio-theme">
+							<input type="radio" name="dependentFlag" id="idFMDependentY" value="Y" tabindex="370"/><i></i>Yes
+						</label>
+                    </div>
+                    <span class="formentry-errmsg" id="alertdependent"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>Already Retired?:</label>
+                    <div class="displayflex" id="idFMRetired">
+                        <label class="radio-inline custom-radio-theme">
+							<input type="radio" name="retiredFlag" id="idFMRetiredN" onclick="showHideRetirementAge(this);"  value="N" tabindex="360" checked="checked"/><i></i>No
+						</label>
+                        <label class="radio-inline custom-radio-theme">
+							<input type="radio" name="retiredFlag" id="idFMRetiredY" onclick="showHideRetirementAge(this);"  value="Y" tabindex="370"/><i></i>Yes
+						</label>
+                    </div>
+                    <span class="formentry-errmsg" id="alertretired"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="idRetirementAge" class="col-sm-1 control-label"></label>
+                <div class="col-sm-8">
+                    <label>Retirement Age*:</label>
+                    <p class="input-group input-width-medium">
+                        <input type="text" id="idRetirementAge" name="retirementAge" class="form-control valid-state" placeholder="Enter Age" tabindex="340">
+                        <span class="formentry-errmsg" id="alertretirementage"></span>
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-1 col-sm-11">
+                    <button type="button" id="idEditFamilyInfoSubmit" class="pull-left btn addbtn" tabindex="540">SAVE</button>
+                    <button type="button" id="undo" class="pull-left btn addbtn" tabindex="15" onclick="undoChange()">UNDO</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var selectedFamilyInfoId = sessionStorage.getItem("SELECTED_FAMILY_MEMBER_ID");
+    $(document).ready(function() {
+        var loggedUser = JSON.parse(sessionStorage.getItem("LOGGED_IN_USER"));
+        var loggedClient;
+        if (loggedUser == null) {
+            loggedClient = JSON.parse(sessionStorage.getItem("LOGGED_IN_CLIENT"));
+        } else {
+            loggedClient = sessionStorage.getItem("LOGGED_IN_CLIENT");
+        }
+        if (loggedClient != null && loggedClient.role === "Client") {
+            if (loggedClient != null && loggedClient.clientInfoAddEdit === "Y") {
+                alert("new");
+                $("#idEditFamilyInfoSubmit").show();
+                $("#undo").show();
+            } else if (loggedClient.clientInfoView === "Y") {
+                $("#idEditFamilyInfoSubmit").hide();
+                $("#undo").hide();
+            }
+        } else if (loggedUser != null && loggedUser != null && loggedUser.role === "Admin") {
+            $("#idEditFamilyInfoSubmit").hide();
+            $("#undo").hide();
+        } else {
+            if (loggedUser != null && loggedUser != null && loggedUser.clientInfoAddEdit === "Y") {
+                $("#idEditFamilyInfoSubmit").show();
+                $("#undo").show();
+            } else if (loggedUser != null && loggedUser != null && loggedUser.clientInfoView === "Y") {
+                $("#idEditFamilyInfoSubmit").hide();
+                $("#undo").hide();
+            }
+        }
+        var momentA;
+        var momentB;
+
+        $("input[type='radio']", $('#idFMDependent')).change(function() {
+            if ((document.getElementById("idFMRelation").value == 2) || (document.getElementById("idFMRelation").value == 3)) {
+                if ($("#idFMDependentY").prop("checked")) {
+                    // do something
+                    $("#idFMRetiredN").prop("checked", false);
+                    $('#idRetirementAge').prop("disabled", true);
+                    $("#idFMRetiredN").prop("disabled", true);
+                    $("#idFMRetiredY").prop("disabled", true);
+
+                } else {
+                    if ($("#idFMDependentN").prop("checked")) {
+                        $("#idFMRetiredN").prop("checked", true);
+                        $('#idRetirementAge').prop("disabled", false);
+                        $("#idFMRetiredN").prop("disabled", false);
+                        $("#idFMRetiredY").prop("disabled", false);
+                    }
+                }
+            }
+        });
+        // calendar
+        var options = {
+            onComplete: function(cep) {
+                //window.given_start_date = moment($('#idInvestmentStartDate').val(),'DD/MM/YYYY').toDate();
+                //window.ln_start_dt_isvalid = isDateBetwenRange(window.clientDOB, new Date() ,window.given_start_date);
+            },
+            onKeyPress: function(cep, event, currentField, options) {},
+            onChange: function(cep) {},
+            onInvalid: function(val, e, f, invalid, options) {}
+        };
+
+        $('#idFMBdate').mask('00/00/0000', options);
+        "use strict";
+        $("[data-toggle=\"tooltip\"]").tooltip();
+        /* $("#idFMBdate").datepicker({
+			format: "dd/mm/yyyy",
+			todayHighlight: true,
+			todayBtn: true,
+			autoclose: true,
+			forceParse: false,
+			endDate: new Date()
+		}).on('changeDate', function(ev){
+			$("#alertbdate").css('color','');
+			$("#alertbdate").text("");
+			$("#idFMBirthDateGroup").css('border','');
+			$("#idAddFamilyMemberSubmit").prop("disabled", false);
+        });	 */
+        myDatePicker();
+
+        $(".datepicker-icon").on("click", function() {
+            $(this).closest(".input-group").find("input").trigger("focus");
+        });
+
+        $("#idFMBdate").blur(function() {
+
+            if ($(this).val() != "") {
+                if (!checkValidDate($(this).val())) {
+                    $("#alertbdate").css('color', 'red');
+                    $("#alertbdate").text("Date is invalid!");
+                    $("#idFMBirthDateGroup").css('border', '2px solid red');
+                    $("#idAddFamilyMemberSubmit").prop("disabled", true);
+                } else {
+                    $("#alertbdate").css('color', '');
+                    $("#alertbdate").text("");
+                    $("#idFMBirthDateGroup").css('border', '');
+                    $("#idAddFamilyMemberSubmit").prop("disabled", false);
+                }
+            } else {
+                $("#alertbdate").css('color', '');
+                $("#alertbdate").text("");
+                $("#idFMBirthDateGroup").css('border', '');
+                $("#idAddFamilyMemberSubmit").prop("disabled", false);
+            }
+
+
+        });
+
+        loggedUser = JSON.parse(sessionStorage.getItem("LOGGED_IN_USER"));
+        populateRelationDrop($("#idFMRelation"));
+
+        var selectedClientId = sessionStorage.getItem("SELECTED_CLIENT_ID");
+        var isTobaccoUser = sessionStorage.getItem("IS_TOBACCO_USER");
+
+        var isProperBMI = sessionStorage.getItem("IS_PROPER_BMI");
+
+        var hasDiseaseHistory = sessionStorage.getItem("HAS_DISEASE_HISTORY");
+
+        var hasNormalBP = sessionStorage.getItem("HAS_NORMAL_BP");
+
+        var serviceUrl = "clientFamilyMember/" + selectedFamilyInfoId;
+        getClientData("GET", "", serviceUrl, onSuccess);
+        var lifeExpectancy;
+
+        function onSuccess(data) {
+            console.log(data);
+
+            console.log("data.isTobaccoUser " + data.isTobaccoUser);
+            console.log("data.isProperBMI " + data.isProperBMI);
+            console.log("data.hasDiseaseHistory " + data.hasDiseaseHistory);
+            console.log("data.hasNormalBP " + data.hasNormalBP);
+            isTobaccoUser = data.isTobaccoUser;
+
+            isProperBMI = data.isProperBMI;
+
+            hasDiseaseHistory = data.hasDiseaseHistory;
+
+            hasNormalBP = data.hasNormalBP;
+
+            //isTobaccoUser":null,"isProperBMI":null,"hasDiseaseHistory":null,"hasNormalBP":null
+            momentA = moment(data.birthDate, "DD/MM/YYYY");
+            //	alert(data.id);
+            if (data.lifeExpectancy != null || data.lifeExpectancy != 0) {
+                lifeExpectancy = data.lifeExpectancy;
+            }
+            populateForm($("#idEditFamilyInfoForm"), data);
+            myDatePicker();
+            if ((data.relationID == 2) || (data.relationID == 3)) {
+                //alert(data.dependentFlag);
+                if (data.dependentFlag == "Y") {
+                    document.getElementById("idRetirementAge").disabled = true;
+                    $("#idFMRetiredN").prop("disabled", true);
+                    $("#idFMRetiredY").prop("disabled", true);
+                } else {
+                    if (data.dependentFlag == "N") {
+                        document.getElementById("idRetirementAge").disabled = false;
+                        $("#idFMRetiredN").prop("disabled", false);
+                        $("#idFMRetiredY").prop("disabled", false);
+                    }
+
+                }
+            }
+            if (data.retiredFlag == "Y") {
+                document.getElementById("idRetirementAge").disabled = true;
+            } else {
+                if (data.retiredFlag == "N") {
+                    document.getElementById("idRetirementAge").disabled = false;
+                }
+            }
+
+            console.log(data.relationID);
+
+            $("#idFMRelation option").filter(function() {
+                return this.value == data.relationID;
+
+            }).prop('selected', true);
+
+        }
+
+        $("#idEditFamilyInfoSubmit").on("click", function(event) {
+            event.preventDefault();
+            var formData = $('#idEditFamilyInfoForm').serializeToJSON();
+            console.log("selectedFamilyInfoId " + selectedFamilyInfoId);
+            formData["id"] = selectedFamilyInfoId;
+            formData["clientID"] = selectedClientId;
+            formData["isTobaccoUser"] = isTobaccoUser;
+            formData["isProperBMI"] = isProperBMI;
+            formData["hasDiseaseHistory"] = hasDiseaseHistory;
+            formData["hasNormalBP"] = hasNormalBP;
+            //alert("lifeExpectancy "+lifeExpectancy);
+            formData["lifeExpectancy"] = lifeExpectancy;
+            var data = JSON.stringify(formData);
+            //alert(data);
+
+            var validate;
+
+            validate = validateFamilyMember($('#idEditFamilyInfoForm'));
+            //	alert(validate);
+            if (validate) {
+                showLoaderOnSave("#idEditFamilyInfoSubmit");
+                //$(this).addClass('active');
+                window.setTimeout(function() {
+                    var dt = $("#idFMBdate").val();
+                    momentB = moment(dt, "DD/MM/YYYY");
+                    console.log("Old birth date moment: " + momentA);
+                    console.log("New birth date moment: " + momentB);
+
+                    if (lifeExpectancy != null) {
+                        if (!momentA.isSame(momentB)) {
+                            console.log("Date of birth has been changed");
+                            console.log("data " + data);
+                            getClientData("POST", data, "reCalculateLifeExpectancyForFamilyMember", onReCalculateLifeExpSuccess);
+
+                            function onReCalculateLifeExpSuccess(Ldata) {
+                                var Ldata1 = JSON.stringify(Ldata);
+                                console.log("data " + Ldata1);
+                                lifeExpectancy = Ldata.totalLifeExpectancy;
+                                console.log("new lifeExp " + lifeExpectancy);
+                                formData["lifeExpectancy"] = lifeExpectancy;
+                            }
+                        }
+                    }
+                    data = JSON.stringify(formData);
+                    console.log("in edit mode " + data);
+                    //getClientDataWithErrorHandling("POST", data, "clientFamilyMember", onSuccess,onError);
+                    saveData("POST", data, "editClientFamilyMember", onUpdateSuccess);
+
+                    function onUpdateSuccess(data) {
+                        hideLoaderOnSave("#idEditFamilyInfoSubmit");
+                        console.log("save member ");
+                        serviceurl = "clientFamilyMember/client/" + selectedClientId;
+                        getClientData("GET", "", serviceurl, onSuccess);
+
+                        function onSuccess(data) {
+                            sessionStorage.setItem("FAMILY_MEMBER_LIST", JSON.stringify(data));
+                            $("#idClient").load("clientInfo/viewFamilyInfo.html");
+                            $(".dashboardheading").html("");
+                            $(".dashboardheading").html("Family Members");
+
+                        }
+
+                        //					
+                    }
+                    /* function onError(err){
+ 				    $("#alertform").text("Error saving family information. Please try after sometime or contact system administrator.");
+ 					$(window).scrollTop(0);
+ 					hideLoaderOnSave("#idEditFamilyInfoSubmit");
+ 				} */
+                }, 5000);
+            }
+
+
+        });
+
+    });
+
+    function myDatePicker() {
+        $("#idFMBdate").datepicker('remove');
+        $("#idFMBdate").datepicker({
+            format: "dd/mm/yyyy",
+            todayHighlight: false,
+            todayBtn: true,
+            autoclose: true,
+            forceParse: false,
+            endDate: new Date()
+        }).on('changeDate', function(ev) {
+            $("#alertbdate").css('color', '');
+            $("#alertbdate").text("");
+            $("#idFMBirthDateGroup").css('border', '');
+            $("#idAddFamilyMemberSubmit").prop("disabled", false);
+        });
+    }
+
+    function toggleOtherRelation() {
+        if (document.getElementById("idFMRelation").value == 8) {
+            document.getElementById("idFMOtherRelation").disabled = false;
+        } else {
+            document.getElementById("idFMOtherRelation").value = "";
+            document.getElementById("idFMOtherRelation").disabled = true;
+
+        }
+    }
+
+    function showHideRetirementAge(retiredYesNo) {
+        if (retiredYesNo.value == "Y") {
+            document.getElementById("idRetirementAge").disabled = true;
+        } else {
+            document.getElementById("idRetirementAge").disabled = false;
+        }
+    }
+
+
+    function undoChange() {
+        var serviceUrl = "clientFamilyMember/" + selectedFamilyInfoId;
+        getClientData("GET", "", serviceUrl, onSuccess);
+        var lifeExpectancy;
+
+        function onSuccess(data) {
+            console.log(data);
+
+            console.log("data.isTobaccoUser " + data.isTobaccoUser);
+            console.log("data.isProperBMI " + data.isProperBMI);
+            console.log("data.hasDiseaseHistory " + data.hasDiseaseHistory);
+            console.log("data.hasNormalBP " + data.hasNormalBP);
+            isTobaccoUser = data.isTobaccoUser;
+
+            isProperBMI = data.isProperBMI;
+
+            hasDiseaseHistory = data.hasDiseaseHistory;
+
+            hasNormalBP = data.hasNormalBP;
+
+            //isTobaccoUser":null,"isProperBMI":null,"hasDiseaseHistory":null,"hasNormalBP":null
+            momentA = moment(data.birthDate, "DD/MM/YYYY");
+            //	alert(data.id);
+            if (data.lifeExpectancy != null || data.lifeExpectancy != 0) {
+                lifeExpectancy = data.lifeExpectancy;
+            }
+            populateForm($("#idEditFamilyInfoForm"), data);
+
+            if (data.retiredFlag == "Y") {
+                document.getElementById("idRetirementAge").disabled = true;
+            } else {
+                if (data.retiredFlag == "N") {
+                    document.getElementById("idRetirementAge").disabled = false;
+                }
+            }
+
+            console.log(data.relationID);
+
+            $("#idFMRelation option").filter(function() {
+                return this.value == data.relationID;
+
+            }).prop('selected', true);
+
+            if (data.relationID != 8) {
+                $("#idFMOtherRelation").prop("disabled", true);
+            } else {
+                $("#idFMOtherRelation").prop("disabled", false);
+            }
+
+
+        }
+    }
+</script>

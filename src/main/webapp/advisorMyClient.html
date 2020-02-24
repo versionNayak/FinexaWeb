@@ -1,0 +1,1268 @@
+<script src="../Common/assets/js-library/bootbox.js"></script>
+<script src="../Common/assets/js-library/bootbox.min.js"></script>
+<script src="../Common/assets/js/advisorDashboard_MyClient.js"></script>
+<link href="../Common/assets/css/dashboard.css" rel="stylesheet">
+<script src="../Common/assets/js/common.js"></script>
+<script src="../Common/assets/js/validationForAll.js"></script>
+<script src="../Common/assets/js/validateClientTask.js"></script>
+<script src="../Common/assets/js/validateClientMeeting.js"></script>
+
+<link href="../Common/assets/css-library/bootstrap-datepicker3.standalone.min.css" rel="stylesheet">
+<script src="../Common/assets/js-library/bootstrap-datetimepicker.min.js"></script>
+
+
+
+
+<style>
+.highcharts-container[style] {
+	height: 250px !important
+}
+</style>
+<div class="cicontainer">
+	<div>
+		<!--<img src="Common/assets/images/advisorclient.jpg" width="100%" style="margin-top:20px"/>-->
+		<table class="advisordashboardtbl">
+			<tbody>
+				<tr>
+					<td>
+						<table class="innnerdashboardtbl"
+							style="width: 100%;  margin-top: -49px; padding: 1px;">
+							<tr>
+								<td class="dashboardinnerheading"><b>Client Snapshot</b></td>
+								<td><img src="../Common/assets/images/maxbtn.png"
+									style="width: 20px; margin-right: -2px; margin-top: -19px; float: right;"
+									id="idMaxnetworthsum" class="popup" /></td>
+							</tr>
+							<tr>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+							</tr>
+							<tr>
+								<td colspan="2" class="dashboardinnerheading"
+									style="text-align: center"><b>Total Clients</b><br /> <span
+									style="color: black; font-size: 30px" id="idtotal_clients"><b></b></span>
+								</td>
+							</tr>
+							<tr>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+							</tr>
+							<tr>
+								<td class="resulttopbrdr" style="font-size: 12px">New
+									Clients Added</td>
+								<td class="resulttopbrdr"><select class="bggrey"
+									style="margin-top: 6px; margin-left: -30px; font-size: 12px"
+									id="idClientsAdded">
+
+										<option value="1">Last 1 week</option>
+										<option value="2">Last fortnight</option>
+										<option value="3">Last 1 month</option>
+										<option value="4">Last 3 months</option>
+										<option value="5">Last 6 months</option>
+										<option value="6">Last 1 Year</option>
+
+								</select></td>
+							</tr>
+							<tr>
+								<td colspan="2" style="text-align: center; font-size: 30px"
+									id="idNo"><b></b></td>
+							</tr>
+							<tr>
+								<td colspan="2" style="text-align: center; font-size: 30px"><b><input type="button" class="pull-left btn addbtn" id="idNext" name="next" value= "Next" style="margin-left : 90px; margin-top : 20px"></b></td>
+							</tr>
+						</table>
+						
+					</td>
+					<td>
+						<table class="" style="width: 100%; margin-top: -21px;">
+							<tr>
+								<td colspan="2" class="dashboardinnerheading"><b>Asset
+										Class wise AUM</b><img src="../Common/assets/images/maxbtn.png"
+									style="width: 20px; float: right;" id="idMaxassetclass"
+									class="popup" /></td>
+							</tr>
+							<tr>
+								<td style="font-size: 12px" colspan="2" id="idTotalAsset">
+									<!-- <b>Total:3.20</b> <span style="float:right"><b>AUM(Rs Crores)</b></span> -->
+								</td>
+							</tr>
+							<tr>
+								<td><div id="assetclass"
+										style="height: 250px; max-width: 250px;"></div></td>
+							</tr>
+						</table>
+					</td>
+					<td>
+						<table class="" style="width: 100%">
+							<tr>
+								<td colspan="2" class="dashboardinnerheading"><b>Product
+										Type wise AUM</b><img src="../Common/assets/images/maxbtn.png"
+									style="width: 20px; float: right" id="idMaxtypewise"
+									class="popup" /></td>
+							</tr>
+							<tr>
+								<td style="font-size: 12px" colspan="2" id="idTotalProductType">
+								</td>
+							</tr>
+							<tr>
+								<td><div id="producttype"
+										style="height: 275px; max-width: 250px;"></div></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<!--Asset Maturity--> <img
+						src="../Common/assets/images/maxbtn.png"
+						style="width: 20px; float: right;" id="idmaxassetmaturity"
+						class="popup" />
+						<table class="" style="width: 97%; margin-top: -8px;">
+							<tr>
+								<td class="dashboardinnerheading" colspan="3"><b>Asset
+										Maturity/Renewal Alerts</b></td>
+							</tr>
+							<tr>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+							</tr>
+							<tr>
+								<td colspan="2"><select class="bggrey"
+									style="width: 99%; font-size: 12px" id="idSelectAssetList"></select></td>
+								<td><select class="bggrey" style="font-size: 12px"
+									id="idTimePeriod">
+										<option value="1">Next 1 week</option>
+										<option value="2">Next fortnight</option>
+										<option value="3">Next 1 month</option>
+										<option value="4">Next 3 months</option>
+										<option value="5">Next 6 months</option>
+										<option value="6">Next 1 Year</option>
+								</select></td>
+							</tr>
+						</table>
+						 <div class="slideshow-container" id="idAssetRow"> 
+						<!--  <a class="prev1" onclick="plusSlides(-1)">&#10094;</a> <a class="next1" onclick="plusSlides(1)">&#10095;</a>  -->
+						</div>
+						<div style="text-align: center">
+					    <span class="dot" onclick="currentSlide(1)"></span> 
+						<span class="dot" onclick="currentSlide(2)"></span> 
+						<span class="dot" onclick="currentSlide(3)"></span>
+						</div> 
+					</td>
+					<td><img src="../Common/assets/images/maxbtn.png"
+						style="width: 20px; float: right;" id="idmaxinsurancematurity" />
+						<table class="" style="width: 101%; margin-top: -8px;">
+							<tr>
+								<td class="dashboardinnerheading" colspan="3"><b>Insurance
+										Maturity/Renewal </br>Alerts
+								</b></td>
+							</tr>
+							<tr>
+								<td><select class="bggrey"
+									style="width: 100%; font-size: 12px" id="idInsurancTypeList">
+								</select></td>
+								<td style="font-size: 12px" colspan="2"><select
+									class="bggrey" id="idTimePeriodInsurance">
+										<option value="1">Next 1 week</option>
+										<option value="2">Next fortnight</option>
+										<option value="3">Next 1 month</option>
+										<option value="4">Next 3 months</option>
+										<option value="5">Next 6 months</option>
+										<option value="6">Next 1 Year</option>
+								</select></td>
+							</tr>
+						</table> <!--Insurance-->
+						<div class="slideshow-container1" id="idInsurancetypeTable">
+							
+						</div> <!-- <a class="prev2" onclick="plusSlides1(-1)" style="margin-left: -240px;">&#10094;</a> -->
+						<!--  <a class="prev2" onclick="plusSlides(-1)">&#10094;</a>
+         <a class="next2" onclick="plusSlides1(1)">&#10095;</a>  -->
+
+						<div style="text-align: center">
+							<span class="dot1" onclick="currentSlide1(1)"></span> <span
+								class="dot1" onclick="currentSlide1(2)"></span> <span
+								class="dot1" onclick="currentSlide1(3)"></span>
+						</div></td>
+					<td>
+						<!--clientbday--> <img src="../Common/assets/images/maxbtn.png"
+						style="width: 20px; float: right;" id="idmaxClientbday" />
+						<table class="" style="width: 97%;">
+							<tr>
+								<td class="dashboardinnerheading"><b>Client Birthday
+										Reminders </b></td>
+							</tr>
+							<tr>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+							</tr>
+							<tr>
+								<td style="font-size: 12px"><select class="bggrey"
+									id="idSelectBirthday">
+										<option value="1">Next 1 week</option>
+										<option value="2">Next fortnight</option>
+										<option value="3">Next 1 month</option>
+										<option value="4">Next 3 months</option>
+										<option value="5">Next 6 months</option>
+										<option value="6">Next 1 Year</option>
+								</select></td>
+							</tr>
+						</table>
+						<div class="slideshow-container2" id="idIterationDOB"></div>
+						<div style="text-align: center">
+							<span class="dot2" onclick="currentSlide2(1)"></span> <span
+								class="dot2" onclick="currentSlide2(2)"></span> <span
+								class="dot2" onclick="currentSlide2(3)"></span>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<!--Meeting calendar--> <img
+						src="../Common/assets/images/maxbtn.png"
+						style="width: 20px; float: right;" id="idmaxmeeting" class="popup" />
+						<table style="width: 97%">
+							<tr>
+								<td class="dashboardinnerheading" colspan="3"><b>Meeting
+										Calendar</b></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td style="font-size: 12px" colspan="2"><select
+									class="bggrey" style="width: 166%" id="idMeetingtimeperiod">
+										<option value="1">Next 1 week</option>
+										<option value="2">Next fortnight</option>
+										<option value="3">Next 1 month</option>
+										<option value="4">Next 3 months</option>
+										<option value="5">Next 6 months</option>
+										<option value="6">Next 1 Year</option>
+								</select></td>
+								<td style="font-size: 12px"><input type="button"
+									class="form-control dashbordbtn" id="idaddmtngwindow"
+									value="ADD MEETING"
+									style="padding-bottom: 18px; margin-right: -67px;" /></td>
+							</tr>
+
+
+						</table>
+						<div class="slideshow-container3" id="idMeetingRow">
+							<!--  <div class="mySlides3 fade3">
+       <div style="width:230px" >
+	   <table class="" style="width: 97%;
+       margin-top: -45px;margin-left:-9px">
+		<tr>
+		<td class="dashboardinnerheading" Colspan="3"><span class="bgblurheadingclr">9:30am, 18 Aug 17</span><img src="../Common/assets/images/arrow.png" style="width: 12px;height: 21px;margin-top: -1px;"/> 		<span style="float:right">	<img src="../Common/assets/images/edit-icon1.png" style="width:29px" id="ideditmtngwindow"/> <img src="../Common/assets/images/delete-icon1.png" style="width:29px"/></span></td>
+		</tr>
+		<tr style="font-size: 12px">
+		<td class="textalignlft">Client Name</td>
+		<td style="text-align:left !important">Mobile Number</td>
+		<td class="textalignlft">Status</td>
+		</tr>
+		<hr/>
+		<tr style="font-size: 12px;">
+		<td class="textalignlft resulttopbrdr"><b>Shilpi Agrawal</b></td>
+		<td style="text-align:left !important" class="resulttopbrdr"><b>8989132412341</b></td>
+		<td class="textalignlft resulttopbrdr"><b>Upcoming</b></td>
+		</tr>
+		</table>
+        </div>
+        </div>
+
+
+
+       <a class="prev4" onclick="plusSlides3(-1)" style="margin-left: -14px;">&#10094;</a>
+       <a class="prev4" onclick="plusSlides3(-1)">&#10094;</a>
+       <a class="next4" onclick="plusSlides3(1)">&#10095;</a> -->
+
+
+						</div>
+						<div style="text-align: center">
+							<span class="dot3" onclick="currentSlide3(1)"></span> <span
+								class="dot3" onclick="currentSlide3(2)"></span> <span
+								class="dot3" onclick="currentSlide3(3)"></span>
+						</div>
+					</td>
+					<td>
+						<!--task --> <img src="../Common/assets/images/maxbtn.png"
+						style="width: 20px; float: right;" id="idMaxtaskpin" class="popup" />
+						<table style="width: 97%">
+							<tr>
+								<td class="dashboardinnerheading" colspan="3"><b>Task
+										Pinboard</b></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td style="font-size: 12px"><select class="bggrey"
+									style="width: 166%" id="idTaskTimePeriod">
+										<option value="1">Next 1 week</option>
+										<option value="2">Next fortnight</option>
+										<option value="3">Next 1 month</option>
+										<option value="4">Next 3 months</option>
+										<option value="5">Next 6 months</option>
+										<option value="6">Next 1 Year</option>
+								</select></td>
+								<td style="font-size: 12px" colspan="2"><input
+									type="button" class="form-control dashbordbtn"
+									id="idaddmtngwindow2" value="ADD TASK"
+									style="padding-bottom: 18px; margin-right: -67px;" /></td>
+							</tr>
+						</table>
+						<div class="slideshow-container3" id="idTaskRow">
+							<!--     <div class="mySlides4 fade4">
+        <div style="width:230px" >
+	   <table class="" style="width: 97%;margin-top: -45px;">
+		<tr>
+		<td class="dashboardinnerheading" colspan="3"><span class="bgblurheadingclr">Nikhil Agrawal</span>
+		<img src="../Common/assets/images/arrow.png" style="width: 12px;height: 21px;margin-top: -1px;"/>
+		<span style="float:right">
+		<img src="../Common/assets/images/edit-icon1.png" id="idedittask" style="width:29px"/>
+		<img src="../Common/assets/images/delete-icon1.png" style="width:29px"/></span></td>
+		</tr>
+		<tr style="font-size: 12px">
+		<td class="textalignlft">Task</td>
+		<td style="text-align:left !important">Date</td>
+		<td class="textalignlft">Time
+		</td>
+		</tr>
+		<hr/>
+		<tr style="font-size: 12px;">
+		<td class="textalignlft resulttopbrdr"><b>Prepare Financial Plan</b></td>
+		<td style="text-align:left !important" class="resulttopbrdr"><b>19 Aug 17</b></td>
+		<td class="textalignlft resulttopbrdr"><b>9:30 am</b></td>
+		</tr>
+		</table>
+        </div>
+        </div> -->
+
+							<!-- <a class="prev4" onclick="plusSlides4(-1)" style="margin-left: -239px;">&#10094;</a> -->
+							<!--  <a class="prev4">&#10094;</a>
+            <a class="next4">&#10095;</a>  -->
+						</div>
+						<div style="text-align: center">
+							<span class="dot4" onclick="currentSlide4(1)"></span> <span
+								class="dot4" onclick="currentSlide4(2)"></span> <span
+								class="dot4" onclick="currentSlide4(3)"></span>
+						</div>
+					</td>
+					<td>
+						<!--upcomeing goals--> <img
+						src="../Common/assets/images/maxbtn.png"
+						style="width: 20px; float: right;" id="idMaxupcomingoal"
+						class="popup" />
+						<table style="width: 97%">
+							<tr>
+								<td class="dashboardinnerheading" colspan="2"><b>Upcoming
+										Goals</b></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td style="font-size: 12px"></td>
+								<td style="font-size: 12px" colspan="2"><select
+									class="bggrey" id="idUpcomingGoal">
+										<option value="7">Next 1 week</option>
+										<option value="8">Next fortnight</option>
+										<option value="9">Next 1 month</option>
+										<option value="10">Next 3 months</option>
+										<option value="11">Next 6 months</option>
+										<option value="12">Next 1 Year</option>
+								</select></td>
+							</tr>
+						</table>
+						<div class="slideshow-container3" id="idIteration"></div>
+
+						<div style="text-align: center">
+							<span class="dot5" onclick="currentSlide5(1)"></span> <span
+								class="dot5" onclick="currentSlide5(2)"></span> <span
+								class="dot5" onclick="currentSlide5(3)"></span>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<!--Max windows for Client snapshot start -->
+<div id="idPopnetworth" class="modal">
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close" style="margin-top: -5px">&times;</span>
+			<h4 style="margin-top: 5px">Client Snapshot</h4>
+			<h2></h2>
+		</div>
+		<div class="modal-body">
+			 <select class="bggrey" style="margin-top: 10px" id="idModalClientListTimePeriod">
+				<option value="7" selected>All Clients</option>
+				<option value="1">Last 1 week</option>
+				<option value="2">Last fortnight</option>
+				<option value="3">Last 1 month</option>
+				<option value="4">Last 3 months</option>
+				<option value="5">Last 6 months</option>
+				<option value="6">Last 1 Year</option>
+			</select>
+			<table width="58%" style="z-index: 10 !important; margin-top: 14px;"
+				class="tdthcenter">
+				<thead>
+					<tr>
+						<th>Client Name</th>
+						<!-- <th>Service Subscribed</th> -->
+						<th>Mobile Number</th>
+						<th>Enrollment date</th>
+					</tr>
+				</thead>
+				<tbody id="idClientListDashBoard"></tbody>
+			</table>
+			<br /> <input type="submit" class="form-control addbtn" id="idClientMasterDownload"
+				value="Download" style="margin-left: 214px;" /> <br />
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+</div>
+<!--Max windows for Client snapshot end -->
+<!--Max windows for Asset Class Wise starts-->
+<div id="idPopassetwise" class="modal1">
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close1" style="margin-top: -5px">&times;</span>
+			<h4 style="margin-top: 5px">Asset Class wise AUM</h4>
+			<h2></h2>
+		</div>
+		<div class="modal-body">
+			<!--<select class="bggrey" style="margin-top:10px">
+		<option>
+		Goal Planning
+		</option>
+		Portfolio Management
+		<option>
+	Budget Management
+		</option>
+		<option>
+		Financial Planning
+		</option>
+		</select>-->
+			<table width="58%" style="z-index: 10 !important; margin-top: 14px;"
+				class="tdthcenter">
+				<thead>
+				    <tr><th align="center" colspan="6"><b>AUM(Rs Crores)</b></th></tr>
+					<tr>
+					
+						<th>Client Name</th>
+						<th>Equity</th>
+						<th>Debt</th>
+						<th>Alternatives</th>
+						<th>Cash</th>
+						<th>Total</th>
+					</tr>
+				</thead>
+				<tbody id="idAssetTypeWiseAUM">
+					<!-- <tr>
+			<td>1</td>
+			<td>Nimish Agrawal</td>
+			<td>2000</td>
+			<td > 98203</td>
+			<td > 10000</td>
+			<td > 10000</td>
+			<td > 10000</td>
+			</tr>  -->
+				</tbody>
+			</table>
+			<br /> <input type="submit" class="form-control addbtn"
+				value="Download" id="idAssetWiseDownload"
+				style="margin-left: 214px;" /> <br />
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+</div>
+<!--Max windows for Asset Class Wise ends-->
+<!--Max windows for Product Type Wise starts-->
+<div id="idPoptypewise" class="modal2">
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close2" style="margin-top: -5px">&times;</span>
+			<h4 style="margin-top: 5px">Product Type wise AUM</h4>
+			<h2></h2>
+		</div>
+		<div class="modal-body">
+			<!--<select class="bggrey" style="margin-top:10px">
+		<option>
+		Goal Planning
+		</option>
+		Portfolio Management
+		<option>
+	Budget Management
+		</option>
+		<option>
+		Financial Planning
+		</option>
+		</select>-->
+			<table width="80%" style="z-index: 10 !important; margin-top: 14px;"
+				class="tdthcenter">
+				<thead>
+				    <tr><th align="center" colspan="9"><b>AUM(Rs Crores)</b></th></tr>
+					<tr>
+						
+					
+						<th>Client Name</th>
+						<th>Direct Equity</th>
+						<th>MF / ETF / PMS</th>
+						<th>Deposit/Bonds</th>
+						<th>Small Saving Schemes</th>
+						<th>Retirement Schemes</th>
+						<th>Cash</th>
+						<th>Alternate Investments</th>
+						<th>Total</th>
+					</tr>
+				</thead>
+				<tbody id="idProductTypeWiseAUM"></tbody>
+
+			</table>
+			<br /> <input type="submit" class="form-control addbtn"
+				value="Download" id="idProductTypeWiseDownload"
+				style="margin-left: 364px;" /> <br />
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+</div>
+<!--Max windows for Product Type Wise ends-->
+<!--Max windows for Asset Maturity  start -->
+<div id="idPopassetmaturity" class="modal3">
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close3" style="margin-top: -5px">&times;</span>
+			<h4 style="margin-top: 5px">Asset Maturity/Renewal Alerts</h4>
+			<h2></h2>
+		</div>
+		<div class="modal-body">
+			<select class="bggrey" style="margin-top: 10px"
+				id="idTimePeriodModalSelect">
+				<option value="1">Next 1 week</option>
+				<option value="2">Next fortnight</option>
+				<option value="3">Next 1 month</option>
+				<option value="4">Next 3 months</option>
+				<option value="5">Next 6 months</option>
+				<option value="6">Next 1 Year</option>
+			</select>
+			<table width="66%" style="z-index: 10 !important; margin-top: 14px;"
+				class="tdthcenter">
+				<thead>
+					<tr>
+						<th>Client Name</th>
+						<th>Product type</th>
+						<th>Product</th>
+						<th>Provider</th>
+						<th>Current Value</th>
+						<th>Maturity Value</th>
+						<th>Maturity Date</th>
+					</tr>
+				</thead>
+				<tbody id="idAssetTable">
+					<!-- <tr>
+								<td>Neha Mohnot
+</td>
+								<td>Deposit/Bonds
+								</td>
+								<td>Bank Fixed Deposits
+</td>
+								<td >SBI
+								</td>
+								<td >  140,000
+								</td>
+								<td >  140,000
+								</td>
+								<td > 17-Aug-17
+								</td>
+							</tr>  -->
+				</tbody>
+			</table>
+			<br /> <input type="submit" class="form-control addbtn"
+				value="Download" id="idAssetMaturityRenewalDownload"
+				style="margin-left: 214px;" /> <br />
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+</div>
+
+<!--Max windows for Insurance Maturity  ends -->
+<div id="idPopInsurancematurity" class="modal4">
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close4" style="margin-top: -5px">&times;</span>
+			<h4 style="margin-top: 5px">Insurance Maturity/Renewal Alerts</h4>
+			<h2></h2>
+		</div>
+		<div class="modal-body">
+			<select class="bggrey" style="margin-top: 10px"
+				id="idTimePeriodModalSelectInsurance">
+				<option value="1">Next 1 week</option>
+				<option value="2">Next fortnight</option>
+				<option value="3">Next 1 month</option>
+				<option value="4">Next 3 months</option>
+				<option value="5">Next 6 months</option>
+				<option value="6">Next 1 Year</option>
+			</select>
+			<table width="87%" style="z-index: 10 !important; margin-top: 14px;"
+				class="tdthcenter">
+				<thead>
+					<tr>
+						<th>Client Name</th>
+						<th>Policy Number</th>
+						<th>Insured family member</th>
+						<th>Policy Name</th>
+						<th>Provider</th>
+						<th>Insurance type</th>
+						<th>Insurance policy type</th>
+						<th>Sum Insured</th>
+						<th>Maturity Date</th>
+					</tr>
+				</thead>
+				<tbody id="idTimePeriodModalSelectInsuranceTable"></tbody>
+				<!-- <tr>
+								<td>Neha Mohnot
+                                </td>
+								<td>12345
+								</td>
+								<td>Neha Mohnot
+                                </td>
+								<td >Click to protect
+								</td>
+								<td > HDFC Life
+								</td>
+								<td > Life
+								</td>
+								<td >Term
+								</td>
+								<td>
+								 500,000 </td>
+								<td> 15-Aug-17</td>
+							</tr>  -->
+
+
+			</table>
+			<br /> <input type="submit" class="form-control addbtn"
+				id="idAdvisorInsuranceDownload" value="Download"
+				style="margin-left: 410px;" /><br />
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+</div>
+<!--Max windows for Insurance Maturity  ends -->
+<!--Max windows for Meeting calander starts -->
+<div id="idPopmeeting" class="modal6">
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close6" style="margin-top: -5px">&times;</span>
+			<h4 style="margin-top: 5px">Meeting Calendar</h4>
+			<h2></h2>
+		</div>
+		<div class="modal-body">
+			<select class="bggrey" style="margin-top: 10px"
+				id="idMeetingtimeperiodModal">
+				<option value="1">Next 1 week</option>
+				<option value="2">Next fortnight</option>
+				<option value="3">Next 1 month</option>
+				<option value="4">Next 3 months</option>
+				<option value="5">Next 6 months</option>
+				<option value="6">Next 1 Year</option>
+			</select>
+			<table width="63%" style="z-index: 10 !important; margin-top: 14px;"
+				class="tdthcenter">
+				<thead>
+					<tr>
+						<th>Client Name</th>
+						<th>Date</th>
+						<th>Time</th>
+						<th>Mobile Number*</th>
+						<th>Status</th>
+						<th>Comments</th>
+					</tr>
+				</thead>
+				<tbody id="idClientMeetingList">
+					<tr>
+						<td>Neha Mohnot</td>
+						<td>17-Aug-17</td>
+						<td>10.30 am</td>
+						<td>9820055626</td>
+						<td>Upcoming</td>
+						<td>abc</td>
+					</tr>
+				</tbody>
+			</table>
+			<br /> <input type="submit" class="form-control addbtn"
+				value="Download" id="idClientMeetingDownloadWithAdvisor"
+				style="margin-left: 243px;" /> <br />
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+</div>
+<!--Max windows for Meeting calander ends -->
+<!--Max windows for client birthday start -->
+<div id="idPopClientbday" class="modal5">
+
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close5" style="margin-top: -5px">&times;</span>
+			<h4 style="margin-top: 5px">Client Birthday Reminders</h4>
+			<h2></h2>
+		</div>
+		<div class="modal-body">
+			<select class="bggrey" style="margin-top: 10px"
+				id="idSelectBirthdayList">
+				<option value="1">Next 1 week</option>
+				<option value="2">Next fortnight</option>
+				<option value="3">Next 1 month</option>
+				<option value="4">Next 3 months</option>
+				<option value="5">Next 6 months</option>
+				<option value="6">Next 1 Year</option>
+			</select>
+			<table width="87%" style="z-index: 10 !important; margin-top: 14px;"
+				class="tdthcenter">
+				<thead>
+					<tr>
+						<th>Client Name</th>
+						<th>Date</th>
+						<th>Email</th>
+						<th>Phone</th>
+						<th>Age</th>
+					</tr>
+				</thead>
+				<tbody id="idlistUpcomingBirthday">
+					<tr>
+						<td>Neha Mohnot</td>
+						<td>25-Aug-17</td>
+						<td>neha.m@finlabsindia.com</td>
+						<td>9820312345</td>
+						<td>29</td>
+					</tr>
+				</tbody>
+			</table>
+			<br /> <input type="submit" class="form-control addbtn"
+				value="Download" id="idClientBirthdayDownload"
+				style="margin-left: 410px;" /> <br />
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+</div>
+<!--Max windows for client birthday ends -->
+<!--Max windows for Task Pinboard  start -->
+<div id="idPoptaskpin" class="modal7">
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close7" style="margin-top: -5px">&times;</span>
+			<h4 style="margin-top: 5px">Task Pinboard</h4>
+			<h2></h2>
+		</div>
+		<div class="modal-body">
+			<select class="bggrey" style="margin-top: 10px"
+				id="idTaskTimePeriodModal">
+				<option value="1">Next 1 week</option>
+				<option value="2">Next fortnight</option>
+				<option value="3">Next 1 month</option>
+				<option value="4">Next 3 months</option>
+				<option value="5">Next 6 months</option>
+				<option value="6">Next 1 Year</option>
+			</select>
+			<table width="63%" style="z-index: 10 !important; margin-top: 14px;"
+				class="tdthcenter">
+				<thead>
+					<tr>
+						<th>Client Name</th>
+						<th>Task Description</th>
+						<th>Date</th>
+						<th>Time</th>
+						<th>Comment</th>
+					</tr>
+				</thead>
+				<tbody id="idTasPinboardModalList">
+					<!-- <tr><td>Neha Mohnot</td>
+			<td>KYC application</td>
+			<td>17-Aug-17</td>
+			<td >10.30 am</td>
+			<td > send executive</td>
+			</tr>  -->
+				</tbody>
+			</table>
+			<br /> <input type="submit" class="form-control addbtn"
+				value="Download" id="idTaskListDownload" style="margin-left: 243px;" />
+			<br />
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+</div>
+<!--Max windows for Task Pinboard ends -->
+<!--Max windows for Upcoming goals  start -->
+<div id="idPopupcomingoal" class="modal8">
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close8" style="margin-top: -5px">&times;</span>
+			<h4 style="margin-top: 5px">Upcoming Goals</h4>
+			<h2></h2>
+		</div>
+		<div class="modal-body">
+			<select class="bggrey" style="margin-top: 10px"
+				id="idSelectUpcomingGoal">
+				<option value="7">Next 1 week</option>
+				<option value="8">Next fortnight</option>
+				<option value="9">Next 1 month</option>
+				<option value="10">Next 3 months</option>
+				<option value="11">Next 6 months</option>
+				<option value="12">Next 1 Year</option>
+			</select>
+			<table width="63%" style="z-index: 10 !important; margin-top: 14px;"
+				class="tdthcenter">
+				<thead>
+				   
+					<tr>
+						<th>Client Name</th>
+						<th>Goal Type</th>
+						<th>Goal Description</th>
+						<th>Goal Date</th>
+						<th>Goal Amount</th>
+						<th>Future Value Of Goal</th> 
+					</tr>
+				</thead>
+				<tbody id="idListUpcomingGoal">
+				</tbody>
+			</table>
+			<br /> <input type="submit" class="form-control addbtn"
+				value="Download" id="idGoalListForAdvisorDownload"
+				style="margin-left: 243px;" /> <br />
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+</div>
+<!--Max windows for Upcoming goals ends -->
+<!--Add Meeting window-->
+<div id="idPopaddmeeting" class="modal9">
+	<!-- Modal content -->
+	<div class="modal-content" style="width: 35%; overflow: hidden">
+		<div class="modal-header">
+			<span class="close9" style="margin-top: -5px">&times;</span>
+			<h4 style="margin-top: 5px">Add Meeting</h4>
+			<h2></h2>
+		</div>
+		<div class="modal-body">
+            <form class="form addclientform" action="#" id="clientMeetingForm">
+                <div class="form-group row">
+                    <div class="col-md-5">
+                        <label for="idClientTypeMeeting">Client Type*:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <select class="form-control" required="required" tabindex="1" id="idClientTypeMeeting" name="clientType">
+                            <option value="Existing" selected>Existing</option>
+                            <option value="Prospect">New</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-5">
+                        <label id="idExClientMeeting">Client Name*:</label>
+                        <label id="idPrClientMeeting">Prospect Name*:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control" id="idProspectNameMeeting" placeholder="Enter Client Name" name="name" tabindex="2">
+                        <select class="form-control" required="required" tabindex="2" id="idExistingNameMeeting" name="name"></select>
+
+                        <input type="hidden" class="form-control" id="idUserID" name="userID">
+                        <span class="formentry-errmsg" id="alertADDNameMeeting"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-5"><label for="popupwindow">Date*:</label></div>
+                    <div class="col-md-7">
+                        <div class="input-group" id="popupwindow">
+                            <input type="text" class="form-control" id="idaddmtngdate" name="meetingDate" placeholder="DD/MM/YYYY" tabindex="3">
+                            <span id="idMeetingCalendar" class="input-group-btn datepicker-icon">
+                                <button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Date" style="margin-top: 5px;">
+                                    <em class="glyphicon calendar-icon-theme"></em>
+                                </button>
+                            </span>
+                        </div>
+                        <span class="formentry-errmsg" id="alertADDDateMeeting"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5">
+                        <label for="timepicker11">Time*:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="input-group date" id="timepicker11">
+                            <input id="timepicker1" type='text' class="form-control" tabindex="4" name="time""/>
+                            <span class="input-group-addon" title="Select Time" data-toggle="tooltip" data-placement="top">
+                                <i class="glyphicon glyphicon-time" style="color: #0761A5"></i>
+                            </span>
+                        </div>
+                         <span class="formentry-errmsg" id="alertADDTimeMeeting"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="cform-control">
+                      
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-5">
+                        <label for="idMobileMeeting">Mobile Number*:</label>
+                    </div>
+                    <div class="col-md-7">
+                     <input type="text" class="form-control" id="idMobileMeeting" name="mobile" tabindex="5">
+                      <span class="formentry-errmsg" id="alertADDMobMeeting"></span>
+                    </div>
+                    
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-5"><label for="idStatusMeeting">Status*:</label></div>
+                    <div class="col-md-7">
+                        <select class="form-control input-width-large" required="required" tabindex="6" name="status" id="idStatusMeeting">
+                            <option value="" selected="selected">select Status</option>
+                            <option value="Upcoming">Upcoming</option>
+                            <option value="Rescheduled">Rescheduled</option>
+                            <option value="Postponed">Postponed</option>
+                            <option value="Done">Done</option>
+                            <option value="Cancelled">Cancelled</option>
+                        </select>
+                        <span class="formentry-errmsg" id="alertADDStatusMeeting"></span>
+                    </div>
+                   
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-5">
+                        <label for="comment">Comments:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <textarea class="form-control" name="comment" id="comment"></textarea>
+                    </div>
+                </div>
+            </form>
+			<br /> <input type="submit" class="form-control addbtn" id="idClientMeeting" value="Add" style="margin: auto" /> <br />
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+</div>
+<!--window for add Meeting ends -->
+<!--add meeting task window-->
+<div id="idPopaddmeeting2" class="modal10">
+	<!-- Modal content -->
+	<div class="modal-content" style="width: 35%; overflow: hidden">
+		<div class="modal-header">
+			<span class="close10" style="margin-top: -5px">&times;</span>
+			<h4 style="margin-top: 5px">Add Task</h4>
+			<h2></h2>
+		</div>
+		<div class="modal-body">
+			<form class="form addclientform" action="#" id="idClientAddTaskForm">
+			    <div class="form-group row">
+                    <div class="col-md-5">
+                        <label for="idClientTypeTask">Client Type*:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <select class="form-control" required="required" tabindex="1" id="idClientTypeTask" name="clientType">
+                            <option value="ExistingClient" selected>Existing</option>
+                            <option value="ProspectClient">New</option>
+                        </select>
+                    </div>
+				</div>
+
+				<div class="form-group row">
+                    <div class="col-md-5">
+                        <label for="idADDExistingTaskName" id="idExClientTask">Client Name*:</label>
+                        <label for="idADDProspectTaskName" id="idPrClientTask">Prospect Name*:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control" id="idADDProspectTaskName" placeholder="Enter Client Name" name="name">
+                        <select class="form-control input-width-large" required="required" tabindex="2" id="idADDExistingTaskName" name="name"></select>
+                        <span class="formentry-errmsg" id="alertADDNameTask"></span>
+                    </div>
+				</div>
+
+				<div class="form-group row">
+					<div class="col-md-5">
+                        <label for="popupwindow">Date*:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="input-group" id="popupwindow">
+                            <input type="text" class="form-control" id="idaddtaskDate" name="taskDate" placeholder="DD/MM/YYYY" tabindex="3">
+                            <span class="input-group-btn datepicker-icon">
+                                <button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Date" style="margin-top: 5px;">
+                                    <em class="glyphicon calendar-icon-theme"></em>
+                                </button>
+                            </span>
+                        </div>
+                        <span class="formentry-errmsg" id="alertADDDateTask"></span>
+                    </div>
+				</div>
+
+				<div class="form-group row">
+                    <div class="col-md-5">
+                        <label for="timepicker12">Time*:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="input-group date" id="timepicker12">
+                            <input id="timepicker2" type='text' class="form-control" tabindex="4" name="time"/>
+                            <span class="input-group-addon" title="Select Time" data-toggle="tooltip" data-placement="top">
+                                <em class="glyphicon glyphicon-time" style="color: #0761A5"></em>
+                            </span>
+                        </div>
+                        <span class="formentry-errmsg" id="alertADDTimeTask"></span>
+                    </div>
+				</div>
+
+				<div class="form-group row">
+                    <div class="col-md-5">
+                        <label for="idAddtask">Description:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control" id="idAddtask" name="taskDescription" tabindex="5">
+                    </div>
+				</div>
+				<div class="form-group row">
+                    <div class="col-md-5">
+                        <label for="idTaskComment">Comments:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <textarea class="form-control" id="idTaskComment" name="comment"></textarea>
+                    </div>
+				</div>
+			</form>
+			<br /> <input type="submit" class="form-control addbtn"
+				id="idClientAddTask" value="Add" style="margin: auto" /> <br />
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+</div>
+<!--window for add Meeting2 ends -->
+<!--edit Meeting in meeting  window-->
+<div id="idPopeditmeeting" class="modal11">
+	<!-- Modal content -->
+	<div class="modal-content" style="width: 35%; overflow: hidden">
+		<div class="modal-header">
+			<span class="close11" style="margin-top: -5px">&times;</span>
+			<h4 style="margin-top: 5px" id="editHeaderMeeting">Edit Meeting Info</h4>
+			<h4 style="margin-top: 5px" id="viewHeaderMeeting">View Meeting Info</h4>
+			<h2></h2>
+		</div>
+		<div class="modal-body">
+            <form class="form addclientform" action="#" id="idUpdateClientMeetingForm">
+                <div class="form-group row">
+                    <div class="col-md-5">
+                        <label for="idEditName" id="idExClientMeetingEdit">Client Name*:</label>
+                        <label for="idEditName" id="idPrClientMeetingEdit">Prospect Name*:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control" id="idEditName" placeholder="Enter Client Name" value="" name="name">
+                        <span class="formentry-errmsg" id="alertEditNameMeeting"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-5">
+                        <label for="popupwindow">Date*:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="input-group" id="popupwindow">
+                            <input type="text" class="form-control" id="ideditmtngDate" name="meetingDate" placeholder="DD/MM/YYYY" tabindex="3">
+                            <span class="input-group-btn datepicker-icon">
+                                <button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Date" style="margin-top: 5px;">
+                                    <em class="glyphicon calendar-icon-theme"></em>
+                                </button>
+                            </span>
+                        </div>
+                         <span class="formentry-errmsg" id="alertEditDateMeeting"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-5">
+                        <label for="timepicker13">Time*:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="input-group date" id="timepicker13">
+                            <input id="timepicker3" type='text' class="form-control" tabindex="4" name="time"/>
+                            <span class="input-group-addon" title="Select Time" data-toggle="tooltip" data-placement="top">
+                                <em class="glyphicon glyphicon-time" style="color: #0761A5"></em>
+                            </span>
+                        </div>
+                        <span class="formentry-errmsg" id="alertEditTimeMeeting"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-5">
+                        <label for="idEditMobile">Mobile Number*:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control" id="idEditMobile" name="mobile" value="">
+                        <span class="formentry-errmsg" id="alertEditMobMeeting"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-5">
+                        <label for="idEditStatus">Status*:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <select class="form-control" name="status" id="idEditStatus">
+                            <option value="">select</option>
+                            <option value="Upcoming">Upcoming</option>
+                            <option value="Rescheduled">Rescheduled</option>
+                            <option value="Postponed">Postponed</option>
+                            <option value="Done">Done</option>
+                            <option value="Cancelled">Cancelled</option>
+                        </select>
+                        <span class="formentry-errmsg" id="alertEditStatusMeeting"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-5">
+                        <label>Comments:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <textarea class="form-control" id="idEditComment" name="comment"> </textarea>
+                    </div>
+                </div>
+            </form>
+
+			<br /> <input type="submit" class="form-control addbtn"
+				value="Update" id="idUpdateClientMeeting" style="margin: auto" /> <br />
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+</div>
+<!--window for edit in meeting  ends -->
+<!--edit Meeting in taskpin  window-->
+<div id="idPopeditask" class="modal12">
+	<!-- Modal content -->
+	<div class="modal-content" style="width: 35%; overflow: hidden">
+		<div class="modal-header">
+			<span class="close12" style="margin-top: -5px">&times;</span>
+			<h4 style="margin-top: 5px" id="editHeaderTask">Edit Task Info</h4>
+			<h4 style="margin-top: 5px" id="viewHeaderTask">View Task Info</h4>
+			<h2></h2>
+		</div>
+		<div class="modal-body">
+			<form class="form addclientform" action="#" id="idEditTaskForm">
+				<div class="form-group row">
+                    <div class="col-md-5">
+                        <label for="idEditTaskName" id="idExClientTaskEdit">Client Name*:</label>
+                        <label for="idEditTaskName" id="idPrClientTaskEdit">Prospect Name*:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control" id="idEditTaskName" placeholder="Enter Client Name" value="" name="name">
+                        <span class="formentry-errmsg" id="alertEditNameTask"></span>
+                    </div>
+				</div>
+
+				<div class="form-group row">
+                    <div class="col-md-5">
+                        <label>Date*:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="input-group" id="popupwindow">
+                            <input type="text" class="form-control" id="idedittaskDate" name="taskDate" placeholder="DD/MM/YYYY" tabindex="3">
+                            <span class="input-group-btn datepicker-icon">
+                                <button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Date" style="margin-top: 5px;">
+                                    <em class="glyphicon calendar-icon-theme"></em>
+                                </button>
+                            </span>
+                        </div>
+                        <span class="formentry-errmsg" id="alertEditDateTask"></span>
+                    </div>
+				</div>
+
+				<div class="form-group row">
+                    <div class="col-md-5">
+                        <label for="timepicker14">Time*:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="input-group date" id="timepicker14">
+                            <input id="timepicker4" type='text' class="form-control" tabindex="4" name="time"/>
+                            <span class="input-group-addon" title="Select Time" data-toggle="tooltip" data-placement="top">
+                                <em class="glyphicon glyphicon-time" style="color: #0761A5"></em>
+                            </span>
+                        </div>
+                        <span class="formentry-errmsg" id="alertEditTimeTask"></span>
+                    </div>
+				</div>
+
+				<div class="form-group row">
+                    <div class="col-md-5">
+                        <label for="idEditTask">Task:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control" id="idEditTask" name="taskDescription" value="">
+                    </div>
+				</div>
+
+				<div class="form-group row">
+                    <div class="col-md-5">
+                        <label for="idEditTaskComment">Comments:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <textarea class="form-control" id="idEditTaskComment" name="comment"> </textarea>
+                    </div>
+				</div>
+			</form>
+			<br /> <input type="submit" class="form-control addbtn"
+				id="idUpdatetask" value="Update" style="margin: auto" /> <br />
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+</div>
+
+
+
+
+

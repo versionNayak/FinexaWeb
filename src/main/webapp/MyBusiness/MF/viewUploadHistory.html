@@ -1,0 +1,40 @@
+<script src="MF/Mfjs/viewUploadHistory.js"></script>
+<script type="text/javascript" src="Common/js/myclient_global.js"></script>
+<script type="text/javascript" src="../Common/assets/js-library/pagination.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.0/moment.min.js"></script>
+<style type="text/css">
+td {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.expand-maximum-on-hover:hover {
+  max-width : initial; 
+}
+</style>
+<div class="cicontainer" style="overflow:scroll">
+<div>
+<form class="form-horizontal" id="viewUser" action="#">
+<div class="container" id="idPaginationDiv" style="width: 100%">
+
+</div>
+</form>
+</div>
+<table id="idTable" width="100%" class="table table-hover" >
+	    	<thead>
+				<tr>
+					<th>RTA</th>
+					<th>File Type</th>
+					<th>File Name</th>
+					<th>Status</th>
+					<th>Rejected Records</th>
+					<th>Reason of Rejection</th>
+					<th>Auto Client Creation Status</th>
+					<th>Date</th>
+				</tr>
+			</thead>
+			<tbody id="idUserListTable">
+			</tbody>
+		</table>
+</div>

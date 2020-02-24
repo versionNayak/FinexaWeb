@@ -1,0 +1,178 @@
+<script src="clientInfo/js/addLifeInsurance.js"></script>
+<script src="clientInfo/js/validateLifeInsurance.js"></script>
+<script src="clientInfo/js/validationForAll.js"></script>
+<script src="clientInfo/js/common.js"></script>
+<div class="cicontainer">
+	<div>
+		<form class="form-horizontal" id="lifeInsuranceForm">
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-11">
+					<span class="formentry-errmsg" id="alertform"></span>
+				</div>
+			</div>
+			<div class="form-group form-group-lg">
+				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-8 asset-owner-wrapper">
+					<label>Insured Family Member:</label><br/>
+					<table class="familymembertbl" width="20px">
+						<tr class="mem_icon" id="familyMemberImage">
+						
+						</tr>
+					</table>
+				</div>
+			</div>
+			<hr class="full-width-divider">
+			<div class="form-group">
+				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Insurance Company*:</label>
+					<span class="form-static-value" id="hide320">
+						<select class="form-control input-width-medium"  id="insuranceCompanyList"  name="companyNameID" required="required" tabindex="1">
+						
+					    </select>
+					     <span class="formentry-errmsg" id="alertsic"></span>
+					</span>
+				</div>
+				</div>
+			<div class="form-group">
+				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-4">
+					<label>Insurance Policy Type*:</label>
+					     <span class="form-static-value" id="hide320">
+						     <select class="form-control input-width-medium" name="insurancePolicyTypeID" required="required" tabindex="2" id="lifeInsurancePolicyType"  onchange="toggleOtherPolicyType();">
+							<option value="" selected="">Select Policy Type</option>
+						     </select>
+						 </span>
+						<span class="formentry-errmsg" id="alertsipt"></span>
+					</div>
+				 <div class="col-sm-4"> 
+					<label>If Others, specify:</label>
+					  <p class="input-group input-width-medium">
+					   <input type="text" id="idOtherPolicyType" name ="otherPolicyType"class="form-control input-width-medium-min input-width-owner input-width-medium" 
+					   disabled=""
+					   placeholder="Other Policy" tabindex="3"/>
+					  </p>
+			        	<span class="formentry-errmsg" id="alertoipt"></span>
+				    </div> 
+			      </div>
+				 <div id="policyTypeULIPLable" class="form-group">
+				         <label class="col-sm-1 control-label"></label>
+				         <div class="col-sm-11">
+					           <label>Current  Unit Balance*:</label>
+					             <span class="form-static-value" id="policyTypeULIPSpan">
+						             <input type="text" id="policyTypeULIP" name ="currentUnitBalance"class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Current Unit Balance" tabindex="4"/>
+					             </span>
+				           </div>
+			           </div>
+			<div class="form-group">
+				<label class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Insurance Policy Name*:</label>
+					<span class="form-static-value" id="hide320">
+				 <input type="text" id="lifeInsurancePolicyName"  name="policyName" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Insurance Policy Name" tabindex="5">
+						<span class="formentry-errmsg" id="alertipn"></span>
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Insurance Policy Number*:</label>
+					<input type="text" id="policyNumber" name="policyNumber" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Insurance Policy Number" tabindex="6"/>
+					 <span class="formentry-errmsg" id="alertipnum"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Sum Insured(Rs)*:</label>
+					<input type="text" id="sumInsured" name ="sumInsured"class="form-control input-width-medium-min input-width-owner input-width-medium" onfocusout="maskAmount('#sumInsured')" placeholder="Sum Insured" tabindex="7"/>
+					<span class="formentry-errmsg" id="alertsi"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Policy Tenure (years)*:</label>
+					<input type="text" id="policyTenure" name="policyTenure" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Policy Tenure" tabindex="8"/>
+					<span class="formentry-errmsg" id="alertpt"></span>
+				</div> <!-- <span class="formentry-errmsg" id="alertsic"></span> -->
+			</div>
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Policy Start Date*:</label>
+					<p class="input-group input-width-medium" id="idPolicyStartDateGroup">
+						<input type="text" class="form-control" id="policyStartDate" value="" name="policyStartDate" placeholder="DD/MM/YYYY" tabindex="9">
+						<span class="input-group-btn datepicker-icon">
+							<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="" data-original-title="Select Start Date"><em class="glyphicon calendar-icon-theme"></em></button>
+						</span>
+					</p>
+					<span class="formentry-errmsg" id="alertpsd"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Premium(Rs)*:</label>					
+					<input type="text" id="premiumAmount" name="premiumAmount" class="form-control input-width-medium-min input-width-owner input-width-medium" onfocusout="maskAmount('#premiumAmount')" placeholder="Premium" tabindex="10"/>				
+					<span class="formentry-errmsg" id="alertp"></span>
+				</div>				
+			</div>
+			<div class="form-group">
+				<label for="plannedDepositAmount" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Premium Payment Frequency*:</label>
+					<span class="form-static-value" id="hide320">
+						<select class="form-control input-width-medium" name="premiumFrequency" required="required" tabindex="11" id="premiumPaymentFreq">
+						</select>
+						 <span class="formentry-errmsg" id="alertppf"></span>
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Premium Payment Tenure (years)*:</label>
+					<input type="text" id="premiumTenure" name="premiumTenure"   class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Premium Payment Tenure" tabindex="12"/>
+					 <span	class="formentry-errmsg" id="alertppt"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+				
+					<label>End Date:</label>
+					<p id="idLockedUptoDateGroup"  class="input-group input-width-medium">
+						<input type="text" class="form-control" id="idLockedUptoDate" value="" name="endDate" placeholder="DD/MM/YYYY" tabindex="13">
+						<span class="input-group-btn datepicker-icon">
+							<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="" data-original-title="Select Start Date"><em class="glyphicon calendar-icon-theme"></em></button>
+						</span>
+						</p>
+								<span class="formentry-errmsg" id="alertlud"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+				
+					<label>Locked Up-to Date:</label>
+					<p id="idLockedUptoDateGroup"  class="input-group input-width-medium">
+						<input type="text" class="form-control" id="idLocDate" value="" name="lockedUptoDate" placeholder="DD/MM/YYYY" tabindex="14">
+						<span class="input-group-btn datepicker-icon">
+							<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="" data-original-title="Select Start Date"><em class="glyphicon calendar-icon-theme"></em></button>
+						</span>
+						</p>
+								<span class="formentry-errmsg" id="alertlud"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-11">
+					<button type="button" id="saveLifeInsurance" class="pull-left btn addbtn" tabindex="15">SAVE</button>
+					<button type="reset" id="undo" class="pull-left btn addbtn" tabindex="16" onclick="undoChange()">UNDO</button> 
+				</div>
+			</div>
+			<div id="focusguard-2" tabindex="16"></</div>
+		</form>
+	</div>
+</div>

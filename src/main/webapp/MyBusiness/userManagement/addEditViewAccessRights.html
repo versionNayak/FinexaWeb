@@ -1,0 +1,92 @@
+<script type="text/javascript" src="userManagement/js/addEditViewAccessRights.js"></script>
+<script type="text/javascript" src="userManagement/js/validateAddEditViewAccessRights.js"></script>
+<script src="userManagement/js/validationForAll.js"></script>
+<div class="dmcontainer">
+<div class="add_risk_div">
+		<form class="form-horizontal" action="" id="idFormAccessRight" onsubmit="return false">
+		<div class="form-group">
+			<label for="orgType" class="col-sm-1 control-label"></label>
+			<div class="col-sm-11">
+				<span class="formentry-errmsg" id="alertform"></span>
+			</div>
+		</div>
+		<!-- <div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Individual/Organization</label>
+					<select class="form-control input-width-medium" id="idorgFlag">
+					</select>
+				</div>
+			</div> -->
+			
+		<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+				<label>Organization</label>
+					<input type="text" id="idOrganization" name="OrganizationName" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="First Name" tabindex="1" disabled/>
+				     <span class="formentry-errmsg" id="alertOrgName"></span>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Select Role*</label>
+					<select class="form-control input-width-medium select_modules" id="idRole" tabindex="2">
+					</select>
+					<span class="formentry-errmsg" id="alertRole"></span>
+				</div>
+			</div>
+			
+			
+			<div class="form-group">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>Login User Name*</label>
+					<select class="form-control input-width-medium select_modules" id="idAdvisor" tabindex="3">
+					</select>
+					<span class="formentry-errmsg" id="alertUserName"></span>
+				</div>
+			</div>
+			
+			<div class="form-group">
+			   <label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<label>User Name*:</label>
+					<input type="text" id="idName" name="userName" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="User Name" tabindex="4" readonly/>
+				   
+				</div>
+			</div>
+			
+            <div class="form-group">
+				<div class="col-sm-offset-1 col-sm-11">
+					<input type="submit" id="idViewAccessRights" class="form-control addbtn" tabindex="5" value="View Modules">
+				</div>
+			</div>
+			
+			<div id = "idModuleDiv">
+			<div class="form-group sub_modules">
+				<label for="ownerName" class="col-sm-1 control-label"></label>
+				<div class="col-sm-11">
+					<table width="100%" class="retirementview" id = "idModuleTable">
+	<tr class="nonglidtotal">
+	<span class="formentry-errmsg" id="alertCheckBoxform"></span>
+		<!-- <th class="text-left" id="idModuleTH"></th> -->
+		<th>Modules</th>
+		<th>View</th>	
+		<th>Add/Edit</th>	
+		<th>Delete</th>	
+		</tr>
+		<tbody id="idSubmoduleTable"></tbody>
+			</table>
+		</div>
+	</div>
+<br>		
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-11">
+					<input type="submit" id="idAccessRightSubmit" class="form-control addbtn" tabindex="540" value="Submit">
+					</div>
+			</div>
+			</form>
+			</div>
+	</div>

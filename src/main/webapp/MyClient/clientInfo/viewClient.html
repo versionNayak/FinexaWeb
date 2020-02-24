@@ -1,0 +1,88 @@
+<script src="clientInfo/js/viewClient.js"></script>
+<script type="text/javascript" src="../Common/assets/js-library/pagination.js"></script>
+<script src="clientInfo/js/common.js"></script>
+<div class="cicontainer">
+	<form class="form-horizontal form_search_client" id="searchForm" action="#">
+		<div class="form-group">
+			<label for="ownerName" class="col-sm-1 control-label"></label>
+			<div class="col-sm-8 col-md-5 col-lg-5">
+				<label>Name:</label> <input type="text"
+					class="form-control input-width-medium-min input-width-owner input-width-medium"
+					placeholder="Enter Name" tabindex="270" id="idSearchName" name="searchName"/>
+			</div>
+
+			<label for="ownerMobile" class="col-sm-1 control-label"></label>
+			<div class="col-sm-8 col-md-5 col-lg-5">
+				<label>Mobile:</label> <input type="text"
+					class="form-control input-width-medium-min input-width-owner input-width-medium"
+					placeholder="Enter Mobile" tabindex="270" id="idSearchMobile" name="searchMobile"/>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="ownerPan" class="col-sm-1 control-label"></label>
+			<div class="col-sm-8 col-md-5 col-lg-5">
+				<label>Pan:</label> <input type="text"
+					class="form-control input-width-medium-min input-width-owner input-width-medium"
+					placeholder="Enter PAN" tabindex="270" id="idSearchPan" name="searchPan"/>
+			</div>
+
+			<label for="aadhar" class="col-sm-1 control-label"></label>
+			<div class="col-sm-8 col-md-5 col-lg-5">
+				<label>Aadhar:</label> <input type="text"
+					class="form-control input-width-medium-min input-width-owner input-width-medium"
+					placeholder="Enter Aadhar" tabindex="270" id="idSearchAadhar" name="searchAadhar"/>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="ownerEmail" class="col-sm-1 control-label"></label>
+			<div class="col-sm-8 col-md-5 col-lg-5">
+				<label>Email:</label> <input type="text"
+					class="form-control input-width-medium-min input-width-owner input-width-medium"
+					placeholder="Enter Email Address" tabindex="270" id="idSearchEmail" name="searchEmail"/>
+			</div>
+
+		</div>
+
+		<div class="form-group search_btns">
+			<div class="col-sm-12 col-sm-offset-1">
+				<button type="button" class="pull-left btn addbtn" tabindex="540" id="idSearchSubmit">Search</button>
+				<button type="button" class="pull-left btn addbtn" tabindex="540" id="idSearchClear">Clear</button>
+			</div>
+		</div>
+	</form>
+	<table width="100%" class="table table-hover" id="idTable">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Mobile</th>
+			</tr>
+		</thead>
+		<tbody id="idClientList">
+
+		</tbody>
+	</table>
+	<!-- <div class="container" id="idPaginationDiv" style="width: 100%; margin-top: -19px">
+	
+	</div> -->
+	
+</div>
+
+<div class="modal fade newmodal" id="okModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  		      <div class="modal-dialog" role="document">
+  		        <div class="modal-content">
+  		          <div class="modal-header">
+  		            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  		            <h4 class="modal-title" id="myModalLabel">Search and list clients</h4>
+  		          </div>
+  		          <div class="modal-body">
+  		           No record found
+  		          </div>
+  		          <div class="modal-footer">
+  		            <button type="button" id="" onclick="okClick()" class="btn btn-primary">ok</button>
+  		          </div>
+  		        </div>
+  		      </div>
+ </div>

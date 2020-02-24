@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Finlabs">
+    <title>Finexa - Client Info</title>
+
+    <script type="text/javascript" src="Common/assets/js-library/jquery-3.2.1.min.js"></script>
+    <script src="Common/assets/js-library/bootstrap.min.js"></script>
+    <script src="Common/assets/js-library/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="../Common/assets/js-library/bootbox.js"></script>
+    <script type="text/javascript" src="Common/assets/js-library/jquery.serializeToJSON.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.0/moment.min.js"></script>
+    <script type="text/javascript" src="https://momentjs.com/downloads/moment-timezone.min.js"></script>
+    <script type="text/javascript" src="Common/assets/js/myclient_global.js"></script>
+    <script type="text/javascript" src="Common/assets/js/serviceclient.js"></script>
+    <script type="text/javascript" src="Common/assets/js-library/jquery.validationEngine.js"></script>
+    <script type="text/javascript" src="Common/assets/js-library/jquery.validationEngine-en.js"></script>
+
+    <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="Common/assets/css-library/bootstrap.min.maxcdn.css">
+    <link href="Common/assets/css-library/bootstrap.min.css" rel="stylesheet" />
+    <link href="Common/assets/css/dashboard.css" rel="stylesheet" />
+
+    <!--load common all styles -->
+    <link href="Common/assets/css/commonall.css" rel="stylesheet" type="text/css" />
+
+
+    <link rel="stylesheet" href="Common/assets/css-library/validationEngine.jquery.css" type="text/css" />
+
+</head>
+<style>
+    #warningText {
+        display: none;
+        color: red
+    }
+    
+    .bg1 {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url(Common/assets/images/loginbg.png);
+        background-color: #3897e0;
+        height: 100%;
+    }
+    
+    .log_bg_div_gap {
+        padding: 10% 0 0 15%;
+        color: #ffffff;
+    }
+    
+    .log_bg_div_gap h1 {
+        font-size: 28px;
+    }
+    
+    .Sign_in_gap {
+        padding: 10% 0 0 0%;
+    }
+    
+    .Sign_bg {
+        border-radius: 10px;
+        padding: 5% 10% 5% 10%;
+    }
+    
+    .viewed {
+        font-size: 18px;
+        color: #ffffff;
+        margin-top: 30px;
+    }
+    
+    .advisor span,
+    .client span {
+        position: relative;
+        top: -22px;
+        left: 80%;
+    }
+    
+    .advisor input,
+    .client input {
+        height: 15px;
+    }
+</style>
+
+<body class="bg1">
+    <div class="container-fluid">
+        <div class="img-responsive">
+            <div class="row" style="margin: 0">
+                <div class="container-fluid">
+                    <div class="col-lg-6 col-lg-offset-0 col-md-6 col-md-offset-0 col-sm-8 col-sm-offset-2 log_bg_div_gap">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="login">
+                                    <img class="img-responsive" src="Common/assets/images/logo-finexa.png" width="55%">
+                                </div>
+                                <div class="col-12">
+                                    <h1>The Financial Advisor's ERP.</h1>
+                                    <h3>It is not a tool. Its a complete <br>business solution.</h3>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-8 col-sm-offset-2 Sign_in_gap">
+                        <div class=" bg-info Sign_bg">
+                            <div id="idLoginFrom"></div>
+                            <p id="warningText" align="center">WARNING! Caps lock is ON.</p>
+                            <div id="idForgot"></div>
+                        </div>
+                        <div class="text-center">
+                            <div class="container-fluid text viewed">
+                                <p>Best viewed in Chrome/ Firefox</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="row">
+        <div class="col-lg-6">
+            <div style="margin: 40%; height: 303px; margin-top: 16%; width: 60%;">
+                <div class="login">
+                    <img src="Common/assets/images/logo-finexa.png" style="width: 67%" />
+
+                    <br />
+                    <h1>The Financial Advisor's ERP.</h1>
+                    <h3>It is not a tool. Its a complete business solution.</h3>
+                    <br />
+
+
+                    <p>Don't have an account?</p>
+                    <br /> <input type="button" value="REGISTER" class="form-control" ONCLICK="javascript:window.open('register.html','_self');" />
+                    <br /> -->
+    <!-- <input type="button" id="idExceptions" value="See Exceptions" class="form-control" /> -->
+    <!-- 
+
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-6">
+            <div style="height: 370px; margin-top: 16%; width: 50%; background-color: white; padding-top: 40px">
+                <div id="idLoginFrom"></div>
+                <p id="warningText" align="center">WARNING! Caps lock is ON.</p>
+                <div id="idForgot"></div>
+            </div>
+            <div class="login" style="padding-left: 25px">
+                <p>Best viewed in Chrome/ Firefox</p>
+            </div>
+
+        </div>
+    </div> -->
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            //$("#loginForm").validationEngine();
+            var text = document.getElementById("warningText");
+            text.style.display = "none";
+            $("#idLoginFrom").html('<div class="submit loginform">' +
+                '<h3>Sign In</h3>' +
+                '<br>' +
+                '<form id="loginForm" action="#" method="POST">' +
+                // '<span style="margin-left:130px;font-weight:bold">Login as :</span>' +
+                // '<br></br>' +
+                '<label style="margin-right:30%;" class="advisor">' +
+                '<input type="radio" name="login" id="idAdvisor" value="Y" checked="checked"> <span>Advisor</span>' +
+
+                '</label>' +
+                '<label class="client";>' +
+                '<input type="radio" name="login" id="idClient" value="N" >  <span >Client</span>' +
+
+                '</label>' +
+
+                // '<input type="radio" name="login" id="idAdvisor" value="Y" checked="checked" style="margin-left:-40px; height:15px"><span style="font-weight: normal; margin-left: -100px">&emsp;Advisor' +
+                // '<input type="radio" name="login" id="idClient" value="N" style="margin-left:-60px; height:15px"><span style="font-weight: normal; margin-left: -100px">&emsp;Client<br>' +
+
+                '<div class="form-group">' +
+                '<label for="exampleInputEmail1">User Name</label>' +
+                '<input id="loginUsernameId" name="loginUsername" type="text" class="form-control " placeholder="User Name" value=""/>' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<label for="exampleInputEmail1">Password </label>' +
+                '<input id="loginPasswordId" name="loginPassword" type="password" class="form-control " placeholder="Password" />' +
+                '</div>' +
+                // '<input id="loginUsernameId" name="loginUsername" type="text" class="form-control " placeholder="User Name" value=""/>' +
+                // '<input id="loginPasswordId" name="loginPassword" type="password" class="form-control " placeholder="Password" />' +
+
+                '<div class="checkbox" style="text-align:left !important; padding-left:13%;" >' +
+                '<label>' +
+                '<input type="checkbox"  id="idRememberMe"> Remember me' +
+                '</label>' +
+                '</div>' +
+                // '<div class="checkboxregister">' +
+                // '<label><input type="checkbox" style="width: 21%" id="idRememberMe"><span style="font-weight: normal; margin-left: -26px">&emsp;Remember me</span></label>' +
+                // '</div>' +
+                '<input id="idSigninSubmit" type="button" value="SIGN-IN" class="form-control greenbg" style="height: 32px; margin-top: -12px; margin-bottom: 13px;" />' +
+                '<a href="#" style="margin-left: 90px; text-decoration: none" id="idForgotPassWord" >Forgot your password?</a>' +
+                '</form>' +
+                '</div>');
+            $("#idForgot").hide();
+            $("#loginUsernameId").val(localStorage.getItem("SAVED_USERNAME"));
+            $("#loginPasswordId").val(localStorage.getItem("SAVED_PASSWORD"));
+
+            $("#idForgotPassWord").on("click", function(event) {
+                $("#idLoginFrom").hide();
+                $("#idForgot").html('<div class="submit loginform row">' +
+                    '<div class="col-xs-2" style="padding: 10px 0px 0px 30px;">' +
+                    '<a href="#" id="idBackLogin"><span class="glyphicon glyphicon-arrow-left"></span></a>' +
+                    '</div>' +
+                    '<div class="col-xs-10">' +
+                    '<h4 style="float: left;">Reset your password</h4>' +
+                    '</div>' +
+                    '<div style="height: 80px"></div>' +
+                    '<form id="loginForm" class="container-fluid form-group" action="#" method="POST">' +
+                    '<label for="loginUsername" style="padding-left: 50px;">Enter your user name</label>' +
+                    '<br>' +
+                    '<input id="forgotUsernameId" name="loginUsername" type="text" class="form-control " placeholder="User Name"/>' +
+                    '<br><br>' +
+                    '<input id="idForgotPass" type="submit" value="Reset Password" class="form-control greenbg text-center" style="height: 32px; margin-top: -12px; margin-bottom: 23px; width: 111px !important;; position: relative; left: 50px" />' +
+                    '</form>' +
+                    '</div>');
+                $("#idForgot").show();
+                /*  $("#idBackLogin").on("click", function (event) {
+                     $("#idLoginFrom").show();
+                     $("#idForgot").hide();
+                 }) */
+                /************commented***************/
+                /* $("#idForgotPass").on("click", function(event) {
+                    var flag = false;
+                    event.preventDefault();
+                    var email = $('#forgotUsernameId').val();
+
+                    if (email != "") {
+                        getClientDataBeforeLogin("GET", "", "advisorUser/existEmail?email=" + email,
+                            onSuccess);
+
+                        function onSuccess(existEmail) {
+                            flag = true;
+                            if (existEmail) {
+                                getClientDataBeforeLogin("GET", "",
+                                    "advisorUser/sendVerificationLink?email=" + email,
+                                    onSendSuccess);
+
+                                function onSendSuccess() {
+
+                                }
+                                $("#idForgot").html('<div class="submit loginform">' +
+                                    '<div class="container" style="width: 100%">' +
+                                    '<p style="word-wrap: break-word;">A link to reset your password has been sent by email, if your email is registered with us. Please check your spam folder if you do not receive within few minutes.</p>' +
+                                    '<br>' +
+                                    '<button class="btn btn-success" id="idBackToLogin" style="background-color: #33cc33">Back to Login Page</button>' +
+                                    '</div>' +
+                                    '</div>');
+                            } else {
+                                sessionStorage.setItem("LOGGED_EMAIL_ID", email);
+                                $("#idForgot").html('<div class="submit loginform">' +
+                                    '<div class="container" style="width: 100%">' +
+                                    '<p style="word-wrap: break-word;">A link to reset your password has been sent by email, if your email is registered with us. Please check your spam folder if you do not receive within few minutes.</p>' +
+                                    '<br>' +
+                                    '<button class="btn btn-success" id="idBackToLogin" style="background-color: #33cc33">Back to Login Page</button>' +
+                                    '</div>' +
+                                    '</div>');
+
+                            }
+                            $("#idBackToLogin").on("click", function(event) {
+                                $("#idLoginFrom").show();
+                                $("#idForgot").hide();
+                            });
+
+                        }
+                        if (flag == false) {
+                            getClientDataBeforeLogin("GET", "", "clientMaster/existEmail?email=" +
+                                email, onEmailSuccess);
+
+                            function onEmailSuccess(existEmail) {
+                                if (existEmail) {
+                                    getClientDataBeforeLogin("GET", "",
+                                        "clientMaster/sendVerificationLinkForClient?email=" +
+                                        email, onSendSuccess);
+
+                                    function onSendSuccess() {
+
+                                    }
+                                    $("#idForgot").html('<div class="submit loginform">' +
+                                        '<div class="container" style="width: 100%">' +
+                                        '<p style="word-wrap: break-word;">A link to reset your password has been sent by email, if your email is registered with us. Please check your spam folder if you do not receive within few minutes.</p>' +
+                                        '<br>' +
+                                        '<button class="btn btn-success" id="idBackToLogin" style="background-color: #33cc33">Back to Login Page</button>' +
+                                        '</div>' +
+                                        '</div>');
+                                } else {
+                                    sessionStorage.setItem("LOGGED_EMAIL_ID", email);
+                                    $("#idForgot").html('<div class="submit loginform">' +
+                                        '<div class="container" style="width: 100%">' +
+                                        '<p style="word-wrap: break-word;">A link to reset your password has been sent by email, if your email is registered with us. Please check your spam folder if you do not receive within few minutes.</p>' +
+                                        '<br>' +
+                                        '<button class="btn btn-success" id="idBackToLogin" style="background-color: #33cc33">Back to Login Page</button>' +
+                                        '</div>' +
+                                        '</div>');
+
+                                }
+                                $("#idBackToLogin").on("click", function(event) {
+                                    $("#idLoginFrom").show();
+                                    $("#idForgot").hide();
+                                });
+
+                            }
+                        }
+
+                    } else {
+                        alert("please insert email Id");
+                    }
+
+                    
+                }); */
+                /************************************************/
+
+                $("#idForgotPass").on("click", function(event) {
+                    var flag = false;
+                    event.preventDefault();
+                    var email = $('#forgotUsernameId').val();
+
+                    if (email != "") {
+                        getClientDataBeforeLogin("GET", "", "advisorUser/existEmail?email=" + email,
+                            onSuccess);
+
+                        function onSuccess(existEmail) {
+                            if (existEmail) {
+                                //alert("here in advisor")
+                                flag = true;
+                                getClientDataBeforeLogin("GET", "",
+                                    "advisorUser/sendVerificationLink?email=" + email,
+                                    onSendSuccess);
+
+                                function onSendSuccess(data) {
+                                    if (data == true) {
+                                        $("#idForgot").html('<div class="submit loginform">' +
+                                            '<div class="container" style="width: 100%">' +
+                                            '<p style="word-wrap: break-word;">A link to reset your password has been sent by email, if your email is registered with us. Please check your spam folder if you do not receive within few minutes.</p>' +
+                                            '<br>' +
+                                            '<button class="btn btn-success" id="idBackToLogin" style="background-color: #33cc33">Back to Login Page</button>' +
+                                            '</div>' +
+                                            '</div>');
+                                    }
+                                    $("#idBackToLogin").on("click", function(event) {
+	                                    $("#idLoginFrom").show();
+	                                    $("#idForgot").hide();
+	                                });
+
+                                }
+
+                            } else {
+                                flag = false;
+                                sessionStorage.setItem("LOGGED_EMAIL_ID", email);
+                                /* $("#idForgot").html('<div class="submit loginform">' +
+                                    '<div class="container" style="width: 100%">' +
+                                    '<p style="word-wrap: break-word;">A link to reset your password has been sent by email, if your email is registered with us. Please check your spam folder if you do not receive within few minutes.</p>' +
+                                    '<br>' +
+                                    '<button class="btn btn-success" id="idBackToLogin" style="background-color: #33cc33">Back to Login Page</button>' +
+                                    '</div>' +
+                                    '</div>'); */
+                                //alert("Invalid Email")
+                                
+                                getClientDataBeforeLogin("GET", "", "clientMaster/existEmail?email=" +
+                                email, onEmailSuccess);
+
+                           		function onEmailSuccess(existEmail) {
+	                                if (existEmail) {
+	                                    //alert("here in client")
+	                                    getClientDataBeforeLogin("GET", "",
+	                                        "clientMaster/sendVerificationLinkForClient?email=" +
+	                                        email, onSendSuccess);
+	
+	                                    function onSendSuccess(data) {
+	                                        if (data == true) {
+	                                            $("#idForgot").html('<div class="submit loginform">' +
+	                                                '<div class="container" style="width: 100%">' +
+	                                                '<p style="word-wrap: break-word;">A link to reset your password has been sent by email, if your email is registered with us. Please check your spam folder if you do not receive within few minutes.</p>' +
+	                                                '<br>' +
+	                                                '<button class="btn btn-success" id="idBackToLogin" style="background-color: #33cc33">Back to Login Page</button>' +
+	                                                '</div>' +
+	                                                '</div>');
+	                                        }
+	                                        $("#idBackToLogin").on("click", function(event) {
+	    	                                    $("#idLoginFrom").show();
+	    	                                    $("#idForgot").hide();
+	    	                                });
+	
+	                                    }
+	
+	                                } else {
+	                                    sessionStorage.setItem("LOGGED_EMAIL_ID", email);
+	                                    /* $("#idForgot").html('<div class="submit loginform">' +
+	                                        '<div class="container" style="width: 100%">' +
+	                                        '<p style="word-wrap: break-word;">A link to reset your password has been sent by email, if your email is registered with us. Please check your spam folder if you do not receive within few minutes.</p>' +
+	                                        '<br>' +
+	                                        '<button class="btn btn-success" id="idBackToLogin" style="background-color: #33cc33">Back to Login Page</button>' +
+	                                        '</div>' +
+	                                        '</div>'); */
+	                                    alert("Invalid Email")
+	
+	                                }
+                            }
+
+                            }
+                            /* $("#idBackToLogin").on("click", function(event) {
+                                //$("#idLoginFrom").show();
+                                //$("#idForgot").hide();
+                                window.location = "index.html";
+                            }); */
+
+                        }
+                        /* if (flag == false) {
+                            
+                        } */
+
+                    } else {
+                        alert("please insert email Id");
+                    }
+
+
+                });
+            });
+
+            var inputUsername = document.getElementById("loginUsernameId");
+            var inputPassword = document.getElementById("loginPasswordId");
+
+            inputUsername.addEventListener("keyup", function(event) {
+                if (event.getModifierState("CapsLock")) {
+                    text.style.display = "block";
+                } else {
+                    text.style.display = "none";
+                }
+            });
+
+            inputPassword.addEventListener("keyup", function(event) {
+                if (event.getModifierState("CapsLock")) {
+                    text.style.display = "block";
+                } else {
+                    text.style.display = "none";
+                }
+            });
+
+            $("#idSigninSubmit").on("click", function(e) {
+                submitForm();
+            });
+            $("#loginPasswordId").on("keydown", function(e) {
+                if (e.keyCode == 13) {
+                    console.log("Enter key pressed in Login password field ");
+
+                    submitForm();
+                }
+
+
+            });
+            var username;
+            var password;
+            var loginFlag;
+
+            function submitForm() {
+                if (validate($('#loginForm'))) {
+                    loginFlag = $("input[name='login']:checked").val();
+                    //alert(loginFlag);
+                    jsondata = JSON.stringify($('#loginForm').serializeToJSON());
+                    console.log(jsondata);
+                    username = $('#loginUsernameId').val();
+                    password = $('#loginPasswordId').val();
+                    if (loginFlag == "Y") {
+                        getClientDataBeforeLogin("GET", "", 'checkLoggedInOrNot?username=' + username,
+                            onSuccessCheck);
+
+                        function onSuccessCheck(data) {
+                            if (data.loggedInflag === "Y") {
+                                var ClientServiceUrl = serviceIP + "/clientservice/checkLoggedInOrNotWithLastToken";
+                                $.ajax({
+                                    url: ClientServiceUrl,
+                                    type: "GET",
+                                    beforeSend: function(xhr) {
+                                        xhr.setRequestHeader('Authorization', "Bearer " + data.token);
+                                    },
+                                    success: function(data) {
+                                        if (data != null) {
+                                            if (data === true) {
+                                                alert("already LoggedIn");
+                                            }
+                                        } else {
+                                            alert("username or password invalid.\n");
+                                        }
+                                    },
+                                    error: function(jqXHR, exception) {
+                                        if (jqXHR.status == 401) {
+                                            var error = jqXHR.responseJSON.error;
+                                            if (error === "invalid_token") {
+                                                logIn();
+                                            }
+                                        }
+                                    }
+                                });
+                            } else {
+                                logIn();
+                            }
+                        }
+                    } else {
+                        getClientDataBeforeLogin("GET", "", 'checkLoggedInOrNotForClient?username=' + username,
+                            onSuccessCheck);
+
+                        function onSuccessCheck(data) {
+                            if (data.loggedInflag === "Y") {
+                                var ClientServiceUrl = serviceIP +
+                                    "/clientservice/checkLoggedInOrNotWithLastTokenForClient";
+                                $.ajax({
+                                    url: ClientServiceUrl,
+                                    type: "GET",
+                                    beforeSend: function(xhr) {
+                                        xhr.setRequestHeader('Authorization', "Bearer " + data.token);
+                                    },
+                                    success: function(data) {
+                                        if (data != null) {
+                                            if (data === true) {
+                                                alert("already LoggedIn");
+                                            }
+                                        } else {
+                                            alert("username or password invalid.\n");
+                                        }
+                                    },
+                                    error: function(jqXHR, exception) {
+                                        if (jqXHR.status == 401) {
+                                            var error = jqXHR.responseJSON.error;
+                                            if (error === "invalid_token") {
+                                                logIn();
+                                            }
+                                        }
+                                    }
+                                });
+                            } else {
+                                logIn();
+                            }
+                        }
+                    }
+                } else {
+                    alert("Please enter Email and Password");
+                }
+            }
+
+            function logIn() {
+                getToken("POST", "", "oauth/token", onGetToken, username, password);
+
+                function onGetToken(msg) {
+                    sessionStorage.setItem("sessionID", JSON.parse(JSON.stringify(msg)).access_token);
+                    if (loginFlag == "Y") {
+                    	getClientData("GET", "", "findLastLoginTime/" + username + "/" + password, onGetSuccessLogIn);
+
+                        function onGetSuccessLogIn(getData) {
+                            if (getData.errorCode === "NOT_FOUND") {
+                                alert(getData.errorMessage);
+                            } else {
+                                if (getData.lastLoginTime != null) {
+                                    getClientData("POST", jsondata, "login", onSuccess);
+
+                                    function onSuccess(data) {
+                                        if (data.errorCode === "NOT_FOUND") {
+                                            alert(data.errorMessage);
+                                        } else {
+                                            rememberMe();
+                                            sessionStorage.setItem("LOGGED_IN_USER", JSON.stringify(data));
+                                            //window.location = "advisordashboard.html";
+                                            var loggedUser = JSON.parse(sessionStorage.getItem("LOGGED_IN_USER"));
+                                            if (data.role == "Admin") {
+                                                sessionStorage.setItem("Super_Admin", "Active");
+                                                var loggedAdmin = sessionStorage.getItem("LOGGED_IN_USER");
+                                                //alert(loggedAdmin.id);
+                                                sessionStorage.setItem("Logged_Admin", loggedAdmin);
+                                                //var loggedAdmin1 = JSON.parse(sessionStorage.getItem("Logged_Admin"));
+                                                //alert(loggedAdmin1.id);
+                                                window.location = "MyClient/adminDashboard.html";
+                                            } else {
+                                                sessionStorage.setItem("Super_Admin", "deactive");
+
+                                                window.location = "MyClient/myclientDashboard.html";
+                                            }
+                                        }
+
+
+                                    }
+                                } else {
+                                    //  console.log("FirstLogin of user" + getData.emailID);
+                                    sessionStorage.setItem("LOGGED_EMAIL_ID", getData.emailID);
+                                    window.location = "changePasswordUser.html";
+                                }
+                            }
+                        }
+                    } else {
+                        getClientData("GET", "", "findLastLoginTimeForClient/" + username + "/" + password,
+                            onGetSuccessLogIn);
+
+                        function onGetSuccessLogIn(getData) {
+                            if (getData.errorCode === "NOT_FOUND") {
+                                alert(getData.errorMessage);
+                            } else {
+                                if (getData.lastLoginTime != null) {
+                                    sessionStorage.setItem("Super_Admin", "deactive");
+                                    getClientData("POST", jsondata, "loginForClient", onSuccess);
+
+                                    function onSuccess(data) {
+                                        if (data.errorCode === "NOT_FOUND") {
+                                            alert(data.errorMessage);
+                                        } else {
+                                            rememberMe();
+                                            console.log(data);
+                                            sessionStorage.setItem("LOGGED_IN_CLIENT", JSON.stringify(data));
+                                            sessionStorage.setItem("SELECTED_CLIENT_ID", data.id);
+                                            //window.location = "advisordashboard.html";
+                                            window.location = "MyClient/myclientDashboard.html";
+                                        }
+
+                                    }
+                                } else {
+                                    //console.log("FirstLogin of user" + getData.emailID);
+                                    sessionStorage.setItem("LOGGED_EMAIL_ID", getData.emailId);
+                                    window.location = "changePasswordClient.html";
+                                }
+                            }
+                        }
+
+                    }
+
+                }
+            }
+
+
+            function validate(form) {
+                var email = $('#idEmailId').val();
+                var pass = $('#idPass').val();
+
+                if (email == "" || pass == "") {
+                    return false;
+                }
+
+                return true;
+            }
+
+            function rememberMe() {
+                if ($('#idRememberMe').is(':checked')) {
+                    console.log("remember me check box checkd");
+                    localStorage.removeItem("SAVED_USERNAME");
+                    localStorage.removeItem("SAVED_PASSWORD");
+                    localStorage.setItem("SAVED_USERNAME", $('#loginUsernameId').val());
+                    localStorage.setItem("SAVED_PASSWORD", $('#loginPasswordId').val());
+                }
+            }
+
+
+        });
+    </script>
+
+</body>
+
+</html>

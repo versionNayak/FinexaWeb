@@ -1,0 +1,80 @@
+<script type="text/javascript" src="masters/js/addUploadmaster.js"></script>
+<script src="masters/js/validateUploadMasters.js"></script>
+<script src="masters/js/validateTemplate.js"></script>
+<script src="masters/js/validationForAll.js"></script>
+<!-- <script src="masters/js/addProduct.js"></script> -->
+<script src="masters/js/common.js"></script>
+<div class="dmcontainer">
+<div class="alert alert-danger" id="alertForm" style="display:none;">
+</div>
+<div class="clearfix"></div>
+<br/>
+<form id="IdUploadMasterForm" class="form-horizontal" action="#">
+	<input type="hidden" id="idStatus" name="status" />
+            <div class="form-group">
+                <label for="masterUpload" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>Master Upload*:</label>
+                       <select id="idMasterName" name="tableName" class="form-control input-width-medium" tabindex="430">
+                        <option value="">Select Master</option>
+						<!-- <option value="lookupAssetClass">Lookup Asset Class</option>
+						<option value="masterMutualFundETF">Master Mutual Fund ETF</option> -->
+						<option value="Model Portfolio Allocation">Model Portfolio Allocation</option>
+						<option value="Model Portfolio Master">Model Portfolio Master</option>
+						<option value="Bucketing Logic">Bucketing Logic</option>
+                       </select>
+                       <span class="formentry-errmsg" id="alertMasterName"></span>
+                </div>
+            </div>
+           
+            <div class="form-group">
+                <label for="fromDate" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>Effective Date from*:</label>
+                    <p id="IdEffectiveDateFromGroup" class="input-group input-width-medium">
+                        <input type="text" class="form-control" id="IdEffectiveDateFrom" name="effectiveFromDate" placeholder="DD/MM/YYYY" tabindex="330">
+                        <span class="input-group-btn datepicker-icon">
+                            <button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" id="effectiveDateFromId" title="Select Effective Date From"><em class="glyphicon calendar-icon-theme"></em></button>
+                        </span>
+                    </p>
+                    <span class="formentry-errmsg" id="alertEffDateFrom"></span>
+                </div>
+            </div>
+           
+            <div class="form-group">
+                <label for="fileToUpload" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>Select File To Upload*:</label>
+                    <input type="file" id="IdSelectedFile" name="file" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Select File" tabindex="270">
+               	<span class="formentry-errmsg" id="alertSelectedFile"></span>
+                </div>
+            </div>
+
+         
+            <div class="form-group">
+                <div class="col-sm-offset-1 col-sm-11">
+                    <input id="IdUploadMasterSubmit" type="button" class="pull-left form-control addbtn" tabindex="540" value="Upload" />
+                    <!-- <input id="IdUploadMasterCancel" type="button" class="pull-left form-control addbtn" tabindex="540" value="Cancel" /> -->
+                </div>
+            </div>
+
+      		<div class="form-group">
+                <label for="templateFormat" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>Download template format*:</label>
+                       <select id="idTemplateFormat" class="form-control input-width-medium" tabindex="430">
+                            <option value="">Select format</option>
+                            <option value="excel">Excel</option>
+                            <option value="csv">CSV</option>
+                        </select>
+                        <span class="formentry-errmsg" id="alertTF"></span>
+                </div>
+            </div>
+       		<div class="form-group">
+                <div class="col-sm-offset-1 col-sm-11">
+                    <input id="downloadTemplateSubmit" type="button" class="pull-left form-control addbtn" tabindex="540" value="Download format"/>
+                    <!-- <input id="downloadTemplateCancel" type="button" class="pull-left form-control addbtn" tabindex="540" value="Cancel" /> -->
+                </div>
+            </div>     
+</form>
+</div>

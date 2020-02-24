@@ -1,0 +1,159 @@
+<script src="plan/bm/js/viewLoans.js"></script>
+<script src="plan/bm/js/common.js"></script>
+<div id="jssor_13" class="height413px">
+    <div data-u="slides" class="slider9" style="height: 450px">
+        <div id="idDivLoan1">
+            <div data-u="image">
+                <div class="col-lg-6">
+                    <table width="181%" class="loanscurrent" id="idLoanCurrentTable">
+                        <thead>
+                            <tr>
+                                <th>Loan Type</th>
+                                <th>Loan Provider</th>
+                                <th>Original Principal</th>
+                                <th>Outstanding Principal</th>
+                                <th>Interest rate%</th>
+                                <th>EMI</th>
+                                <th>Loan Start Date</th>
+                                <th>Loan End Date</th>
+                                <th>Interest payout frequency</th>
+                            </tr>
+                        </thead>
+                        <tbody id="idLoadCurrentTable">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <button data-u="thumb" name="but1">Current Liabilities</button>
+        </div>
+
+        <div id="idIndividualLoan">
+            <button data-u="thumb" name="but2">Individual Loan Schedules</button>
+        </div>
+        <div id="idDivLoan2">
+            <div data-u="image">
+
+                <div id="idMaxTotalLoan" class="popup">
+                    <img src="../Common/assets/images/maximg.png" class="maxbtn" />
+                </div>
+                <table width="80%" class="loantotal">
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Beginning Balance</th>
+                            <th>Interest Payment</th>
+                            <th>Principal Payment</th>
+                            <th>Ending Balance</th>
+                            <th>EMI Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody id=idTotalLoans>
+                    </tbody>
+                </table>
+                <br />
+                <table width="46%" style="margin-left: 240px">
+
+                    <tr>
+                        <td><b>Download Projections</b></td>
+                        <td><input type="radio" id="idMonthlyRadio" name="download" style="position: sticky"></input>
+                        </td>
+                        <td style="text-align: left; vertical-align: bottom;"><label>Monthly</label></td>
+                        <td><input type="radio" id="idYearlyRadio" name="download" style="position: sticky" checked="true"></input>
+                        </td>
+                        <td style="text-align: left; vertical-align: bottom;"><label>Annually</label></td>
+                        <td><input type="submit" value="Save" id="idDownload" class="form-control"></td>
+                    </tr>
+                </table>
+            </div>
+            <button data-u="thumb" name="but3">Total Loan Schedule</button>
+        </div>
+        <div id="idDivLoan3">
+            <div data-u="image">
+                <div id="idOutstandingLoan"></div>
+                <div id="idLoanPayment"></div>
+            </div>
+            <button data-u="thumb" name="but4">Total Loan Schedule Graph</button>
+        </div>
+
+    </div>
+    <!-- Thumbnail Navigator -->
+    <div data-u="thumbnavigator" class="jssort13" data-autocenter="1">
+        <!-- Thumbnail Item Skin Begin -->
+        <div data-u="slides">
+            <div data-u="prototype" class="p">
+                <div>
+                    <div data-u="thumbnailtemplate"></div>
+                </div>
+                <div></div>
+            </div>
+        </div>
+        <!-- Thumbnail Item Skin End -->
+    </div>
+    <!-- Arrow Navigator -->
+    <span data-u="arrowleft" class="jssora05l Loansleft"><img
+		src="../Common/assets/images/leftarrow.png" /></span> <span data-u="arrowright" class="jssora05r Loansright"><img
+		src="../Common/assets/images/rightarrow.png" /></span>
+</div>
+
+<!--income projection max table-->
+<div id="idPopIndividual" class="modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h2 class="modal-title"></h2>
+            </div>
+            <div class="modal-body" id="idIndividualLoanModal"></div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+
+
+<!--total Loan popup max-->
+<!--income projection max table-->
+<div id="idPoptotalLoan" class="modal1">
+
+    <!-- Modal content -->
+    <div class="modal-content1">
+        <div class="modal-header">
+            <span class="close1">&times;</span>
+            <h2></h2>
+        </div>
+        <div class="modal-body">
+            <table width="62%" class="loantotal" id="idTotalLoansModal" style="margin-left: 244px">
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Beginning Balance</th>
+                        <th>Interest Payment</th>
+                        <th>Principal Payment</th>
+                        <th>Ending Balance</th>
+                        <th>EMI Amount</th>
+                    </tr>
+                </thead>
+                <tbody id="idTotalLoansModal">
+
+                </tbody>
+            </table>
+            <br />
+            <table width="46%" style="margin-left: 340px">
+                <tr>
+                    <td><b>Download Projections</b></td>
+                    <td><input type="radio" id="idMonthlyRadioModal" name="download" style="position: sticky"></input>
+                    </td>
+                    <td style="text-align: left; vertical-align: bottom;"><label>Monthly</label></td>
+                    <td><input type="radio" id="idYearlyRadioModal" name="download" style="position: sticky" checked="true"></input>
+                    </td>
+                    <td style="text-align: left; vertical-align: bottom;"><label>Annually</label></td>
+                    <td><input type="submit" value="Save" id="idDownloadModal" class="form-control"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="modal-footer">
+            <h3></h3>
+        </div>
+    </div>
+
+</div>

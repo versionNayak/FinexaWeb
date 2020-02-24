@@ -1,0 +1,73 @@
+<!-- <script src="MF/Mfjs/validateAUMReconciliationReport.js"></script> -->
+<script src="MF/Mfjs/aumReconciliation_businessReports.js"></script>
+<div class="MFforms">
+	<h4 class="formhead">Select Parameters						
+	</h4>
+	<form class="form-horizontal marginleft10per" action="#" id="idAumReconciliationReportForm">
+						<div class="form-group">
+							<span class="formentry-errmsg" id="alertform"></span>
+							<div>
+								<label>Select Distributor *:</label>
+								<span class="form-static-value">
+									<select class="form-control input-width-medium" id="idDistributors" name="distributorId" tabindex="1">
+										<option value="">Select</option>
+									</select>
+									<span class="formentry-errmsg" id="alertDistributors"></span>
+								</span>
+							</div>
+							<br/>
+							<!-- <div>
+								<label>As on date*:</label>
+									<p id="idAsOnDateGroup" class="input-group input-width-medium">
+										<input type="text" class="form-control" id="idAsOnDate" name="asOnDate" placeholder="DD/MM/YYYY" tabindex="2">
+										<span class="input-group-btn datepicker-icon">
+											<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select As On Date"><em class="glyphicon calendar-icon-theme"></em></button>
+										</span>
+									</p>
+									<span class="formentry-errmsg" id="alertAsOnDate"></span>
+							</div>
+							<br/> -->
+							<label>Show difference greater than:</label>
+								<input type="text" id="idDiffGreaterThan" name="diffGreaterThan" class="form-control input-width-medium-min input-width-owner input-width-medium" placeholder="Difference Greater Than"  tabindex="3"/>
+								<span class="formentry-errmsg" id="alertDifferenceGreaterThan"></span>
+							<br/>
+							<div>
+							<span class="form-static-value" id="idMismatchFolios" >
+									<input type="checkbox" class="mismatchFolioCheck" name="mismatchFolioCheck" id="idMismatchFolioCheck" tabindex="4"/>
+								</span>
+							<label>Show Mismatch Folios only</label>
+								<span class="formentry-errmsg" id="alertMismatchFolios"></span>
+							</div>		
+							<br/>
+							<div>
+							<span class="form-static-value" id="idMissingFolios" >
+									<input type="checkbox" class="missingFolioCheck" name="missingFolioCheck" id="idMissingFolioCheck" tabindex="5"/>
+								</span>
+							<label>Show Folios in Finexa and missing in AUM file only</label>
+								<span class="formentry-errmsg" id="alertMissingFolios"></span>
+							</div>		
+							<br/>
+							<div class="col-sm-6" style="text-align: left;z-index:1;padding-top: 7px;margin-top:-13px;font-style:bold"> 
+								<input type="button" class="pull-left btn addbtn" id="showAUMReconciliationReport" tabindex="6" value="View Report" style="width:9em;font-style:bold;float:right;margin-left:0em"/> 
+							</div>
+							<br/><br/>
+							<div id="idRadioReportFormat">
+								<label>Selection*:</label>
+								<p id="idReportFormatRadioGroup" style="margin-bottom:0px;width:15%">
+									<input id="idExcel" name="reportFormat" type="radio" value="excel" tabindex="6" /> Excel  &nbsp;&nbsp;&nbsp; 
+									<input id="idPDF" name="reportFormat" type="radio" value="pdf" tabindex="7" /> PDF &nbsp;&nbsp;&nbsp;
+								</p>
+								<span class="formentry-errmsg" id="alertReportFormat"></span>
+	    					</div>
+	    					<br/>
+	    					<div class="col-sm-6" style="text-align: left;z-index:1;padding-top: 7px;margin-top:-13px;font-style:bold"> 
+	    						<input type="button" class="btn addbtn" id="exportAUMReconciliationReport" value="Export Report" tabindex="8" style="width:9em"/>
+							</div>
+							
+							<div id="wait" style="width: 100%; height: 100%; top: 100px; left: 0px; position: fixed; z-index: 10000; text-align: center;">
+				            	<img src="../Common/assets/images/loader_finexa.gif" width="45" height="45" alt="Loading..." style="position: fixed; top: 50%; left: 50%;"/>
+							</div>
+							
+						</div>
+	</form>
+</div>

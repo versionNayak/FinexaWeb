@@ -1,0 +1,60 @@
+<script src="clientInfo/js/common.js"></script>
+<script type="text/javascript" src="../Common/assets/js-library/pagination.js"></script>
+<script src="clientInfo/js/report.js"></script>
+<script src="clientInfo/js/validateAdminPanel.js"></script>
+<script src="clientInfo/js/validationForAll.js"></script>
+<script src="../../Common/assets/js-library/moment-2.11.0.js"></script>
+
+<div class="cicontainer">
+    <script type="text/javascript">
+        $(".dashboardheading").html("Admin Panel - Export");
+        $("#headIcon").empty();
+    </script>
+
+    <div>
+        <form class="form-horizontal" id="exportRepot" action="#">
+            <div class="form-group">
+                <label class="col-sm-1 control-label"></label>
+                <div class="col-sm-offset-1 col-sm-11">
+                    <span class="formentry-errmsg" id="alertform"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="userType" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>Select User Type:</label>
+                    <span class="form-static-value" id="idUT">
+					<select class="form-control input-width-medium" id="idUsertype" name="userType" onchange="change()" tabindex="">
+						  <!-- <option value="" disabled selected>Select User Type</option> -->	
+						  <option value="" disabled selected>Select</option>				
+						  <option value="Self">Self</option>
+						  <option value="Organization">Organization</option>
+					</select>
+					<span class="formentry-errmsg" id="alertUserType"></span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="userName" class="col-sm-1 control-label"></label>
+                <div class="col-sm-11">
+                    <label>Select Organization Name:</label>
+                    <span class="form-static-value" id="idUN">
+					<select class="form-control orgname input-width-medium" id="idUserName" name="userName" onchange="" tabindex="">
+					 	 <option value="" disabled selected>Select</option>
+					</select>
+					<span class="formentry-errmsg" id="alertUserName"></span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-1 col-sm-11">
+                    <input type="button" class="pull-left btn addbtn" id="idDownload" name="Download" value="Download" onclick="">
+                    <input type="button" class="pull-left btn addbtn" id="idclear" name="clear" value="Clear" onclick="">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

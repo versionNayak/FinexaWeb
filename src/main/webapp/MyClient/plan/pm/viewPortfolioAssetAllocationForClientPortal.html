@@ -1,0 +1,1876 @@
+<script src="plan/pm/js/viewPortfolioAssetAllocationForClient.js"></script>
+<script src="plan/pm/js/common.js"></script>
+<style>
+	.top30negtive[style]{
+		top: -30px !important;
+	}
+</style>
+<div id="jssor_21" class="height413px">
+	<div data-u="slides" class="slider9" style="height: 405px; top: 20px">
+		<div style="overflow: scroll">
+			<div data-u="image">
+				<div id="idMaxcurrentaa" class="popup" style="position: relative; top: 22px;left: 50px">
+					<img src="../Common/assets/images/maximg.png" class="maxbtn" />
+				</div>
+				<!-- 	<table width="80%" class="coltwo_rightalg btltrwhite"
+					style="z-index: 10 !important; margin-top: 34px; margin-left: 88px"> -->
+				<table width="80%" class="coltwo_rightalg"
+					style="z-index: 10 !important; margin-top: 34px; margin-left: 88px">
+					<thead>
+						<tr class="nonglidtotal">
+							<th style="text-align: left">Sub Asset Class</th>
+							<th>Current Value(In Rs.)</th>
+							<th>Investment Value(In Rs.)</th>
+							<th>Gain/Loss</th>
+							<th>CAGR/XIRR</th>
+						</tr>
+					</thead>
+					<tbody id="idAssetAllocationTbodyMain">
+						<tr>
+							<td colspan="5"
+								style="background-color: white; text-align: right"><a
+								id="currentknowmore">Know More...</a></td>
+
+						</tr>
+				</table>
+				<br />
+			</div>
+			<button data-u="thumb">Current AA</button>
+		</div>
+		<div>
+			<div data-u="image">
+				<div id="idmaxrecommendedaa" class="popup" style="position: relative; top: 22px;left: 50px">
+					<img src="../Common/assets/images/maximg.png" class="maxbtn" />
+				</div>
+				<table width="80%" class="currentaatab"
+					style="z-index: 10 !important; margin-top: 31px; margin-left: 76px;">
+
+					<thead>
+						<tr class="nonglidTotal">
+							<th style="text-align: left">Sub Asset Class</th>
+							<th>Current Allocation (%)</th>
+							<th>Recommended Allocation (%)</th>
+
+						</tr>
+					</thead>
+					<tbody id="idAllocationTBody">
+						<tr>
+							<td colspan="3"
+								style="background-color: white; text-align: right"><a
+								id="recommendedknow">Know More...</a></td>
+
+						</tr>
+				</table>
+				<br />
+				<table width="80%" class="currentaatab"
+					style="z-index: 10 !important; margin-top: 31px; margin-left: 76px;"">
+				<tr class="nonglidtotal">
+						<td></td>
+						<td><b>Current Allocation</b></td>
+						<td><b>Recommended Allocation</b></td>
+						</tr>
+						<tr>
+							<td>Expected Portfolio Return (%)</td>
+							<td id="expPortfolioReturnPerct"></td>
+							<td id="recomPortfolioReturnPerct"></td>
+						</tr>
+						<tr>
+							<td>Expected Portfolio Risk (%)</td>
+							<td id="expPortfolioReturnCurrentRisk"></td>
+							<td id="recomPortfolioReturnREcommendRisk"></td>
+						</tr>
+				</table>
+			</div>
+			<button data-u="thumb">Recommended AA</button>
+		</div>
+		<div>
+			<div data-u="image">
+				<div id="idMaxcurrentsubaa" class="popup">
+					<img src="../Common/assets/images/maximg.png"
+						style="margin-right: 57px" />
+				</div>
+				<table width="88%" class="recommendedtbl currentsubtbl"
+					style="z-index: 10 !important; margin-top: 31px; margin-left: 50px"
+					border="1">
+					<thead>
+						<tr>
+							<th></th>
+							<th colspan="2" class="aligncenter">Investment Portfolio</th>
+							<th colspan="3" class="aligncenter">Returns</th>
+							<th class="aligncenter">Risk</th>
+						</tr>
+						<tr>
+							<th>Sub Asset Class</th>
+							<th>Current Value (Rs.)</th>
+							<th>% of Total</th>
+							<th>Investment Value (Rs.)</th>
+							<th>Gain/(Loss)</th>
+							<th>CAGR / XIRR</th>
+							<th>Standard Deviation</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr></tr>
+						<tr>
+							<td><b> Cash/Liquid</b></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle2.png" />
+								&nbsp; Cash/Liquid</td>
+							<td>120,000</td>
+							<td>0.0%</td>
+							<td>19000</td>
+							<td>100</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><b>Fixed Income</b></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle3.png" />
+								&nbsp; Ultra Short Term Debt</td>
+							<td>120,000</td>
+							<td>0.0%</td>
+							<td>19000</td>
+							<td>100</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle4.png" />
+								&nbsp; Short Term Debt</td>
+							<td>120,000</td>
+							<td>0.0%</td>
+							<td>19000</td>
+							<td>100</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle5.png" />
+								&nbsp; Long Term Debt</td>
+							<td>120,000</td>
+							<td>0.0%</td>
+							<td>19000</td>
+							<td>100</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><b>Equity</b></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle6.png" />
+								&nbsp; Equity Large Cap</td>
+							<td>120,000</td>
+							<td>0.0%</td>
+							<td>19000</td>
+							<td>100</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle7.png" />
+								&nbsp; Equity Mid and Small Cap</td>
+							<td>120,000</td>
+							<td>0.0%</td>
+							<td>19000</td>
+							<td>100</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle8.png" />
+								&nbsp; Equity International</td>
+							<td>120,000</td>
+							<td>0.0%</td>
+							<td>19000</td>
+							<td>100</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><b>Alternatives</b></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle9.png" />
+								&nbsp; Alternatives - Precious Metals</td>
+							<td>120,000</td>
+							<td>0.0%</td>
+							<td>19000</td>
+							<td>100</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle10.png" />
+								&nbsp; Alternatives - Real Estate</td>
+							<td>120,000</td>
+							<td>0.0%</td>
+							<td>19000</td>
+							<td>100</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle11.png" />
+								&nbsp; Alternatives -Others</td>
+							<td>120,000</td>
+							<td>0.0%</td>
+							<td>19000</td>
+							<td>100</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr class="nonglidtotal">
+							<td><b>Total</b></td>
+							<td><b>120,000 </b></td>
+							<td><b>0.0%</b></td>
+							<td><b>19000</b></td>
+							<td><b> 100</b></td>
+							<td><b> 0.0%</b></td>
+							<td><b> 0.0%</b></td>
+						</tr>
+				</table>
+				<br />
+				<!--<table width="49%" style="margin-left:215px">
+								<tr>
+								<td><b>Download Projections</b></td>
+								<td><input type="radio" name="download" style="position:sticky"></input></td>
+								<td style="text-align: left;vertical-align:bottom;"><label>Monthly</label></td>
+								<td><input type="radio" name="download" style="position:sticky" checked="true"></input></td>
+								<td style="text-align: left;vertical-align:bottom;"><label>Annually</label></td>
+								<td><input type="submit" value="Submit" class="form-control"/> </td>
+								</tr>
+							</table>-->
+				<div class="row">
+					<div class="col-lg-12">
+						<table width="100%" style="margin-left: 49px; margin-top: 12px">
+							<tr style="background-color: white">
+								<td><b>Current Asset Allocation:</b></td>
+							</tr>
+							<tr style="background-color: white; vertical-align: top">
+								<td><div id="idcurrentsubassets"
+										style="width: 70%; margin-top: -13px; margin-left: -55px">
+									</div></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!--<button data-u="thumb">Current Sub AA </button>-->
+		</div>
+		<div>
+			<div data-u="image">
+				<div id="idmaxbenchmark" class="popup">
+					<img src="../Common/assets/images/maximg.png"
+						style="margin-right: 57px" />
+				</div>
+				<table width="88%" class="recommendedtbl benchmarktbl"
+					style="z-index: 10 !important; margin-top: 31px; margin-left: 70px"
+					border="1">
+					<thead>
+						<tr>
+							<th></th>
+							<th colspan="8" class="aligncenter">Benchmarks</th>
+						</tr>
+						<tr>
+							<th>Sub Asset Class</th>
+							<th>Benchmarks</th>
+							<th>1M</th>
+							<th>3M</th>
+							<th>6M</th>
+							<th>1Y</th>
+							<th>3Y</th>
+							<th>5Y</th>
+							<th>Risk (Std Dev.)*</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr></tr>
+						<tr>
+							<td><b> Cash/Liquid</b></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle2.png" />
+								&nbsp; Cash/Liquid</td>
+							<td>Crisil Liquid Fund Index</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><b>Fixed Income</b></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle3.png" />
+								&nbsp; Ultra Short Term Debt</td>
+							<td>Crisil Liquid Fund Index</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle4.png" />
+								&nbsp; Short Term Debt</td>
+							<td>CRISIL STBeX</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle5.png" />
+								&nbsp; Long Term Debt</td>
+							<td>CRISIL Composite bond Index</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><b>Equity</b></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle6.png" />
+								&nbsp; Equity Large Cap</td>
+							<td>Nifty</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle7.png" />
+								&nbsp; Equity Mid and Small Cap</td>
+							<td>Nifty Midcap 100</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle8.png" />
+								&nbsp; Equity International</td>
+							<td>NA</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><b>Alternatives</b></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle9.png" />
+								&nbsp; Alternatives - Precious Metals</td>
+							<td>Gold Index</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle10.png" />
+								&nbsp; Alternatives - Real Estate</td>
+							<td>NA</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle11.png" />
+								&nbsp; Alternatives -Others</td>
+							<td>NA</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr class="nonglidtotal">
+							<td><b>Total</b></td>
+							<td><b>NA </b></td>
+							<td><b>0.0%</b></td>
+							<td><b>0.0%</b></td>
+							<td><b> 0.0%</b></td>
+							<td><b> 0.0%</b></td>
+							<td><b> 0.0%</b></td>
+							<td>0.0%</td>
+							<td>0.0%</td>
+						</tr>
+				</table>
+			</div>
+		<!-- <button data-u="thumb">Benchmark Returns
+							</button> -->
+		</div>
+		<div>
+			<div data-u="image">
+				<div id="idMaxrecommendedsubaa" class="popup">
+					<img src="../Common/assets/images/maximg.png"
+						style="margin-right: 156px" />
+				</div>
+				<table width="63%"
+					class="recommendedtbl recommendedsubtbl coltwo_rightalg"
+					style="z-index: 10 !important; margin-top: 31px; margin-left: 169px">
+					<thead>
+						<tr>
+							<th>Sub Asset Class</th>
+							<th>Current Allocation(%)</th>
+							<th>Recommended Allocation(%)</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr></tr>
+						<tr>
+							<td><b> Cash/Liquid</b></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle2.png" />
+								&nbsp; Cash/Liquid</td>
+							<td>12%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><b>Fixed Income</b></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle3.png" />
+								&nbsp; Ultra Short Term Debt</td>
+							<td>12%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle4.png" />
+								&nbsp; Short Term Debt</td>
+							<td>12%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle5.png" />
+								&nbsp; Long Term Debt</td>
+							<td>12%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><b>Equity</b></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle6.png" />
+								&nbsp; Equity Large Cap</td>
+							<td>12%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle7.png" />
+								&nbsp; Equity Mid and Small Cap</td>
+							<td>12%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle8.png" />
+								&nbsp; Equity International</td>
+							<td>12%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><b>Alternatives</b></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle9.png" />
+								&nbsp; Alternatives - Precious Metals</td>
+							<td>12%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle10.png" />
+								&nbsp; Alternatives - Real Estate</td>
+							<td>12%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr>
+							<td><img src="../Common/assets/images/circle11.png" />
+								&nbsp; Alternatives -Others</td>
+							<td>12%</td>
+							<td>0.0%</td>
+						</tr>
+						<tr class="nonglidtotal">
+							<td><b>Total</b></td>
+							<td><b>12% </b></td>
+							<td><b>0.0%</b></td>
+						</tr>
+				</table>
+				<br />
+				<!--<table width="49%" style="margin-left:215px">
+										<tr>
+										<td><b>Download Projections</b></td>
+										<td><input type="radio" name="download" style="position:sticky"></input></td>
+										<td style="text-align: left;vertical-align:bottom;"><label>Monthly</label></td>
+										<td><input type="radio" name="download" style="position:sticky" checked="true"></input></td>
+										<td style="text-align: left;vertical-align:bottom;"><label>Annually</label></td>
+										<td><input type="submit" value="Submit" class="form-control"/> </td>
+										</tr>
+									</table>-->
+				<div class="row">
+					<div class="col-lg-12">
+						<table width="100%" style="margin: 167px; margin-top: 12px">
+							<tr style="background-color: white">
+								<td><b>Current Asset Allocation Vs Recommended Asset
+										Allocation (Sub Asset Classes):</b></td>
+							</tr>
+							<tr style="background-color: white; vertical-align: top">
+								<td>
+									<!--<div id="idRecommendedbarGraph" style="width:80%;margin-top:18px;margin-left:10px">
+													</div>-->
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="row" style="margin-top: -235px">
+					<div class="col-lg-12">
+						<table width="100%" style="margin-left: 167px; margin-top: 86px">
+							<tr style="background-color: white">
+								<td><b>Recommended Asset Allocation - Historical
+										Return:</b></td>
+							</tr>
+							<tr style="background-color: white; vertical-align: top">
+								<td>
+									<!--<div id="idnet" style="width:70%;margin-top:18px;margin-left:0px">
+													</div>-->
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!-- <button data-u="thumb">Recommended Sub AA </button> -->
+		</div>
+	</div>
+	<!-- Thumbnail Navigator -->
+	<div data-u="thumbnavigator" class="jssort21" data-autocenter="1">
+		<!-- Thumbnail Item Skin Begin -->
+		<div data-u="slides">
+			<div data-u="prototype" class="p">
+				<div>
+					<div data-u="thumbnailtemplate"></div>
+				</div>
+			</div>
+		</div>
+		<!-- Thumbnail Item Skin End -->
+	</div>
+	<!-- Arrow Navigator -->
+	<span data-u="arrowleft" class="jssora05l Incomeleft"><img
+		src="../Common/assets/images/leftarrow.png" /></span> <span
+		data-u="arrowright" class="jssora05r Incomeright"><img
+		src="../Common/assets/images/rightarrow.png" /></span>
+</div>
+<!--Current AA max pop-->
+<div id="idpopcurrentaa" class="modal modal2">
+	<!-- Modal content -->
+	<div class="modal-content"
+		style="margin-left: 24px; background-color: #ededee">
+		<div class="modal-header">
+			<span class="close">&times;</span>
+			<h4 style="margin-top: 5px">Current Asset Allocation</h4>
+		</div>
+		<div class="modal-body">
+			<div class="row" style="margin-top: 19px">
+				<div class="col-lg-12" style="width: 101.7em;">
+					<div class="col-lg-6 bgwhite" style="margin-right: .5em">
+						<h4 class="fontblue">
+							<b>Current Asset Allocation</b>
+						</h4>
+						<table width="100%"
+							style="z-index: 10 !important; margin-left: 1px; margin-bottom: 24px; margin-top: 27px;"
+							class="currentaatab">
+							<thead>
+								<tr>
+									<th style="text-align: left">Sub Asset Class</th>
+									<th>Current Value(In Rs.)</th>
+									<th>Investment Value(In Rs.)</th>
+									<th>Gain/Loss</th>
+									<th>CAGR/XIRR</th>
+								</tr>
+							</thead>
+							<tbody id="idAssetAllocationTbodyModal">
+						</table>
+
+					</div>
+					<div class="col-lg-5">
+						<div class="bgwhite"
+							style="padding-top: 8px; padding-left: 17px; max-height: 22em; overflow: hidden">
+							<h4 class="fontblue">
+								<b> Current Asset Allocation</b>
+							</h4>
+							<div id="idcaa" style="width: 30%; margin-left: 4px"></div>
+						</div>
+						<br />
+						<div class="bgwhite"
+							style="padding-top: 8px; padding-left: 17px; max-height: 20em; overflow: hidden">
+							<h4 class="fontblue">
+								<b> Current Allocation - Sub Asset Class </b>
+							</h4>
+							<div id="idsubasset" style="width: 35%; margin-left: -80px"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-12 bgwhite"
+				style="margin-top: 18px; margin-bottom: 19px;">
+				<h4 class="fontblue">
+					<b>Current Allocation: Performance Vs Benchmark</b>
+				</h4>
+				<table width="100%"
+					style="z-index: 10 !important; margin-left: 1px; margin-bottom: 24px; margin-top: 27px;"
+					class="perbenchmarktbl">
+					<thead>
+						<tr>
+							<th style="text-align: left">Sub Asset Class</th>
+							<th>Benchmarks</th>
+							<th>CAGR / XIRR</th>
+
+							<th>1M</th>
+							<th>3M</th>
+							<th>6M</th>
+							<th>1Y</th>
+							<th>3Y</th>
+							<th>5Y</th>
+							<th>Risk Std Dev</th>
+						</tr>
+					</thead>
+					<tbody id="idBenchmarkTBody"></tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<h3></h3>
+	</div>
+</div>
+</div>
+<!-- Recommended aa pop -->
+<div id="idpoprecommendedaa" class="modal1 modal3">
+	<!-- Modal content -->
+	<div class="modal-content"
+		style="margin-left: 24px; background-color: #ededee">
+		<div class="modal-header">
+
+			<span class="close1">&times;</span>
+			<h4 style="margin-top: 5px">Recommended Asset Allocation</h4>
+			<h2></h2>
+		</div>
+		<!--<div class="modal-body">
+									<table width="49%" class="recommendedtbl coltwo_rightalg recommendedaatbl" style="z-index:10 !important;margin-top:31px;margin-left:293px">
+										<thead>
+											<tr>
+												<th>Asset Class
+												</th>
+												<th>Current Allocation (%)
+												</th>
+												<th>Recommended Allocation (%)
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr></tr>   
+											<tr>
+												<td> <img src="../Common/assets/images/circle2.png"/> &nbsp; Cash/Liquid
+												</td>
+												<td>12%
+												</td>
+												<td > 0.0%
+												</td>
+											</tr> 
+											<tr>
+												<td><img src="../Common/assets/images/circle3.png"/> &nbsp;Fixed Income
+												</td>
+												<td>12% 
+												</td>
+												<td > 0.0%
+												</td>
+											</tr> 
+											<tr>
+												<td> <img src="../Common/assets/images/circle4.png"/> &nbsp; Equity
+												</td>
+												<td>12% 
+												</td>
+												<td > 0.0%
+												</td>
+											</tr>
+											<tr>
+												<td><img src="../Common/assets/images/circle5.png"/> &nbsp;Alternatives
+												</td>
+												<td>12% 
+												</td>
+												<td > 0.0%
+												</td>
+											</tr>
+											<tr class="nonglidtotal">
+												<td><b>Total</b>
+												</td>
+												<td><b>12% </b>
+												</td>
+												<td> <b>0.0%</b>
+												</td>
+											</tr>
+										</table>
+										<table width="49%" class="recommendedtbl coltwo_rightalg" style="z-index:10 !important;margin-top:31px;margin-left:293px">
+											<tr class="nonglidtotal">
+												<td></td>
+												<td><b>Current Allocation</b>
+												</td>
+												<td><b>Recommended Allocation</b>
+												</td>
+											</tr>
+											<tr>
+												<td>Expected Portfolio Return (%)
+												</td>
+												<td>12.52%
+												</td>
+												<td>12.52%
+												</td>
+											</tr>
+											<tr>
+												<td>Expected Portfolio Risk (%)
+												</td>
+												<td>12.52%
+												</td>
+												<td>12.52%
+												</td>
+											</tr>
+										</table>
+										<br/>
+										<!--<table width="49%" style="margin-left:215px">
+											<tr>
+											<td><b>Download Projections</b></td>
+											<td><input type="radio" name="download" style="position:sticky"></input></td>
+											<td style="text-align: left;vertical-align:bottom;"><label>Monthly</label></td>
+											<td><input type="radio" name="download" style="position:sticky" checked="true"></input></td>
+											<td style="text-align: left;vertical-align:bottom;"><label>Annually</label></td>
+											<td><input type="submit" value="Submit" class="form-control"/> </td>
+											</tr>
+										</table>-->
+		<!--<div class="row">
+											<div class="col-lg-12">
+												<table width="100%" style="margin-left:289px;margin-top:12px">
+													<tr style="background-color:white"><td><b>Current Asset Allocation Vs Recommended Asset Allocation:</b></td></tr>
+													<tr style="background-color:white;vertical-align:top">
+														<td><div id="idcurrentVsrecommendedpop" style="width:50%;margin-top:18px;margin-left:10px">
+														</div></td>
+													</tr>
+												</table>
+											</div>
+										</div>-->
+		<div class="modal-body">
+			<div class="row" style="margin-top: 19px">
+				<div class="col-lg-12" style="width: 101.7em;">
+					<div class="col-lg-6 bgwhite" style="margin-right: .5em">
+						<h4 class="fontblue">
+							<b>Recommended Asset Allocation</b>
+						</h4>
+						<table width="100%"
+							style="z-index: 10 !important; margin-left: 1px; margin-bottom: 24px; margin-top: 27px;"
+							class="currentaatab">
+							<thead>
+								<tr>
+									<th style="text-align: left">Sub Asset Class</th>
+									<th>Current Allocation (%)</th>
+									<th>Recommended Allocation (%)</th>
+
+								</tr>
+							</thead>
+							<tbody id="idAllocationTBodyModal">
+						</table>
+						
+						<table width="100%" class="currentaatab"
+					       style="z-index: 10 !important; margin-left: 1px; margin-bottom: 24px; margin-top: 27px;">
+					   <tr class="nonglidtotal">
+						<td></td>
+						<td><b>Current Allocation</b></td>
+						<td><b>Recommended Allocation</b></td>
+					  </tr>
+					  <tr>
+						<td>Expected Portfolio Return (%)</td>
+						<td id="expPortfolioReturnPerctModal"></td>
+						<td id="recomPortfolioReturnPerctModal"></td>
+					 </tr>
+					 <tr>
+						<td>Expected Portfolio Risk (%)</td>
+						<td id="expPortfolioReturnCurrentRiskModal"></td>
+						<td id="recomPortfolioReturnREcommendRiskModal"></td>
+					</tr>
+				</table>
+						
+					</div>
+					<div class="col-lg-5">
+						<div class="bgwhite"
+							style="padding-top: 8px; padding-left: 17px; height: 22em; overflow: hidden">
+							<h4 class="fontblue">
+								<b> Current Vs Recommended</b>
+							</h4>
+							<div id="idcurrentVsrecommendedpop"
+								style="width: 35%; height: 40%"></div>
+						</div>
+						<br />
+						<div class="bgwhite"
+							style="padding-top: 8px; padding-left: 17px; height: 22em; overflow: hidden">
+							<h4 class="fontblue">
+								<b> Current Vs Recommended(Sub Asset Classes) </b>
+							</h4>
+							<div id="idRecommendedbarGraph" style="width: 35%; height: 40%"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+
+				<div class="col-lg-6 bgwhite"
+					style="margin-top: 18px; margin-bottom: 19px; width: 49.8em; height: 30em; margin-left: 14px;">
+					<h4 class="fontblue">
+						<b>Recommended Asset Allocation- Historical Returns </b>
+					</h4>
+					<div id="idnet" style="width: 48%; margin-top: 20px; height: 50%"></div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<h3></h3>
+	</div>
+</div>
+</div>
+<!-- Current sub AA -->
+<div id="idpopcurrentsubaa" class="modal2">
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close2">&times;</span>
+			<h2></h2>
+		</div>
+		<div class="modal-body">
+			<table width="88%" class="recommendedtbl currentsubtbl"
+				style="z-index: 10 !important; margin-top: 31px; margin-left: 85px"
+				border="1">
+				<thead>
+					<tr>
+						<th></th>
+						<th colspan="2" class="aligncenter">Investment Portfolio</th>
+						<th colspan="3" class="aligncenter">Returns</th>
+						<th class="aligncenter">Risk</th>
+					</tr>
+					<tr>
+						<th>Sub Asset Class</th>
+						<th>Current Value (Rs.)</th>
+						<th>% of Total</th>
+						<th>Investment Value (Rs.)</th>
+						<th>Gain/(Loss)</th>
+						<th>CAGR / XIRR</th>
+						<th>Standard Deviation</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr></tr>
+					<tr>
+						<td><b> Cash/Liquid</b></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle2.png" /> &nbsp;
+							Cash/Liquid</td>
+						<td>120,000</td>
+						<td>0.0%</td>
+						<td>19000</td>
+						<td>100</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><b>Fixed Income</b></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle3.png" /> &nbsp;
+							Ultra Short Term Debt</td>
+						<td>120,000</td>
+						<td>0.0%</td>
+						<td>19000</td>
+						<td>100</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle4.png" /> &nbsp;
+							Short Term Debt</td>
+						<td>120,000</td>
+						<td>0.0%</td>
+						<td>19000</td>
+						<td>100</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle5.png" /> &nbsp;
+							Long Term Debt</td>
+						<td>120,000</td>
+						<td>0.0%</td>
+						<td>19000</td>
+						<td>100</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><b>Equity</b></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle6.png" /> &nbsp;
+							Equity Large Cap</td>
+						<td>120,000</td>
+						<td>0.0%</td>
+						<td>19000</td>
+						<td>100</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle7.png" /> &nbsp;
+							Equity Mid and Small Cap</td>
+						<td>120,000</td>
+						<td>0.0%</td>
+						<td>19000</td>
+						<td>100</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle8.png" /> &nbsp;
+							Equity International</td>
+						<td>120,000</td>
+						<td>0.0%</td>
+						<td>19000</td>
+						<td>100</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><b>Alternatives</b></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle9.png" /> &nbsp;
+							Alternatives - Precious Metals</td>
+						<td>120,000</td>
+						<td>0.0%</td>
+						<td>19000</td>
+						<td>100</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle10.png" />
+							&nbsp; Alternatives - Real Estate</td>
+						<td>120,000</td>
+						<td>0.0%</td>
+						<td>19000</td>
+						<td>100</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle11.png" />
+							&nbsp; Alternatives -Others</td>
+						<td>120,000</td>
+						<td>0.0%</td>
+						<td>19000</td>
+						<td>100</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr class="nonglidtotal">
+						<td><b>Total</b></td>
+						<td><b>120,000 </b></td>
+						<td><b>0.0%</b></td>
+						<td><b>19000</b></td>
+						<td><b> 100</b></td>
+						<td><b> 0.0%</b></td>
+						<td><b> 0.0%</b></td>
+					</tr>
+			</table>
+			<br />
+			<!--<table width="49%" style="margin-left:215px">
+												<tr>
+												<td><b>Download Projections</b></td>
+												<td><input type="radio" name="download" style="position:sticky"></input></td>
+												<td style="text-align: left;vertical-align:bottom;"><label>Monthly</label></td>
+												<td><input type="radio" name="download" style="position:sticky" checked="true"></input></td>
+												<td style="text-align: left;vertical-align:bottom;"><label>Annually</label></td>
+												<td><input type="submit" value="Submit" class="form-control"/> </td>
+												</tr>
+											</table>-->
+			<div class="row">
+				<div class="col-lg-12">
+					<table width="100%" style="margin-left: 81px; margin-top: 12px">
+						<tr style="background-color: white">
+							<td><b>Current Asset Allocation:</b></td>
+						</tr>
+						<tr style="background-color: white; vertical-align: top">
+							<td><div id="idcurrentsubassetspop"
+									style="width: 60%; margin-top: -13px; margin-left: 78px">
+								</div></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+</div>
+<!--Benchmark -->
+<div id="idpopbenchmark" class="modal3">
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close3">&times;</span>
+			<h2></h2>
+		</div>
+		<div class="modal-body">
+			<table width="88%" class="recommendedtbl benchmarktbl"
+				style="z-index: 10 !important; margin-top: 31px; margin-left: 50px"
+				border="1">
+				<thead>
+					<tr>
+						<th></th>
+						<th colspan="8" class="aligncenter">Benchmarks</th>
+					</tr>
+					<tr>
+						<th>Sub Asset Class</th>
+						<th>Benchmarks</th>
+						<th>1M</th>
+						<th>3M</th>
+						<th>6M</th>
+						<th>1Y</th>
+						<th>3Y</th>
+						<th>5Y</th>
+						<th>Risk (Std Dev.)*</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr></tr>
+					<tr>
+						<td><b> Cash/Liquid</b></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle2.png" /> &nbsp;
+							Cash/Liquid</td>
+						<td>Crisil Liquid Fund Index</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><b>Fixed Income</b></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle3.png" /> &nbsp;
+							Ultra Short Term Debt</td>
+						<td>Crisil Liquid Fund Index</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle4.png" /> &nbsp;
+							Short Term Debt</td>
+						<td>CRISIL STBeX</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle5.png" /> &nbsp;
+							Long Term Debt</td>
+						<td>CRISIL Composite bond Index</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><b>Equity</b></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle6.png" /> &nbsp;
+							Equity Large Cap</td>
+						<td>Nifty</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle7.png" /> &nbsp;
+							Equity Mid and Small Cap</td>
+						<td>Nifty Midcap 100</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle8.png" /> &nbsp;
+							Equity International</td>
+						<td>NA</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><b>Alternatives</b></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle9.png" /> &nbsp;
+							Alternatives - Precious Metals</td>
+						<td>Gold Index</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle10.png" />
+							&nbsp; Alternatives - Real Estate</td>
+						<td>NA</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle11.png" />
+							&nbsp; Alternatives -Others</td>
+						<td>NA</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr class="nonglidtotal">
+						<td><b>Total</b></td>
+						<td><b>NA </b></td>
+						<td><b>0.0%</b></td>
+						<td><b>0.0%</b></td>
+						<td><b> 0.0%</b></td>
+						<td><b> 0.0%</b></td>
+						<td><b> 0.0%</b></td>
+						<td>0.0%</td>
+						<td>0.0%</td>
+					</tr>
+			</table>
+			<br />
+			<!--<table width="49%" style="margin-left:215px">
+													<tr>
+													<td><b>Download Projections</b></td>
+													<td><input type="radio" name="download" style="position:sticky"></input></td>
+													<td style="text-align: left;vertical-align:bottom;"><label>Monthly</label></td>
+													<td><input type="radio" name="download" style="position:sticky" checked="true"></input></td>
+													<td style="text-align: left;vertical-align:bottom;"><label>Annually</label></td>
+													<td><input type="submit" value="Submit" class="form-control"/> </td>
+													</tr>
+												</table>-->
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+</div>
+<!-- recommmended sub aa -->
+<div id="idpoprecommendedsubaa" class="modal4">
+	<!-- Modal content -->
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close4">&times;</span>
+			<h2></h2>
+		</div>
+		<div class="modal-body">
+			<div class="row" style="margin-top: 19px">
+				<div class="col-lg-12" style="width: 98em">
+					<div class="col-lg-6 bgwhite" style="margin-right: .5em">
+						<h4 class="fontblue">
+							<b>Current Asset Allocation</b>
+						</h4>
+						<table width="100%"
+							style="z-index: 10 !important; margin-left: 1px; margin-bottom: 24px; margin-top: 27px;"
+							class="currentaatab">
+							<thead>
+								<tr>
+									<th style="text-align: left">Sub Asset Class</th>
+									<th>Current Value(In Rs.)</th>
+									<th>Investment Value(In Rs.)</th>
+									<th>Gain/Loss</th>
+									<th>CAGR/XIRR</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="bgcolorlightblue">
+									<td>Cash/Liquid</td>
+									<td>300,000</td>
+									<td>300,000</td>
+									<td>0</td>
+									<td>0.0%</td>
+								</tr>
+								<tr>
+									<td>Cash/Liquid</td>
+									<td>300,000</td>
+									<td>300,000</td>
+									<td>0</td>
+									<td>0.0%</td>
+								</tr>
+								<tr class="bgcolorlightblue">
+									<td>Fixed Income</td>
+									<td>300,000</td>
+									<td>300,000</td>
+									<td>0</td>
+									<td>0.0%</td>
+								</tr>
+								<tr>
+									<td>Ultra Short Term Debt</td>
+									<td>300,000</td>
+									<td>300,000</td>
+									<td>0</td>
+									<td>0.0%</td>
+								</tr>
+								<tr>
+									<td>Short Term Debt</td>
+									<td>300,000</td>
+									<td>300,000</td>
+									<td>0</td>
+									<td>0.0%</td>
+								</tr>
+								<tr>
+									<td>Long Term Debt</td>
+									<td>300,000</td>
+									<td>300,000</td>
+									<td>0</td>
+									<td>0.0%</td>
+								</tr>
+								<tr class="bgcolorlightblue">
+									<td>Equity</td>
+									<td>300,000</td>
+									<td>300,000</td>
+									<td>0</td>
+									<td>0.0%</td>
+								</tr>
+								<tr>
+									<td>Equity Large Cap</td>
+									<td>300,000</td>
+									<td>300,000</td>
+									<td>0</td>
+									<td>0.0%</td>
+								</tr>
+								<tr>
+									<td>Equity Mid and Small Cap</td>
+									<td>300,000</td>
+									<td>300,000</td>
+									<td>0</td>
+									<td>0.0%</td>
+								</tr>
+								<tr>
+									<td>Equity International</td>
+									<td>300,000</td>
+									<td>300,000</td>
+									<td>0</td>
+									<td>0.0%</td>
+								</tr>
+								<tr class="bgcolorlightblue">
+									<td>Alternatives</td>
+									<td>300,000</td>
+									<td>300,000</td>
+									<td>0</td>
+									<td>0.0%</td>
+								</tr>
+								<tr>
+									<td>Alternatives - Precious Metals</td>
+									<td>300,000</td>
+									<td>300,000</td>
+									<td>0</td>
+									<td>0.0%</td>
+								</tr>
+								<tr>
+									<td>Alternatives - Real Estate</td>
+									<td>300,000</td>
+									<td>300,000</td>
+									<td>0</td>
+									<td>0.0%</td>
+								</tr>
+								<tr>
+									<td>Alternatives -Others</td>
+									<td>300,000</td>
+									<td>300,000</td>
+									<td>0</td>
+									<td>0.0%</td>
+								</tr>
+								<tr>
+									<td><b>Total</b></td>
+									<td><b>300,000</b></td>
+									<td><b>300,000 </b></td>
+									<td><b> 0</b></td>
+									<td><b>0.0%</b></td>
+								</tr>
+						</table>
+					</div>
+					<div class="col-lg-5">
+						<div class="bgwhite"
+							style="padding-top: 8px; padding-left: 17px; height: 22em; overflow: hidden">
+							<h4 class="fontblue">
+								<b> Current Asset Allocation</b>
+							</h4>
+							<div id="idcaa" style="width: 30%; margin-left: -80px"></div>
+						</div>
+						<br />
+						<div class="bgwhite"
+							style="padding-top: 8px; padding-left: 17px; height: 22em; overflow: hidden">
+							<h4 class="fontblue">
+								<b> Current Allocation - Sub Asset Class </b>
+							</h4>
+							<div id="idsubasset" style="width: 35%; margin-left: -80px"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-12 bgwhite"
+				style="margin-top: 18px; margin-bottom: 19px;">
+				<h4 class="fontblue">
+					<b>Current Allocation: Performance Vs Benchmark</b>
+				</h4>
+				<table width="100%"
+					style="z-index: 10 !important; margin-left: 1px; margin-bottom: 24px; margin-top: 27px;"
+					class="perbenchmarktbl">
+					<thead>
+						<tr>
+							<th style="text-align: left">Sub Asset Class</th>
+							<th>CAGR / XIRR</th>
+							<th>Benchmarks</th>
+							<th>1M</th>
+							<th>3M</th>
+							<th>6M</th>
+							<th>1Y</th>
+							<th>3Y</th>
+							<th>5Y</th>
+							<th>Risk Std Dev</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="bgcolorlightblue">
+							<td>Cash/Liquid</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Cash/Liquid</td>
+							<td>0.00%</td>
+							<td>Crisil Liquid Fund Index</td>
+							<td>0.00%</td>
+							<td>0.00%</td>
+							<td>0.00%</td>
+							<td>6.14%</td>
+							<td>42.00%</td>
+							<td>67.00%</td>
+							<td>12.27%</td>
+						</tr>
+						<tr class="bgcolorlightblue">
+							<td>Fixed Income</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Ultra Short Term Debt</td>
+							<td>0.00%</td>
+							<td>Crisil Liquid Fund Index</td>
+							<td>0.00%</td>
+							<td>0.00%</td>
+							<td>0.00%</td>
+							<td>5.14%</td>
+							<td>41.00%</td>
+							<td>66.00%</td>
+							<td>12.27%</td>
+						</tr>
+						<tr>
+							<td>Short Term Debt</td>
+							<td>8.25%</td>
+							<td>CRISIL STBeX</td>
+							<td>0.00%</td>
+							<td>0.00%</td>
+							<td>0.00%</td>
+							<td>61.14%</td>
+							<td>4.00%</td>
+							<td>6.00%</td>
+							<td>12.27%</td>
+						</tr>
+						<tr>
+							<td>Long Term Debt</td>
+							<td>8.34%</td>
+							<td>CRISIL Composite bond Index</td>
+							<td>0.00%</td>
+							<td>0.00%</td>
+							<td>0.00%</td>
+							<td>61.14%</td>
+							<td>40.00%</td>
+							<td>61.00%</td>
+							<td>12.27%</td>
+						</tr>
+						<tr class="bgcolorlightblue">
+							<td>Equity</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Equity Large Cap</td>
+							<td>16.67%</td>
+							<td>Nifty</td>
+							<td>0.00%</td>
+							<td>0.00%</td>
+							<td>0.00%</td>
+							<td>62.14%</td>
+							<td>41.00%</td>
+							<td>67.00%</td>
+							<td>12.27%</td>
+						</tr>
+						<tr>
+							<td>Equity Mid and Small Cap</td>
+							<td>11.95%</td>
+							<td>Nifty Midcap 100</td>
+							<td>0.00%</td>
+							<td>0.00%</td>
+							<td>0.00%</td>
+							<td>64.14%</td>
+							<td>41.00%</td>
+							<td>69.00%</td>
+							<td>11.27%</td>
+						</tr>
+						<tr>
+							<td>Equity International</td>
+							<td>19.75%</td>
+							<td>NA</td>
+							<td>0.00%</td>
+							<td>0.00%</td>
+							<td>0.00%</td>
+							<td>61.14%</td>
+							<td>48.00%</td>
+							<td>63.00%</td>
+							<td>10.27%</td>
+						</tr>
+						<tr class="bgcolorlightblue">
+							<td>Alternatives</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Alternatives - Precious Metals</td>
+							<td>20.55%</td>
+							<td>Gold Index</td>
+							<td>0.00%</td>
+							<td>0.00%</td>
+							<td>0.00%</td>
+							<td>63.14%</td>
+							<td>4.00%</td>
+							<td>61.00%</td>
+							<td>9.27%</td>
+						</tr>
+						<tr>
+							<td>Alternatives - Real Estate</td>
+							<td>0.00%</td>
+							<td>NA</td>
+							<td>0.00%</td>
+							<td>0.00%</td>
+							<td>0.00%</td>
+							<td>24.14%</td>
+							<td>40.00%</td>
+							<td>62.00%</td>
+							<td>10.27%</td>
+						</tr>
+						<tr>
+							<td>Alternatives -Others</td>
+							<td>0.00%</td>
+							<td>NA</td>
+							<td>0.00%</td>
+							<td>0.00%</td>
+							<td>0.00%</td>
+							<td>6.14%</td>
+							<td>42.00%</td>
+							<td>67.00%</td>
+							<td>12.27%</td>
+						</tr>
+						<tr>
+							<td><b>Total</b></td>
+							<td><b>85.51%</b></td>
+							<td><b>Na</b></td>
+							<td><b>0.00%</b></td>
+							<td><b>0.00%</b></td>
+							<td><b>0.00%</b></td>
+							<td>420.54%</td>
+							<td>42.00%</td>
+							<td>67.00%</td>
+							<td><b>12.27%</b></td>
+						</tr>
+				</table>
+			</div>
+		</div>
+		<div class="modal-body">
+			<table width="59%"
+				class="recommendedtbl recommendedsubtbl coltwo_rightalg"
+				style="z-index: 10 !important; margin-top: 31px; margin-left: 257px">
+				<thead>
+					<tr>
+						<th>Sub Asset Class</th>
+						<th>Current Allocation(%)</th>
+						<th>Recommended Allocation(%)</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr></tr>
+					<tr>
+						<td><b> Cash/Liquid</b></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle2.png" /> &nbsp;
+							Cash/Liquid</td>
+						<td>12%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><b>Fixed Income</b></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle3.png" /> &nbsp;
+							Ultra Short Term Debt</td>
+						<td>12%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle4.png" /> &nbsp;
+							Short Term Debt</td>
+						<td>12%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle5.png" /> &nbsp;
+							Long Term Debt</td>
+						<td>12%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><b>Equity</b></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle6.png" /> &nbsp;
+							Equity Large Cap</td>
+						<td>12%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle7.png" /> &nbsp;
+							Equity Mid and Small Cap</td>
+						<td>12%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle8.png" /> &nbsp;
+							Equity International</td>
+						<td>12%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><b>Alternatives</b></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle9.png" /> &nbsp;
+							Alternatives - Precious Metals</td>
+						<td>12%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle10.png" />
+							&nbsp; Alternatives - Real Estate</td>
+						<td>12%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr>
+						<td><img src="../Common/assets/images/circle11.png" />
+							&nbsp; Alternatives -Others</td>
+						<td>12%</td>
+						<td>0.0%</td>
+					</tr>
+					<tr class="nonglidtotal">
+						<td><b>Total</b></td>
+						<td><b>12% </b></td>
+						<td><b>0.0%</b></td>
+					</tr>
+			</table>
+			<br />
+			<!--<table width="49%" style="margin-left:215px">
+														<tr>
+														<td><b>Download Projections</b></td>
+														<td><input type="radio" name="download" style="position:sticky"></input></td>
+														<td style="text-align: left;vertical-align:bottom;"><label>Monthly</label></td>
+														<td><input type="radio" name="download" style="position:sticky" checked="true"></input></td>
+														<td style="text-align: left;vertical-align:bottom;"><label>Annually</label></td>
+														<td><input type="submit" value="Submit" class="form-control"/> </td>
+														</tr>
+													</table>-->
+			<div class="row">
+				<div class="col-lg-12">
+					<table width="100%" style="margin-left: 257px; margin-top: 12px">
+						<tr style="background-color: white">
+							<td><b>Current AA Vs Recommended AA (Sub Asset Classes):</b>
+							</td>
+						</tr>
+						<tr style="background-color: white; vertical-align: top">
+							<td><div id="idRecommendedbarGraphpop"
+									style="width: 60%; margin-top: 18px; margin-left: 10px">
+								</div></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<table width="100%" style="margin-left: 257px; margin-top: 14px">
+						<tr style="background-color: white">
+							<td><b>Recommended Asset Allocation - Historical Return:</b></td>
+						</tr>
+						<tr style="background-color: white; vertical-align: top">
+							<td><div id="idnetpop"
+									style="width: 53%; margin-top: 18px; margin-left: 0px"></div></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<h3></h3>
+		</div>
+	</div>
+</div>

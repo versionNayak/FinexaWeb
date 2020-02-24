@@ -1,0 +1,348 @@
+<div>
+    <div id="Loansdiv">
+        <div align="center" style="page-break-after: always;">
+            <h1 align="center">Loans</h1>
+            <h3 align="center">Current Liabilities</h3>
+            <table align="center" class="loanscurrentPDF" id="idLoanCurrentTablePDF">
+                <thead>
+                    <tr>
+                        <th>Loan Type</th>
+                        <th>Loan Provider</th>
+                        <th>Original Principal</th>
+                        <th>Outstanding Principal</th>
+                        <th>Interest rate%</th>
+                        <th>EMI</th>
+                        <th>Loan Start Date</th>
+                        <th>Loan End Date</th>
+                        <th>Interest payout frequency</th>
+                    </tr>
+                </thead>
+                <tbody id="idLoadCurrentTablePDF">
+                </tbody>
+            </table>
+            <div id="idLoanCurrentTableresultTable"></div>
+        </div>
+
+        <div align="center" style="page-break-after: always;">
+            <h1 align="center">Loans</h1>
+            <h3 align="center">Individual Loan Schedules</h3>
+            <div id="idIndividualLoanPDF"></div>
+        </div>
+
+        <div align="center" style="page-break-after: always;">
+            <h1 align="center">Loans</h1>
+            <h3 align="center">Total Loan Schedule</h3>
+            <div id="idTotalLoansTablePDFresultTable"></div>
+            <table align="center" class="loantotalpdf" id="idTotalLoansTablePDF">
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Beginning Balance</th>
+                        <th>Interest Payment</th>
+                        <th>Principal Payment</th>
+                        <th>Ending Balance</th>
+                        <th>EMI Amount</th>
+                    </tr>
+                </thead>
+                <tbody id=idTotalLoans1PDF>
+                </tbody>
+            </table>
+        </div>
+
+        <div align="center" style="page-break-after:always;">
+            <h1 align="center">Loans</h1>
+            <h3 align="center">Total Loan Schedule Graph</h3>
+            <div>
+                <div id="idOutstandingLoanPDF" style="width:600px;height:300px;margin:auto"></div>
+                <br/>
+                <div id="idLoanPaymentPDF" style="width:600px;height:300px;margin:auto"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="LoansJsdiv">
+
+        <script type="text/javascript">
+            jQuery(document).ready(function($) {
+
+                var loanListData;
+                var interestPayment = [];
+                var principlePayment = [];
+                var endBal = [];
+                var yearProjection = [];
+                var salaryIncome;
+                var salaryIncomePercent;
+                var bonousPercent;
+                var profPercent;
+                var bussPercent;
+                var rentIncomePercent;
+                var otherIncomePercent;
+                var interestIncomePercent;
+                var pensionPercent;
+                var payoutFrequency = "N/A";
+                var oriFlag = 0;
+                var outFlag = 0;
+
+                $.ajax({
+                    type: 'GET',
+                    async: false,
+                    url: REQUEST_URL_BM + '/getClientLoanInfo?clientId=' + vClientId + '',
+                    dataType: 'json',
+                    success: function(data) {
+                        loanListData = data;
+                        $.each(data, function(index, value) {
+                            payoutFrequency = "N/A";
+                            if (value.interestPayoutFreq == 1) {
+                                payoutFrequency = "Annualy";
+                            } else if (value.interestPayoutFreq == 2) {
+                                payoutFrequency = "Half Yearly"
+                            } else if (value.interestPayoutFreq == 3) {
+                                payoutFrequency = "Tri-Annualy";
+                            } else if (value.interestPayoutFreq == 4) {
+                                payoutFrequency = "Quaterly";
+                            } else if (value.interestPayoutFreq == 6) {
+                                payoutFrequency = "Bi-Monthly";
+                            } else if (value.interestPayoutFreq == 12) {
+                                payoutFrequency = "Monthly";
+                            }
+
+                            var originalPrincipal = "N/A";
+
+                            if (value.originalPrincipal != 0) {
+                                originalPrincipal = value.originalPrincipal;
+                            }
+
+                            var emi = "N/A";
+
+                            if (value.emi != 0) {
+                                emi = value.emi;
+                            }
+
+                            var outstandingPrincipal = "N/A";
+                            if (value.outstandingPrincipal != 0) {
+                                outstandingPrincipal = value.outstandingPrincipal;
+                            }
+
+                            $('#idLoadCurrentTablePDF').append(
+                                '<tr><td>' + value.loanType + '</td><td>' +
+                                value.loanProvider + '</td><td>' +
+                                originalPrincipal + '</td><td>' +
+                                outstandingPrincipal + '</td><td>' +
+                                value.interestRate + '</td><td>' +
+                                emi + '</td><td>' +
+                                value.loanStartDate + '</td><td>' +
+                                value.loanEndDate + '</td><td>' +
+                                payoutFrequency + '</td></tr>');
+
+                            if (parseFloat(value.originalPrincipal).toFixed(2) != 0.00) {
+                                oriFlag = 1;
+                            }
+                            if (parseFloat(value.outstandingPrincipal).toFixed(2) != 0.00) {
+                                outFlag = 1;
+                            }
+
+                        });
+                        if (oriFlag == 0) {
+                            $('#idLoanCurrentTablePDF td:nth-child(3),#idLoanCurrentTablePDF th:nth-child(3)').hide().addClass('noprint');
+                        }
+                        if (outFlag == 0) {
+                            $('#idLoanCurrentTablePDF td:nth-child(4),#idLoanCurrentTablePDF th:nth-child(4)').hide().addClass('noprint');
+                        }
+                    },
+                    error: function(data) {
+                        bootbox.alert(data.responseText);
+                    }
+
+                });
+
+                var table_html = '';
+                var table_html = $('#idLoanCurrentTablePDF').html();
+                table_html = '<table align="center" class="loanscurrentPDF" id="idLoanCurrentTablePDF">' + table_html + '</table>';
+                $html = $(table_html);
+                $html.find('.noprint').remove();
+                $('#idLoanCurrentTablePDF').remove();
+                $('#idLoanCurrentTableresultTable').html('<table align="center" class="loanscurrentPDF" id="idLoanCurrentTablePDF">' + $html.html() + '</table>');
+
+                var content = "";
+                var htmlContentModal = "";
+
+                $.ajax({
+                    type: 'GET',
+                    async: false,
+                    url: REQUEST_URL_BM + '/getClientBankLoanDetails?clientId=' + vClientId + '&mode=yearly',
+                    dataType: 'json',
+                    success: function(data) {
+                        $.each(data,
+                            function(index, value) {
+                                htmlContentModal = htmlContentModal + '<div>';
+                                htmlContentModal = htmlContentModal + '<h3 style="margin-left: 14px">Loan Schedule : ' + value.providerName + ' ' +
+                                    value.categoryName + ' Loans </h3>' +
+                                    '<table align="center" class="individualoan">' +
+                                    '<thead>' +
+                                    '<tr>' +
+                                    '<th>Year</th>' +
+                                    '<th>Beginning Balance</th>' +
+                                    '<th>Interest Payment</th>' +
+                                    '<th>Principal Payment</th>' +
+                                    '<th>Ending Balance</th>' +
+                                    '<th>EMI Amount</th>' +
+                                    '<th>Total Principal Paid to Date</th>' +
+                                    '<th>Total Interest Paid to Date</th>' +
+                                    '</tr></thead>' +
+                                    '<tbody>';
+                                $.each(value.clientFamilyLoanOutputList,
+                                    function(index1, value1) {
+                                        var emiAmt = value1.emiAmount;
+                                        if (value1.emiAmount == 0) {
+                                            emiAmt = "-"
+                                        }
+                                        htmlContentModal = htmlContentModal + '<tr>' +
+                                            '<td>' + value1.projectionYear + '</td>' +
+                                            '<td>' + value1.begningBal + '</td>' +
+                                            '<td>' + value1.interestPay + '</td>' +
+                                            '<td>' + value1.principalPay + '</td>' +
+                                            '<td>' + value1.endBal + '</td>' +
+                                            '<td>' + emiAmt + '</td>' +
+                                            '<td>' + value1.totalPrincipalPaid + '</td>' +
+                                            '<td>' + value1.totalInterestPaid + '</td></tr>';
+                                    });
+                                htmlContentModal = htmlContentModal + '</tbody></table></div>';
+                            });
+                        $('#idIndividualLoanPDF').html(htmlContentModal);
+                    },
+                    error: function(data) {}
+                });
+
+                $.ajax({
+                    type: 'GET',
+                    async: false,
+                    url: REQUEST_URL_BM + '/getClientAllBankLoanDetails?clientId=' + vClientId + '&mode=yearly',
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#idTotalLoans1PDF').html('');
+                        $.each(data,
+                            function(index, value) {
+                                $('#idTotalLoans1PDF').append(
+                                    '<tr><td>' + value.projectionYear + '</td><td>' +
+                                    (value.begningBal) + '</td><td>' +
+                                    (value.interestPay) + '</td><td>' +
+                                    (value.principalPay) + '</td><td>' +
+                                    (value.endBal) + '</td><td>' +
+                                    (value.emiAmount) + '</td></tr>');
+                                yearProjection.push(value.projectionYear);
+                                interestPayment.push(value.interestPay);
+                                principlePayment.push(value.principalPay);
+                                endBal.push(value.endBal);
+                            });
+                        Highcharts.chart('idLoanPaymentPDF', {
+                            chart: {
+                                type: 'column'
+                            },
+                            title: {
+                                text: '<p style="color:white;font-weight: bold;">Expected Income Projections</p>'
+                            },
+                            xAxis: {
+                                categories: yearProjection
+                            },
+                            yAxis: {
+                                min: 0,
+                                title: {
+                                    text: ''
+                                },
+                                stackLabels: {
+
+                                    style: {
+                                        fontWeight: 'bold',
+                                        color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                                    }
+                                }
+                            },
+                            legend: {
+                                align: 'right',
+                                x: 0,
+                                verticalAlign: 'bottom'
+
+                            },
+                            tooltip: {
+                                headerFormat: '<b>{point.x}</b><br/>',
+                                pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+                            },
+                            plotOptions: {
+                                column: {
+                                    stacking: 'normal',
+                                    dataLabels: {
+
+                                        color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+                                    },
+                                    showInLegend: false
+                                }
+                            },
+                            series: [{
+                                name: 'Interest Payment',
+                                data: interestPayment,
+                                color: "#6ba0ce"
+                            }, {
+                                name: 'Principal Payment',
+                                data: principlePayment,
+                                color: "#337ab7"
+                            }]
+                        });
+
+                        Highcharts.chart('idOutstandingLoanPDF', {
+                            chart: {
+                                type: 'column'
+                            },
+                            title: {
+                                text: ''
+                            },
+
+                            xAxis: {
+                                categories: yearProjection,
+                                crosshair: true
+                            },
+                            yAxis: {
+                                min: 0,
+                                title: {
+                                    text: ''
+                                }
+                            },
+                            legend: {
+                                align: 'right',
+                                x: 0,
+                                verticalAlign: 'bottom',
+
+                            },
+                            plotOptions: {
+                                column: {
+                                    pointPadding: 0.2,
+                                    borderWidth: 0,
+                                    showInLegend: false
+                                },
+                            },
+                            series: [{
+                                name: 'OutStanding Loan',
+                                data: endBal,
+                                color: "#337ab7"
+
+                            }]
+                        });
+
+                    },
+                    error: function(data) {}
+                });
+
+                var table_html = '';
+                var table_html = $('#idTotalLoansTablePDF').html();
+                table_html = '<table align="center" class="loantotalpdf" id="idTotalLoansTablePDF">' + table_html + '</table>';
+                $html = $(table_html);
+                $html.find('.noprint').remove();
+                $('#idTotalLoansTablePDF').remove();
+                $('#idTotalLoansTablePDFresultTable').html('<table align="center" class="loantotalpdf" id="idTotalLoansTablePDF">' + $html.html() + '</table>');
+
+
+            });
+        </script>
+
+    </div>
+</div>

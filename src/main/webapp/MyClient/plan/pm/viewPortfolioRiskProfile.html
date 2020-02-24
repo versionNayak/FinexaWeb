@@ -1,0 +1,84 @@
+<script src="plan/pm/js/viewPortfolioRiskProfile.js"></script>
+<script src="plan/pm/js/common.js"></script>
+<style>
+    #idRiskScore>div {
+        padding-left: 150px !important;
+    }
+    #idRiskScore {
+        margin-top: 0px !important;
+        margin-left: 60px !important;
+    }
+    .risktbul tr{
+        background-color: white !important;
+    }
+
+    .risktbul tr td {
+        text-align: left;
+    }
+
+    .risktbul tr td:nth-child(1) img {
+        width: 12px;
+        height: 12px;
+        margin-top: -3px;
+    }
+</style>
+
+<div id="jssor_2" class="height456px">
+    <div data-u="slides" class="slider9">
+        <div>
+            <div data-u="image">
+                <p style="word-break: break-word; width: 867px; margin-top: 0px; margin-left: 6px !important;">Based on the evaluation of your financial & personal information and responses
+                    to the Risk Profile Model, your Risk Score is as follows-</p>
+                <div style="height: 50px;"></div>
+                <div class="row" style="width: 878px; margin-left: 0px !important;">
+                    <div class="col-md-6" style="height: 285px">
+                        <div id="idRiskScore"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="height: 100px;"></div>
+                        <div>
+                            <table class="risktbul">
+                                <tr>
+                                    <td><img src="../Common/assets/images/circle1.png"/></td>
+                                    <td>Conservative</td>
+                                </tr>
+                                <tr>
+                                    <td><img src="../Common/assets/images/circle2.png"></td>
+                                    <td>Moderate</td>
+                                </tr>
+                                <tr>
+                                    <td><img src="../Common/assets/images/circle3.png"/></td>
+                                    <td>Aggressive</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p style="word-break: break-word; margin-top: 0px; margin-left: 14px; width: 853px; height: auto;" id="idRiskText"></p>
+            <button data-u="thumb" class="amtoinvest"> Amount to be Invested</button>
+        </div>
+        <div>
+            <div data-u="image">
+                <div></div>
+            </div>
+            <button data-u="thumb"> Goal Corpus Accumulation</button>
+        </div>
+    </div>
+    <!-- Thumbnail Navigator -->
+    <div data-u="thumbnavigator" class="jssort02" data-autocenter="1">
+        <!-- Thumbnail Item Skin Begin -->
+        <div data-u="slides">
+            <div data-u="prototype" class="p">
+                <div>
+                    <div data-u="thumbnailtemplate"></div>
+                </div>
+                <div></div>
+            </div>
+        </div>
+        <!-- Thumbnail Item Skin End -->
+    </div>
+    <!-- Arrow Navigator -->
+    <span class="jssora05l riskleft"><img src="../Common/assets/images/leftarrow.png"/></span>
+    <span class="jssora05r riskright"><img src="../Common/assets/images/rightarrow.png"/></span>
+</div>

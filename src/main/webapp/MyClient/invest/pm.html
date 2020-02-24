@@ -1,0 +1,238 @@
+<link href="../Common/assets/css/style.css" rel="stylesheet">
+<script src="invest/js/planAndInvestPM.js"></script>
+<script src="clientInfo/js/common.js"></script>
+<div class="cicontainer">
+		
+	
+				
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+		<label class="control-label" for="schemeName" style="text-align:left;font-size:14px;font-weight: bold; margin-bottom: 5px;">Client Id(UCC)* </label><br/>
+			<span class="form-static-value" id="idSpamSchemeName" >
+				<select style="padding-top: 2px"
+				class="form-control input-width-medium" id="idClientUCCCombo"
+				name="clientCode" tabindex="430">
+				</select>
+				<span class="formentry-errmsg" id="alertSchemeName"></span>
+			</span>
+		</div>
+		<br/><br/><br/><br/>
+			
+		<!-- <div class="col-sm-7" style="text-align: left;z-index:1;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">Goal Name*: </label><br/>
+					<span class="form-static-value">
+						<select style="padding-top:2px" class="form-control input-width-medium" id = "idGoalList" required="required" tabindex="430">
+				</select>
+			</span> 
+		</div>
+			
+				
+					<br/><br/><br/><br/> -->
+					
+						
+				<div class="col-sm-7" style="text-align: left;z-index:1;margin-left: -4px;padding-left:9em;padding-top: 7px;margin-top:-13px"> 
+				<button type="submit" style="width:40%" class="popup form-control addbtn" id="idViewInvestment" tabindex="540">View Investment</button>
+			</div>
+					
+				
+	</div>
+	<div id="idPopUpProduct" class="modal">
+
+			<!-- Modal content -->
+			<div class="modal-content" style = "overflow:auto;">
+			  <div class="modal-header">
+			  <span class="close">&times;</span>
+				<h2></h2>
+			  </div>
+			  <div class="modal-body">
+					<table width="100%"  class="productbl" id = "idInvestTable">
+							<thead>
+								<tr>
+									<th class="textaligncenter">Scheme Name
+									</th>
+									<th class="textaligncenter">Transaction Mode
+									</th>
+									<th class="textaligncenter">Mode Of Investment
+									</th>
+									<th class="textaligncenter">Lumpsum Amount
+									</th>
+									<th class="textaligncenter">SIP Amount
+									</th>
+									<th class="textaligncenter">SIP Frequency
+									</th>
+									<th class="textaligncenter">No Of Installments
+									</th>
+									<th class="textaligncenter">Registration Type
+									</th>
+									<th class="textaligncenter">Mandate Id
+									</th>
+									<th class="textaligncenter">First Order Flag
+									</th>
+									<th class="textaligncenter">SIP Start Date
+									</th>
+									<th>Select</th>
+									<th class="textaligncenter">Order Status
+									</th>
+							
+								</tr>
+							</thead>
+								<tbody id = "idTBodyPlanAndInvest" style = "overflow-y:scroll; overflow-x:scroll">
+							</tbody>
+						</table>
+						<br/>
+						<br/>
+		  <!--<img src="../Common/assets/images/download.png" style="width:4%"/>-->
+		  <div class="col-sm-7" style="text-align: left;z-index:1;margin-left: 31em;padding-left:9em;padding-top: 7px;margin-top:-42px"> 
+				<button type="submit" style="width:40%" class="popup form-control addbtn" id="idInvestSecond" tabindex="540">Initiate Transaction(s)</button>
+			</div>
+			  </div>
+			  <div class="modal-footer">
+				<h3></h3>
+			  </div>
+			</div>
+		  
+		  </div>
+		  <script>
+			  /* jQuery(document).ready(function ($) {
+ 
+		   
+	jQuery.fn.popupwindow = function(p)
+	
+{
+
+
+	var profiles = p || {};
+
+	return this.each(function(index){
+		var settings, parameters, mysettings, b, a, winObj;
+		
+		// for overrideing the default settings
+		mysettings = (jQuery(this).attr("rel") || "").split(",");
+
+		
+		settings = {
+			height:600, // sets the height in pixels of the window.
+			width:600, // sets the width in pixels of the window.
+			toolbar:0, // determines whether a toolbar (includes the forward and back buttons) is displayed {1 (YES) or 0 (NO)}.
+			scrollbars:0, // determines whether scrollbars appear on the window {1 (YES) or 0 (NO)}.
+			status:0, // whether a status line appears at the bottom of the window {1 (YES) or 0 (NO)}.
+			resizable:1, // whether the window can be resized {1 (YES) or 0 (NO)}. Can also be overloaded using resizable.
+			left:0, // left position when the window appears.
+			top:0, // top position when the window appears.
+			center:0, // should we center the window? {1 (YES) or 0 (NO)}. overrides top and left
+			createnew:1, // should we create a new window for each occurance {1 (YES) or 0 (NO)}.
+			location:0, // determines whether the address bar is displayed {1 (YES) or 0 (NO)}.
+			menubar:0, // determines whether the menu bar is displayed {1 (YES) or 0 (NO)}.
+			onUnload:null // function to call when the window is closed
+		};
+
+		// if mysettings length is 1 and not a value pair then assume it is a profile declaration
+		// and see if the profile settings exists
+
+		if(mysettings.length == 1 && mysettings[0].split(":").length == 1)
+		{
+			a = mysettings[0];
+			// see if a profile has been defined
+			if(typeof profiles[a] != "undefined")
+			{
+				settings = jQuery.extend(settings, profiles[a]);
+			}
+		}
+		else
+		{
+			// overrides the settings with parameter passed in using the rel tag.
+			for(var i=0; i < mysettings.length; i++)
+			{
+				b = mysettings[i].split(":");
+				if(typeof settings[b[0]] != "undefined" && b.length == 2)
+				{
+					settings[b[0]] = b[1];
+				}
+			}
+		}
+
+		// center the window
+		if (settings.center == 1)
+		{
+			settings.top = (screen.height-(settings.height + 110))/2;
+			settings.left = (screen.width-settings.width)/2;
+		}
+		
+		parameters = "location=" + settings.location + ",menubar=" + settings.menubar + ",height=" + settings.height + ",width=" + settings.width + ",toolbar=" + settings.toolbar + ",scrollbars=" + settings.scrollbars  + ",status=" + settings.status + ",resizable=" + settings.resizable + ",left=" + settings.left  + ",screenX=" + settings.left + ",top=" + settings.top  + ",screenY=" + settings.top;
+		
+		jQuery(this).bind("click", function(){
+			var name = settings.createnew ? "PopUpWindow" + index : "PopUpWindow";
+			winObj = window.open(this.href, name, parameters);
+		
+			
+			if (settings.onUnload) {
+				// Incremental check for window status
+				// Attaching directly to window.onunlaod event causes invoke when document within window is reloaded
+				// (i.e. an inner refresh)
+				unloadInterval = setInterval(function() {
+					if (!winObj || winObj.closed) {
+						clearInterval(unloadInterval);	
+						settings.onUnload.call($(this));
+					}
+				},500);
+			}
+			
+			winObj.focus();
+			
+			return false;
+		});
+	});
+
+};
+	var profiles =
+	{
+
+		window800:
+		{
+			height:800,
+			width:1250,
+			status:1
+		}
+
+			};
+
+	function unloadcallback(){
+		alert("unloaded");
+	};
+
+
+   	$(function()
+	{
+	
+   		$(".popupwindow").popupwindow(profiles);
+   	});		   
+		
+       var modal = document.getElementById('idPopUpProduct');
+
+       // Get the button that opens the modal
+       var btn = document.getElementById("idInvest");
+       
+       // Get the <span> element that closes the modal
+       var span = document.getElementsByClassName("close")[0];
+       
+       // When the user clicks the button, open the modal 
+       btn.onclick = function() {
+           $(".onpopupscroller").css("overflow","hidden");
+           modal.style.display = "block";
+       }
+       
+       // When the user clicks on <span> (x), close the modal
+       span.onclick = function() {
+           $(".onpopupscroller").css("overflow","visible");
+           modal.style.display = "none";
+       }
+       
+       // When the user clicks anywhere outside of the modal, close it
+       window.onclick = function(event) {
+           if (event.target == modal) {
+               modal.style.display = "none";
+           }
+       }
+                  
+                  
+               }); */
+		  </script>

@@ -1,0 +1,184 @@
+<script src="MF/Mfjs/validateUnrealisedGainReport.js"></script>
+<script src="MF/Mfjs/unrealizedReport.js"></script>
+<style>
+ .subtask-li {
+    border: 1px solid #C0C0C0;
+    cursor: pointer;
+    position: relative;
+    background: rgba(0, 0, 0, 0);
+    border-radius: 3px;
+    float: left;
+   
+    left: 0px;
+    padding: 5px;
+    top: 25px;
+    margin-bottom: -200px;
+}
+
+
+.subtask-pick{
+ 	margin-left: -6px;
+    margin-top: 6px;
+    background-clip: padding-box;
+    background-color: #fff;
+    border: 1px solid #dfe8f1;
+    border-radius: 0px;
+    box-shadow: 0px 1px 7px 2px rgba(135, 158, 171, 0.2);
+    display: none;
+    list-style: outside none none;
+    padding: 0 0 10px;
+    position: absolute;
+    z-index: 9; 
+    float: left;
+    width: 270px;
+    list-style: outside none none; height:180px; overflow:auto;
+}
+.icon-taskListing {
+    display: inline-block;
+    vertical-align: middle;
+}
+.subselectedList {
+    overflow: hidden;
+    padding: 0 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 116px;
+    color:#808080;
+}
+ul.subtask-pick li {
+  float: none;
+  display: block;
+  clear: both;
+  
+  position: relative;
+}
+ul.subtask-pick li a {
+  padding: .9em 1em .9em .8em;
+  position: relative;
+    clear: both;
+  cursor: pointer;
+  display: block;
+ 
+  white-space: nowrap;
+   text-overflow: ellipsis;
+  overflow: hidden;
+}
+ul.subtask-pick li a:hover {
+  background: none repeat scroll 0 0 #eff4f6;
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+  outline: 0;
+  color: #4c4c4c;
+}
+.subtask-li:before {
+    content:"▼";
+    position:absolute;
+    margin-left:240px;
+    pointer-events:none;
+}
+#idSchemeDrop:before {
+    content:"▼";
+    position:absolute;
+    margin-left:420px;
+    pointer-events:none;
+}
+</style>
+<div class="MFforms">
+	<form class="form-horizontal marginleft10per" action="#" id="idUnrealizedGaingReportForm">
+				<div class="form-group">
+							<span class="formentry-errmsg" id="alertform"></span>
+							<div id="idUnrealizedGainContents">
+								<div>
+									<label>Family/Client *:</label>
+									<span class="form-static-value">
+										<!-- <select class="form-control input-width-medium" id="idClientsUR" name="nameClientUR" tabindex="1">
+											<option value="">Select</option>
+										</select> -->
+										<div id="idClientsDrop" class="subtask-li" style="width:270px">
+										<span class="main-tlist">
+											<span class="icon-taskListing"></span>
+											<span id="idClients" class="subselectedList">Select Client Name<!-- <i class="down"></i> --></span>
+											<span class="icon-subcaret"></span>
+										</span>
+										<input id="myInput" type="text" placeholder="Search.." style="width:260px; display:none">
+										<ul id = "idSelect" class="subtask-pick" style = "display:none"></ul>
+										</div>
+										<span class="formentry-errmsg" id="alertClientsUR"></span>
+									</span>
+								</div>
+								<br/>
+								<div id="familyCover" class="form-group form-group-lg" style="margin-top: 35px; margin-bottom: -30px">
+									<div class="col-sm-8 asset-owner-wrapper">
+										<label>Family Member:</label><br/>
+											<table class="familymembertbl" width="20px">
+												<tr class="mem_icon"  id="familyMemberCheckBox">
+												</tr>
+											</table>
+									</div>
+								</div>
+								<br/>
+								<div style="margin-top: 15px">
+									<label>As On Date *:</label>
+										<p id="idAsOnDateGroup" class="input-group input-width-medium">
+										<input type="text" class="form-control" id="idAsOnDate" name="asOnDate" placeholder="DD/MM/YYYY" tabindex="2">
+										<span class="input-group-btn datepicker-icon">
+											<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select As on Date"><em class="glyphicon calendar-icon-theme"></em></button>
+										</span>
+										</p>
+									<span class="formentry-errmsg" id="alertAsOnDate"></span>
+								</div>
+								<br/>
+								<div>
+								<label>Select Mutual Fund:</label>
+									<span class="form-static-value" id="idFundHouse">
+										<select class="form-control input-width-medium" id="idFHouseUR" name="fundHouseUR" tabindex="4" style="width: auto">
+											<option value="">Select Mutual Fund</option>
+										</select>
+										<span class="formentry-errmsg" id="alertFHouseUR"></span>
+									</span>
+								</div>		
+								<br/>
+								<div>
+								<label>Select Scheme:</label>
+									<span class="form-static-value" id="idSchemeName" >
+										<select class="form-control input-width-medium" id="idSNameUR" name="schemeNameUR" tabindex="5" style="width: auto">
+											<option value="">Select Scheme</option>
+										</select>
+										<span class="formentry-errmsg" id="alertSNameUR"></span>
+									</span>
+								</div>	
+								<br/>
+								<div class="col-sm-6" style="text-align: left;z-index:1;padding-top: 7px;margin-top:-13px;font-style:bold"> 
+									<input type="button" class="pull-left btn addbtn" id="showUnrealizedReport" tabindex="6" value="View Report" style="width:9em;font-style:bold;float:right;margin-left:0em"/> 
+								</div>
+								<br/><br/>
+								<div id="idRadioReportFormat">
+									<label>Selection*:</label>
+										<p id="idReportFormatRadioGroupUR" style="margin-bottom:0px;width:15%">
+											<input id="idExcel" name="reportFormatUR" type="radio" value="excel" tabindex="7" /> Excel  &nbsp;&nbsp;&nbsp; 
+											<input id="idPDF" name="reportFormatUR" type="radio" value="pdf" tabindex="8" /> PDF &nbsp;&nbsp;&nbsp;
+										</p>
+									<span class="formentry-errmsg" id="alertReportFormatUR"></span>
+	    						</div>
+	    						<br/>
+	    						<div class="col-sm-6" style="text-align: left;z-index:1;padding-top: 7px;margin-top:-13px;font-style:bold"> 
+	    							<input type="button" class="btn addbtn" id="exportUnrealizedGainReport" value="Export Report" tabindex="9" style="width:9em"/>
+								</div>
+								
+							</div>	
+								
+								<div id="wait" style="width: 100%; height: 100%; top: 100px; left: 0px; position: fixed; z-index: 10000; text-align: center;">
+				            		<img src="../Common/assets/images/loader_finexa.gif" width="45" height="45" alt="Loading..." style="position: fixed; top: 50%; left: 50%;"/>
+								</div>
+								
+							
+					</div>	
+						
+		</form>
+						
+						
+						
+	
+	</div>

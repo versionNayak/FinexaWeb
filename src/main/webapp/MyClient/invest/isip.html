@@ -1,0 +1,193 @@
+<script src="invest/js/verificationprocess.js"></script>
+<script src="invest/js/isip.js"></script>
+<script src="invest/js/validateISIP.js"></script>
+<script src="clientInfo/js/validationForAll.js"></script>
+<script src="clientInfo/js/common.js"></script>
+<div class="cicontainer">
+	<form class="form-horizontal" id="formISIP">
+		<!--<table class="verificationpath">
+	<tr><td><button type="submit" style="width:90%" class="form-control addbtn pn" tabindex="540">CKYC</button></td><td>-</td><td><button type="submit" style="width:55%;" class="form-control addbtn" tabindex="540" disabled>CC Creation</button></td><td>-</td><td><button type="submit" style="width:97%" class="form-control addbtn" tabindex="540">FATCA</button></td><td>-</td><td><button type="submit" style="width:113%" class="form-control addbtn" tabindex="540" disabled>ISIP</button></td></tr>
+	</table>-->
+		<!-- <table class="verificationpath" style="margin-left: -17px;">
+			<tr>
+				<td style="width: 15%;"><button type="submit"
+						style="width: 96%" class="form-control addbtn pn" tabindex="540">CKYC</button></td>
+				<td><img src="../Common/assets/images/bluearrow.png"
+					style="width: 85%"></td>
+				<td style="width: 14%;"><button type="submit"
+						style="width: 101%;" class="form-control addbtn" tabindex="540"
+						disabled>CC Creation</button></td>
+				<td><img src="../Common/assets/images/bluearrow.png"
+					style="width: 93%"></td>
+				<td style="width: 13%;"><button type="submit"
+						style="width: 101%" class="form-control addbtn" tabindex="540"
+						disabled>FATCA</button></td>
+				<td><img src="../Common/assets/images/bluearrow.png"
+					style="width: 93%"></td>
+				<td style="width: 11%;"><button type="submit"
+						style="width: 141%" class="form-control addbtn" tabindex="540"
+						disabled>ISIP</button></td>
+			</tr>
+		</table> -->
+	<table class="verificationpath" id = "idNavigationTable" style="margin-left:26px;width:88%;" id = "idNavigationTable">
+	<tr>
+		<td style="width: 14%;"><button type="submit" style="width:101%;" class="form-control addbtn" disabled>CC Creation</button></td>
+		<td style="text-align:center!important;width:20% !important"><img src="../Common/assets/images/bluearrow.png" style="width:45%"></td>
+		<td style="width: 13%;"><button type="submit" style="width:101%" class="form-control addbtn" disabled>FATCA</button></td>
+		<td style="text-align:center !important;width:20% !important"><img src="../Common/assets/images/bluearrow.png" style="width:45%"></td>
+		<td style="width: 11%;"><button type="submit" style="width:141%" class="form-control addbtn" disabled>Mandate Registration</button></td></tr>
+	</table>
+		<br /> <br />
+		
+		<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left: -4px;padding-top: 7px;margin-top:-13px"> 
+			<span class="formentry-errmsg" id="alertform"></span>
+		</div>
+		<br/><br/>
+		
+		<div class="col-sm-7" id = "idDivUCCCombo"
+			style="text-align: left; z-index: 0.5; margin-left: -4px; padding-top: 7px; margin-top: -13px">
+			<label class="control-label" for="idppfdeposite"
+				style="text-align: left; font-size: 14px">Client Id(UCC)* </label><br />
+				<select style="padding-top: 2px"
+				class="form-control input-width-medium" id="idClientUCCCombo"
+				name="clientCode" tabindex="1">
+				</select>
+				<span class="formentry-errmsg" id="alertClientId"></span>
+		</div>
+		<div class="col-sm-7" id = "idDivUCCText"
+			style="text-align: left; z-index: 0.5; margin-left: -4px; padding-top: 7px; margin-top: -13px">
+			<label class="control-label" for="idppfdeposite"
+				style="text-align: left; font-size: 14px">Client Id(UCC)* </label><br />
+			<input type="text"
+				placeholder="Client Id(UCC)" class="form-control"
+				id="idClientUCCText" name="clientCode"
+				style="width: 16em" tabindex="1" />
+		</div>		
+		<br /> <br /> <br /> <br />
+		
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 0.5; margin-left: -4px; padding-top: 7px; margin-top: -13px">
+			<label class="control-label" for="idppfdeposite"
+				style="text-align: left; font-size: 14px">Client Name</label><br />
+			<input type="text"
+				placeholder="Client Name" class="form-control"
+				id="idClientName" name="nameClientName"
+				style="width: 16em" tabindex="2" />
+		</div>
+		<br /> <br /> <br /> <br />
+		
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 0.5; margin-left: -4px; padding-top: 7px; margin-top: -13px">
+			<label class="control-label" for="idppfdeposite"
+				style="text-align: left; font-size: 14px">Bank Name*: </label><br />
+			<select style="padding-top: 2px"
+				class="form-control input-width-medium" id="idBankNameIsip"
+				name="occupation" tabindex="3">
+				<option value="" selected="selected">Select Bank Name</option>
+			</select> <span class="formentry-errmsg" id="alertBankName"></span>
+		</div>
+		<br /> <br /> <br /> <br />
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 0.5; margin-left: -4px; padding-top: 7px; margin-top: -13px">
+			<label class="control-label" for="idppfdeposite"
+				style="text-align: left; font-size: 14px">IFSC Code* </label><br />
+				<select style="padding-top: 2px"
+				class="form-control input-width-medium" id="idIFSC"
+				name="ifscCode" tabindex="4">
+				<option value="" selected="selected">Select IFSC</option></select>
+				<span class="formentry-errmsg" id="alertIfscCode"></span>
+		</div>
+		<br /> <br /> <br /> <br />
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 0.5; margin-left: -4px; padding-top: 7px; margin-top: -13px">
+			<label class="control-label" for="idppfdeposite"
+				style="text-align: left; font-size: 14px">Bank Account
+				Number*</label><br /> 
+				<select style="padding-top: 2px"
+				class="form-control input-width-medium" id="idACCNOISIP"
+				name="accountNo" tabindex="5">
+				<option value="" selected="selected">Select Account No</option></select>
+				<span class="formentry-errmsg" id="alertAccountNumber"></span>
+		</div>
+		<br /> <br /> <br /> <br />
+
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 0.5; margin-left: -4px; padding-top: 7px; margin-top: -13px">
+			<label class="control-label" for="idppfdeposite"
+				style="text-align: left; font-size: 14px">Amount*</label><br /> <input
+				type="text" placeholder="Amount" id="idAmountISIP" maxlength="100"
+				class="form-control" name="amount" style="width: 16em" tabindex="6" /> <span
+				class="formentry-errmsg" id="alertAmount"></span>
+		</div>
+		<br /> <br /> <br /> <br />
+
+
+		<div class="col-sm-7"
+			style="text-align: left; z-index: 0.5; margin-left: -4px; padding-top: 7px; margin-top: -13px">
+			<label class="control-label" for="idppfdeposite"
+				style="text-align: left; font-size: 14px">Mandate Type* </label><br />
+			<select style="padding-top: 2px"
+				class="form-control input-width-medium" id="idMandateTypeIsip"
+				name="mandateType" tabindex="7">
+				<option value="" selected="selected">Select Mandate Type</option>
+				<!-- <option value="E">E-SIP</option> -->
+				<option value="I">I-SIP</option>
+				<option value="X">X-SIP</option>
+			</select> <span class="formentry-errmsg" id="alertMandateType"></span>
+		</div>
+		<br /> <br /> <br /> <br />
+
+			<div class="col-sm-7" style="text-align: left; z-index: 0.5; margin-left: -4px; padding-top: 7px; margin-top: -13px">
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">From Date*: </label><br/>
+					<span class="form-static-value">
+						<p id="idInvestmentStartDateGroup" class="input-group input-width-medium">
+									<input type="text" class="form-control" id="idInvestmentStartDate" name="startDate" placeholder="DD/MM/YYYY" tabindex="8"> <!-- onfocusout="initAmountAndUnits($(this))" -->
+									<span class="formentry-errmsg" id="alertFromDate"></span>
+									<span class="input-group-btn datepicker-icon" >
+										<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Start Date" ><em class="glyphicon calendar-icon-theme" ></em></button>
+									</span>
+								</p>
+					</span> 
+				</div>
+					<br/><br/><br/><br/>
+					
+				<div class="col-sm-7" style="text-align: left;z-index:0.5;margin-left:-4px;padding-top: 7px;margin-top:-13px"> 
+				<label class="control-label" for="idppfdeposite" style="text-align:left;font-size:14px">To Date*: </label><br/>
+					<span class="form-static-value">
+						<p class="input-group input-width-medium">
+						<input type="text" class="form-control" id="idEndDate" name="endDate" placeholder="DD/MM/YYYY" tabindex="9">
+						<span class="formentry-errmsg" id="alertToDate"></span>
+						<span class="input-group-btn datepicker-icon">
+							<button type="button" class="btn btn-default calendar-icon-container" data-toggle="tooltip" data-placement="top" title="Select Start Date"><em class="glyphicon calendar-icon-theme"></em></button>
+						</span>
+					</p>
+					</span> 
+				</div>
+					<br/><br/><br/><br/>
+
+		<div class="col-sm-9"
+			style="text-align: left; z-index: 0.5; margin-left: -18px; padding-top: 7px; margin-top: -13px">
+			<div class="col-sm-3">
+				<button type="submit" style="width: 139%"
+					class="form-control addbtn isipprev" tabindex="10">Previous</button>
+			</div>
+			<div class="col-sm-3">
+				<button type="button" style="width: 145%; margin-left: 24px;"
+					class="form-control addbtn" id="idSaveAndFinish"
+					tabindex="11">Save & Finish</button>
+			</div>
+		</div>
+	</form>
+</div>
+<script>
+	$(document).ready(function() {
+
+		$(".isipprev").click(function() {
+			$("#idInvest").empty();
+
+			$(".dashboardheading").html("Verification Process");
+			$("#idInvest").load("invest/fatca.html");
+
+		});
+	});
+</script>
