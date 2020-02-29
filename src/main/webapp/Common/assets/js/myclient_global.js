@@ -2,7 +2,7 @@ var version = "Version - 0.22";
 //var serviceIP = "https://staging.finexa.in"; // Staging Server
 //var serviceIP = "https://testing.finexa.in"; // Testing Server
 //var serviceIP = "http://192.168.1.110:8080"; // Integration Server
- var serviceIP = "http://localhost:8080"; // Developer Local
+ var serviceIP = "http://localhost:8081"; // Developer Local
 //var serviceIP = "https://app.finexa.in"; //Production Server
 
 /**********************************MF Back Office related page constants*****************/
